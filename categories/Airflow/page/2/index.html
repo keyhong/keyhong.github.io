@@ -281,10 +281,19 @@
                 
                 
                 
+                <a href="/categories/Airflow/" title="Airflow: 14">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-active "
+                            style="background-color: #F9EBEA;">Airflow
+                        <span class="tag-length">14</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/categories/Git/" title="Git: 6">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F9EBEA;">Git
+                            style="background-color: #F5EEF8;">Git
                         <span class="tag-length">6</span>
                     </span>
                 </a>
@@ -293,17 +302,8 @@
                 <a href="/categories/Flink/" title="Flink: 5">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F5EEF8;">Flink
+                            style="background-color: #D5F5E3;">Flink
                         <span class="tag-length">5</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/Airflow/" title="Airflow: 14">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            style="background-color: #D5F5E3;">Airflow
-                        <span class="tag-length">14</span>
                     </span>
                 </a>
                 
@@ -371,19 +371,19 @@
                 </a>
                 
                 
-                <a href="/categories/SQL/" title="SQL: 4">
+                <a href="/categories/Algorithm/" title="Algorithm: 4">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F8C471;">SQL
+                            style="background-color: #F8C471;">Algorithm
                         <span class="tag-length">4</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/Algorithm/" title="Algorithm: 4">
+                <a href="/categories/SQL/" title="SQL: 4">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F9E79F;">Algorithm
+                            style="background-color: #F9E79F;">SQL
                         <span class="tag-length">4</span>
                     </span>
                 </a>
@@ -468,20 +468,22 @@ airflow scheduler 시작a
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Airflow/task-command/">
+                    <a href="/2024/01/01/Airflow/timezone/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] Task Command">
+                            <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] Timezone">
                             
-                            <span class="card-title">[Airflow] Task Command</span>
+                            <span class="card-title">[Airflow] Timezone</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Task 목록 조회airflow tasks list [dag_id]
+                                naive datetime objectTimezone(tzinfo)이 없는 객체
+aware datetime objectTimezone(tzinfo)이 있는 객체
 
-단일 Task 실행airflow tasks test [dag_id] [task_id] [execution_date or run_id]
+python에서 pendulum 모듈로 생성가능
+
 
 
                             
@@ -517,22 +519,20 @@ airflow scheduler 시작a
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Airflow/timezone/">
+                    <a href="/2024/01/01/Airflow/task-command/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] Timezone">
+                            <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] Task Command">
                             
-                            <span class="card-title">[Airflow] Timezone</span>
+                            <span class="card-title">[Airflow] Task Command</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                naive datetime objectTimezone(tzinfo)이 없는 객체
-aware datetime objectTimezone(tzinfo)이 있는 객체
+                                Task 목록 조회airflow tasks list [dag_id]
 
-python에서 pendulum 모듈로 생성가능
-
+단일 Task 실행airflow tasks test [dag_id] [task_id] [execution_date or run_id]
 
 
                             
@@ -688,13 +688,13 @@ SubDag를 생성하려면
             
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/keyhong" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <a href="https://github.com/keyhong" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
         <i class="fab fa-github"></i>
     </a>
 
 
 
-    <a href="mailto:wnhong96@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <a href="mailto:wnhong96@gmail.com" class="tooltipped" target="_blank" data-tooltip="Email" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
     </a>
 

@@ -281,10 +281,19 @@
                 
                 
                 
+                <a href="/categories/Airflow/" title="Airflow: 14">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F9EBEA;">Airflow
+                        <span class="tag-length">14</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/categories/Git/" title="Git: 6">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F9EBEA;">Git
+                            style="background-color: #F5EEF8;">Git
                         <span class="tag-length">6</span>
                     </span>
                 </a>
@@ -293,17 +302,8 @@
                 <a href="/categories/Flink/" title="Flink: 5">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F5EEF8;">Flink
+                            style="background-color: #D5F5E3;">Flink
                         <span class="tag-length">5</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/Airflow/" title="Airflow: 14">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #D5F5E3;">Airflow
-                        <span class="tag-length">14</span>
                     </span>
                 </a>
                 
@@ -371,19 +371,19 @@
                 </a>
                 
                 
-                <a href="/categories/SQL/" title="SQL: 4">
+                <a href="/categories/Algorithm/" title="Algorithm: 4">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F8C471;">SQL
+                            style="background-color: #F8C471;">Algorithm
                         <span class="tag-length">4</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/Algorithm/" title="Algorithm: 4">
+                <a href="/categories/SQL/" title="SQL: 4">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F9E79F;">Algorithm
+                            style="background-color: #F9E79F;">SQL
                         <span class="tag-length">4</span>
                     </span>
                 </a>
@@ -517,22 +517,22 @@ kafka-topics.sh --create \
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Kafka/kafka-run-class-command/">
+                    <a href="/2024/01/01/Kafka/kafka-server-_-command/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-run-class Command">
+                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-server-* Command">
                             
-                            <span class="card-title">[Kafka] kafka-run-class Command</span>
+                            <span class="card-title">[Kafka] kafka-server-* Command</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                kafka-run-class Command
-토픽의 파티션별 오프셋 확인하기
+                                kafka-server-* Command
+카프카 실행
 
-$ kafka-run-class.sh kafka.tools.GetOffsetShell \
-    --bootstrap-server &lt;
+$ kafka-server-start.sh -daemon ../config/sever.property (일반)
+$kafka-server-start.sh -dae
                             
                         </div>
                         <div class="publish-info">
@@ -566,22 +566,22 @@ $ kafka-run-class.sh kafka.tools.GetOffsetShell \
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Kafka/kafka-server-_-command/">
+                    <a href="/2024/01/01/Kafka/kafka-run-class-command/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-server-* Command">
+                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-run-class Command">
                             
-                            <span class="card-title">[Kafka] kafka-server-* Command</span>
+                            <span class="card-title">[Kafka] kafka-run-class Command</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                kafka-server-* Command
-카프카 실행
+                                kafka-run-class Command
+토픽의 파티션별 오프셋 확인하기
 
-$ kafka-server-start.sh -daemon ../config/sever.property (일반)
-$kafka-server-start.sh -dae
+$ kafka-run-class.sh kafka.tools.GetOffsetShell \
+    --bootstrap-server &lt;
                             
                         </div>
                         <div class="publish-info">
@@ -666,21 +666,24 @@ $kafka-server-start.sh -dae
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Kafka/kafka-console-consumer-command/">
+                    <a href="/2024/01/01/Kafka/kafka-consumer-groups-command/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-console-consumer Command">
+                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-consumer-groups Command">
                             
-                            <span class="card-title">[Kafka] kafka-console-consumer Command</span>
+                            <span class="card-title">[Kafka] kafka-consumer-groups Command</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                kafka-console-consumer Command
-콘솔로 conusmer 메세지 구독하기 (기존 메세지를 모두 확인 후, 새 메시지 구독)
+                                kafka-consumer-groups Command
+카프카 컨슈머 그룹 리스트 조회
 
-$ kafka-console-consumer.sh --bootstra
+$ kafka-consumer-groups.sh --bootstrap-server [HOST]:[PORT] --list
+
+
+카프
                             
                         </div>
                         <div class="publish-info">
@@ -714,24 +717,21 @@ $ kafka-console-consumer.sh --bootstra
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Kafka/kafka-consumer-groups-command/">
+                    <a href="/2024/01/01/Kafka/kafka-console-consumer-command/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-consumer-groups Command">
+                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-console-consumer Command">
                             
-                            <span class="card-title">[Kafka] kafka-consumer-groups Command</span>
+                            <span class="card-title">[Kafka] kafka-console-consumer Command</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                kafka-consumer-groups Command
-카프카 컨슈머 그룹 리스트 조회
+                                kafka-console-consumer Command
+콘솔로 conusmer 메세지 구독하기 (기존 메세지를 모두 확인 후, 새 메시지 구독)
 
-$ kafka-consumer-groups.sh --bootstrap-server [HOST]:[PORT] --list
-
-
-카프
+$ kafka-console-consumer.sh --bootstra
                             
                         </div>
                         <div class="publish-info">
@@ -911,13 +911,13 @@ Acks(acknowledgments)
             
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/keyhong" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <a href="https://github.com/keyhong" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
         <i class="fab fa-github"></i>
     </a>
 
 
 
-    <a href="mailto:wnhong96@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <a href="mailto:wnhong96@gmail.com" class="tooltipped" target="_blank" data-tooltip="Email" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
     </a>
 

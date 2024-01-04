@@ -290,22 +290,25 @@
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Kafka/kafka-console-consumer-command/">
+                    <a href="/2024/01/01/Kafka/kafka-consumer-groups-command/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-console-consumer Command">
+                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-consumer-groups Command">
                             
-                            <span class="card-title">[Kafka] kafka-console-consumer Command</span>
+                            <span class="card-title">[Kafka] kafka-consumer-groups Command</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                kafka-console-consumer Command
-콘솔로 conusmer 메세지 구독하기 (기존 메세지를 모두 확인 후, 새 메시지 구독)
+                                kafka-consumer-groups Command
+카프카 컨슈머 그룹 리스트 조회
 
-$ kafka-console-consumer.sh --bootstra
+$ kafka-consumer-groups.sh --bootstrap-server [HOST]:[PORT] --list
+
+
+카프
                             
                         </div>
                         <div class="publish-info">
@@ -395,23 +398,23 @@ $ kafka-console-consumer.sh --bootstra
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Kafka/kafka-server-_-command/">
+                    <a href="/2024/01/01/Kafka/kafka-run-class-command/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-server-* Command">
+                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-run-class Command">
                             
-                            <span class="card-title">[Kafka] kafka-server-* Command</span>
+                            <span class="card-title">[Kafka] kafka-run-class Command</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                kafka-server-* Command
-카프카 실행
+                                kafka-run-class Command
+토픽의 파티션별 오프셋 확인하기
 
-$ kafka-server-start.sh -daemon ../config/sever.property (일반)
-$kafka-server-start.sh -dae
+$ kafka-run-class.sh kafka.tools.GetOffsetShell \
+    --bootstrap-server &lt;
                             
                         </div>
                         <div class="publish-info">
@@ -447,23 +450,23 @@ $kafka-server-start.sh -dae
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Kafka/kafka-run-class-command/">
+                    <a href="/2024/01/01/Kafka/kafka-server-_-command/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-run-class Command">
+                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-server-* Command">
                             
-                            <span class="card-title">[Kafka] kafka-run-class Command</span>
+                            <span class="card-title">[Kafka] kafka-server-* Command</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                kafka-run-class Command
-토픽의 파티션별 오프셋 확인하기
+                                kafka-server-* Command
+카프카 실행
 
-$ kafka-run-class.sh kafka.tools.GetOffsetShell \
-    --bootstrap-server &lt;
+$ kafka-server-start.sh -daemon ../config/sever.property (일반)
+$kafka-server-start.sh -dae
                             
                         </div>
                         <div class="publish-info">
@@ -711,26 +714,22 @@ $ usermod [-option]
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Linux/linux-environment/">
+                    <a href="/2024/01/01/Linux/linux-basic-command/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/linux-logo.png" class="responsive-img" alt="[Linux] Environment">
+                            <img src="/images/logos/linux-logo.png" class="responsive-img" alt="[Linux] Basic Command">
                             
-                            <span class="card-title">[Linux] Environment</span>
+                            <span class="card-title">[Linux] Basic Command</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Linux Environment리눅스 환경변수
-시스템 또는 사용자 수준에서 사용되는 설정 정보를 저장하는데 사용되는 변수
-
-시스템 구성
-시스템 전반적인 설정을 저장&#96;&#96;
-
-
-PATH 환경변수는 실행 파일
+                                Linux Basic Command파일&#x2F;폴더 조회# ls : list
+$ ls [-option]
+    -l  # line          : 해당 경로의 모든 파일을 라인으로 자세하게 출력
+    -a  
                             
                         </div>
                         <div class="publish-info">
@@ -766,22 +765,26 @@ PATH 환경변수는 실행 파일
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Linux/linux-basic-command/">
+                    <a href="/2024/01/01/Linux/linux-environment/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/linux-logo.png" class="responsive-img" alt="[Linux] Basic Command">
+                            <img src="/images/logos/linux-logo.png" class="responsive-img" alt="[Linux] Environment">
                             
-                            <span class="card-title">[Linux] Basic Command</span>
+                            <span class="card-title">[Linux] Environment</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Linux Basic Command파일&#x2F;폴더 조회# ls : list
-$ ls [-option]
-    -l  # line          : 해당 경로의 모든 파일을 라인으로 자세하게 출력
-    -a  
+                                Linux Environment리눅스 환경변수
+시스템 또는 사용자 수준에서 사용되는 설정 정보를 저장하는데 사용되는 변수
+
+시스템 구성
+시스템 전반적인 설정을 저장&#96;&#96;
+
+
+PATH 환경변수는 실행 파일
                             
                         </div>
                         <div class="publish-info">
@@ -887,13 +890,13 @@ $ ls [-option]
             
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/keyhong" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <a href="https://github.com/keyhong" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
         <i class="fab fa-github"></i>
     </a>
 
 
 
-    <a href="mailto:wnhong96@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <a href="mailto:wnhong96@gmail.com" class="tooltipped" target="_blank" data-tooltip="Email" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
     </a>
 
