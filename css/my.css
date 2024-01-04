@@ -1,0 +1,23 @@
+/* Here is your custom css styles. */
+@font-face {
+    font-family: 'GmarketSansTTFMedium';
+    src: url('../font/GmarketSansTTFMedium.ttf');
+}
+
+@font-face {
+    font-family: 'HappyMonkey-Regular';
+    src: url('../font/HappyMonkey-Regular.ttf');
+}
+
+
+.diy-gmarket-sans {
+    font-family: 'GmarketSansTTFMedium';
+}
+
+.diy-happy-monkey {
+    font-family: 'HappyMonkey-Regular';
+}
+
+body {
+    font-family: 'GmarketSansTTFMedium';
+}
