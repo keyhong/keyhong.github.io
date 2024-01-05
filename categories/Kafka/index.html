@@ -335,20 +335,20 @@
                 </a>
                 
                 
-                <a href="/categories/Kafka/" title="Kafka: 9">
+                <a href="/categories/Hive/" title="Hive: 6">
                     <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            style="background-color: #82E0AA;">Kafka
-                        <span class="tag-length">9</span>
+                             chip-default "
+                            style="background-color: #82E0AA;">Hive
+                        <span class="tag-length">6</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/Hive/" title="Hive: 6">
+                <a href="/categories/Kafka/" title="Kafka: 9">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #D7BDE2;">Hive
-                        <span class="tag-length">6</span>
+                             chip-active "
+                            style="background-color: #D7BDE2;">Kafka
+                        <span class="tag-length">9</span>
                     </span>
                 </a>
                 
@@ -717,21 +717,24 @@ $ kafka-consumer-groups.sh --bootstrap-server [HOST]:[PORT] --list
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Kafka/kafka-console-consumer-command/">
+                    <a href="/2024/01/01/Kafka/kafka-cleanup-policy/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-console-consumer Command">
+                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Cleanup Policy">
                             
-                            <span class="card-title">[Kafka] kafka-console-consumer Command</span>
+                            <span class="card-title">[Kafka] Cleanup Policy</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                kafka-console-consumer Command
-콘솔로 conusmer 메세지 구독하기 (기존 메세지를 모두 확인 후, 새 메시지 구독)
+                                Kafka Cleanup Policy토픽 삭제 정책(Delete Policy)
+명시적으로 토픽의 데이터를 삭제하는 정책
 
-$ kafka-console-consumer.sh --bootstra
+
+토픽의 데이터를 삭제할 때 세그먼트 단위로 삭제
+
+삭제정책이 실행되는 시점은 시간 또는 용량
                             
                         </div>
                         <div class="publish-info">
@@ -765,24 +768,21 @@ $ kafka-console-consumer.sh --bootstra
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Kafka/kafka-cleanup-policy/">
+                    <a href="/2024/01/01/Kafka/kafka-console-consumer-command/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Cleanup Policy">
+                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-console-consumer Command">
                             
-                            <span class="card-title">[Kafka] Cleanup Policy</span>
+                            <span class="card-title">[Kafka] kafka-console-consumer Command</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Kafka Cleanup Policy토픽 삭제 정책(Delete Policy)
-명시적으로 토픽의 데이터를 삭제하는 정책
+                                kafka-console-consumer Command
+콘솔로 conusmer 메세지 구독하기 (기존 메세지를 모두 확인 후, 새 메시지 구독)
 
-
-토픽의 데이터를 삭제할 때 세그먼트 단위로 삭제
-
-삭제정책이 실행되는 시점은 시간 또는 용량
+$ kafka-console-consumer.sh --bootstra
                             
                         </div>
                         <div class="publish-info">
