@@ -5,9 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="[Airflow] Docker Installation, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Reference for package extras
-CLI CommandsInstalling Airflow
-Create and start a docker container from the Docker image py">
+    <meta name="description" content="Installtion at Local1. python pip 라이브러리 설치# Airflow 패키지 설치(특정 버전 기준으로 호환 패키지 같이 설치)
+CONSTRAINT_URL=&#34;https://raw.githubus">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -307,7 +306,84 @@ Create and start a docker container from the Docker image py">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/extra-packages-ref.html">Reference for package extras</a></p>
+                <h2 id="Installtion-at-Local"><a href="#Installtion-at-Local" class="headerlink" title="Installtion at Local"></a>Installtion at Local</h2><h4 id="1-python-pip-라이브러리-설치"><a href="#1-python-pip-라이브러리-설치" class="headerlink" title="1. python pip 라이브러리 설치"></a>1. python pip 라이브러리 설치</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Airflow 패키지 설치(특정 버전 기준으로 호환 패키지 같이 설치)</span>
+<span class="token assign-left variable">CONSTRAINT_URL</span><span class="token operator">=</span><span class="token string">"https://raw.githubusercontent.com/apache/airflow/constraints-<span class="token variable">$&#123;AIRFLOW_VERSION&#125;</span>/constraints-<span class="token variable">$&#123;PYTHON_VERSION&#125;</span>.txt"</span>
+
+pip <span class="token function">install</span> <span class="token string">"apache-airflow==<span class="token variable">$&#123;AIRFLOW_VERSION&#125;</span>"</span> <span class="token parameter variable">--constraint</span> <span class="token string">"<span class="token variable">$&#123;CONSTRAINT_URL&#125;</span>"</span>
+pip <span class="token function">install</span> <span class="token string">"apache-airflow==2.6.0"</span> <span class="token parameter variable">--constraint</span> <span class="token string">"https://raw.githubusercontent.com/apache/airflow/constraints-2.6.0/constraints-3.8.txt"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="2-AIRFLOW-HOME-환경변수-설정-및-기초파일-초기화"><a href="#2-AIRFLOW-HOME-환경변수-설정-및-기초파일-초기화" class="headerlink" title="2. AIRFLOW_HOME 환경변수 설정 및 기초파일 초기화"></a>2. AIRFLOW_HOME 환경변수 설정 및 기초파일 초기화</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># AIRFLOW_HOME 폴더 생성</span>
+<span class="token function">mkdir</span> ~/airflow
+
+<span class="token comment"># bash_profile(또는 bash_rc)에 환경변수 추가</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"export AIRFLOW_HOME=~/airflow"</span> <span class="token operator">>></span> .bash_profile
+
+<span class="token comment"># airflow db 초기화</span>
+airflow db init<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="3-Airflow-관리자-계정-생성"><a href="#3-Airflow-관리자-계정-생성" class="headerlink" title="3. Airflow 관리자 계정 생성"></a>3. Airflow 관리자 계정 생성</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 관리자 생성 명령어 입력 후 초기 비밀번호 입력</span>
+airflow <span class="token function">users</span> create <span class="token punctuation">\</span>
+  <span class="token parameter variable">--username</span> <span class="token operator">&lt;</span>계정<span class="token operator">></span> <span class="token punctuation">\</span>
+  <span class="token parameter variable">--firstname</span> <span class="token operator">&lt;</span>성<span class="token operator">></span> <span class="token punctuation">\</span>
+  <span class="token parameter variable">--lastname</span> <span class="token operator">&lt;</span>이름<span class="token operator">></span> <span class="token punctuation">\</span>
+  <span class="token parameter variable">--role</span> Admin <span class="token punctuation">\</span>
+  <span class="token parameter variable">--email</span> <span class="token operator">&lt;</span>이메일<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="4-PostgreSQL-pg-hba-conf-수정하기"><a href="#4-PostgreSQL-pg-hba-conf-수정하기" class="headerlink" title="4. PostgreSQL pg_hba.conf 수정하기"></a>4. PostgreSQL pg_hba.conf 수정하기</h4><p><a target="_blank" rel="noopener" href="https://www.postgresql.org/docs/current/auth-pg-hba-conf.html">사용자를 데이터베이스 액세스 제어 목록에 pg_hba.conf 추가하기</a></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># pg_hba.conf 파일 열기(/etc/postgresql/x/main)</span>
+<span class="token function">vim</span> pg_hba.conf <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-conf" data-language="conf"><code class="language-conf"># IPv4 local connections:
+host		all             all             0.0.0.0&#x2F;0               md5 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h4 id="5-Airflow-메타데이터-DBMS를-PostgreSQL-로-연동하기"><a href="#5-Airflow-메타데이터-DBMS를-PostgreSQL-로-연동하기" class="headerlink" title="5. Airflow 메타데이터 DBMS를 PostgreSQL 로 연동하기"></a>5. Airflow 메타데이터 DBMS를 PostgreSQL 로 연동하기</h4><p><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/howto/set-up-database.html#setting-up-a-postgresql-database">PostgreSQL 데이터베이스 설정</a></p>
+<ul>
+<li>데이터베이스는 UTF-8 문자 집합을 사용해야 함</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- PostgreSQL 데이터베이스 생성</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">DATABASE</span> <span class="token operator">&lt;</span>airflow_db<span class="token operator">></span><span class="token punctuation">;</span>
+
+<span class="token comment">-- PostgreSQL 유저 생성</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">USER</span> <span class="token operator">&lt;</span>airflow_user<span class="token operator">></span> <span class="token keyword">WITH</span> PASSWORD <span class="token string">'&lt;airflow_pass>'</span><span class="token punctuation">;</span>
+
+<span class="token comment">-- PostgreSQL 유저에게 Airflow 데이터베이스 권한부여</span>
+<span class="token keyword">GRANT</span> <span class="token keyword">ALL</span> <span class="token keyword">PRIVILEGES</span> <span class="token keyword">ON</span> <span class="token keyword">DATABASE</span> <span class="token operator">&lt;</span>airflow_db<span class="token operator">></span> <span class="token keyword">TO</span> <span class="token operator">&lt;</span>airflow_user<span class="token operator">></span><span class="token punctuation">;</span>
+
+<span class="token comment">-- PostgreSQL 15 버전 이상시 추가 권한 부여</span>
+<span class="token keyword">USE</span> <span class="token operator">&lt;</span>airflow_db<span class="token operator">></span><span class="token punctuation">;</span>
+<span class="token keyword">GRANT</span> <span class="token keyword">ALL</span> <span class="token keyword">ON</span> <span class="token keyword">SCHEMA</span> <span class="token keyword">public</span> <span class="token keyword">TO</span> <span class="token operator">&lt;</span>airflow_user<span class="token operator">></span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><p>데이터베이스 URI에서 특정 스키마를 지정하는 방법을 노출하지 않기 때문에, Postgres 사용자의 search_path에 스키마 public이 포함되어 있는지 확인</p>
+<ul>
+<li><p>새로운 Postgres 사용자의 기본 search_path는 “$user”, public</p>
+</li>
+<li><p>기존의 Postgres 사용자를 사용하고 사용자 지정 search_path가 있는 경우, 다음 명령을 사용하여 search_path를 변경</p>
+</li>
+</ul>
+</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">ALTER</span> <span class="token keyword">USER</span> airflow_user <span class="token keyword">SET</span> search_path <span class="token operator">=</span> <span class="token keyword">public</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="6-airflow-cfg에-메타데이터-데이터베이스에-대한-SqlAlchemy-연결-문자-지정"><a href="#6-airflow-cfg에-메타데이터-데이터베이스에-대한-SqlAlchemy-연결-문자-지정" class="headerlink" title="6. airflow.cfg에 메타데이터 데이터베이스에 대한 SqlAlchemy 연결 문자 지정"></a>6. airflow.cfg에 메타데이터 데이터베이스에 대한 SqlAlchemy 연결 문자 지정</h4><p><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/configurations-ref.html">Configuration Reference</a></p>
+<ul>
+<li><p>SQLAlchemy 1.4.0 이상을 사용할 때는 sql_alchemy_conn에서 데이터베이스로 postgresql:&#x2F;&#x2F;을 사용</p>
+</li>
+<li><p>이전 버전의 SQLAlchemy에서는 postgres:&#x2F;&#x2F;를 사용할 수도 있었지만, SQLAlchemy 1.4.0 이상에서는 postgres:&#x2F;&#x2F;를 사용하면 오류가 발생</p>
+</li>
+<li><p>SQLAlchemy를 사용할 때 psycopg2 드라이버를 사용하고, SQLAlchemy 연결 문자열에서 명시하는 것을 권장</p>
+</li>
+<li><p>database.sql_alchemy_conn는 메타데이터 데이터베이스에 대한 SqlAlchemy 연결 문자열</p>
+</li>
+</ul>
+<pre class="line-numbers language-conf" data-language="conf"><code class="language-conf">[database]
+sql_alchemy_conn &#x3D; postgresql+psycopg2:&#x2F;&#x2F;&lt;user&gt;:&lt;password&gt;@&lt;host&gt;&#x2F;&lt;db&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h4 id="7-Airflow-Webserver-Daemon-Process로-띄우기"><a href="#7-Airflow-Webserver-Daemon-Process로-띄우기" class="headerlink" title="7. Airflow Webserver Daemon Process로 띄우기"></a>7. Airflow Webserver Daemon Process로 띄우기</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">airflow webserver <span class="token parameter variable">-D</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<h2 id="Installation-with-Docker"><a href="#Installation-with-Docker" class="headerlink" title="Installation with Docker"></a>Installation with Docker</h2><p><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/extra-packages-ref.html">Reference for package extras</a></p>
 <h3 id="CLI-Commands"><a href="#CLI-Commands" class="headerlink" title="CLI Commands"></a>CLI Commands</h3><h2 id="Installing-Airflow"><a href="#Installing-Airflow" class="headerlink" title="Installing Airflow"></a>Installing Airflow</h2><ul>
 <li>Create and start a docker container from the Docker image python:3.8-slim and execute the command &#x2F;bin&#x2F;bash in order to have a shell session</li>
 </ul>
@@ -606,12 +682,12 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/01/Airflow/database-command/">
+                <a href="/2024/01/01/Airflow/config/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] DataBase Command">
+                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] Config">
                         
-                        <span class="card-title">[Airflow] DataBase Command</span>
+                        <span class="card-title">[Airflow] Config</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -654,12 +730,12 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/01/Airflow/executor/">
+                <a href="/2024/01/01/Airflow/subdags/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] Executor">
+                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] SubDags">
                         
-                        <span class="card-title">[Airflow] Executor</span>
+                        <span class="card-title">[Airflow] SubDags</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -730,7 +806,7 @@ gitment.render('gitment-content');
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
         <div class="toc-widget card" style="background-color: white;">
-            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;목차</div>
             <div id="toc-content"></div>
         </div>
     </div>

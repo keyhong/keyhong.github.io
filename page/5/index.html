@@ -290,33 +290,25 @@
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Git/git-branch-command/">
+                    <a href="/2024/01/01/Kafka/kafka-cleanup-policy/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/git-logo.png" class="responsive-img" alt="[Git] Branch Command">
+                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Cleanup Policy">
                             
-                            <span class="card-title">[Git] Branch Command</span>
+                            <span class="card-title">[Kafka] Cleanup Policy</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Git Branch Command
-브랜치 만들기
-
-git branch &lt;브랜치명>
+                                Kafka Cleanup Policy토픽 삭제 정책(Delete Policy)
+명시적으로 토픽의 데이터를 삭제하는 정책
 
 
-브랜치 리스트 확인
+토픽의 데이터를 삭제할 때 세그먼트 단위로 삭제
 
-git branch &lt;저장소 별칭>
-
-
-브랜치 삭제
-
-git branch -d &lt;브랜치명>
-
+삭제정책이 실행되는 시점은 시간 또는 용량
                             
                         </div>
                         <div class="publish-info">
@@ -327,8 +319,8 @@ git branch -d &lt;브랜치명>
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Git/" class="post-category">
-                                    Git
+                                <a href="/categories/Kafka/" class="post-category">
+                                    Kafka
                                 </a>
                                 
                                 
@@ -339,8 +331,8 @@ git branch -d &lt;브랜치명>
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Git/">
-                            <span class="chip bg-color">Git</span>
+                        <a href="/tags/Kafka/">
+                            <span class="chip bg-color">Kafka</span>
                         </a>
                         
                     </div>
@@ -352,27 +344,22 @@ git branch -d &lt;브랜치명>
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Git/git-config-command/">
+                    <a href="/2024/01/01/Kafka/kafka-console-consumer-command/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/git-logo.png" class="responsive-img" alt="[Git] Config Command">
+                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-console-consumer Command">
                             
-                            <span class="card-title">[Git] Config Command</span>
+                            <span class="card-title">[Kafka] kafka-console-consumer Command</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Git Config Command
-Git config 확인하기
+                                kafka-console-consumer Command
+콘솔로 conusmer 메세지 구독하기 (기존 메세지를 모두 확인 후, 새 메시지 구독)
 
-git config --list
-
-
-Git Bash에서 global User 정보 저장하기
-
-git config --global user.name [사
+$ kafka-console-consumer.sh --bootstra
                             
                         </div>
                         <div class="publish-info">
@@ -383,8 +370,8 @@ git config --global user.name [사
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Git/" class="post-category">
-                                    Git
+                                <a href="/categories/Kafka/" class="post-category">
+                                    Kafka
                                 </a>
                                 
                                 
@@ -395,8 +382,8 @@ git config --global user.name [사
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Git/">
-                            <span class="chip bg-color">Git</span>
+                        <a href="/tags/Kafka/">
+                            <span class="chip bg-color">Kafka</span>
                         </a>
                         
                     </div>
@@ -408,26 +395,25 @@ git config --global user.name [사
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Git/git-history-command/">
+                    <a href="/2024/01/01/Kafka/kafka-consumer-groups-command/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/git-logo.png" class="responsive-img" alt="[Git] History Command">
+                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-consumer-groups Command">
                             
-                            <span class="card-title">[Git] History Command</span>
+                            <span class="card-title">[Kafka] kafka-consumer-groups Command</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Git History Command
-GitHub에 보안 상의 파일을 commit한 경우
+                                kafka-consumer-groups Command
+카프카 컨슈머 그룹 리스트 조회
 
-# 캐시 삭제하기
-git rm -r --cached &lt;파일>
+$ kafka-consumer-groups.sh --bootstrap-server [HOST]:[PORT] --list
 
-# .gitignore 에 보안 파일 등록하기
-$ echo
+
+카프
                             
                         </div>
                         <div class="publish-info">
@@ -438,8 +424,8 @@ $ echo
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Git/" class="post-category">
-                                    Git
+                                <a href="/categories/Kafka/" class="post-category">
+                                    Kafka
                                 </a>
                                 
                                 
@@ -450,8 +436,8 @@ $ echo
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Git/">
-                            <span class="chip bg-color">Git</span>
+                        <a href="/tags/Kafka/">
+                            <span class="chip bg-color">Kafka</span>
                         </a>
                         
                     </div>
@@ -463,35 +449,25 @@ $ echo
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Git/git-reset-command/">
+                    <a href="/2024/01/01/Kafka/kafka-delete-records-command/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/git-logo.png" class="responsive-img" alt="[Git] Reset Command">
+                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-delete-records Command">
                             
-                            <span class="card-title">[Git] Reset Command</span>
+                            <span class="card-title">[Kafka] kafka-delete-records Command</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Git Reset Command
-git add 취소하기
+                                kafka-delete-records Command
+카프카 레코드 삭제 정보 파일(delete-topic.json)
 
-git reset HEAD
-
-
-가장 최신 커밋, 스테이징 취소하기
-
-git reset HEAD^  
-
-
-이전 commit 이력 조회
-
-git reflog
-
-
-
+&#123;
+  "partitions": [
+    &#123;
+      "topic": "TO
                             
                         </div>
                         <div class="publish-info">
@@ -502,8 +478,8 @@ git reflog
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Git/" class="post-category">
-                                    Git
+                                <a href="/categories/Kafka/" class="post-category">
+                                    Kafka
                                 </a>
                                 
                                 
@@ -514,8 +490,8 @@ git reflog
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Git/">
-                            <span class="chip bg-color">Git</span>
+                        <a href="/tags/Kafka/">
+                            <span class="chip bg-color">Kafka</span>
                         </a>
                         
                     </div>
@@ -527,23 +503,23 @@ git reflog
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Git/gitignore/">
+                    <a href="/2024/01/01/Kafka/kafka-run-class-command/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/git-logo.png" class="responsive-img" alt="[Git] .gitignore">
+                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-run-class Command">
                             
-                            <span class="card-title">[Git] .gitignore</span>
+                            <span class="card-title">[Kafka] kafka-run-class Command</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Git .gitignore.gitignore
-local git repository 에서 추적을 하지 않은 폴더 또는 파일의 확장자를 정의하는 파일
+                                kafka-run-class Command
+토픽의 파티션별 오프셋 확인하기
 
-생성방법 1 : github 레포지터리에서 생성하기
-github r
+$ kafka-run-class.sh kafka.tools.GetOffsetShell \
+    --bootstrap-server &lt;
                             
                         </div>
                         <div class="publish-info">
@@ -554,8 +530,8 @@ github r
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Git/" class="post-category">
-                                    Git
+                                <a href="/categories/Kafka/" class="post-category">
+                                    Kafka
                                 </a>
                                 
                                 
@@ -566,8 +542,8 @@ github r
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Git/">
-                            <span class="chip bg-color">Git</span>
+                        <a href="/tags/Kafka/">
+                            <span class="chip bg-color">Kafka</span>
                         </a>
                         
                     </div>
@@ -579,20 +555,21 @@ github r
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/HDFS/hdfs-block-caching/">
+                    <a href="/2024/01/01/Kafka/kafka-server-propery-options/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/hdfs-logo.png" class="responsive-img" alt="[HDFS] Block Caching">
+                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Server Propery Options">
                             
-                            <span class="card-title">[HDFS] Block Caching</span>
+                            <span class="card-title">[Kafka] Server Propery Options</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                HDFS Block CachingHDFS Block Caching
-데이터노드는 디스크에 저장된 블록을 read. 하지만 빈번하게 접근하는 블록 파일은 오프-힙(off-heap) 블록캐시(block-cache)라는 데
+                                Kafka Server Propery Options클러스터의 브로커를 구분하기 위한 id (브로커마다 다 달라야 함)broker.id&#x3D;[N]
+
+카프카 브로커 통신을 위해 열어둘 인터페이스 HOST, Port
                             
                         </div>
                         <div class="publish-info">
@@ -603,8 +580,8 @@ github r
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/HDFS/" class="post-category">
-                                    HDFS
+                                <a href="/categories/Kafka/" class="post-category">
+                                    Kafka
                                 </a>
                                 
                                 
@@ -615,8 +592,8 @@ github r
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/HDFS/">
-                            <span class="chip bg-color">HDFS</span>
+                        <a href="/tags/Kafka/">
+                            <span class="chip bg-color">Kafka</span>
                         </a>
                         
                     </div>
@@ -628,25 +605,23 @@ github r
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/HDFS/hdfs-command/">
+                    <a href="/2024/01/01/Kafka/kafka-server-_-command/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/hdfs-logo.png" class="responsive-img" alt="[HDFS] hdfs dfs command">
+                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-server-* Command">
                             
-                            <span class="card-title">[HDFS] hdfs dfs command</span>
+                            <span class="card-title">[Kafka] kafka-server-* Command</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                hdfs dfs Commandhadoop fs vs hdfs dfshadoop fs
-로컬 파일시스템, HDFS 등과 여러 파일시스템과 상호작용
+                                kafka-server-* Command
+카프카 실행
 
-hdfs dfs
-HDFS와 관련된 파일시스템에만 상호작용
-
-HDFS C
+$ kafka-server-start.sh -daemon ../config/sever.property (일반)
+$kafka-server-start.sh -dae
                             
                         </div>
                         <div class="publish-info">
@@ -657,8 +632,8 @@ HDFS C
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/HDFS/" class="post-category">
-                                    HDFS
+                                <a href="/categories/Kafka/" class="post-category">
+                                    Kafka
                                 </a>
                                 
                                 
@@ -669,8 +644,8 @@ HDFS C
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/HDFS/">
-                            <span class="chip bg-color">HDFS</span>
+                        <a href="/tags/Kafka/">
+                            <span class="chip bg-color">Kafka</span>
                         </a>
                         
                     </div>
@@ -682,22 +657,24 @@ HDFS C
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/HDFS/hdfs-federation/">
+                    <a href="/2024/01/01/Kafka/kafka-topics-command/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/hdfs-logo.png" class="responsive-img" alt="[HDFS] Federation">
+                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-topics Command">
                             
-                            <span class="card-title">[HDFS] Federation</span>
+                            <span class="card-title">[Kafka] kafka-topics Command</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                HDFS Federation
-네임노드는 파일시스템의 모든 파일과 각 블록에 대한 참조 정보를 메모리에서 관리. 따라서 파일이 많은 대형 클러스에서 확장성에 가장 큰 걸림돌이 되는 것은 메모리&#96;&#96; 
+                                kafka-topics Command
+토픽 생성
 
-H
+kafka-topics.sh --create \
+  --topic &lt;TOPIC_NAME> \
+  --bootstrap-server &lt;HOST>:&lt;PO
                             
                         </div>
                         <div class="publish-info">
@@ -708,8 +685,8 @@ H
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/HDFS/" class="post-category">
-                                    HDFS
+                                <a href="/categories/Kafka/" class="post-category">
+                                    Kafka
                                 </a>
                                 
                                 
@@ -720,8 +697,8 @@ H
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/HDFS/">
-                            <span class="chip bg-color">HDFS</span>
+                        <a href="/tags/Kafka/">
+                            <span class="chip bg-color">Kafka</span>
                         </a>
                         
                     </div>
@@ -733,22 +710,28 @@ H
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/HDFS/hdfs-node/">
+                    <a href="/2024/01/01/Linux/%5BLinux%5D-passowrd-command/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/hdfs-logo.png" class="responsive-img" alt="[HDFS] Node">
+                            <img src="/images/logos/linux-logo.png" class="responsive-img" alt="[Linux] Passowrd Command">
                             
-                            <span class="card-title">[HDFS] Node</span>
+                            <span class="card-title">[Linux] Passowrd Command</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                HDFS NodeHDFS 클러스터
-HDFS 클러스터는 마스터-워커(master-worker) 패턴으로 동작하는 두 종류의 노드의 네임노드(master)와 데이터 노드(worker)로 구성
+                                Linux Passowrd Command패스워드 설정 방법
+기본적으로 최소 6글자 이상
 
-네임노드(Namenode)
+특수 문자와 숫자도 가능
+
+대, 소문자 구분
+
+
+계정에 패스워드 부여$ passwd &lt;계정명>
+
                             
                         </div>
                         <div class="publish-info">
@@ -759,8 +742,8 @@ HDFS 클러스터는 마스터-워커(master-worker) 패턴으로 동작하는 �
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/HDFS/" class="post-category">
-                                    HDFS
+                                <a href="/categories/Linux/" class="post-category">
+                                    Linux
                                 </a>
                                 
                                 
@@ -771,8 +754,8 @@ HDFS 클러스터는 마스터-워커(master-worker) 패턴으로 동작하는 �
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/HDFS/">
-                            <span class="chip bg-color">HDFS</span>
+                        <a href="/tags/Linux/">
+                            <span class="chip bg-color">Linux</span>
                         </a>
                         
                     </div>
@@ -784,24 +767,23 @@ HDFS 클러스터는 마스터-워커(master-worker) 패턴으로 동작하는 �
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Hadoop/hadoop-Installation-hdp/">
+                    <a href="/2024/01/01/Linux/linux-authority-command/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="[Hadoop] Installation HDP">
+                            <img src="/images/logos/linux-logo.png" class="responsive-img" alt="[Linux] Authority Command">
                             
-                            <span class="card-title">[Hadoop] Installation HDP</span>
+                            <span class="card-title">[Linux] Authority Command</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Hadoop Installation HDP
-Virtual Box (VM) 다운로드Virtual Box
+                                Linux Authority Command유저 생성$ useradd [-option] &lt;username>
 
-Hortonworks HDP 2.6.5 버전 다운로드Hortonworks HDP 2.6.5
-
-하둡3 설치 및 환
+유저 권한 변경# user modify
+$ usermod [-option]
+    -g &lt;소속시킬
                             
                         </div>
                         <div class="publish-info">
@@ -812,8 +794,8 @@ Hortonworks HDP 2.6.5 버전 다운로드Hortonworks HDP 2.6.5
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Hadoop/" class="post-category">
-                                    Hadoop
+                                <a href="/categories/Linux/" class="post-category">
+                                    Linux
                                 </a>
                                 
                                 
@@ -824,8 +806,8 @@ Hortonworks HDP 2.6.5 버전 다운로드Hortonworks HDP 2.6.5
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Hadoop/">
-                            <span class="chip bg-color">Hadoop</span>
+                        <a href="/tags/Linux/">
+                            <span class="chip bg-color">Linux</span>
                         </a>
                         
                     </div>
@@ -851,7 +833,7 @@ Hortonworks HDP 2.6.5 버전 다운로드Hortonworks HDP 2.6.5
             
         </div>
         <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">5 / 12</div>
+            <div class="center-align b-text-gray">5 / 11</div>
         </div>
         <div class="col s6 m4 l4">
             

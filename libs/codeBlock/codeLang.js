@@ -1,7 +1,7 @@
 // 代码块语言识别
 
 $(function () {
-  var $highlight_lang = $('<div class="code_lang" title="代码语言"></div>');
+  var $highlight_lang = $('<div class="code_lang" title="코드언어"></div>');
 
   $('pre').before($highlight_lang);
   $('pre').each(function () {
