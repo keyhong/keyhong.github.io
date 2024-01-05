@@ -335,20 +335,20 @@
                 </a>
                 
                 
-                <a href="/categories/Hive/" title="Hive: 6">
+                <a href="/categories/Kafka/" title="Kafka: 9">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #82E0AA;">Hive
-                        <span class="tag-length">6</span>
+                            style="background-color: #82E0AA;">Kafka
+                        <span class="tag-length">9</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/Kafka/" title="Kafka: 9">
+                <a href="/categories/Hive/" title="Hive: 6">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D7BDE2;">Kafka
-                        <span class="tag-length">9</span>
+                            style="background-color: #D7BDE2;">Hive
+                        <span class="tag-length">6</span>
                     </span>
                 </a>
                 
@@ -362,10 +362,19 @@
                 </a>
                 
                 
+                <a href="/categories/PySpark/" title="PySpark: 9">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #85C1E9;">PySpark
+                        <span class="tag-length">9</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/categories/Python/" title="Python: 18">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #85C1E9;">Python
+                            style="background-color: #F8C471;">Python
                         <span class="tag-length">18</span>
                     </span>
                 </a>
@@ -374,7 +383,7 @@
                 <a href="/categories/Algorithm/" title="Algorithm: 4">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F8C471;">Algorithm
+                            style="background-color: #F9E79F;">Algorithm
                         <span class="tag-length">4</span>
                     </span>
                 </a>
@@ -383,7 +392,7 @@
                 <a href="/categories/SQL/" title="SQL: 4">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F9E79F;">SQL
+                            style="background-color: #A3E4D7;">SQL
                         <span class="tag-length">4</span>
                     </span>
                 </a>
@@ -394,15 +403,6 @@
                              chip-default "
                             style="background-color: #F9E79F;">Scala
                         <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/PySpark/" title="PySpark: 9">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #D7BDE2;">PySpark
-                        <span class="tag-length">9</span>
                     </span>
                 </a>
                 
@@ -700,22 +700,21 @@ Pendulu
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Airflow/dag-run/">
+                    <a href="/2024/01/01/Airflow/dag-commnad/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] DAG Run">
+                            <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] DAG Command">
                             
-                            <span class="card-title">[Airflow] DAG Run</span>
+                            <span class="card-title">[Airflow] DAG Command</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                DAG Run
-object representing an instantiation of the DAG in time : 제 시간에 수행되는 Dag의 인스턴스화를 나타내는 객체
+                                DAG 목록 조회airflow dags list
+  - y, --yes : Do not prompt to confirm. Use with care!
 
-dag-run document
-&#96;
+DAG 제거airflow dags delete &lt;dag_id
                             
                         </div>
                         <div class="publish-info">
@@ -749,21 +748,22 @@ dag-run document
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Airflow/dag-commnad/">
+                    <a href="/2024/01/01/Airflow/dag-run/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] DAG Command">
+                            <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] DAG Run">
                             
-                            <span class="card-title">[Airflow] DAG Command</span>
+                            <span class="card-title">[Airflow] DAG Run</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                DAG 목록 조회airflow dags list
-  - y, --yes : Do not prompt to confirm. Use with care!
+                                DAG Run
+object representing an instantiation of the DAG in time : 제 시간에 수행되는 Dag의 인스턴스화를 나타내는 객체
 
-DAG 제거airflow dags delete &lt;dag_id
+dag-run document
+&#96;
                             
                         </div>
                         <div class="publish-info">

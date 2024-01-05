@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[PySpark] Spark Deploy mode, Data Engineering,Data Analysis,Python Backend">
+    <meta name="keywords" content="[PySpark] pyspark jvm py4j, Data Engineering,Data Analysis,Python Backend">
     <meta name="description" content="이것은 Summary">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[PySpark] Spark Deploy mode | Keyhong</title>
+    <title>[PySpark] pyspark jvm py4j | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -227,12 +227,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/spark-logo.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/pyspark-logo.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">[PySpark] Spark Deploy mode</h1>
+                    <h1 class="description center-align post-title">[PySpark] pyspark jvm py4j</h1>
                 </div>
             </div>
         </div>
@@ -305,57 +305,9 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Local-Mode"><a href="#Local-Mode" class="headerlink" title="Local Mode"></a>Local Mode</h2><ol>
-<li><p>단일시스템에서 실행</p>
-</li>
-<li><p>로컬 시스템의 코어 수를 임의로 선택해 사용</p>
-</li>
-<li><p>새로 설치된 스파크를 테스트 하는 빠른 방법</p>
-</li>
-<li><p>작은 데이터 셋에 대해 스파크 루틴을 신속하게 테스트</p>
-</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token variable">$SPARK_HOME</span>/bin/spark-submit <span class="token punctuation">\</span>
-  <span class="token parameter variable">--class</span> org.apache.spark.examples.SparkPi <span class="token punctuation">\</span>
-  <span class="token parameter variable">--master</span> local<span class="token punctuation">[</span>*<span class="token punctuation">]</span> <span class="token punctuation">\</span>
+                <h4 id="Question-1-PySpark-코드는-JVM-또는-Python-하위-프로세스에서-실행됩니까"><a href="#Question-1-PySpark-코드는-JVM-또는-Python-하위-프로세스에서-실행됩니까" class="headerlink" title="Question 1. PySpark 코드는 JVM 또는 Python 하위 프로세스에서 실행됩니까?"></a>Question 1. PySpark 코드는 JVM 또는 Python 하위 프로세스에서 실행됩니까?</h4><p>PySpark에서 Python 및 JVM 코드는 별도의 OS 프로세스에 있습니다.<br>PySpark는 Python과 JVM 프로세스 간에 데이터를 교환하기 위해 두 언어 간의 상호 운용을 용이하게 하는 프레임워크인 Py4J를 사용합니다.</p>
+<p>PySpark 작업을 시작하면 Python 프로세스로 시작하여 JVM 인스턴스를 생성하고 그 안에서 일부 PySpark 특정 코드를 실행합니다. 그런 다음 해당 JVM에서 Spark 세션을 인스턴스화하여 Spark가 드라이버 프로세스가 구동 됩니다.<br>해당 드라이버는 스파크 세션이 구성된 방식에 따라 Spark 마스터에 연결하거나 in-proc 하나를 생성합니다.</p>
 
-$ <span class="token variable">$SPARK_HOME</span>/examples/jars/spark-exmaples*.jar <span class="token number">10</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="config"><a href="#config" class="headerlink" title="config"></a>config</h4><ul>
-<li><p>–name : 앱 이름</p>
-</li>
-<li><p>class : 애플리케이션의 진입점</p>
-</li>
-<li><p>–master : 로컬 모드에서 사용할 논리 코어 수</p>
-<ul>
-<li><p>local[N] : N개의 논리 코어</p>
-</li>
-<li><p>local[*] : 시스템의 모든 논리 코어</p>
-</li>
-</ul>
-</li>
-<li><p>–driver-memory : 드라이버 프로세스에 사용할 메모리의 양</p>
-<ul>
-<li><p>Nk : N * kibibytes</p>
-</li>
-<li><p>Nm : N * mebibytes</p>
-</li>
-<li><p>Ng : N * gibibytes</p>
-</li>
-<li><p>Nt : N * tebibytes</p>
-</li>
-</ul>
-</li>
-</ul>
-<p>–conf : <key>&#x3D;<value> 형식의 임의의 Spark 구성 속성</p>
-<ul>
-<li>spark.eventLog.enabled&#x3D;<True or false> : 응용 프로그램이 완료된 후 웹 UI를 재구성하는 데 유용한 Spark 이벤트를 기록할지 여부</li>
-</ul>
-<h2 id="Deploy-Mode"><a href="#Deploy-Mode" class="headerlink" title="Deploy Mode"></a>Deploy Mode</h2><p>클러스터로 구성된 Client</p>
-<h4 id="Standalone"><a href="#Standalone" class="headerlink" title="Standalone"></a>Standalone</h4><blockquote>
-<p>클러스터에 포함된 간단한 클러스터 관리자</p>
-</blockquote>
-<h4 id="YARN"><a href="#YARN" class="headerlink" title="YARN"></a>YARN</h4><h4 id="Apache-Mesos"><a href="#Apache-Mesos" class="headerlink" title="Apache Mesos"></a>Apache Mesos</h4><h4 id="Kubernetes"><a href="#Kubernetes" class="headerlink" title="Kubernetes"></a>Kubernetes</h4>
                 
             </div>
             <hr/>
@@ -381,7 +333,7 @@ $ <span class="token variable">$SPARK_HOME</span>/examples/jars/spark-exmaples*.
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/01/01/Spark/spark-deploy-mode/">http://example.com/2024/01/01/Spark/spark-deploy-mode/</a>
+                    <a href="http://example.com/2024/01/01/PySpark/pyspark-jvm-py4j/">http://example.com/2024/01/01/PySpark/pyspark-jvm-py4j/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -527,12 +479,12 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/01/Spark/spark-dataset/">
+                <a href="/2024/01/01/PySpark/spark-data-locality/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/spark-logo.png" class="responsive-img" alt="[PySpark] Spark DataSet">
+                        <img src="/images/logos/pyspark-logo.png" class="responsive-img" alt="[PySpark] Spark Data Locality">
                         
-                        <span class="card-title">[PySpark] Spark DataSet</span>
+                        <span class="card-title">[PySpark] Spark Data Locality</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -575,12 +527,12 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/01/Spark/spark-directory/">
+                <a href="/2024/01/01/PySpark/spark-deploy-mode/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/spark-logo.png" class="responsive-img" alt="[PySpark] Spark Directory">
+                        <img src="/images/logos/pyspark-logo.png" class="responsive-img" alt="[PySpark] Spark Deploy mode">
                         
-                        <span class="card-title">[PySpark] Spark Directory</span>
+                        <span class="card-title">[PySpark] Spark Deploy mode</span>
                     </div>
                 </a>
                 <div class="card-content article-content">

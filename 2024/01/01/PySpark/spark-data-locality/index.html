@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[PySpark] Spark Directory, Data Engineering,Data Analysis,Python Backend">
+    <meta name="keywords" content="[PySpark] Spark Data Locality, Data Engineering,Data Analysis,Python Backend">
     <meta name="description" content="이것은 Summary">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[PySpark] Spark Directory | Keyhong</title>
+    <title>[PySpark] Spark Data Locality | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -227,12 +227,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/spark-logo.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/pyspark-logo.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">[PySpark] Spark Directory</h1>
+                    <h1 class="description center-align post-title">[PySpark] Spark Data Locality</h1>
                 </div>
             </div>
         </div>
@@ -305,61 +305,24 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="스파크-설치-디렉토리-SPARK-HOME-개요"><a href="#스파크-설치-디렉토리-SPARK-HOME-개요" class="headerlink" title="스파크 설치 디렉토리(SPARK_HOME) 개요"></a>스파크 설치 디렉토리(SPARK_HOME) 개요</h2><h4 id="bin"><a href="#bin" class="headerlink" title="bin&#x2F;"></a>bin&#x2F;</h4><ul>
-<li><p>pyspark, spark-shell, spark-sql 및 sparkR과 같은 셸 프로그램</p>
-</li>
-<li><p>spark-submit 을 사용하는 일괄 처리 모드에서 대화식으로 스파크 응용 프로그램을 실행하는 모든 명령&#x2F;스크립트 포함</p>
-</li>
+                <blockquote>
+<p>스파크는 기본적으로 가까운 노드에서 RDD로 데이터를 읽으려고 한다. 다르게 말하면, 데이터의 이동을 하는 것이 아닌 데이터가 있는 노드로 이동해 해당 노드에서 프로세스를 뛰우려고 한다.</p>
+</blockquote>
+<ul>
+<li>변환 작업을 최적화 하기 위해 HDFDS, S3 데이터와 같이 분산된 파티션의 데이터에 액세스</li>
 </ul>
-<h4 id="conf"><a href="#conf" class="headerlink" title="conf&#x2F;"></a>conf&#x2F;</h4><ul>
-<li><p>스파크 구성 파일(spark-defaults.conf.template)을 설정할 때 사용할 수 있는 템플릿</p>
+<p>.. image:: <a target="_blank" rel="noopener" href="https://github.com/keyhong/daily-study/blob/master/Cloud/Spark/images/Spark-Data-Locality.jpg">https://github.com/keyhong/daily-study/blob/master/Cloud/Spark/images/Spark-Data-Locality.jpg</a><br>  :width: 800</p>
+<h2 id="분산-파일-시스템을-사용하지-않는-경우-로컬-파일시스템"><a href="#분산-파일-시스템을-사용하지-않는-경우-로컬-파일시스템" class="headerlink" title="분산 파일 시스템을 사용하지 않는 경우 (로컬 파일시스템)"></a>분산 파일 시스템을 사용하지 않는 경우 (로컬 파일시스템)</h2><blockquote>
+<p>Java.io.FileNotFoundException (파일이 존재하지 않습니다) 발생</p>
+</blockquote>
+<ul>
+<li><p>로드 중인 파일이 클러스터의 모든 작업자 노드에서 동일한 상대 경로로 사용 가능한지 확인 필요</p>
 </li>
-<li><p>스파크 프로세스(spark-env.sh.template)에 필요한 환경 변수를 설정하는 데 사용되는 셀 스크립트</p>
+<li><p>스파크의 RDD 파일 기반 소스로 HDFS 또는 S3 와 같은 분산 파일 시스템을 사용하는 것이 좋음</p>
 </li>
-<li><p>로깅을 제어하는 구성 템플릿(log4j.properties.template)</p>
+<li><p>가능한 로컬 파일 시스템에서 분산 파일 시스템으로 업로드한 다음 분산된 객체에서 RDD 를 사용</p>
 </li>
-<li><p>메트릭 컬렉션(metrics.properties.template)</p>
-</li>
-<li><p>워커 파일(workers.template) 템플릿 (독립실행형 모드로 실행되는 스파크 클러스터에 참여할 수 있는 슬레이브 노드 제어)</p>
-</li>
-</ul>
-<h4 id="data"><a href="#data" class="headerlink" title="data&#x2F;"></a>data&#x2F;</h4><ul>
-<li>스파크 프로젝트 내에서 mllib, graphx 및 스트리밍 라이브러리를 테스트하는 데 사용되는 샘플 데이터 세트</li>
-</ul>
-<h4 id="examples"><a href="#examples" class="headerlink" title="examples"></a>examples</h4><ul>
-<li>Pi 추정(estimator) 응용 프로그램을 포함해 스파크 릴리스와 함께 제공되는 모든 예제의 소스코드와 컴파일된 어셈블리(jar 파일) 폴더</li>
-</ul>
-<h4 id="jars"><a href="#jars" class="headerlink" title="jars&#x2F;"></a>jars&#x2F;</h4><ul>
-<li><p>스파크의 주요 어셈블리 및 snapy, py4j, parquet 등 스파크에서 사용하는 서비스를 지원하는 어셈블리 폴더</p>
-</li>
-<li><p>이 디렉토리는 기본적으로 스파크의 CLASSPATH 에 포함</p>
-</li>
-</ul>
-<h4 id="licenses"><a href="#licenses" class="headerlink" title="licenses&#x2F;"></a>licenses&#x2F;</h4><ul>
-<li><p>스칼라와 제이쿼리(JQuery)와 같이 따로 포함된 프로젝트를 다루는 라이선스 파일 포함하는 폴더</p>
-</li>
-<li><p>법적 준수만을 목적으로, 스파크를 실행하는 데 필요하지는 않음</p>
-</li>
-</ul>
-<h4 id="python"><a href="#python" class="headerlink" title="python&#x2F;"></a>python&#x2F;</h4><ul>
-<li><p>pyspark 를 실행하는 데 필요한 모든 파이썬 라이브러리 포함</p>
-</li>
-<li><p>직접적인 액세스를 할 필요는 없음</p>
-</li>
-</ul>
-<h4 id="R"><a href="#R" class="headerlink" title="R&#x2F;"></a>R&#x2F;</h4><ul>
-<li>SparkR 패키지와 관련 라이브러리 및 문서 포함</li>
-</ul>
-<h4 id="sbin"><a href="#sbin" class="headerlink" title="sbin&#x2F;"></a>sbin&#x2F;</h4><ul>
-<li><p>로컬 또는 원격으로 독립실행형 모드로 실행되는 스파크 클러스터의 마스터 및 슬레이브 서비스를 시작 중지하고, YARN 및 Mesos와 관련된 프로세스를 시작하는 관리 스크립트를 포함하는 폴더</p>
-</li>
-<li><p>독립실행형 모드에서는 다중 노드 클러스터를 배포할 때 이런 스크립트 중 일부를 이용</p>
-</li>
-</ul>
-<h4 id="yarn"><a href="#yarn" class="headerlink" title="yarn&#x2F;"></a>yarn&#x2F;</h4><ul>
-<li><p>YARN 에서 실행되는 스파크 응용 프로그램에 대한 지원 라이브러리가 포함된 폴더</p>
-</li>
-<li><p>스파크가 YARN 클러스터의 프로세스 간에 데이터를 이동하는 데 사용하는 셔플 서비스 포함</p>
+<li><p>또는 로컬 파일 시스템에서 사용할 경우, NFS(네트워크 파일시스템) 을 사용</p>
 </li>
 </ul>
 
@@ -388,7 +351,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/01/01/Spark/spark-directory/">http://example.com/2024/01/01/Spark/spark-directory/</a>
+                    <a href="http://example.com/2024/01/01/PySpark/spark-data-locality/">http://example.com/2024/01/01/PySpark/spark-data-locality/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -534,18 +497,18 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/01/Spark/spark-deploy-mode/">
+                <a href="/2024/01/01/Linux/vim-command/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/spark-logo.png" class="responsive-img" alt="[PySpark] Spark Deploy mode">
+                        <img src="/images/logos/linux-logo.png" class="responsive-img" alt="[Linux] vim에서 문자열 치환하기">
                         
-                        <span class="card-title">[PySpark] Spark Deploy mode</span>
+                        <span class="card-title">[Linux] vim에서 문자열 치환하기</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            이것은 Summary
+                            
                         
                     </div>
                     <div class="publish-info">
@@ -556,8 +519,8 @@ gitment.render('gitment-content');
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/PySpark/" class="post-category">
-                                    PySpark
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
                                 </a>
                             
                             
@@ -567,8 +530,8 @@ gitment.render('gitment-content');
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/PySpark/">
-                        <span class="chip bg-color">PySpark</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
                 </div>
@@ -582,18 +545,18 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/01/Spark/spark-rdd/">
+                <a href="/2024/01/01/PySpark/pyspark-jvm-py4j/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/spark-logo.png" class="responsive-img" alt="[PySpark] Spark RDD">
+                        <img src="/images/logos/pyspark-logo.png" class="responsive-img" alt="[PySpark] pyspark jvm py4j">
                         
-                        <span class="card-title">[PySpark] Spark RDD</span>
+                        <span class="card-title">[PySpark] pyspark jvm py4j</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            이것은 Summary
                         
                     </div>
                     <div class="publish-info">

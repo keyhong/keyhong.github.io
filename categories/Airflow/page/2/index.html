@@ -335,20 +335,20 @@
                 </a>
                 
                 
-                <a href="/categories/Hive/" title="Hive: 6">
+                <a href="/categories/Kafka/" title="Kafka: 9">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #82E0AA;">Hive
-                        <span class="tag-length">6</span>
+                            style="background-color: #82E0AA;">Kafka
+                        <span class="tag-length">9</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/Kafka/" title="Kafka: 9">
+                <a href="/categories/Hive/" title="Hive: 6">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D7BDE2;">Kafka
-                        <span class="tag-length">9</span>
+                            style="background-color: #D7BDE2;">Hive
+                        <span class="tag-length">6</span>
                     </span>
                 </a>
                 
@@ -362,10 +362,19 @@
                 </a>
                 
                 
+                <a href="/categories/PySpark/" title="PySpark: 9">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #85C1E9;">PySpark
+                        <span class="tag-length">9</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/categories/Python/" title="Python: 18">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #85C1E9;">Python
+                            style="background-color: #F8C471;">Python
                         <span class="tag-length">18</span>
                     </span>
                 </a>
@@ -374,7 +383,7 @@
                 <a href="/categories/Algorithm/" title="Algorithm: 4">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F8C471;">Algorithm
+                            style="background-color: #F9E79F;">Algorithm
                         <span class="tag-length">4</span>
                     </span>
                 </a>
@@ -383,7 +392,7 @@
                 <a href="/categories/SQL/" title="SQL: 4">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F9E79F;">SQL
+                            style="background-color: #A3E4D7;">SQL
                         <span class="tag-length">4</span>
                     </span>
                 </a>
@@ -398,15 +407,6 @@
                 </a>
                 
                 
-                <a href="/categories/PySpark/" title="PySpark: 9">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #D7BDE2;">PySpark
-                        <span class="tag-length">9</span>
-                    </span>
-                </a>
-                
-                
             </div>
         </div>
     </div>
@@ -417,54 +417,6 @@
 
     <article id="articles" class="container articles">
         <div class="row tags-posts">
-            
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/01/01/Airflow/web-scheduler-commnad/">
-                        <div class="card-image tag-image">
-                            
-                            <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] Web &amp; Scheduler Commnad">
-                            
-                            <span class="card-title">[Airflow] Web &amp; Scheduler Commnad</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                airflow web 띄우기airflow webserver
-  -D, --daemon :  Daemonize instead of running in the foreground
-
-airflow scheduler 시작a
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Airflow/" class="post-category">
-                                    Airflow
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Airflow/">
-                            <span class="chip bg-color">Airflow</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
@@ -519,22 +471,21 @@ python에서 pendulum 모듈로 생성가능
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Airflow/task-command/">
+                    <a href="/2024/01/01/Airflow/web-scheduler-commnad/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] Task Command">
+                            <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] Web &amp; Scheduler Commnad">
                             
-                            <span class="card-title">[Airflow] Task Command</span>
+                            <span class="card-title">[Airflow] Web &amp; Scheduler Commnad</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Task 목록 조회airflow tasks list [dag_id]
+                                airflow web 띄우기airflow webserver
+  -D, --daemon :  Daemonize instead of running in the foreground
 
-단일 Task 실행airflow tasks test [dag_id] [task_id] [execution_date or run_id]
-
-
+airflow scheduler 시작a
                             
                         </div>
                         <div class="publish-info">
@@ -586,6 +537,55 @@ python에서 pendulum 모듈로 생성가능
 그 밖에 아무것도 변경되지 않으며, 종속성은 여전히 유지되며 시각적인 효과만 줍니다.
 
 SubDag를 생성하려면 
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Airflow/" class="post-category">
+                                    Airflow
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Airflow/">
+                            <span class="chip bg-color">Airflow</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/01/01/Airflow/task-command/">
+                        <div class="card-image tag-image">
+                            
+                            <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] Task Command">
+                            
+                            <span class="card-title">[Airflow] Task Command</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                Task 목록 조회airflow tasks list [dag_id]
+
+단일 Task 실행airflow tasks test [dag_id] [task_id] [execution_date or run_id]
+
+
                             
                         </div>
                         <div class="publish-info">

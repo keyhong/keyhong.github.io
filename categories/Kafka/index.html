@@ -335,20 +335,20 @@
                 </a>
                 
                 
-                <a href="/categories/Hive/" title="Hive: 6">
+                <a href="/categories/Kafka/" title="Kafka: 9">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #82E0AA;">Hive
-                        <span class="tag-length">6</span>
+                             chip-active "
+                            style="background-color: #82E0AA;">Kafka
+                        <span class="tag-length">9</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/Kafka/" title="Kafka: 9">
+                <a href="/categories/Hive/" title="Hive: 6">
                     <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            style="background-color: #D7BDE2;">Kafka
-                        <span class="tag-length">9</span>
+                             chip-default "
+                            style="background-color: #D7BDE2;">Hive
+                        <span class="tag-length">6</span>
                     </span>
                 </a>
                 
@@ -362,10 +362,19 @@
                 </a>
                 
                 
+                <a href="/categories/PySpark/" title="PySpark: 9">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #85C1E9;">PySpark
+                        <span class="tag-length">9</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/categories/Python/" title="Python: 18">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #85C1E9;">Python
+                            style="background-color: #F8C471;">Python
                         <span class="tag-length">18</span>
                     </span>
                 </a>
@@ -374,7 +383,7 @@
                 <a href="/categories/Algorithm/" title="Algorithm: 4">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F8C471;">Algorithm
+                            style="background-color: #F9E79F;">Algorithm
                         <span class="tag-length">4</span>
                     </span>
                 </a>
@@ -383,7 +392,7 @@
                 <a href="/categories/SQL/" title="SQL: 4">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F9E79F;">SQL
+                            style="background-color: #A3E4D7;">SQL
                         <span class="tag-length">4</span>
                     </span>
                 </a>
@@ -394,15 +403,6 @@
                              chip-default "
                             style="background-color: #F9E79F;">Scala
                         <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/PySpark/" title="PySpark: 9">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #D7BDE2;">PySpark
-                        <span class="tag-length">9</span>
                     </span>
                 </a>
                 
@@ -470,22 +470,20 @@ kafka-topics.sh --create \
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Kafka/kafka-server-_-command/">
+                    <a href="/2024/01/01/Kafka/kafka-server-propery-options/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-server-* Command">
+                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Server Propery Options">
                             
-                            <span class="card-title">[Kafka] kafka-server-* Command</span>
+                            <span class="card-title">[Kafka] Server Propery Options</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                kafka-server-* Command
-카프카 실행
+                                Kafka Server Propery Options클러스터의 브로커를 구분하기 위한 id (브로커마다 다 달라야 함)broker.id&#x3D;[N]
 
-$ kafka-server-start.sh -daemon ../config/sever.property (일반)
-$kafka-server-start.sh -dae
+카프카 브로커 통신을 위해 열어둘 인터페이스 HOST, Port
                             
                         </div>
                         <div class="publish-info">
@@ -519,20 +517,22 @@ $kafka-server-start.sh -dae
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Kafka/kafka-server-propery-options/">
+                    <a href="/2024/01/01/Kafka/kafka-server-_-command/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Server Propery Options">
+                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-server-* Command">
                             
-                            <span class="card-title">[Kafka] Server Propery Options</span>
+                            <span class="card-title">[Kafka] kafka-server-* Command</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Kafka Server Propery Options클러스터의 브로커를 구분하기 위한 id (브로커마다 다 달라야 함)broker.id&#x3D;[N]
+                                kafka-server-* Command
+카프카 실행
 
-카프카 브로커 통신을 위해 열어둘 인터페이스 HOST, Port
+$ kafka-server-start.sh -daemon ../config/sever.property (일반)
+$kafka-server-start.sh -dae
                             
                         </div>
                         <div class="publish-info">

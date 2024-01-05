@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[PySpark] Spark nstallation, Data Engineering,Data Analysis,Python Backend">
+    <meta name="keywords" content="[PySpark] Spark Directory, Data Engineering,Data Analysis,Python Backend">
     <meta name="description" content="이것은 Summary">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[PySpark] Spark nstallation | Keyhong</title>
+    <title>[PySpark] Spark Directory | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -227,12 +227,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/spark-logo.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/pyspark-logo.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">[PySpark] Spark nstallation</h1>
+                    <h1 class="description center-align post-title">[PySpark] Spark Directory</h1>
                 </div>
             </div>
         </div>
@@ -305,124 +305,64 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="우분투에서-단일-노드-Single-Node-스파크-배포"><a href="#우분투에서-단일-노드-Single-Node-스파크-배포" class="headerlink" title="우분투에서 단일 노드(Single Node) 스파크 배포"></a>우분투에서 단일 노드(Single Node) 스파크 배포</h2><ol>
-<li>패키지 색인 파일(패키지 저장소가 제공하는 패키지에 대한 정보 파일) 업데이트</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Debian 계열 리눅스(Ubuntu)</span>
-$ <span class="token function">sudo</span> <span class="token function">apt-get</span> update
-
-<span class="token comment"># RedHat 계열 리눅스(CentOS, LHEL)</span>
-$ <span class="token function">sudo</span> update yum<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<ol start="2">
-<li>자바(openjdk 설치) 및 환경변수 등록</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Debian 계열 리눅스(Ubuntu)</span>
-<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> openjdk-8-jdk
-
-<span class="token comment"># RedHat 계열 리눅스(CentOS, LHEL)</span>
-<span class="token function">sudo</span> yum <span class="token function">install</span> java-1.8.0-openjdk<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># .bashrc에 환경변수 등록</span>
-<span class="token builtin class-name">export</span> <span class="token assign-left variable">JAVA_HOME</span><span class="token operator">=</span>/usr/lib/jvm/java-8-openjdk-amd64
-<span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token environment constant">$PATH</span>:/usr/lib/jvm/java-8-openjdk-amd64/bin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<ol start="3">
-<li>스파크 설치 및 환경변수 등록</li>
-</ol>
-<p><a target="_blank" rel="noopener" href="https://spark.apache.org/downloads.html">Apache Spark Installation</a></p>
-<h4 id="‘without-Hadoop’-빌드"><a href="#‘without-Hadoop’-빌드" class="headerlink" title="‘without Hadoop’ 빌드"></a>‘without Hadoop’ 빌드</h4><ul>
-<li><p>하둡을 사용하지 않고 독립실행형 모드로 설치할 때 사용</p>
+                <h2 id="스파크-설치-디렉토리-SPARK-HOME-개요"><a href="#스파크-설치-디렉토리-SPARK-HOME-개요" class="headerlink" title="스파크 설치 디렉토리(SPARK_HOME) 개요"></a>스파크 설치 디렉토리(SPARK_HOME) 개요</h2><h4 id="bin"><a href="#bin" class="headerlink" title="bin&#x2F;"></a>bin&#x2F;</h4><ul>
+<li><p>pyspark, spark-shell, spark-sql 및 sparkR과 같은 셸 프로그램</p>
 </li>
-<li><p>‘without Hadoop’ 또는 ‘user-provided Hadoop’ 또는 ‘spark&lt;x.y.z&gt;-bin-without-hadoop.tgz’ 옵션 다운로드</p>
-</li>
-<li><p>하둡에서 구현되는 필수 클래스 중 상당수가 시스템에 존재</p>
+<li><p>spark-submit 을 사용하는 일괄 처리 모드에서 대화식으로 스파크 응용 프로그램을 실행하는 모든 명령&#x2F;스크립트 포함</p>
 </li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 다운받은 압축파일 풀기</span>
-$ <span class="token function">tar</span> <span class="token parameter variable">-zxvf</span> spark-<span class="token operator">&lt;</span>x.y.z<span class="token operator">></span>-bin-hadoop3.tgz <span class="token parameter variable">-C</span> <span class="token operator">&lt;</span>경로<span class="token operator">></span>
+<h4 id="conf"><a href="#conf" class="headerlink" title="conf&#x2F;"></a>conf&#x2F;</h4><ul>
+<li><p>스파크 구성 파일(spark-defaults.conf.template)을 설정할 때 사용할 수 있는 템플릿</p>
+</li>
+<li><p>스파크 프로세스(spark-env.sh.template)에 필요한 환경 변수를 설정하는 데 사용되는 셀 스크립트</p>
+</li>
+<li><p>로깅을 제어하는 구성 템플릿(log4j.properties.template)</p>
+</li>
+<li><p>메트릭 컬렉션(metrics.properties.template)</p>
+</li>
+<li><p>워커 파일(workers.template) 템플릿 (독립실행형 모드로 실행되는 스파크 클러스터에 참여할 수 있는 슬레이브 노드 제어)</p>
+</li>
+</ul>
+<h4 id="data"><a href="#data" class="headerlink" title="data&#x2F;"></a>data&#x2F;</h4><ul>
+<li>스파크 프로젝트 내에서 mllib, graphx 및 스트리밍 라이브러리를 테스트하는 데 사용되는 샘플 데이터 세트</li>
+</ul>
+<h4 id="examples"><a href="#examples" class="headerlink" title="examples"></a>examples</h4><ul>
+<li>Pi 추정(estimator) 응용 프로그램을 포함해 스파크 릴리스와 함께 제공되는 모든 예제의 소스코드와 컴파일된 어셈블리(jar 파일) 폴더</li>
+</ul>
+<h4 id="jars"><a href="#jars" class="headerlink" title="jars&#x2F;"></a>jars&#x2F;</h4><ul>
+<li><p>스파크의 주요 어셈블리 및 snapy, py4j, parquet 등 스파크에서 사용하는 서비스를 지원하는 어셈블리 폴더</p>
+</li>
+<li><p>이 디렉토리는 기본적으로 스파크의 CLASSPATH 에 포함</p>
+</li>
+</ul>
+<h4 id="licenses"><a href="#licenses" class="headerlink" title="licenses&#x2F;"></a>licenses&#x2F;</h4><ul>
+<li><p>스칼라와 제이쿼리(JQuery)와 같이 따로 포함된 프로젝트를 다루는 라이선스 파일 포함하는 폴더</p>
+</li>
+<li><p>법적 준수만을 목적으로, 스파크를 실행하는 데 필요하지는 않음</p>
+</li>
+</ul>
+<h4 id="python"><a href="#python" class="headerlink" title="python&#x2F;"></a>python&#x2F;</h4><ul>
+<li><p>pyspark 를 실행하는 데 필요한 모든 파이썬 라이브러리 포함</p>
+</li>
+<li><p>직접적인 액세스를 할 필요는 없음</p>
+</li>
+</ul>
+<h4 id="R"><a href="#R" class="headerlink" title="R&#x2F;"></a>R&#x2F;</h4><ul>
+<li>SparkR 패키지와 관련 라이브러리 및 문서 포함</li>
+</ul>
+<h4 id="sbin"><a href="#sbin" class="headerlink" title="sbin&#x2F;"></a>sbin&#x2F;</h4><ul>
+<li><p>로컬 또는 원격으로 독립실행형 모드로 실행되는 스파크 클러스터의 마스터 및 슬레이브 서비스를 시작 중지하고, YARN 및 Mesos와 관련된 프로세스를 시작하는 관리 스크립트를 포함하는 폴더</p>
+</li>
+<li><p>독립실행형 모드에서는 다중 노드 클러스터를 배포할 때 이런 스크립트 중 일부를 이용</p>
+</li>
+</ul>
+<h4 id="yarn"><a href="#yarn" class="headerlink" title="yarn&#x2F;"></a>yarn&#x2F;</h4><ul>
+<li><p>YARN 에서 실행되는 스파크 응용 프로그램에 대한 지원 라이브러리가 포함된 폴더</p>
+</li>
+<li><p>스파크가 YARN 클러스터의 프로세스 간에 데이터를 이동하는 데 사용하는 셔플 서비스 포함</p>
+</li>
+</ul>
 
-<span class="token comment"># 시스템 환경변수 파일 열기</span>
-$ <span class="token function">vi</span> ~/.bashrc<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># SPARK_HOME 등록</span>
-<span class="token assign-left variable">SPARK_HOME</span><span class="token operator">=</span><span class="token operator">&lt;</span>경로<span class="token operator">></span>/spark-<span class="token operator">&lt;</span>x.y.z<span class="token operator">></span>-bin-hadoop3
-
-<span class="token comment"># PATH 추가</span>
-<span class="token builtin class-name">export</span> <span class="token environment constant">PATH</span> <span class="token operator">=</span> <span class="token environment constant">$PATH</span><span class="token builtin class-name">:</span><span class="token variable">$SPARK_HOME</span>/bin
-<span class="token builtin class-name">export</span> <span class="token environment constant">PATH</span> <span class="token operator">=</span> <span class="token environment constant">$PATH</span><span class="token builtin class-name">:</span><span class="token variable">$SPARK_HOME</span>/sbin
-
-<span class="token comment"># 시스템 환경변수 활성화</span>
-$ <span class="token builtin class-name">source</span> ~/.bashrc
-
-<span class="token comment"># 설치 테스트</span>
-spark-submit <span class="token parameter variable">--class</span> org.apache.spark.examples.SparkPi <span class="token punctuation">\</span>
-  -- master <span class="token builtin class-name">local</span> <span class="token punctuation">\</span>
-  <span class="token variable">$SPARK_HOME</span>/examples/jars/spark-examples*.jar <span class="token number">1000</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="다중-노드-Multi-Node-스파크-클러스터-배포"><a href="#다중-노드-Multi-Node-스파크-클러스터-배포" class="headerlink" title="다중 노드(Multi Node) 스파크 클러스터 배포"></a>다중 노드(Multi Node) 스파크 클러스터 배포</h2><ol>
-<li>클러스터의 통신을 위한 hosts 등록</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># hosts 파일 열기</span>
-$ <span class="token function">vi</span> /ect/hosts<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<pre class="line-numbers language-conf" data-language="conf"><code class="language-conf"># host 추가
-&lt;Master IP&gt;    &lt;Master Hostname&gt; # spark-mater
-&lt;Master1 IP&gt;   &lt;Worker1 Hostname&gt; # spark-worker1
-&lt;Master2 IP&gt;   &lt;Worker2 Hostname&gt; # spark-worker2
-&lt;Worker3 IP&gt;   &lt;Worker3 Hostname&gt; # spark-worker3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 네트워크 연결 확인</span>
-<span class="token function">ping</span> spark-worker1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<ol start="2">
-<li>각 호스트에 spark-defaults.conf 등록</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># spark-defaults.conf 파일 구성 </span>
-$ <span class="token builtin class-name">cd</span> <span class="token variable">$SPARK_HOME</span>/conf/
-$ <span class="token function">sudo</span> <span class="token function">cp</span> spark-defaults.conf.template spark-defaults.conf<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<pre class="line-numbers language-conf" data-language="conf"><code class="language-conf"># 1. Spark Cluster Manager : Standalone Mode
-spark.master    spark:&#x2F;&#x2F;&lt;Master Hostname&gt;:&lt;Port&gt;
-
-# 2. Spark Cluster Manager : YARN
-spark.master    yarn 
-
-# Spark Event Log Use? 
-spark.eventLog.enabled    true
-
-# Spark Event Log Directory
-spark.eventLog.dir    &lt;Spark Log Directory&gt;
-
-# Spark Driver Memory 
-spark.driver.memory    &lt;N&gt;g
-
-# Spark Executor Memory
-spark.executor.memory    &lt;N&gt;g
-
-# Spark Executor Cores
-spark.executor.cores    &lt;N&gt;
-&#96;&#96;&#96;    
-
-3. 각 호스트에 spark-env.sh 환경변수 등록
-
-&#96;&#96;&#96;bash
-# spark-defaults.conf 파일 구성 
-$ cd $SPARK_HOME&#x2F;conf&#x2F;
-$ sudo cp spark-env.sh.template spark-env.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<pre class="line-numbers language-conf" data-language="conf"><code class="language-conf"># SPARK_MASTER_HOST, SPARK_MASTER_PORT
-export SPARK_MASTER_HOST&#x3D;&lt;Master Hostname&gt;
-export SPARK_MASTER_PORT&#x3D;7077
-
-# HADOOP_CONF_DIR 
-export HADOOP_CONF_DIR&#x3D;&lt;Hadoop Config Directory&gt;
-
-# SPARK_MASTER_WEBUI_PORT
-export SPARK_MASTER_WEBUI_PORT&#x3D;8080
-
-# PYSPARK_PYTHON
-export PYSPARK_PYTHON&#x3D;&lt;Python Binaray File&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -448,7 +388,7 @@ export PYSPARK_PYTHON&#x3D;&lt;Python Binaray File&gt;<span aria-hidden="true" c
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/01/01/Spark/spark-installation/">http://example.com/2024/01/01/Spark/spark-installation/</a>
+                    <a href="http://example.com/2024/01/01/PySpark/spark-directory/">http://example.com/2024/01/01/PySpark/spark-directory/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -594,18 +534,18 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/01/Spark/spark-read-file/">
+                <a href="/2024/01/01/PySpark/spark-dataset/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/spark-logo.png" class="responsive-img" alt="[PySpark] Spark Read File">
+                        <img src="/images/logos/pyspark-logo.png" class="responsive-img" alt="[PySpark] Spark DataSet">
                         
-                        <span class="card-title">[PySpark] Spark Read File</span>
+                        <span class="card-title">[PySpark] Spark DataSet</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            이것은 Summary
                         
                     </div>
                     <div class="publish-info">
@@ -642,18 +582,18 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/01/Spark/spark-streaming-shutdown/">
+                <a href="/2024/01/01/PySpark/spark-installation/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/spark-logo.png" class="responsive-img" alt="[PySpark] Spark Streaming Gracefully Shutdown">
+                        <img src="/images/logos/pyspark-logo.png" class="responsive-img" alt="[PySpark] Spark nstallation">
                         
-                        <span class="card-title">[PySpark] Spark Streaming Gracefully Shutdown</span>
+                        <span class="card-title">[PySpark] Spark nstallation</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            이것은 Summary
                         
                     </div>
                     <div class="publish-info">
