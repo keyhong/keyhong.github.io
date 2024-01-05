@@ -290,25 +290,25 @@
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Kafka/kafka-delete-records-command/">
+                    <a href="/2024/01/01/Kafka/kafka-consumer-groups-command/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-delete-records Command">
+                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-consumer-groups Command">
                             
-                            <span class="card-title">[Kafka] kafka-delete-records Command</span>
+                            <span class="card-title">[Kafka] kafka-consumer-groups Command</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                kafka-delete-records Command
-카프카 레코드 삭제 정보 파일(delete-topic.json)
+                                kafka-consumer-groups Command
+카프카 컨슈머 그룹 리스트 조회
 
-&#123;
-  "partitions": [
-    &#123;
-      "topic": "TO
+$ kafka-consumer-groups.sh --bootstrap-server [HOST]:[PORT] --list
+
+
+카프
                             
                         </div>
                         <div class="publish-info">
@@ -344,25 +344,25 @@
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Kafka/kafka-consumer-groups-command/">
+                    <a href="/2024/01/01/Kafka/kafka-delete-records-command/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-consumer-groups Command">
+                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-delete-records Command">
                             
-                            <span class="card-title">[Kafka] kafka-consumer-groups Command</span>
+                            <span class="card-title">[Kafka] kafka-delete-records Command</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                kafka-consumer-groups Command
-카프카 컨슈머 그룹 리스트 조회
+                                kafka-delete-records Command
+카프카 레코드 삭제 정보 파일(delete-topic.json)
 
-$ kafka-consumer-groups.sh --bootstrap-server [HOST]:[PORT] --list
-
-
-카프
+&#123;
+  "partitions": [
+    &#123;
+      "topic": "TO
                             
                         </div>
                         <div class="publish-info">
@@ -450,23 +450,21 @@ $ kafka-run-class.sh kafka.tools.GetOffsetShell \
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Kafka/kafka-server-_-command/">
+                    <a href="/2024/01/01/Kafka/kafka-server-propery-options/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-server-* Command">
+                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Server Propery Options">
                             
-                            <span class="card-title">[Kafka] kafka-server-* Command</span>
+                            <span class="card-title">[Kafka] Server Propery Options</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                kafka-server-* Command
-카프카 실행
+                                Kafka Server Propery Options클러스터의 브로커를 구분하기 위한 id (브로커마다 다 달라야 함)broker.id&#x3D;[N]
 
-$ kafka-server-start.sh -daemon ../config/sever.property (일반)
-$kafka-server-start.sh -dae
+카프카 브로커 통신을 위해 열어둘 인터페이스 HOST, Port
                             
                         </div>
                         <div class="publish-info">
@@ -502,21 +500,23 @@ $kafka-server-start.sh -dae
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Kafka/kafka-server-propery-options/">
+                    <a href="/2024/01/01/Kafka/kafka-server-_-command/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Server Propery Options">
+                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-server-* Command">
                             
-                            <span class="card-title">[Kafka] Server Propery Options</span>
+                            <span class="card-title">[Kafka] kafka-server-* Command</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Kafka Server Propery Options클러스터의 브로커를 구분하기 위한 id (브로커마다 다 달라야 함)broker.id&#x3D;[N]
+                                kafka-server-* Command
+카프카 실행
 
-카프카 브로커 통신을 위해 열어둘 인터페이스 HOST, Port
+$ kafka-server-start.sh -daemon ../config/sever.property (일반)
+$kafka-server-start.sh -dae
                             
                         </div>
                         <div class="publish-info">
@@ -765,26 +765,24 @@ $ ls [-option]
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Linux/linux-environment/">
+                    <a href="/2024/01/01/Linux/linux-hardware-command/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/linux-logo.png" class="responsive-img" alt="[Linux] Environment">
+                            <img src="/images/logos/linux-logo.png" class="responsive-img" alt="[Linux] Hardware Command">
                             
-                            <span class="card-title">[Linux] Environment</span>
+                            <span class="card-title">[Linux] Hardware Command</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Linux Environment리눅스 환경변수
-시스템 또는 사용자 수준에서 사용되는 설정 정보를 저장하는데 사용되는 변수
+                                Linux Hardware CommandCPU 정보 확인$ cat /etc/proc/cpuinfo
 
-시스템 구성
-시스템 전반적인 설정을 저장&#96;&#96;
-
-
-PATH 환경변수는 실행 파일
+시스템의 메모리 사용량 정보 확인free
+마운트mount
+  -f    # 특정 파일시스템만 선택적 마운트
+  -n
                             
                         </div>
                         <div class="publish-info">
