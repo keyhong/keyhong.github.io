@@ -278,20 +278,20 @@
                 </a>
                 
                 
-                <a href="/categories/Airflow/" title="Airflow: 7">
+                <a href="/categories/Flink/" title="Flink: 5">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D5F5E3;">Airflow
-                        <span class="tag-length">7</span>
+                            style="background-color: #D5F5E3;">Flink
+                        <span class="tag-length">5</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/Flink/" title="Flink: 5">
+                <a href="/categories/Airflow/" title="Airflow: 7">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #E8F8F5;">Flink
-                        <span class="tag-length">5</span>
+                            style="background-color: #E8F8F5;">Airflow
+                        <span class="tag-length">7</span>
                     </span>
                 </a>
                 
@@ -359,28 +359,19 @@
                 </a>
                 
                 
-                <a href="/categories/Algorithm/" title="Algorithm: 4">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            style="background-color: #F9E79F;">Algorithm
-                        <span class="tag-length">4</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/Python/" title="Python: 18">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F5EEF8;">Python
+                            style="background-color: #F9E79F;">Python
                         <span class="tag-length">18</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/SQL/" title="SQL: 4">
+                <a href="/categories/Algorithm/" title="Algorithm: 4">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #A3E4D7;">SQL
+                             chip-active "
+                            style="background-color: #D7BDE2;">Algorithm
                         <span class="tag-length">4</span>
                     </span>
                 </a>
@@ -391,6 +382,15 @@
                              chip-default "
                             style="background-color: #F9E79F;">Scala
                         <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/SQL/" title="SQL: 4">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #A3E4D7;">SQL
+                        <span class="tag-length">4</span>
                     </span>
                 </a>
                 
@@ -510,29 +510,23 @@ Vertex(&#x3D;node)와 Edge 구성
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Python-Algorithm/brute-force/">
+                    <a href="/2024/01/01/Python-Algorithm/dfs-bfs/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/algorithm-logo.png" class="responsive-img" alt="[Algorithm] Brute Force">
+                            <img src="/images/logos/algorithm-logo.png" class="responsive-img" alt="[Algorithm] DFS &amp; BFS">
                             
-                            <span class="card-title">[Algorithm] Brute Force</span>
+                            <span class="card-title">[Algorithm] DFS &amp; BFS</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Brute Force완전탐색
-장점 : 반드시 답을 찾을 수 있다
+                                DFS &amp; BFS깊이 우선 탐색(Depth First Search)
+큐를 사용해서 구현한다.
 
-전부 살펴봤는 데 답이 없다면? 답이 존재하지 않는다는 사실을 알아낸 것!
+인접행렬로 구현adj = [ [0]*N for _ in range(N) ]
 
-
-단점 : 오래 걸린다
-
-리소스를 많이 잡아 먹는다
-
-
-trade-off
+adj[0][1] = adj[0][7
                             
                         </div>
                         <div class="publish-info">
@@ -566,23 +560,29 @@ trade-off
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Python-Algorithm/dfs-bfs/">
+                    <a href="/2024/01/01/Python-Algorithm/brute-force/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/algorithm-logo.png" class="responsive-img" alt="[Algorithm] DFS &amp; BFS">
+                            <img src="/images/logos/algorithm-logo.png" class="responsive-img" alt="[Algorithm] Brute Force">
                             
-                            <span class="card-title">[Algorithm] DFS &amp; BFS</span>
+                            <span class="card-title">[Algorithm] Brute Force</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                DFS &amp; BFS깊이 우선 탐색(Depth First Search)
-큐를 사용해서 구현한다.
+                                Brute Force완전탐색
+장점 : 반드시 답을 찾을 수 있다
 
-인접행렬로 구현adj = [ [0]*N for _ in range(N) ]
+전부 살펴봤는 데 답이 없다면? 답이 존재하지 않는다는 사실을 알아낸 것!
 
-adj[0][1] = adj[0][7
+
+단점 : 오래 걸린다
+
+리소스를 많이 잡아 먹는다
+
+
+trade-off
                             
                         </div>
                         <div class="publish-info">

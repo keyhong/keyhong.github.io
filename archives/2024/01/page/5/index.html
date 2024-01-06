@@ -427,21 +427,24 @@
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/Kafka/kafka-console-consumer-command/">
+                        <a href="/2024/01/01/Kafka/kafka-consumer-groups-command/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-console-consumer Command">
+                                <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-consumer-groups Command">
                                 
-                                <span class="card-title">[Kafka] kafka-console-consumer Command</span>
+                                <span class="card-title">[Kafka] kafka-consumer-groups Command</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    kafka-console-consumer Command
-콘솔로 conusmer 메세지 구독하기 (기존 메세지를 모두 확인 후, 새 메시지 구독)
+                                    kafka-consumer-groups Command
+카프카 컨슈머 그룹 리스트 조회
 
-$ kafka-console-consumer.sh --bootstra
+$ kafka-consumer-groups.sh --bootstrap-server [HOST]:[PORT] --list
+
+
+카프
                                 
                             </div>
                             <div class="publish-info">
@@ -488,24 +491,21 @@ $ kafka-console-consumer.sh --bootstra
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/Kafka/kafka-consumer-groups-command/">
+                        <a href="/2024/01/01/Kafka/kafka-console-consumer-command/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-consumer-groups Command">
+                                <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-console-consumer Command">
                                 
-                                <span class="card-title">[Kafka] kafka-consumer-groups Command</span>
+                                <span class="card-title">[Kafka] kafka-console-consumer Command</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    kafka-consumer-groups Command
-카프카 컨슈머 그룹 리스트 조회
+                                    kafka-console-consumer Command
+콘솔로 conusmer 메세지 구독하기 (기존 메세지를 모두 확인 후, 새 메시지 구독)
 
-$ kafka-consumer-groups.sh --bootstrap-server [HOST]:[PORT] --list
-
-
-카프
+$ kafka-console-consumer.sh --bootstra
                                 
                             </div>
                             <div class="publish-info">
@@ -616,6 +616,68 @@ $ kafka-consumer-groups.sh --bootstrap-server [HOST]:[PORT] --list
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
+                        <a href="/2024/01/01/Kafka/kafka-server-_-command/">
+                            <div class="card-image">
+                                
+                                <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-server-* Command">
+                                
+                                <span class="card-title">[Kafka] kafka-server-* Command</span>
+                            </div>
+                        </a>
+                        <div class="card-content article-content">
+                            <div class="summary block-with-text">
+                                
+                                    kafka-server-* Command
+카프카 실행
+
+$ kafka-server-start.sh -daemon ../config/sever.property (일반)
+$kafka-server-start.sh -dae
+                                
+                            </div>
+                            <div class="publish-info">
+                                <span class="publish-date">
+                                    <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                                </span>
+                                <span class="publish-author">
+                                    
+                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                    
+                                    <a href="/categories/Kafka/" class="post-category">
+                                    Kafka
+                                    </a>
+                                    
+                                    
+                                </span>
+                            </div>
+                        </div>
+
+                        
+                        <div class="card-action article-tags">
+                            
+                            <a href="/tags/Kafka/"><span class="chip bg-color">Kafka</span></a>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="cd-timeline-block">
+
+            
+            
+
+            
+            
+
+            
+            <div class="cd-timeline-img day" data-aos="zoom-in-up">
+                <span>01</span>
+            </div>
+            <article class="cd-timeline-content" data-aos="fade-up">
+                <div class="article col s12 m6">
+                    <div class="card">
                         <a href="/2024/01/01/Kafka/kafka-run-class-command/">
                             <div class="card-image">
                                 
@@ -678,22 +740,20 @@ $ kafka-run-class.sh kafka.tools.GetOffsetShell \
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/Kafka/kafka-server-_-command/">
+                        <a href="/2024/01/01/Kafka/kafka-server-propery-options/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-server-* Command">
+                                <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Server Propery Options">
                                 
-                                <span class="card-title">[Kafka] kafka-server-* Command</span>
+                                <span class="card-title">[Kafka] Server Propery Options</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    kafka-server-* Command
-카프카 실행
+                                    Kafka Server Propery Options클러스터의 브로커를 구분하기 위한 id (브로커마다 다 달라야 함)broker.id&#x3D;[N]
 
-$ kafka-server-start.sh -daemon ../config/sever.property (일반)
-$kafka-server-start.sh -dae
+카프카 브로커 통신을 위해 열어둘 인터페이스 HOST, Port
                                 
                             </div>
                             <div class="publish-info">
@@ -824,68 +884,6 @@ kafka-topics.sh --create \
 
 계정에 패스워드 부여$ passwd &lt;계정명>
 
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                    
-                                    <a href="/categories/Linux/" class="post-category">
-                                    Linux
-                                    </a>
-                                    
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                        <div class="card-action article-tags">
-                            
-                            <a href="/tags/Linux/"><span class="chip bg-color">Linux</span></a>
-                            
-                        </div>
-                        
-                    </div>
-                </div>
-            </article>
-        </div>
-        
-        <div class="cd-timeline-block">
-
-            
-            
-
-            
-            
-
-            
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>01</span>
-            </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
-                        <a href="/2024/01/01/Linux/linux-authority-command/">
-                            <div class="card-image">
-                                
-                                <img src="/images/logos/linux-logo.png" class="responsive-img" alt="[Linux] Authority Command">
-                                
-                                <span class="card-title">[Linux] Authority Command</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    Linux Authority Command유저 생성$ useradd [-option] &lt;username>
-
-유저 권한 변경# user modify
-$ usermod [-option]
-    -g &lt;소속시킬
                                 
                             </div>
                             <div class="publish-info">
