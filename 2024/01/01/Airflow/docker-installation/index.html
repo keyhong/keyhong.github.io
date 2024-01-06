@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="keywords" content="[Airflow] Docker Installation, Data Engineering,Data Analysis,Python Backend">
     <meta name="description" content="Installtion at Local1. python pip 라이브러리 설치# Airflow 패키지 설치(특정 버전 기준으로 호환 패키지 같이 설치)
-CONSTRAINT_URL=&#34;https://raw.githubus">
+$ CONSTRAINT_URL=&#34;https://raw.github">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -233,7 +233,7 @@ CONSTRAINT_URL=&#34;https://raw.githubus">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title" style="text-shadow: 0 0 5px black, 0 0 10px black, 0 0 20px #DB4455, 0 0 30px #DB4455, 0 0 40px #DB4455, 0 0 55px #DB4455, 0 0 75px #DB4455;">
+                    <h1 class="description center-align post-title diy-neon-red">
                         [Airflow] Docker Installation</h1>
                 </div>
             </div>
@@ -308,34 +308,31 @@ CONSTRAINT_URL=&#34;https://raw.githubus">
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="Installtion-at-Local"><a href="#Installtion-at-Local" class="headerlink" title="Installtion at Local"></a>Installtion at Local</h2><h4 id="1-python-pip-라이브러리-설치"><a href="#1-python-pip-라이브러리-설치" class="headerlink" title="1. python pip 라이브러리 설치"></a>1. python pip 라이브러리 설치</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Airflow 패키지 설치(특정 버전 기준으로 호환 패키지 같이 설치)</span>
-<span class="token assign-left variable">CONSTRAINT_URL</span><span class="token operator">=</span><span class="token string">"https://raw.githubusercontent.com/apache/airflow/constraints-<span class="token variable">$&#123;AIRFLOW_VERSION&#125;</span>/constraints-<span class="token variable">$&#123;PYTHON_VERSION&#125;</span>.txt"</span>
+$ <span class="token assign-left variable">CONSTRAINT_URL</span><span class="token operator">=</span><span class="token string">"https://raw.githubusercontent.com/apache/airflow/constraints-<span class="token variable">$&#123;AIRFLOW_VERSION&#125;</span>/constraints-<span class="token variable">$&#123;PYTHON_VERSION&#125;</span>.txt"</span>
 
-pip <span class="token function">install</span> <span class="token string">"apache-airflow==<span class="token variable">$&#123;AIRFLOW_VERSION&#125;</span>"</span> <span class="token parameter variable">--constraint</span> <span class="token string">"<span class="token variable">$&#123;CONSTRAINT_URL&#125;</span>"</span>
-pip <span class="token function">install</span> <span class="token string">"apache-airflow==2.6.0"</span> <span class="token parameter variable">--constraint</span> <span class="token string">"https://raw.githubusercontent.com/apache/airflow/constraints-2.6.0/constraints-3.8.txt"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+$ pip <span class="token function">install</span> <span class="token string">"apache-airflow==<span class="token variable">$&#123;AIRFLOW_VERSION&#125;</span>"</span> <span class="token parameter variable">--constraint</span> <span class="token string">"<span class="token variable">$&#123;CONSTRAINT_URL&#125;</span>"</span>
+$ pip <span class="token function">install</span> <span class="token string">"apache-airflow==2.6.0"</span> <span class="token parameter variable">--constraint</span> <span class="token string">"https://raw.githubusercontent.com/apache/airflow/constraints-2.6.0/constraints-3.8.txt"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="2-AIRFLOW-HOME-환경변수-설정-및-기초파일-초기화"><a href="#2-AIRFLOW-HOME-환경변수-설정-및-기초파일-초기화" class="headerlink" title="2. AIRFLOW_HOME 환경변수 설정 및 기초파일 초기화"></a>2. AIRFLOW_HOME 환경변수 설정 및 기초파일 초기화</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># AIRFLOW_HOME 폴더 생성</span>
-<span class="token function">mkdir</span> ~/airflow
+$ <span class="token function">mkdir</span> ~/airflow
 
 <span class="token comment"># bash_profile(또는 bash_rc)에 환경변수 추가</span>
-<span class="token builtin class-name">echo</span> <span class="token string">"export AIRFLOW_HOME=~/airflow"</span> <span class="token operator">>></span> .bash_profile
+$ <span class="token builtin class-name">echo</span> <span class="token string">"export AIRFLOW_HOME=~/airflow"</span> <span class="token operator">>></span> .bash_profile
 
 <span class="token comment"># airflow db 초기화</span>
-airflow db init<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+$ airflow db init<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="3-Airflow-관리자-계정-생성"><a href="#3-Airflow-관리자-계정-생성" class="headerlink" title="3. Airflow 관리자 계정 생성"></a>3. Airflow 관리자 계정 생성</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 관리자 생성 명령어 입력 후 초기 비밀번호 입력</span>
-airflow <span class="token function">users</span> create <span class="token punctuation">\</span>
-  <span class="token parameter variable">--username</span> <span class="token operator">&lt;</span>계정<span class="token operator">></span> <span class="token punctuation">\</span>
-  <span class="token parameter variable">--firstname</span> <span class="token operator">&lt;</span>성<span class="token operator">></span> <span class="token punctuation">\</span>
-  <span class="token parameter variable">--lastname</span> <span class="token operator">&lt;</span>이름<span class="token operator">></span> <span class="token punctuation">\</span>
-  <span class="token parameter variable">--role</span> Admin <span class="token punctuation">\</span>
-  <span class="token parameter variable">--email</span> <span class="token operator">&lt;</span>이메일<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+$ airflow <span class="token function">users</span> create <span class="token punctuation">\</span>
+    <span class="token parameter variable">--username</span> <span class="token operator">&lt;</span>계정<span class="token operator">></span> <span class="token punctuation">\</span>
+    <span class="token parameter variable">--firstname</span> <span class="token operator">&lt;</span>성<span class="token operator">></span> <span class="token punctuation">\</span>
+    <span class="token parameter variable">--lastname</span> <span class="token operator">&lt;</span>이름<span class="token operator">></span> <span class="token punctuation">\</span>
+    <span class="token parameter variable">--role</span> Admin <span class="token punctuation">\</span>
+    <span class="token parameter variable">--email</span> <span class="token operator">&lt;</span>이메일<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="4-PostgreSQL-pg-hba-conf-수정하기"><a href="#4-PostgreSQL-pg-hba-conf-수정하기" class="headerlink" title="4. PostgreSQL pg_hba.conf 수정하기"></a>4. PostgreSQL pg_hba.conf 수정하기</h4><p><a target="_blank" rel="noopener" href="https://www.postgresql.org/docs/current/auth-pg-hba-conf.html">사용자를 데이터베이스 액세스 제어 목록에 pg_hba.conf 추가하기</a></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># pg_hba.conf 파일 열기(/etc/postgresql/x/main)</span>
-<span class="token function">vim</span> pg_hba.conf <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<pre class="line-numbers language-conf" data-language="conf"><code class="language-conf"># IPv4 local connections:
-host		all             all             0.0.0.0&#x2F;0               md5 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h1 id="pg-hba-conf-파일-열기-etc-postgresql-x-main"><a href="#pg-hba-conf-파일-열기-etc-postgresql-x-main" class="headerlink" title="pg_hba.conf 파일 열기(&#x2F;etc&#x2F;postgresql&#x2F;x&#x2F;main)"></a>pg_hba.conf 파일 열기(&#x2F;etc&#x2F;postgresql&#x2F;x&#x2F;main)</h1><pre class="line-numbers language-ini" data-language="ini"><div class="caption"><span>pg_hba.conf</span></div><code class="language-ini"><span class="token comment"># IPv4 local connections:</span>
+host		all             all             0.0.0.0/0               md5 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <h4 id="5-Airflow-메타데이터-DBMS를-PostgreSQL-로-연동하기"><a href="#5-Airflow-메타데이터-DBMS를-PostgreSQL-로-연동하기" class="headerlink" title="5. Airflow 메타데이터 DBMS를 PostgreSQL 로 연동하기"></a>5. Airflow 메타데이터 DBMS를 PostgreSQL 로 연동하기</h4><p><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/howto/set-up-database.html#setting-up-a-postgresql-database">PostgreSQL 데이터베이스 설정</a></p>
 <ul>
@@ -377,10 +374,10 @@ host		all             all             0.0.0.0&#x2F;0               md5 <span ari
 <li><p>database.sql_alchemy_conn는 메타데이터 데이터베이스에 대한 SqlAlchemy 연결 문자열</p>
 </li>
 </ul>
-<pre class="line-numbers language-conf" data-language="conf"><code class="language-conf">[database]
-sql_alchemy_conn &#x3D; postgresql+psycopg2:&#x2F;&#x2F;&lt;user&gt;:&lt;password&gt;@&lt;host&gt;&#x2F;&lt;db&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-ini" data-language="ini"><div class="caption"><span>airflow.cfg</span></div><code class="language-ini"><span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">database</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">sql_alchemy_conn</span> <span class="token punctuation">=</span> <span class="token value attr-value">postgresql+psycopg2://&lt;user>:&lt;password>@&lt;host>/&lt;db></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h4 id="7-Airflow-Webserver-Daemon-Process로-띄우기"><a href="#7-Airflow-Webserver-Daemon-Process로-띄우기" class="headerlink" title="7. Airflow Webserver Daemon Process로 띄우기"></a>7. Airflow Webserver Daemon Process로 띄우기</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">airflow webserver <span class="token parameter variable">-D</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="7-Airflow-Webserver-Daemon-Process로-띄우기"><a href="#7-Airflow-Webserver-Daemon-Process로-띄우기" class="headerlink" title="7. Airflow Webserver Daemon Process로 띄우기"></a>7. Airflow Webserver Daemon Process로 띄우기</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow webserver <span class="token parameter variable">-D</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 
@@ -388,128 +385,157 @@ sql_alchemy_conn &#x3D; postgresql+psycopg2:&#x2F;&#x2F;&lt;user&gt;:&lt;passwor
 <h3 id="CLI-Commands"><a href="#CLI-Commands" class="headerlink" title="CLI Commands"></a>CLI Commands</h3><h2 id="Installing-Airflow"><a href="#Installing-Airflow" class="headerlink" title="Installing Airflow"></a>Installing Airflow</h2><ul>
 <li>Create and start a docker container from the Docker image python:3.8-slim and execute the command &#x2F;bin&#x2F;bash in order to have a shell session</li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> run <span class="token parameter variable">-it</span> <span class="token parameter variable">--rm</span> <span class="token parameter variable">-p</span> <span class="token number">8080</span>:8080 python:3.8-slim /bin/bash<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> run <span class="token parameter variable">-it</span> <span class="token parameter variable">--rm</span> <span class="token parameter variable">-p</span> <span class="token number">8080</span>:8080 python:3.8-slim /bin/bash<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
 <li><p>Print the Python version</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python <span class="token parameter variable">-V</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ python <span class="token parameter variable">-V</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>Export the environment variable AIRFLOW_HOME used by Airflow to store the dags folder, logs folder and configuration file</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">AIRFLOW_HOME</span><span class="token operator">=</span>/usr/local/airflow<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>.bashrc</span></div><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">AIRFLOW_HOME</span><span class="token operator">=</span>/usr/local/airflow<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>To check that the environment variable has been well exported</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">env</span> <span class="token operator">|</span> <span class="token function">grep</span> airflow<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">env</span> <span class="token operator">|</span> <span class="token function">grep</span> airflow<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>Install all tools and dependencies that can be required by Airflow</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt-get</span> update <span class="token parameter variable">-y</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
-<span class="token function">apt-get</span> <span class="token function">install</span> <span class="token parameter variable">-y</span> <span class="token function">wget</span> libczmq-dev <span class="token function">curl</span> libssl-dev <span class="token function">git</span> inetutils-telnet bind9utils freetds-dev libkrb5-dev libsasl2-dev libffi-dev libpq-dev freetds-bin build-essential default-libmysqlclient-dev apt-utils <span class="token function">rsync</span> <span class="token function">zip</span> <span class="token function">unzip</span> gcc <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
-<span class="token function">apt-get</span> clean<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">apt-get</span> update <span class="token parameter variable">-y</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
+$ <span class="token function">apt-get</span> <span class="token function">install</span> <span class="token parameter variable">-y</span> <span class="token function">wget</span> libczmq-dev <span class="token function">curl</span> libssl-dev <span class="token function">git</span> inetutils-telnet bind9utils freetds-dev libkrb5-dev libsasl2-dev libffi-dev libpq-dev freetds-bin build-essential default-libmysqlclient-dev apt-utils <span class="token function">rsync</span> <span class="token function">zip</span> <span class="token function">unzip</span> gcc <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
+$ <span class="token function">apt-get</span> clean<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p>Create the user airflow, set its home directory to the value of AIRFLOW_HOME and log into it</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">useradd</span> <span class="token parameter variable">-ms</span> /bin/bash <span class="token parameter variable">-d</span> <span class="token variable">$&#123;AIRFLOW_HOME&#125;</span> airflow<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">useradd</span> <span class="token parameter variable">-ms</span> /bin/bash <span class="token parameter variable">-d</span> <span class="token variable">$&#123;AIRFLOW_HOME&#125;</span> airflow<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>Show the file &#x2F;etc&#x2F;passwd to check that the airflow user has been created</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> /etc/passwd <span class="token operator">|</span> <span class="token function">grep</span> airflow<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">cat</span> /etc/passwd <span class="token operator">|</span> <span class="token function">grep</span> airflow<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>Upgrade pip (already installed since we use the Docker image python 3.5)</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> <span class="token parameter variable">--upgrade</span> pip<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ pip <span class="token function">install</span> <span class="token parameter variable">--upgrade</span> pip<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>Log into airflow</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">su</span> - airflow<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">su</span> - airflow<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>Create the virtual env named sandbox</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python <span class="token parameter variable">-m</span> venv .sandbox<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ python <span class="token parameter variable">-m</span> venv .sandbox<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>Activate the virtual environment sandbox</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">source</span> .sandbox/bin/activate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">source</span> .sandbox/bin/activate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>Download the requirement file to install the right version of Airflow’s dependencies </p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> https://raw.githubusercontent.com/apache/airflow/constraints-2.0.2/constraints-3.8.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">wget</span> https://raw.githubusercontent.com/apache/airflow/constraints-2.0.2/constraints-3.8.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>Install the version 2.0.2 of apache-airflow with all subpackages defined between square brackets. (Notice that you can still add subpackages after all, you will use the same command with different subpackages even if Airflow is already installed)<br><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/extra-packages-ref.html">extra-packages-ref</a></p>
 </li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> <span class="token string">"apache-airflow[crypto,celery,postgres,cncf.kubernetes,docker]"</span><span class="token operator">==</span><span class="token number">2.0</span>.2 <span class="token parameter variable">--constraint</span> ./constraints-3.8.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ pip <span class="token function">install</span> <span class="token string">"apache-airflow[crypto,celery,postgres,cncf.kubernetes,docker]"</span><span class="token operator">==</span><span class="token number">2.0</span>.2 <span class="token parameter variable">--constraint</span> ./constraints-3.8.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
-<li><p>Initialise the metadatabase</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">airflow db init<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>Start Airflow’s scheduler in background</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">airflow scheduler <span class="token operator">&amp;</span>
-airflow scheduler <span class="token parameter variable">-D</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-<li><p>Make Airflow’s webserver user</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">airflow <span class="token function">users</span> create <span class="token punctuation">\</span>
-  <span class="token parameter variable">--username</span> admin <span class="token punctuation">\</span>
-  <span class="token parameter variable">--firstname</span> FIRST_NAME <span class="token punctuation">\</span>
-  <span class="token parameter variable">--lastname</span> LAST_NAME <span class="token punctuation">\</span>  
-  <span class="token parameter variable">--role</span> Admin <span class="token punctuation">\</span>
-  <span class="token parameter variable">--email</span> admin@example.org
-  <span class="token parameter variable">--password</span> PASSWORD <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>Start Airflow’s webserver in background</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">airflow webserver <span class="token operator">&amp;</span>
+<li>Initialise the metadatabase</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow db init<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-airflow webserver <span class="token parameter variable">-D</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>Build a docker image from the Dockerfile in the current directory (airflow-materials&#x2F;airflow-basic)  and name it airflow-basic</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> build <span class="token parameter variable">-t</span> airflow-basic <span class="token builtin class-name">.</span>
+<ul>
+<li>Start Airflow’s scheduler in background</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow scheduler <span class="token operator">&amp;</span>
+$ airflow scheduler <span class="token parameter variable">-D</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<span class="token function">docker</span> run <span class="token parameter variable">--rm</span> <span class="token parameter variable">-d</span> <span class="token parameter variable">-p</span> <span class="token number">8080</span>:8080 airflow-basic
+<ul>
+<li>Make Airflow’s webserver user</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow <span class="token function">users</span> create <span class="token punctuation">\</span>
+    <span class="token parameter variable">--username</span> admin <span class="token punctuation">\</span>
+    <span class="token parameter variable">--firstname</span> FIRST_NAME <span class="token punctuation">\</span>
+    <span class="token parameter variable">--lastname</span> LAST_NAME <span class="token punctuation">\</span>  
+    <span class="token parameter variable">--role</span> Admin <span class="token punctuation">\</span>
+    <span class="token parameter variable">--email</span> admin@example.org
+    <span class="token parameter variable">--password</span> PASSWORD <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-Quick Tour of Airflow CLI<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>Show running docker containers</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> <span class="token function">ps</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>Execute the command &#x2F;bin&#x2F;bash in the container_id to get a shell session</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> container_id /bin/bash<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>Print the current path where you are</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">pwd</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>Initialise the metadatabase</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">airflow db init<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>Reinitialize the metadatabase (Drop everything)</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">airflow db reset<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>Upgrade the metadatabase (Latest schemas, values, …)</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">airflow db upgrade<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>Start Airflow’s webserver</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">airflow webserver<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>Start Airflow’s scheduler</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">airflow scheduler<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
+<ul>
+<li>Start Airflow’s webserver in background</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow webserver <span class="token operator">&amp;</span>
+
+$ airflow webserver <span class="token parameter variable">-D</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>Build a docker image from the Dockerfile in the current directory (airflow-materials&#x2F;airflow-basic)  and name it airflow-basic</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> build <span class="token parameter variable">-t</span> airflow-basic <span class="token builtin class-name">.</span>
+
+$ <span class="token function">docker</span> run <span class="token parameter variable">--rm</span> <span class="token parameter variable">-d</span> <span class="token parameter variable">-p</span> <span class="token number">8080</span>:8080 airflow-basic<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>Show running docker containers</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> <span class="token function">ps</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>Execute the command &#x2F;bin&#x2F;bash in the container_id to get a shell session</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> container_id /bin/bash<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>Print the current path where you are</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">pwd</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>Initialise the metadatabase</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow db init<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>Reinitialize the metadatabase (Drop everything)</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow db reset<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>Upgrade the metadatabase (Latest schemas, values, …)</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow db upgrade<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>Start Airflow’s webserver</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow webserver<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>Start Airflow’s scheduler</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow scheduler<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
 <li><p>Start a Celery worker (Useful in distributed mode to spread tasks among nodes - machines)</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">airflow celery worker<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow celery worker<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>Give the list of known dags (either those in the examples folder or in dags folder)</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">airflow dags list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow dags list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>Display the files&#x2F;folders of the current directory </p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ls</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ls</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>Trigger the dag example_python_operator with the current date as execution date</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">airflow dags trigger example_python_operator<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
-<li><p>Trigger the dag example_python_operator with a date in the past as execution date (This won’t trigger the tasks of that dag unless you set the option catchup&#x3D;True in the DAG definition)</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">airflow dags trigger example_python_operator <span class="token parameter variable">-e</span> <span class="token number">2021</span>-01-01<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow dags trigger example_python_operator<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>Trigger the dag example_python_operator with a date in the past as execution date (This won’t trigger the tasks of that dag unless you set the option catchup&#x3D;True in the DAG definition)</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow dags trigger example_python_operator <span class="token parameter variable">-e</span> <span class="token number">2021</span>-01-01<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
 <li><p>Trigger the dag example_python_operator with a date in the future (change the date here with one having +2 minutes later than the current date displayed in the Airflow UI). The dag will be scheduled at that date.</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">airflow dags trigger example_python_operator <span class="token parameter variable">-e</span> <span class="token string">'2021-01-01 19:04:00+00:00'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow dags trigger example_python_operator <span class="token parameter variable">-e</span> <span class="token string">'2021-01-01 19:04:00+00:00'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>Display the history of example_python_operator’s dag runs</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">airflow dags list-runs <span class="token parameter variable">-d</span> example_python_operator<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow dags list-runs <span class="token parameter variable">-d</span> example_python_operator<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>List the tasks contained into the example_python_operator dag</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">airflow tasks list example_python_operator<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow tasks list example_python_operator<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>Allow to test a task (print_the_context) from a given dag (example_python_operator here) without taking care of dependencies and past runs. Useful for debugging.</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">airflow tasks <span class="token builtin class-name">test</span> example_python_operator print_the_context <span class="token number">2021</span>-01-01<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow tasks <span class="token builtin class-name">test</span> example_python_operator print_the_context <span class="token number">2021</span>-01-01<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
 
                 
@@ -557,7 +583,7 @@ Quick Tour of Airflow CLI<span aria-hidden="true" class="line-numbers-rows"><spa
         
     </div>
 
-    <script async defer>
+    <!-- <script async defer>
       document.addEventListener("copy", function (e) {
         let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
         M.toast({html: toastHTML})
@@ -566,7 +592,7 @@ Quick Tour of Airflow CLI<span aria-hidden="true" class="line-numbers-rows"><spa
       function navToReprintStatement() {
         $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
       }
-    </script>
+    </script> -->
 
 
 
@@ -688,7 +714,7 @@ gitment.render('gitment-content');
                         
                         <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] Config">
                         
-                        <span class="card-title">[Airflow] Config</span>
+                        <span class="card-title diy-neon-red">[Airflow] Config</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -736,7 +762,7 @@ gitment.render('gitment-content');
                         
                         <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] SubDags">
                         
-                        <span class="card-title">[Airflow] SubDags</span>
+                        <span class="card-title diy-neon-red">[Airflow] SubDags</span>
                     </div>
                 </a>
                 <div class="card-content article-content">

@@ -232,7 +232,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title" style="text-shadow: 0 0 5px black, 0 0 10px black, 0 0 20px #DB4455, 0 0 30px #DB4455, 0 0 40px #DB4455, 0 0 55px #DB4455, 0 0 75px #DB4455;">
+                    <h1 class="description center-align post-title diy-neon-red">
                         [PySpark] Spark Installation</h1>
                 </div>
             </div>
@@ -319,14 +319,14 @@ $ <span class="token function">sudo</span> update yum<span aria-hidden="true" cl
 <li>자바(openjdk 설치) 및 환경변수 등록</li>
 </ol>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Debian 계열 리눅스(Ubuntu)</span>
-<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> openjdk-8-jdk
+$ <span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> openjdk-8-jdk
 
 <span class="token comment"># RedHat 계열 리눅스(CentOS, LHEL)</span>
-<span class="token function">sudo</span> yum <span class="token function">install</span> java-1.8.0-openjdk<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+$ <span class="token function">sudo</span> yum <span class="token function">install</span> java-1.8.0-openjdk<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># .bashrc에 환경변수 등록</span>
-<span class="token builtin class-name">export</span> <span class="token assign-left variable">JAVA_HOME</span><span class="token operator">=</span>/usr/lib/jvm/java-8-openjdk-amd64
-<span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token environment constant">$PATH</span>:/usr/lib/jvm/java-8-openjdk-amd64/bin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-conf" data-language="conf"><code class="language-conf"># .bashrc에 환경변수 등록
+export JAVA_HOME&#x3D;&#x2F;usr&#x2F;lib&#x2F;jvm&#x2F;java-8-openjdk-amd64
+export PATH&#x3D;$PATH:&#x2F;usr&#x2F;lib&#x2F;jvm&#x2F;java-8-openjdk-amd64&#x2F;bin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <ol start="3">
 <li>스파크 설치 및 환경변수 등록</li>
@@ -344,37 +344,41 @@ $ <span class="token function">sudo</span> update yum<span aria-hidden="true" cl
 $ <span class="token function">tar</span> <span class="token parameter variable">-zxvf</span> spark-<span class="token operator">&lt;</span>x.y.z<span class="token operator">></span>-bin-hadoop3.tgz <span class="token parameter variable">-C</span> <span class="token operator">&lt;</span>경로<span class="token operator">></span>
 
 <span class="token comment"># 시스템 환경변수 파일 열기</span>
-$ <span class="token function">vi</span> ~/.bashrc<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+$ <span class="token function">vi</span> ~/.bashrc
 
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># SPARK_HOME 등록</span>
-<span class="token assign-left variable">SPARK_HOME</span><span class="token operator">=</span><span class="token operator">&lt;</span>경로<span class="token operator">></span>/spark-<span class="token operator">&lt;</span>x.y.z<span class="token operator">></span>-bin-hadoop3
+$ <span class="token function">cat</span> <span class="token operator">&lt;&lt;</span> <span class="token string">EOF<span class="token bash punctuation"> <span class="token operator">>></span> ~/.bashrc</span>
+# SPARK_HOME 등록
+SPARK_HOME=&lt;경로>/spark-&lt;x.y.z>-bin-hadoop3
 
-<span class="token comment"># PATH 추가</span>
-<span class="token builtin class-name">export</span> <span class="token environment constant">PATH</span> <span class="token operator">=</span> <span class="token environment constant">$PATH</span><span class="token builtin class-name">:</span><span class="token variable">$SPARK_HOME</span>/bin
-<span class="token builtin class-name">export</span> <span class="token environment constant">PATH</span> <span class="token operator">=</span> <span class="token environment constant">$PATH</span><span class="token builtin class-name">:</span><span class="token variable">$SPARK_HOME</span>/sbin
+# PATH 추가
+export PATH = <span class="token environment constant">$PATH</span>:<span class="token variable">$SPARK_HOME</span>/bin
+export PATH = <span class="token environment constant">$PATH</span>:<span class="token variable">$SPARK_HOME</span>/sbin
+EOF</span>
 
 <span class="token comment"># 시스템 환경변수 활성화</span>
 $ <span class="token builtin class-name">source</span> ~/.bashrc
 
 <span class="token comment"># 설치 테스트</span>
-spark-submit <span class="token parameter variable">--class</span> org.apache.spark.examples.SparkPi <span class="token punctuation">\</span>
-  -- master <span class="token builtin class-name">local</span> <span class="token punctuation">\</span>
-  <span class="token variable">$SPARK_HOME</span>/examples/jars/spark-examples*.jar <span class="token number">1000</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+$ spark-submit <span class="token parameter variable">--class</span> org.apache.spark.examples.SparkPi <span class="token punctuation">\</span>
+    -- master <span class="token builtin class-name">local</span> <span class="token punctuation">\</span>
+    <span class="token variable">$SPARK_HOME</span>/examples/jars/spark-examples*.jar <span class="token number">1000</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 
 <h2 id="다중-노드-Multi-Node-스파크-클러스터-배포"><a href="#다중-노드-Multi-Node-스파크-클러스터-배포" class="headerlink" title="다중 노드(Multi Node) 스파크 클러스터 배포"></a>다중 노드(Multi Node) 스파크 클러스터 배포</h2><ol>
 <li>클러스터의 통신을 위한 hosts 등록</li>
 </ol>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># hosts 파일 열기</span>
-$ <span class="token function">vi</span> /ect/hosts<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+$ <span class="token function">cat</span> <span class="token operator">&lt;&lt;</span> <span class="token string">EOF<span class="token bash punctuation"> <span class="token operator">>></span> /ect/hosts</span>
+&lt;Master IP>    &lt;Master Hostname> # spark-mater
+&lt;Master1 IP>   &lt;Worker1 Hostname> # spark-worker1
+&lt;Master2 IP>   &lt;Worker2 Hostname> # spark-worker2
+&lt;Worker3 IP>   &lt;Worker3 Hostname> # spark-worker3
+EOF</span>
 
-<pre class="line-numbers language-conf" data-language="conf"><code class="language-conf"># host 추가
-&lt;Master IP&gt;    &lt;Master Hostname&gt; # spark-mater
-&lt;Master1 IP&gt;   &lt;Worker1 Hostname&gt; # spark-worker1
-&lt;Master2 IP&gt;   &lt;Worker2 Hostname&gt; # spark-worker2
-&lt;Worker3 IP&gt;   &lt;Worker3 Hostname&gt; # spark-worker3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 네트워크 연결 확인</span>
-<span class="token function">ping</span> spark-worker1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token comment"># 네트워크 연결 확인</span>
+<span class="token function">ping</span> spark-worker1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ol start="2">
 <li>각 호스트에 spark-defaults.conf 등록</li>
@@ -469,7 +473,7 @@ export PYSPARK_PYTHON&#x3D;&lt;Python Binaray File&gt;<span aria-hidden="true" c
         
     </div>
 
-    <script async defer>
+    <!-- <script async defer>
       document.addEventListener("copy", function (e) {
         let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
         M.toast({html: toastHTML})
@@ -478,7 +482,7 @@ export PYSPARK_PYTHON&#x3D;&lt;Python Binaray File&gt;<span aria-hidden="true" c
       function navToReprintStatement() {
         $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
       }
-    </script>
+    </script> -->
 
 
 
@@ -600,7 +604,7 @@ gitment.render('gitment-content');
                         
                         <img src="/images/logos/pyspark-logo.png" class="responsive-img" alt="[PySpark] Spark Directory">
                         
-                        <span class="card-title">[PySpark] Spark Directory</span>
+                        <span class="card-title diy-neon-red">[PySpark] Spark Directory</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -648,7 +652,7 @@ gitment.render('gitment-content');
                         
                         <img src="/images/logos/pyspark-logo.png" class="responsive-img" alt="[PySpark] Spark Read File">
                         
-                        <span class="card-title">[PySpark] Spark Read File</span>
+                        <span class="card-title diy-neon-red">[PySpark] Spark Read File</span>
                     </div>
                 </a>
                 <div class="card-content article-content">

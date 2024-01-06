@@ -4,9 +4,14 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="
-SerDe : 데이터 소스에서 HDFS로의 Serializer&amp;#x2F;Deserialize의 약자빌드된 SerDe : Avro, ORC, RegEx, Thrift, Parquet, CSV, Json 등압축을 통해">
+    <meta name="keywords" content="[Airflow] Concept, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="What is Airflow?
+작업을 올바른 방식으로, 올바른 순서로, 올바른 시간에 실행하는 오픈소스 오케스트레이터
+
+
+Kafka, Spark, Hive 등 영러 플랫폼들과 상호작용할 수 있습니다.
+
+파이썬으로 구">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +23,7 @@ SerDe : 데이터 소스에서 HDFS로의 Serializer&amp;#x2F;Deserialize의 약
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Keyhong</title>
+    <title>[Airflow] Concept | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -228,13 +233,13 @@ SerDe : 데이터 소스에서 HDFS로의 Serializer&amp;#x2F;Deserialize의 약
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/airflow-logo.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title" style="text-shadow: 0 0 5px black, 0 0 10px black, 0 0 20px #DB4455, 0 0 30px #DB4455, 0 0 40px #DB4455, 0 0 55px #DB4455, 0 0 75px #DB4455;">
-                        </h1>
+                    <h1 class="description center-align post-title diy-neon-red">
+                        [Airflow] Concept</h1>
                 </div>
             </div>
         </div>
@@ -256,12 +261,25 @@ SerDe : 데이터 소스에서 HDFS로의 Serializer&amp;#x2F;Deserialize의 약
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Airflow/">
+                                <span class="chip bg-color">Airflow</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Airflow/" class="post-category">
+                                Airflow
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -270,7 +288,7 @@ SerDe : 데이터 소스에서 HDFS로의 Serializer&amp;#x2F;Deserialize의 약
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2024-01-06
+                    2024-01-01
                 </div>
                 
 
@@ -294,30 +312,224 @@ SerDe : 데이터 소스에서 HDFS로의 Serializer&amp;#x2F;Deserialize의 약
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <ul>
-<li><p>SerDe : 데이터 소스에서 HDFS로의 Serializer&#x2F;Deserialize의 약자<br>빌드된 SerDe : Avro, ORC, RegEx, Thrift, Parquet, CSV, Json 등<br>압축을 통해 모든 데이터 형식에 대해 자신의 SerDe를 생성 가능</p>
-</li>
-<li><p>HBase : Java로 작성된 오픈 소스 비관계형 분산 데이터베이스<br>트랜잭션 실시간 처리 및 방대한 양의 데이터에 대한 랜덤 읽기&#x2F;쓰기 액세스가 필요한<br>OLTP(Online Transaction Processing)에 적합</p>
-</li>
-<li><p>Zookeeper : HBase 클러스터의 HMaster, Region 서버를 포함한 모든<br>               HBase 구성 요소의 상태를 유지 관리하는 역할</p>
-</li>
-<li><p>Region : Hbase에서 수평적 확장성을 제공하는 확장성의 기본 단위<br>테이블 데이터의 하위 집합, 기본적으로 함께 저장되는 연속적이고 정렬된 행 범위<br>(처음에는 테이블에 대해 하나의 Region만 존재, 더 많은 행을 추가한 후 Region이 커지면<br> 중간 키에서 두개로 분할되어 거의 동일한 절반을 만듬)</p>
-</li>
-<li><p>Region Server : 일련의 Region 서비스를 담당, 하나의 Region은 하나의 Region Server에서만 서비스 가능<br>Region 서버에 대한 Region 매핑은 META 테이블이라는 시스템 테이블에 보관<br>(META 테이블을 읽으면 키를 담당하는 Region을 식별 가능)<br>읽기 및 쓰기 작업의 경우 클라이언트는 HMaster를 우회하여 요청된 데이터를 제공하는 Region 서버로 직접 이동 가능</p>
-</li>
-<li><p>HMaster는 시작 시 Region을 할당하고 클러스터의 Region을 조정하고 관리하는 작업을 실행<br>클라이언트는 테이블 생성 및 삭제, 구조 변경을 위해 HMaster에 문의<br>HMaster는 로드밸런싱 작업 또는 Region 서버 장애의 결과로 한 Region 서버에서 다른 Region 서버로 Region을 이동가능</p>
-</li>
-<li><p>META Table : 클러스터의 Region 서버에 대한 Region의 위치 및 매핑을 저장</p>
-</li>
-<li><p>Bloom Filter : 검색을 촉진하기 위해 요소가 집합의 구성원인지 여부를 테스트하는 데 사용되는 특수 목적 확률적 인덱스</p>
-</li>
-</ul>
-<hr>
+                <h2 id="What-is-Airflow"><a href="#What-is-Airflow" class="headerlink" title="What is Airflow?"></a>What is Airflow?</h2><blockquote>
+<p>작업을 올바른 방식으로, 올바른 순서로, 올바른 시간에 실행하는 오픈소스 오케스트레이터</p>
+</blockquote>
 <ul>
-<li><dl><dt>Mapper</dt><dd>입력 데이터를 parsing, transforming, filtering<br>Key-Value 쌍을 출력<br>데이터를 섞어 Sorting 및 Partitioning</dd></dl></li>
-<li><dl><dt>Reducer</dt><dd>위의 Mapper에서 섞인 데이터를 Aggregate</dd></dl></li>
+<li><p>Kafka, Spark, Hive 등 영러 플랫폼들과 상호작용할 수 있습니다.</p>
+</li>
+<li><p>파이썬으로 구현되어 코드 작성이 다이나믹합니다. 언어의 특성상 자유도가 높지만, 여러 명에서 다중 작업시 코드의 통일성이 떨어질 수도 있는 단점이 있습니다.</p>
+</li>
+<li><p>플러그인을 생성할 수 있어, operator에 기능을 추가하여 다양한 기능을 구현할 수 있도록 확장 가능합니다.</p>
+</li>
+<li><p>Flask로 구현된 Airflow Web UI와 API가 잘 구현 되어 있습니다.</p>
+</li>
 </ul>
-<p>** Input - Splitting - Mapping - Shuffling - Reducing - Final result</p>
+<h2 id="What-airflow-is-not"><a href="#What-airflow-is-not" class="headerlink" title="What airflow is not?"></a>What airflow is not?</h2><p><code>Not a data streaming solution neither a data processing framework</code></p>
+<ul>
+<li>Airflow는 Batch를 위한 스케줄링 프로그램입니다. Streaming 데이터 처리는 Spark, Storm, Flink와 같은 플랫폼에서 처리해야 합니다.</li>
+</ul>
+<h2 id="Core-Components"><a href="#Core-Components" class="headerlink" title="Core Components"></a>Core Components</h2><h3 id="Web-server"><a href="#Web-server" class="headerlink" title="Web server"></a>Web server</h3><blockquote>
+<p>Flask server with Gunicon serving the UI</p>
+</blockquote>
+<h3 id="Scheduler"><a href="#Scheduler" class="headerlink" title="Scheduler"></a>Scheduler</h3><blockquote>
+<p>Daemon in charge of scheduling workflows</p>
+</blockquote>
+<ul>
+<li>작업 스케줄링과 데이터 파이프라인 스케줄링을 담당합니다.</li>
+</ul>
+<h3 id="Metastore"><a href="#Metastore" class="headerlink" title="Metastore"></a>Metastore</h3><blockquote>
+<p>Database where metadata are stored</p>
+</blockquote>
+<ul>
+<li>보통은 MySQL이나 Postgres를 사용합니다.</li>
+</ul>
+<h3 id="Executor"><a href="#Executor" class="headerlink" title="Executor"></a>Executor</h3><blockquote>
+<p>태스크(task)가 실행되는 매커니즘. 작업의 한 단위인 태스크 인스턴스를 실행하는 주체</p>
+</blockquote>
+<ul>
+<li><p>작업이 실행되는 방식을 정의하는 클래스, 작업이 실행되는 시스템입니다.</p>
+</li>
+<li><p>클러스터 환경에서 어떤 시스템에서 작업이 실행될지를 정의합니다.</p>
+</li>
+</ul>
+<h4 id="Executor의-종류"><a href="#Executor의-종류" class="headerlink" title="Executor의 종류"></a>Executor의 종류</h4><ul>
+<li>Sequential Executor</li>
+</ul>
+<blockquote>
+<p>단일 장비에 한번에 하나의 태스크만 프로세스로 실행할 수 있는 기본 실행 형태</p>
+</blockquote>
+<ul>
+<li><p>기본 DB인 SQLite와 함께 사용가능 합니다.</p>
+</li>
+<li><p>SQLite가 멀티 유저를 위한 데이터베이스가 아니기 때문에, 동시 접근 불가능하다는 점에서 Task를 병렬로 돌릴 수 없어 실제로는 거의 쓰이지 않습니다.</p>
+</li>
+<li><p>Local Executor</p>
+</li>
+</ul>
+<blockquote>
+<p>단일 장비에 웹 서버와 스케줄러를 같이 기동하고 태스크를 프로세스 형태로 스폰(spawn)해 실행하는 형태</p>
+</blockquote>
+<ul>
+<li><p>Task 를 병렬로 실행 가능한 Executor 입니다.</p>
+</li>
+<li><p>옵션 <code>self.parallelism</code> 설정을 통해 최대 병렬처리 수를 설정 가능합니다.</p>
+</li>
+<li><p>설정값이 0이 아닌 경우, 태스크를 설정값 만큼 병렬처리 가능합니다. (Limited Parallelism, 워커의 구현체는 LocalWorker 클래스)</p>
+</li>
+<li><p>설정값이 0인 경우, 태스크를 제한없이 병렬처리가 가능합니다. (Unlimited Parallelism, 워커의 구현체는 QueuedLocalWorker 클래스)</p>
+</li>
+<li><p>단일 장비 환경에서 작동하기 때문에 SPOF(Single point of failure, 단일실패지점) 문제가 있습니다.</p>
+</li>
+<li><p>Celery Executor</p>
+</li>
+</ul>
+<blockquote>
+<p>태스크를 병렬로 실행 가능하며, 메시지큐(MQ)를 추가적적으로 연동하여 실행하는 형태</p>
+</blockquote>
+<ul>
+<li><p>워커를 스케일아웃할 수 있는 방법 중 하나입니다.</p>
+</li>
+<li><p>Celery 백엔드로 MQ 를 연동하여 스케줄러를 실행해야 하는 서버로 메세지를 보냅니다. (Clery Executor → Message Broker → Worker 서버의 Clery Worker)</p>
+</li>
+<li><p>다른 서버로 전달되는 태스크는 명령을 실행하는 문자열입니다. (airflow run ~)</p>
+</li>
+<li><p>태스크는 Clery Wroker 에서 생성한 Sub Process 형태로 실행합니다.</p>
+</li>
+<li><p>Master Node에 대한 SPOF 문제는 여전히 있습니다. 따라서 Master Node에 프로세스 모니터링이 필요합니다.</p>
+</li>
+<li><p>Message Broker에 대한 관리가 필요합니다.</p>
+</li>
+</ul>
+<h4 id="설명은-안했지만-그-밖의-Executor"><a href="#설명은-안했지만-그-밖의-Executor" class="headerlink" title="설명은 안했지만 그 밖의 Executor"></a>설명은 안했지만 그 밖의 Executor</h4><ul>
+<li>Debug Executor, Dask Executor, **Kubernetes Executor, CeleryKubernetes Executor</li>
+</ul>
+<h3 id="Worker"><a href="#Worker" class="headerlink" title="Worker"></a>Worker</h3><blockquote>
+<p>Process&#x2F;sub process executing your task</p>
+</blockquote>
+<ul>
+<li>작업이 효과적으로 실행되는 프로세스입니다.</li>
+</ul>
+<h3 id="DAG-Directed-Acyclic-Graph"><a href="#DAG-Directed-Acyclic-Graph" class="headerlink" title="DAG (Directed Acyclic Graph)"></a>DAG (Directed Acyclic Graph)</h3><blockquote>
+<p>A graph with nodes and directed agee’s but no loops</p>
+</blockquote>
+<ul>
+<li>aware datetime objects</li>
+</ul>
+<p>Airflow의 실행시간은 UTC TIMEZONE에 기반을 두고 있습니다. 사용자는 이를 조절하여 start_date, end_date 설정하여 맞추어야 합니다.</p>
+<ul>
+<li>Pendulum</li>
+</ul>
+<p>airflow에 적용되는 UTC TIMEZONE 시간을 현재 한국에 맞게 조절하기 위한 파이썬 라이브러리입니다.</p>
+<ul>
+<li>catchup</li>
+</ul>
+<p>과거(start_date)로부터 현재시점까지 중간에 비워져 있는 Airflow DagRun 스케줄링을 전부 실행하는 옵션입니다.</p>
+<h4 id="DAG-Run"><a href="#DAG-Run" class="headerlink" title="DAG Run"></a>DAG Run</h4><blockquote>
+<p>object representing an instantiation of the DAG in time : 제 시간에 수행되는 Dag의 인스턴스화를 나타내는 객체</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/dag-run.html">dag-run document</a></p>
+<p>&#96;</p>
+<ul>
+<li><p>DAG가 실행될 떄, DAG Run 인스턴스가 생성되고, 해당 인스턴스 안의 모든 Task가 순서대로 실행됩니다.</p>
+</li>
+<li><p>DAG의 실행상태는 Task에 의존합니다.</p>
+</li>
+<li><p>각 DAG Run은 개별적으로 실행되고, 동시에 많은 DAG를 실행할 수 있어 높은 병렬성을 가집니다.</p>
+</li>
+</ul>
+<h4 id="DAG-Run-Status"><a href="#DAG-Run-Status" class="headerlink" title="DAG Run Status"></a>DAG Run Status</h4><ul>
+<li><p>DAG Run의 상태는 DAG가 끝나야 결정됩니다.</p>
+</li>
+<li><p>DAG 실행은 DAG 내의 Task와 의존성에 따라 다릅니다.</p>
+</li>
+<li><p>DAG Run 의 상태는 success, failed or skipped 와 같은 종결상태 중 하나로, 다른 상태로 전환 불가능한 경우에 할당됩니다. (“leaf nodes”, “leaves” : No Children)</p>
+<ul>
+<li><p>success : “leaf nodes” 가 success 또는 skipped 인 경우</p>
+</li>
+<li><p>failed : “leaf nodes” 가 failed 또는 upstream_failed(상위 Task가 에러가 나서 멈춘 경우) 인 경우</p>
+</li>
+<li><p>(주의) TriggerRule 옵션에 따라 중간 상태가 failed 이 나더라도, 마지막에 필수적 수행(all_done) 및 성공시 DAG Run 상태는 success가 됩니다.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="크론-사전-설정-Cron-Presets"><a href="#크론-사전-설정-Cron-Presets" class="headerlink" title="크론 사전 설정(Cron Presets)"></a>크론 사전 설정(Cron Presets)</h4><ul>
+<li><p><strong>DAG의 schedule_interval 실행 아규먼트로 넣을 수 있는 간단한 사전 설정 옵션값</strong> 입니다</p>
+</li>
+<li><p>schedule_interval 은 아규먼트로는 cron expression(“minute hour day month year”) , datetime.timedelta 객체, presets 중 하나를 쓸 수 있습니다.</p>
+</li>
+<li><p>더 정교한 스케줄링을 원한다면 custom timetable 객체를 만들어 활용 가능합니다.</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>preset</th>
+<th>meaning</th>
+<th>cron</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>None</td>
+<td>예약하지 않고 “externally triggered” DAG 에만 사용</td>
+<td></td>
+</tr>
+<tr>
+<td>@once</td>
+<td>한 번만 예약</td>
+<td></td>
+</tr>
+<tr>
+<td>@continuous</td>
+<td>이전 실행이 완료되는 즉시 실행</td>
+<td></td>
+</tr>
+<tr>
+<td>@hourly</td>
+<td>한 시간에 한 번씩 시간 종료 시 실행</td>
+<td>0 * * * *</td>
+</tr>
+<tr>
+<td>@daily</td>
+<td>하루에 한 번 자정(24:00)에 실행</td>
+<td>0 0 * * *</td>
+</tr>
+<tr>
+<td>@weekly</td>
+<td>주 1회 일요일 자정(24:00)에 실행</td>
+<td>0 0 * * 0</td>
+</tr>
+<tr>
+<td>@monthly</td>
+<td>매월 1일 자정(24:00)에 실행</td>
+<td>0 0 1 * *</td>
+</tr>
+<tr>
+<td>@quarterly</td>
+<td>분기별 1일 자정(24:00)에 1회 실행</td>
+<td>0 0 1 *&#x2F;3 *</td>
+</tr>
+<tr>
+<td>@yearly</td>
+<td>연 1회 1월 1일 자정(24:00)에 실행</td>
+<td>0 0 1 1 *</td>
+</tr>
+</tbody></table>
+<ul>
+<li>DAG 는 백엔드 데이터베이스의 DAG Run 실행 항목과 함께 각 스케줄링에 대해 인스턴스화 됩니다.</li>
+</ul>
+<h3 id="Operator"><a href="#Operator" class="headerlink" title="Operator"></a>Operator</h3><blockquote>
+<p>An object encapsulating task, the job that you want to execute</p>
+</blockquote>
+<ul>
+<li><p>세 가지 유형이 있습니다. : Action Operators, Transfer Operators, Sensor Operators</p>
+</li>
+<li><p>Task Instance : DAG에서 실행되는 오퍼레이터가 실행되는 오퍼레이터입니다.</p>
+</li>
+<li><p>Workflow : 오퍼레이터 사이의 종속성이 있습니다.</p>
+</li>
+</ul>
 
                 
             </div>
@@ -334,7 +546,7 @@ SerDe : 데이터 소스에서 HDFS로의 Serializer&amp;#x2F;Deserialize의 약
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">Gyuwon Hong</a>
+                    <a href="/about" rel="external nofollow noreferrer">Keyhong</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -344,7 +556,7 @@ SerDe : 데이터 소스에서 HDFS로의 Serializer&amp;#x2F;Deserialize의 약
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/01/06/HBase/hbase/">http://example.com/2024/01/06/HBase/hbase/</a>
+                    <a href="http://example.com/2024/01/01/Airflow/components/">http://example.com/2024/01/01/Airflow/components/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -357,14 +569,14 @@ SerDe : 데이터 소스에서 HDFS로의 Serializer&amp;#x2F;Deserialize의 약
                     use
                     <a href="cc_by_url" rel="external nofollow noreferrer" target="_blank">cc_by_name</a>
                     licensed
-                    <a href="/about" target="_blank">Gyuwon Hong</a>
+                    <a href="/about" target="_blank">Keyhong</a>
                     !
                 </span>
             </div> -->
         
     </div>
 
-    <script async defer>
+    <!-- <script async defer>
       document.addEventListener("copy", function (e) {
         let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
         M.toast({html: toastHTML})
@@ -373,7 +585,7 @@ SerDe : 데이터 소스에서 HDFS로의 Serializer&amp;#x2F;Deserialize의 약
       function navToReprintStatement() {
         $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
       }
-    </script>
+    </script> -->
 
 
 
@@ -381,7 +593,11 @@ SerDe : 데이터 소스에서 HDFS로의 Serializer&amp;#x2F;Deserialize의 약
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
+                            
+                                <a href="/tags/Airflow/">
+                                    <span class="chip bg-color">Airflow</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -451,7 +667,7 @@ SerDe : 데이터 소스에서 HDFS로의 Serializer&amp;#x2F;Deserialize의 약
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Sat Jan 06 2024 18:57:30 GMT+0900',
+    id: 'Mon Jan 01 2024 22:59:44 GMT+0900',
     owner: '',
     repo: '',
     oauth: {
@@ -486,13 +702,12 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/06/MLOps/dvc/">
+                <a href="/2024/01/01/Airflow/basic-comand/">
                     <div class="card-image">
                         
+                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] info">
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title"></span>
+                        <span class="card-title diy-neon-red">[Airflow] info</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -503,15 +718,27 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-06
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Gyuwon Hong
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Airflow/" class="post-category">
+                                    Airflow
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Airflow/">
+                        <span class="chip bg-color">Airflow</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -523,31 +750,30 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/06/Data-Architecture/data-warehouse/">
+                <a href="/2024/01/01/Airflow/config/">
                     <div class="card-image">
                         
+                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] Config">
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="[Data Architecture] Data Warehouse">
-                        
-                        <span class="card-title">[Data Architecture] Data Warehouse</span>
+                        <span class="card-title diy-neon-red">[Airflow] Config</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Data Warehouse, Data Mart 왜 만드는 지 알아봐요.
+                            
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Data-Architecture/" class="post-category">
-                                    Data Architecture
+                            <a href="/categories/Airflow/" class="post-category">
+                                    Airflow
                                 </a>
                             
                             
@@ -557,12 +783,8 @@ gitment.render('gitment-content');
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Data-Architecture/">
-                        <span class="chip bg-color">Data Architecture</span>
-                    </a>
-                    
-                    <a href="/tags/Data-Warehouse/">
-                        <span class="chip bg-color">Data Warehouse</span>
+                    <a href="/tags/Airflow/">
+                        <span class="chip bg-color">Airflow</span>
                     </a>
                     
                 </div>

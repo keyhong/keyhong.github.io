@@ -26,6 +26,46 @@
     font-family: 'Diphylleia';
 }
 
+.diy-neon-red {
+    text-shadow: 0 0 5px black,
+        0 0 10px black,
+        0 0 20px #DB4455,
+        0 0 30px #DB4455,
+        0 0 40px #DB4455,
+        0 0 55px #DB4455,
+        0 0 75px #DB4455;    
+}
+
+.diy-neon-green {
+    text-shadow: 0 0 5px black,
+        0 0 10px black,
+        0 0 20px #44DB6F,
+        0 0 30px #44DB6F,
+        0 0 40px #44DB6F,
+        0 0 55px #44DB6F,
+        0 0 75px #44DB6F;
+}
+
+.diy-neon-blue {
+    text-shadow: 0 0 5px black,
+        0 0 10px black,
+        0 0 20px #39EDFF,
+        0 0 30px #39EDFF,
+        0 0 40px #39EDFF,
+        0 0 55px #39EDFF,
+        0 0 75px #39EDFF;
+}
+
+.diy-neon-yellow {
+    text-shadow: 0 0 5px black,
+        0 0 10px black,
+        0 0 20px yellow,
+        0 0 30px yellow,
+        0 0 40px yellow,
+        0 0 55px yellow,
+        0 0 75px yellow;
+}
+
 body {
     font-family: 'GmarketSansTTFMedium';
 }

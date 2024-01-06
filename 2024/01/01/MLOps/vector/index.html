@@ -4,11 +4,20 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="DVC(Data Version Control)등장배경
-데이터 모델링에서 실험을 하면서 무수히 많은 버전의 데이터 생성
+    <meta name="keywords" content="[MLOps] Vector, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="Vector벡터가 뭔가요?
+벡터는 숫자를 원소로 가지는 리스트(list) 또는 배열(array)
 
-예 : data_1h_0508.csv, data_3h_0508.csv, data_1d_0509.">
+# 열 벡터	
+    1
+x = 7
+    2
+
+# 행 벡터	
+Xt = [1, 7, 2]
+
+# 행 벡터 생성
+x = ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +29,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Keyhong</title>
+    <title>[MLOps] Vector | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -230,13 +239,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title" style="text-shadow: 0 0 5px black, 0 0 10px black, 0 0 20px #DB4455, 0 0 30px #DB4455, 0 0 40px #DB4455, 0 0 55px #DB4455, 0 0 75px #DB4455;">
-                        </h1>
+                    <h1 class="description center-align post-title diy-neon-red">
+                        [MLOps] Vector</h1>
                 </div>
             </div>
         </div>
@@ -258,12 +267,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Vector/">
+                                <span class="chip bg-color">Vector</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Vector/" class="post-category">
+                                Vector
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -272,7 +294,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2024-01-06
+                    2024-01-01
                 </div>
                 
 
@@ -296,93 +318,168 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="DVC-Data-Version-Control"><a href="#DVC-Data-Version-Control" class="headerlink" title="DVC(Data Version Control)"></a>DVC(Data Version Control)</h1><h2 id="등장배경"><a href="#등장배경" class="headerlink" title="등장배경"></a>등장배경</h2><ul>
-<li><p>데이터 모델링에서 실험을 하면서 무수히 많은 버전의 데이터 생성</p>
+                <h1 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h1><h2 id="벡터가-뭔가요"><a href="#벡터가-뭔가요" class="headerlink" title="벡터가 뭔가요?"></a>벡터가 뭔가요?</h2><blockquote>
+<p>벡터는 숫자를 원소로 가지는 리스트(list) 또는 배열(array)</p>
+</blockquote>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 열 벡터	</span>
+    <span class="token number">1</span>
+x <span class="token operator">=</span> <span class="token number">7</span>
+    <span class="token number">2</span>
+
+<span class="token comment"># 행 벡터	</span>
+Xt <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span>
+
+<span class="token comment"># 행 벡터 생성</span>
+x <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span>
+x <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ul>
-<li>예 : data_1h_0508.csv, data_3h_0508.csv, data_1d_0509.csv …</li>
+<li>벡터에 있는 숫자의 개수는 벡터의 차원</li>
 </ul>
-</li>
-<li><p>일반적인 소스코드와 달리 데이터는 크기가 커서 git repository에 올리기 어려움</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">x <span class="token operator">=</span> <span class="token punctuation">[</span>x1<span class="token punctuation">,</span> x2<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> xd<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <ul>
-<li>소스코드의 형상관리 호스팅 플랫폼 : GitHub, GitLab, Bitbucket</li>
-<li>대표적인 GitHub 는 100 MB의 용령 제한</li>
+<li>벡터는 공간에서 한 점을 나타냄 (1차원, 2차원, 3차원, …, n차원)</li>
+<li>벡터는 원점(제로벡터, 영벡터)으로부터 상대적 위치를 표현</li>
+<li>벡터에 숫자를 곱해주면 길이만 변함</li>
 </ul>
-</li>
-<li><p>소스코드와 데이터 버전을 함께 관리하기 위한 Tool의 등장</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">
+<span class="token comment"># a > 1 : 1보다 크면 길이가 늘어남</span>
+<span class="token comment"># 0 &lt; a &lt; 1 : 1보다 작으면 길이가 줄어듬</span>
+<span class="token comment"># a &lt; 0 : 0보다 작으면 반대 방향이 됨</span>
+
+<span class="token comment"># 스칼라곱</span>
+ax <span class="token operator">=</span> ax <span class="token operator">=</span> <span class="token punctuation">[</span>ax1<span class="token punctuation">,</span> ax2<span class="token punctuation">,</span> ax3<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> axd<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ul>
-<li>DVC, Pachyderm, Delta Lake, Dolt</li>
-<li>Git과 사용법이 비슷하며, 오픈소스인 DVC를 권장</li>
+<li>벡터끼리 같은 모양을 가지면 덧셈, 뺼셈을 계산할 수 있음</li>
 </ul>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">x <span class="token operator">=</span> <span class="token punctuation">[</span>x1<span class="token punctuation">,</span> x2<span class="token punctuation">,</span> x3<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> xd<span class="token punctuation">]</span>
+y <span class="token operator">=</span> <span class="token punctuation">[</span>y1<span class="token punctuation">,</span> y2<span class="token punctuation">,</span> y3<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> yd<span class="token punctuation">]</span>
+x <span class="token operator">+</span><span class="token operator">-</span> y <span class="token operator">=</span> <span class="token punctuation">[</span>x1<span class="token operator">+</span><span class="token operator">-</span>y1<span class="token punctuation">,</span> x2<span class="token operator">+</span><span class="token operator">-</span>y2<span class="token punctuation">,</span> x3<span class="token operator">+</span><span class="token operator">-</span>y3<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> xd<span class="token operator">+</span><span class="token operator">-</span>yd<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>벡터끼리 같은 모양을 가지면 성분곱(Hadamard product)을 계산할 수 있음</li>
+</ul>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">
+x <span class="token operator">=</span> <span class="token punctuation">[</span>x1<span class="token punctuation">,</span> x2<span class="token punctuation">,</span> x3<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> xd<span class="token punctuation">]</span>
+y <span class="token operator">=</span> <span class="token punctuation">[</span>y1<span class="token punctuation">,</span> y2<span class="token punctuation">,</span> y3<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> yd<span class="token punctuation">]</span>
+x<span class="token operator">*</span>y <span class="token operator">=</span> <span class="token punctuation">[</span>x1<span class="token operator">*</span>y1<span class="token punctuation">,</span> x2<span class="token operator">*</span>y2<span class="token punctuation">,</span> x3<span class="token operator">*</span>y3<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> xd<span class="token operator">*</span>yd<span class="token punctuation">]</span>
+
+
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> y <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">+</span> y
+array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">-</span>y 
+array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">*</span> y
+array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">14</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><p>두 벡터의 덧셈은 다른 벡터로부터 상대적 위치이동을 표현</p>
+</li>
+<li><p>두 벡터의 뺄셈은 마이너스 벡터를 더하는 것과 같이 표현 가능</p>
+</li>
+<li><p>벡터의 노름 구해보기</p>
+</li>
+<li><p>벡터의 노름(norm)은 원점에서부터의 거리를 말함</p>
 </li>
 </ul>
-<h2 id="DVC-Data-Version-Control-1"><a href="#DVC-Data-Version-Control-1" class="headerlink" title="DVC(Data Version Control)"></a>DVC(Data Version Control)</h2><ul>
-<li><p>대부분의 스토리지(Amazon S3, Google Drive 등..)과 호환</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># || ~ || 기호는 노름(norm)이라 부름</span>
+<span class="token comment"># 노름은 임의의 차원 d에 대해서 성립</span>
+
+x <span class="token operator">=</span> <span class="token punctuation">[</span>x1<span class="token punctuation">,</span> x2<span class="token punctuation">,</span> x3<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> xd<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>L1-노름은 각 성분의 변화량의 절대값을 모두 더함</li>
+<li>L1-노름 상의 : {x: ||x||1 &#x3D; 1}</li>
+<li>예: Robust 학습, Lasso 회귀</li>
+</ul>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">
+<span class="token comment"># ||x||1 = 시그마 (1~d) |xi|</span>
+
+<span class="token keyword">def</span> <span class="token function">l1_norm</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    x_norm <span class="token operator">=</span> np<span class="token punctuation">.</span><span class="token builtin">abs</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+    x_norm <span class="token operator">=</span> np<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span>x_norm<span class="token punctuation">)</span>
+    
+    <span class="token keyword">return</span> x_norm<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>L2-노름은 피타고라스 정리를 이용해 유클리드 거리를 계산함</li>
+</ul>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># L2-노름은 np.linalg.norm을 이용해도 구현 가능</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>L2-노름 상의 원 : {x: ||x||2 &#x3D; 1}</li>
+<li>예: Laplace 근사, Ridge 회귀</li>
+</ul>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># ||x||2 = 루트 (시그마 (1~d) |x1| ** 2)</span>
+
+<span class="token keyword">def</span> <span class="token function">l2_norm</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    x_nrom <span class="token operator">=</span> x <span class="token operator">*</span> x
+    x_norm <span class="token operator">=</span> np<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span>x_norm<span class="token punctuation">)</span> 
+    x_norm <span class="token operator">=</span> np<span class="token punctuation">.</span>sqrt<span class="token punctuation">(</span>x_norm<span class="token punctuation">)</span>
+    
+    <span class="token keyword">return</span> x_norm<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><p>왜 다른 노름을 소개하나요?</p>
 </li>
-<li><p>GitHub 외 GitLab, Bitbucket 등의 대부분 git 호스팅 서버와 연동</p>
+<li><p>노름의 종류에 따라 기하학적 성질이 달라짐</p>
 </li>
-<li><p>Data Pipeline을 DAG로 관리</p>
+<li><p>머신러닝에선 각 성징들이 필요할 때가 있으므로 둘 다 사용</p>
 </li>
-<li><p>Git과 유사한 인터페이스</p>
+<li><p>두 벡터 사이의 거리르 구해보자!</p>
 </li>
-<li><p>Python API 도 제공하여 DVC CLI 뿐만 아니라 파이썬 코드로도 pull&#x2F;push 가능</p>
+<li><p>L1, L-노름을 이용해 두 벡터 사이의 거리를 계산할 수 있음</p>
+</li>
+<li><p>두 벡터 사이의 거리를 계산할 때는 벡터의 뺄셈을 이용</p>
+</li>
+<li><p>뺄셈을 거꾸로 해도 거리는 같음</p>
 </li>
 </ul>
-<h2 id="DVC-Installation"><a href="#DVC-Installation" class="headerlink" title="DVC Installation"></a>DVC Installation</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># [all] : dvc 원격저장소로 s3, gs, azure, oss, ssh 모두 사용할 수 있도록 관련 패키지 함께 설치하는 옵션</span>
-$ pip <span class="token function">install</span> dvc<span class="token punctuation">[</span>all<span class="token punctuation">]</span>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># ||y-x|| = ||x-y||</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<span class="token comment"># 설치확인</span>
-$ dvc <span class="token parameter variable">--version</span>
-<span class="token operator">>></span><span class="token operator">></span> <span class="token operator">&lt;</span>x.y.z<span class="token operator">></span>
+<ul>
+<li>두 벡터 사이의 각도 구해보기</li>
+<li>두 벡터 사이의 거리를 이용하여 각도도 계산할 수 있음<br>** 두 벡터 사이의 각도는 L1-노름이 아닌 L2-노름(||~||2)에서만 계산 가능</li>
+<li>제2 코사인 법칙에 의해 두 벡터 사이의 각도를 계산할 수 있음</li>
+<li>분자를 쉽게 계산하는 방법이 내적</li>
+</ul>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># x와 y의 거리 = ||x-y||2 = ||y-x||2</span>
 
-$ dvc <span class="token parameter variable">--help</span>
-<span class="token operator">>></span><span class="token operator">></span> usage: dvc <span class="token punctuation">[</span>-q <span class="token operator">|</span> -v<span class="token punctuation">]</span> <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-V<span class="token punctuation">]</span> <span class="token punctuation">[</span>--cd <span class="token operator">&lt;</span>path<span class="token operator">></span><span class="token punctuation">]</span> COMMAND <span class="token punctuation">..</span>.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="DVC-사용법"><a href="#DVC-사용법" class="headerlink" title="DVC 사용법"></a>DVC 사용법</h2><ol>
-<li>DVC 초기화</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 실행 시 실행경로에 .dvc 폴더 생성</span>
-$ dvc init<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<ol start="2">
-<li>tracking 파일 추가 및 트랙킹</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># dvc add : 데이터 파일 등록</span>
-$ dvc <span class="token function">add</span> <span class="token operator">&lt;</span>data_file<span class="token operator">></span>
-
-<span class="token comment"># dvc add 성공시 &lt;data_file>.dvc 파일 생성</span>
-$ <span class="token function">cat</span> <span class="token operator">&lt;</span>date_file<span class="token operator">></span>.dvc 
-
-outs:
-- md5: 034fdf10a8d3d41f63666b1d5203c1b7
-  size: <span class="token number">20</span>
-  path: <span class="token operator">&lt;</span>data_file<span class="token operator">></span>
-
-<span class="token comment"># git add : 데이터 파일 트랙킹</span>
-$ <span class="token function">git</span> <span class="token function">add</span> .gitignore <span class="token operator">&lt;</span>data_file<span class="token operator">></span>.dvc
-
-<span class="token comment"># git commit &amp; push</span>
-$ <span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"add &lt;data_file>.dvc"</span>
-
-$ <span class="token function">git</span> push <span class="token parameter variable">-u</span> origin main<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<ol start="3">
-<li>dvc 원격 저장소(데이터 저장소) 등록</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># dvc default remote storage 세팅</span>
-$ dvc remote <span class="token function">add</span> <span class="token parameter variable">-d</span> <span class="token operator">&lt;</span>storage_name<span class="token operator">></span> gdrive://<span class="token operator">&lt;</span>GOOGLE_DRIVE_FOLDER_ID<span class="token operator">></span>
-
-<span class="token comment"># [EX] 'https://drive.google.com/drive/folders/1idG3UnBH7QS85I12beGi8I5kMKLqYSEF' 에서 '1idG3UnBH7QS85I12beGi8I5kMKLqYSEF' 부분</span>
-$ dvc remote <span class="token function">add</span> <span class="token parameter variable">-d</span> <span class="token operator">&lt;</span>storage_name<span class="token operator">></span> gdrive://1idG3UnBH7QS85I12beGi8I5kMKLqYSEF
-
-<span class="token comment"># git add : dvc config 파일 트랙킹</span>
-$ <span class="token function">git</span> <span class="token function">add</span> .dvc/config
-
-<span class="token comment"># remote storage push</span>
-$ dvc push<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token triple-quoted-string string">"""
+        ||x|2 ** 2 + ||y||2 ** 2 - ||x-y||2 ** 2 
+cos세타 = -----------------------------------------
+                2 * ||x||2 * ||y|||2
 
 
+                    2 * &lt;x, y>
+    = -----------------------------------------
+                2 * ||x||2 * ||y||2
+                
+                
+                        &lt;x, y>
+    = -----------------------------------------
+                    ||x||2 * ||y||2					
+                    
+                        &lt;x, y>
+    = -----------------------------------------
+                    ||x||2 * ||y||2
 
+"""</span>
 
+<span class="token comment"># &lt;x, y> = 시그마 (1~d) xi * yi</span>
+                    
+<span class="token comment"># ** 이 연산을 내적(inner product)라 부른다</span>
+
+<span class="token keyword">def</span> <span class="token function">angle</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    v <span class="token operator">=</span> np<span class="token punctuation">.</span>inner<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token punctuation">(</span>l2_norm<span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">*</span> l2_norm<span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    theta <span class="token operator">=</span> np<span class="token punctuation">.</span>arccos<span class="token punctuation">(</span>v<span class="token punctuation">)</span>
+    
+    <span class="token keyword">return</span> theta<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -398,7 +495,7 @@ $ dvc push<span aria-hidden="true" class="line-numbers-rows"><span></span><span>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">Gyuwon Hong</a>
+                    <a href="/about" rel="external nofollow noreferrer">Keyhong</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -408,7 +505,7 @@ $ dvc push<span aria-hidden="true" class="line-numbers-rows"><span></span><span>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/01/06/MLOps/dvc/">http://example.com/2024/01/06/MLOps/dvc/</a>
+                    <a href="http://example.com/2024/01/01/MLOps/vector/">http://example.com/2024/01/01/MLOps/vector/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -421,14 +518,14 @@ $ dvc push<span aria-hidden="true" class="line-numbers-rows"><span></span><span>
                     use
                     <a href="cc_by_url" rel="external nofollow noreferrer" target="_blank">cc_by_name</a>
                     licensed
-                    <a href="/about" target="_blank">Gyuwon Hong</a>
+                    <a href="/about" target="_blank">Keyhong</a>
                     !
                 </span>
             </div> -->
         
     </div>
 
-    <script async defer>
+    <!-- <script async defer>
       document.addEventListener("copy", function (e) {
         let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
         M.toast({html: toastHTML})
@@ -437,7 +534,7 @@ $ dvc push<span aria-hidden="true" class="line-numbers-rows"><span></span><span>
       function navToReprintStatement() {
         $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
       }
-    </script>
+    </script> -->
 
 
 
@@ -445,7 +542,11 @@ $ dvc push<span aria-hidden="true" class="line-numbers-rows"><span></span><span>
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
+                            
+                                <a href="/tags/Vector/">
+                                    <span class="chip bg-color">Vector</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -515,7 +616,7 @@ $ dvc push<span aria-hidden="true" class="line-numbers-rows"><span></span><span>
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Sat Jan 06 2024 18:57:30 GMT+0900',
+    id: 'Mon Jan 01 2024 22:59:44 GMT+0900',
     owner: '',
     repo: '',
     oauth: {
@@ -550,13 +651,13 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/06/MLOps/vector/">
+                <a href="/2024/01/01/MLOps/dvc/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="[MLOps] DVC">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title diy-neon-red">[MLOps] DVC</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -567,15 +668,27 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-06
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Gyuwon Hong
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/MLOps/" class="post-category">
+                                    MLOps
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/MLOps/">
+                        <span class="chip bg-color">MLOps</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -587,32 +700,43 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/06/HBase/hbase/">
+                <a href="/2024/01/01/PySpark/pyspark-jvm-py4j/">
                     <div class="card-image">
                         
+                        <img src="/images/logos/pyspark-logo.png" class="responsive-img" alt="[PySpark] pyspark jvm py4j">
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title"></span>
+                        <span class="card-title diy-neon-red">[PySpark] pyspark jvm py4j</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            이것은 Summary
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Gyuwon Hong
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/PySpark/" class="post-category">
+                                    PySpark
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/PySpark/">
+                        <span class="chip bg-color">PySpark</span>
+                    </a>
+                    
                 </div>
                 
             </div>

@@ -236,7 +236,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title" style="text-shadow: 0 0 5px black, 0 0 10px black, 0 0 20px #DB4455, 0 0 30px #DB4455, 0 0 40px #DB4455, 0 0 55px #DB4455, 0 0 75px #DB4455;">
+                    <h1 class="description center-align post-title diy-neon-red">
                         [Docker] Container</h1>
                 </div>
             </div>
@@ -322,8 +322,7 @@
 </ul>
 </li>
 </ul>
-<!-- .. image:: https://github.com/keyhong/daily-study/blob/master/Docker/images/docker-env.png 
-  :width: 600 -->
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219889&authkey=%21AL93oF8oDVdAWiY&width=785&height=419" width="785" height="419" />
 
 
 <h2 id="컨테이너의-상태"><a href="#컨테이너의-상태" class="headerlink" title="컨테이너의 상태"></a>컨테이너의 상태</h2><ul>
@@ -339,7 +338,7 @@
 <h2 id="Docker-Container-Command"><a href="#Docker-Container-Command" class="headerlink" title="Docker Container Command"></a>Docker Container Command</h2><ul>
 <li>컨테이너 실행</li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> container run <span class="token operator">&lt;</span>이미지<span class="token operator">></span>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> container run <span class="token operator">&lt;</span>이미지<span class="token operator">></span>
     -d, <span class="token parameter variable">--detach</span>  <span class="token builtin class-name">:</span> 컨테이너를 백그라운드에서 실행, 컨테이너 ID 출력
     -p, <span class="token parameter variable">--publish</span> <span class="token builtin class-name">:</span> 컨테이너의 포트를 호스트 컴퓨터에 공개
     -n, <span class="token parameter variable">--name</span>    <span class="token builtin class-name">:</span> 컨테이너 ID 뿐 아니라, 사용자가 명명한 컨테이너의 이름으로 컨테이너 실행
@@ -348,43 +347,43 @@
 <ul>
 <li>컨테이너 실행 후 터미널 연결</li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> container run <span class="token parameter variable">--interactive</span> <span class="token parameter variable">--tty</span> <span class="token operator">&lt;</span>이미지<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> container run <span class="token parameter variable">--interactive</span> <span class="token parameter variable">--tty</span> <span class="token operator">&lt;</span>이미지<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
 <li>컨테이너 리스트 보기</li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> container <span class="token function">ls</span>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> container <span class="token function">ls</span>
     -a, <span class="token parameter variable">-all</span>    <span class="token builtin class-name">:</span> 모든 컨테이너 보기
     -q, <span class="token parameter variable">--quiet</span> <span class="token builtin class-name">:</span> 컨테이너 ID만 표시<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>대상 컨테이너에서 실행중인 프로세스 보기</li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> container <span class="token function">top</span> <span class="token operator">&lt;</span>컨테이너 ID의 일부<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> container <span class="token function">top</span> <span class="token operator">&lt;</span>컨테이너 ID의 일부<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
 <li>대상 컨테이너에서 수집된 모든 로그 보기</li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> container logs <span class="token operator">&lt;</span>컨테이너 ID의 일부<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> container logs <span class="token operator">&lt;</span>컨테이너 ID의 일부<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
 <li>대상 컨테이너의 상세한 정보 보기</li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> container inspect <span class="token function">ls</span> <span class="token operator">&lt;</span>컨테이너의 ID의 일부<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> container inspect <span class="token function">ls</span> <span class="token operator">&lt;</span>컨테이너의 ID의 일부<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
 <li>실행중인 컨테이너의 상태(CPU, 메모리, 네트워크, 디스크 사용량)</li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> container stats <span class="token operator">&lt;</span>컨테이너의 ID의 일부<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> container stats <span class="token operator">&lt;</span>컨테이너의 ID의 일부<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
 <li>컨테이너 삭제</li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> container <span class="token function">rm</span> <span class="token operator">&lt;</span>컨테이너 ID 또는 컨테이너명<span class="token operator">></span>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> container <span class="token function">rm</span> <span class="token operator">&lt;</span>컨테이너 ID 또는 컨테이너명<span class="token operator">></span>
     -f, <span class="token parameter variable">--force</span> <span class="token builtin class-name">:</span> 실행중인 컨테이너도 강제 삭제
 
 <span class="token comment"># 활용 : 모든 컨테이너 삭제</span>
-<span class="token function">docker</span> container <span class="token function">rm</span> <span class="token parameter variable">-f</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">docker</span> container <span class="token function">ls</span> <span class="token parameter variable">-aq</span><span class="token variable">)</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+$ <span class="token function">docker</span> container <span class="token function">rm</span> <span class="token parameter variable">-f</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">docker</span> container <span class="token function">ls</span> <span class="token parameter variable">-aq</span><span class="token variable">)</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -430,7 +429,7 @@
         
     </div>
 
-    <script async defer>
+    <!-- <script async defer>
       document.addEventListener("copy", function (e) {
         let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
         M.toast({html: toastHTML})
@@ -439,7 +438,7 @@
       function navToReprintStatement() {
         $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
       }
-    </script>
+    </script> -->
 
 
 
@@ -561,7 +560,7 @@ gitment.render('gitment-content');
                         
                         <img src="/images/logos/docker-logo.png" class="responsive-img" alt="[Docker] Concept">
                         
-                        <span class="card-title">[Docker] Concept</span>
+                        <span class="card-title diy-neon-red">[Docker] Concept</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -609,7 +608,7 @@ gitment.render('gitment-content');
                         
                         <img src="/images/logos/docker-logo.png" class="responsive-img" alt="[Docker] Container Command">
                         
-                        <span class="card-title">[Docker] Container Command</span>
+                        <span class="card-title diy-neon-red">[Docker] Container Command</span>
                     </div>
                 </a>
                 <div class="card-content article-content">

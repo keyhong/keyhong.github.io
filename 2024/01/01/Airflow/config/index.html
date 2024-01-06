@@ -235,7 +235,7 @@ Airflow Config에어플로우를 사용하며, Excutor별로 중요하고 유용
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title" style="text-shadow: 0 0 5px black, 0 0 10px black, 0 0 20px #DB4455, 0 0 30px #DB4455, 0 0 40px #DB4455, 0 0 55px #DB4455, 0 0 75px #DB4455;">
+                    <h1 class="description center-align post-title diy-neon-red">
                         [Airflow] Config</h1>
                 </div>
             </div>
@@ -317,51 +317,50 @@ Airflow Config에어플로우를 사용하며, Excutor별로 중요하고 유용
 <li><p>dag 또는 task 별 옵션을 변경하려면, 해당 객체의 Context에 key : value 로 값을 지정할 수 있습니다.</p>
 </li>
 </ul>
-<h2 id="공통"><a href="#공통" class="headerlink" title="공통"></a>공통</h2><pre class="line-numbers language-conf" data-language="conf"><code class="language-conf"># Airflow Pipeline이 있는 폴더. 절대경로로 지정
-dags_folder &#x3D; &#123;AIRFLOW_HOME&#125;&#x2F;dags
+<h2 id="Common"><a href="#Common" class="headerlink" title="Common"></a>Common</h2><pre class="line-numbers language-ini" data-language="ini"><div class="caption"><span>airflow.cfg</span></div><code class="language-ini"><span class="token comment"># Airflow Pipeline이 있는 폴더. 절대경로로 지정</span>
+<span class="token key attr-name">dags_folder</span> <span class="token punctuation">=</span> <span class="token value attr-value">&#123;AIRFLOW_HOME&#125;/dags</span>
 
-# Airflow에서 사용할 Executor Class. 다음 중 선택 가능
-# SequentialExecutor, LocalExecutor, CeleryExecutor, DaskExecutor, KubernetesExecutor, CeleryKubernetesExecutor, custom executor
-executor &#x3D; SequentialExecutor
+<span class="token comment"># Airflow에서 사용할 Executor Class. 다음 중 선택 가능</span>
+<span class="token comment"># SequentialExecutor, LocalExecutor, CeleryExecutor, DaskExecutor, KubernetesExecutor, CeleryKubernetesExecutor, custom executor</span>
+<span class="token key attr-name">executor</span> <span class="token punctuation">=</span> <span class="token value attr-value">SequentialExecutor</span>
 
-# 메타데이터 DBMS에 대한 SqlAlchemy 연결 문자열
-# 참조 : https:&#x2F;&#x2F;airflow.apache.org&#x2F;docs&#x2F;apache-airflow&#x2F;stable&#x2F;howto&#x2F;set-up-database.html#database-uri)
-sql_alchemy_conn &#x3D; sqlite:&#x2F;&#x2F;&#x2F;&#123;AIRFLOW_HOME&#125;&#x2F;airflow.db
+<span class="token comment"># 메타데이터 DBMS에 대한 SqlAlchemy 연결 문자열</span>
+<span class="token comment"># 참조 : https://airflow.apache.org/docs/apache-airflow/stable/howto/set-up-database.html#database-uri)</span>
+<span class="token key attr-name">sql_alchemy_conn</span> <span class="token punctuation">=</span> <span class="token value attr-value">sqlite:///&#123;AIRFLOW_HOME&#125;/airflow.db</span>
 
-# Airflow에서 제공되는 DAG 예제 로드 여부 (default가 True이기에, 프로덕션 환경에서는 False 설정 필요)
-load_examples &#x3D; True
+<span class="token comment"># Airflow에서 제공되는 DAG 예제 로드 여부 (default가 True이기에, 프로덕션 환경에서는 False 설정 필요)</span>
+<span class="token key attr-name">load_examples</span> <span class="token punctuation">=</span> <span class="token value attr-value">True</span>
 
-# Airlfow Web UI 포트 변경 (기본 8080이지만, 다른 플랫폼들도 웹 서버 포트로 8080을 쓰기에 변경시 필요)
-web_server_port &#x3D; 8080
+<span class="token comment"># Airlfow Web UI 포트 변경 (기본 8080이지만, 다른 플랫폼들도 웹 서버 포트로 8080을 쓰기에 변경시 필요)</span>
+<span class="token key attr-name">web_server_port</span> <span class="token punctuation">=</span> <span class="token value attr-value">8080</span>
 
-# 서버에서 제공된 시간이 naive object (timezone이 없는 datetime 객체) 일 때, 기본 timezone 설정 (한국시간 &#x3D; utc + 9). airflow upgradedb 로 재시작 
-# 1. 해당 설정을 하더라도 dag 파일 내에서는 aware datetime objects를 사용 (에러 발생 가능성 방지 목적)
-# 2. (start, end) date의 Timezone만 변경할 뿐, logical_date는 UTC 기준으로 실행된다 (주의 사항)
-default_timezone &#x3D; utc
+<span class="token comment"># 서버에서 제공된 시간이 naive object (timezone이 없는 datetime 객체) 일 때, 기본 timezone 설정 (한국시간 = utc + 9). airflow upgradedb 로 재시작 </span>
+<span class="token comment"># 1. 해당 설정을 하더라도 dag 파일 내에서는 aware datetime objects를 사용 (에러 발생 가능성 방지 목적)</span>
+<span class="token comment"># 2. (start, end) date의 Timezone만 변경할 뿐, logical_date는 UTC 기준으로 실행된다 (주의 사항)</span>
+<span class="token key attr-name">default_timezone</span> <span class="token punctuation">=</span> <span class="token value attr-value">utc</span>
 
-# 스케줄러당 동시에 실행할 수 있는 최대 작업 인스턴스 수 
-# 클러스터 구성이라면 클러스터 전체에서 최대 작업 가능 수 (worker와 연관). 작업 수행에 사용할 리소스를 제어
-parallelism &#x3D; 32
+<span class="token comment"># 스케줄러당 동시에 실행할 수 있는 최대 작업 인스턴스 수 </span>
+<span class="token comment"># 클러스터 구성이라면 클러스터 전체에서 최대 작업 가능 수 (worker와 연관). 작업 수행에 사용할 리소스를 제어</span>
+<span class="token key attr-name">parallelism</span> <span class="token punctuation">=</span> <span class="token value attr-value">32</span>
 
-# 각 DAG에서 동시에 실행할 수 있는 최대 작업 인스턴스 수
-max_active_tasks_per_dag &#x3D; 16
+<span class="token comment"># 각 DAG에서 동시에 실행할 수 있는 최대 작업 인스턴스 수</span>
+<span class="token key attr-name">max_active_tasks_per_dag</span> <span class="token punctuation">=</span> <span class="token value attr-value">16</span>
 
-# 로그 파일을 저장하는 폴더. 절대경로로 지정
-base_log_folder &#x3D; &#123;AIRFLOW_HOME&#125;&#x2F;logs
+<span class="token comment"># 로그 파일을 저장하는 폴더. 절대경로로 지정</span>
+<span class="token key attr-name">base_log_folder</span> <span class="token punctuation">=</span> <span class="token value attr-value">&#123;AIRFLOW_HOME&#125;/logs</span>
 
-# Logging level 설정 : CRITICAL, ERROR, WARNING, INFO, DEBUG
-logging_level &#x3D; INFO
+<span class="token comment"># Logging level 설정 : CRITICAL, ERROR, WARNING, INFO, DEBUG</span>
+<span class="token key attr-name">logging_level</span> <span class="token punctuation">=</span> <span class="token value attr-value">INFO</span>
 
-# 저장되는 로그 파일의 이름 템플릿
-log_filename_template &#x3D; dag_id&#x3D;&#123;&#123;&#123;&#123; ti.dag_id &#125;&#125;&#125;&#125;&#x2F;run_id&#x3D;&#123;&#123;&#123;&#123; ti.run_id &#125;&#125;&#125;&#125;&#x2F;task_id&#x3D;&#123;&#123;&#123;&#123; ti.task_id &#125;&#125;&#125;&#125;&#x2F;&#123;&#123;%% if ti.map_index &gt;&#x3D; 0 %%&#125;&#125;map_index&#x3D;&#123;&#123;&#123;&#123; ti.map_index &#125;&#125;&#125;&#125;&#x2F;&#123;&#123;%% endif %%&#125;&#125;attempt&#x3D;&#123;&#123;&#123;&#123; try_number &#125;&#125;&#125;&#125;.log<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment"># 저장되는 로그 파일의 이름 템플릿</span>
+<span class="token key attr-name">log_filename_template</span> <span class="token punctuation">=</span> <span class="token value attr-value">dag_id=&#123;&#123;&#123;&#123; ti.dag_id &#125;&#125;&#125;&#125;/run_id=&#123;&#123;&#123;&#123; ti.run_id &#125;&#125;&#125;&#125;/task_id=&#123;&#123;&#123;&#123; ti.task_id &#125;&#125;&#125;&#125;/&#123;&#123;%% if ti.map_index >= 0 %%&#125;&#125;map_index=&#123;&#123;&#123;&#123; ti.map_index &#125;&#125;&#125;&#125;/&#123;&#123;%% endif %%&#125;&#125;attempt=&#123;&#123;&#123;&#123; try_number &#125;&#125;&#125;&#125;.log</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="Local-Executor"><a href="#Local-Executor" class="headerlink" title="Local Executor"></a>Local Executor</h2><pre class="line-numbers language-conf" data-language="conf"><code class="language-conf">
-# 스케줄러당 동시에 실행할 수 있는 최대 작업 인스턴스 수 
-# 클러스터 구성이라면 클러스터 전체에서 최대 작업 가능 수 (worker와 연관). 작업 수행에 사용할 리소스를 제어
-parallelism &#x3D; 32
+<h2 id="Local-Executor"><a href="#Local-Executor" class="headerlink" title="Local Executor"></a>Local Executor</h2><pre class="line-numbers language-ini" data-language="ini"><div class="caption"><span>airflow.cfg</span></div><code class="language-ini"><span class="token comment"># 스케줄러당 동시에 실행할 수 있는 최대 작업 인스턴스 수 </span>
+<span class="token comment"># 클러스터 구성이라면 클러스터 전체에서 최대 작업 가능 수 (worker와 연관). 작업 수행에 사용할 리소스를 제어</span>
+<span class="token key attr-name">parallelism</span> <span class="token punctuation">=</span> <span class="token value attr-value">32</span>
 
-# 각 DAG에서 동시에 실행할 수 있는 최대 작업 인스턴스 수
-max_active_tasks_per_dag &#x3D; 16<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment"># 각 DAG에서 동시에 실행할 수 있는 최대 작업 인스턴스 수</span>
+<span class="token key attr-name">max_active_tasks_per_dag</span> <span class="token punctuation">=</span> <span class="token value attr-value">16</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -407,7 +406,7 @@ max_active_tasks_per_dag &#x3D; 16<span aria-hidden="true" class="line-numbers-r
         
     </div>
 
-    <script async defer>
+    <!-- <script async defer>
       document.addEventListener("copy", function (e) {
         let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
         M.toast({html: toastHTML})
@@ -416,7 +415,7 @@ max_active_tasks_per_dag &#x3D; 16<span aria-hidden="true" class="line-numbers-r
       function navToReprintStatement() {
         $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
       }
-    </script>
+    </script> -->
 
 
 
@@ -533,12 +532,12 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/01/Airflow/concept/">
+                <a href="/2024/01/01/Airflow/components/">
                     <div class="card-image">
                         
                         <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] Concept">
                         
-                        <span class="card-title">[Airflow] Concept</span>
+                        <span class="card-title diy-neon-red">[Airflow] Concept</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -586,7 +585,7 @@ gitment.render('gitment-content');
                         
                         <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] Docker Installation">
                         
-                        <span class="card-title">[Airflow] Docker Installation</span>
+                        <span class="card-title diy-neon-red">[Airflow] Docker Installation</span>
                     </div>
                 </a>
                 <div class="card-content article-content">

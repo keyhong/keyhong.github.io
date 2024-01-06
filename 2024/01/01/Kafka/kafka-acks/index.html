@@ -5,12 +5,16 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="[Kafka] Acks, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Kafka Acks출처 : Kafka 운영자가 말하는 Producer ACKS
-Acks(acknowledgments)
+    <meta name="description" content="Kafka AcksAcks(acknowledgments)
 프로듀서가 메시지를 보내고 그 메시지를 카프카가 잘 받았는지 확인하는 옵션
 
 
-프로듀서가 사용하는">
+프로듀서가 사용하는 옵션
+
+카프카의 성능을 좌우하는 중요 옵션
+
+
+Acks 종류">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -237,7 +241,7 @@ Acks(acknowledgments)
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title" style="text-shadow: 0 0 5px black, 0 0 10px black, 0 0 20px #DB4455, 0 0 30px #DB4455, 0 0 40px #DB4455, 0 0 55px #DB4455, 0 0 75px #DB4455;">
+                    <h1 class="description center-align post-title diy-neon-red">
                         [Kafka] Acks</h1>
                 </div>
             </div>
@@ -311,8 +315,7 @@ Acks(acknowledgments)
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Kafka-Acks"><a href="#Kafka-Acks" class="headerlink" title="Kafka Acks"></a>Kafka Acks</h1><p>출처 : <a target="_blank" rel="noopener" href="https://www.popit.kr/kafka-%EC%9A%B4%EC%98%81%EC%9E%90%EA%B0%80-%EB%A7%90%ED%95%98%EB%8A%94-producer-acks/">Kafka 운영자가 말하는 Producer ACKS</a></p>
-<h2 id="Acks-acknowledgments"><a href="#Acks-acknowledgments" class="headerlink" title="Acks(acknowledgments)"></a>Acks(acknowledgments)</h2><blockquote>
+                <h1 id="Kafka-Acks"><a href="#Kafka-Acks" class="headerlink" title="Kafka Acks"></a>Kafka Acks</h1><h2 id="Acks-acknowledgments"><a href="#Acks-acknowledgments" class="headerlink" title="Acks(acknowledgments)"></a>Acks(acknowledgments)</h2><blockquote>
 <p>프로듀서가 메시지를 보내고 그 메시지를 카프카가 잘 받았는지 확인하는 옵션</p>
 </blockquote>
 <ul>
@@ -330,7 +333,8 @@ Acks(acknowledgments)
 <li><p>처리속도 빠름</p>
 </li>
 </ul>
-<p>.. image:: <a target="_blank" rel="noopener" href="https://github.com/keyhong/daily-study/blob/master/Kafka/images/Kafka-Acks0.JPG">https://github.com/keyhong/daily-study/blob/master/Kafka/images/Kafka-Acks0.JPG</a><br>  :width: 600</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219922&authkey=%21ALdhpDYMwUC5i30&width=660" width="660" height="auto" />
+
 <h4 id="acks-1"><a href="#acks-1" class="headerlink" title="acks&#x3D;1"></a>acks&#x3D;1</h4><blockquote>
 <p>프로듀서는 자신이 보낸 메세지에 대해 브로커의 leader로부터 leader의 수신 확인 메세지만 기다림. follower의 수신 확인은 검토하지 않음</p>
 </blockquote>
@@ -342,8 +346,7 @@ Acks(acknowledgments)
 <li><p>처리속도 중간</p>
 </li>
 </ul>
-<!-- .. image:: https://github.com/keyhong/daily-study/blob/master/Kafka/images/Kafka-Acks1.JPG
-  :width: 600 -->
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219923&authkey=%21AA9C81YOs0oy5p4&width=660" width="660" height="auto" />
 
 <h4 id="acks-all-1"><a href="#acks-all-1" class="headerlink" title="acks&#x3D;all(-1)"></a>acks&#x3D;all(-1)</h4><blockquote>
 <p>프로듀서는 자신이 보낸 메세지에 대해 브로커의 leader로부터 leader와 follower의 수신이 모두 되었다는 확인 메세지를 기다림</p>
@@ -354,8 +357,7 @@ Acks(acknowledgments)
 <li><p>처리속도 느림</p>
 </li>
 </ul>
-<!-- .. image:: https://github.com/keyhong/daily-study/blob/master/Kafka/images/Kafka-AcksAll.JPG
-  :width: 600 -->
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219924&authkey=%21AI2Ds6LiV3BB6vQ&width=660" width="660" height="auto" />
 
 
 <h2 id="ISR-In-Sync-Replica"><a href="#ISR-In-Sync-Replica" class="headerlink" title="ISR(In Sync Replica)"></a>ISR(In Sync Replica)</h2><blockquote>
@@ -368,6 +370,9 @@ Acks(acknowledgments)
 </li>
 <li><p>RF(Replication Factor)로 설정된 broker 개수 내에서 ISR 설정에 따라, leader가 consumer에게 메시지 수신 확인 통신을 보낼 지 결정 (acks&#x3D;-1 일 때)</p>
 </li>
+</ul>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li>출처 : <a target="_blank" rel="noopener" href="https://www.popit.kr/kafka-%EC%9A%B4%EC%98%81%EC%9E%90%EA%B0%80-%EB%A7%90%ED%95%98%EB%8A%94-producer-acks/">Kafka 운영자가 말하는 Producer ACKS</a></li>
 </ul>
 
                 
@@ -415,7 +420,7 @@ Acks(acknowledgments)
         
     </div>
 
-    <script async defer>
+    <!-- <script async defer>
       document.addEventListener("copy", function (e) {
         let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
         M.toast({html: toastHTML})
@@ -424,7 +429,7 @@ Acks(acknowledgments)
       function navToReprintStatement() {
         $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
       }
-    </script>
+    </script> -->
 
 
 
@@ -541,12 +546,12 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/01/Kafka/kafka-cleanup-policy/">
+                <a href="/2024/01/01/Hive/hiveql-tip/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Cleanup Policy">
+                        <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] HiveQL Tip">
                         
-                        <span class="card-title">[Kafka] Cleanup Policy</span>
+                        <span class="card-title diy-neon-red">[Hive] HiveQL Tip</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -563,8 +568,8 @@ gitment.render('gitment-content');
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Kafka/" class="post-category">
-                                    Kafka
+                            <a href="/categories/Hive/" class="post-category">
+                                    Hive
                                 </a>
                             
                             
@@ -574,8 +579,8 @@ gitment.render('gitment-content');
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Kafka/">
-                        <span class="chip bg-color">Kafka</span>
+                    <a href="/tags/Hive/">
+                        <span class="chip bg-color">Hive</span>
                     </a>
                     
                 </div>
@@ -589,12 +594,12 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/01/Kafka/kafka-console-consumer-command/">
+                <a href="/2024/01/01/Kafka/kafka-cleanup-policy/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-console-consumer Command">
+                        <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Cleanup Policy">
                         
-                        <span class="card-title">[Kafka] kafka-console-consumer Command</span>
+                        <span class="card-title diy-neon-red">[Kafka] Cleanup Policy</span>
                     </div>
                 </a>
                 <div class="card-content article-content">

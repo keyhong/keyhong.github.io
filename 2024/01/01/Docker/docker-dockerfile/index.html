@@ -235,7 +235,7 @@ Dockerfile 작성하기도커 컨테이너에도 ">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title" style="text-shadow: 0 0 5px black, 0 0 10px black, 0 0 20px #DB4455, 0 0 30px #DB4455, 0 0 40px #DB4455, 0 0 55px #DB4455, 0 0 75px #DB4455;">
+                    <h1 class="description center-align post-title diy-neon-red">
                         [Docker] Dockerfile</h1>
                 </div>
             </div>
@@ -313,19 +313,17 @@ Dockerfile 작성하기도커 컨테이너에도 ">
 <p>애플리케이션을 패키징하기 위한 간단한 스크립트. 일련의 인스트럭션으로 구성, 인스트럭션을 실행한 결과로 도커 이미지 생성.</p>
 </blockquote>
 <h2 id="Dockerfile-작성하기"><a href="#Dockerfile-작성하기" class="headerlink" title="Dockerfile 작성하기"></a>Dockerfile 작성하기</h2><p>도커 컨테이너에도 단일 드라이브로 된 파일 시스템이 있음.<br>이 파일 시스템은 이미지 속 파일로부터 생성.</p>
-<h4 id="Dockerfile-예시"><a href="#Dockerfile-예시" class="headerlink" title="Dockerfile 예시"></a>Dockerfile 예시</h4><pre class="line-numbers language-text" data-language="text"><code class="language-text">Dockerfile (확장자 없음)
---------------------------------------
-FROM example/node
+<h4 id="Dockerfile-예시"><a href="#Dockerfile-예시" class="headerlink" title="Dockerfile 예시"></a>Dockerfile 예시</h4><pre class="line-numbers language-docker" data-language="docker"><code class="language-docker"><span class="token instruction"><span class="token keyword">FROM</span> example/node</span>
 
-ENV TARGET="hi, it's my example" 
-ENV FUNC="Hello"
-ENV INTERVAL="3000"
+<span class="token instruction"><span class="token keyword">ENV</span> TARGET=<span class="token string">"hi, it's my example"</span> </span>
+<span class="token instruction"><span class="token keyword">ENV</span> FUNC=<span class="token string">"Hello"</span></span>
+<span class="token instruction"><span class="token keyword">ENV</span> INTERVAL=<span class="token string">"3000"</span></span>
 
-WORKDIR /my-workspace
-COPY app.js .
+<span class="token instruction"><span class="token keyword">WORKDIR</span> /my-workspace</span>
+<span class="token instruction"><span class="token keyword">COPY</span> app.js .</span>
 
-CMD ["node", "/my-workspace/app.js"]
---------------------------------------<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token instruction"><span class="token keyword">CMD</span> [<span class="token string">"node"</span>, <span class="token string">"/my-workspace/app.js"</span>]</span>
+--------------------------------------<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li><p>FROM : 모든 이미지는 다른 이미지로부터 출발. 이 이미지의 시작점은 example&#x2F;node 이다. 이 이미지에는 my-workspace 앱을 실행하는 데 필요한 런타임인 Node.js가 설치되어 있다.</p>
@@ -339,7 +337,7 @@ CMD ["node", "/my-workspace/app.js"]
 <li><p>CMD : 이미지로부터 컨테이너를 실행했을 때, 실행할 명령을 지정하는 인스트럭션</p>
 </li>
 </ul>
-<h2 id="컨테이너-이미지-빌드하기"><a href="#컨테이너-이미지-빌드하기" class="headerlink" title="컨테이너 이미지 빌드하기"></a>컨테이너 이미지 빌드하기</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> image build <span class="token parameter variable">--tag</span> my-app <span class="token builtin class-name">.</span> 
+<h2 id="컨테이너-이미지-빌드하기"><a href="#컨테이너-이미지-빌드하기" class="headerlink" title="컨테이너 이미지 빌드하기"></a>컨테이너 이미지 빌드하기</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> image build <span class="token parameter variable">--tag</span> my-app <span class="token builtin class-name">.</span> 
 * tag <span class="token builtin class-name">:</span> 이미지의 이름
 * <span class="token builtin class-name">.</span> <span class="token builtin class-name">:</span> 컨텍스트 <span class="token punctuation">(</span>Dockerfile 및 이미지에 포함시킬 파일이 위치한 경로<span class="token punctuation">)</span>. <span class="token string">"."</span> 은 현재 작업 디렉토리를 의미.
 
@@ -390,7 +388,7 @@ CMD ["node", "/my-workspace/app.js"]
         
     </div>
 
-    <script async defer>
+    <!-- <script async defer>
       document.addEventListener("copy", function (e) {
         let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
         M.toast({html: toastHTML})
@@ -399,7 +397,7 @@ CMD ["node", "/my-workspace/app.js"]
       function navToReprintStatement() {
         $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
       }
-    </script>
+    </script> -->
 
 
 
@@ -521,7 +519,7 @@ gitment.render('gitment-content');
                         
                         <img src="/images/logos/docker-logo.png" class="responsive-img" alt="[Docker] Container Command">
                         
-                        <span class="card-title">[Docker] Container Command</span>
+                        <span class="card-title diy-neon-red">[Docker] Container Command</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -564,12 +562,12 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/01/Docker/docker-image/">
+                <a href="/2024/01/01/Docker/docker-mysql-connection/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/docker-logo.png" class="responsive-img" alt="[Docker] Image">
+                        <img src="/images/logos/docker-logo.png" class="responsive-img" alt="[Docker] docker로 mysql 사용하기">
                         
-                        <span class="card-title">[Docker] Image</span>
+                        <span class="card-title diy-neon-red">[Docker] docker로 mysql 사용하기</span>
                     </div>
                 </a>
                 <div class="card-content article-content">

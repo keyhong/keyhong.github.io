@@ -225,7 +225,7 @@
     <div class="row">
     <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
         <div class="brand">
-            <div class="title center-align diy-happy-monkey" style="text-shadow: 0 0 5px black, 0 0 10px black, 0 0 20px #39EDFF, 0 0 30px #39EDFF, 0 0 40px #39EDFF, 0 0 55px #39EDFF, 0 0 75px #39EDFF;">
+            <div class="title center-align diy-happy-monkey diy-neon-blue">
                 
                 Keyhong&#39;s Tech Blog
                 
@@ -269,30 +269,26 @@
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Python-Algorithm/brute-force/">
+                    <a href="/2024/01/01/Python-Data-Structure/priority-queue/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/algorithm-logo.png" class="responsive-img" alt="[Algorithm] Brute Force">
+                            <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Priority Queue">
                             
-                            <span class="card-title">[Algorithm] Brute Force</span>
+                            <span class="card-title diy-neon-red">[Python] Priority Queue</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Brute Force완전탐색
-장점 : 반드시 답을 찾을 수 있다
+                                Priority Queue우선순위 큐(Priority Queue) (Heap)
+삽입&#x2F;삭제 : O(logN)
 
-전부 살펴봤는 데 답이 없다면? 답이 존재하지 않는다는 사실을 알아낸 것!
+이진트리 형태
 
-
-단점 : 오래 걸린다
-
-리소스를 많이 잡아 먹는다
+최상단(root node)에 가장 큰 값이 위치 : max-heap (c++)
 
 
-trade-off
                             
                         </div>
                         <div class="publish-info">
@@ -303,8 +299,8 @@ trade-off
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Algorithm/" class="post-category">
-                                    Algorithm
+                                <a href="/categories/Python/" class="post-category">
+                                    Python
                                 </a>
                                 
                                 
@@ -315,8 +311,8 @@ trade-off
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Algorithm/">
-                            <span class="chip bg-color">Algorithm</span>
+                        <a href="/tags/Python/">
+                            <span class="chip bg-color">Python</span>
                         </a>
                         
                     </div>
@@ -328,24 +324,30 @@ trade-off
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Python-Algorithm/dfs-bfs/">
+                    <a href="/2024/01/01/Python-Data-Structure/stack-queue/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/algorithm-logo.png" class="responsive-img" alt="[Algorithm] DFS &amp; BFS">
+                            <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Stack과 Queue 알아보기">
                             
-                            <span class="card-title">[Algorithm] DFS &amp; BFS</span>
+                            <span class="card-title diy-neon-red">[Python] Stack과 Queue 알아보기</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                DFS &amp; BFS깊이 우선 탐색(Depth First Search)
-큐를 사용해서 구현한다.
+                                Stack
+삽입&#x2F;삭제 : O(1)
 
-인접행렬로 구현adj = [ [0]*N for _ in range(N) ]
+FILO(First In, Last Out)
 
-adj[0][1] = adj[0][7
+
+s = []
+s.append(123)
+s.append(456)
+s.append(789)
+
+print('size:', len
                             
                         </div>
                         <div class="publish-info">
@@ -356,8 +358,8 @@ adj[0][1] = adj[0][7
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Algorithm/" class="post-category">
-                                    Algorithm
+                                <a href="/categories/Python/" class="post-category">
+                                    Python
                                 </a>
                                 
                                 
@@ -368,8 +370,8 @@ adj[0][1] = adj[0][7
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Algorithm/">
-                            <span class="chip bg-color">Algorithm</span>
+                        <a href="/tags/Python/">
+                            <span class="chip bg-color">Python</span>
                         </a>
                         
                     </div>
@@ -381,26 +383,22 @@ adj[0][1] = adj[0][7
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Python-Algorithm/graph/">
+                    <a href="/2024/01/01/Python-Data-Structure/time-complexity/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/algorithm-logo.png" class="responsive-img" alt="[Algorithm] Graph">
+                            <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] 시간복잡도">
                             
-                            <span class="card-title">[Algorithm] Graph</span>
+                            <span class="card-title diy-neon-red">[Python] 시간복잡도</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Graph그래프(Graph)
-지도, 내비게이션, SNS&#x2F;메신저, VCS(Version Control System)
+                                Time-Complexity자료구조와 알고리즘 성능
+가상컴퓨터(Virtual Machine) + 가상언어(Pseudo Language) + 가상코드(Pseudo Code)
 
-Vertex(&#x3D;node)와 Edge 구성 
-
-종류
-
-무방향 그래프: 방향이 없음(
+.. image:: https://gith
                             
                         </div>
                         <div class="publish-info">
@@ -411,8 +409,8 @@ Vertex(&#x3D;node)와 Edge 구성
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Algorithm/" class="post-category">
-                                    Algorithm
+                                <a href="/categories/Python/" class="post-category">
+                                    Python
                                 </a>
                                 
                                 
@@ -423,8 +421,8 @@ Vertex(&#x3D;node)와 Edge 구성
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Algorithm/">
-                            <span class="chip bg-color">Algorithm</span>
+                        <a href="/tags/Python/">
+                            <span class="chip bg-color">Python</span>
                         </a>
                         
                     </div>
@@ -436,24 +434,30 @@ Vertex(&#x3D;node)와 Edge 구성
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Python-Algorithm/greedy-algorithm/">
+                    <a href="/2024/01/01/Python-Data-Structure/vecotr/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/algorithm-logo.png" class="responsive-img" alt="[Algorithm] Greedy Algorithm">
+                            <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Vecotr">
                             
-                            <span class="card-title">[Algorithm] Greedy Algorithm</span>
+                            <span class="card-title diy-neon-red">[Python] Vecotr</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Greedy Algorithm탐욕법(Greedy Algorithm)
-매 순간 마다 최선의 경우만 골라가는 방법
+                                Vecotr벡터(Vecotr)
+삽입&#x2F;삭제 : O(N)
 
-다른 경우를 고려하지 않는다. 나중은 생각하지 않는다
+탐색 : O(1)
 
-모든 경우를 다 보지 않으니 완전탐색보다 빠르다
+동적 배열 (size 변경가능)
+
+
+# python
+v = []
+v.append((123, 456))
+v.append((789, 9
                             
                         </div>
                         <div class="publish-info">
@@ -464,8 +468,8 @@ Vertex(&#x3D;node)와 Edge 구성
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Algorithm/" class="post-category">
-                                    Algorithm
+                                <a href="/categories/Python/" class="post-category">
+                                    Python
                                 </a>
                                 
                                 
@@ -476,213 +480,8 @@ Vertex(&#x3D;node)와 Edge 구성
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Algorithm/">
-                            <span class="chip bg-color">Algorithm</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/01/01/SQL/inline-view/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/sql-logo.png" class="responsive-img" alt="[SQL] Inline View">
-                            
-                            <span class="card-title">[SQL] Inline View</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                PostgreSQL Inline View인라인뷰(Inline View)
-서브쿼리가 FROM 절 안에서 사용되는 경우, 해당 서브쿼리를 ‘인라인뷰’라고 말함
-
-래터럴 인라인뷰(Lateral Inline View)
-인라
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/SQL/" class="post-category">
-                                    SQL
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/SQL/">
-                            <span class="chip bg-color">SQL</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/01/01/SQL/join/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/sql-logo.png" class="responsive-img" alt="[SQL] Join">
-                            
-                            <span class="card-title">[SQL] Join</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                PostgreSQL Join조인(Join)
-두 개의 테이블을 특정 기준 컬럼으로 결합하는 일
-
-조인 시, Tip
-Outer Table의 결과 집합이 작아야 한다 (Left join의 왼쪽 편에 있는 데이터의 size
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/SQL/" class="post-category">
-                                    SQL
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/SQL/">
-                            <span class="chip bg-color">SQL</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/01/01/SQL/physics-modeling/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/sql-logo.png" class="responsive-img" alt="[SQL] Physics-Modeling">
-                            
-                            <span class="card-title">[SQL] Physics-Modeling</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                Physics-Modeling인덱스(Index)index range scan, index full scan &#x3D;&gt; single block I&#x2F;O~ &#x3D;&gt; multi block I&#
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/SQL/" class="post-category">
-                                    SQL
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/SQL/">
-                            <span class="chip bg-color">SQL</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/01/01/SQL/union/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/sql-logo.png" class="responsive-img" alt="[SQL] Union">
-                            
-                            <span class="card-title">[SQL] Union</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                출처 : UNION 연산 , UNION ALL 연산
-UNION
-SELECT 문들의 결과 집합을 단일 결과 집합으로 결합하며 결합 시 중복된 데이터는 제거
-
-
-두 개의 SELECT문 간 컬럼의 개수는 동일 (컬럼 개수
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/SQL/" class="post-category">
-                                    SQL
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/SQL/">
-                            <span class="chip bg-color">SQL</span>
+                        <a href="/tags/Python/">
+                            <span class="chip bg-color">Python</span>
                         </a>
                         
                     </div>
@@ -699,7 +498,7 @@ SELECT 문들의 결과 집합을 단일 결과 집합으로 결합하며 결합
                             
                             <img src="/images/logos/scala-logo.png" class="responsive-img" alt="[Scala] Unboxing">
                             
-                            <span class="card-title">[Scala] Unboxing</span>
+                            <span class="card-title diy-neon-red">[Scala] Unboxing</span>
                         </div>
                     </a>
 
@@ -752,7 +551,7 @@ Scala에서 Int와 같은 타입을 자동으로 Ja
                             
                             <img src="/images/logos/scala-logo.png" class="responsive-img" alt="[Scala] Concept">
                             
-                            <span class="card-title">[Scala] Concept</span>
+                            <span class="card-title diy-neon-red">[Scala] Concept</span>
                         </div>
                     </a>
 
@@ -790,6 +589,211 @@ JVM 위에서 동작하는 JVML(Java
                         
                         <a href="/tags/Scala/">
                             <span class="chip bg-color">Scala</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/01/01/SQL/join/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/sql-logo.png" class="responsive-img" alt="[SQL] Join">
+                            
+                            <span class="card-title diy-neon-red">[SQL] Join</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                PostgreSQL Join조인(Join)
+두 개의 테이블을 특정 기준 컬럼으로 결합하는 일
+
+조인 시, Tip
+Outer Table의 결과 집합이 작아야 한다 (Left join의 왼쪽 편에 있는 데이터의 size
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/SQL/" class="post-category">
+                                    SQL
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/SQL/">
+                            <span class="chip bg-color">SQL</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/01/01/SQL/inline-view/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/sql-logo.png" class="responsive-img" alt="[SQL] Inline View">
+                            
+                            <span class="card-title diy-neon-red">[SQL] Inline View</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                PostgreSQL Inline View인라인뷰(Inline View)
+서브쿼리가 FROM 절 안에서 사용되는 경우, 해당 서브쿼리를 ‘인라인뷰’라고 말함
+
+래터럴 인라인뷰(Lateral Inline View)
+인라
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/SQL/" class="post-category">
+                                    SQL
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/SQL/">
+                            <span class="chip bg-color">SQL</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/01/01/SQL/union/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/sql-logo.png" class="responsive-img" alt="[SQL] Union">
+                            
+                            <span class="card-title diy-neon-red">[SQL] Union</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                출처 : UNION 연산 , UNION ALL 연산
+UNION
+SELECT 문들의 결과 집합을 단일 결과 집합으로 결합하며 결합 시 중복된 데이터는 제거
+
+
+두 개의 SELECT문 간 컬럼의 개수는 동일 (컬럼 개수
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/SQL/" class="post-category">
+                                    SQL
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/SQL/">
+                            <span class="chip bg-color">SQL</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/01/01/SQL/physics-modeling/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/sql-logo.png" class="responsive-img" alt="[SQL] Physics-Modeling">
+                            
+                            <span class="card-title diy-neon-red">[SQL] Physics-Modeling</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                Physics-Modeling인덱스(Index)index range scan, index full scan &#x3D;&gt; single block I&#x2F;O~ &#x3D;&gt; multi block I&#
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/SQL/" class="post-category">
+                                    SQL
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/SQL/">
+                            <span class="chip bg-color">SQL</span>
                         </a>
                         
                     </div>

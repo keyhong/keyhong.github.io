@@ -4,18 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Vector벡터가 뭔가요?벡터는 숫자를 원소로 가지는 리스트(list) 또는 배열(array)
-# 열 벡터	
-    1
-x = 7
-    2
-
-# 행 벡터	
-Xt = [1, 7, 2]
-
-# 행 벡터 생성
-x = [1">
+    <meta name="keywords" content="[HBase] Not Complete, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="
+SerDe : 데이터 소스에서 HDFS로의 Serializer&amp;#x2F;Deserialize의 약자빌드된 SerDe : Avro, ORC, RegEx, Thrift, Parquet, CSV, Json 등압축을 통해">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -27,7 +18,7 @@ x = [1">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Keyhong</title>
+    <title>[HBase] Not Complete | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -237,13 +228,13 @@ x = [1">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title" style="text-shadow: 0 0 5px black, 0 0 10px black, 0 0 20px #DB4455, 0 0 30px #DB4455, 0 0 40px #DB4455, 0 0 55px #DB4455, 0 0 75px #DB4455;">
-                        </h1>
+                    <h1 class="description center-align post-title diy-neon-red">
+                        [HBase] Not Complete</h1>
                 </div>
             </div>
         </div>
@@ -265,12 +256,25 @@ x = [1">
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/HBase/">
+                                <span class="chip bg-color">HBase</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/HBase/" class="post-category">
+                                HBase
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -279,7 +283,7 @@ x = [1">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2024-01-06
+                    2024-01-01
                 </div>
                 
 
@@ -303,164 +307,28 @@ x = [1">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h1><h2 id="벡터가-뭔가요"><a href="#벡터가-뭔가요" class="headerlink" title="벡터가 뭔가요?"></a>벡터가 뭔가요?</h2><p>벡터는 숫자를 원소로 가지는 리스트(list) 또는 배열(array)</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 열 벡터	</span>
-    <span class="token number">1</span>
-x <span class="token operator">=</span> <span class="token number">7</span>
-    <span class="token number">2</span>
-
-<span class="token comment"># 행 벡터	</span>
-Xt <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span>
-
-<span class="token comment"># 행 벡터 생성</span>
-x <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span>
-x <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<p>벡터에 있는 숫자의 개수는 벡터의 차원</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">x <span class="token operator">=</span> <span class="token punctuation">[</span>x1<span class="token punctuation">,</span> x2<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> xd<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<ul>
-<li>벡터는 공간에서 한 점을 나타냄 (1차원, 2차원, 3차원, …, n차원)</li>
-<li>벡터는 원점(제로벡터, 영벡터)으로부터 상대적 위치를 표현</li>
-<li>벡터에 숫자를 곱해주면 길이만 변함</li>
+                <ul>
+<li><p>SerDe : 데이터 소스에서 HDFS로의 Serializer&#x2F;Deserialize의 약자<br>빌드된 SerDe : Avro, ORC, RegEx, Thrift, Parquet, CSV, Json 등<br>압축을 통해 모든 데이터 형식에 대해 자신의 SerDe를 생성 가능</p>
+</li>
+<li><p>HBase : Java로 작성된 오픈 소스 비관계형 분산 데이터베이스<br>트랜잭션 실시간 처리 및 방대한 양의 데이터에 대한 랜덤 읽기&#x2F;쓰기 액세스가 필요한<br>OLTP(Online Transaction Processing)에 적합</p>
+</li>
+<li><p>Zookeeper : HBase 클러스터의 HMaster, Region 서버를 포함한 모든<br>               HBase 구성 요소의 상태를 유지 관리하는 역할</p>
+</li>
+<li><p>Region : Hbase에서 수평적 확장성을 제공하는 확장성의 기본 단위<br>테이블 데이터의 하위 집합, 기본적으로 함께 저장되는 연속적이고 정렬된 행 범위<br>(처음에는 테이블에 대해 하나의 Region만 존재, 더 많은 행을 추가한 후 Region이 커지면<br> 중간 키에서 두개로 분할되어 거의 동일한 절반을 만듬)</p>
+</li>
+<li><p>Region Server : 일련의 Region 서비스를 담당, 하나의 Region은 하나의 Region Server에서만 서비스 가능<br>Region 서버에 대한 Region 매핑은 META 테이블이라는 시스템 테이블에 보관<br>(META 테이블을 읽으면 키를 담당하는 Region을 식별 가능)<br>읽기 및 쓰기 작업의 경우 클라이언트는 HMaster를 우회하여 요청된 데이터를 제공하는 Region 서버로 직접 이동 가능</p>
+</li>
+<li><p>HMaster는 시작 시 Region을 할당하고 클러스터의 Region을 조정하고 관리하는 작업을 실행<br>클라이언트는 테이블 생성 및 삭제, 구조 변경을 위해 HMaster에 문의<br>HMaster는 로드밸런싱 작업 또는 Region 서버 장애의 결과로 한 Region 서버에서 다른 Region 서버로 Region을 이동가능</p>
+</li>
+<li><p>META Table : 클러스터의 Region 서버에 대한 Region의 위치 및 매핑을 저장</p>
+</li>
+<li><p>Bloom Filter : 검색을 촉진하기 위해 요소가 집합의 구성원인지 여부를 테스트하는 데 사용되는 특수 목적 확률적 인덱스</p>
+</li>
+<li><dl><dt>Mapper</dt><dd>입력 데이터를 parsing, transforming, filtering<br>Key-Value 쌍을 출력<br>데이터를 섞어 Sorting 및 Partitioning</dd></dl></li>
+<li><dl><dt>Reducer</dt><dd>위의 Mapper에서 섞인 데이터를 Aggregate</dd></dl></li>
 </ul>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">    
-    <span class="token comment"># a > 1 : 1보다 크면 길이가 늘어남</span>
-    <span class="token comment"># 0 &lt; a &lt; 1 : 1보다 작으면 길이가 줄어듬</span>
-    <span class="token comment"># a &lt; 0 : 0보다 작으면 반대 방향이 됨</span>
+<p>** Input - Splitting - Mapping - Shuffling - Reducing - Final result</p>
 
-    <span class="token comment"># 스칼라곱</span>
-    ax <span class="token operator">=</span> ax <span class="token operator">=</span> <span class="token punctuation">[</span>ax1<span class="token punctuation">,</span> ax2<span class="token punctuation">,</span> ax3<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> axd<span class="token punctuation">]</span>
-
-<span class="token operator">-</span> 벡터끼리 같은 모양을 가지면 덧셈<span class="token punctuation">,</span> 뺼셈을 계산할 수 있음
-
-```python
-x <span class="token operator">=</span> <span class="token punctuation">[</span>x1<span class="token punctuation">,</span> x2<span class="token punctuation">,</span> x3<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> xd<span class="token punctuation">]</span>
-y <span class="token operator">=</span> <span class="token punctuation">[</span>y1<span class="token punctuation">,</span> y2<span class="token punctuation">,</span> y3<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> yd<span class="token punctuation">]</span>
-x <span class="token operator">+</span><span class="token operator">-</span> y <span class="token operator">=</span> <span class="token punctuation">[</span>x1<span class="token operator">+</span><span class="token operator">-</span>y1<span class="token punctuation">,</span> x2<span class="token operator">+</span><span class="token operator">-</span>y2<span class="token punctuation">,</span> x3<span class="token operator">+</span><span class="token operator">-</span>y3<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> xd<span class="token operator">+</span><span class="token operator">-</span>yd<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ul>
-<li>벡터끼리 같은 모양을 가지면 성분곱(Hadamard product)을 계산할 수 있음</li>
-</ul>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">
-x <span class="token operator">=</span> <span class="token punctuation">[</span>x1<span class="token punctuation">,</span> x2<span class="token punctuation">,</span> x3<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> xd<span class="token punctuation">]</span>
-y <span class="token operator">=</span> <span class="token punctuation">[</span>y1<span class="token punctuation">,</span> y2<span class="token punctuation">,</span> y3<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> yd<span class="token punctuation">]</span>
-x<span class="token operator">*</span>y <span class="token operator">=</span> <span class="token punctuation">[</span>x1<span class="token operator">*</span>y1<span class="token punctuation">,</span> x2<span class="token operator">*</span>y2<span class="token punctuation">,</span> x3<span class="token operator">*</span>y3<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> xd<span class="token operator">*</span>yd<span class="token punctuation">]</span>
-
-
-<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
-<span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> y <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">+</span> y
-array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-
-<span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">-</span>y 
-array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-
-<span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">*</span> y
-array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">14</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ul>
-<li><p>두 벡터의 덧셈은 다른 벡터로부터 상대적 위치이동을 표현</p>
-</li>
-<li><p>두 벡터의 뺄셈은 마이너스 벡터를 더하는 것과 같이 표현 가능</p>
-</li>
-<li><p>벡터의 노름 구해보기</p>
-</li>
-<li><p>벡터의 노름(norm)은 원점에서부터의 거리를 말함</p>
-</li>
-</ul>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># || ~ || 기호는 노름(norm)이라 부름</span>
-<span class="token comment"># 노름은 임의의 차원 d에 대해서 성립</span>
-
-x <span class="token operator">=</span> <span class="token punctuation">[</span>x1<span class="token punctuation">,</span> x2<span class="token punctuation">,</span> x3<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> xd<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<ul>
-<li>L1-노름은 각 성분의 변화량의 절대값을 모두 더함</li>
-<li>L1-노름 상의 : {x: ||x||1 &#x3D; 1}</li>
-<li>예: Robust 학습, Lasso 회귀</li>
-</ul>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">
-<span class="token comment"># ||x||1 = 시그마 (1~d) |xi|</span>
-
-<span class="token keyword">def</span> <span class="token function">l1_norm</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    x_norm <span class="token operator">=</span> np<span class="token punctuation">.</span><span class="token builtin">abs</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-    x_norm <span class="token operator">=</span> np<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span>x_norm<span class="token punctuation">)</span>
-    
-    <span class="token keyword">return</span> x_norm<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<ul>
-<li>L2-노름은 피타고라스 정리를 이용해 유클리드 거리를 계산함</li>
-</ul>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># L2-노름은 np.linalg.norm을 이용해도 구현 가능</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<ul>
-<li>L2-노름 상의 원 : {x: ||x||2 &#x3D; 1}</li>
-<li>예: Laplace 근사, Ridge 회귀</li>
-</ul>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># ||x||2 = 루트 (시그마 (1~d) |x1| ** 2)</span>
-
-<span class="token keyword">def</span> <span class="token function">l2_norm</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    x_nrom <span class="token operator">=</span> x <span class="token operator">*</span> x
-    x_norm <span class="token operator">=</span> np<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span>x_norm<span class="token punctuation">)</span> 
-    x_norm <span class="token operator">=</span> np<span class="token punctuation">.</span>sqrt<span class="token punctuation">(</span>x_norm<span class="token punctuation">)</span>
-    
-    <span class="token keyword">return</span> x_norm<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ul>
-<li><p>왜 다른 노름을 소개하나요?</p>
-</li>
-<li><p>노름의 종류에 따라 기하학적 성질이 달라짐</p>
-</li>
-<li><p>머신러닝에선 각 성징들이 필요할 때가 있으므로 둘 다 사용</p>
-</li>
-<li><p>두 벡터 사이의 거리르 구해보자!</p>
-</li>
-<li><p>L1, L-노름을 이용해 두 벡터 사이의 거리를 계산할 수 있음</p>
-</li>
-<li><p>두 벡터 사이의 거리를 계산할 때는 벡터의 뺄셈을 이용</p>
-</li>
-<li><p>뺄셈을 거꾸로 해도 거리는 같음</p>
-</li>
-</ul>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># ||y-x|| = ||x-y||</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<ul>
-<li>두 벡터 사이의 각도 구해보기</li>
-<li>두 벡터 사이의 거리를 이용하여 각도도 계산할 수 있음<br>** 두 벡터 사이의 각도는 L1-노름이 아닌 L2-노름(||~||2)에서만 계산 가능</li>
-<li>제2 코사인 법칙에 의해 두 벡터 사이의 각도를 계산할 수 있음</li>
-<li>분자를 쉽게 계산하는 방법이 내적</li>
-</ul>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># x와 y의 거리 = ||x-y||2 = ||y-x||2</span>
-
-<span class="token triple-quoted-string string">"""
-        ||x|2 ** 2 + ||y||2 ** 2 - ||x-y||2 ** 2 
-cos세타 = -----------------------------------------
-                2 * ||x||2 * ||y|||2
-
-
-                    2 * &lt;x, y>
-    = -----------------------------------------
-                2 * ||x||2 * ||y||2
-                
-                
-                        &lt;x, y>
-    = -----------------------------------------
-                    ||x||2 * ||y||2					
-                    
-                        &lt;x, y>
-    = -----------------------------------------
-                    ||x||2 * ||y||2
-
-"""</span>
-
-<span class="token comment"># &lt;x, y> = 시그마 (1~d) xi * yi</span>
-                    
-<span class="token comment"># ** 이 연산을 내적(inner product)라 부른다</span>
-
-<span class="token keyword">def</span> <span class="token function">angle</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    v <span class="token operator">=</span> np<span class="token punctuation">.</span>inner<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token punctuation">(</span>l2_norm<span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">*</span> l2_norm<span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">)</span>
-    theta <span class="token operator">=</span> np<span class="token punctuation">.</span>arccos<span class="token punctuation">(</span>v<span class="token punctuation">)</span>
-    
-    <span class="token keyword">return</span> theta<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -476,7 +344,7 @@ cos세타 = -----------------------------------------
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">Gyuwon Hong</a>
+                    <a href="/about" rel="external nofollow noreferrer">Keyhong</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -486,7 +354,7 @@ cos세타 = -----------------------------------------
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/01/06/MLOps/vector/">http://example.com/2024/01/06/MLOps/vector/</a>
+                    <a href="http://example.com/2024/01/01/HBase/hbase/">http://example.com/2024/01/01/HBase/hbase/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -499,14 +367,14 @@ cos세타 = -----------------------------------------
                     use
                     <a href="cc_by_url" rel="external nofollow noreferrer" target="_blank">cc_by_name</a>
                     licensed
-                    <a href="/about" target="_blank">Gyuwon Hong</a>
+                    <a href="/about" target="_blank">Keyhong</a>
                     !
                 </span>
             </div> -->
         
     </div>
 
-    <script async defer>
+    <!-- <script async defer>
       document.addEventListener("copy", function (e) {
         let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
         M.toast({html: toastHTML})
@@ -515,7 +383,7 @@ cos세타 = -----------------------------------------
       function navToReprintStatement() {
         $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
       }
-    </script>
+    </script> -->
 
 
 
@@ -523,7 +391,11 @@ cos세타 = -----------------------------------------
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
+                            
+                                <a href="/tags/HBase/">
+                                    <span class="chip bg-color">HBase</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -593,7 +465,7 @@ cos세타 = -----------------------------------------
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Sat Jan 06 2024 18:57:30 GMT+0900',
+    id: 'Mon Jan 01 2024 22:59:44 GMT+0900',
     owner: '',
     repo: '',
     oauth: {
@@ -624,18 +496,16 @@ gitment.render('gitment-content');
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/06/MLOps/vector/">
+                <a href="/2024/01/01/Git/gitignore/">
                     <div class="card-image">
                         
+                        <img src="/images/logos/git-logo.png" class="responsive-img" alt="[Git] .gitignore">
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title"></span>
+                        <span class="card-title diy-neon-red">[Git] .gitignore</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -645,18 +515,29 @@ gitment.render('gitment-content');
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-06
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Gyuwon Hong
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Git/" class="post-category">
+                                    Git
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Git/">
+                        <span class="chip bg-color">Git</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -667,13 +548,12 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/06/MLOps/dvc/">
+                <a href="/2024/01/01/HDFS/hdfs-block-caching/">
                     <div class="card-image">
                         
+                        <img src="/images/logos/hdfs-logo.png" class="responsive-img" alt="[HDFS] Block Caching">
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title"></span>
+                        <span class="card-title diy-neon-red">[HDFS] Block Caching</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -684,15 +564,27 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Gyuwon Hong
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/HDFS/" class="post-category">
+                                    HDFS
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/HDFS/">
+                        <span class="chip bg-color">HDFS</span>
+                    </a>
+                    
                 </div>
                 
             </div>
