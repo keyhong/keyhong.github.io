@@ -427,21 +427,21 @@ HDFS C
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/HDFS/hdfs-federation/">
+                        <a href="/2024/01/01/HDFS/hdfs-node/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hdfs-logo.png" class="responsive-img" alt="[HDFS] Federation">
+                                <img src="/images/logos/hdfs-logo.png" class="responsive-img" alt="[HDFS] Node">
                                 
-                                <span class="card-title">[HDFS] Federation</span>
+                                <span class="card-title">[HDFS] Node</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    HDFS Federation
-네임노드는 파일시스템의 모든 파일과 각 블록에 대한 참조 정보를 메모리에서 관리. 따라서 파일이 많은 대형 클러스에서 확장성에 가장 큰 걸림돌이 되는 것은 메모리&#96;&#96; 
+                                    HDFS NodeHDFS 클러스터
+HDFS 클러스터는 마스터-워커(master-worker) 패턴으로 동작하는 두 종류의 노드의 네임노드(master)와 데이터 노드(worker)로 구성
 
-H
+네임노드(Namenode)
                                 
                             </div>
                             <div class="publish-info">
@@ -488,21 +488,21 @@ H
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/HDFS/hdfs-node/">
+                        <a href="/2024/01/01/HDFS/hdfs-federation/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hdfs-logo.png" class="responsive-img" alt="[HDFS] Node">
+                                <img src="/images/logos/hdfs-logo.png" class="responsive-img" alt="[HDFS] Federation">
                                 
-                                <span class="card-title">[HDFS] Node</span>
+                                <span class="card-title">[HDFS] Federation</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    HDFS NodeHDFS 클러스터
-HDFS 클러스터는 마스터-워커(master-worker) 패턴으로 동작하는 두 종류의 노드의 네임노드(master)와 데이터 노드(worker)로 구성
+                                    HDFS Federation
+네임노드는 파일시스템의 모든 파일과 각 블록에 대한 참조 정보를 메모리에서 관리. 따라서 파일이 많은 대형 클러스에서 확장성에 가장 큰 걸림돌이 되는 것은 메모리&#96;&#96; 
 
-네임노드(Namenode)
+H
                                 
                             </div>
                             <div class="publish-info">
@@ -869,21 +869,23 @@ SQL을 MapReduce나 TEZ 명령어로 번역하여 작동, 이 둘은 YARN 클러
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/Hive/hive-installation/">
+                        <a href="/2024/01/01/Hive/hiveql-tip/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] Installation">
+                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] HiveQL Tip">
                                 
-                                <span class="card-title">[Hive] Installation</span>
+                                <span class="card-title">[Hive] HiveQL Tip</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Hive Installation하이브 설치하기
-하이브는 사용자의 워크스테이션에서 실행, 작성된 SQL 쿼리는 일련의 맵리듀스 잡으로 변환되어 하둡클러스터에서 구동
+                                    HiveQL Tip
+HiveQL 은 일반적으로 대소문자를 구분하지 않음 (문자열 비교는 제외)
 
-HDFS에 저장된 데이터(directory&#x2F
+탭 키를 사용하면 하이브가 제공하는 예약어와 함수를 자동 완성 가능
+
+처음 설치하고 ‘SHOW TABLES;’ 명령어를
                                 
                             </div>
                             <div class="publish-info">
@@ -930,23 +932,21 @@ HDFS에 저장된 데이터(directory&#x2F
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/Hive/hiveql-tip/">
+                        <a href="/2024/01/01/Hive/hive-installation/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] HiveQL Tip">
+                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] Installation">
                                 
-                                <span class="card-title">[Hive] HiveQL Tip</span>
+                                <span class="card-title">[Hive] Installation</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    HiveQL Tip
-HiveQL 은 일반적으로 대소문자를 구분하지 않음 (문자열 비교는 제외)
+                                    Hive Installation하이브 설치하기
+하이브는 사용자의 워크스테이션에서 실행, 작성된 SQL 쿼리는 일련의 맵리듀스 잡으로 변환되어 하둡클러스터에서 구동
 
-탭 키를 사용하면 하이브가 제공하는 예약어와 함수를 자동 완성 가능
-
-처음 설치하고 ‘SHOW TABLES;’ 명령어를
+HDFS에 저장된 데이터(directory&#x2F
                                 
                             </div>
                             <div class="publish-info">
