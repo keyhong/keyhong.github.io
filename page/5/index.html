@@ -428,23 +428,23 @@ $ kafka-consumer-groups.sh --bootstrap-server [HOST]:[PORT] --list
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Kafka/kafka-server-_-command/">
+                    <a href="/2024/01/01/Kafka/kafka-run-class-command/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-server-* Command">
+                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-run-class Command">
                             
-                            <span class="card-title diy-neon-red">[Kafka] kafka-server-* Command</span>
+                            <span class="card-title diy-neon-red">[Kafka] kafka-run-class Command</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                kafka-server-* Command
-카프카 실행
+                                kafka-run-class Command
+토픽의 파티션별 오프셋 확인하기
 
-$ kafka-server-start.sh -daemon ../config/sever.property (일반)
-$kafka-server-start.sh -dae
+$ kafka-run-class.sh kafka.tools.GetOffsetShell \
+    --bootstrap-server &lt;
                             
                         </div>
                         <div class="publish-info">
@@ -480,23 +480,23 @@ $kafka-server-start.sh -dae
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Kafka/kafka-run-class-command/">
+                    <a href="/2024/01/01/Kafka/kafka-server-_-command/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-run-class Command">
+                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-server-* Command">
                             
-                            <span class="card-title diy-neon-red">[Kafka] kafka-run-class Command</span>
+                            <span class="card-title diy-neon-red">[Kafka] kafka-server-* Command</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                kafka-run-class Command
-토픽의 파티션별 오프셋 확인하기
+                                kafka-server-* Command
+카프카 실행
 
-$ kafka-run-class.sh kafka.tools.GetOffsetShell \
-    --bootstrap-server &lt;
+$ kafka-server-start.sh -daemon ../config/sever.property (일반)
+$kafka-server-start.sh -dae
                             
                         </div>
                         <div class="publish-info">
