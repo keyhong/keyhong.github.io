@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="[Data Architecture] Data Warehouse, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Data Warehouse, Data Mart 왜 만드는 지 알아봐요.">
+    <meta name="description" content="Data Warehouse, 왜 필요한 걸까요?">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -374,7 +374,7 @@
 </li>
 <li><p>공통점</p>
 <ul>
-<li>temporary와 permanant <strong>모두 매일 달라지는 분량의 데이터 원천 데이터만 가져와요.</strong></li>
+<li>temporary와 permanent <strong>모두 매일 달라지는 분량의 데이터 원천 데이터만 가져와요.</strong></li>
 </ul>
 </li>
 <li><p>차이점</p>
@@ -392,18 +392,21 @@
 </li>
 <li><p>차원 모델링(Dimensional Modeling)으로 전체적인 구조를 만들어나가요. 흔히 우리가 배운 정규화를 통해 테이블 간의 관계를 만드는 과정이에요.</p>
 <ul>
-<li><p><strong>통계를 위한 집계 대상의 값이 있는 테이블(트랜잭션)을 “Facts&quot;</strong>라고 해요.</p>
+<li><p><strong>통계를 위한 집계 대상이 되는 측정 값(트랜잭션)을 “Facts&quot;</strong>라고 해요. Facts 테이블은 보통 (PK &amp; FK &amp; Facts)로 이루어져 있어요.</p>
 </li>
-<li><p>“Facts” 테이블에서 집계 값 이외의 <strong>부수적인 다른 컬럼(예를 들어, 카테고리나 일자)의 값을 id로 바꾸고 별도로 분리한 테이블로 “Dimensions&quot;</strong>라고 해요. </p>
+<li><p>“Facts” 테이블에서 측정 값 이외의 <strong>부수적인 맥락의 컬럼(예를 들어, 일자나 카테고리)의 값을 Dimensions&quot;</strong>이라고 해요. Dimensions 테이블은 해당 컬럼을 id로 바꾸어 참조 대상이 될 수 있도록 분리한 테이블을 말해요 해요. </p>
 </li>
-<li><p>그럼 하나의 “Facts”를 중심으로 주변에 무수한 “Dimensions”이 생기는 데, 이 모양이 별처럼 생겼다고 해서 <strong>“star schema&quot;</strong>라고 해요. “Dimensions”에서 또 다른 “Dimensions”이 생기면 더 복잡하겠죠? 그 때는 눈송이를 닮았다해서 <strong>“snowflake schema&quot;</strong>라고 해요.</p>
+<li><p>그럼 하나의 “Facts” 테이블을 중심으로 주변에 무수한 “Dimensions” 테이블이 생기는 데, 이 모양이 별처럼 생겼다고 해서 <strong>“star schema&quot;</strong>라고 해요. “Dimensions”에서 또 다른 Dimensions 테이블이 생기면 더 복잡하겠죠? 그 때는 눈송이를 닮았다해서 <strong>“snowflake schema&quot;</strong>라고 해요.</p>
 </li>
 </ul>
 </li>
 </ul>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219937&authkey=%21APa8UmARvr5-dkI&width=1024" width="1024" height="auto" alt="star schema"/>
 
-<h4 id="Core-Layer-1"><a href="#Core-Layer-1" class="headerlink" title="Core Layer"></a>Core Layer</h4><p>데이터 마트는 BI와 함께 중요한 영역이라 별도의 포스팅으로 작성할게요!</p>
+<h4 id="Data-Mart"><a href="#Data-Mart" class="headerlink" title="Data Mart"></a>Data Mart</h4><p>데이터 마트는 BI와 함께 중요한 영역이라 별도의 포스팅으로 작성할게요!</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.udemy.com/course/data-warehouse-the-ultimate-guide/">Data Warehouse - The Ultimate Guide</a></li>
+</ul>
 <h2 id="🙊-글-마무리"><a href="#🙊-글-마무리" class="headerlink" title="🙊 글 마무리"></a>🙊 글 마무리</h2><p>쓰다 보니 글이 좀 많이 길어졌어요. 오늘은 Data Warehouse에 대해 간략하게 알아봤어요. 사실 DW의 핵심은 Facts와 Dimensions인데, 이 영역은 따로 내용일 길어질 것 같아서 따로 쓰려고 해요. 또 Data Mart도 BI와 함께 중요한 영역이라 포스팅을 분리하려고 해요.</p>
 <p>여러모로 가볍게 설명해보려 했는 데, 가시성이 낮아 말로 표현하기에는 쉽지 않은 내용이었던 것 같아요.<br>그래도 긴 글 읽어주셔서 감사합니다!</p>
 
@@ -593,7 +596,7 @@ gitment.render('gitment-content');
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            GUI? API? CLI? 그 전에 Document!
                         
                     </div>
                     <div class="publish-info">
@@ -630,30 +633,30 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/01/Airflow/components/">
+                <a href="/2024/01/06/Data-Architecture/dimension-modeling(2)/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] Concept">
+                        <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="[Data Architecture] Dimension Modeling(2)">
                         
-                        <span class="card-title diy-neon-red">[Airflow] Concept</span>
+                        <span class="card-title diy-neon-red">[Data Architecture] Dimension Modeling(2)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            D-
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-06
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Airflow/" class="post-category">
-                                    Airflow
+                            <a href="/categories/Data-Architecture/" class="post-category">
+                                    Data Architecture
                                 </a>
                             
                             
@@ -663,8 +666,12 @@ gitment.render('gitment-content');
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Airflow/">
-                        <span class="chip bg-color">Airflow</span>
+                    <a href="/tags/Data-Architecture/">
+                        <span class="chip bg-color">Data Architecture</span>
+                    </a>
+                    
+                    <a href="/tags/Data-Warehouse/">
+                        <span class="chip bg-color">Data Warehouse</span>
                     </a>
                     
                 </div>

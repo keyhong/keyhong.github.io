@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="[Airflow] 자주 사용하는 CLI 정리, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="🙊 글을 쓰는 이유Airflow는 파이썬의 Web Framework인 Flask로 만든 편리한 Web Server를 컴포넌트로 제공하고 있어요. Web으로도 충분한 활용이 가능하지만, GUI가 Airflow의 AP">
+    <meta name="description" content="GUI? API? CLI? 그 전에 Document!">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -309,13 +309,10 @@
                 <h3 id="🙊-글을-쓰는-이유"><a href="#🙊-글을-쓰는-이유" class="headerlink" title="🙊 글을 쓰는 이유"></a>🙊 글을 쓰는 이유</h3><p>Airflow는 파이썬의 Web Framework인 Flask로 만든 편리한 Web Server를 컴포넌트로 제공하고 있어요. Web으로도 충분한 활용이 가능하지만, GUI가 Airflow의 API를 CLI로 호출하는 명령어와 매핑한 UI라는 걸 인지하고 있으면 플랫폼의 활용에 있어 시각이 좀 더 넓어져요 :)</p>
 <p>또한 Web Server를 못 사용할 때 CLI를 사용할 수 있다는 건 매우 강력한 장점이랍니다! 그래서 오늘은 제가 자주 썼었던 일부 API를 가져와 봤어요. API에는 도큐먼트의 링크를 같이 걸어 났어요. Airflow를 써봤다면 익숙한 커맨드들도 있으실 거에요.</p>
 <p><strong>핵심은 API는 외우는 게 아니라는 거, 아시죠? 모든 API를 외워서 사용할 수 있는 개발자는 없답니다. 다만, 도큐먼트를 보는 법을 알게되고 활용할 수 있게 되면 더 이상 외우지 않고 필요할 때마다 사용할 수 있게 되요. 그렇기 때문에 API 자체보다 도큐먼트를 중심으로 이해하는 연습을 하면 좋을 것 같아요.</strong></p>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
-<li><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html">CLI-환경변수-레퍼런스</a></li>
-</ul>
 <h3 id="dags"><a href="#dags" class="headerlink" title="dags"></a>dags</h3><h4 id="모든-DAG-목록-조회"><a href="#모든-DAG-목록-조회" class="headerlink" title="모든 DAG 목록 조회"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html#list_repeat2">모든 DAG 목록 조회</a></h4><ul>
-<li><p>List all the DAGs</p>
-</li>
 <li><p>Web의 메인화면에서 나타나는 모든 dag의 리스트와 같아요.</p>
+</li>
+<li><p>List all the DAGs</p>
 </li>
 </ul>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow dags list <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-o table, json, yaml, plain<span class="token punctuation">]</span> <span class="token punctuation">[</span>-S SUBDIR<span class="token punctuation">]</span> <span class="token punctuation">[</span>-v<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -395,7 +392,7 @@ $ airflow dags unpause <span class="token punctuation">[</span>-h<span class="to
 </ul>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow db reset <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-s<span class="token punctuation">]</span> <span class="token punctuation">[</span>-v<span class="token punctuation">]</span> <span class="token punctuation">[</span>-y<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="users"><a href="#users" class="headerlink" title="users"></a>users</h3><ul>
+<h3 id="users"><a href="#users" class="headerlink" title="users"></a>users</h3><h4 id="Airflow-계정-생성"><a href="#Airflow-계정-생성" class="headerlink" title="Airflow 계정 생성"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html#create_repeat1">Airflow 계정 생성</a></h4><ul>
 <li><p>airflow를 설치하고 Web을 접속하기 전 처음 썼던 커맨드에요. 기억하시죠? airflow도 AWS의 IAM이나 Linux의 Permission을 부여하는 것처럼 다양한 계정의 권한을 설정할 수 있어요.</p>
 </li>
 <li><p>Create a user</p>
@@ -437,6 +434,11 @@ $ airflow dags unpause <span class="token punctuation">[</span>-h<span class="to
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow scheduler <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-D<span class="token punctuation">]</span> <span class="token punctuation">[</span>-p<span class="token punctuation">]</span> <span class="token punctuation">[</span>-l LOG_FILE<span class="token punctuation">]</span> <span class="token punctuation">[</span>-n NUM_RUNS<span class="token punctuation">]</span> <span class="token punctuation">[</span>--pid <span class="token punctuation">[</span>PID<span class="token punctuation">]</span><span class="token punctuation">]</span>
                     <span class="token punctuation">[</span>-s<span class="token punctuation">]</span> <span class="token punctuation">[</span>--stderr STDERR<span class="token punctuation">]</span> <span class="token punctuation">[</span>--stdout STDOUT<span class="token punctuation">]</span> <span class="token punctuation">[</span>-S SUBDIR<span class="token punctuation">]</span> <span class="token punctuation">[</span>-v<span class="token punctuation">]</span>
     -D, <span class="token parameter variable">--daemon</span> <span class="token builtin class-name">:</span>  Daemonize instead of running <span class="token keyword">in</span> the foreground<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html">Command Line Interface and Environment Variables Reference</a></li>
+</ul>
+
                 
             </div>
             <hr/>
@@ -604,47 +606,49 @@ gitment.render('gitment-content');
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/07/Airflow/basic-comand/">
+                <a href="/2024/01/08/Data-Architecture/ods/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] 자주 사용하는 CLI 정리">
+                        <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="[Data Architecture] ODS">
                         
-                        <span class="card-title diy-neon-yellow">[Airflow] 자주 사용하는 CLI 정리</span>
+                        <span class="card-title diy-neon-red">[Data Architecture] ODS</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            ODS를 만들어야 할 때를 구분해봐요.
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-07
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-08
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Airflow/" class="post-category">
-                                    Airflow
+                            <a href="/categories/Data-Architecture/" class="post-category">
+                                    Data Architecture
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Airflow/">
-                        <span class="chip bg-color">Airflow</span>
+                    <a href="/tags/Data-Architecture/">
+                        <span class="chip bg-color">Data Architecture</span>
+                    </a>
+                    
+                    <a href="/tags/ODS/">
+                        <span class="chip bg-color">ODS</span>
                     </a>
                     
                 </div>
@@ -669,7 +673,7 @@ gitment.render('gitment-content');
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Data Warehouse, Data Mart 왜 만드는 지 알아봐요.
+                            Data Warehouse, 왜 필요한 걸까요?
                         
                     </div>
                     <div class="publish-info">
