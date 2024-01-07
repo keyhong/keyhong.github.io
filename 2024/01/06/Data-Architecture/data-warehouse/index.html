@@ -341,44 +341,62 @@
 </li>
 </ul>
 <h3 id="DW-레이어"><a href="#DW-레이어" class="headerlink" title="DW 레이어"></a>DW 레이어</h3><blockquote>
-<p>DW 생성 과정은 “데이터 원천” → “Staging Layer” → “Cleansing Layer” → “Data Warehouse” → “Data Mart” 과정으로 이루어져요.</p>
+<p>DW 생성 과정은 “data source” → “Staging Layer” → “Cleansing Layer” → “Data Warehouse” → “Data Mart” 과정으로 이루어져요.</p>
 </blockquote>
 <ul>
-<li><p>데이터 원천은 OLTP특성을 가진 운영용 DB를 말해요.  </p>
+<li><p>data source는 OLTP특성을 가진 운영용 DB를 말해요.  </p>
 </li>
 <li><p>Staging Layer와 Data Warehouse는 필수적인 레이어에요.</p>
 </li>
-<li><p>Cleansing Layer는 DW에 통합되거나, Data Mart은 설계에 따라 없을 수도 있어요.</p>
+<li><p><strong>보통 Cleansing Layer는 DW에 포함되는 경우가 대부분이에요.</strong></p>
+</li>
+<li><p>Data Mart은 설계에 따라 없을 수도 있어요.</p>
 </li>
 </ul>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219934&authkey=%21AAn2uqPOZUkLJiE&width=660" width="660" height="auto" />
 
 
 <h4 id="Staging-Layer"><a href="#Staging-Layer" class="headerlink" title="Staging Layer"></a>Staging Layer</h4><blockquote>
-<p>데이터 원천(운영용 DB)에서 데이터를 추출(extract)해서 가지고 있어요. 원천에서 가져온 소스 데이터를 보관하는 레이어에요. 원천에 영향을 주지 않기 위해 원천에서 수집할 때는 raw 데이터로, DW로 적재할 때는 transform을 하고 load해요.</p>
+<p>data source에서 데이터를 Extract해서 보관하는 레이어에요. 원천에 영향을 주지 않기 위해 원천에서 수집할 때는 보통 raw 데이터로 가져오고, DW로 보낼 때 transform을 하면서 load해요.</p>
 </blockquote>
 <ul>
-<li><p>설계에 따라 <strong>staging의 테이블을 temporary와 permanant로 구분</strong>할 수 있어요.</p>
+<li><p>설계에 따라 staging의 테이블을 temporary와 permanent로 구분할 수 있어요.</p>
 </li>
 <li><p>공통점</p>
 <ul>
-<li>temporary와 permanant 모두 매일 달라지는 분량의 데이터 원천 데이터만 가져와요.</li>
+<li>temporary와 permanant <strong>모두 매일 달라지는 분량의 데이터 원천 데이터만 가져와요.</strong></li>
 </ul>
 </li>
 <li><p>차이점</p>
+</li>
+</ul>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219939&authkey=%21AAd-HLBeWPzNS6E&width=1024" width="1024" height="auto" alt="temporary는 이전 staging 데이터를 truncate 해요." />
+
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219936&authkey=%21APEYF3lVB-a8ycg&width=1024" width="1024" height="auto" alt="permanent는 이전 staging 데이터를 계속 쌓아나가요."/>
+
+<h4 id="Core-Layer"><a href="#Core-Layer" class="headerlink" title="Core Layer"></a>Core Layer</h4><blockquote>
+<p>일반적으로 우리가 Data Warehouse라고 부르는 레이어에요. staging에서 데이터를 Transform해서 들어왔기 때문에 좋은 품질의 데이터를 계속 쌓아나가는 공간이에요. 과거로부터 트랜잭션을 계속 보관하고 있어요.</p>
+</blockquote>
 <ul>
-<li>temporary는 <strong>매일 달라지는 데이터를 가져오기 전에 이전 데이터를 truncate</strong> 해요.</li>
+<li><p>일반적으로 분석가가 Access하는 Layer는 Data Mart이지만, <strong>가끔 DM 없이 DW가 Access Layer 역할을 하기도 해요.</strong></p>
+</li>
+<li><p>차원 모델링(Dimensional Modeling)으로 전체적인 구조를 만들어나가요. 흔히 우리가 배운 정규화를 통해 테이블 간의 관계를 만드는 과정이에요.</p>
+<ul>
+<li><p><strong>통계를 위한 집계 대상의 값이 있는 테이블(트랜잭션)을 “Facts&quot;</strong>라고 해요.</p>
+</li>
+<li><p>“Facts” 테이블에서 집계 값 이외의 <strong>부수적인 다른 컬럼(예를 들어, 카테고리나 일자)의 값을 id로 바꾸고 별도로 분리한 테이블로 “Dimensions&quot;</strong>라고 해요. </p>
+</li>
+<li><p>그럼 하나의 “Facts”를 중심으로 주변에 무수한 “Dimensions”이 생기는 데, 이 모양이 별처럼 생겼다고 해서 <strong>“star schema&quot;</strong>라고 해요. “Dimensions”에서 또 다른 “Dimensions”이 생기면 더 복잡하겠죠? 그 때는 눈송이를 닮았다해서 <strong>“snowflake schema&quot;</strong>라고 해요.</p>
+</li>
 </ul>
 </li>
 </ul>
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219935&authkey=%21AAlWUaVvrkIYgsI&width=660" width="660" height="auto" />
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219937&authkey=%21APa8UmARvr5-dkI&width=1024" width="1024" height="auto" alt="star schema"/>
 
-<ul>
-<li>permanant는 <strong>매일 달라지는 데이터를 가져와 이전 데이터와 함께 보관</strong>해요.</li>
-</ul>
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219936&authkey=%21APEYF3lVB-a8ycg&width=660" width="660" height="auto" />
 
-<h4 id="Core-Layer"><a href="#Core-Layer" class="headerlink" title="Core Layer"></a>Core Layer</h4><h4 id="Mart-Layer"><a href="#Mart-Layer" class="headerlink" title="Mart Layer"></a>Mart Layer</h4><h2 id="BI-Business-Intelligence"><a href="#BI-Business-Intelligence" class="headerlink" title="BI (Business Intelligence)"></a>BI (Business Intelligence)</h2><h3 id=""><a href="#" class="headerlink" title=""></a></h3>
+<h4 id="Data-Mart"><a href="#Data-Mart" class="headerlink" title="Data Mart"></a>Data Mart</h4><p>쓰다 보니 글이 좀 많이 길어졌어요.. 오늘은 Data Warehouse에 대해 간략하게 알아봤어요. 사실 DW의 핵심은 Facts와 Dimensions인데, 이 영역은 따로 내용일 길어질 것 같아서 따로 쓰려고 해요. 또 Data Mart도 BI와 함께 중요한 영역이라 포스팅을 분리하려고 해요.</p>
+<p>여러모로 가볍게 설명해보려 했는 데, 저도 공부하면서 가시성이 낮아 쉽지 않은 내용이었던 것 같아요. 긴 글 읽어주셔서 감사합니다!</p>
+
                 
             </div>
             <hr/>
