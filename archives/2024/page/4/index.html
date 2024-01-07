@@ -868,24 +868,27 @@ HiveQL 은 일반적으로 대소문자를 구분하지 않음 (문자열 비교
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/Kafka/kafka-cleanup-policy/">
+                        <a href="/2024/01/01/Kafka/kafka-acks/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Cleanup Policy">
+                                <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Acks">
                                 
-                                <span class="card-title">[Kafka] Cleanup Policy</span>
+                                <span class="card-title">[Kafka] Acks</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Kafka Cleanup Policy토픽 삭제 정책(Delete Policy)
-명시적으로 토픽의 데이터를 삭제하는 정책
+                                    Kafka AcksAcks(acknowledgments)
+프로듀서가 메시지를 보내고 그 메시지를 카프카가 잘 받았는지 확인하는 옵션
 
 
-토픽의 데이터를 삭제할 때 세그먼트 단위로 삭제
+프로듀서가 사용하는 옵션
 
-삭제정책이 실행되는 시점은 시간 또는 용량
+카프카의 성능을 좌우하는 중요 옵션
+
+
+Acks 종류
                                 
                             </div>
                             <div class="publish-info">
@@ -932,27 +935,24 @@ HiveQL 은 일반적으로 대소문자를 구분하지 않음 (문자열 비교
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/Kafka/kafka-acks/">
+                        <a href="/2024/01/01/Kafka/kafka-cleanup-policy/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Acks">
+                                <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Cleanup Policy">
                                 
-                                <span class="card-title">[Kafka] Acks</span>
+                                <span class="card-title">[Kafka] Cleanup Policy</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Kafka AcksAcks(acknowledgments)
-프로듀서가 메시지를 보내고 그 메시지를 카프카가 잘 받았는지 확인하는 옵션
+                                    Kafka Cleanup Policy토픽 삭제 정책(Delete Policy)
+명시적으로 토픽의 데이터를 삭제하는 정책
 
 
-프로듀서가 사용하는 옵션
+토픽의 데이터를 삭제할 때 세그먼트 단위로 삭제
 
-카프카의 성능을 좌우하는 중요 옵션
-
-
-Acks 종류
+삭제정책이 실행되는 시점은 시간 또는 용량
                                 
                             </div>
                             <div class="publish-info">

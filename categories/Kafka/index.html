@@ -296,20 +296,20 @@
                 </a>
                 
                 
-                <a href="/categories/Docker/" title="Docker: 8">
+                <a href="/categories/Git/" title="Git: 6">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #FEF9E7;">Docker
-                        <span class="tag-length">8</span>
+                            style="background-color: #FEF9E7;">Git
+                        <span class="tag-length">6</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/Git/" title="Git: 6">
+                <a href="/categories/Docker/" title="Docker: 8">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F8F9F9;">Git
-                        <span class="tag-length">6</span>
+                            style="background-color: #F8F9F9;">Docker
+                        <span class="tag-length">8</span>
                     </span>
                 </a>
                 
@@ -395,6 +395,15 @@
                 </a>
                 
                 
+                <a href="/categories/Algorithm/" title="Algorithm: 4">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #D7BDE2;">Algorithm
+                        <span class="tag-length">4</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/categories/Python/" title="Python: 18">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -404,10 +413,10 @@
                 </a>
                 
                 
-                <a href="/categories/Algorithm/" title="Algorithm: 4">
+                <a href="/categories/SQL/" title="SQL: 4">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D7BDE2;">Algorithm
+                            style="background-color: #A3E4D7;">SQL
                         <span class="tag-length">4</span>
                     </span>
                 </a>
@@ -418,15 +427,6 @@
                              chip-default "
                             style="background-color: #F9E79F;">Scala
                         <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/SQL/" title="SQL: 4">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #A3E4D7;">SQL
-                        <span class="tag-length">4</span>
                     </span>
                 </a>
                 
@@ -789,27 +789,24 @@ $ kafka-console-consumer.sh --bootstra
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Kafka/kafka-acks/">
+                    <a href="/2024/01/01/Kafka/kafka-cleanup-policy/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Acks">
+                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Cleanup Policy">
                             
-                            <span class="card-title diy-neon-red">[Kafka] Acks</span>
+                            <span class="card-title diy-neon-red">[Kafka] Cleanup Policy</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Kafka AcksAcks(acknowledgments)
-프로듀서가 메시지를 보내고 그 메시지를 카프카가 잘 받았는지 확인하는 옵션
+                                Kafka Cleanup Policy토픽 삭제 정책(Delete Policy)
+명시적으로 토픽의 데이터를 삭제하는 정책
 
 
-프로듀서가 사용하는 옵션
+토픽의 데이터를 삭제할 때 세그먼트 단위로 삭제
 
-카프카의 성능을 좌우하는 중요 옵션
-
-
-Acks 종류
+삭제정책이 실행되는 시점은 시간 또는 용량
                             
                         </div>
                         <div class="publish-info">
@@ -843,24 +840,27 @@ Acks 종류
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Kafka/kafka-cleanup-policy/">
+                    <a href="/2024/01/01/Kafka/kafka-acks/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Cleanup Policy">
+                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Acks">
                             
-                            <span class="card-title diy-neon-red">[Kafka] Cleanup Policy</span>
+                            <span class="card-title diy-neon-red">[Kafka] Acks</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Kafka Cleanup Policy토픽 삭제 정책(Delete Policy)
-명시적으로 토픽의 데이터를 삭제하는 정책
+                                Kafka AcksAcks(acknowledgments)
+프로듀서가 메시지를 보내고 그 메시지를 카프카가 잘 받았는지 확인하는 옵션
 
 
-토픽의 데이터를 삭제할 때 세그먼트 단위로 삭제
+프로듀서가 사용하는 옵션
 
-삭제정책이 실행되는 시점은 시간 또는 용량
+카프카의 성능을 좌우하는 중요 옵션
+
+
+Acks 종류
                             
                         </div>
                         <div class="publish-info">
