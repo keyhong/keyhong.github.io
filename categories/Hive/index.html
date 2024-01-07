@@ -287,29 +287,29 @@
                 </a>
                 
                 
-                <a href="/categories/Docker/" title="Docker: 8">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #E8F8F5;">Docker
-                        <span class="tag-length">8</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/Flink/" title="Flink: 5">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #FEF9E7;">Flink
+                            style="background-color: #E8F8F5;">Flink
                         <span class="tag-length">5</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/HDFS/" title="HDFS: 4">
+                <a href="/categories/Docker/" title="Docker: 8">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F8F9F9;">HDFS
-                        <span class="tag-length">4</span>
+                            style="background-color: #FEF9E7;">Docker
+                        <span class="tag-length">8</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Git/" title="Git: 6">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F8F9F9;">Git
+                        <span class="tag-length">6</span>
                     </span>
                 </a>
                 
@@ -323,11 +323,11 @@
                 </a>
                 
                 
-                <a href="/categories/Git/" title="Git: 6">
+                <a href="/categories/HDFS/" title="HDFS: 4">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D7BDE2;">Git
-                        <span class="tag-length">6</span>
+                            style="background-color: #D7BDE2;">HDFS
+                        <span class="tag-length">4</span>
                     </span>
                 </a>
                 
@@ -359,19 +359,10 @@
                 </a>
                 
                 
-                <a href="/categories/Linux/" title="Linux: 14">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F9E79F;">Linux
-                        <span class="tag-length">14</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/MLOps/" title="MLOps: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D7BDE2;">MLOps
+                            style="background-color: #F9E79F;">MLOps
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -386,11 +377,11 @@
                 </a>
                 
                 
-                <a href="/categories/Python/" title="Python: 18">
+                <a href="/categories/Linux/" title="Linux: 14">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F5EEF8;">Python
-                        <span class="tag-length">18</span>
+                            style="background-color: #E8F8F5;">Linux
+                        <span class="tag-length">14</span>
                     </span>
                 </a>
                 
@@ -404,19 +395,19 @@
                 </a>
                 
                 
-                <a href="/categories/Algorithm/" title="Algorithm: 4">
+                <a href="/categories/Python/" title="Python: 18">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D7BDE2;">Algorithm
-                        <span class="tag-length">4</span>
+                            style="background-color: #F5EEF8;">Python
+                        <span class="tag-length">18</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/SQL/" title="SQL: 4">
+                <a href="/categories/Algorithm/" title="Algorithm: 4">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #A3E4D7;">SQL
+                            style="background-color: #D7BDE2;">Algorithm
                         <span class="tag-length">4</span>
                     </span>
                 </a>
@@ -427,6 +418,15 @@
                              chip-default "
                             style="background-color: #F9E79F;">Scala
                         <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/SQL/" title="SQL: 4">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #A3E4D7;">SQL
+                        <span class="tag-length">4</span>
                     </span>
                 </a>
                 
@@ -494,21 +494,26 @@ HiveQL 은 일반적으로 대소문자를 구분하지 않음 (문자열 비교
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Hive/hive-installation/">
+                    <a href="/2024/01/01/Hive/hive-config/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] Installation">
+                            <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] Config">
                             
-                            <span class="card-title diy-neon-red">[Hive] Installation</span>
+                            <span class="card-title diy-neon-red">[Hive] Config</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Hive Installation하이브 설치하기
-하이브는 사용자의 워크스테이션에서 실행, 작성된 SQL 쿼리는 일련의 맵리듀스 잡으로 변환되어 하둡클러스터에서 구동
+                                Hive-Confighive-site.xml
+Hive 환경 설정을 위한 XML 설정 파일
 
-HDFS에 저장된 데이터(directory&#x2F
+
+Hive의 conf 디렉토리에 위치
+
+사용자가 Hive를 실행할 때마다 필요한 속성을 설정
+
+hive-default.xml
                             
                         </div>
                         <div class="publish-info">
@@ -542,26 +547,21 @@ HDFS에 저장된 데이터(directory&#x2F
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Hive/hive-config/">
+                    <a href="/2024/01/01/Hive/hive-installation/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] Config">
+                            <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] Installation">
                             
-                            <span class="card-title diy-neon-red">[Hive] Config</span>
+                            <span class="card-title diy-neon-red">[Hive] Installation</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Hive-Confighive-site.xml
-Hive 환경 설정을 위한 XML 설정 파일
+                                Hive Installation하이브 설치하기
+하이브는 사용자의 워크스테이션에서 실행, 작성된 SQL 쿼리는 일련의 맵리듀스 잡으로 변환되어 하둡클러스터에서 구동
 
-
-Hive의 conf 디렉토리에 위치
-
-사용자가 Hive를 실행할 때마다 필요한 속성을 설정
-
-hive-default.xml
+HDFS에 저장된 데이터(directory&#x2F
                             
                         </div>
                         <div class="publish-info">

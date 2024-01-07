@@ -311,49 +311,59 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="🙊-글을-쓰는-이유"><a href="#🙊-글을-쓰는-이유" class="headerlink" title="🙊 글을 쓰는 이유"></a>🙊 글을 쓰는 이유</h2><p>회사에서 프로젝트를 하면 DW&#x2F;DM을 구축하는 일을 했었어요. 그런데 당시는 주니어이기도 했고 DDL로 테이블을 생성하라는 업무를 받아서 했지만 너무 급급해서 이걸 왜 하는 지 몰랐어요. 최근에서야 DW를 구축하기 위해 어떤 과정들이 있고, 왜 하는 지 주변의 팀원분을 통해서 알게 되었어요.</p>
-<p>듣고나니 실제로 어떻게 하는 지 그 과정과 디테일한 요소들이 궁금해지더라구요. 그래서 유데미의 강의를 통해 DW&#x2F;DM 설계에 대한 디테일 능력을 기르고 있어요. 제가 배운 지식을 공유하려고 해요.</p>
-<h2 id="DW-Data-Warehouse"><a href="#DW-Data-Warehouse" class="headerlink" title="DW (Data Warehouse)"></a>DW (Data Warehouse)</h2><h3 id="DW-필요성"><a href="#DW-필요성" class="headerlink" title="DW 필요성"></a>DW 필요성</h3><blockquote>
-<p>회사에서는 서비스를 운영하기 위한 데이터베이스가 여러 개 있어요. 우리가 더 나은 서비스 품질을 만들어내기 위해서 어떻게 할까요? 이 데이터를 한 곳으로 모아 데이터의 쓰임에 대해 분석을 해야해요. 이렇게 분석을 위해 데이터를 한 곳으로 모으는 장소를 Data Warehouse(데이터 창고) 라고 해요.</p>
+<p>듣고나니 실제로 어떻게 하는 지 그 과정과 디테일한 요소들이 궁금해지더라구요. 그래서 유데미의 강의를 통해 DW&#x2F;DM 설계에 대한 디테일 능력을 기르고 있어요. 제가 배운 지식을 공유하려고 해요. </p>
+<h2 id="DW-Data-Warehouse"><a href="#DW-Data-Warehouse" class="headerlink" title="DW (Data Warehouse)"></a>DW (Data Warehouse)</h2><h3 id="DW의-필요성"><a href="#DW의-필요성" class="headerlink" title="DW의 필요성"></a>DW의 필요성</h3><blockquote>
+<p>만약 우리 회사에서 고객에게 더 나은 서비스를 제공하고 싶다면 어떻게 할까요? 아마, 현재의 문제를 파악하고 개선 방안을 세워야 겠죠. 우리는 데이터를 통해 고객의 이탈지점을 찾을 수 있어요. 또한 데이터를 통해 실험적인 도전에 대한 결과를 평가할 수도 있죠. 중요한 건, 우선적으로 데이터를 자유롭게 활용할 수 있는 환경을 만드는 것이에요. DW는 그에 대한 좋은 답안이 될 수 있어요.💡 </p>
 </blockquote>
-<p><strong>DW는 별도의 서버에 따로 구축</strong>을 해요. 기존 운영용 서버에 영향을 주지 않으려고 하기 때문이기도 하고, 분석용을 위한 서버라 대용량 데이터를 다루는 데 많은 리소스가 필요해요. 그래서 ETL(Extract, Transform, Load)라는 프로세스를 통해 운영용 서버에서 데이터를 끌어와요.  </p>
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219933&authkey=%21APvDTYOfelYRBE8&width=660" width="660" height="auto" />
-
-<p><strong>추출(E), 변환(T), 로드(L)은 데이터 웨어하우징에서 가장 중요한 과정이고 DW 생성 과정의 80%~90% 소요시간이 들어요.</strong> 이는 운영용 DB에서 과거부터 쌓여있던 많은 데이터를 정제하면서 물리적으로 이관하기 때문이에요.  </p>
-<h3 id="DW-난제"><a href="#DW-난제" class="headerlink" title="DW 난제"></a>DW 난제</h3><p>데이터를 통합하는 과정은 쉽지 않아요. 아래와 같은 난제들이 있어요. </p>
+<h3 id="DW란"><a href="#DW란" class="headerlink" title="DW란"></a>DW란</h3><blockquote>
+<p>분석을 위해 전사에 흩어진 여러 데이터를 모은 하나의 집중화된 데이터베이스를 “Data Warehouse” 라고 해요.</p>
+</blockquote>
 <ul>
-<li><p><strong>데이터 마다 특성이 다르기 때문에</strong> 아주 복잡하고, 분석하기 어려울 수도 있어요.</p>
+<li><p><strong>보통 DW는 별도의 서버에 구축</strong>을 해요. 분석을 하는 것은 과거부터 쌓아온 대용량 데이터에 대한 처리 리소스를 필요로 해요. 이를 운영용 서버에서 수행하게 되면 기존 서비스에 영향을 줄 가능성이 있기 때문이에요.</p>
 </li>
-<li><p><strong>운영용 DB는 다양한 시스템에 분산</strong>되어 있어요. 다양한 종류의 DB를 통합하는 건 어려워요.</p>
-</li>
-<li><p>모든 데이터가 유의미하지는 않아요. 데이터를 보유하는 건 비용의 문제와 같아요. 그래서 DW로 가져 올 <strong>데이터를 사전에 분별</strong>해야 해요.</p>
-</li>
-<li><p>데이터를 모으기 때문에 <strong>빠른 조회가 가능하도록 성능에서도 신경</strong>을 써야 해요.</p>
+<li><p>그래서 <strong>ETL(Extract, Transform, Load)</strong>이라는 프로세스를 통해 운영용 DB에서 데이터를 끌어와요.</p>
 </li>
 </ul>
-<h3 id="DW-설계"><a href="#DW-설계" class="headerlink" title="DW 설계"></a>DW 설계</h3><ul>
-<li><p><strong>데이터가 한 곳으로 집중화되는 일관성 있는 공간</strong>이어야 해요.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219933&authkey=%21APvDTYOfelYRBE8&width=961&height=515" width="961" height="515" alt="Extract, Transform, Load"/>
+
+<ul>
+<li><strong>추출(E), 변환(T), 로드(L)은 데이터 웨어하우징에서 가장 중요한 과정이고 DW 생성 과정의 80%~90% 소요시간이 들어요.</strong> 이는 운영용 DB에서 과거부터 쌓여있던 많은 데이터를 정제하면서 물리적으로 이관하기 때문이에요.</li>
+</ul>
+<h3 id="DW의-필요-능력"><a href="#DW의-필요-능력" class="headerlink" title="DW의 필요 능력"></a>DW의 필요 능력</h3><p>데이터를 통합하는 과정은 쉽지 않아요. 아래와 같은 난제들이 있어요. </p>
+<ul>
+<li><p><strong>다양한 데이터의 포맷에 대한 이해</strong>가 필요해요. JSON, CSV, ORC, Parquet, Avro 등 여러 타입이 있어요.</p>
+</li>
+<li><p><strong>도메인을 표준화하는 과정이 필요</strong>해요. 테이블마다 비슷한 컬럼이라도 도메인에 따라 표현 방법이 다를 수 있어요. </p>
+</li>
+<li><p><strong>다양한 DBMS에 대한 이해</strong>가 필요해요. DBMS는 다양한 시스템에 다양한 종류로 분산되어 있어요.</p>
+</li>
+<li><p><strong>비즈니스를 이해하는 능력</strong>이 필요해요. 모든 데이터를 수집하는 건 비용이기 때문에 필요 데이터를 분별해야 해요.</p>
+</li>
+</ul>
+<h3 id="DW-설계시-고려사항"><a href="#DW-설계시-고려사항" class="headerlink" title="DW 설계시 고려사항"></a>DW 설계시 고려사항</h3><ul>
+<li><p><strong>데이터가 한 곳으로 집중화되면서 일관성</strong>을 지녀야 해요.</p>
 </li>
 <li><p><strong>주된 사용자는 분석가</strong>에요. 너무 기술적이기 보다 사용자 친화적이고 이해하기 쉽게 설계해야 해요.</p>
 </li>
-<li><p>분석용 SQL을 날리기 때문에 <strong>트랜잭션에 대한 빠른 성능</strong>을 보장해야 해요. 개념적&#x2F;논리적&#x2F;물리적 모델링에 따라 성능 차이가 날 수 있어요.</p>
+<li><p><strong>트랜잭션에 대한 빠른 성능</strong>을 보장해야 해요. 분석용 SQL을 많이 날리기 때문에 물리적 모델링에 따라 성능 차이가 크게 날 수 있어요.</p>
 </li>
-<li><p><strong>분석의 결과를 레포트로 만들고 시각화 할 수 있는 Tool</strong>도 함께 고려해야 해요.</p>
+<li><p><strong>레포트나 시각화 할 수 있는 Tool</strong>도 함께 고려해야 해요. 쿼리를 통한 분석의 결과는 가시성이 좋지 않아요.</p>
 </li>
 </ul>
-<h3 id="DW-레이어"><a href="#DW-레이어" class="headerlink" title="DW 레이어"></a>DW 레이어</h3><blockquote>
+<h3 id="DW-생성-과정"><a href="#DW-생성-과정" class="headerlink" title="DW 생성 과정"></a>DW 생성 과정</h3><blockquote>
 <p>DW 생성 과정은 “data source” → “Staging Layer” → “Cleansing Layer” → “Data Warehouse” → “Data Mart” 과정으로 이루어져요.</p>
 </blockquote>
 <ul>
-<li><p>data source는 OLTP특성을 가진 운영용 DB를 말해요.  </p>
+<li><p>data source는 OLTP 특성을 가진 운영용 DB를 말해요.  </p>
 </li>
-<li><p>Staging Layer와 Data Warehouse는 필수적인 레이어에요.</p>
+<li><p><strong>Staging Layer와 Data Warehouse는 필수적</strong>인 레이어에요.</p>
 </li>
-<li><p><strong>보통 Cleansing Layer는 DW에 포함되는 경우가 대부분이에요.</strong></p>
+<li><p><strong>Cleansing Layer는 DW에 포함</strong>되는 경우가 대부분이에요.</p>
 </li>
-<li><p>Data Mart은 설계에 따라 없을 수도 있어요.</p>
+<li><p><strong>DW가 Access Layer 역할을 할 경우 DM은 설계에 따라 없을 수도 있어요.</strong></p>
 </li>
 </ul>
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219934&authkey=%21AAn2uqPOZUkLJiE&width=660" width="660" height="auto" />
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219934&authkey=%21AAn2uqPOZUkLJiE&width=1024" width="1024" height="auto" alt="Data Warehouse를 생성하는 전체적인 과정"/>
 
 
 <h4 id="Staging-Layer"><a href="#Staging-Layer" class="headerlink" title="Staging Layer"></a>Staging Layer</h4><blockquote>
@@ -394,8 +404,8 @@
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219937&authkey=%21APa8UmARvr5-dkI&width=1024" width="1024" height="auto" alt="star schema"/>
 
 
-<h4 id="Data-Mart"><a href="#Data-Mart" class="headerlink" title="Data Mart"></a>Data Mart</h4><p>쓰다 보니 글이 좀 많이 길어졌어요.. 오늘은 Data Warehouse에 대해 간략하게 알아봤어요. 사실 DW의 핵심은 Facts와 Dimensions인데, 이 영역은 따로 내용일 길어질 것 같아서 따로 쓰려고 해요. 또 Data Mart도 BI와 함께 중요한 영역이라 포스팅을 분리하려고 해요.</p>
-<p>여러모로 가볍게 설명해보려 했는 데, 저도 공부하면서 가시성이 낮아 쉽지 않은 내용이었던 것 같아요. 긴 글 읽어주셔서 감사합니다!</p>
+<h2 id="🙊-글-마무리"><a href="#🙊-글-마무리" class="headerlink" title="🙊 글 마무리"></a>🙊 글 마무리</h2><p>쓰다 보니 글이 좀 많이 길어졌어요. 오늘은 Data Warehouse에 대해 간략하게 알아봤어요. 사실 DW의 핵심은 Facts와 Dimensions인데, 이 영역은 따로 내용일 길어질 것 같아서 따로 쓰려고 해요. 또 Data Mart도 BI와 함께 중요한 영역이라 포스팅을 분리하려고 해요.</p>
+<p>여러모로 가볍게 설명해보려 했는 데, 가시성이 낮아 말로 표현하기에는 쉽지 않은 내용이었던 것 같아요.<br>그래도 긴 글 읽어주셔서 감사합니다!</p>
 
                 
             </div>
