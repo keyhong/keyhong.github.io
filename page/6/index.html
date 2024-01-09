@@ -323,25 +323,23 @@
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Kafka/kafka-consumer-groups-command/">
+                    <a href="/2024/01/01/Kafka/kafka-run-class-command/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-consumer-groups Command">
+                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-run-class Command">
                             
-                            <span class="card-title diy-neon-red">[Kafka] kafka-consumer-groups Command</span>
+                            <span class="card-title diy-neon-red">[Kafka] kafka-run-class Command</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                kafka-consumer-groups Command
-카프카 컨슈머 그룹 리스트 조회
+                                kafka-run-class Command
+토픽의 파티션별 오프셋 확인하기
 
-$ kafka-consumer-groups.sh --bootstrap-server [HOST]:[PORT] --list
-
-
-카프
+$ kafka-run-class.sh kafka.tools.GetOffsetShell \
+    --bootstrap-server &lt;
                             
                         </div>
                         <div class="publish-info">
@@ -394,58 +392,6 @@ $ kafka-consumer-groups.sh --bootstrap-server [HOST]:[PORT] --list
 
 $ kafka-server-start.sh -daemon ../config/sever.property (일반)
 $kafka-server-start.sh -dae
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Kafka/" class="post-category">
-                                    Kafka
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Kafka/">
-                            <span class="chip bg-color">Kafka</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/01/01/Kafka/kafka-run-class-command/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-run-class Command">
-                            
-                            <span class="card-title diy-neon-red">[Kafka] kafka-run-class Command</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                kafka-run-class Command
-토픽의 파티션별 오프셋 확인하기
-
-$ kafka-run-class.sh kafka.tools.GetOffsetShell \
-    --bootstrap-server &lt;
                             
                         </div>
                         <div class="publish-info">
@@ -584,119 +530,6 @@ kafka-topics.sh --create \
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/MLOps/dvc/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="[MLOps] DVC">
-                            
-                            <span class="card-title diy-neon-red">[MLOps] DVC</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                DVC (Data Version Control)등장배경
-데이터 모델링에서 실험을 하면서 무수히 많은 버전의 데이터 생성
-
-예 : data_1h_0508.csv, data_3h_0508.csv, data_1d_0509
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/MLOps/" class="post-category">
-                                    MLOps
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/MLOps/">
-                            <span class="chip bg-color">MLOps</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/01/01/MLOps/vector/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="[MLOps] Vector">
-                            
-                            <span class="card-title diy-neon-red">[MLOps] Vector</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                Vector벡터가 뭔가요?
-벡터는 숫자를 원소로 가지는 리스트(list) 또는 배열(array)
-
-# 열 벡터	
-    1
-x = 7
-    2
-
-# 행 벡터	
-Xt = [1, 7, 2]
-
-# 행 벡터 생성
-x = 
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Vector/" class="post-category">
-                                    Vector
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Vector/">
-                            <span class="chip bg-color">Vector</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
                     <a href="/2024/01/01/Linux/%5BLinux%5D-passowrd-command/">
                         <div class="card-image">
                             
@@ -771,6 +604,167 @@ x =
 유저 권한 변경# user modify
 $ usermod [-option]
     -g &lt;소속시킬
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Linux/">
+                            <span class="chip bg-color">Linux</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/01/01/Linux/linux-basic-command/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/linux-logo.png" class="responsive-img" alt="[Linux] Basic Command">
+                            
+                            <span class="card-title diy-neon-red">[Linux] Basic Command</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                Linux Basic Command파일&#x2F;폴더 조회# ls : list
+$ ls [-option]
+    -l  # line          : 해당 경로의 모든 파일을 라인으로 자세하게 출력
+    -a  
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Linux/">
+                            <span class="chip bg-color">Linux</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/01/01/Linux/linux-mount/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/linux-logo.png" class="responsive-img" alt="[Linux] Mount">
+                            
+                            <span class="card-title diy-neon-red">[Linux] Mount</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                Linux Mount마운트
+물리적인 장치를 특정 위치(디렉토리)에 연결시켜주는 과정
+
+fstab
+시스템 부팅 시 자동으로 마운트 되게 하기 위해 설정해야 하는 파일
+
+
+일반적으로 &#x2F;etc 에 위치
+
+
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Linux/">
+                            <span class="chip bg-color">Linux</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/01/01/Linux/linux-hardware-command/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/linux-logo.png" class="responsive-img" alt="[Linux] Hardware Command">
+                            
+                            <span class="card-title diy-neon-red">[Linux] Hardware Command</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                Linux Hardware CommandCPU 정보 확인$ cat /etc/proc/cpuinfo
+
+시스템의 메모리 사용량 정보 확인free
+마운트mount
+  -f    # 특정 파일시스템만 선택적 마운트
+  -n
                             
                         </div>
                         <div class="publish-info">

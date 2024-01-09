@@ -278,11 +278,20 @@
                 </a>
                 
                 
-                <a href="/categories/Data-Architecture/" title="Data Architecture: 5">
+                <a href="/categories/Data-Architecture/" title="Data Architecture: 4">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             style="background-color: #D5F5E3;">Data Architecture
-                        <span class="tag-length">5</span>
+                        <span class="tag-length">4</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Django/" title="Django: 10">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #E8F8F5;">Django
+                        <span class="tag-length">10</span>
                     </span>
                 </a>
                 
@@ -290,7 +299,7 @@
                 <a href="/categories/Docker/" title="Docker: 8">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #E8F8F5;">Docker
+                            style="background-color: #FEF9E7;">Docker
                         <span class="tag-length">8</span>
                     </span>
                 </a>
@@ -299,17 +308,8 @@
                 <a href="/categories/Flink/" title="Flink: 5">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #FEF9E7;">Flink
+                            style="background-color: #F8F9F9;">Flink
                         <span class="tag-length">5</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/Django/" title="Django: 10">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F8F9F9;">Django
-                        <span class="tag-length">10</span>
                     </span>
                 </a>
                 
@@ -377,6 +377,15 @@
                 </a>
                 
                 
+                <a href="/categories/Linux/" title="Linux: 14">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #E8F8F5;">Linux
+                        <span class="tag-length">14</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/categories/MLOps/" title="MLOps: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -391,15 +400,6 @@
                              chip-default "
                             style="background-color: #F8F9F9;">Vector
                         <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/Linux/" title="Linux: 14">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #E8F8F5;">Linux
-                        <span class="tag-length">14</span>
                     </span>
                 </a>
                 
@@ -507,24 +507,23 @@
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Airflow/subdags/">
+                    <a href="/2024/01/01/Airflow/timezone/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] SubDags">
+                            <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] Timezone">
                             
-                            <span class="card-title diy-neon-red">[Airflow] SubDags</span>
+                            <span class="card-title diy-neon-red">[Airflow] Timezone</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Airflow WebUi에서 시각적으로 결합
+                                naive datetime objectTimezone(tzinfo)이 없는 객체
+aware datetime objectTimezone(tzinfo)이 있는 객체
 
-작업이 포함된 상자를 굵은 테두리로 식별 가능합니다.
+python에서 pendulum 모듈로 생성가능
 
-그 밖에 아무것도 변경되지 않으며, 종속성은 여전히 유지되며 시각적인 효과만 줍니다.
-
-SubDag를 생성하려면 
+i
                             
                         </div>
                         <div class="publish-info">
@@ -558,23 +557,24 @@ SubDag를 생성하려면
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Airflow/timezone/">
+                    <a href="/2024/01/01/Airflow/subdags/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] Timezone">
+                            <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] SubDags">
                             
-                            <span class="card-title diy-neon-red">[Airflow] Timezone</span>
+                            <span class="card-title diy-neon-red">[Airflow] SubDags</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                naive datetime objectTimezone(tzinfo)이 없는 객체
-aware datetime objectTimezone(tzinfo)이 있는 객체
+                                Airflow WebUi에서 시각적으로 결합
 
-python에서 pendulum 모듈로 생성가능
+작업이 포함된 상자를 굵은 테두리로 식별 가능합니다.
 
-i
+그 밖에 아무것도 변경되지 않으며, 종속성은 여전히 유지되며 시각적인 효과만 줍니다.
+
+SubDag를 생성하려면 
                             
                         </div>
                         <div class="publish-info">

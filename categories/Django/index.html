@@ -278,11 +278,20 @@
                 </a>
                 
                 
-                <a href="/categories/Data-Architecture/" title="Data Architecture: 5">
+                <a href="/categories/Data-Architecture/" title="Data Architecture: 4">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             style="background-color: #D5F5E3;">Data Architecture
-                        <span class="tag-length">5</span>
+                        <span class="tag-length">4</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Django/" title="Django: 10">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-active "
+                            style="background-color: #E8F8F5;">Django
+                        <span class="tag-length">10</span>
                     </span>
                 </a>
                 
@@ -290,7 +299,7 @@
                 <a href="/categories/Docker/" title="Docker: 8">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #E8F8F5;">Docker
+                            style="background-color: #FEF9E7;">Docker
                         <span class="tag-length">8</span>
                     </span>
                 </a>
@@ -299,17 +308,8 @@
                 <a href="/categories/Flink/" title="Flink: 5">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #FEF9E7;">Flink
+                            style="background-color: #F8F9F9;">Flink
                         <span class="tag-length">5</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/Django/" title="Django: 10">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            style="background-color: #F8F9F9;">Django
-                        <span class="tag-length">10</span>
                     </span>
                 </a>
                 
@@ -377,6 +377,15 @@
                 </a>
                 
                 
+                <a href="/categories/Linux/" title="Linux: 14">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #E8F8F5;">Linux
+                        <span class="tag-length">14</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/categories/MLOps/" title="MLOps: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -391,15 +400,6 @@
                              chip-default "
                             style="background-color: #F8F9F9;">Vector
                         <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/Linux/" title="Linux: 14">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #E8F8F5;">Linux
-                        <span class="tag-length">14</span>
                     </span>
                 </a>
                 
@@ -552,18 +552,22 @@
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/28/Django/model-fields/">
+                    <a href="/2023/12/28/Django/model-orm/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/docker-logo.png" class="responsive-img" alt="[Django] 장고 모델 필드">
+                            <img src="/images/logos/docker-logo.png" class="responsive-img" alt="[Django] 장고 모델 (ORM)">
                             
-                            <span class="card-title diy-neon-red">[Django] 장고 모델 필드</span>
+                            <span class="card-title diy-neon-red">[Django] 장고 모델 (ORM)</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                기본 지원되는 모델필드 타입 (1)Primary Key: AutoField, BigAutoField문자열: CharField, TextField, SlugField날짜&#x2F;시간: DateField, TimeFi
+                                애플리케이션의 다양한 데이터 저장 방법데이터베이스 : DBMS, NoSQL 등 
+파일 : 로컬, 외부 정적 스토리지
+캐시서버 : memcached, redis 등
+ 
+데이터베이스와 SQL데이터베이스의 종류RDBMS 
                             
                         </div>
                         <div class="publish-info">
@@ -597,22 +601,18 @@
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/28/Django/model-orm/">
+                    <a href="/2023/12/28/Django/model-fields/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/docker-logo.png" class="responsive-img" alt="[Django] 장고 모델 (ORM)">
+                            <img src="/images/logos/docker-logo.png" class="responsive-img" alt="[Django] 장고 모델 필드">
                             
-                            <span class="card-title diy-neon-red">[Django] 장고 모델 (ORM)</span>
+                            <span class="card-title diy-neon-red">[Django] 장고 모델 필드</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                애플리케이션의 다양한 데이터 저장 방법데이터베이스 : DBMS, NoSQL 등 
-파일 : 로컬, 외부 정적 스토리지
-캐시서버 : memcached, redis 등
- 
-데이터베이스와 SQL데이터베이스의 종류RDBMS 
+                                기본 지원되는 모델필드 타입 (1)Primary Key: AutoField, BigAutoField문자열: CharField, TextField, SlugField날짜&#x2F;시간: DateField, TimeFi
                             
                         </div>
                         <div class="publish-info">
@@ -742,23 +742,18 @@ Django Form (서버측)클라이언트로부터 전달받은 값에 대한
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/27/Django/django-components/">
+                    <a href="/2023/12/27/Django/django-foreign-key/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/docker-logo.png" class="responsive-img" alt="[Django] 주요 구성요소">
+                            <img src="/images/logos/docker-logo.png" class="responsive-img" alt="[Django] 관계를 표현하는 모델 필드 (ForeignKey)">
                             
-                            <span class="card-title diy-neon-red">[Django] 주요 구성요소</span>
+                            <span class="card-title diy-neon-red">[Django] 관계를 표현하는 모델 필드 (ForeignKey)</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                장고 주요 기능 (1)
-Function Based View : 함수로 HTTP 요청 처리
-
-Models : 데이터베이스와의 인터페이스
-
-Templates : 복잡한 문자열 조합을 보다 용이하게 할 수 있도록 도와준다
+                                관계를 표현하는 모델 필드 (ForeignKey)인지ORM은 어디까지나, SQL 생성을 도와주는 라이브러리ORM이 DB에 대한 모든 것을 알아서 처리해주진 않습니다.보다 성능높은 애플리케이션을 만들고자 하신다면, 사
                             
                         </div>
                         <div class="publish-info">
@@ -792,18 +787,23 @@ Templates : 복잡한 문자열 조합을 보다 용이하게 할 수 있도록 
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/27/Django/django-foreign-key/">
+                    <a href="/2023/12/27/Django/django-components/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/docker-logo.png" class="responsive-img" alt="[Django] 관계를 표현하는 모델 필드 (ForeignKey)">
+                            <img src="/images/logos/docker-logo.png" class="responsive-img" alt="[Django] 주요 구성요소">
                             
-                            <span class="card-title diy-neon-red">[Django] 관계를 표현하는 모델 필드 (ForeignKey)</span>
+                            <span class="card-title diy-neon-red">[Django] 주요 구성요소</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                관계를 표현하는 모델 필드 (ForeignKey)인지ORM은 어디까지나, SQL 생성을 도와주는 라이브러리ORM이 DB에 대한 모든 것을 알아서 처리해주진 않습니다.보다 성능높은 애플리케이션을 만들고자 하신다면, 사
+                                장고 주요 기능 (1)
+Function Based View : 함수로 HTTP 요청 처리
+
+Models : 데이터베이스와의 인터페이스
+
+Templates : 복잡한 문자열 조합을 보다 용이하게 할 수 있도록 도와준다
                             
                         </div>
                         <div class="publish-info">

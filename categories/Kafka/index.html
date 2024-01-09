@@ -278,11 +278,20 @@
                 </a>
                 
                 
-                <a href="/categories/Data-Architecture/" title="Data Architecture: 5">
+                <a href="/categories/Data-Architecture/" title="Data Architecture: 4">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             style="background-color: #D5F5E3;">Data Architecture
-                        <span class="tag-length">5</span>
+                        <span class="tag-length">4</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Django/" title="Django: 10">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #E8F8F5;">Django
+                        <span class="tag-length">10</span>
                     </span>
                 </a>
                 
@@ -290,7 +299,7 @@
                 <a href="/categories/Docker/" title="Docker: 8">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #E8F8F5;">Docker
+                            style="background-color: #FEF9E7;">Docker
                         <span class="tag-length">8</span>
                     </span>
                 </a>
@@ -299,17 +308,8 @@
                 <a href="/categories/Flink/" title="Flink: 5">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #FEF9E7;">Flink
+                            style="background-color: #F8F9F9;">Flink
                         <span class="tag-length">5</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/Django/" title="Django: 10">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F8F9F9;">Django
-                        <span class="tag-length">10</span>
                     </span>
                 </a>
                 
@@ -377,6 +377,15 @@
                 </a>
                 
                 
+                <a href="/categories/Linux/" title="Linux: 14">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #E8F8F5;">Linux
+                        <span class="tag-length">14</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/categories/MLOps/" title="MLOps: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -391,15 +400,6 @@
                              chip-default "
                             style="background-color: #F8F9F9;">Vector
                         <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/Linux/" title="Linux: 14">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #E8F8F5;">Linux
-                        <span class="tag-length">14</span>
                     </span>
                 </a>
                 
@@ -559,55 +559,6 @@ kafka-topics.sh --create \
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Kafka/kafka-run-class-command/">
-                        <div class="card-image tag-image">
-                            
-                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-run-class Command">
-                            
-                            <span class="card-title diy-neon-red">[Kafka] kafka-run-class Command</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                kafka-run-class Command
-토픽의 파티션별 오프셋 확인하기
-
-$ kafka-run-class.sh kafka.tools.GetOffsetShell \
-    --bootstrap-server &lt;
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Kafka/" class="post-category">
-                                    Kafka
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Kafka/">
-                            <span class="chip bg-color">Kafka</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
                     <a href="/2024/01/01/Kafka/kafka-server-_-command/">
                         <div class="card-image tag-image">
                             
@@ -657,24 +608,22 @@ $kafka-server-start.sh -dae
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Kafka/kafka-consumer-groups-command/">
+                    <a href="/2024/01/01/Kafka/kafka-run-class-command/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-consumer-groups Command">
+                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-run-class Command">
                             
-                            <span class="card-title diy-neon-red">[Kafka] kafka-consumer-groups Command</span>
+                            <span class="card-title diy-neon-red">[Kafka] kafka-run-class Command</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                kafka-consumer-groups Command
-카프카 컨슈머 그룹 리스트 조회
+                                kafka-run-class Command
+토픽의 파티션별 오프셋 확인하기
 
-$ kafka-consumer-groups.sh --bootstrap-server [HOST]:[PORT] --list
-
-
-카프
+$ kafka-run-class.sh kafka.tools.GetOffsetShell \
+    --bootstrap-server &lt;
                             
                         </div>
                         <div class="publish-info">
@@ -726,6 +675,57 @@ $ kafka-consumer-groups.sh --bootstrap-server [HOST]:[PORT] --list
   "partitions": [
     &#123;
       "topic": "TO
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Kafka/" class="post-category">
+                                    Kafka
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Kafka/">
+                            <span class="chip bg-color">Kafka</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/01/01/Kafka/kafka-consumer-groups-command/">
+                        <div class="card-image tag-image">
+                            
+                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] kafka-consumer-groups Command">
+                            
+                            <span class="card-title diy-neon-red">[Kafka] kafka-consumer-groups Command</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                kafka-consumer-groups Command
+카프카 컨슈머 그룹 리스트 조회
+
+$ kafka-consumer-groups.sh --bootstrap-server [HOST]:[PORT] --list
+
+
+카프
                             
                         </div>
                         <div class="publish-info">
