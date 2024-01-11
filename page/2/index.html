@@ -250,7 +250,8 @@
     @media only screen and (max-width: 760px) { #index-video { display: none;}}
     @media only screen and (min-width: 760px) { .bg-cover { background-image: none!important;}}
 </style>
-<video id="index-video" autoplay loop muted>
+<!-- <video id="index-video" autoplay loop muted> -->
+<video id="index-video" autoplay muted>
 
     <source src="/media/journey.mp4">
 
@@ -265,6 +266,58 @@
     <!-- 所有文章卡片 -->
     <article id="articles" class="container articles">
         <div class="row article-row">
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/01/06/Data-Architecture/data-warehouse/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="[Data Architecture] Data Warehouse">
+                            
+                            <span class="card-title diy-neon-red">[Data Architecture] Data Warehouse</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                Data Warehouse, 왜 필요한 걸까요?
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-06
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Data-Architecture/" class="post-category">
+                                    Data Architecture
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Data-Architecture/">
+                            <span class="chip bg-color">Data Architecture</span>
+                        </a>
+                        
+                        <a href="/tags/Data-Warehouse/">
+                            <span class="chip bg-color">Data Warehouse</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
             
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
@@ -321,22 +374,25 @@
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Airflow/config/">
+                    <a href="/2024/01/01/Airflow/components/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] Config">
+                            <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] Concept">
                             
-                            <span class="card-title diy-neon-red">[Airflow] Config</span>
+                            <span class="card-title diy-neon-red">[Airflow] Concept</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                [ChapGPT] &amp; [Airflow를 사용하면서 겪었던 경험]을 토대로 작성하였습니다.
-Airflow Config에어플로우를 사용하며, Excutor별로 중요하고 유용한 config 정리
+                                What is Airflow?
+작업을 올바른 방식으로, 올바른 순서로, 올바른 시간에 실행하는 오픈소스 오케스트레이터
 
-파일은 airfl
+
+Kafka, Spark, Hive 등 영러 플랫폼들과 상호작용할 수 있습니다.
+
+파이썬으로 구
                             
                         </div>
                         <div class="publish-info">
@@ -372,25 +428,22 @@ Airflow Config에어플로우를 사용하며, Excutor별로 중요하고 유용
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Airflow/components/">
+                    <a href="/2024/01/01/Airflow/config/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] Concept">
+                            <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] Config">
                             
-                            <span class="card-title diy-neon-red">[Airflow] Concept</span>
+                            <span class="card-title diy-neon-red">[Airflow] Config</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                What is Airflow?
-작업을 올바른 방식으로, 올바른 순서로, 올바른 시간에 실행하는 오픈소스 오케스트레이터
+                                [ChapGPT] &amp; [Airflow를 사용하면서 겪었던 경험]을 토대로 작성하였습니다.
+Airflow Config에어플로우를 사용하며, Excutor별로 중요하고 유용한 config 정리
 
-
-Kafka, Spark, Hive 등 영러 플랫폼들과 상호작용할 수 있습니다.
-
-파이썬으로 구
+파일은 airfl
                             
                         </div>
                         <div class="publish-info">
@@ -582,27 +635,24 @@ i
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Git/git-config-command/">
+                    <a href="/2024/01/01/Docker/docker-basic-concept/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/git-logo.png" class="responsive-img" alt="[Git] Config Command">
+                            <img src="/images/logos/docker-logo.png" class="responsive-img" alt="[Docker] Concept">
                             
-                            <span class="card-title diy-neon-red">[Git] Config Command</span>
+                            <span class="card-title diy-neon-red">[Docker] Concept</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Git Config Command
-Git config 확인하기
-
-git config --list
+                                Docker ConceptWhat is docker?
+docker는 애플리케이션 개발, 배송 및 실행을 위한 개방형 플랫폼
 
 
-Git Bash에서 global User 정보 저장하기
-
-git config --global user.name [사
+애플리케이션을 인프라에서 분리 하여 소프트웨어를 신속하게 제공
+애플리케이션을 관리하는 것
                             
                         </div>
                         <div class="publish-info">
@@ -613,8 +663,8 @@ git config --global user.name [사
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Git/" class="post-category">
-                                    Git
+                                <a href="/categories/Docker/" class="post-category">
+                                    Docker
                                 </a>
                                 
                                 
@@ -625,8 +675,8 @@ git config --global user.name [사
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Git/">
-                            <span class="chip bg-color">Git</span>
+                        <a href="/tags/Docker/">
+                            <span class="chip bg-color">Docker</span>
                         </a>
                         
                     </div>
@@ -638,27 +688,29 @@ git config --global user.name [사
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Git/git-basic-command/">
+                    <a href="/2024/01/01/Docker/docker-command/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/git-logo.png" class="responsive-img" alt="[Git] Basic Command">
+                            <img src="/images/logos/docker-logo.png" class="responsive-img" alt="[Docker] Container Command">
                             
-                            <span class="card-title diy-neon-red">[Git] Basic Command</span>
+                            <span class="card-title diy-neon-red">[Docker] Container Command</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Git Basic Command
-원격저장소에서 프로젝트 가져오기 (From GitHub)
+                                Docker Container Command
+docker-compose.yaml 실행
 
-git clone &lt;원격저장소 URL> [원격저장소 파일을 넣으려고 만드는 폴더]
+$ docker-compose up -d
+
+$ docker-compose up -d -t [시간(초)]
 
 
-로컬저장소 생성하기
+도커 실행하기
 
-git in
+$ 
                             
                         </div>
                         <div class="publish-info">
@@ -669,8 +721,8 @@ git in
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Git/" class="post-category">
-                                    Git
+                                <a href="/categories/Docker/" class="post-category">
+                                    Docker
                                 </a>
                                 
                                 
@@ -681,8 +733,8 @@ git in
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Git/">
-                            <span class="chip bg-color">Git</span>
+                        <a href="/tags/Docker/">
+                            <span class="chip bg-color">Docker</span>
                         </a>
                         
                     </div>
@@ -694,26 +746,23 @@ git in
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Git/git-history-command/">
+                    <a href="/2024/01/01/Docker/docker-container-concept/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/git-logo.png" class="responsive-img" alt="[Git] History Command">
+                            <img src="/images/logos/docker-logo.png" class="responsive-img" alt="[Docker] Container">
                             
-                            <span class="card-title diy-neon-red">[Git] History Command</span>
+                            <span class="card-title diy-neon-red">[Docker] Container</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Git History Command
-GitHub에 보안 상의 파일을 commit한 경우
+                                Docker Container컨테이너란?
+애플리케이션과 애플리케이션을 실행할 컴퓨터(IP 주소, 컴퓨터 이름, 디스크 드라이브)를 담은 가상 환경&#96;&#96;
 
-# 캐시 삭제하기
-git rm -r --cached &lt;파일>
 
-# .gitignore 에 보안 파일 등록하기
-$ echo
+컨테이너는 개별 호스트명, IP주소, 디스크 드
                             
                         </div>
                         <div class="publish-info">
@@ -724,8 +773,8 @@ $ echo
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Git/" class="post-category">
-                                    Git
+                                <a href="/categories/Docker/" class="post-category">
+                                    Docker
                                 </a>
                                 
                                 
@@ -736,70 +785,8 @@ $ echo
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Git/">
-                            <span class="chip bg-color">Git</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/01/01/Git/git-branch-command/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/git-logo.png" class="responsive-img" alt="[Git] Branch Command">
-                            
-                            <span class="card-title diy-neon-red">[Git] Branch Command</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                Git Branch Command
-브랜치 만들기
-
-git branch &lt;브랜치명>
-
-
-브랜치 리스트 확인
-
-git branch &lt;저장소 별칭>
-
-
-브랜치 삭제
-
-git branch -d &lt;브랜치명>
-
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Git/" class="post-category">
-                                    Git
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Git/">
-                            <span class="chip bg-color">Git</span>
+                        <a href="/tags/Docker/">
+                            <span class="chip bg-color">Docker</span>
                         </a>
                         
                     </div>
