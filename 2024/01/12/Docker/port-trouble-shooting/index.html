@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="[Docker] 도커 컨테이너 포트 트러블 슈팅, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="켜진 포트도 다시 보자..">
+    <meta name="description" content="꺼진 불과 켜진 포트도 다시 보자..">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -338,7 +338,7 @@
 </blockquote>
 <h3 id="문제-해결-순서"><a href="#문제-해결-순서" class="headerlink" title="문제 해결 순서"></a>문제 해결 순서</h3><h4 id="1-관리자-권한으로-powershell-열기"><a href="#1-관리자-권한으로-powershell-열기" class="headerlink" title="1. 관리자 권한으로 powershell 열기"></a>1. 관리자 권한으로 powershell 열기</h4><p>우선 <a target="_blank" rel="noopener" href="https://wikidocs.net/206686">powershell에 관리자 권한으로 접속</a> 합니다.</p>
 <p>관리자 권한으로 shell을 여는 이유는 특정 프로세스는 소유자가 있기 때문이에요. <strong>일부 커맨드(예를 들면 리눅스의 kill)를 사용할 때 소유자가 아닌 다른 계정은 권한의 제한</strong> 받아요. 또한 system과 관련된 중요한 명령어를 사용할 수 있는 제한된 계정이기도 합니다. 때문에 잘못해서 system 데몬 process를 죽이지 않도록 항상 사용에 유의해야 해요. 😱</p>
-<h4 id="2-netstat-명령어를-사용해서-포트-보기"><a href="#2-netstat-명령어를-사용해서-포트-보기" class="headerlink" title="2. netstat 명령어를 사용해서 포트 보기"></a>2. netstat 명령어를 사용해서 포트 보기</h4><p>윈도우에서도 리눅스와 같이 netstat 명령어를 사용할 수 있었어요.(리눅스는 net-tools 패키지를 깔아야 사용 가능합니다.) <strong>nestat은 network status라고 해서 현재 네트워크 정보와 LISTENING 중인 포트를 볼 수 있어요.</strong> </p>
+<h4 id="2-netstat-명령어로-사용중인-포트-보기"><a href="#2-netstat-명령어로-사용중인-포트-보기" class="headerlink" title="2. netstat 명령어로 사용중인 포트 보기"></a>2. netstat 명령어로 사용중인 포트 보기</h4><p>윈도우에서도 리눅스와 같이 netstat 명령어를 사용할 수 있었어요.(리눅스는 net-tools 패키지를 깔아야 사용 가능합니다.) <strong>nestat은 network status라고 해서 현재 네트워크 정보와 LISTENING 중인 포트를 볼 수 있어요.</strong> </p>
 <pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token comment"># 프로토콜, 호스트:포트, 상태를 볼 때</span>
 netsat <span class="token operator">-</span>ab
 
@@ -363,7 +363,7 @@ taskkill <span class="token operator">/</span>pid &lt;task pid> <span class="tok
 
 <p>taskkill이 안되면 f옵션을 주셔야 해요!</p>
 <p><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110085&authkey=!ANdXjXnmp0A7q44" width="517" height="40" alt="taskkill /pid <task pid> -f"></src></p>
-<h4 id="4-다시-docker-container-확인하기"><a href="#4-다시-docker-container-확인하기" class="headerlink" title="4. 다시 docker container 확인하기"></a>4. 다시 docker container 확인하기</h4><p>다시 컨테이너를 올리고 deaver로 접속을 붙여보면 아래처럼 정상 확인을 할 수 있어요. 제 postgres 컨테이너가 다시 정상으로 돌아왔군요. 😭</p>
+<h4 id="4-다시-접속-확인하기"><a href="#4-다시-접속-확인하기" class="headerlink" title="4. 다시 접속 확인하기"></a>4. 다시 접속 확인하기</h4><p>다시 컨테이너를 올리고 deaver로 접속을 붙여보면 아래처럼 정상 확인을 할 수 있어요. 제 postgres 컨테이너가 다시 정상으로 돌아왔군요. 😭</p>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110088&authkey=%21AGMAM0Yba-2Eotk&width=568&height=303" width="568" height="303" alt="deaver 접속 확인"/>
 
 <h2 id="🙊-글-마무리"><a href="#🙊-글-마무리" class="headerlink" title="🙊 글 마무리"></a>🙊 글 마무리</h2><p>어려운 지식도 많이 공부하고, 많은 트러블 슈팅도 해봤지만 항상 기본기가 중요하다는 말이 맞는 것 같아요. 문제가 생겼을 때 어떤 요소를 점검해야하나 체킹 리스트를 만들고 점진적으로 확인했어야 했는 데 그러지 못했습니다. ㅠㅠ 때문에 기본기 문제에 잡혀 4시간을 돌아왔어요.</p>
@@ -556,7 +556,7 @@ gitment.render('gitment-content');
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            켜진 포트도 다시 보자..
+                            꺼진 불과 켜진 포트도 다시 보자..
                         
                     </div>
                     <div class="publish-info">

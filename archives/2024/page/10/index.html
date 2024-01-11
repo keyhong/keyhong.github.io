@@ -363,21 +363,29 @@
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/Python-Data-Structure/graph/">
+                        <a href="/2024/01/01/Python-Algorithm/brute-force/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Graph">
+                                <img src="/images/logos/algorithm-logo.png" class="responsive-img" alt="[Algorithm] Brute Force">
                                 
-                                <span class="card-title">[Python] Graph</span>
+                                <span class="card-title">[Algorithm] Brute Force</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Graph
-가장 복잡한(일반적인 자료구조)
-G &#x3D; (V, E) [ V : Vetex Set (정점 또는 Node)*, E : Edge (두 정점 사이의 링크) ]
-V &#x3D; { 1, 2, 3, 4, 5
+                                    Brute Force완전탐색
+장점 : 반드시 답을 찾을 수 있다
+
+전부 살펴봤는 데 답이 없다면? 답이 존재하지 않는다는 사실을 알아낸 것!
+
+
+단점 : 오래 걸린다
+
+리소스를 많이 잡아 먹는다
+
+
+trade-off
                                 
                             </div>
                             <div class="publish-info">
@@ -388,8 +396,8 @@ V &#x3D; { 1, 2, 3, 4, 5
                                     
                                     <i class="fas fa-bookmark fa-fw icon-category"></i>
                                     
-                                    <a href="/categories/Python/" class="post-category">
-                                    Python
+                                    <a href="/categories/Algorithm/" class="post-category">
+                                    Algorithm
                                     </a>
                                     
                                     
@@ -400,7 +408,7 @@ V &#x3D; { 1, 2, 3, 4, 5
                         
                         <div class="card-action article-tags">
                             
-                            <a href="/tags/Python/"><span class="chip bg-color">Python</span></a>
+                            <a href="/tags/Algorithm/"><span class="chip bg-color">Algorithm</span></a>
                             
                         </div>
                         
@@ -424,25 +432,23 @@ V &#x3D; { 1, 2, 3, 4, 5
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/Python-Data-Structure/linked-list/">
+                        <a href="/2024/01/01/Python-Algorithm/dfs-bfs/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Linked List">
+                                <img src="/images/logos/algorithm-logo.png" class="responsive-img" alt="[Algorithm] DFS &amp; BFS">
                                 
-                                <span class="card-title">[Python] Linked List</span>
+                                <span class="card-title">[Algorithm] DFS &amp; BFS</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Linked List연결리스트(Linked List)
-삽입&#x2F;삭제 : O(1)
+                                    DFS &amp; BFS깊이 우선 탐색(Depth First Search)
+큐를 사용해서 구현한다.
 
-탐색 : O(N)
+인접행렬로 구현adj = [ [0]*N for _ in range(N) ]
 
-PS(Problem Solving)에서는 잘 안쓰이지만, 다른 자료구조들을 구현할 때 많이 쓰임
-
-임의접근(
+adj[0][1] = adj[0][7
                                 
                             </div>
                             <div class="publish-info">
@@ -453,8 +459,8 @@ PS(Problem Solving)에서는 잘 안쓰이지만, 다른 자료구조들을 구�
                                     
                                     <i class="fas fa-bookmark fa-fw icon-category"></i>
                                     
-                                    <a href="/categories/Python/" class="post-category">
-                                    Python
+                                    <a href="/categories/Algorithm/" class="post-category">
+                                    Algorithm
                                     </a>
                                     
                                     
@@ -465,7 +471,7 @@ PS(Problem Solving)에서는 잘 안쓰이지만, 다른 자료구조들을 구�
                         
                         <div class="card-action article-tags">
                             
-                            <a href="/tags/Python/"><span class="chip bg-color">Python</span></a>
+                            <a href="/tags/Algorithm/"><span class="chip bg-color">Algorithm</span></a>
                             
                         </div>
                         
@@ -489,29 +495,25 @@ PS(Problem Solving)에서는 잘 안쓰이지만, 다른 자료구조들을 구�
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/Python-Data-Structure/stack-queue/">
+                        <a href="/2024/01/01/Python-Algorithm/graph/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Stack과 Queue 알아보기">
+                                <img src="/images/logos/algorithm-logo.png" class="responsive-img" alt="[Algorithm] Graph">
                                 
-                                <span class="card-title">[Python] Stack과 Queue 알아보기</span>
+                                <span class="card-title">[Algorithm] Graph</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Stack
-삽입&#x2F;삭제 : O(1)
+                                    Graph그래프(Graph)
+지도, 내비게이션, SNS&#x2F;메신저, VCS(Version Control System)
 
-FILO(First In, Last Out)
+Vertex(&#x3D;node)와 Edge 구성 
 
+종류
 
-s = []
-s.append(123)
-s.append(456)
-s.append(789)
-
-print('size:', len
+무방향 그래프: 방향이 없음(
                                 
                             </div>
                             <div class="publish-info">
@@ -522,8 +524,8 @@ print('size:', len
                                     
                                     <i class="fas fa-bookmark fa-fw icon-category"></i>
                                     
-                                    <a href="/categories/Python/" class="post-category">
-                                    Python
+                                    <a href="/categories/Algorithm/" class="post-category">
+                                    Algorithm
                                     </a>
                                     
                                     
@@ -534,7 +536,7 @@ print('size:', len
                         
                         <div class="card-action article-tags">
                             
-                            <a href="/tags/Python/"><span class="chip bg-color">Python</span></a>
+                            <a href="/tags/Algorithm/"><span class="chip bg-color">Algorithm</span></a>
                             
                         </div>
                         
@@ -558,25 +560,23 @@ print('size:', len
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/Python-Data-Structure/priority-queue/">
+                        <a href="/2024/01/01/Python-Algorithm/greedy-algorithm/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Priority Queue">
+                                <img src="/images/logos/algorithm-logo.png" class="responsive-img" alt="[Algorithm] Greedy Algorithm">
                                 
-                                <span class="card-title">[Python] Priority Queue</span>
+                                <span class="card-title">[Algorithm] Greedy Algorithm</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Priority Queue우선순위 큐(Priority Queue) (Heap)
-삽입&#x2F;삭제 : O(logN)
+                                    Greedy Algorithm탐욕법(Greedy Algorithm)
+매 순간 마다 최선의 경우만 골라가는 방법
 
-이진트리 형태
+다른 경우를 고려하지 않는다. 나중은 생각하지 않는다
 
-최상단(root node)에 가장 큰 값이 위치 : max-heap (c++)
-
-
+모든 경우를 다 보지 않으니 완전탐색보다 빠르다
                                 
                             </div>
                             <div class="publish-info">
@@ -587,8 +587,8 @@ print('size:', len
                                     
                                     <i class="fas fa-bookmark fa-fw icon-category"></i>
                                     
-                                    <a href="/categories/Python/" class="post-category">
-                                    Python
+                                    <a href="/categories/Algorithm/" class="post-category">
+                                    Algorithm
                                     </a>
                                     
                                     
@@ -599,7 +599,7 @@ print('size:', len
                         
                         <div class="card-action article-tags">
                             
-                            <a href="/tags/Python/"><span class="chip bg-color">Python</span></a>
+                            <a href="/tags/Algorithm/"><span class="chip bg-color">Algorithm</span></a>
                             
                         </div>
                         
@@ -623,21 +623,22 @@ print('size:', len
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/Python-Data-Structure/time-complexity/">
+                        <a href="/2024/01/01/SQL/inline-view/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] 시간복잡도">
+                                <img src="/images/logos/sql-logo.png" class="responsive-img" alt="[SQL] Inline View">
                                 
-                                <span class="card-title">[Python] 시간복잡도</span>
+                                <span class="card-title">[SQL] Inline View</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Time-Complexity자료구조와 알고리즘 성능
-가상컴퓨터(Virtual Machine) + 가상언어(Pseudo Language) + 가상코드(Pseudo Code)
+                                    PostgreSQL Inline View인라인뷰(Inline View)
+서브쿼리가 FROM 절 안에서 사용되는 경우, 해당 서브쿼리를 ‘인라인뷰’라고 말함
 
-.. image:: https://gith
+래터럴 인라인뷰(Lateral Inline View)
+인라
                                 
                             </div>
                             <div class="publish-info">
@@ -648,8 +649,8 @@ print('size:', len
                                     
                                     <i class="fas fa-bookmark fa-fw icon-category"></i>
                                     
-                                    <a href="/categories/Python/" class="post-category">
-                                    Python
+                                    <a href="/categories/SQL/" class="post-category">
+                                    SQL
                                     </a>
                                     
                                     
@@ -660,7 +661,7 @@ print('size:', len
                         
                         <div class="card-action article-tags">
                             
-                            <a href="/tags/Python/"><span class="chip bg-color">Python</span></a>
+                            <a href="/tags/SQL/"><span class="chip bg-color">SQL</span></a>
                             
                         </div>
                         
@@ -684,20 +685,22 @@ print('size:', len
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/Python/conda/">
+                        <a href="/2024/01/01/SQL/join/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Anaconda로 파이썬 프로젝트의 가상환경을 편하게 관리하자!">
+                                <img src="/images/logos/sql-logo.png" class="responsive-img" alt="[SQL] Join">
                                 
-                                <span class="card-title">[Python] Anaconda로 파이썬 프로젝트의 가상환경을 편하게 관리하자!</span>
+                                <span class="card-title">[SQL] Join</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Anacondaconda 가상환경 만들기  
-$ conda create --name &lt;virtual env name> python=&lt;python version>
-$ conda create --prefix=
+                                    PostgreSQL Join조인(Join)
+두 개의 테이블을 특정 기준 컬럼으로 결합하는 일
+
+조인 시, Tip
+Outer Table의 결과 집합이 작아야 한다 (Left join의 왼쪽 편에 있는 데이터의 size
                                 
                             </div>
                             <div class="publish-info">
@@ -708,8 +711,8 @@ $ conda create --prefix=
                                     
                                     <i class="fas fa-bookmark fa-fw icon-category"></i>
                                     
-                                    <a href="/categories/Python/" class="post-category">
-                                    Python
+                                    <a href="/categories/SQL/" class="post-category">
+                                    SQL
                                     </a>
                                     
                                     
@@ -720,7 +723,7 @@ $ conda create --prefix=
                         
                         <div class="card-action article-tags">
                             
-                            <a href="/tags/Python/"><span class="chip bg-color">Python</span></a>
+                            <a href="/tags/SQL/"><span class="chip bg-color">SQL</span></a>
                             
                         </div>
                         
@@ -744,29 +747,150 @@ $ conda create --prefix=
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/Python-Data-Structure/vecotr/">
+                        <a href="/2024/01/01/SQL/physics-modeling/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Vecotr">
+                                <img src="/images/logos/sql-logo.png" class="responsive-img" alt="[SQL] Physics-Modeling">
                                 
-                                <span class="card-title">[Python] Vecotr</span>
+                                <span class="card-title">[SQL] Physics-Modeling</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Vecotr벡터(Vecotr)
+                                    Physics-Modeling인덱스(Index)index range scan, index full scan &#x3D;&gt; single block I&#x2F;O~ &#x3D;&gt; multi block I&#
+                                
+                            </div>
+                            <div class="publish-info">
+                                <span class="publish-date">
+                                    <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                                </span>
+                                <span class="publish-author">
+                                    
+                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                    
+                                    <a href="/categories/SQL/" class="post-category">
+                                    SQL
+                                    </a>
+                                    
+                                    
+                                </span>
+                            </div>
+                        </div>
+
+                        
+                        <div class="card-action article-tags">
+                            
+                            <a href="/tags/SQL/"><span class="chip bg-color">SQL</span></a>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="cd-timeline-block">
+
+            
+            
+
+            
+            
+
+            
+            <div class="cd-timeline-img day" data-aos="zoom-in-up">
+                <span>01</span>
+            </div>
+            <article class="cd-timeline-content" data-aos="fade-up">
+                <div class="article col s12 m6">
+                    <div class="card">
+                        <a href="/2024/01/01/SQL/union/">
+                            <div class="card-image">
+                                
+                                <img src="/images/logos/sql-logo.png" class="responsive-img" alt="[SQL] Union">
+                                
+                                <span class="card-title">[SQL] Union</span>
+                            </div>
+                        </a>
+                        <div class="card-content article-content">
+                            <div class="summary block-with-text">
+                                
+                                    출처 : UNION 연산 , UNION ALL 연산
+UNION
+SELECT 문들의 결과 집합을 단일 결과 집합으로 결합하며 결합 시 중복된 데이터는 제거
+
+
+두 개의 SELECT문 간 컬럼의 개수는 동일 (컬럼 개수
+                                
+                            </div>
+                            <div class="publish-info">
+                                <span class="publish-date">
+                                    <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                                </span>
+                                <span class="publish-author">
+                                    
+                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                    
+                                    <a href="/categories/SQL/" class="post-category">
+                                    SQL
+                                    </a>
+                                    
+                                    
+                                </span>
+                            </div>
+                        </div>
+
+                        
+                        <div class="card-action article-tags">
+                            
+                            <a href="/tags/SQL/"><span class="chip bg-color">SQL</span></a>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="cd-timeline-block">
+
+            
+            
+
+            
+            
+
+            
+            <div class="cd-timeline-img day" data-aos="zoom-in-up">
+                <span>01</span>
+            </div>
+            <article class="cd-timeline-content" data-aos="fade-up">
+                <div class="article col s12 m6">
+                    <div class="card">
+                        <a href="/2024/01/01/Python-Data-Structure/array/">
+                            <div class="card-image">
+                                
+                                <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Array">
+                                
+                                <span class="card-title">[Python] Array</span>
+                            </div>
+                        </a>
+                        <div class="card-content article-content">
+                            <div class="summary block-with-text">
+                                
+                                    Array배열(Array)
 삽입&#x2F;삭제 : O(N)
+
+arr + 자료형 크기 * 점프할 크기 &#x3D; 찾으려는 값의 메모리 주소값
+
+임의접근(Random Access)
+
+
 
 탐색 : O(1)
 
-동적 배열 (size 변경가능)
-
-
-# python
-v = []
-v.append((123, 456))
-v.append((789, 9
+C++에서는
                                 
                             </div>
                             <div class="publish-info">
@@ -813,144 +937,21 @@ v.append((789, 9
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/Python/dict-to-dataFrame/">
+                        <a href="/2024/01/01/Python-Data-Structure/collections-(1)/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Dict-to-DataFrame">
+                                <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] collections 정복하기(1탄)">
                                 
-                                <span class="card-title">[Python] Dict-to-DataFrame</span>
+                                <span class="card-title">[Python] collections 정복하기(1탄)</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Dict-to-DataFramepandas.DataFrame.append의 deprecated
-pandas.DataFrame.append() 함수는 매우 비효율적이며 메모리 사용량이 많은 문제
-
-
-append()는 
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                    
-                                    <a href="/categories/Python/" class="post-category">
-                                    Python
-                                    </a>
-                                    
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                        <div class="card-action article-tags">
-                            
-                            <a href="/tags/Python/"><span class="chip bg-color">Python</span></a>
-                            
-                        </div>
-                        
-                    </div>
-                </div>
-            </article>
-        </div>
-        
-        <div class="cd-timeline-block">
-
-            
-            
-
-            
-            
-
-            
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>01</span>
-            </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
-                        <a href="/2024/01/01/Python/first-class-function/">
-                            <div class="card-image">
-                                
-                                <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Firts Class Function">
-                                
-                                <span class="card-title">[Python] Firts Class Function</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    Firts Class Function일급함수 (first-class function)
-프로그래밍 언어가 함수를 일급 객체(first-class citizen)로 취급하는 것.
-
-적용이 되는 언어는 Python 이외에
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                    
-                                    <a href="/categories/Python/" class="post-category">
-                                    Python
-                                    </a>
-                                    
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                        <div class="card-action article-tags">
-                            
-                            <a href="/tags/Python/"><span class="chip bg-color">Python</span></a>
-                            
-                        </div>
-                        
-                    </div>
-                </div>
-            </article>
-        </div>
-        
-        <div class="cd-timeline-block">
-
-            
-            
-
-            
-            
-
-            
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>01</span>
-            </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
-                        <a href="/2024/01/01/Python/global-interpreter-lock/">
-                            <div class="card-image">
-                                
-                                <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Global Interpreter Lock">
-                                
-                                <span class="card-title">[Python] Global Interpreter Lock</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    Global Interpreter LockGIL (Global Interpreter Lock)
-파이썬 인터프리터가 한 스레드만 하나의 바이트코드를 실행 시킬 수 있도록 해주는 Lock
-
-하나의 스레드에 모든 자원을 
+                                    collections
+List, Tuple, Dict에 대한 Python Built-in 확장 자료 구조(모듈)
+편의성, 실행 효율(메모리의 사용량을 줄이거나 속도를 좀 더 빠르게) 등을 사용자에게 제공합니다.
+아래
                                 
                             </div>
                             <div class="publish-info">
