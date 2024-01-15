@@ -340,16 +340,16 @@
 <p>관리자 권한으로 shell을 여는 이유는 특정 프로세스는 소유자가 있기 때문이에요. <strong>일부 커맨드(예를 들면 리눅스의 kill)를 사용할 때 소유자가 아닌 다른 계정은 권한의 제한</strong> 받아요. 또한 system과 관련된 중요한 명령어를 사용할 수 있는 제한된 계정이기도 합니다. 때문에 잘못해서 system 데몬 process를 죽이지 않도록 항상 사용에 유의해야 해요. 😱</p>
 <h4 id="2-netstat-명령어로-사용중인-포트-보기"><a href="#2-netstat-명령어로-사용중인-포트-보기" class="headerlink" title="2. netstat 명령어로 사용중인 포트 보기"></a>2. netstat 명령어로 사용중인 포트 보기</h4><p>윈도우에서도 리눅스와 같이 netstat 명령어를 사용할 수 있었어요.(리눅스는 net-tools 패키지를 깔아야 사용 가능합니다.) <strong>nestat은 network status라고 해서 현재 네트워크 정보와 LISTENING 중인 포트를 볼 수 있어요.</strong> </p>
 <pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token comment"># 프로토콜, 호스트:포트, 상태를 볼 때</span>
-netsat <span class="token operator">-</span>ab
+netstat <span class="token operator">-</span>ab
 
 <span class="token comment"># 프로토콜의 PID를 확인할 때</span>
-netsat <span class="token operator">-</span>aon<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+netstat <span class="token operator">-</span>aon<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ko-kr/windows-server/administration/windows-commands/netstat">nestat 명령어에 옵션</a>을 사용하면 여러 방식으로 볼 수 있어요. 제가 사용했던 것처럼 <code>netstat -ab</code>와 <code>netstat -aon</code> 처럼 따로 결과를 볼 수도 있고, <code>nestat -abon</code> 처럼 연결해서 한 번에 볼 수도 있어요. 스트림 출력이 길어지면 보기 힘드니까 취향에 맞게 쓰면 되요!</p>
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110082&authkey=%21ANl1GP6vIRv7U80&width=555&height=348" width="555" height="348" alt="netsat -ab"/>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110082&authkey=%21ANl1GP6vIRv7U80&width=555&height=348" width="555" height="348" alt="netstat -ab"/>
 
 <p>두 이미지를 보면 <strong>제가 사용하려는 5432 포트를 두 개의 프로세스가 LISTENING</strong> 하고 있어요. svchost.exe는 저도 모르게 host pc에서 띄워진 프로세스이고, postgres는 제가 도커에서 올린 컨테이너에요. svchost.exe가 먼저 포트를 점유하고 있어서 뒤에 뛰운 postgres가 붙질 못했어요.</p>
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110081&authkey=%21ADwdItTREpcjZJo&width=825&height=206" width="825" height="206" alt="netsat -aon"/>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110081&authkey=%21ADwdItTREpcjZJo&width=825&height=206" width="825" height="206" alt="netstat -aon"/>
 
 <p><strong>svchost.exe를 kill</strong>하기 위해 우선 도커 컨테이너를 내렸어요. 그리고 svchost.exe의 “<strong>PID 7736</strong>“을 확인했어요. 이 PID는 운영체제에 의해 관리되는 ID라 매번 달라질 수 있어요.  </p>
 <h4 id="3-taskkill-명령어로-프로세스-kill-하기"><a href="#3-taskkill-명령어로-프로세스-kill-하기" class="headerlink" title="3. taskkill 명령어로 프로세스 kill 하기"></a>3. taskkill 명령어로 프로세스 kill 하기</h4><p>리눅스에 <code>kill</code>이 있다면 윈도우에는 <code>taskkill</code>이 있어요. 리눅스의 kill에는 SIGNAL을 줬는 데, 윈도우 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/taskkill">taskkill</a>에는 Parameters를 넘겨요.</p>
