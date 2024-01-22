@@ -319,7 +319,7 @@
 <ul>
 <li><p><strong>일반적으로 행열의 2차원 데이터는 row한 저장 포맷</strong>을 많이 사용해요. 위의 csv처럼 가로로 행을 구분하고 한 행에서는 구분문자(Delimiter)로 열을 구분하는 형식이에요.</p>
 </li>
-<li><p>만약 전체 데이터를 읽을 거라면 “왼쪽 → 오른쪽, 위 → 아래” 로 빠르게 읽을 수 있어요. 하지만 특정 컬럼만 읽는 다면, 필요한 컬럼 사이에 있는 값들도 읽고 버리도록 프로그램이 되어 있어요.</p>
+<li><p>만약 전체 데이터를 읽을 거라면 “왼쪽 → 오른쪽, 위 → 아래” 로 빠르게 읽을 수 있어요. 하지만 특정 컬럼만 읽는 다면, 필요한 컬럼 사이에 있는 값들도 읽고 버리도록 프로그램이 되어 있어요. 물론 요즘 DW는 columnar storage(행이 아닌 열 순서대로 데이터를 저장)을 지원하는 경우가 많아요. </p>
 </li>
 <li><p><strong>분석에서는 집계(aggregation)를 주로 사용</strong>해요. 컬럼이 길어진다면 집계 기준과 집계 대상 이외에 모든 컬럼을 읽어야 하는 건 낭비에요. 예를 들어 “카테고리별 (평균) 비용”과 같이 두 개의 컬럼으로만으로도 유의미한 통계를 도출할 수 있어요.</p>
 </li>
@@ -338,7 +338,7 @@
 </ol>
 <h4 id="Fact의-성격"><a href="#Fact의-성격" class="headerlink" title="Fact의 성격"></a>Fact의 성격</h4><p>문맥을 설명하는 것보다 분석 대상으로 <strong>측정 가능한 성격(measurable)</strong>을 뛰고 있어요. </p>
 <h4 id="ETC"><a href="#ETC" class="headerlink" title="ETC"></a>ETC</h4><ul>
-<li><p><strong>집계할 수 있다고 모든 대상이 Fact가 되지는 않아요.</strong> 거래날짜나 트랜잭션일자도 Fact 테이블에 있지만 연·월·일을 집계한다고 의미있는 분석결과를 얻을 수는 없어요. 이런 값들은 Fact가 아니에요.</p>
+<li><p><strong>집계할 수 있다고 모든 대상이 Fact가 되지는 않아요.</strong> 거래날짜나 트랜잭션일자도 Fact 테이블에 있지만 year·month·day를 집계한다고 의미있는 분석결과를 얻을 수는 없어요. 이런 값들은 Fact가 아닌 Dimension이에요.</p>
 </li>
 <li><p>numerical한 타입외에도 다른 타입의 팩트도 있어요. </p>
 </li>
@@ -348,10 +348,10 @@
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110065&authkey=%21AL9adxbCgyQH5HY&width=1064&height=164" width="1064" height="164" alt="product id, product, category, subcategory 기준으로 cost는 원자성을 가져요." />
 
 <h3 id="Dimension"><a href="#Dimension" class="headerlink" title="Dimension"></a>Dimension</h3><blockquote>
-<p><strong>Fact에 대한 의미 있는 맥락을 더해주는 것</strong>이에요. <strong>Fact만 있다고 의미 있는 통찰력을 얻을 수 없기 때문에</strong> 집계에는 맥락이 같이 있어야 해요. 위에서 “카테고리별 (평균) 비용” 중 비용이 Fact였다면, 카테고리는 Dimension이에요. 단순히 비용만 집계한다고 어떤 의미가 있지는 않죠? <U>카테고리별</U> (평균) 비용이나, <U>연도가 2023년</U>의 (합계) 비용처럼 Fact의 집계에 부가적인 정보를 더해줘요.</p>
+<p><strong>Fact에 대한 의미 있는 맥락을 더해주는 것</strong>이에요. <strong>Fact만 있다고 의미 있는 통찰력을 얻을 수는 없어요.</strong> 집계에는 항상 맥락이 같이 있어야 해요. 위에서 “카테고리별 (평균) 비용” 중 비용이 Fact였다면, 카테고리는 Dimension이에요. 단순히 비용만 집계한다고 어떤 의미가 있지는 않죠? <U>카테고리별</U> (평균) 비용이나, <U>연도가 2023년</U>의 (합계) 비용처럼 Fact의 집계에 부가적인 정보를 더해줘요.</p>
 </blockquote>
 <h4 id="Dimension-테이블의-구성"><a href="#Dimension-테이블의-구성" class="headerlink" title="Dimension 테이블의 구성"></a>Dimension 테이블의 구성</h4><ul>
-<li><p><strong>PK</strong> : Fact 테이블에서는 FK였던 값이에요. Dimension 테이블과 Fact 테이블은 1:N 관계를 가져요.</p>
+<li><p><strong>PK</strong> : Fact 테이블에서는 FK였던 값이에요. Dimension 테이블과 Fact 테이블은 1:N 관계(OneToMany)를 가져요.</p>
 </li>
 <li><p><strong>Dimension</strong> : Fact에 대한 의미 있는 맥락을 더해주는 것이에요.</p>
 </li>
@@ -360,12 +360,15 @@
 </ul>
 <h4 id="Dimension의-성격"><a href="#Dimension의-성격" class="headerlink" title="Dimension의 성격"></a>Dimension의 성격</h4><p><strong>설명적(descriptive)인 성격</strong>을 가져요. people, products, places, time 등 맥락 Fact가 발생했을 때의 문맥을 설명하는 성격을 뛰고 있어요.</p>
 <h4 id="ETC-1"><a href="#ETC-1" class="headerlink" title="ETC"></a>ETC</h4><ul>
-<li><p><strong>Dimension 테이블을 만들면 데이터의 중복을 줄이고, 디스크 용량을 절약</strong>할 수 있어요. Fact 테이블에서는 길이가 긴 categorical 타입의 문자열이 Dimension 테이블로 나오면 기존 Fact 테이블에서의 값이 id로 치환되고, Dimension 테이블은 참조 대상 테이블이 되어 중복이 제거되요.</p>
+<li><p><strong>Dimension 테이블을 만들면 데이터의 중복을 줄이고, 디스크 용량을 절약</strong>할 수 있어요. Fact 테이블에서는 길이가 긴 categorical 타입의 문자열이 Dimension 테이블로 나오면 기존 Fact 테이블에서의 값이 id(surrogate key)로 치환되고, Dimension 테이블은 Fact 테이블의 참조 테이블이 되어 값의 중복(redundancy)이 제거되요. 2차 정규화로 볼 수 있어요.</p>
 </li>
 <li><p>분석 결과인 보고서에 필터가 필요하거나 그룹핑하는 요구하는 경우가 많아 <strong>Grouping, Filtering, Labeling이 수행되는 대상</strong>에요.</p>
 </li>
 <li><p>때로는 변화 될 수도 있지만, 보통은 Fact 테이블에 변화가 일어나도 <strong>Dimension은 조금 더 정적(static)인 성향</strong>이 있어요.</p>
 </li>
+</ul>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.udemy.com/course/data-warehouse-the-ultimate-guide/">Data Warehouse - The Ultimate Guide</a></li>
 </ul>
 <h2 id="🙊-글-마무리"><a href="#🙊-글-마무리" class="headerlink" title="🙊 글 마무리"></a>🙊 글 마무리</h2><p>Fact와 Dimension 설명이 길어서 Dimension Modeling을 다음 포스트에 이어 쓰려고 해요. Fact와 Dimension을 구분하는 건 모델링에 있어 정말 중요한 기본기라는 생각이 들었어요.</p>
 <p>DB에서 도메인을 이해한다는 게 무슨 말인지 참 어려웠는 데, 저는 Fact와 Dimension을 잘 구분한다는 게 Biz와 도메인을 이해한다는 것과 비슷하게 들린 거 있죠 ㅎㅎ. 익숙해질 때까지 반복!! </p>
@@ -582,7 +585,7 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/08/Reids/redis/">
+                <a href="/2024/01/08/Reids/redis-concept/">
                     <div class="card-image">
                         
                         
