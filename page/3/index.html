@@ -270,7 +270,7 @@
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/17/Data-Architecture/practice/3_aarrr_cohort/">
+                    <a href="/2024/01/17/Data-Analysis/4_funnel/">
                         <div class="card-image">
                             
                             
@@ -311,7 +311,7 @@ CREATE TABLE users (
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/17/Data-Architecture/practice/2_aarrr/">
+                    <a href="/2024/01/17/Data-Analysis/3_aarrr_cohort/">
                         <div class="card-image">
                             
                             
@@ -324,10 +324,11 @@ CREATE TABLE users (
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                -- Acquisition (획득) 테이블
-CREATE TABLE acquisition (
-    user_id INT REFERENCES users(user_id),
-    acquisition_date DATE 
+                                -- 사용자 테이블 (users)
+CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    join_dat
                             
                         </div>
                         <div class="publish-info">
@@ -351,7 +352,7 @@ CREATE TABLE acquisition (
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/17/Data-Architecture/practice/1_retention-cohort/">
+                    <a href="/2024/01/17/Data-Analysis/2_aarrr/">
                         <div class="card-image">
                             
                             
@@ -364,11 +365,10 @@ CREATE TABLE acquisition (
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                -- 사용자 테이블 (User Table)
-CREATE TABLE users (
-    user_id SERIAL PRIMARY KEY,
-    username VARCHAR(255) NOT NULL,
-    joi
+                                
+Acquisition(획득): 새로운 고객을 획득하고 사이트 또는 서비스에 끌어들입니다.
+Activation(활성화): 신규 사용자가 제품이나 서비스를 처음 사용하면서 어떠한 형태의 ‘활성화’를 경험합니다.
+Ret
                             
                         </div>
                         <div class="publish-info">
@@ -721,7 +721,7 @@ FROM table_name
             
         </div>
         <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">3 / 18</div>
+            <div class="center-align b-text-gray">3 / 19</div>
         </div>
         <div class="col s6 m4 l4">
             
