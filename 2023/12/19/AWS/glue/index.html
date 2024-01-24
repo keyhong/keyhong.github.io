@@ -1,0 +1,1053 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[AWS] Glue, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="Glue">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>[AWS] Glue | Keyhong</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span diy-happy-monkey">Keyhong</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Keyhong</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/aws-logo.png')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title diy-neon-red">
+                        [AWS] Glue</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/AWS/">
+                                <span class="chip bg-color">AWS</span>
+                            </a>
+                        
+                            <a href="/tags/Glue/">
+                                <span class="chip bg-color">Glue</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/AWS/" class="post-category">
+                                AWS
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2023-12-19
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="Glue"><a href="#Glue" class="headerlink" title="Glue"></a>Glue</h2><blockquote>
+<p>분석 사용자가 여러 소스의 데이터를 쉽게 검색, 준비, 이동, 통합할 수 있도록 하는 서버리스 데이터 통합 서비스이다. </p>
+</blockquote>
+<p>주요한 용도는 S3 DataLake(이하 DL)의 메타 데이터를 만들고 관리한다. S3 자체로는 데이터에 대한 스키마를 가지고 있지 않다. DW와 DL의 큰 차이인데, <strong>S3는 정형&#x2F;반정형&#x2F;비정형의 어떤 타입의 파일이라도 넣을 수 있다. 때문에 RDB 기반이 되는 DW와 달리 처음부터 스키마를 정의하지 않는다.</strong></p>
+<p>하지만 <strong>DL의 큰 단점이라면 테이블에 대한 정의가 없어 관리가 어렵고 스키마가 없어 어떤 Query도 날릴 수가 없다.</strong> 그냥 순수하게 봤을 때는 전체가 문자열인 파일로 인식하는 것이다. (심지어는 ‘,’ 와 같은 구분자도 문자열로 인식하기에 0과 1로만 인식하는 컴퓨터의 입장에서는 사용자의 도움 없이는 절대로 구분할 수 없다.)</p>
+<p>이러한 이유로 <strong>DL에서도 적어도 데이터를 읽을 때는 미리 정의된 스키마에 따라 읽어야 SQL을 이용해서 가공하는 것도 쉽고 분석하기도 편하다. Glue는 그런 역할을 도와줄 수 있다.</strong> Glue를 공부하면 느낀 것은 상당히 기능이 많다는 것이다. 그 모든 기능을 통틀어서 Glue라는 이름으로 대표하지만, 개인적으로 공부한 관점에서는 “Glue가 무엇이다.” 라고 정의하는 것보다도 Glue가 어떤 핵심적인 기능을 가지고 있는 가를 중심으로 이해하는 게 편했다. 그 중 핵심이라 생각되는 기능을 몇 개만 정리해 보았다.</p>
+<h2 id="①-Glue-Crawler"><a href="#①-Glue-Crawler" class="headerlink" title="① Glue Crawler"></a>① Glue Crawler</h2><p><strong>Data Lake(S3), DynamoDB(NoSQL DB), RDB(RDS) 등의 데이터 스토어에서 스키마를 만들어주는 역할을 한다.</strong> JDBC로 붙을 수 있는 DB는 물론, Mongo DB와 DW격인 Redshift도 가능하다.</p>
+<ul>
+<li>가능한 데이터 스토어 : <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/ko_kr/glue/latest/dg/crawler-data-stores.html">https://docs.aws.amazon.com/ko_kr/glue/latest/dg/crawler-data-stores.html</a></li>
+</ul>
+<p>데이터 스토어 - *Glue Crawler - Glue Data Catalog</p>
+<p>AWS의 모든 플랫폼의 핵심이 되는 <strong>S3에서 크롤러는 미리 정의된 파일의 포맷에 따라 데이터를 읽고 값에 따라 스키마를 만든다. 그렇게 만든 스키마를 Glue Data Catalog에 보내 관리한다.</strong></p>
+<ul>
+<li>가능한 파일 포맷 : <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/glue/latest/dg/add-classifier.html#classifier-built-in">https://docs.aws.amazon.com/glue/latest/dg/add-classifier.html#classifier-built-in</a></li>
+</ul>
+<p>그럼 여기서 나올 수 있는 질문은 언제 크롤링을 실행 하는 지가 중요 할 것이다. <strong>사용자가 수동으로 on demand에 따라 실행할 수 있다.</strong> 하지만 데이터가 언제 바껴서 들어올 지는 아무도 모른다. 이를 위해서 <strong>AWS는 Glue Trigger를 지원함으로써 특정 시간에 실행(cron 기반의 시간 트리거) 할 수 있게 해준다.</strong></p>
+<ul>
+<li>AWS Glue Trigger : <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/ko_kr/glue/latest/dg/about-triggers.html">https://docs.aws.amazon.com/ko_kr/glue/latest/dg/about-triggers.html</a></li>
+</ul>
+<h2 id="②-Glue-Data-Catalog"><a href="#②-Glue-Data-Catalog" class="headerlink" title="② Glue Data Catalog"></a>② Glue Data Catalog</h2><p><strong>Athena(AWS presto), EMR(AWS Hadoop Cluster), Redshift(AWS DW), Glue ETL 등의 analysis 또는 etl 작업을 위한 솔루션에서 데이터와 매핑하여 사용할 메타 데이터를 저장한다.</strong> Hadoop에서 Hive를 사용할 때 HDFS 데이터를 조회하기 위한 <strong>메타데이터를 저장하는 Hive Metastore와 비슷하다.</strong></p>
+<img alt="데이터 스토어 > Glue Crawler > *Glue Data Catalog">
+
+
+<p>앞서 Glue Crawler를 통해 Data Catalog에 스키마를 만든다고 했는 데, <strong>꼭 크롤러를 사용하지 않더라도 사용자가 수동으로 정의할 수도 있다.</strong> 그래서 S3 Bucket 안에 하나의 폴더를 만들어서 테이블 스키마를 정의하고 매핑해 보았다.</p>
+<ul>
+<li>우선 <strong>콘솔에서 Data Catalog를 접속한다.</strong></li>
+</ul>
+<img alt="AWS 콘솔에서 Data Catalog 검색">
+
+<p>AWS 콘솔에서 Data Catalog 검색</p>
+<ul>
+<li>그럼 다음 페이지를 확인 할 수 있는 데, 나는 이미 하나의 테이블 정의서를 만들어 놓았기 때문에 리스트가 나온다.</li>
+</ul>
+<p>이 페이지에서 주목할 부분은 두 가지인 것 같다.</p>
+<p>[ Add tables using crawler ] : Glue Crawler로 메타 데이터 만들기<br><strong>[ Add table ] : 유저가 직접 정의하여 메타 데이터 만들기</strong><br>나는 직접 메타데이터를 정의할 것이라 Add table을 선택 하였다.</p>
+<img alt="">
+
+
+<ul>
+<li>보다시피 <strong>RDB 테이블을 만드는 과정과 큰 차이가 없다. 테이블명, 데이터베이스명, 테이블 Comment를 넣는다.</strong></li>
+</ul>
+<img alt="">
+
+
+<ul>
+<li>스크롤을 내리면 추가적인 설정이 있다.</li>
+</ul>
+<ul>
+<li>Data store</li>
+</ul>
+<p>① <strong>Select the type of source : 어떤 데이터 소스와 매핑을 할 것인지 정한다.</strong> Kinesis와 Kafka는 실시간 처리를 위한 플랫폼이기 때문에 스트리밍 처리가 필요한 경우에 사용한다. Kafka에서는 Schema Registry라고 실시간으로 들어오는 데이터를 검증(Validator)하고 필터링하는 역할을 하는 앱이 있다. 그것과 Kinesis와 Kafka에서 Data Catalog는 이와 유사한 맥락으로 사용한다. </p>
+<p>② <strong>Data location is specified in : 데이터 소스에 대한 접근을 내부 혹은 외부 계정 어디로 할 것인지 선택한다.</strong> 외부 계정에서도 접근 가능하게 하려면 S3의 보안 설정을 추가적으로 해야 한다.</p>
+<p>③ <strong>Include path : 스키마를 매핑할 데이터 소스의 경로이다.</strong> object를 저장하는 Full Path이다.</p>
+<ul>
+<li>Data Foramt</li>
+</ul>
+<p><strong>Classification : 폴더 내에 저장되는 파일의 포맷이다.</strong></p>
+<img alt="">
+
+<ul>
+<li>다음 페이지로 넘어와서 이어 진행한다. <strong>Define or upload schema를 눌러 직접 스키마 정의를 한다. Add 버튼을 누르면 컬럼의 열에 대한 스키마를 추가 할 수 있다.</strong></li>
+</ul>
+<img>
+
+<ul>
+<li>Add를 누르면 팝업이 하나 뜬다. 안에는 [ Set as partition key? ] 라는 체킹박스가 있다. <strong>특정 컬럼을 partition key로 사용하는 이유는 Comment 안과 같다. Data Lake는 DW와 달리 Index에 제한적인 부분이 많다.</strong></li>
+</ul>
+<p>이는 데이터 자체의 특성도 있고, Data Lake의 목적도 있다. <strong>Data Lake는 비정형&#x2F;반정형 데이터를 저장하기 위해 스키마를 미리 만들어 두지 않는다. 스키마를 미리 정의하고 데이터를 적재하는 것은데이터가 적재될 때 Index나 제약조건, 혹은 컬럼 타입에 대한 검증이 이루어지고 적재되는 것이므로 속도를 느리게 만드는 요소이다.</strong> 대신, 읽을 때는 미리 만든 Index를 통해 빠른 탐색이 가능하다. </p>
+<p>하지만 <strong>Data Lake는 “schema on write”가 아닌 “schema on read”이다. 이를 통해서 데이터의 형태가 변화하거나 컬럼의 확장 가능성에 대해 좀 더 개방적이고 빠른 스키마 수정을 가능하게 한다.</strong> 이러한 이유로 DW와 같은 방법으로 쿼리의 최적화를 이끌어내는 것은 당연히 무리가 있다.</p>
+<p>같은 WHERE 절이라도 Data Lake에서는 파티셔닝을 이용하여 파티션 컬럼 값에 따라 하위 폴더로 만들어 데이터를 나누어 담는다. 그런 방법으로 쿼리의 비약적인 퍼포먼스 향상을 얻을 수 있다.</p>
+<img>
+
+<ul>
+<li>이후 Add indexes를 눌러 <strong>앞서 만들었던 파티션 컬럼에 Index를 매핑해준다.</strong></li>
+</ul>
+<p>조금 더 자세하게 설명하자면, <strong>☆ 파티션 컬럼을 만들고 파티션 컬럼에 인덱스를 매핑하지 않으면 WHERE 조건절을 태우더라도 모든 파티션에 대해 Full Scan 수행한다. 이 후 개별 행에 대한 조건 Filtering을 수행하게 된다.</strong></p>
+<p><strong>파티셔닝을 하고 파티션 컬럼을 조건절로 태우면 이미 파티션 값에 의해 분할된 폴더 안의 데이터만 읽게 되어 Full Scan이 아닌 필요 파티션만 스캔할 수 있다.</strong></p>
+<ul>
+<li>AWS 설명 : <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/ko_kr/glue/latest/dg/partition-indexes.html">https://docs.aws.amazon.com/ko_kr/glue/latest/dg/partition-indexes.html</a></li>
+</ul>
+<img>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Keyhong</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2023/12/19/AWS/glue/">http://example.com/2023/12/19/AWS/glue/</a>
+                </span>
+            </div>
+            <!-- <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        reprint:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    use
+                    <a href="cc_by_url" rel="external nofollow noreferrer" target="_blank">cc_by_name</a>
+                    licensed
+                    <a href="/about" target="_blank">Keyhong</a>
+                    !
+                </span>
+            </div> -->
+        
+    </div>
+
+    <!-- <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script> -->
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/AWS/">
+                                    <span class="chip bg-color">AWS</span>
+                                </a>
+                            
+                                <a href="/tags/Glue/">
+                                    <span class="chip bg-color">Glue</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+        <link rel="stylesheet" href="/libs/gitment/gitment-default.css">
+<link rel="stylesheet" href="/css/gitment.css">
+
+<div class="gitment-card card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>댓글</span>
+    </div>
+    <div id="gitment-content" class="card-content"></div>
+</div>
+
+<script src="/libs/gitment/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+    id: 'Tue Dec 19 2023 00:00:00 GMT+0900',
+    owner: '',
+    repo: '',
+    oauth: {
+        client_id: '',
+        client_secret: ''
+    }
+});
+
+gitment.render('gitment-content');
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2023/12/27/Django/django-foreign-key/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/docker-logo.png" class="responsive-img" alt="[Django] 관계를 표현하는 모델 필드 (ForeignKey)">
+                        
+                        <span class="card-title diy-neon-red">[Django] 관계를 표현하는 모델 필드 (ForeignKey)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-12-27
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Django/" class="post-category">
+                                    Django
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Django/">
+                        <span class="chip bg-color">Django</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/12/19/Kubernetes/readiness_probe/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kubernetes] Readiness Probe &amp; Liveness Probe">
+                        
+                        <span class="card-title diy-neon-red">[Kubernetes] Readiness Probe &amp; Liveness Probe</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Kubernetes/">
+                        <span class="chip bg-color">Kubernetes</span>
+                    </a>
+                    
+                    <a href="/tags/Readiness-Probe/">
+                        <span class="chip bg-color">Readiness Probe</span>
+                    </a>
+                    
+                    <a href="/tags/Liveness-Probe/">
+                        <span class="chip bg-color">Liveness Probe</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;목차</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2024</span>
+            
+            <a href="/about" target="_blank">Gyuwon Hong</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;Total visits:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;Total visitors:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/keyhong" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:wnhong96@gmail.com" class="tooltipped" target="_blank" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
