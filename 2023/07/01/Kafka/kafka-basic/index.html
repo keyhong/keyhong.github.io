@@ -128,9 +128,9 @@
   </li>
   
   <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+    <!-- <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
-    </a>
+    </a> -->
   </li>
   <li>
     <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
@@ -306,15 +306,13 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Kafka-vs-MessageQueue"><a href="#Kafka-vs-MessageQueue" class="headerlink" title="Kafka vs. MessageQueue"></a>Kafka vs. MessageQueue</h2><h2 id="AMQP-Advanced-Message-Queing-Protocol-Kafka"><a href="#AMQP-Advanced-Message-Queing-Protocol-Kafka" class="headerlink" title="                 | AMQP (Advanced Message Queing Protocol) | Kafka"></a> <br>                | AMQP (Advanced Message Queing Protocol) | Kafka</h2><h2 id="products-Erlang-RabbitMQ"><a href="#products-Erlang-RabbitMQ" class="headerlink" title="products        | Erlang, RabbitMQ ..                                                          |"></a>products        | Erlang, RabbitMQ ..                                                          |</h2><h2 id="Characteristics-기존-MQ는-이기종-간의-메시지의-포맷을-변경-할-때-메세지-브릿지-이용합니다-토픽은-DB의-테이블이나-파일시스템의-폴더와-유사한-성질을-가지고-있습니다-시스템-통일의-불편함과-비효율성이-있습니다-Producer가-데이터를-넣고-Consumer는-데이터를-소비합니다-토픽은-이름을-가집니다-목적에-따라-click-log-send-sms-location-log-등-무슨-데이터를-담는-지-명확히-기재함으로써-유지-보수에-이점이-있습니다-하나의-토픽은-여러-개의-파티션으로-구성됩니다-하나의-파티션은-Queue와-같이-파티션-끝에서-부터-차곡차곡-쌓습니다"><a href="#Characteristics-기존-MQ는-이기종-간의-메시지의-포맷을-변경-할-때-메세지-브릿지-이용합니다-토픽은-DB의-테이블이나-파일시스템의-폴더와-유사한-성질을-가지고-있습니다-시스템-통일의-불편함과-비효율성이-있습니다-Producer가-데이터를-넣고-Consumer는-데이터를-소비합니다-토픽은-이름을-가집니다-목적에-따라-click-log-send-sms-location-log-등-무슨-데이터를-담는-지-명확히-기재함으로써-유지-보수에-이점이-있습니다-하나의-토픽은-여러-개의-파티션으로-구성됩니다-하나의-파티션은-Queue와-같이-파티션-끝에서-부터-차곡차곡-쌓습니다" class="headerlink" title="Characteristics | - 기존 MQ는 이기종 간의 메시지의 포맷을 변경 할 때 메세지 브릿지 이용합니다. | -  토픽은 DB의 테이블이나 파일시스템의 폴더와 유사한 성질을 가지고 있습니다.                | - 시스템 통일의 불편함과 비효율성이 있습니다.                                | - Producer가 데이터를 넣고, Consumer는 데이터를 소비합니다.                |                                                                              | - 토픽은 이름을 가집니다. 목적에 따라 click log, send sms, location log 등 무슨 데이터를 담는 지 명확히 기재함으로써 유지 보수에 이점이 있습니다.                |                                                                              | - 하나의 토픽은 여러 개의 파티션으로 구성됩니다.                |                                                                              | - 하나의 파티션은 Queue와 같이 파티션 끝에서 부터 차곡차곡 쌓습니다."></a>Characteristics | - 기존 MQ는 이기종 간의 메시지의 포맷을 변경 할 때 메세지 브릿지 이용합니다. | -  토픽은 DB의 테이블이나 파일시스템의 폴더와 유사한 성질을 가지고 있습니다.<br>                | - 시스템 통일의 불편함과 비효율성이 있습니다.                                | - Producer가 데이터를 넣고, Consumer는 데이터를 소비합니다.<br>                |                                                                              | - 토픽은 이름을 가집니다. 목적에 따라 click log, send sms, location log 등 무슨 데이터를 담는 지 명확히 기재함으로써 유지 보수에 이점이 있습니다.<br>                |                                                                              | - 하나의 토픽은 여러 개의 파티션으로 구성됩니다.<br>                |                                                                              | - 하나의 파티션은 Queue와 같이 파티션 끝에서 부터 차곡차곡 쌓습니다.</h2><pre><code>            | - end-to-end 연결 방식의 아키텍처이기 때문에데이터 연동의 복잡성이 증가하고, 하드웨어, 운영체제의 장애가 발생 할 수 있습니다. | Producer/Consumer를 분리합니다. 하나의 메세지를 여러 컨슈머가 소비 할 수 있습니다.
-</code></pre>
-<hr>
-<pre><code>            | 확장에 엄청난 노력 필요합니다 | 스케일 아웃 가능 (높은 처리량을 위한 메세지 최적화)
-</code></pre>
-<hr>
-<pre><code>            | 각기 다른 파이프라인을 연결해야 합니다. | 관련 생태계(ksql, kafka streams ..)가 잘 만들어져 있습니다. 
-</code></pre>
-<hr>
+                <h2 id="Kafka-vs-MessageQueue"><a href="#Kafka-vs-MessageQueue" class="headerlink" title="Kafka vs. MessageQueue"></a>Kafka vs. MessageQueue</h2><p> </p>
+<p>|                | AMQP (Advanced Message Queing Protocol) | Kafka<br>|————————————————————————————-</p>
+<p>| products        | Erlang, RabbitMQ ..                                                          |<br>|————————————————————————————-<br>| Characteristics | - 기존 MQ는 이기종 간의 메시지의 포맷을 변경 할 때 메세지 브릿지 이용합니다. | -  토픽은 DB의 테이블이나 파일시스템의 폴더와 유사한 성질을 가지고 있습니다.<br>|                | - 시스템 통일의 불편함과 비효율성이 있습니다.                                | - Producer가 데이터를 넣고, Consumer는 데이터를 소비합니다.<br>|                |                                                                              | - 토픽은 이름을 가집니다. 목적에 따라 click log, send sms, location log 등 무슨 데이터를 담는 지 명확히 기재함으로써 유지 보수에 이점이 있습니다.<br>|                |                                                                              | - 하나의 토픽은 여러 개의 파티션으로 구성됩니다.</p>
+<p>|                |                                                                              | - 하나의 파티션은 Queue와 같이 파티션 끝에서 부터 차곡차곡 쌓습니다.<br>| ————————————————————————————-</p>
+<p>|                | - end-to-end 연결 방식의 아키텍처이기 때문에데이터 연동의 복잡성이 증가하고, 하드웨어, 운영체제의 장애가 발생 할 수 있습니다. | Producer&#x2F;Consumer를 분리합니다. 하나의 메세지를 여러 컨슈머가 소비 할 수 있습니다.<br>|————————————————————————————-                </p>
+<p>|                | 확장에 엄청난 노력 필요합니다 | 스케일 아웃 가능 (높은 처리량을 위한 메세지 최적화)<br>|————————————————————————————-</p>
+<p>|                | 각기 다른 파이프라인을 연결해야 합니다. | 관련 생태계(ksql, kafka streams ..)가 잘 만들어져 있습니다.<br>|————————————————————————————-</p>
 <h2 id="탄생-배경"><a href="#탄생-배경" class="headerlink" title="탄생 배경"></a>탄생 배경</h2><p>모든 시스템에서 데이터를 전송해도 실시간 처리도 가능한 상황 속에서, 데이터가 갑자기 많아지더라도 확장이 용이한 시스템이 필요했습니다. 이에 링크드인 내부의 데이터 팀에서 직접 개발하여 만들었는 데, 이것이 kafka 입니다.</p>
 <h2 id="Kafka-Broker-Cluster"><a href="#Kafka-Broker-Cluster" class="headerlink" title="Kafka Broker &amp; Cluster"></a>Kafka Broker &amp; Cluster</h2><h4 id="Kafka-broker"><a href="#Kafka-broker" class="headerlink" title="Kafka broker"></a>Kafka broker</h4><blockquote>
 <p>kafka cluster에서 실행되는 kafka application 서버 중 임의의 1대를 부르는 단어입니다.</p>
@@ -560,23 +558,23 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2023/07/01/Kafka/kafka-cleanup-policy/">
+                <a href="/2023/07/03/Kafka/kafka-acks/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Cleanup Policy (미완)">
+                        <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Acks">
                         
-                        <span class="card-title diy-neon-red">[Kafka] Cleanup Policy (미완)</span>
+                        <span class="card-title diy-neon-red">[Kafka] Acks</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Cleanup Policy
+                            Kafka Acks
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-07-01
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-07-03
                         </span>
                         <span class="publish-author">
                             
@@ -608,18 +606,18 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/07/01/Kafka/kafka-server-propery-options/">
+                <a href="/2023/07/01/Kafka/kafka-cleanup-policy/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Server Propery Options (미완)">
+                        <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Cleanup Policy">
                         
-                        <span class="card-title diy-neon-red">[Kafka] Server Propery Options (미완)</span>
+                        <span class="card-title diy-neon-red">[Kafka] Cleanup Policy</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            Cleanup Policy
                         
                     </div>
                     <div class="publish-info">

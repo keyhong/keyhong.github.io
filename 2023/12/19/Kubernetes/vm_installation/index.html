@@ -4,13 +4,16 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[Kubernetes] Readiness Probe &amp; Liveness Probe, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="ubuntuos 버전 확인uname -a 
-ping &amp;lt;&amp;gt;
+    <meta name="keywords" content="[Kubernetes] ubuntu installation(미완), Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="ubuntuos 버전 확인$ uname -a 
+
+$ ping &amp;lt;&gt;
+
+
 스왑 확인$ free -h 
 
 $ sudo swapoff -a # 현재 시스템에 적용(리부팅하면 재설정 필요)
-$ sudo sed -i &#39;/ swa">
+$ sudo sed -i &#39;/">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -22,7 +25,7 @@ $ sudo sed -i &#39;/ swa">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[Kubernetes] Readiness Probe &amp; Liveness Probe | Keyhong</title>
+    <title>[Kubernetes] ubuntu installation(미완) | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -133,9 +136,9 @@ $ sudo sed -i &#39;/ swa">
   </li>
   
   <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+    <!-- <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
-    </a>
+    </a> -->
   </li>
   <li>
     <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
@@ -232,13 +235,13 @@ $ sudo sed -i &#39;/ swa">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/kafka-logo.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/kubernetes-logo.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [Kubernetes] Readiness Probe &amp; Liveness Probe</h1>
+                        [Kubernetes] ubuntu installation(미완)</h1>
                 </div>
             </div>
         </div>
@@ -264,14 +267,6 @@ $ sudo sed -i &#39;/ swa">
                         
                             <a href="/tags/Kubernetes/">
                                 <span class="chip bg-color">Kubernetes</span>
-                            </a>
-                        
-                            <a href="/tags/Readiness-Probe/">
-                                <span class="chip bg-color">Readiness Probe</span>
-                            </a>
-                        
-                            <a href="/tags/Liveness-Probe/">
-                                <span class="chip bg-color">Liveness Probe</span>
                             </a>
                         
                     </div>
@@ -319,8 +314,11 @@ $ sudo sed -i &#39;/ swa">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="ubuntu"><a href="#ubuntu" class="headerlink" title="ubuntu"></a>ubuntu</h2><h1 id="os-버전-확인"><a href="#os-버전-확인" class="headerlink" title="os 버전 확인"></a>os 버전 확인</h1><p>uname -a </p>
-<p>ping &lt;&gt;</p>
+                <h2 id="ubuntu"><a href="#ubuntu" class="headerlink" title="ubuntu"></a>ubuntu</h2><h1 id="os-버전-확인"><a href="#os-버전-확인" class="headerlink" title="os 버전 확인"></a>os 버전 확인</h1><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">uname</span> <span class="token parameter variable">-a</span> 
+
+$ <span class="token function">ping</span> <span class="token operator">&lt;></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
 <h1 id="스왑-확인"><a href="#스왑-확인" class="headerlink" title="스왑 확인"></a>스왑 확인</h1><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">free</span> <span class="token parameter variable">-h</span> 
 
 $ <span class="token function">sudo</span> swapoff <span class="token parameter variable">-a</span> <span class="token comment"># 현재 시스템에 적용(리부팅하면 재설정 필요)</span>
@@ -481,14 +479,6 @@ kubeadm <span class="token function">join</span> <span class="token number">10.1
                                     <span class="chip bg-color">Kubernetes</span>
                                 </a>
                             
-                                <a href="/tags/Readiness-Probe/">
-                                    <span class="chip bg-color">Readiness Probe</span>
-                                </a>
-                            
-                                <a href="/tags/Liveness-Probe/">
-                                    <span class="chip bg-color">Liveness Probe</span>
-                                </a>
-                            
                         </div>
                     
                 </div>
@@ -596,7 +586,7 @@ gitment.render('gitment-content');
                 <a href="/2023/12/19/Kubernetes/readiness_probe/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kubernetes] Readiness Probe &amp; Liveness Probe">
+                        <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] Readiness Probe &amp; Liveness Probe">
                         
                         <span class="card-title diy-neon-red">[Kubernetes] Readiness Probe &amp; Liveness Probe</span>
                     </div>
@@ -604,7 +594,7 @@ gitment.render('gitment-content');
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            Readiness Probe & Liveness Probe
                         
                     </div>
                     <div class="publish-info">
@@ -630,14 +620,6 @@ gitment.render('gitment-content');
                         <span class="chip bg-color">Kubernetes</span>
                     </a>
                     
-                    <a href="/tags/Readiness-Probe/">
-                        <span class="chip bg-color">Readiness Probe</span>
-                    </a>
-                    
-                    <a href="/tags/Liveness-Probe/">
-                        <span class="chip bg-color">Liveness Probe</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -649,30 +631,30 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/12/16/Hive/hive-ddl/">
+                <a href="/2023/12/17/AWS/amazone-emr/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] DDL">
+                        <img src="/images/logos/aws-logo.png" class="responsive-img" alt="[AWS] Amazon EMR (미완)">
                         
-                        <span class="card-title diy-neon-red">[Hive] DDL</span>
+                        <span class="card-title diy-neon-red">[AWS] Amazon EMR (미완)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            DDL
+                            Amazon EMR
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-16
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-17
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Hive/" class="post-category">
-                                    Hive
+                            <a href="/categories/AWS/" class="post-category">
+                                    AWS
                                 </a>
                             
                             
@@ -682,8 +664,12 @@ gitment.render('gitment-content');
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Hive/">
-                        <span class="chip bg-color">Hive</span>
+                    <a href="/tags/AWS/">
+                        <span class="chip bg-color">AWS</span>
+                    </a>
+                    
+                    <a href="/tags/Amazon-EMR/">
+                        <span class="chip bg-color">Amazon EMR</span>
                     </a>
                     
                 </div>

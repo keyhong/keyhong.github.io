@@ -4,10 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="control plain - data plain(인프라)
-Service Descriptor - template, yaml
-kubeadm : 클러스터 구성kubectl : commandkubelet : daemon (">
+    <meta name="keywords" content="[Kubernetes] EC2 clutser 구축하기, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="EC2에서 kubernetes clutser 구축하기">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +17,7 @@ kubeadm : 클러스터 구성kubectl : commandkubelet : daemon (">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Keyhong</title>
+    <title>[Kubernetes] EC2 clutser 구축하기 | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -130,9 +128,9 @@ kubeadm : 클러스터 구성kubectl : commandkubelet : daemon (">
   </li>
   
   <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+    <!-- <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
-    </a>
+    </a> -->
   </li>
   <li>
     <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
@@ -229,13 +227,13 @@ kubeadm : 클러스터 구성kubectl : commandkubelet : daemon (">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/kubernetes-logo.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        </h1>
+                        [Kubernetes] EC2 clutser 구축하기</h1>
                 </div>
             </div>
         </div>
@@ -257,12 +255,25 @@ kubeadm : 클러스터 구성kubectl : commandkubelet : daemon (">
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Kubernetes/">
+                                <span class="chip bg-color">Kubernetes</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Kubernetes/" class="post-category">
+                                Kubernetes
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -299,79 +310,168 @@ kubeadm : 클러스터 구성kubectl : commandkubelet : daemon (">
 <p>Service Descriptor - template, yaml</p>
 <p>kubeadm : 클러스터 구성<br>kubectl : command<br>kubelet : daemon (docker한테 올리라고 말함)</p>
 <p>Desired State -&gt; Current State (X)<br>Current State -&gt; Desired State (O)</p>
-<p>아르헨티나 - 유럽 </p>
-<h1 id="root-계정-전환"><a href="#root-계정-전환" class="headerlink" title="root 계정 전환"></a>root 계정 전환</h1><p>sudo su - </p>
-<h1 id="hostctl로-hostname-변경"><a href="#hostctl로-hostname-변경" class="headerlink" title="hostctl로 hostname 변경"></a>hostctl로 hostname 변경</h1><p>hostnamectl set-hostname master</p>
-<h1 id="hostname-변경확인"><a href="#hostname-변경확인" class="headerlink" title="hostname 변경확인"></a>hostname 변경확인</h1><p>hostname</p>
-<h1 id="도커-설치"><a href="#도커-설치" class="headerlink" title="도커 설치"></a>도커 설치</h1><h1 id="https-docs-docker-com-engine-install-ubuntu"><a href="#https-docs-docker-com-engine-install-ubuntu" class="headerlink" title="https://docs.docker.com/engine/install/ubuntu/"></a><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/ubuntu/">https://docs.docker.com/engine/install/ubuntu/</a></h1><ol>
-<li><h1 id="sudo-apt-get-update"><a href="#sudo-apt-get-update" class="headerlink" title="sudo apt-get update"></a>sudo apt-get update</h1></li>
-<li><h1 id="sudo-apt-get-install-y-apt-transport-https-ca-certificates-curl-software-properties-common"><a href="#sudo-apt-get-install-y-apt-transport-https-ca-certificates-curl-software-properties-common" class="headerlink" title="sudo apt-get install -y  apt-transport-https ca-certificates curl software-properties-common"></a>sudo apt-get install -y  apt-transport-https ca-certificates curl software-properties-common</h1></li>
-</ol>
-<p>https를 사용해서 레포지토리를 사용할 수 있도록 필요한 패키지를 설치한다. </p>
-<ol start="3">
-<li><h1 id="curl-fsSL-https-download-docker-com-linux-ubuntu-gpg-sudo-apt-key-add"><a href="#curl-fsSL-https-download-docker-com-linux-ubuntu-gpg-sudo-apt-key-add" class="headerlink" title="curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -"></a>curl -fsSL <a target="_blank" rel="noopener" href="https://download.docker.com/linux/ubuntu/gpg">https://download.docker.com/linux/ubuntu/gpg</a> | sudo apt-key add -</h1></li>
-</ol>
-<p>Docker 공식 리포지토리에서 패키지를 다운로드 받았을 때 위변조 확인을 위한 GPG 키를 추가한다.</p>
-<ol start="4">
-<li><h1 id="apt-key-fingerprint"><a href="#apt-key-fingerprint" class="headerlink" title="apt-key fingerprint"></a>apt-key fingerprint</h1></li>
-</ol>
-<p>Docker.com 의 GPG 키가 등록됐는지 확인한다. </p>
-<ol start="5">
-<li><h1 id="add-apt-repository-“deb-arch-amd64-https-download-docker-com-linux-ubuntu-lsb-release-cs-stable”"><a href="#add-apt-repository-“deb-arch-amd64-https-download-docker-com-linux-ubuntu-lsb-release-cs-stable”" class="headerlink" title="add-apt-repository “deb [arch&#x3D;amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable”"></a>add-apt-repository “deb [arch&#x3D;amd64] <a target="_blank" rel="noopener" href="https://download.docker.com/linux/ubuntu">https://download.docker.com/linux/ubuntu</a> $(lsb_release -cs) stable”</h1></li>
-</ol>
-<p>Docker 공식 저장소를 리포지토리로 등록한다.</p>
-<ol start="6">
-<li><h1 id="grep-docker-etc-apt-sources-list"><a href="#grep-docker-etc-apt-sources-list" class="headerlink" title="grep docker &#x2F;etc&#x2F;apt&#x2F;sources.list"></a>grep docker &#x2F;etc&#x2F;apt&#x2F;sources.list</h1></li>
-</ol>
-<p>deb [arch&#x3D;amd64] <a target="_blank" rel="noopener" href="https://download.docker.com/linux/ubuntu">https://download.docker.com/linux/ubuntu</a> bionic stable<br>저장소 등록정보에 기록됐는지 확인한다. </p>
-<ol start="7">
-<li><h1 id="apt-get-update"><a href="#apt-get-update" class="headerlink" title="apt-get update"></a>apt-get update</h1></li>
-</ol>
-<p>리포지토리 정보를 갱신</p>
-<ol start="8">
-<li><h1 id="apt-get-install-y-docker-ce"><a href="#apt-get-install-y-docker-ce" class="headerlink" title="apt-get install -y docker-ce"></a>apt-get install -y docker-ce</h1></li>
-</ol>
+<h1 id="Region을-선택한다"><a href="#Region을-선택한다" class="headerlink" title="Region을 선택한다."></a>Region을 선택한다.</h1><p>AWS Region을 선택한다. Region별 이용 가격에 차이가 있다. (아르헨티나, 유럽이 가장 비싸고 나머지는 비슷하다.) Region은 물리적 서버가 얼마나 가까이 있는 지를 결정한다. 프로덕션 환경에서는 서비스를 제공하는 국가와 있는 것이 좋다.</p>
+<h2 id="먼저-EC2-인스턴스-하나를-생성한다"><a href="#먼저-EC2-인스턴스-하나를-생성한다" class="headerlink" title="먼저 EC2 인스턴스 하나를 생성한다."></a>먼저 EC2 인스턴스 하나를 생성한다.</h2><h2 id="생성된-인스턴스에-진입-후"><a href="#생성된-인스턴스에-진입-후" class="headerlink" title="생성된 인스턴스에 진입 후"></a>생성된 인스턴스에 진입 후</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># root 계정 전환</span>
+<span class="token function">sudo</span> <span class="token function">su</span> - 
+
+<span class="token comment"># hostctl로 hostname 변경</span>
+hostnamectl set-hostname master
+
+<span class="token comment"># hostname 변경확인</span>
+<span class="token function">hostname</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="도커-설치"><a href="#도커-설치" class="headerlink" title="도커 설치"></a>도커 설치</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">
+<span class="token comment"># 도커 설치</span>
+<span class="token comment"># https://docs.docker.com/engine/install/ubuntu/</span>
+
+<span class="token comment"># 1) 패키지 매니저 업데이트</span>
+$ <span class="token function">sudo</span> <span class="token function">apt-get</span> update
+
+<span class="token comment"># 2) https를 사용해서 레포지토리를 사용할 수 있도록 필요한 패키지를 설치한다. </span>
+$ <span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> <span class="token parameter variable">-y</span>  apt-transport-https ca-certificates <span class="token function">curl</span> software-properties-common
+
+<span class="token comment"># 3) Docker 공식 리포지토리에서 패키지를 다운로드 받았을 때 위변조 확인을 위한 GPG 키를 추가한다.</span>
+$ <span class="token function">curl</span> <span class="token parameter variable">-fsSL</span> https://download.docker.com/linux/ubuntu/gpg <span class="token operator">|</span> <span class="token function">sudo</span> apt-key <span class="token function">add</span> -
+
+<span class="token comment"># 4) Docker.com 의 GPG 키가 등록됐는지 확인한다. </span>
+$ apt-key fingerprint     
+
+<span class="token comment"># 5) Docker 공식 저장소를 리포지토리로 등록한다.</span>
+$ add-apt-repository <span class="token string">"deb [arch=amd64] https://download.docker.com/linux/ubuntu <span class="token variable"><span class="token variable">$(</span>lsb_release <span class="token parameter variable">-cs</span><span class="token variable">)</span></span> stable"</span>
+
+
+<span class="token comment"># 6) 저장소 등록정보에 기록됐는지 확인한다. </span>
+$ <span class="token function">grep</span> <span class="token function">docker</span> /etc/apt/sources.list
+deb <span class="token punctuation">[</span>arch<span class="token operator">=</span>amd64<span class="token punctuation">]</span> https://download.docker.com/linux/ubuntu bionic stable
+
+<span class="token comment"># 7) 리포지토리 정보를 갱신</span>
+$ <span class="token function">apt-get</span> update
+
+<span class="token comment"># 8) docker container engine 을 설치한다.</span>
+$ <span class="token function">apt-get</span> <span class="token function">install</span> <span class="token parameter variable">-y</span> docker-ce
+
+<span class="token comment"># 9) docker version</span>
+$ <span class="token function">docker</span> 버전 확인
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>docker container engine 을 설치한다.</p>
-<ol start="9">
-<li><h1 id="docker-버전-확인"><a href="#docker-버전-확인" class="headerlink" title="docker 버전 확인"></a>docker 버전 확인</h1></li>
-</ol>
-<p>docker version<br>docker container engine 을 설치한다.</p>
-<h1 id="AWS에서는-스왑핑-기능이-없기-때문에-고려하지-않아도-된다"><a href="#AWS에서는-스왑핑-기능이-없기-때문에-고려하지-않아도-된다" class="headerlink" title="AWS에서는 스왑핑 기능이 없기 때문에 고려하지 않아도 된다."></a>AWS에서는 스왑핑 기능이 없기 때문에 고려하지 않아도 된다.</h1><h1 id="보완리눅스가-설치되어-있다면"><a href="#보완리눅스가-설치되어-있다면" class="headerlink" title="보완리눅스가 설치되어 있다면"></a>보완리눅스가 설치되어 있다면</h1><p>setenforce 0</p>
-<h1 id="방화벽-끄기"><a href="#방화벽-끄기" class="headerlink" title="방화벽 끄기"></a>방화벽 끄기</h1><p>ufw disable</p>
-<h1 id="modprobe-br-netfilter"><a href="#modprobe-br-netfilter" class="headerlink" title="modprobe br_netfilter"></a>modprobe br_netfilter</h1><p>cat &lt;&lt;EOF | sudo tee &#x2F;etc&#x2F;modules-load.d&#x2F;k8s.conf<br>br_netfilter<br>EOF</p>
-<p>cat &lt;&lt;EOF | sudo tee &#x2F;etc&#x2F;sysctl.d&#x2F;k8s.conf<br>net.bridge.bridge-nf-call-ip6tables &#x3D; 1<br>net.bridge.bridge-nf-call-iptables &#x3D; 1<br>EOF</p>
-<p>sudo sysctl –system</p>
-<h1 id="kubeadm-kubelet-kubectl-설치-1-21버전까지만-도커-지원"><a href="#kubeadm-kubelet-kubectl-설치-1-21버전까지만-도커-지원" class="headerlink" title="kubeadm &#x2F; kubelet &#x2F; kubectl 설치 (1.21버전까지만 도커 지원)"></a>kubeadm &#x2F; kubelet &#x2F; kubectl 설치 (1.21버전까지만 도커 지원)</h1><ol>
-<li>apt update</li>
-<li>apt-get install -y apt-transport-https ca-certificates curl</li>
-<li>curl -s <a target="_blank" rel="noopener" href="https://packages.cloud.google.com/apt/doc/apt-key.gpg">https://packages.cloud.google.com/apt/doc/apt-key.gpg</a> | sudo apt-key add -</li>
-<li>cat &lt;&lt;EOF | sudo tee &#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;kubernetes.list<br>deb <a target="_blank" rel="noopener" href="https://apt.kubernetes.io/">https://apt.kubernetes.io/</a> kubernetes-xenial main<br>EOF</li>
-<li>apt update</li>
-<li>apt-get install -y kubelet&#x3D;1.24.0-00 kubeadm&#x3D;1.24.0-00 kubectl&#x3D;1.24.0-00</li>
-</ol>
-<p>kubectl version<br>kubelet –version<br>kubeadm version</p>
-<h1 id="명령이-있기-전까지-버전을-업그레이드-하지-마라"><a href="#명령이-있기-전까지-버전을-업그레이드-하지-마라" class="headerlink" title="명령이 있기 전까지 버전을 업그레이드 하지 마라"></a>명령이 있기 전까지 버전을 업그레이드 하지 마라</h1><ol start="7">
-<li>apt-mark hold kubelet kubeadm kubectl</li>
-</ol>
-<h1 id="cgroup"><a href="#cgroup" class="headerlink" title="cgroup"></a>cgroup</h1><p>cat &lt;&lt;EOF | sudo tee &#x2F;etc&#x2F;docker&#x2F;daemon.json<br>{<br>  “exec-opts”: [“native.cgroupdriver&#x3D;systemd”],<br>  “log-driver”: “json-file”,<br>  “log-opts”: {<br>    “max-size”: “100m”<br>  },<br>  “storage-driver”: “overlay2”<br>}<br>EOF</p>
-<p>sudo systemctl enable docker<br>sudo systemctl daemon-reload<br>sudo systemctl restart docker</p>
-<h1 id="7-containerd"><a href="#7-containerd" class="headerlink" title="7. containerd"></a>7. containerd</h1><p>vi &#x2F;etc&#x2F;containerd&#x2F;config.toml<br>:q!<br>rm &#x2F;etc&#x2F;containerd&#x2F;config.toml<br>systemctl restart containerd<br>systemctl enable containerd<br>apt update</p>
-<h1 id="지금까지-vm-이미지-복사"><a href="#지금까지-vm-이미지-복사" class="headerlink" title="지금까지 vm 이미지 복사"></a>지금까지 vm 이미지 복사</h1><p>g<br>Alternatively, if you are the root user, you can run:<br>export KUBECONFIG&#x3D;&#x2F;etc&#x2F;kubernetes&#x2F;admin.conf (  root 사용자의 홈디렉토리 쉘 환경파일에 편집)<br>You should now deploy a pod network to the cluster.</p>
-<p>kubeadm init</p>
-<p>apt-get install -y kubelet&#x3D;1.25.0-00 kubectl&#x3D;1.25.0-00 kubeadm&#x3D;1.25.0-00</p>
-<p>mkdir -p $HOME&#x2F;.kube<br>sudo cp -i &#x2F;etc&#x2F;kubernetes&#x2F;admin.conf $HOME&#x2F;.kube&#x2F;config<br>sudo chown $(id -u):$(id -g) $HOME&#x2F;.kube&#x2F;config</p>
-<p>kubeadm join 172.31.29.172:6443 –token eov08p.501r15runnzb46pk <br>        –discovery-token-ca-cert-hash sha256:61f467570400f620dc064e670a7f2666558faceb9f9c470e49f21372deeb475f</p>
-<p>vi ~&#x2F;.bashrc<br>export KUBECONFIG&#x3D;&#x2F;etc&#x2F;kubernetes&#x2F;admin.conf<br>source .bashrc</p>
-<h1 id="join을-위한-토큰-발행"><a href="#join을-위한-토큰-발행" class="headerlink" title="join을 위한 토큰 발행"></a>join을 위한 토큰 발행</h1><p>cat &gt; token.sh<br>kubeadm join 172.31.29.172:6443 –token eov08p.501r15runnzb46pk <br>        –discovery-token-ca-cert-hash sha256:61f467570400f620dc064e670a7f2666558faceb9f9c470e49f21372deeb475f</p>
-<h1 id="CNI"><a href="#CNI" class="headerlink" title="CNI"></a>CNI</h1><p>wget <a target="_blank" rel="noopener" href="https://docs.projectcalico.org/manifests/calico.yaml">https://docs.projectcalico.org/manifests/calico.yaml</a><br>kubectl apply -f calico.yaml</p>
-<h1 id="확인"><a href="#확인" class="headerlink" title="확인"></a>확인</h1><p>kubectl get pods -n kube-system</p>
-<p>kubectl get node -o wide</p>
-<p>worker 노드에서는 kubectl 명령어가 먹질 않는다.</p>
+<p>AWS에서는 스왑핑 기능이 없기 때문에 아래 과정은 고려하지 않아도 된다. 그러나 로컬에 직접 설치한다면 반드시 해줘야 하는 과정이다.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 보완리눅스가 설치되어 있다면</span>
+$ setenforce <span class="token number">0</span>
+
+<span class="token comment"># 방화벽 끄기</span>
+$ ufw disable
+
+<span class="token comment"># modprobe br_netfilter</span>
+$ <span class="token function">cat</span> <span class="token operator">&lt;&lt;</span><span class="token string">EOF<span class="token bash punctuation"> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> /etc/modules-load.d/k8s.conf</span>
+br_netfilter
+EOF</span>
+
+$ <span class="token function">cat</span> <span class="token operator">&lt;&lt;</span><span class="token string">EOF<span class="token bash punctuation"> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> /etc/sysctl.d/k8s.conf</span>
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+EOF</span>
+
+$ <span class="token function">sudo</span> <span class="token function">sysctl</span> <span class="token parameter variable">--system</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="쿠버네티스-kubeadm-kubelet-kubectl-설치-1-21버전까지만-도커-지원"><a href="#쿠버네티스-kubeadm-kubelet-kubectl-설치-1-21버전까지만-도커-지원" class="headerlink" title="쿠버네티스(kubeadm&#x2F;kubelet&#x2F;kubectl) 설치 (1.21버전까지만 도커 지원)"></a>쿠버네티스(kubeadm&#x2F;kubelet&#x2F;kubectl) 설치 (1.21버전까지만 도커 지원)</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 1) </span>
+$ <span class="token function">apt</span> update
+
+<span class="token comment"># 2) </span>
+$ <span class="token function">apt-get</span> <span class="token function">install</span> <span class="token parameter variable">-y</span> apt-transport-https ca-certificates <span class="token function">curl</span>
+
+<span class="token comment"># 3) </span>
+$ <span class="token function">curl</span> <span class="token parameter variable">-s</span> https://packages.cloud.google.com/apt/doc/apt-key.gpg <span class="token operator">|</span> <span class="token function">sudo</span> apt-key <span class="token function">add</span> -
+
+<span class="token comment"># 4) </span>
+$ 
+<span class="token function">cat</span> <span class="token operator">&lt;&lt;</span><span class="token string">EOF<span class="token bash punctuation"> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> /etc/apt/sources.list.d/kubernetes.list</span>
+deb https://apt.kubernetes.io/ kubernetes-xenial main
+EOF</span>
+
+<span class="token comment"># 5)</span>
+$ <span class="token function">apt</span> update
+
+<span class="token comment"># 6)</span>
+$ <span class="token function">apt-get</span> <span class="token function">install</span> <span class="token parameter variable">-y</span> <span class="token assign-left variable">kubelet</span><span class="token operator">=</span><span class="token number">1.24</span>.0-00 <span class="token assign-left variable">kubeadm</span><span class="token operator">=</span><span class="token number">1.24</span>.0-00 <span class="token assign-left variable">kubectl</span><span class="token operator">=</span><span class="token number">1.24</span>.0-00
+
+<span class="token comment"># 7)</span>
+$ kubectl version
+$ kubelet <span class="token parameter variable">--version</span>
+$ kubeadm version
+
+<span class="token comment"># 8)</span>
+$ apt-mark hold kubelet kubeadm kubectl
+
+<span class="token comment"># cgroup</span>
+<span class="token function">cat</span> <span class="token operator">&lt;&lt;</span><span class="token string">EOF<span class="token bash punctuation"> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> /etc/docker/daemon.json</span>
+&#123;
+  "exec-opts": ["native.cgroupdriver=systemd"],
+  "log-driver": "json-file",
+  "log-opts": &#123;
+    "max-size": "100m"
+  &#125;,
+  "storage-driver": "overlay2"
+&#125;
+EOF</span>
+
+$ <span class="token function">sudo</span> systemctl <span class="token builtin class-name">enable</span> <span class="token function">docker</span>
+$ <span class="token function">sudo</span> systemctl daemon-reload
+$ <span class="token function">sudo</span> systemctl restart <span class="token function">docker</span>
+
+<span class="token comment"># 7. containerd</span>
+
+$ <span class="token function">vi</span> /etc/containerd/config.toml
+:q<span class="token operator">!</span>
+$ <span class="token function">rm</span> /etc/containerd/config.toml
+$ systemctl restart containerd
+$ systemctl <span class="token builtin class-name">enable</span> containerd
+$ <span class="token function">apt</span> update<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="지금까지-vm-이미지-복사"><a href="#지금까지-vm-이미지-복사" class="headerlink" title="지금까지 vm 이미지 복사"></a>지금까지 vm 이미지 복사</h1><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Alternatively, <span class="token keyword">if</span> you are the root user, you can run:
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">KUBECONFIG</span><span class="token operator">=</span>/etc/kubernetes/admin.conf <span class="token punctuation">(</span>  root 사용자의 홈디렉토리 쉘 환경파일에 편집<span class="token punctuation">)</span>
+You should now deploy a pod network to the cluster.
+
+$ kubeadm init
+
+<span class="token function">apt-get</span> <span class="token function">install</span> <span class="token parameter variable">-y</span> <span class="token assign-left variable">kubelet</span><span class="token operator">=</span><span class="token number">1.25</span>.0-00 <span class="token assign-left variable">kubectl</span><span class="token operator">=</span><span class="token number">1.25</span>.0-00 <span class="token assign-left variable">kubeadm</span><span class="token operator">=</span><span class="token number">1.25</span>.0-00
+
+
+$ <span class="token function">mkdir</span> <span class="token parameter variable">-p</span> <span class="token environment constant">$HOME</span>/.kube
+$ <span class="token function">sudo</span> <span class="token function">cp</span> <span class="token parameter variable">-i</span> /etc/kubernetes/admin.conf <span class="token environment constant">$HOME</span>/.kube/config
+$ <span class="token function">sudo</span> <span class="token function">chown</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">id</span> <span class="token parameter variable">-u</span><span class="token variable">)</span></span><span class="token builtin class-name">:</span><span class="token variable"><span class="token variable">$(</span><span class="token function">id</span> <span class="token parameter variable">-g</span><span class="token variable">)</span></span> <span class="token environment constant">$HOME</span>/.kube/config
+
+$ kubeadm <span class="token function">join</span> <span class="token number">172.31</span>.29.172:6443 <span class="token parameter variable">--token</span> eov08p.501r15runnzb46pk <span class="token punctuation">\</span>
+        --discovery-token-ca-cert-hash sha256:61f467570400f620dc064e670a7f2666558faceb9f9c470e49f21372deeb475f
+
+$ <span class="token function">vi</span> ~/.bashrc
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">KUBECONFIG</span><span class="token operator">=</span>/etc/kubernetes/admin.conf
+$ <span class="token builtin class-name">source</span> .bashrc
+
+<span class="token comment"># join을 위한 토큰 발행</span>
+$ <span class="token function">cat</span> <span class="token operator">></span> token.sh
+$ kubeadm <span class="token function">join</span> <span class="token number">172.31</span>.29.172:6443 <span class="token parameter variable">--token</span> eov08p.501r15runnzb46pk <span class="token punctuation">\</span>
+        --discovery-token-ca-cert-hash sha256:61f467570400f620dc064e670a7f2666558faceb9f9c470e49f21372deeb475f
+
+<span class="token comment"># CNI</span>
+$ <span class="token function">wget</span> https://docs.projectcalico.org/manifests/calico.yaml
+$ kubectl apply <span class="token parameter variable">-f</span> calico.yaml
+
+<span class="token comment"># 확인</span>
+$ kubectl get pods <span class="token parameter variable">-n</span> kube-system
+
+$ kubectl get <span class="token function">node</span> <span class="token parameter variable">-o</span> wide
+
+
+** worker 노드에서는 kubectl 명령어가 먹질 않는다.
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <h1 id="component"><a href="#component" class="headerlink" title="component"></a>component</h1><ol>
 <li>상태를 etcd에 저장</li>
 </ol>
-<p>kubectl cluster-info</p>
-<p>kubectl config view</p>
+<p>$ kubectl cluster-info</p>
+<p>$ kubectl config view</p>
 
                 
             </div>
@@ -388,7 +488,7 @@ kubeadm : 클러스터 구성kubectl : commandkubelet : daemon (">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">Gyuwon Hong</a>
+                    <a href="/about" rel="external nofollow noreferrer">Keyhong</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -411,7 +511,7 @@ kubeadm : 클러스터 구성kubectl : commandkubelet : daemon (">
                     use
                     <a href="cc_by_url" rel="external nofollow noreferrer" target="_blank">cc_by_name</a>
                     licensed
-                    <a href="/about" target="_blank">Gyuwon Hong</a>
+                    <a href="/about" target="_blank">Keyhong</a>
                     !
                 </span>
             </div> -->
@@ -435,7 +535,11 @@ kubeadm : 클러스터 구성kubectl : commandkubelet : daemon (">
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
+                            
+                                <a href="/tags/Kubernetes/">
+                                    <span class="chip bg-color">Kubernetes</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -505,7 +609,7 @@ kubeadm : 클러스터 구성kubectl : commandkubelet : daemon (">
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Fri Jan 19 2024 11:20:07 GMT+0900',
+    id: 'Fri Jan 19 2024 00:00:00 GMT+0900',
     owner: '',
     repo: '',
     oauth: {
@@ -540,19 +644,18 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/20/DBT/dada/">
+                <a href="/2024/01/20/DBT/snowflake-setup/">
                     <div class="card-image">
                         
+                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] DBT 설치하기">
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title diy-neon-red"></span>
+                        <span class="card-title diy-neon-red">[DBT] DBT 설치하기</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            DBT 설치하기
                         
                     </div>
                     <div class="publish-info">
@@ -561,11 +664,23 @@ gitment.render('gitment-content');
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Gyuwon Hong
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/DBT/" class="post-category">
+                                    DBT
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/DBT/">
+                        <span class="chip bg-color">DBT</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -577,19 +692,18 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/19/SQL/Postgresql/lecture4/to_char/">
+                <a href="/2024/01/19/SQL/Postgresql/lecture4/concatenate/">
                     <div class="card-image">
                         
+                        <img src="/images/logos/sql-logo.png" class="responsive-img" alt="[SQL] strings function">
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title diy-neon-red"></span>
+                        <span class="card-title diy-neon-red">[SQL] strings function</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            strings function
                         
                     </div>
                     <div class="publish-info">
@@ -598,11 +712,23 @@ gitment.render('gitment-content');
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Gyuwon Hong
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/SQL/" class="post-category">
+                                    SQL
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/SQL/">
+                        <span class="chip bg-color">SQL</span>
+                    </a>
+                    
                 </div>
                 
             </div>

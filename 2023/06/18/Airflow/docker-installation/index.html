@@ -1,0 +1,1194 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[Airflow] Docker Installation, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="인지 사항프로그램을 설치하는 방법은 블로그마다 매우 상이하다. 이는 버전에 따라 달라지기도 하고, 어떤 방법이 정답이 아니라 내가 운영할 환경에 맞게 설치하는 것이 중요함을 인지해야 한다. 예를 들어, celery나">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>[Airflow] Docker Installation | Keyhong</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span diy-happy-monkey">Keyhong</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <!-- <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a> -->
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Keyhong</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/airflow-logo.png')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title diy-neon-red">
+                        [Airflow] Docker Installation</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Airflow/">
+                                <span class="chip bg-color">Airflow</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Airflow/" class="post-category">
+                                Airflow
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2023-06-18
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="인지-사항"><a href="#인지-사항" class="headerlink" title="인지 사항"></a>인지 사항</h2><p>프로그램을 설치하는 방법은 블로그마다 매우 상이하다. 이는 버전에 따라 달라지기도 하고, 어떤 방법이 정답이 아니라 내가 운영할 환경에 맞게 설치하는 것이 중요함을 인지해야 한다. 예를 들어, celery나 kubernetes로 airflow를 운영한다면 확장성을 고려해 컨테이너 기반으로 airflow를 사용하는 게 좋을 것이다. 반면, local executor로만 단일 서버에서 간단히 운영한다면 자체 환경에서 파이썬을 설치하고 airflow을 운영해도 무리는 없다.</p>
+<p>항상 달라지는 환경에서 내가 필요한 환경을 이해하고 맞춰 설치하는 가장 옳은 방법은 무엇보다도 공식 document다. 항상 <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/installation/index.html">공식 문서</a>를 읽는 습관을 들이자.</p>
+<h2 id="Installtion-Using-PyPI"><a href="#Installtion-Using-PyPI" class="headerlink" title="Installtion Using PyPI"></a>Installtion Using PyPI</h2><h3 id="1-Python-pip-install-apach-airlfow"><a href="#1-Python-pip-install-apach-airlfow" class="headerlink" title="1. Python pip install apach-airlfow"></a>1. Python pip install apach-airlfow</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Airflow 패키지 설치(특정 버전 기준으로 호환 패키지 같이 설치)</span>
+$ <span class="token assign-left variable">CONSTRAINT_URL</span><span class="token operator">=</span><span class="token string">"https://raw.githubusercontent.com/apache/airflow/constraints-<span class="token variable">$&#123;AIRFLOW_VERSION&#125;</span>/constraints-<span class="token variable">$&#123;PYTHON_VERSION&#125;</span>.txt"</span>
+
+$ pip <span class="token function">install</span> <span class="token string">"apache-airflow==<span class="token variable">$&#123;AIRFLOW_VERSION&#125;</span>"</span> <span class="token parameter variable">--constraint</span> <span class="token string">"<span class="token variable">$&#123;CONSTRAINT_URL&#125;</span>"</span>
+$ pip <span class="token function">install</span> <span class="token string">"apache-airflow==2.6.0"</span> <span class="token parameter variable">--constraint</span> <span class="token string">"https://raw.githubusercontent.com/apache/airflow/constraints-2.6.0/constraints-3.8.txt"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="2-AIRFLOW-HOME-환경변수-설정-및-기초파일-초기화"><a href="#2-AIRFLOW-HOME-환경변수-설정-및-기초파일-초기화" class="headerlink" title="2. AIRFLOW_HOME 환경변수 설정 및 기초파일 초기화"></a>2. AIRFLOW_HOME 환경변수 설정 및 기초파일 초기화</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># AIRFLOW_HOME 폴더 생성</span>
+$ <span class="token function">mkdir</span> ~/airflow
+
+<span class="token comment"># bash_profile(또는 bash_rc)에 환경변수 추가</span>
+$ <span class="token builtin class-name">echo</span> <span class="token string">"export AIRFLOW_HOME=~/airflow"</span> <span class="token operator">>></span> .bash_profile
+
+<span class="token comment"># airflow db 초기화</span>
+$ airflow db init<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="3-Airflow-관리자-계정-생성"><a href="#3-Airflow-관리자-계정-생성" class="headerlink" title="3. Airflow 관리자 계정 생성"></a>3. Airflow 관리자 계정 생성</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 관리자 생성 명령어 입력 후 초기 비밀번호 입력</span>
+$ airflow <span class="token function">users</span> create <span class="token punctuation">\</span>
+    <span class="token parameter variable">--username</span> <span class="token operator">&lt;</span>계정<span class="token operator">></span> <span class="token punctuation">\</span>
+    <span class="token parameter variable">--firstname</span> <span class="token operator">&lt;</span>성<span class="token operator">></span> <span class="token punctuation">\</span>
+    <span class="token parameter variable">--lastname</span> <span class="token operator">&lt;</span>이름<span class="token operator">></span> <span class="token punctuation">\</span>
+    <span class="token parameter variable">--role</span> Admin <span class="token punctuation">\</span>
+    <span class="token parameter variable">--email</span> <span class="token operator">&lt;</span>이메일<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="4-Airflow-메타데이터-DB로-PostgreSQL-로-연동하기"><a href="#4-Airflow-메타데이터-DB로-PostgreSQL-로-연동하기" class="headerlink" title="4. Airflow 메타데이터 DB로 PostgreSQL 로 연동하기"></a>4. Airflow 메타데이터 DB로 PostgreSQL 로 연동하기</h3><p>먼저, 백엔드로 사용할 수 있는 DBMS는 Airflow Version이나 시간의 변화에 따라 추가되거나 변동 될 수 있다. 상황에 따라 달라질 수 있으니 항상 설치 시점에 이용가능한 백엔드 데이터베이스를 확인해야 한다. <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/howto/set-up-database.html#choosing-database-backend">Choosing database backend</a>]</p>
+<h2 id="2-6-2-버전-기준으로-2023년-중순에-확인한-백엔드-DBMS-리스트"><a href="#2-6-2-버전-기준으로-2023년-중순에-확인한-백엔드-DBMS-리스트" class="headerlink" title="2.6.2 버전 기준으로 2023년 중순에 확인한 백엔드 DBMS 리스트 "></a>2.6.2 버전 기준으로 2023년 중순에 확인한 백엔드 DBMS 리스트 </h2><h2 id="PostgreSQL-11-12-13-14-15MySQL-5-7-8MSSQL-Experimental-2017-2019SQLite-3-15-0"><a href="#PostgreSQL-11-12-13-14-15MySQL-5-7-8MSSQL-Experimental-2017-2019SQLite-3-15-0" class="headerlink" title="PostgreSQL | 11, 12, 13, 14, 15MySQL | 5.7, 8MSSQL (Experimental) | 2017, 2019SQLite | 3.15.0+"></a>PostgreSQL | 11, 12, 13, 14, 15<br>MySQL | 5.7, 8<br>MSSQL (Experimental) | 2017, 2019<br>SQLite | 3.15.0+</h2><p>나는 오픈소스인 PostgreSQL을 사용하였다.</p>
+<p><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/howto/set-up-database.html#setting-up-a-postgresql-database">PostgreSQL 데이터베이스 설정</a></p>
+<ul>
+<li>데이터베이스는 UTF-8 문자 집합을 사용해야 한다.</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- PostgreSQL 데이터베이스 생성</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">DATABASE</span> <span class="token operator">&lt;</span>airflow_db<span class="token operator">></span><span class="token punctuation">;</span>
+
+<span class="token comment">-- PostgreSQL 유저 생성</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">USER</span> <span class="token operator">&lt;</span>airflow_user<span class="token operator">></span> <span class="token keyword">WITH</span> PASSWORD <span class="token string">'&lt;airflow_pass>'</span><span class="token punctuation">;</span>
+
+<span class="token comment">-- PostgreSQL 유저에게 Airflow 데이터베이스 권한부여</span>
+<span class="token keyword">GRANT</span> <span class="token keyword">ALL</span> <span class="token keyword">PRIVILEGES</span> <span class="token keyword">ON</span> <span class="token keyword">DATABASE</span> <span class="token operator">&lt;</span>airflow_db<span class="token operator">></span> <span class="token keyword">TO</span> <span class="token operator">&lt;</span>airflow_user<span class="token operator">></span><span class="token punctuation">;</span>
+
+<span class="token comment">-- PostgreSQL 15 버전 이상시 추가 권한 부여</span>
+<span class="token keyword">USE</span> <span class="token operator">&lt;</span>airflow_db<span class="token operator">></span><span class="token punctuation">;</span>
+<span class="token keyword">GRANT</span> <span class="token keyword">ALL</span> <span class="token keyword">ON</span> <span class="token keyword">SCHEMA</span> <span class="token keyword">public</span> <span class="token keyword">TO</span> <span class="token operator">&lt;</span>airflow_user<span class="token operator">></span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><p>데이터베이스 URI에서 특정 스키마를 지정하는 방법을 노출하지 않기 때문에, Postgres 사용자의 search_path에 스키마 public이 포함되어 있는지 확인</p>
+<ul>
+<li><p>새로운 Postgres 사용자의 기본 search_path는 “$user”, public</p>
+</li>
+<li><p>기존의 Postgres 사용자를 사용하고 사용자 지정 search_path가 있는 경우, 다음 명령을 사용하여 search_path를 변경</p>
+</li>
+</ul>
+</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">ALTER</span> <span class="token keyword">USER</span> airflow_user <span class="token keyword">SET</span> search_path <span class="token operator">=</span> <span class="token keyword">public</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="연결이-안된다면-PostgreSQL-pg-hba-conf-수정하기"><a href="#연결이-안된다면-PostgreSQL-pg-hba-conf-수정하기" class="headerlink" title="연결이 안된다면: PostgreSQL pg_hba.conf 수정하기"></a>연결이 안된다면: PostgreSQL pg_hba.conf 수정하기</h4><p><a target="_blank" rel="noopener" href="https://www.postgresql.org/docs/current/auth-pg-hba-conf.html">사용자를 데이터베이스 액세스 제어 목록에 pg_hba.conf 추가하기</a></p>
+<p><code>/etc/postgresql/~/main</code> 경로에 있는 pg_hba.conf 파일 열고 아래와 같이 외부에서 접근 가능한 IP를 개방해준다. <code>0.0.0.0/0</code>는 모든 IP에 대한 개방을 허용하겠다는 의미이다.</p>
+<pre class="line-numbers language-conf" data-language="conf"><div class="caption"><span>pg_hba.conf</span></div><code class="language-conf"># IPv4 local connections:
+host		all             all             0.0.0.0&#x2F;0               md5 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<h4 id="Q-airflow에서-기본적으로-sqlite-db를-제공하는-데-왜-따로-backend-database를-구축하여-사용하는-가"><a href="#Q-airflow에서-기본적으로-sqlite-db를-제공하는-데-왜-따로-backend-database를-구축하여-사용하는-가" class="headerlink" title="Q. airflow에서 기본적으로 sqlite db를 제공하는 데, 왜 따로 backend database를 구축하여 사용하는 가?"></a>Q. airflow에서 기본적으로 sqlite db를 제공하는 데, 왜 따로 backend database를 구축하여 사용하는 가?</h4><p>A. sqlite를 기본적으로 사용하는 airflow executor는 sequential executor이다. 말 그대로, sequential(순차적)으로 작업을 처리할 때 사용가능하다. 다만, 실제 production 환경에서는 작업을 병렬로 처리해야 한다. 하나의 일이 끝나고 순차적으로 뒤의 task를 처리하는 sequential executor는 실제로 많은 일을 빠른 시간에 처리해야 환경에서는 실용적이지 못하다.<br> <br>즉, task의 병렬처리를 위해 확장성 있으며 여러 세션으로 동시접근하여 read, write가 가능한 db가 필요하다. 일반적으로 상용화된 db는 동시제어와 접근을 가능하게 하며, 이에 대한 리소스 관리(connection pool)를 설정할 수 있다.<br>** Airflow는 수행할 작업 계획, 작업 결과 (successs or fail), 작업 이력 등을 모두 db에 쓰고 읽음으로써 관리한다. </p>
+<h3 id="5-airflow-cfg에-메타데이터-데이터베이스에-대한-SqlAlchemy-연결-문자-지정"><a href="#5-airflow-cfg에-메타데이터-데이터베이스에-대한-SqlAlchemy-연결-문자-지정" class="headerlink" title="5. airflow.cfg에 메타데이터 데이터베이스에 대한 SqlAlchemy 연결 문자 지정"></a>5. airflow.cfg에 메타데이터 데이터베이스에 대한 SqlAlchemy 연결 문자 지정</h3><p><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/configurations-ref.html">Configuration Reference</a></p>
+<ul>
+<li><p>SQLAlchemy 1.4.0 이상을 사용할 때는 sql_alchemy_conn에서 데이터베이스로 postgresql:&#x2F;&#x2F;을 사용</p>
+</li>
+<li><p>이전 버전의 SQLAlchemy에서는 postgres:&#x2F;&#x2F;를 사용할 수도 있었지만, SQLAlchemy 1.4.0 이상에서는 postgres:&#x2F;&#x2F;를 사용하면 오류가 발생</p>
+</li>
+<li><p>SQLAlchemy를 사용할 때 psycopg2 드라이버를 사용하고, SQLAlchemy 연결 문자열에서 명시하는 것을 권장</p>
+</li>
+<li><p>database.sql_alchemy_conn는 메타데이터 데이터베이스에 대한 SqlAlchemy 연결 문자열</p>
+</li>
+</ul>
+<pre class="line-numbers language-conf" data-language="conf"><div class="caption"><span>airflow.cfg</span></div><code class="language-conf">[database]
+sql_alchemy_conn &#x3D; postgresql+psycopg2:&#x2F;&#x2F;&lt;user&gt;:&lt;password&gt;@&lt;host&gt;&#x2F;&lt;db&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="6-Airflow-Webserver-Daemon-Process로-띄우기"><a href="#6-Airflow-Webserver-Daemon-Process로-띄우기" class="headerlink" title="6. Airflow Webserver Daemon Process로 띄우기"></a>6. Airflow Webserver Daemon Process로 띄우기</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow webserver <span class="token parameter variable">-D</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<h2 id="Installation-Using-Docker-Images"><a href="#Installation-Using-Docker-Images" class="headerlink" title="Installation Using Docker Images"></a>Installation Using Docker Images</h2><p><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/extra-packages-ref.html">Reference for package extras</a></p>
+<h3 id="CLI-Commands"><a href="#CLI-Commands" class="headerlink" title="CLI Commands"></a>CLI Commands</h3><h2 id="Installing-Airflow"><a href="#Installing-Airflow" class="headerlink" title="Installing Airflow"></a>Installing Airflow</h2><ul>
+<li>Create and start a docker container from the Docker image python:3.8-slim and execute the command &#x2F;bin&#x2F;bash in order to have a shell session</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> run <span class="token parameter variable">-it</span> <span class="token parameter variable">--rm</span> <span class="token parameter variable">-p</span> <span class="token number">8080</span>:8080 python:3.8-slim /bin/bash<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li><p>Print the Python version</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ python <span class="token parameter variable">-V</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>Export the environment variable AIRFLOW_HOME used by Airflow to store the dags folder, logs folder and configuration file</p>
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>.bashrc</span></div><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">AIRFLOW_HOME</span><span class="token operator">=</span>/usr/local/airflow<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>To check that the environment variable has been well exported</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">env</span> <span class="token operator">|</span> <span class="token function">grep</span> airflow<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>Install all tools and dependencies that can be required by Airflow</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">apt-get</span> update <span class="token parameter variable">-y</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
+$ <span class="token function">apt-get</span> <span class="token function">install</span> <span class="token parameter variable">-y</span> <span class="token function">wget</span> libczmq-dev <span class="token function">curl</span> libssl-dev <span class="token function">git</span> inetutils-telnet bind9utils freetds-dev libkrb5-dev libsasl2-dev libffi-dev libpq-dev freetds-bin build-essential default-libmysqlclient-dev apt-utils <span class="token function">rsync</span> <span class="token function">zip</span> <span class="token function">unzip</span> gcc <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
+$ <span class="token function">apt-get</span> clean<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>Create the user airflow, set its home directory to the value of AIRFLOW_HOME and log into it</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">useradd</span> <span class="token parameter variable">-ms</span> /bin/bash <span class="token parameter variable">-d</span> <span class="token variable">$&#123;AIRFLOW_HOME&#125;</span> airflow<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>Show the file &#x2F;etc&#x2F;passwd to check that the airflow user has been created</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">cat</span> /etc/passwd <span class="token operator">|</span> <span class="token function">grep</span> airflow<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>Upgrade pip (already installed since we use the Docker image python 3.5)</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ pip <span class="token function">install</span> <span class="token parameter variable">--upgrade</span> pip<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>Log into airflow</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">su</span> - airflow<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>Create the virtual env named sandbox</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ python <span class="token parameter variable">-m</span> venv .sandbox<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>Activate the virtual environment sandbox</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">source</span> .sandbox/bin/activate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>Download the requirement file to install the right version of Airflow’s dependencies </p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">wget</span> https://raw.githubusercontent.com/apache/airflow/constraints-2.0.2/constraints-3.8.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>Install the version 2.0.2 of apache-airflow with all subpackages defined between square brackets. (Notice that you can still add subpackages after all, you will use the same command with different subpackages even if Airflow is already installed)<br><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/extra-packages-ref.html">extra-packages-ref</a></p>
+</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ pip <span class="token function">install</span> <span class="token string">"apache-airflow[crypto,celery,postgres,cncf.kubernetes,docker]"</span><span class="token operator">==</span><span class="token number">2.0</span>.2 <span class="token parameter variable">--constraint</span> ./constraints-3.8.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>Initialise the metadatabase</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow db init<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>Start Airflow’s scheduler in background</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow scheduler <span class="token operator">&amp;</span>
+$ airflow scheduler <span class="token parameter variable">-D</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ul>
+<li>Make Airflow’s webserver user</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow <span class="token function">users</span> create <span class="token punctuation">\</span>
+    <span class="token parameter variable">--username</span> admin <span class="token punctuation">\</span>
+    <span class="token parameter variable">--firstname</span> FIRST_NAME <span class="token punctuation">\</span>
+    <span class="token parameter variable">--lastname</span> LAST_NAME <span class="token punctuation">\</span>  
+    <span class="token parameter variable">--role</span> Admin <span class="token punctuation">\</span>
+    <span class="token parameter variable">--email</span> admin@example.org
+    <span class="token parameter variable">--password</span> PASSWORD <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>Start Airflow’s webserver in background</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow webserver <span class="token operator">&amp;</span>
+
+$ airflow webserver <span class="token parameter variable">-D</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>Build a docker image from the Dockerfile in the current directory (airflow-materials&#x2F;airflow-basic)  and name it airflow-basic</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> build <span class="token parameter variable">-t</span> airflow-basic <span class="token builtin class-name">.</span>
+
+$ <span class="token function">docker</span> run <span class="token parameter variable">--rm</span> <span class="token parameter variable">-d</span> <span class="token parameter variable">-p</span> <span class="token number">8080</span>:8080 airflow-basic<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>Show running docker containers</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> <span class="token function">ps</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>Execute the command &#x2F;bin&#x2F;bash in the container_id to get a shell session</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> container_id /bin/bash<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>Print the current path where you are</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">pwd</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>Initialise the metadatabase</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow db init<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>Reinitialize the metadatabase (Drop everything)</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow db reset<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>Upgrade the metadatabase (Latest schemas, values, …)</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow db upgrade<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>Start Airflow’s webserver</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow webserver<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>Start Airflow’s scheduler</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow scheduler<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li><p>Start a Celery worker (Useful in distributed mode to spread tasks among nodes - machines)</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow celery worker<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>Give the list of known dags (either those in the examples folder or in dags folder)</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow dags list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>Display the files&#x2F;folders of the current directory </p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ls</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>Trigger the dag example_python_operator with the current date as execution date</p>
+</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow dags trigger example_python_operator<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>Trigger the dag example_python_operator with a date in the past as execution date (This won’t trigger the tasks of that dag unless you set the option catchup&#x3D;True in the DAG definition)</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow dags trigger example_python_operator <span class="token parameter variable">-e</span> <span class="token number">2021</span>-01-01<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li><p>Trigger the dag example_python_operator with a date in the future (change the date here with one having +2 minutes later than the current date displayed in the Airflow UI). The dag will be scheduled at that date.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow dags trigger example_python_operator <span class="token parameter variable">-e</span> <span class="token string">'2021-01-01 19:04:00+00:00'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>Display the history of example_python_operator’s dag runs</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow dags list-runs <span class="token parameter variable">-d</span> example_python_operator<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>List the tasks contained into the example_python_operator dag</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow tasks list example_python_operator<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>Allow to test a task (print_the_context) from a given dag (example_python_operator here) without taking care of dependencies and past runs. Useful for debugging.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow tasks <span class="token builtin class-name">test</span> example_python_operator print_the_context <span class="token number">2021</span>-01-01<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Keyhong</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2023/06/18/Airflow/docker-installation/">http://example.com/2023/06/18/Airflow/docker-installation/</a>
+                </span>
+            </div>
+            <!-- <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        reprint:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    use
+                    <a href="cc_by_url" rel="external nofollow noreferrer" target="_blank">cc_by_name</a>
+                    licensed
+                    <a href="/about" target="_blank">Keyhong</a>
+                    !
+                </span>
+            </div> -->
+        
+    </div>
+
+    <!-- <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script> -->
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Airflow/">
+                                    <span class="chip bg-color">Airflow</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+        <link rel="stylesheet" href="/libs/gitment/gitment-default.css">
+<link rel="stylesheet" href="/css/gitment.css">
+
+<div class="gitment-card card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>댓글</span>
+    </div>
+    <div id="gitment-content" class="card-content"></div>
+</div>
+
+<script src="/libs/gitment/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+    id: 'Sun Jun 18 2023 00:00:00 GMT+0900',
+    owner: '',
+    repo: '',
+    oauth: {
+        client_id: '',
+        client_secret: ''
+    }
+});
+
+gitment.render('gitment-content');
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2023/06/19/Trino/docker-execution/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/trino-logo.png" class="responsive-img" alt="[Trino] Docker Test">
+                        
+                        <span class="card-title diy-neon-red">[Trino] Docker Test</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-06-19
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Trino/" class="post-category">
+                                    Trino
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Trino/">
+                        <span class="chip bg-color">Trino</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/06/18/Trino/the-definitive-guide-2/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/trino-logo.png" class="responsive-img" alt="[Trino] The Definitive Guide에서 설명하는 Trino의 탄생 (2) ">
+                        
+                        <span class="card-title diy-neon-red">[Trino] The Definitive Guide에서 설명하는 Trino의 탄생 (2) </span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-18
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Trino/" class="post-category">
+                                    Trino
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Trino/">
+                        <span class="chip bg-color">Trino</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;목차</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2024</span>
+            
+            <a href="/about" target="_blank">Gyuwon Hong</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;Total visits:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;Total visitors:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/keyhong" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:wnhong96@gmail.com" class="tooltipped" target="_blank" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

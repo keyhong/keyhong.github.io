@@ -4,19 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="GCE 영구 스토리지 사용하기
-
-데이터가 지속
-
-모든 포드에서 공유
-
-mongo 컨테이너에 마운트하여 사용
-
-GCE 영구 디스크를 동일한 리전에 생성
-
-
-$ gcloud compute disks create --si">
+    <meta name="keywords" content="[Kubernetes] GCE 영구 스토리지 사용하기, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="GCE 영구 스토리지 사용하기">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -28,7 +17,7 @@ $ gcloud compute disks create --si">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Keyhong</title>
+    <title>[Kubernetes] GCE 영구 스토리지 사용하기 | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -139,9 +128,9 @@ $ gcloud compute disks create --si">
   </li>
   
   <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+    <!-- <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
-    </a>
+    </a> -->
   </li>
   <li>
     <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
@@ -238,13 +227,13 @@ $ gcloud compute disks create --si">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/kubernetes-logo.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        </h1>
+                        [Kubernetes] GCE 영구 스토리지 사용하기</h1>
                 </div>
             </div>
         </div>
@@ -266,12 +255,25 @@ $ gcloud compute disks create --si">
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Kubernetes/">
+                                <span class="chip bg-color">Kubernetes</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Kubernetes/" class="post-category">
+                                Kubernetes
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -321,7 +323,7 @@ $ gcloud compute disks create <span class="token parameter variable">--size</spa
 <p>gcloud config configurations list</p>
 <p>gcloud config configurations create k8s</p>
 <p>gcloud config set core&#x2F;project keyhong-2024-01-16</p>
-<p>gcloud config set core&#x2F;account <a href="mailto:&#x77;&#x6e;&#x68;&#x6f;&#110;&#103;&#x39;&#x36;&#46;&#49;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#x6f;&#109;">&#x77;&#x6e;&#x68;&#x6f;&#110;&#103;&#x39;&#x36;&#46;&#49;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#x6f;&#109;</a></p>
+<p>gcloud config set core&#x2F;account <a href="mailto:&#x77;&#110;&#x68;&#111;&#x6e;&#x67;&#x39;&#54;&#46;&#x31;&#64;&#103;&#x6d;&#x61;&#105;&#108;&#46;&#x63;&#111;&#109;">&#x77;&#110;&#x68;&#111;&#x6e;&#x67;&#x39;&#54;&#46;&#x31;&#64;&#103;&#x6d;&#x61;&#105;&#108;&#46;&#x63;&#111;&#109;</a></p>
 <p>gcloud config set run&#x2F;region us-west1</p>
 <p>gcloud auth login –no-launch-browser</p>
 <pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
@@ -360,7 +362,7 @@ $ gcloud compute disks create <span class="token parameter variable">--size</spa
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">Gyuwon Hong</a>
+                    <a href="/about" rel="external nofollow noreferrer">Keyhong</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -383,7 +385,7 @@ $ gcloud compute disks create <span class="token parameter variable">--size</spa
                     use
                     <a href="cc_by_url" rel="external nofollow noreferrer" target="_blank">cc_by_name</a>
                     licensed
-                    <a href="/about" target="_blank">Gyuwon Hong</a>
+                    <a href="/about" target="_blank">Keyhong</a>
                     !
                 </span>
             </div> -->
@@ -407,7 +409,11 @@ $ gcloud compute disks create <span class="token parameter variable">--size</spa
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
+                            
+                                <a href="/tags/Kubernetes/">
+                                    <span class="chip bg-color">Kubernetes</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -477,7 +483,7 @@ $ gcloud compute disks create <span class="token parameter variable">--size</spa
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Thu Jan 18 2024 18:01:14 GMT+0900',
+    id: 'Thu Jan 18 2024 00:00:00 GMT+0900',
     owner: '',
     repo: '',
     oauth: {
@@ -512,32 +518,43 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/19/SQL/Postgresql/lecture4/extract/">
+                <a href="/2024/01/18/Kubernetes/configmap/">
                     <div class="card-image">
                         
+                        <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] 환경변수를 ConfigMap에 저장하는 방법">
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title diy-neon-red"></span>
+                        <span class="card-title diy-neon-red">[Kubernetes] 환경변수를 ConfigMap에 저장하는 방법</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            환경변수를 ConfigMap에 저장하는 방법
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-19
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-18
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Gyuwon Hong
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Kubernetes/">
+                        <span class="chip bg-color">Kubernetes</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -549,13 +566,12 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/18/Kubernetes/configmap/">
+                <a href="/2024/01/18/Kubernetes/practice/hostpath/">
                     <div class="card-image">
                         
+                        <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] hostpath">
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title diy-neon-red"></span>
+                        <span class="card-title diy-neon-red">[Kubernetes] hostpath</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -570,11 +586,23 @@ gitment.render('gitment-content');
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Gyuwon Hong
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Kubernetes/">
+                        <span class="chip bg-color">Kubernetes</span>
+                    </a>
+                    
                 </div>
                 
             </div>

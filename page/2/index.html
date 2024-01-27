@@ -124,9 +124,9 @@
   </li>
   
   <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+    <!-- <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
-    </a>
+    </a> -->
   </li>
   <li>
     <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
@@ -270,56 +270,12 @@
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/18/Kubernetes/env/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                            
-                            <span class="card-title diy-neon-red"></span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                도커 컨테이너 환경 설정
-
-쿠버네티스의 환경 변수는 YAML 파일이나 다른 리소스로 전달
-
-하드 코딩된 환경 변수는 여러 환경에 데이터를 정의하거나 유지, 관리가 어려움
-
-ConfigMap은 외부에 컨테이너 설정을 
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-18
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-user fa-fw"></i>
-                                Gyuwon Hong
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
                     <a href="/2024/01/18/Kubernetes/practice/hostpath/">
                         <div class="card-image">
                             
+                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] hostpath">
                             
-                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                            
-                            <span class="card-title diy-neon-red"></span>
+                            <span class="card-title diy-neon-red">[Kubernetes] hostpath</span>
                         </div>
                     </a>
 
@@ -328,9 +284,9 @@ ConfigMap은 외부에 컨테이너 설정을
                             
                                 work1$ sudo mkdir /var/htdocs
 
-
 $ sudo -i
 $ echo "work1" > /var/htdocs/index.html
+
 
 
 work2$ sudo mkdir /var/htdocs
@@ -345,13 +301,25 @@ $ su
                             </span>
                             <span class="publish-author">
                                 
-                                <i class="fas fa-user fa-fw"></i>
-                                Gyuwon Hong
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
+                                </a>
+                                
                                 
                             </span>
                         </div>
                     </div>
 
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Kubernetes/">
+                            <span class="chip bg-color">Kubernetes</span>
+                        </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -363,10 +331,9 @@ $ su
                     <a href="/2024/01/18/Kubernetes/practice/emptyDir/">
                         <div class="card-image">
                             
+                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] emptyDir">
                             
-                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                            
-                            <span class="card-title diy-neon-red"></span>
+                            <span class="card-title diy-neon-red">[Kubernetes] emptyDir</span>
                         </div>
                     </a>
 
@@ -380,9 +347,7 @@ $ su
 
 
 emptyDir 볼륨 사용하기
-볼륨을 공유하는 애플리케이션 생성
-
-do
+볼륨을 공유하는 두 개의 애플리케이션을 
                             
                         </div>
                         <div class="publish-info">
@@ -391,13 +356,25 @@ do
                             </span>
                             <span class="publish-author">
                                 
-                                <i class="fas fa-user fa-fw"></i>
-                                Gyuwon Hong
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
+                                </a>
+                                
                                 
                             </span>
                         </div>
                     </div>
 
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Kubernetes/">
+                            <span class="chip bg-color">Kubernetes</span>
+                        </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -406,96 +383,7 @@ do
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/18/Kubernetes/volume/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                            
-                            <span class="card-title diy-neon-red"></span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                볼륨(Volume)
-컨테이너가 외부 스토리지에 액세스하고 공유하는 방법
-
-
-포드의 각 컨테이너에는 고유의 분리된 파일 시스템 존재
-
-볼륨은 포드의 컴포넌트이며 포드의 스펙에 의해 정의
-
-독립적인 쿠버네티스 오브젝트가
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-18
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-user fa-fw"></i>
-                                Gyuwon Hong
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/01/18/Kubernetes/node-os-upgrade/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                            
-                            <span class="card-title diy-neon-red"></span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                
-$ kubectl get nods
-
-$ kubectl drain worker-1
-
-
--- daemonset, local storage 무시
-$ kubectl drain worker-1 --delete-local-d
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-18
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-user fa-fw"></i>
-                                Gyuwon Hong
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/01/17/Airflow/kubernetes_executor/">
+                    <a href="/2024/01/17/Airflow/kubernetes_executor-%EB%AF%B8%EC%99%84-/">
                         <div class="card-image">
                             
                             
@@ -695,6 +583,128 @@ metadata:
 화면에 YAML 형식의 리소스 정의를 출력
 
 
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-17
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Gyuwon Hong
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/01/17/Data-Analysis/4_funnel/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                            
+                            <span class="card-title diy-neon-red"></span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                -- 사용자 테이블 (users)
+CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    join_dat
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-17
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Gyuwon Hong
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/01/17/Data-Analysis/3_aarrr_cohort/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                            
+                            <span class="card-title diy-neon-red"></span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                -- 사용자 테이블 (users)
+CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    join_dat
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-17
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Gyuwon Hong
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/01/17/Data-Analysis/2_aarrr/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                            
+                            <span class="card-title diy-neon-red"></span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+Acquisition(획득): 새로운 고객을 획득하고 사이트 또는 서비스에 끌어들입니다.
+Activation(활성화): 신규 사용자가 제품이나 서비스를 처음 사용하면서 어떠한 형태의 ‘활성화’를 경험합니다.
+Ret
                             
                         </div>
                         <div class="publish-info">

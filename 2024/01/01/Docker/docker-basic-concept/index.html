@@ -133,9 +133,9 @@ docker는 애플리케이션 개발, 배송 및 실행을 위한 개방형 플�
   </li>
   
   <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+    <!-- <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
-    </a>
+    </a> -->
   </li>
   <li>
     <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
@@ -329,6 +329,22 @@ docker는 애플리케이션 개발, 배송 및 실행을 위한 개방형 플�
 <!-- <https://www.docker.com/why-docker/> -->
 
 
+
+<h1 id="Docker-Network"><a href="#Docker-Network" class="headerlink" title="Docker Network"></a>Docker Network</h1><h2 id="컨테이너-네트워크"><a href="#컨테이너-네트워크" class="headerlink" title="컨테이너 네트워크"></a>컨테이너 네트워크</h2><ul>
+<li><p>도커를 설치하면 호스트 컴퓨터의 네트워크 계층에 도커가 난입</p>
+</li>
+<li><p>호스트 컴퓨터의 네트워크 트래픽을 가로채 필요한 것을 컨테이너에 전달</p>
+</li>
+<li><p>각 컨테이너는 고유의 IP주소를 갖음 (도커가 관리하는 내부 가상 네트워크의 주소)</p>
+</li>
+<li><p>호스트 컴퓨터의 물리 네트워크는 컨테이너 IP 주소에 접근 불가 (도커가 만든 가상 네트워크이기 때문)</p>
+</li>
+<li><p>컨테이너 포트를 공개하는 것은 도커가 호스트 컴퓨터의 포트를 해당 포트로 들어오는 트래픽으로 전달 (포트포워딩)</p>
+</li>
+</ul>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219890&authkey=%21APmEFi1UVvewFZ0&width=660" width="660" height="auto" />
+
+
                 
             </div>
             <hr/>
@@ -500,12 +516,12 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/01/Git/gitignore/">
+                <a href="/2024/01/01/Git/git-history-command/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/git-logo.png" class="responsive-img" alt="[Git] .gitignore">
+                        <img src="/images/logos/git-logo.png" class="responsive-img" alt="[Git] History Command">
                         
-                        <span class="card-title diy-neon-red">[Git] .gitignore</span>
+                        <span class="card-title diy-neon-red">[Git] History Command</span>
                     </div>
                 </a>
                 <div class="card-content article-content">

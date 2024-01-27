@@ -5,7 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="[Django] 장고 모델 필드, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="기본 지원되는 모델필드 타입 (1)Primary Key: AutoField, BigAutoField문자열: CharField, TextField, SlugField날짜&amp;#x2F;시간: DateField, TimeFi">
+    <meta name="description" content="기본 지원되는 모델필드 타입 (1)
+Primary Key: AutoField, BigAutoField
+문자열: CharField, TextField, SlugField
+날짜&amp;#x2F;시간: DateField, Tim">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -128,9 +131,9 @@
   </li>
   
   <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+    <!-- <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
-    </a>
+    </a> -->
   </li>
   <li>
     <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
@@ -227,7 +230,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/docker-logo.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/django-logo.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -306,13 +309,21 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="기본-지원되는-모델필드-타입-1"><a href="#기본-지원되는-모델필드-타입-1" class="headerlink" title="기본 지원되는 모델필드 타입 (1)"></a>기본 지원되는 모델필드 타입 (1)</h2><p>Primary Key: AutoField, BigAutoField<br>문자열: CharField, TextField, SlugField<br>날짜&#x2F;시간: DateField, TimeField, DataTimeField, DurationField<br>참&#x2F;거짓: BooleanField, NullBooleanField<br>숫자: IntegerField, SmallIntegerField, PositiveIntegerField, PositiveSmallIntegerField, BigIntegerField, DecimalField, FloatField<br>파일: BinaryField, FileField, ImageField, FilePathField
- </p>
-<h2 id="기본-지원되는-모델필드-타입-2"><a href="#기본-지원되는-모델필드-타입-2" class="headerlink" title="기본 지원되는 모델필드 타입 (2)"></a>기본 지원되는 모델필드 타입 (2)</h2><p>이메일: EmailField<br>URL: URLField<br>UUID: UUIDField<br>아이피: GenericIPAddressField<br>Relationship Types</p>
-<ul>
-<li>ForeignKey</li>
-<li>ManyToManyField</li>
-<li>OneToOneField</li>
+                <h2 id="기본-지원되는-모델필드-타입-1"><a href="#기본-지원되는-모델필드-타입-1" class="headerlink" title="기본 지원되는 모델필드 타입 (1)"></a>기본 지원되는 모델필드 타입 (1)</h2><ul>
+<li>Primary Key: AutoField, BigAutoField</li>
+<li>문자열: CharField, TextField, SlugField</li>
+<li>날짜&#x2F;시간: DateField, TimeField, DataTimeField, DurationField</li>
+<li>참&#x2F;거짓: BooleanField, NullBooleanField</li>
+<li>숫자: IntegerField, SmallIntegerField, PositiveIntegerField, PositiveSmallIntegerField, BigIntegerField, DecimalField, FloatField</li>
+<li>파일: BinaryField, FileField, ImageField, FilePathField</li>
+</ul>
+<p> </p>
+<h2 id="기본-지원되는-모델필드-타입-2"><a href="#기본-지원되는-모델필드-타입-2" class="headerlink" title="기본 지원되는 모델필드 타입 (2)"></a>기본 지원되는 모델필드 타입 (2)</h2><ul>
+<li>이메일: EmailField</li>
+<li>URL: URLField</li>
+<li>UUID: UUIDField</li>
+<li>아이피: GenericIPAddressField</li>
+<li>Relationship Types: <code>ForeignKey</code>, <code>ManyToManyField</code>, <code>OneToOneField</code></li>
 </ul>
 <h2 id="그리고-다양한-커스텀-필드들"><a href="#그리고-다양한-커스텀-필드들" class="headerlink" title="그리고, 다양한 커스텀 필드들"></a>그리고, 다양한 커스텀 필드들</h2><p><a target="_blank" rel="noopener" href="https://django-model-utils.readthedocs.io/en/latest/#django-model-utils">django-model-utils</a> 
  </p>
@@ -349,9 +360,9 @@
 <span class="token keyword">class</span> <span class="token class-name">Tag</span><span class="token punctuation">(</span>models<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
     name <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">,</span> unique<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="강력히-권합니다"><a href="#강력히-권합니다" class="headerlink" title="강력히 권합니다."></a>강력히 권합니다.</h2><h3 id="설계한-데이터베이스-구조에-따라-최대한-필드타입을-타이트하게-지정해주는-것이-입력값-오류를-막을-수-있음"><a href="#설계한-데이터베이스-구조에-따라-최대한-필드타입을-타이트하게-지정해주는-것이-입력값-오류를-막을-수-있음" class="headerlink" title="설계한 데이터베이스 구조에 따라, 최대한 필드타입을 타이트하게 지정해주는 것이, 입력값 오류를 막을 수 있음."></a>설계한 데이터베이스 구조에 따라, 최대한 필드타입을 타이트하게 지정해주는 것이, 입력값 오류를 막을 수 있음.</h3><p>blank &#x2F; null 지정은 최소화해주세요. -&gt; manage.py inspect 명령을 통해 생성된 모델 코드는 초안입니다.<br>validators들이 다양하게&#x2F;타이트하게 지정됩니다.<br>필요하다면, validators들을 추가로 타이트하게 지정해주세요.<br>프론트엔드에서의 유효성 검사는 사용자 편의를 위해서 수행하며, 백엔드에서 유효성 검사는 필수 입니다.<br>직접 유효성 로직을 만들지 마세요. 이미 잘 구성된 Features들 가져다 쓰세요. 장고 Form&#x2F;Model을 통해 지원되며, django-rest-framwork의 Serializer를 통해도 지원됩니다.
+<h3 id="설계한-데이터베이스-구조에-따라-최대한-필드타입을-타이트하게-지정해주는-것이-입력값-오류를-막을-수-있음"><a href="#설계한-데이터베이스-구조에-따라-최대한-필드타입을-타이트하게-지정해주는-것이-입력값-오류를-막을-수-있음" class="headerlink" title="설계한 데이터베이스 구조에 따라, 최대한 필드타입을 타이트하게 지정해주는 것이, 입력값 오류를 막을 수 있음."></a>설계한 데이터베이스 구조에 따라, 최대한 필드타입을 타이트하게 지정해주는 것이, 입력값 오류를 막을 수 있음.</h3><p>blank &#x2F; null 지정은 최소화해주세요. -&gt; manage.py inspect 명령을 통해 생성된 모델 코드는 초안입니다.<br>validators들이 다양하게&#x2F;타이트하게 지정됩니다.<br>필요하다면, validators들을 추가로 타이트하게 지정해주세요.<br>프론트엔드에서의 유효성 검사는 사용자 편의를 위해서 수행하며, 백엔드에서 유효성 검사는 필수 입니다.<br>직접 유효성 로직을 만들지 마세요. 이미 잘 구성된 Features들 가져다 쓰세요. 장고 Form&#x2F;Model을 통해 지원되며, django-rest-framwork의 Serializer를 통해도 지원됩니다.
  </p>
-<h3 id="ORM은-SQL-쿼리를-만들어주는-역할일-뿐-보다-성능-높은-애플리케이션을-위해서는-사용하실려는-데이터베이스에-대한-깊은-이해가-필요합니다"><a href="#ORM은-SQL-쿼리를-만들어주는-역할일-뿐-보다-성능-높은-애플리케이션을-위해서는-사용하실려는-데이터베이스에-대한-깊은-이해가-필요합니다" class="headerlink" title="ORM은 SQL 쿼리를 만들어주는 역할일 뿐, 보다 성능 높은 애플리케이션을 위해서는, 사용하실려는 데이터베이스에 대한 깊은 이해가 필요합니다."></a>ORM은 SQL 쿼리를 만들어주는 역할일 뿐, 보다 성능 높은 애플리케이션을 위해서는, 사용하실려는 데이터베이스에 대한 깊은 이해가 필요합니다.</h3>
+<h3 id="ORM은-SQL-쿼리를-만들어주는-역할일-뿐-보다-성능-높은-애플리케이션을-위해서는-사용하실려는-데이터베이스에-대한-깊은-이해가-필요합니다"><a href="#ORM은-SQL-쿼리를-만들어주는-역할일-뿐-보다-성능-높은-애플리케이션을-위해서는-사용하실려는-데이터베이스에-대한-깊은-이해가-필요합니다" class="headerlink" title="ORM은 SQL 쿼리를 만들어주는 역할일 뿐, 보다 성능 높은 애플리케이션을 위해서는 사용하실려는 데이터베이스에 대한 깊은 이해가 필요합니다."></a>ORM은 SQL 쿼리를 만들어주는 역할일 뿐, 보다 성능 높은 애플리케이션을 위해서는 사용하실려는 데이터베이스에 대한 깊은 이해가 필요합니다.</h3>
                 
             </div>
             <hr/>
@@ -523,12 +534,12 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2023/12/28/Django/model-orm/">
+                <a href="/2023/12/28/Django/mediafiles%20copy/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/docker-logo.png" class="responsive-img" alt="[Django] 장고 모델 (ORM)">
+                        <img src="/images/logos/django-logo.png" class="responsive-img" alt="[Django] media 파일을 다루는 방법">
                         
-                        <span class="card-title diy-neon-red">[Django] 장고 모델 (ORM)</span>
+                        <span class="card-title diy-neon-red">[Django] media 파일을 다루는 방법</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -571,12 +582,12 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/12/27/Django/django-app/">
+                <a href="/2023/12/28/Django/model-orm/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/docker-logo.png" class="responsive-img" alt="[Django] 장고 앱(app)">
+                        <img src="/images/logos/django-logo.png" class="responsive-img" alt="[Django] 장고 모델 (ORM)">
                         
-                        <span class="card-title diy-neon-red">[Django] 장고 앱(app)</span>
+                        <span class="card-title diy-neon-red">[Django] 장고 모델 (ORM)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -587,7 +598,7 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-28
                             </span>
                         <span class="publish-author">
                             

@@ -128,9 +128,9 @@
   </li>
   
   <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+    <!-- <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
-    </a>
+    </a> -->
   </li>
   <li>
     <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
@@ -346,14 +346,11 @@
     --bootstrap-server <span class="token operator">&lt;</span>HOST<span class="token operator">></span>:<span class="token operator">&lt;</span>PORT<span class="token operator">></span> <span class="token punctuation">\</span>
     --offset-json-file <span class="token operator">&lt;</span>JSON FILE<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-
 <h2 id="kafka-consumer-groups-sh-Command"><a href="#kafka-consumer-groups-sh-Command" class="headerlink" title="kafka-consumer-groups.sh Command"></a>kafka-consumer-groups.sh Command</h2><h4 id="카프카-컨슈머-그룹-리스트-조회"><a href="#카프카-컨슈머-그룹-리스트-조회" class="headerlink" title="카프카 컨슈머 그룹 리스트 조회"></a>카프카 컨슈머 그룹 리스트 조회</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ kafka-consumer-groups.sh --bootstrap-server <span class="token punctuation">[</span>HOST<span class="token punctuation">]</span>:<span class="token punctuation">[</span>PORT<span class="token punctuation">]</span> <span class="token parameter variable">--list</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h4 id="카프카-컨슈머-그룹-요약-정보-조회"><a href="#카프카-컨슈머-그룹-요약-정보-조회" class="headerlink" title="카프카 컨슈머 그룹 요약 정보 조회"></a>카프카 컨슈머 그룹 요약 정보 조회</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ kafka-consumer-groups.sh --bootstrap-server <span class="token punctuation">[</span>HOST<span class="token punctuation">]</span>:<span class="token punctuation">[</span>PORT<span class="token punctuation">]</span> <span class="token parameter variable">--group</span> <span class="token punctuation">[</span>GROUP_ID<span class="token punctuation">]</span> <span class="token parameter variable">--describe</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h4 id="카프카-컨슈머-그룹-삭제"><a href="#카프카-컨슈머-그룹-삭제" class="headerlink" title="카프카 컨슈머 그룹 삭제"></a>카프카 컨슈머 그룹 삭제</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ kafka-consumer-groups --bootstrap-server <span class="token punctuation">[</span>HOST<span class="token punctuation">]</span>:<span class="token punctuation">[</span>PORT<span class="token punctuation">]</span> <span class="token parameter variable">--delete</span> <span class="token parameter variable">--group</span> <span class="token punctuation">[</span>GROUPD_ID<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
 
 <h2 id="kafka-topics-sh-Command"><a href="#kafka-topics-sh-Command" class="headerlink" title="kafka-topics.sh Command"></a>kafka-topics.sh Command</h2><h4 id="토픽-생성"><a href="#토픽-생성" class="headerlink" title="토픽 생성"></a>토픽 생성</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ kafka-topics.sh <span class="token parameter variable">--create</span> <span class="token punctuation">\</span>
     <span class="token parameter variable">--topic</span> <span class="token operator">&lt;</span>TOPIC_NAME<span class="token operator">></span> <span class="token punctuation">\</span>
@@ -547,9 +544,9 @@ gitment.render('gitment-content');
                 <a href="/2023/07/01/Kafka/kafka-server-propery-options/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Server Propery Options (미완)">
+                        <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Kafka Server Propery Options">
                         
-                        <span class="card-title diy-neon-red">[Kafka] Server Propery Options (미완)</span>
+                        <span class="card-title diy-neon-red">[Kafka] Kafka Server Propery Options</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
