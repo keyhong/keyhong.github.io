@@ -4,18 +4,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="
-모든 리소스 삭제
-$ kubectl delete all
+    <meta name="keywords" content="[Kubernetes] rancher, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="kuberctl에 유용한 커맨드 옵션–dry-run&amp;#x3D;client
+리소스를 생성하지 않습니다. 단순히 명령을 테스트하려는 경우에 사용하며 명령어가 올바른지 알려줍니다.
 
-YAML을 사용하여 도커이미지 jenkins로 Jenkins-manual 파드를 생성하기
-
-
-apiVersion: v1
-kind: Pod
-metadata:
-">
+-o yaml
+화면에 YAML 형식의 ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -27,7 +21,7 @@ metadata:
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Keyhong</title>
+    <title>[Kubernetes] rancher | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -237,13 +231,13 @@ metadata:
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/kubernetes-logo.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        </h1>
+                        [Kubernetes] rancher</h1>
                 </div>
             </div>
         </div>
@@ -265,12 +259,25 @@ metadata:
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Kubernetes/">
+                                <span class="chip bg-color">Kubernetes</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Kubernetes/" class="post-category">
+                                Kubernetes
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -303,12 +310,19 @@ metadata:
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <ol>
-<li><p>모든 리소스 삭제</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ kubectl delete all<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>YAML을 사용하여 도커이미지 jenkins로 Jenkins-manual 파드를 생성하기</p>
-</li>
+                <h2 id="kuberctl에-유용한-커맨드-옵션"><a href="#kuberctl에-유용한-커맨드-옵션" class="headerlink" title="kuberctl에 유용한 커맨드 옵션"></a>kuberctl에 유용한 커맨드 옵션</h2><h4 id="–dry-run-client"><a href="#–dry-run-client" class="headerlink" title="–dry-run&#x3D;client"></a>–dry-run&#x3D;client</h4><blockquote>
+<p>리소스를 생성하지 않습니다. 단순히 명령을 테스트하려는 경우에 사용하며 명령어가 올바른지 알려줍니다.</p>
+</blockquote>
+<h4 id="o-yaml"><a href="#o-yaml" class="headerlink" title="-o yaml"></a>-o yaml</h4><blockquote>
+<p>화면에 YAML 형식의 리소스 정의를 출력합니다.</p>
+</blockquote>
+<h2 id="jenkins로-pod-간단히-사용해보기"><a href="#jenkins로-pod-간단히-사용해보기" class="headerlink" title="jenkins로 pod 간단히 사용해보기"></a>jenkins로 pod 간단히 사용해보기</h2><ol>
+<li>모든 리소스 삭제</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ kubectl delete all <span class="token parameter variable">-all</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="2">
+<li>YAML을 사용하여 도커이미지 jenkins로 Jenkins-manual 파드를 생성하기</li>
 </ol>
 <pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
 <span class="token key atrule">kind</span><span class="token punctuation">:</span> Pod
@@ -321,7 +335,8 @@ metadata:
     <span class="token key atrule">ports</span><span class="token punctuation">:</span>
       <span class="token punctuation">-</span> <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">8080</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ kubectl get pods <span class="token parameter variable">-w</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># pod의 상태를 지속적으로 볼 수 있는 옵션</span>
+$ kubectl get pods <span class="token parameter variable">-w</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <ol start="3">
 <li>Jenkins 파드에서 curl 명령어로 로컬호스트:8080 접속하기</li>
@@ -331,12 +346,13 @@ metadata:
 <li>Jenkins 포트를 8888로 포트포워딩하기</li>
 </ol>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ kubectl port-forward <span class="token number">8888</span>:8080<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <ol start="5">
 <li>현재 Jenkins-manual의 설정을 yaml로 출력하기</li>
 </ol>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ kubectl get pod jenkins-manual <span class="token parameter variable">-o</span> yaml<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h1 id="이벤트의-경우"><a href="#이벤트의-경우" class="headerlink" title="이벤트의 경우"></a>이벤트의 경우</h1><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ kubectl describe pod jenkins-manual<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h1 id="이벤트-보기"><a href="#이벤트-보기" class="headerlink" title="이벤트 보기"></a>이벤트 보기</h1><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ kubectl describe pod jenkins-manual<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
                 
             </div>
@@ -353,7 +369,7 @@ metadata:
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">Gyuwon Hong</a>
+                    <a href="/about" rel="external nofollow noreferrer">Keyhong</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -376,7 +392,7 @@ metadata:
                     use
                     <a href="cc_by_url" rel="external nofollow noreferrer" target="_blank">cc_by_name</a>
                     licensed
-                    <a href="/about" target="_blank">Gyuwon Hong</a>
+                    <a href="/about" target="_blank">Keyhong</a>
                     !
                 </span>
             </div> -->
@@ -400,7 +416,11 @@ metadata:
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
+                            
+                                <a href="/tags/Kubernetes/">
+                                    <span class="chip bg-color">Kubernetes</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -470,7 +490,7 @@ metadata:
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Wed Jan 17 2024 14:14:20 GMT+0900',
+    id: 'Wed Jan 17 2024 00:00:00 GMT+0900',
     owner: '',
     repo: '',
     oauth: {
@@ -505,13 +525,12 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/17/Kubernetes/practice/liveness_probe/">
+                <a href="/2024/01/17/Airflow/kubernetes_executor-%EB%AF%B8%EC%99%84-/">
                     <div class="card-image">
                         
+                        <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] rancher">
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title diy-neon-red"></span>
+                        <span class="card-title diy-neon-red">[Kubernetes] rancher</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -526,11 +545,23 @@ gitment.render('gitment-content');
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Gyuwon Hong
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Kubernetes/">
+                        <span class="chip bg-color">Kubernetes</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -542,13 +573,12 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/17/Kubernetes/comfortable_option/">
+                <a href="/2024/01/16/PySpark/spark-web-ui-%EB%AF%B8%EC%99%84-/">
                     <div class="card-image">
                         
+                        <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[PySpark] PySpark 웹 UI에서 Job을 명시적으로 구분하기">
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title diy-neon-red"></span>
+                        <span class="card-title diy-neon-red">[PySpark] PySpark 웹 UI에서 Job을 명시적으로 구분하기</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -559,15 +589,27 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-17
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-16
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Gyuwon Hong
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Kubernetes/">
+                        <span class="chip bg-color">Kubernetes</span>
+                    </a>
+                    
                 </div>
                 
             </div>

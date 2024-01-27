@@ -5,11 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="[Flink] Architecture, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Flink ArchitectureReference출처 : flink-architecture
-Flink
-무제한 및 제한 데이터 스트림에 대한 상태 저장 계산을 위한 프레임워크 및 분산 처리 엔진
-
-Flink Archi">
+    <meta name="description" content="Flink의 Architecture">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -310,12 +306,15 @@ Flink Archi">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Flink-Architecture"><a href="#Flink-Architecture" class="headerlink" title="Flink Architecture"></a>Flink Architecture</h1><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>출처 : <a target="_blank" rel="noopener" href="https://flink.apache.org/what-is-flink/flink-architecture/">flink-architecture</a></p>
-<h2 id="Flink"><a href="#Flink" class="headerlink" title="Flink"></a>Flink</h2><blockquote>
+                <h2 id="Flink란"><a href="#Flink란" class="headerlink" title="Flink란?"></a>Flink란?</h2><blockquote>
 <p>무제한 및 제한 데이터 스트림에 대한 상태 저장 계산을 위한 프레임워크 및 분산 처리 엔진</p>
 </blockquote>
-<h2 id="Flink-Architecture-1"><a href="#Flink-Architecture-1" class="headerlink" title="Flink Architecture"></a>Flink Architecture</h2><p>모든 일반 클러스터 환경에서 실행(독립성), 메모리 내 속도와 모든 규모에서 계산을 수행하도록 설계(분산처리 최적화)</p>
-<h2 id="무제한-및-제한된-데이터-처리"><a href="#무제한-및-제한된-데이터-처리" class="headerlink" title="무제한 및 제한된 데이터 처리"></a>무제한 및 제한된 데이터 처리</h2><p>모든 종류의 데이터는 이벤트 스트림으로 생성. 데이터는 무제한 스트림 또는 제한 스트림으로 처리</p>
+<h2 id="Flink-Architecture"><a href="#Flink-Architecture" class="headerlink" title="Flink Architecture"></a>Flink Architecture</h2><blockquote>
+<p>모든 일반 클러스터 환경에서 실행(독립성), 메모리 내 속도와 모든 규모에서 계산을 수행하도록 설계(분산처리 최적화)</p>
+</blockquote>
+<h2 id="무제한-및-제한된-데이터-처리"><a href="#무제한-및-제한된-데이터-처리" class="headerlink" title="무제한 및 제한된 데이터 처리"></a>무제한 및 제한된 데이터 처리</h2><blockquote>
+<p>모든 종류의 데이터는 이벤트 스트림으로 생성. 데이터는 무제한 스트림 또는 제한 스트림으로 처리</p>
+</blockquote>
 <h4 id="무제한-스트림-Unbounded-streams"><a href="#무제한-스트림-Unbounded-streams" class="headerlink" title="무제한 스트림(Unbounded streams)"></a>무제한 스트림(Unbounded streams)</h4><blockquote>
 <p>시작이 있지만, 끝이 정의되어 있지 않음. 종료되지 않고 지속적 처리</p>
 </blockquote>
@@ -340,7 +339,9 @@ Flink Archi">
 </ul>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219893&authkey=%21AJWJnhlIkzBsmRY&width=660" width="660" height="auto" />
 
-<h2 id="어디서나-배포-가능"><a href="#어디서나-배포-가능" class="headerlink" title="어디서나 배포 가능"></a>어디서나 배포 가능</h2><p>Apache Flink는 분산 시스템이며 애플리케이션을 실행하기 위해 컴퓨팅 리소스가 필요</p>
+<h2 id="어디서나-배포-가능"><a href="#어디서나-배포-가능" class="headerlink" title="어디서나 배포 가능"></a>어디서나 배포 가능</h2><blockquote>
+<p>Apache Flink는 분산 시스템이며 애플리케이션을 실행하기 위해 컴퓨팅 리소스가 필요</p>
+</blockquote>
 <ul>
 <li><p>Hadoop YARN, Apache Mesos, Kubernetes 와 같은 모든 일반적인 클러스터 리소스 관리자와 통합 가능</p>
 </li>
@@ -353,7 +354,9 @@ Flink Archi">
 <li><p>애플리케이션을 제출하거나 제어하기 위한 모든 통신은 REST call 로 이루어지며, 이 덕분에 많은 환경과 통합 가능</p>
 </li>
 </ul>
-<h2 id="어떤-규모에서도-실행-가능-확장성"><a href="#어떤-규모에서도-실행-가능-확장성" class="headerlink" title="어떤 규모에서도 실행 가능(확장성)"></a>어떤 규모에서도 실행 가능(확장성)</h2><p>어떤 규모에서도 stateful streaming 할 수 있게 고안</p>
+<h2 id="어떤-규모에서도-실행-가능-확장성"><a href="#어떤-규모에서도-실행-가능-확장성" class="headerlink" title="어떤 규모에서도 실행 가능(확장성)"></a>어떤 규모에서도 실행 가능(확장성)</h2><blockquote>
+<p>어떤 규모에서도 stateful streaming 할 수 있게 고안</p>
+</blockquote>
 <ul>
 <li><p>클러스터에서 분산되고 동시에 실행되는 수천 개의 작업으로 병렬화 실행</p>
 </li>
@@ -364,7 +367,9 @@ Flink Archi">
 <li><p>하루에 수조 건의 이벤트를 처리, 여러 테라바이트의 상태를 유지, 수천 개의 코어에서 실행되는 애플리케이션을 보장</p>
 </li>
 </ul>
-<h2 id="In-Memory-Performance-활용"><a href="#In-Memory-Performance-활용" class="headerlink" title="In-Memory Performance 활용"></a>In-Memory Performance 활용</h2><p>Stateful한 Flink Application은 local state access에 최적화</p>
+<h2 id="In-Memory-Performance-활용"><a href="#In-Memory-Performance-활용" class="headerlink" title="In-Memory Performance 활용"></a>In-Memory Performance 활용</h2><blockquote>
+<p>Stateful한 Flink Application은 local state access에 최적화</p>
+</blockquote>
 <ul>
 <li><p>작업 상태는 항상 메모리에 유지</p>
 </li>
@@ -376,6 +381,10 @@ Flink Archi">
 </li>
 </ul>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219892&authkey=%21ALM4p8iG62VQN54&width=660" width="660" height="auto" />
+
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://flink.apache.org/what-is-flink/flink-architecture/">flink-architecture</a></li>
+</ul>
 
                 
             </div>
@@ -513,7 +522,7 @@ Flink Archi">
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Mon Jan 01 2024 22:59:44 GMT+0900',
+    id: 'Mon Jan 01 2024 00:00:00 GMT+0900',
     owner: '',
     repo: '',
     oauth: {
@@ -548,12 +557,12 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/01/Airflow/subdags/">
+                <a href="/2024/01/01/Hadoop/HDFS/hdfs-block-caching/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] SubDags">
+                        <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="[HDFS] Block Caching">
                         
-                        <span class="card-title diy-neon-red">[Airflow] SubDags</span>
+                        <span class="card-title diy-neon-red">[HDFS] Block Caching</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -570,8 +579,8 @@ gitment.render('gitment-content');
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Airflow/" class="post-category">
-                                    Airflow
+                            <a href="/categories/Hadoop/" class="post-category">
+                                    Hadoop
                                 </a>
                             
                             
@@ -581,8 +590,8 @@ gitment.render('gitment-content');
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Airflow/">
-                        <span class="chip bg-color">Airflow</span>
+                    <a href="/tags/Hadoop/">
+                        <span class="chip bg-color">Hadoop</span>
                     </a>
                     
                 </div>
@@ -596,18 +605,18 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/01/Flink/flink-datastream-api/">
+                <a href="/2024/01/01/Flink/flink-window-operator/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/flink-logo.png" class="responsive-img" alt="[Flink] DataStream API">
+                        <img src="/images/logos/flink-logo.png" class="responsive-img" alt="[Flink] Window Operator">
                         
-                        <span class="card-title diy-neon-red">[Flink] DataStream API</span>
+                        <span class="card-title diy-neon-red">[Flink] Window Operator</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            Window Operator
                         
                     </div>
                     <div class="publish-info">

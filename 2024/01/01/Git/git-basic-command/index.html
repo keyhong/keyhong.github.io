@@ -5,15 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="[Git] Basic Command, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Git Basic Command
-원격저장소에서 프로젝트 가져오기 (From GitHub)
-
-git clone &amp;lt;원격저장소 URL&gt; [원격저장소 파일을 넣으려고 만드는 폴더]
-
-
-로컬저장소 생성하기
-
-git in">
+    <meta name="description" content="Basic Command">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -314,104 +306,62 @@ git in">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Git-Basic-Command"><a href="#Git-Basic-Command" class="headerlink" title="Git Basic Command"></a>Git Basic Command</h1><ul>
-<li>원격저장소에서 프로젝트 가져오기 (From GitHub)</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone <span class="token operator">&lt;</span>원격저장소 URL<span class="token operator">></span> <span class="token punctuation">[</span>원격저장소 파일을 넣으려고 만드는 폴더<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h2 id="Git-Config-Command"><a href="#Git-Config-Command" class="headerlink" title="Git Config Command"></a>Git Config Command</h2><h4 id="Git-config-확인하기"><a href="#Git-config-확인하기" class="headerlink" title="Git config 확인하기"></a>Git config 확인하기</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> config <span class="token parameter variable">--list</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<ul>
-<li>로컬저장소 생성하기</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> init <span class="token operator">&lt;</span>로컬저장소<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="global-User-저장하기"><a href="#global-User-저장하기" class="headerlink" title="global User 저장하기"></a>global User 저장하기</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> config <span class="token parameter variable">--global</span> user.name <span class="token operator">&lt;</span>user<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<ul>
-<li>Modified 상태의 파일을 Stage 하기</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># "." : 현재 디렉토리 하위 내 모든 파일</span>
-<span class="token function">git</span> <span class="token function">add</span> <span class="token operator">&lt;</span>추가할 파일 또는 <span class="token builtin class-name">.</span> <span class="token operator">></span>
-  -u, <span class="token parameter variable">--update</span> <span class="token builtin class-name">:</span> <span class="token operator">&lt;</span>pathspec<span class="token operator">></span>과 일치하는 항목이 이미 있는 위치에서 인덱스를 업데이트<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4 id="global-Email-저장하기"><a href="#global-Email-저장하기" class="headerlink" title="global Email 저장하기"></a>global Email 저장하기</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> config <span class="token parameter variable">--global</span> email.name <span class="token operator">&lt;</span>email<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<ul>
-<li>변경사항 커밋하기</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token operator">&lt;</span><span class="token string">"메세지"</span><span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="global-config-삭제하기"><a href="#global-config-삭제하기" class="headerlink" title="global config 삭제하기"></a>global config 삭제하기</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> config <span class="token parameter variable">--unset</span> <span class="token parameter variable">--global</span> <span class="token operator">&lt;</span>config<span class="token operator">></span> <span class="token operator">&lt;</span>value<span class="token operator">></span>
 
-<ul>
-<li>Staged와 Unstaged 상태의 변경 내용을 보기</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> status<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<span class="token comment"># example</span>
+$ <span class="token function">git</span> config <span class="token parameter variable">--unset</span> <span class="token parameter variable">--global</span> user.name hong<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<ul>
-<li>원격저장소 푸쉬</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> push
+<h2 id="Git-Working-Command"><a href="#Git-Working-Command" class="headerlink" title="Git Working Command"></a>Git Working Command</h2><h4 id="원격저장소에서-프로젝트-가져오기-From-GitHub"><a href="#원격저장소에서-프로젝트-가져오기-From-GitHub" class="headerlink" title="원격저장소에서 프로젝트 가져오기 (From GitHub)"></a>원격저장소에서 프로젝트 가져오기 (From GitHub)</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> clone <span class="token operator">&lt;</span>원격저장소 URL<span class="token operator">></span> <span class="token punctuation">[</span>원격저장소 파일을 넣으려고 만드는 폴더<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="로컬저장소-생성하기-로컬저장소-히스토리-내역-추가"><a href="#로컬저장소-생성하기-로컬저장소-히스토리-내역-추가" class="headerlink" title="로컬저장소 생성하기 (로컬저장소 히스토리 내역 추가)"></a>로컬저장소 생성하기 (로컬저장소 히스토리 내역 추가)</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> init <span class="token operator">&lt;</span>로컬저장소<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="Modified-상태의-파일을-Stage-하기"><a href="#Modified-상태의-파일을-Stage-하기" class="headerlink" title="Modified 상태의 파일을 Stage 하기"></a>Modified 상태의 파일을 Stage 하기</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># "." : 현재 디렉토리 하위 내 모든 파일</span>
+$ <span class="token function">git</span> <span class="token function">add</span> <span class="token operator">&lt;</span>추가할 파일 또는 <span class="token builtin class-name">.</span> <span class="token punctuation">(</span> <span class="token string">"."</span> <span class="token builtin class-name">:</span> 현재 디렉토리 하위 내 모든 파일<span class="token punctuation">)</span><span class="token operator">></span>
+    -u, <span class="token parameter variable">--update</span> <span class="token builtin class-name">:</span> <span class="token operator">&lt;</span>pathspec<span class="token operator">></span>과 일치하는 항목이 이미 있는 위치에서 인덱스를 업데이트<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="git-add-취소하기"><a href="#git-add-취소하기" class="headerlink" title="git add 취소하기"></a>git add 취소하기</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> reset HEAD<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="변경사항-커밋하기"><a href="#변경사항-커밋하기" class="headerlink" title="변경사항 커밋하기"></a>변경사항 커밋하기</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token operator">&lt;</span><span class="token string">"메세지"</span><span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="작업-디렉토리-Working-Directoy-와-스테이징-영역-Staging-Area-확인"><a href="#작업-디렉토리-Working-Directoy-와-스테이징-영역-Staging-Area-확인" class="headerlink" title="작업 디렉토리(Working Directoy)와 스테이징 영역(Staging Area) 확인"></a>작업 디렉토리(Working Directoy)와 스테이징 영역(Staging Area) 확인</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> status<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="원격저장소-push"><a href="#원격저장소-push" class="headerlink" title="원격저장소 push"></a>원격저장소 push</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> push
   <span class="token parameter variable">--force</span> <span class="token builtin class-name">:</span> 강제로 push <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<ul>
-<li>원격저장소 추가</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> remote <span class="token function">add</span> <span class="token operator">&lt;</span>저장소 별칭<span class="token operator">></span> <span class="token operator">&lt;</span>원격저장소 URL<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="원격저장소-추가"><a href="#원격저장소-추가" class="headerlink" title="원격저장소 추가"></a>원격저장소 추가</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> remote <span class="token function">add</span> <span class="token operator">&lt;</span>저장소 별칭<span class="token operator">></span> <span class="token operator">&lt;</span>원격저장소 URL<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<ul>
-<li>원격저장소 확인</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> remote <span class="token parameter variable">-v</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="원격저장소-확인"><a href="#원격저장소-확인" class="headerlink" title="원격저장소 확인"></a>원격저장소 확인</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> remote <span class="token parameter variable">-v</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<ul>
-<li>원격저장소 삭제</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> remote <span class="token function">rm</span> <span class="token operator">&lt;</span>저장소 별칭<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="원격저장소-삭제"><a href="#원격저장소-삭제" class="headerlink" title="원격저장소 삭제"></a>원격저장소 삭제</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> remote <span class="token function">rm</span> <span class="token operator">&lt;</span>저장소 별칭<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<ul>
-<li>원격 저장소에서 최신 메타데이터 정보를 확인하라는 명령을 전달</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> fetch <span class="token punctuation">[</span>원격저장소 별칭<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ul>
-<li>로컬 저장소와 원격 저장소에의 차이 보기</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> <span class="token function">diff</span> <span class="token operator">&lt;</span>원격저장소 별칭<span class="token operator">></span>/<span class="token operator">&lt;</span>로컬 저장소 별칭<span class="token punctuation">(</span>master 브랜치<span class="token punctuation">)</span><span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="원격-저장소에서-최신-메타데이터-정보를-확인하라는-명령을-전달"><a href="#원격-저장소에서-최신-메타데이터-정보를-확인하라는-명령을-전달" class="headerlink" title="원격 저장소에서 최신 메타데이터 정보를 확인하라는 명령을 전달"></a>원격 저장소에서 최신 메타데이터 정보를 확인하라는 명령을 전달</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> fetch <span class="token punctuation">[</span>원격저장소 별칭<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="로컬-저장소와-원격-저장소에의-차이-보기"><a href="#로컬-저장소와-원격-저장소에의-차이-보기" class="headerlink" title="로컬 저장소와 원격 저장소에의 차이 보기"></a>로컬 저장소와 원격 저장소에의 차이 보기</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> <span class="token function">diff</span> <span class="token operator">&lt;</span>원격저장소 별칭<span class="token operator">></span>/<span class="token operator">&lt;</span>로컬 저장소 별칭<span class="token punctuation">(</span>master 브랜치<span class="token punctuation">)</span><span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<ul>
-<li><p>원격저장소 가져오기 (From GitHub)</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone <span class="token operator">&lt;</span>원격저장소 URL<span class="token operator">></span> <span class="token punctuation">[</span>원격저장소 파일을 넣으려고 만드는 폴더<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>로컬저장소 생성하기</p>
-</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> init<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ul>
-<li>로컬저장소에 파일 추가하기</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> <span class="token function">add</span> <span class="token operator">&lt;</span>추가할 파일 또는 <span class="token builtin class-name">.</span> <span class="token punctuation">(</span> <span class="token string">"."</span> <span class="token builtin class-name">:</span> 현재 디렉토리 하위 내 모든 파일<span class="token punctuation">)</span><span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ul>
-<li>로컬저장소 히스토리 내역 추가하기</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token operator">&lt;</span><span class="token string">"메세지"</span><span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<ul>
-<li>작업 디렉토리(Working Directoy)와 스테이징 영역(Staging Area) 확인</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> status <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<ul>
-<li>원격저장소 추가</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> remote <span class="token function">add</span> <span class="token operator">&lt;</span>저장소 별칭<span class="token operator">></span> <span class="token operator">&lt;</span>원격저장소 URL<span class="token operator">></span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<ul>
-<li>원격저장소 확인</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> remote <span class="token parameter variable">-v</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="Git-Branch-Command"><a href="#Git-Branch-Command" class="headerlink" title="Git Branch Command"></a>Git Branch Command</h2><h4 id="branch-만들기"><a href="#branch-만들기" class="headerlink" title="branch 만들기"></a>branch 만들기</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> branch <span class="token operator">&lt;</span>브랜치명<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<ul>
-<li>원격저장소 삭제</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> remote <span class="token function">rm</span> <span class="token operator">&lt;</span>저장소 별칭<span class="token operator">></span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="branch-리스트-확인"><a href="#branch-리스트-확인" class="headerlink" title="branch 리스트 확인"></a>branch 리스트 확인</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> branch <span class="token parameter variable">-a</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<ul>
-<li>git add 취소하기</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> reset HEAD<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="branch-삭제"><a href="#branch-삭제" class="headerlink" title="branch 삭제"></a>branch 삭제</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> branch <span class="token parameter variable">-d</span> <span class="token operator">&lt;</span>브랜치명<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="branch-강제-삭제"><a href="#branch-강제-삭제" class="headerlink" title="branch 강제 삭제"></a>branch 강제 삭제</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> branch <span class="token parameter variable">-D</span> <span class="token operator">&lt;</span>브랜치명<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<h2 id="Git-Reset-Command"><a href="#Git-Reset-Command" class="headerlink" title="Git Reset Command"></a>Git Reset Command</h2><h4 id="git-add-취소하기-1"><a href="#git-add-취소하기-1" class="headerlink" title="git add 취소하기"></a>git add 취소하기</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> reset HEAD<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="가장-최신-커밋-스테이징-취소하기"><a href="#가장-최신-커밋-스테이징-취소하기" class="headerlink" title="가장 최신 커밋, 스테이징 취소하기"></a>가장 최신 커밋, 스테이징 취소하기</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> reset HEAD^  <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="이전-commit-이력-조회"><a href="#이전-commit-이력-조회" class="headerlink" title="이전 commit 이력 조회"></a>이전 commit 이력 조회</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> reflog<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="이전-commit-이력으로-되돌리기"><a href="#이전-commit-이력으로-되돌리기" class="headerlink" title="이전 commit 이력으로 되돌리기"></a>이전 commit 이력으로 되돌리기</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> reset <span class="token parameter variable">--hard</span> HEAD@<span class="token punctuation">&#123;</span>N<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -548,7 +498,7 @@ git in">
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Mon Jan 01 2024 22:59:44 GMT+0900',
+    id: 'Mon Jan 01 2024 00:00:00 GMT+0900',
     owner: '',
     repo: '',
     oauth: {
@@ -583,13 +533,12 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/01/MLOps/dvc/">
+                <a href="/2024/01/01/Docker/docker-mysql-connection/">
                     <div class="card-image">
                         
+                        <img src="/images/logos/docker-logo.png" class="responsive-img" alt="[Docker] docker mysql ">
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="[MLOps] DVC">
-                        
-                        <span class="card-title diy-neon-red">[MLOps] DVC</span>
+                        <span class="card-title diy-neon-red">[Docker] docker mysql </span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -606,8 +555,8 @@ gitment.render('gitment-content');
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/MLOps/" class="post-category">
-                                    MLOps
+                            <a href="/categories/Docker/" class="post-category">
+                                    Docker
                                 </a>
                             
                             
@@ -617,8 +566,8 @@ gitment.render('gitment-content');
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/MLOps/">
-                        <span class="chip bg-color">MLOps</span>
+                    <a href="/tags/Docker/">
+                        <span class="chip bg-color">Docker</span>
                     </a>
                     
                 </div>
@@ -632,12 +581,12 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/01/Git/git-branch-command/">
+                <a href="/2024/01/01/Hive/hive-architecture/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/git-logo.png" class="responsive-img" alt="[Git] Branch Command">
+                        <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] Architecture">
                         
-                        <span class="card-title diy-neon-red">[Git] Branch Command</span>
+                        <span class="card-title diy-neon-red">[Hive] Architecture</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -654,8 +603,8 @@ gitment.render('gitment-content');
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Git/" class="post-category">
-                                    Git
+                            <a href="/categories/Hive/" class="post-category">
+                                    Hive
                                 </a>
                             
                             
@@ -665,8 +614,8 @@ gitment.render('gitment-content');
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Git/">
-                        <span class="chip bg-color">Git</span>
+                    <a href="/tags/Hive/">
+                        <span class="chip bg-color">Hive</span>
                     </a>
                     
                 </div>

@@ -310,7 +310,60 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Slowly changing dimensions</p>
+                <h2 id="Slowly-Changing-Dimensions-SCD"><a href="#Slowly-Changing-Dimensions-SCD" class="headerlink" title="Slowly Changing Dimensions (SCD)"></a>Slowly Changing Dimensions (SCD)</h2><ul>
+<li><p>Dimension that change over time</p>
+</li>
+<li><p>Manages current and historical version</p>
+</li>
+<li><p>Build to track changes</p>
+</li>
+<li><p>There are different types of SCD such as:</p>
+<ul>
+<li><p>Type-0 - Retain original</p>
+</li>
+<li><p>Type-1 - Overwriting the old value</p>
+</li>
+<li><p>Type-2 - New additional record</p>
+</li>
+<li><p>Type-3 - Adding a new attribute column</p>
+</li>
+<li><p>Type-4 - Using historical table</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="SCD-Type의-종류"><a href="#SCD-Type의-종류" class="headerlink" title="SCD Type의 종류"></a>SCD Type의 종류</h2><h4 id="SCD-Type-0"><a href="#SCD-Type-0" class="headerlink" title="SCD (Type 0)"></a>SCD (Type 0)</h4><ul>
+<li><p>There is essentially no chagne</p>
+</li>
+<li><p>The attribute will never changes</p>
+</li>
+<li><p>Facts always grouped by the original value</p>
+</li>
+</ul>
+<h4 id="SCD-Type-1"><a href="#SCD-Type-1" class="headerlink" title="SCD (Type 1)"></a>SCD (Type 1)</h4><ul>
+<li><p>Overwrite Old Value</p>
+</li>
+<li><p>Attribute always reflect the most recent assignment, disregarding historical changes</p>
+</li>
+</ul>
+<h4 id="SCD-Type-2"><a href="#SCD-Type-2" class="headerlink" title="SCD (Type 2)"></a>SCD (Type 2)</h4><ul>
+<li><p>Create new additional record</p>
+</li>
+<li><p>New primary key (SK), flag column &amp; date columns added to track</p>
+</li>
+</ul>
+<h4 id="SCD-Type-3"><a href="#SCD-Type-3" class="headerlink" title="SCD (Type 3)"></a>SCD (Type 3)</h4><ul>
+<li><p>Add a new column to the dimension to preserve historical information</p>
+</li>
+<li><p>Allows to query in 2 different realities</p>
+</li>
+</ul>
+<h4 id="SCD-Type-4"><a href="#SCD-Type-4" class="headerlink" title="SCD (Type 4)"></a>SCD (Type 4)</h4><ul>
+<li><p>Historical table used to track any changes separte to the dimension table</p>
+</li>
+<li><p>The main dimension only keeps current data based on the present time period</p>
+</li>
+</ul>
 
                 
             </div>

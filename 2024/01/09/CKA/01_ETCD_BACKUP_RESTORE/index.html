@@ -4,17 +4,14 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="kubectl config current-context
-
-Outputk8s
-ssh k8s-master
-
-
-ETCD backup$ sudo tree /var/lib/etcd
+    <meta name="keywords" content="[Kubernetes] ectd 백업하기, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="ETCD backup$ tree /var/lib/etcd
 
 $ etcd --version
-$ etcd">
+
+# etcd Backup
+$ ETCDCTL_API=3 etcdctl \
+    --endpoints=https://127.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -26,7 +23,7 @@ $ etcd">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Keyhong</title>
+    <title>[Kubernetes] ectd 백업하기 | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -236,13 +233,13 @@ $ etcd">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/kubernetes-logo.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        </h1>
+                        [Kubernetes] ectd 백업하기</h1>
                 </div>
             </div>
         </div>
@@ -264,12 +261,25 @@ $ etcd">
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Kubernetes/">
+                                <span class="chip bg-color">Kubernetes</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Kubernetes/" class="post-category">
+                                Kubernetes
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -302,50 +312,44 @@ $ etcd">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl config current-context<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><p>k8s</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ssh</span> k8s-master<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
-<h2 id="ETCD-backup"><a href="#ETCD-backup" class="headerlink" title="ETCD backup"></a>ETCD backup</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">sudo</span> tree /var/lib/etcd
+                <h2 id="ETCD-backup"><a href="#ETCD-backup" class="headerlink" title="ETCD backup"></a>ETCD backup</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ tree /var/lib/etcd
 
 $ etcd <span class="token parameter variable">--version</span>
-$ etcdctl version
 
 <span class="token comment"># etcd Backup</span>
-<span class="token assign-left variable">ETCDCTL_API</span><span class="token operator">=</span><span class="token number">3</span> etcdctl <span class="token punctuation">\</span>
-  <span class="token parameter variable">--endpoints</span><span class="token operator">=</span>https://127.0.0.1:2379 <span class="token punctuation">\</span>
-  <span class="token parameter variable">--cacert</span><span class="token operator">=</span><span class="token operator">&lt;</span>trusted-ca-file<span class="token operator">></span> <span class="token punctuation">\</span>
-  <span class="token parameter variable">--cert</span><span class="token operator">=</span><span class="token operator">&lt;</span>cert-file<span class="token operator">></span> <span class="token punctuation">\</span>
-  <span class="token parameter variable">--key</span><span class="token operator">=</span><span class="token operator">&lt;</span>key-file<span class="token operator">></span> <span class="token punctuation">\</span>
-  snapshot save <span class="token operator">&lt;</span>backup-file-location<span class="token operator">></span>
+$ <span class="token assign-left variable">ETCDCTL_API</span><span class="token operator">=</span><span class="token number">3</span> etcdctl <span class="token punctuation">\</span>
+    <span class="token parameter variable">--endpoints</span><span class="token operator">=</span>https://127.0.0.1:2379 <span class="token punctuation">\</span>
+    <span class="token parameter variable">--cacert</span><span class="token operator">=</span><span class="token operator">&lt;</span>trusted-ca-file<span class="token operator">></span> <span class="token punctuation">\</span>
+    <span class="token parameter variable">--cert</span><span class="token operator">=</span><span class="token operator">&lt;</span>cert-file<span class="token operator">></span> <span class="token punctuation">\</span>
+    <span class="token parameter variable">--key</span><span class="token operator">=</span><span class="token operator">&lt;</span>key-file<span class="token operator">></span> <span class="token punctuation">\</span>
+    snapshot save <span class="token operator">&lt;</span>backup-file-location<span class="token operator">></span>
 
-<span class="token function">sudo</span> <span class="token assign-left variable">ETCDCTL_API</span><span class="token operator">=</span><span class="token number">3</span> etcdctl <span class="token punctuation">\</span>
-  <span class="token parameter variable">--endpoints</span><span class="token operator">=</span>https://127.0.0.1:2379 <span class="token punctuation">\</span>
-  <span class="token parameter variable">--cacert</span><span class="token operator">=</span>/etc/kubernetes/pki/etcd/ca.crt <span class="token punctuation">\</span>
-  <span class="token parameter variable">--cert</span><span class="token operator">=</span>/etc/kubernetes/pki/etcd/server.crt <span class="token punctuation">\</span>
-  <span class="token parameter variable">--key</span><span class="token operator">=</span>/etc/kubernetes/pki/etcd/server.key <span class="token punctuation">\</span>
-  snapshot save /data/etcd-snapshot.db<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="Output-1"><a href="#Output-1" class="headerlink" title="Output"></a>Output</h1><p>Snapshot saved at &#x2F;data&#x2F;etcd-snapshot.db</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># etcd Restore</span>
-<span class="token assign-left variable">ETCDCTL_API</span><span class="token operator">=</span><span class="token number">3</span> etcdctl <span class="token punctuation">\</span>
-  --data-dir <span class="token operator">&lt;</span>data-dir-location<span class="token operator">></span> 
-  snapshot restore snapshot.db
+$ <span class="token assign-left variable">ETCDCTL_API</span><span class="token operator">=</span><span class="token number">3</span> etcdctl <span class="token punctuation">\</span>
+    <span class="token parameter variable">--endpoints</span><span class="token operator">=</span>https://127.0.0.1:2379 <span class="token punctuation">\</span>
+    <span class="token parameter variable">--cacert</span><span class="token operator">=</span>/etc/kubernetes/pki/etcd/ca.crt <span class="token punctuation">\</span>
+    <span class="token parameter variable">--cert</span><span class="token operator">=</span>/etc/kubernetes/pki/etcd/server.crt <span class="token punctuation">\</span>
+    <span class="token parameter variable">--key</span><span class="token operator">=</span>/etc/kubernetes/pki/etcd/server.key <span class="token punctuation">\</span>
+    snapshot save /data/etcd-snapshot.db<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><p>Snapshot saved at &#x2F;data&#x2F;etcd-snapshot.db</p>
+<h1 id="ETCD-backup-1"><a href="#ETCD-backup-1" class="headerlink" title="ETCD backup"></a>ETCD backup</h1><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># etcd Restore</span>
+$ <span class="token assign-left variable">ETCDCTL_API</span><span class="token operator">=</span><span class="token number">3</span> etcdctl <span class="token punctuation">\</span>
+    --data-dir <span class="token operator">&lt;</span>data-dir-location<span class="token operator">></span> 
+    snapshot restore snapshot.db
 
-$ <span class="token function">sudo</span> <span class="token assign-left variable">ETCDCTL_API</span><span class="token operator">=</span><span class="token number">3</span> etcdctl <span class="token punctuation">\</span>
-  --data-dir /var/lib/etcd-previous <span class="token punctuation">\</span> 
-  snapshot restore /data/etcd-snapshot-previous.db
+$ <span class="token assign-left variable">ETCDCTL_API</span><span class="token operator">=</span><span class="token number">3</span> etcdctl <span class="token punctuation">\</span>
+    --data-dir /var/lib/etcd-previous <span class="token punctuation">\</span> 
+    snapshot restore /data/etcd-snapshot-previous.db
 
-$ <span class="token function">sudo</span> tree /var/lib/etcd-previous
+$ tree /var/lib/etcd-previous
 
 $ kubectl get pods <span class="token parameter variable">-n</span> kube-system
 
 $ <span class="token builtin class-name">cd</span> /etc/kubernetes/manifests/
 
-$ <span class="token function">sudo</span> <span class="token function">vim</span> etcd.yaml<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+$ <span class="token function">vim</span> etcd.yaml<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h1 id="Static-Pod이기-때문에-수정-후-알아서-restart"><a href="#Static-Pod이기-때문에-수정-후-알아서-restart" class="headerlink" title="Static Pod이기 때문에 수정 후 알아서 restart"></a>Static Pod이기 때문에 수정 후 알아서 restart</h1><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">spec</span><span class="token punctuation">:</span>
+<p>etcd는 StaticPod이기 hostpath에서 etcd 백업 파일의 경로만 수정 해주면 스스로 restart를 하게 됩니다.</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">spec</span><span class="token punctuation">:</span>
   <span class="token key atrule">containers</span><span class="token punctuation">:</span>
   <span class="token punctuation">-</span> <span class="token key atrule">command</span><span class="token punctuation">:</span>
     <span class="token punctuation">-</span> etcd
@@ -357,7 +361,7 @@ $ <span class="token function">sudo</span> <span class="token function">vim</spa
  <span class="token punctuation">-</span> <span class="token key atrule">hostPath</span><span class="token punctuation">:</span>
      <span class="token key atrule">path</span><span class="token punctuation">:</span> /var/lib/etcd<span class="token punctuation">-</span>previous <span class="token comment"># "/var/lib/etcd" -> "/var/lib/etcd-previous" 수정 </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">sudo</span> <span class="token function">docker</span> <span class="token function">ps</span> <span class="token parameter variable">-a</span> <span class="token operator">|</span> <span class="token function">grep</span> etcd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$  <span class="token function">docker</span> <span class="token function">ps</span> <span class="token parameter variable">-a</span> <span class="token operator">|</span> <span class="token function">grep</span> etcd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -373,7 +377,7 @@ $ <span class="token function">sudo</span> <span class="token function">vim</spa
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">Gyuwon Hong</a>
+                    <a href="/about" rel="external nofollow noreferrer">Keyhong</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -396,7 +400,7 @@ $ <span class="token function">sudo</span> <span class="token function">vim</spa
                     use
                     <a href="cc_by_url" rel="external nofollow noreferrer" target="_blank">cc_by_name</a>
                     licensed
-                    <a href="/about" target="_blank">Gyuwon Hong</a>
+                    <a href="/about" target="_blank">Keyhong</a>
                     !
                 </span>
             </div> -->
@@ -420,7 +424,11 @@ $ <span class="token function">sudo</span> <span class="token function">vim</spa
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
+                            
+                                <a href="/tags/Kubernetes/">
+                                    <span class="chip bg-color">Kubernetes</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -490,7 +498,7 @@ $ <span class="token function">sudo</span> <span class="token function">vim</spa
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Tue Jan 09 2024 02:38:12 GMT+0900',
+    id: 'Tue Jan 09 2024 00:00:00 GMT+0900',
     owner: '',
     repo: '',
     oauth: {
@@ -525,32 +533,51 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/09/Spring/build/">
+                <a href="/2024/01/10/Data-Architecture/practice/dimension-modeling(1)-practice/">
                     <div class="card-image">
                         
+                        <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="[Data Architecture] Dimension Modeling(1) 연습문제">
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title diy-neon-red"></span>
+                        <span class="card-title diy-neon-red">[Data Architecture] Dimension Modeling(1) 연습문제</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            Facts와 Dimension 구분하기
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-09
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-10
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Gyuwon Hong
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Data-Architecture/" class="post-category">
+                                    Data Architecture
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Data-Architecture/">
+                        <span class="chip bg-color">Data Architecture</span>
+                    </a>
+                    
+                    <a href="/tags/Data-Warehouse/">
+                        <span class="chip bg-color">Data Warehouse</span>
+                    </a>
+                    
+                    <a href="/tags/Practice/">
+                        <span class="chip bg-color">Practice</span>
+                    </a>
+                    
                 </div>
                 
             </div>

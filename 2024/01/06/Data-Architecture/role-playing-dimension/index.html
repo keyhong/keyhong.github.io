@@ -310,8 +310,20 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Role-playing dimension</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">
+                <h2 id="Role-playing-dimension이란"><a href="#Role-playing-dimension이란" class="headerlink" title="Role-playing dimension이란?"></a>Role-playing dimension이란?</h2><blockquote>
+<p>동일한 dimension을 여러 용도로 사용하는 경우의 dimension</p>
+</blockquote>
+<ul>
+<li><p>외래키(FK)는 동일한 dimension에 여러 번 연결될 수 있으며, 다른 비즈니스 맥락을 제공할 수 있습니다.</p>
+</li>
+<li><p>가장 많이 사용되는 롤플레잉 차원을 날짜 dimension 입니다.</p>
+</li>
+<li><p>예를 들어 주문이라는 fact 테이블에 order_date, due_date, cancelled_date라는 컬럼이 있으면 여러 dimension을 만들기보다 하나의 date dimension을 만들 수 있습니다.</p>
+</li>
+<li><p>원래의 dimension 테이블에서 view를 생성할 수도 있는 데, 이는 role-playing dimension의 유지 관리를 줄이는 좋은 방법입니다.</p>
+</li>
+</ul>
+<h2 id="Date-role-playing-dimension-만들기"><a href="#Date-role-playing-dimension-만들기" class="headerlink" title="Date role-playing dimension 만들기"></a>Date role-playing dimension 만들기</h2><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">
 <span class="token keyword">DROP</span> <span class="token keyword">TABLE</span> date_dim<span class="token punctuation">;</span>
 
 <span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> date_dim <span class="token punctuation">(</span>

@@ -4,9 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[Python] 파이썬 패키지 매니저 pip 설치 경로 정복하기, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="pip으로 특정경로에 패키지 설치$ pip install -target=[경로] [라이브러리명]
-$ pip install -target=/usr/.local/lib/python3.8/site-packages sqla">
+    <meta name="keywords" content="[Python] 파이썬 pip 설치 경로 이해하기, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="파이썬 pip 설치 경로 이해하기">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +17,7 @@ $ pip install -target=/usr/.local/lib/python3.8/site-packages sqla">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[Python] 파이썬 패키지 매니저 pip 설치 경로 정복하기 | Keyhong</title>
+    <title>[Python] 파이썬 pip 설치 경로 이해하기 | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -234,7 +233,7 @@ $ pip install -target=/usr/.local/lib/python3.8/site-packages sqla">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [Python] 파이썬 패키지 매니저 pip 설치 경로 정복하기</h1>
+                        [Python] 파이썬 pip 설치 경로 이해하기</h1>
                 </div>
             </div>
         </div>
@@ -260,10 +259,6 @@ $ pip install -target=/usr/.local/lib/python3.8/site-packages sqla">
                         
                             <a href="/tags/Python/">
                                 <span class="chip bg-color">Python</span>
-                            </a>
-                        
-                            <a href="/tags/pip/">
-                                <span class="chip bg-color">pip</span>
                             </a>
                         
                     </div>
@@ -311,10 +306,15 @@ $ pip install -target=/usr/.local/lib/python3.8/site-packages sqla">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="pip으로-특정경로에-패키지-설치"><a href="#pip으로-특정경로에-패키지-설치" class="headerlink" title="pip으로 특정경로에 패키지 설치"></a>pip으로 특정경로에 패키지 설치</h1><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ pip <span class="token function">install</span> <span class="token parameter variable">-target</span><span class="token operator">=</span><span class="token punctuation">[</span>경로<span class="token punctuation">]</span> <span class="token punctuation">[</span>라이브러리명<span class="token punctuation">]</span>
-$ pip <span class="token function">install</span> <span class="token parameter variable">-target</span><span class="token operator">=</span>/usr/.local/lib/python3.8/site-packages sqlalchemy<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+                <h2 id="Pip이란"><a href="#Pip이란" class="headerlink" title="Pip이란?"></a>Pip이란?</h2><blockquote>
+<p> “Pip Installs Packages”의 약자로 Python 패키지를 설치하고 관리하는 패키지 관리자입니다.</p>
+</blockquote>
+<h2 id="Pip으로-특정경로에-패키지-설치"><a href="#Pip으로-특정경로에-패키지-설치" class="headerlink" title="Pip으로 특정경로에 패키지 설치"></a>Pip으로 특정경로에 패키지 설치</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ pip <span class="token function">install</span> <span class="token parameter variable">-target</span><span class="token operator">=</span><span class="token punctuation">[</span>경로<span class="token punctuation">]</span> <span class="token punctuation">[</span>라이브러리명<span class="token punctuation">]</span>
 
-<h2 id="Python-Tip"><a href="#Python-Tip" class="headerlink" title="Python Tip"></a>Python Tip</h2><h2 id="app-내부에서-import-가능한-패키지-보기"><a href="#app-내부에서-import-가능한-패키지-보기" class="headerlink" title="app 내부에서 import 가능한 패키지 보기"></a>app 내부에서 import 가능한 패키지 보기</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 리스트 형식의 패키지와 버전을 이쁘게 보기 위해 사용</span>
+<span class="token comment"># example</span>
+$ pip <span class="token function">install</span> <span class="token parameter variable">-target</span><span class="token operator">=</span>/usr/.local/lib/python3.8/site-packages sqlalchemy<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="app-내부에서-import-가능한-패키지-보기"><a href="#app-내부에서-import-가능한-패키지-보기" class="headerlink" title="app 내부에서 import 가능한 패키지 보기"></a>app 내부에서 import 가능한 패키지 보기</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 리스트 형식의 패키지와 버전을 이쁘게 보기 위해 사용</span>
 <span class="token keyword">from</span> pprint <span class="token keyword">import</span> pprint
 
 <span class="token comment"># 파이썬의 내장 모듈. working_set의 reuturn type은 &amp;lt;class 'pkg_resources.WorkingSet' &amp;gt;. 이를 리스트로 변환 필요하다.</span>
@@ -328,14 +328,16 @@ pprint<span class="token punctuation">(</span><span class="token builtin">list</
 
 <span class="token comment"># pip install [패키지를 하면] 기본적인 설치경로는 anaconda 디렉토리의 lib/python&lt;version>/site-packages 이다.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="나의-추가-Tip"><a href="#나의-추가-Tip" class="headerlink" title="나의 추가 Tip"></a>나의 추가 Tip</h2><p>패키지를 수동으로 지워주려면 .anaconda&#x2F;bin 의 패키지 binary 파일과 위 경로의 패키지를 지워주면 된다. 패키지(pip, seaborn, pandas, airflow 등) 역시 파이썬으로 구동되는 파이썬 프로그램이므로 기본 실행 파이썬을 확인하려면 which(윈도우에서는 where) 명령어를 한다.</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">which</span> python<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="꿀팁"><a href="#꿀팁" class="headerlink" title="꿀팁!"></a>꿀팁!</h2><p>가끔 <code>pip uninstall</code>이라는 패키지 삭제 명령어가 안 먹힐 때가 있다. 파이썬 패키지가 어디서 불러오는 지 과정을 알면 직접 패키지를 수동으로 지워주워 주어 삭제할 수 있다.</p>
+<h4 id="site-package-위치-찾기"><a href="#site-package-위치-찾기" class="headerlink" title="site-package 위치 찾기"></a>site-package 위치 찾기</h4><p>다음 커맨드를 치면 현재 사용중인 파이썬(가상환경을 쓰고 있다면 가상환경으로 반드시 접속해야 합니다.)이 패키지를 임포트하는 경로들이 나오게 됩니다. 그 중 site-package라는 단어가 있는 경로로 접속해주세요.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ python <span class="token parameter variable">-m</span> site<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>다만 .anaconda&#x2F;bin 안에 셔뱅(#!)이 있는 파일은 그 셔뱅에 정의된 python binary로 실행하므로 유의한다. (conda 가상환경을 만들고, 그 안에 있는 bin 파일들의 셔뱅(#!)을 확인하면 이해하기 쉽다.)</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#!/usr/bin/env python3</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>그럼 무수한 폴더들이 나오는 데, 각 폴더의 이름은 하나의 패키지를 의미합니다. 그 폴더를 지우시면 패키지가 삭제됩니다.</p>
+<p>가끔 파이썬 패키지 중에는 바이너리(bin) 파일을 가진 패키지들이 있습니다. 예를 들면 airflow, dbt와 같이 CLI로 실행이 가능한 라이브러리 입니다. 이런 패키지들을 수동으로 제거할 때는 바이너리 파일이 별도의 폴더에 저장되기 때문에 같이 제거해주셔야 합니다. 바이너리 파일의 위치는 아래 명령어로 찾을 수 있습니다.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">which</span> <span class="token operator">&lt;</span>실행 가능한 패키지<span class="token operator">></span>
 
-<h2 id="cli에서-site-package-위치-찾기"><a href="#cli에서-site-package-위치-찾기" class="headerlink" title="cli에서 site-package 위치 찾기"></a>cli에서 site-package 위치 찾기</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ python <span class="token parameter variable">-m</span> site<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
+<span class="token comment"># example</span>
+$ <span class="token function">which</span> airflow<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -401,10 +403,6 @@ pprint<span class="token punctuation">(</span><span class="token builtin">list</
                             
                                 <a href="/tags/Python/">
                                     <span class="chip bg-color">Python</span>
-                                </a>
-                            
-                                <a href="/tags/pip/">
-                                    <span class="chip bg-color">pip</span>
                                 </a>
                             
                         </div>
@@ -476,7 +474,7 @@ pprint<span class="token punctuation">(</span><span class="token builtin">list</
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Mon Jan 01 2024 22:59:44 GMT+0900',
+    id: 'Mon Jan 01 2024 00:00:00 GMT+0900',
     owner: '',
     repo: '',
     oauth: {
@@ -514,15 +512,15 @@ gitment.render('gitment-content');
                 <a href="/2024/01/01/Python/jupyter/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Jupyter-lab 외부 접속 오픈 시키기">
+                        <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Jupyter-lab 외부 접속 오픈하기">
                         
-                        <span class="card-title diy-neon-red">[Python] Jupyter-lab 외부 접속 오픈 시키기</span>
+                        <span class="card-title diy-neon-red">[Python] Jupyter-lab 외부 접속 오픈하기</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            Jupyter-lab 외부 접속 오픈하기
                         
                     </div>
                     <div class="publish-info">
@@ -563,18 +561,18 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/01/Python-Algorithm/brute-force/">
+                <a href="/2024/01/01/Python/project-env-%EB%AF%B8%EC%99%84-/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/algorithm-logo.png" class="responsive-img" alt="[Algorithm] Brute Force">
+                        <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] 파이썬 가상환경 만들기">
                         
-                        <span class="card-title diy-neon-red">[Algorithm] Brute Force</span>
+                        <span class="card-title diy-neon-red">[Python] 파이썬 가상환경 만들기</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            파이썬 가상환경 만들기
                         
                     </div>
                     <div class="publish-info">
@@ -585,8 +583,8 @@ gitment.render('gitment-content');
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Algorithm/" class="post-category">
-                                    Algorithm
+                            <a href="/categories/Python/" class="post-category">
+                                    Python
                                 </a>
                             
                             
@@ -596,8 +594,8 @@ gitment.render('gitment-content');
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Algorithm/">
-                        <span class="chip bg-color">Algorithm</span>
+                    <a href="/tags/Python/">
+                        <span class="chip bg-color">Python</span>
                     </a>
                     
                 </div>

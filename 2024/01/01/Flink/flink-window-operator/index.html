@@ -5,11 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="[Flink] Window Operator, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Flink Window OperatorWindow Operator
-stream으로 들어오는 이벤트를 묶어서 처리하는 방식
-
-
-오차가 있는 데이터(sensor data) : 집계함수(mean, lower, upper,">
+    <meta name="description" content="Window Operator">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -310,7 +306,7 @@ stream으로 들어오는 이벤트를 묶어서 처리하는 방식
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Flink-Window-Operator"><a href="#Flink-Window-Operator" class="headerlink" title="Flink Window Operator"></a>Flink Window Operator</h1><h2 id="Window-Operator"><a href="#Window-Operator" class="headerlink" title="Window Operator"></a>Window Operator</h2><blockquote>
+                <h2 id="Window-Operator"><a href="#Window-Operator" class="headerlink" title="Window Operator"></a>Window Operator</h2><blockquote>
 <p>stream으로 들어오는 이벤트를 묶어서 처리하는 방식</p>
 </blockquote>
 <ul>
@@ -328,25 +324,27 @@ stream으로 들어오는 이벤트를 묶어서 처리하는 방식
 <p>전체 이벤트가 하나의 파티션으로 묶여 처리</p>
 </blockquote>
 <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">stream
-  <span class="token punctuation">.</span>windowAll<span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
-```  
+  <span class="token punctuation">.</span>windowAll<span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-## WindowAssigner
-<span class="token operator">></span> 들어오는 각 요소를 하나 이상의 창에 할당하는 일을 담당
-
-#### Tumbling Windows
-<span class="token operator">></span> 지정한 시간만큼 Window를 열고 닫고<span class="token punctuation">,</span> 해당 시간에 들어온 이벤트를 묶어서 처리하는 방식
-
-<span class="token operator">-</span> 시간은 UTC 기준으로 조정
-
-<span class="token operator">-</span> 첫번째 파라미터 <span class="token operator">:</span> window size
-  
-  <span class="token operator">-</span> 시간 간격은 Time<span class="token punctuation">.</span>milliseconds<span class="token punctuation">(</span>_<span class="token punctuation">)</span><span class="token punctuation">,</span> Time<span class="token punctuation">.</span>seconds<span class="token punctuation">(</span>_<span class="token punctuation">)</span><span class="token punctuation">,</span> Time<span class="token punctuation">.</span>minutes<span class="token punctuation">(</span>_<span class="token punctuation">)</span> 중 하나를 사용
-
-<span class="token operator">-</span> 두번째 파라미터를 통해 UTC 타임에서 KST 타임으로 조정가능<span class="token punctuation">(</span>오프셋<span class="token punctuation">)</span>
-
-```scala
-# tumbling event<span class="token operator">-</span>time windows <span class="token operator">:</span> <span class="token number">10</span>초의 윈도우<span class="token punctuation">(</span>KST 타임 <span class="token operator">:</span> UTC 타임 <span class="token operator">+</span> <span class="token number">9</span><span class="token punctuation">)</span>
+<h2 id="WindowAssigner"><a href="#WindowAssigner" class="headerlink" title="WindowAssigner"></a>WindowAssigner</h2><blockquote>
+<p>들어오는 각 요소를 하나 이상의 창에 할당하는 일을 담당</p>
+</blockquote>
+<h4 id="Tumbling-Windows"><a href="#Tumbling-Windows" class="headerlink" title="Tumbling Windows"></a>Tumbling Windows</h4><blockquote>
+<p>지정한 시간만큼 Window를 열고 닫고, 해당 시간에 들어온 이벤트를 묶어서 처리하는 방식</p>
+</blockquote>
+<ul>
+<li><p>시간은 UTC 기준으로 조정</p>
+</li>
+<li><p>첫번째 파라미터 : window size</p>
+<ul>
+<li><p>시간 간격은 Time.milliseconds(<em>), Time.seconds(</em>), Time.minutes(_) 중 하나를 사용</p>
+</li>
+<li><p>두번째 파라미터를 통해 UTC 타임에서 KST 타임으로 조정가능(오프셋)</p>
+</li>
+</ul>
+</li>
+</ul>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"># tumbling event<span class="token operator">-</span>time windows <span class="token operator">:</span> <span class="token number">10</span>초의 윈도우<span class="token punctuation">(</span>KST 타임 <span class="token operator">:</span> UTC 타임 <span class="token operator">+</span> <span class="token number">9</span><span class="token punctuation">)</span>
 stream
   <span class="token punctuation">.</span>keyBy<span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> \
   <span class="token punctuation">.</span>window<span class="token punctuation">(</span>TumblingEventTimeWindows<span class="token punctuation">.</span>of<span class="token punctuation">(</span>Time<span class="token punctuation">.</span>seconds<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Time<span class="token punctuation">.</span>hours<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -356,19 +354,15 @@ stream
 stream \
   <span class="token punctuation">.</span>keyBy<span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> \
   <span class="token punctuation">.</span>window<span class="token punctuation">(</span>TumblingProcessingTimeWindows<span class="token punctuation">.</span>of<span class="token punctuation">(</span>Time<span class="token punctuation">.</span>seconds<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> Time<span class="token punctuation">.</span>hours<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-  <span class="token punctuation">.</span><span class="token generics"><span class="token punctuation">&lt;</span>windowed transformation<span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token generics"><span class="token punctuation">&lt;</span>window function<span class="token punctuation">></span></span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  <span class="token punctuation">.</span><span class="token generics"><span class="token punctuation">&lt;</span>windowed transformation<span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token generics"><span class="token punctuation">&lt;</span>window function<span class="token punctuation">></span></span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="Sliding-Windows"><a href="#Sliding-Windows" class="headerlink" title="Sliding Windows"></a>Sliding Windows</h4><blockquote>
-<p>Tumbling Window 와 유사하나, 이전 Window와 다음 Window가 겹치는 구간이 있게 묶어서 처리하는 방식</p>
+<p>Tumbling Window와 유사하나, 이전 Window와 다음 Window가 겹치는 구간이 있게 묶어서 처리하는 방식</p>
 </blockquote>
 <ul>
 <li><p>이전 Window Event 정보 확인 가능</p>
 </li>
-<li><p>첫번째 파라미터 : window size</p>
-</li>
-<li><p>두번째 파라미터 : window slide</p>
-</li>
-<li><p>세번째 파라미터 : 타임 offset 설정</p>
+<li><p>첫번째 파라미터: <code>window size</code> &#x2F; 두번째 파라미터: <code>window slide</code> &#x2F; 세번째 파라미터: <code>타임 offset 설정</code></p>
 </li>
 </ul>
 <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"># <span class="token number">10</span>초 윈도우<span class="token punctuation">,</span> <span class="token number">5</span>초마다 윈도우 생성 <span class="token punctuation">(</span>이전 윈도우와 다음 윈도우의 겹치는 부분 <span class="token number">5</span>초<span class="token punctuation">)</span>
@@ -381,7 +375,7 @@ stream
 <p>새로운 이벤트가 들어왔을 때 Window 생성 및 Window 생명주기 설정</p>
 </blockquote>
 <ul>
-<li>첫번째 파라미터 : Window 생명주기(생명주기 동안 윈도우에 데이터가 들어오지 않으면 윈도우 종료)</li>
+<li>첫번째 파라미터: Window 생명주기(생명주기 동안 윈도우에 데이터가 들어오지 않으면 윈도우 종료)</li>
 </ul>
 <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">stream
   <span class="token punctuation">.</span>keyBy<span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
@@ -532,7 +526,7 @@ stream
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Mon Jan 01 2024 22:59:44 GMT+0900',
+    id: 'Mon Jan 01 2024 00:00:00 GMT+0900',
     owner: '',
     repo: '',
     oauth: {
@@ -567,18 +561,18 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/01/Flink/flink-datastream-api/">
+                <a href="/2024/01/01/Flink/flink-architecture/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/flink-logo.png" class="responsive-img" alt="[Flink] DataStream API">
+                        <img src="/images/logos/flink-logo.png" class="responsive-img" alt="[Flink] Architecture">
                         
-                        <span class="card-title diy-neon-red">[Flink] DataStream API</span>
+                        <span class="card-title diy-neon-red">[Flink] Architecture</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            Flink의 Architecture
                         
                     </div>
                     <div class="publish-info">
@@ -615,19 +609,18 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/01/MLOps/dvc/">
+                <a href="/2024/01/01/Docker/docker-basic-concept-%EB%AF%B8%EC%99%84-/">
                     <div class="card-image">
                         
+                        <img src="/images/logos/docker-logo.png" class="responsive-img" alt="[Docker] Concept">
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="[MLOps] DVC">
-                        
-                        <span class="card-title diy-neon-red">[MLOps] DVC</span>
+                        <span class="card-title diy-neon-red">[Docker] Concept</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            Docker Concept
                         
                     </div>
                     <div class="publish-info">
@@ -638,8 +631,8 @@ gitment.render('gitment-content');
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/MLOps/" class="post-category">
-                                    MLOps
+                            <a href="/categories/Docker/" class="post-category">
+                                    Docker
                                 </a>
                             
                             
@@ -649,8 +642,8 @@ gitment.render('gitment-content');
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/MLOps/">
-                        <span class="chip bg-color">MLOps</span>
+                    <a href="/tags/Docker/">
+                        <span class="chip bg-color">Docker</span>
                     </a>
                     
                 </div>

@@ -5,14 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="[Linux] Environment, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Linux Environment리눅스 환경변수
-시스템 또는 사용자 수준에서 사용되는 설정 정보를 저장하는데 사용되는 변수
-
-시스템 구성
-시스템 전반적인 설정을 저장&amp;#96;&amp;#96;
-
-
-PATH 환경변수는 실행 파일">
+    <meta name="description" content="Linux Environment">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -313,11 +306,11 @@ PATH 환경변수는 실행 파일">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Linux-Environment"><a href="#Linux-Environment" class="headerlink" title="Linux Environment"></a>Linux Environment</h1><h2 id="리눅스-환경변수"><a href="#리눅스-환경변수" class="headerlink" title="리눅스 환경변수"></a>리눅스 환경변수</h2><blockquote>
+                <h2 id="리눅스-환경변수"><a href="#리눅스-환경변수" class="headerlink" title="리눅스 환경변수"></a>리눅스 환경변수</h2><blockquote>
 <p>시스템 또는 사용자 수준에서 사용되는 설정 정보를 저장하는데 사용되는 변수</p>
 </blockquote>
 <h4 id="시스템-구성"><a href="#시스템-구성" class="headerlink" title="시스템 구성"></a>시스템 구성</h4><blockquote>
-<p>시스템 전반적인 설정을 저장&#96;&#96;</p>
+<p>시스템 전반적인 설정을 저장</p>
 </blockquote>
 <ul>
 <li><p>PATH 환경변수는 실행 파일의 경로를 지정하여 명령어를 실행할 때 프로그램을 찾을 수 있게함함</p>
@@ -325,7 +318,7 @@ PATH 환경변수는 실행 파일">
 <li><p>PATH 환경변수 추가하기 (.bashrc 또는 .bash_profile)</p>
 </li>
 </ul>
-<pre class="line-numbers language-conf" data-language="conf"><code class="language-conf">export PATH&#x3D;$PATH:&lt;추가할 경로&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>.bashrc</span></div><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token environment constant">$PATH</span>:<span class="token operator">&lt;</span>추가할 경로<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
 <li><p>&#x2F;etc (시스템 전역 설정 파일을 포함하는 디렉토리) 내 중요 파일</p>
@@ -345,13 +338,25 @@ PATH 환경변수는 실행 파일">
 <p>사용자 특정 설정을 저장</p>
 </blockquote>
 <ul>
-<li><p>HOME 환경변수는 사용자의 홈 디렉토리 경로를 지정</p>
-</li>
-<li><p>디렉토리 구조 (AWS EC2 예시)</p>
-</li>
+<li>HOME 환경변수는 사용자의 홈 디렉토리 경로를 지정</li>
 </ul>
-<p>::</p>
-<p>  [ AWS 인스턴스 서버 (public IPv4, XXX.XXX.XXX.XXX) ]<br>      |<br>      |— [ user 1 (&#x2F;home&#x2F;user1) ]<br>      |         |<br>      |         |- .bashrc<br>      |         |<br>      |         |- .bashprofile<br>      |<br>      |— [ user 2 (&#x2F;home&#x2F;user2) ]<br>      |<br>      |— [ user OOO (Home directory folder) ]<br>      |<br>      |— [ etc (&#x2F;etc) ]<br>                |<br>                |- .bash_rc<br>                |<br>                |- .bash_profile</p>
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>디렉토리 구조</span></div><code class="language-bash"><span class="token punctuation">[</span> / <span class="token punctuation">]</span>
+  <span class="token operator">|</span>
+  <span class="token operator">|</span>--- <span class="token punctuation">[</span> user <span class="token number">1</span> <span class="token punctuation">(</span>/home/user1<span class="token punctuation">)</span> <span class="token punctuation">]</span>
+  <span class="token operator">|</span>         <span class="token operator">|</span>
+  <span class="token operator">|</span>         <span class="token operator">|</span>- .bashrc
+  <span class="token operator">|</span>         <span class="token operator">|</span>
+  <span class="token operator">|</span>         <span class="token operator">|</span>- .bashprofile
+  <span class="token operator">|</span>
+  <span class="token operator">|</span>--- <span class="token punctuation">[</span> user <span class="token number">2</span> <span class="token punctuation">(</span>/home/user2<span class="token punctuation">)</span> <span class="token punctuation">]</span>
+  <span class="token operator">|</span>
+  <span class="token operator">|</span>--- <span class="token punctuation">[</span> user OOO <span class="token punctuation">(</span>Home directory folder<span class="token punctuation">)</span> <span class="token punctuation">]</span>
+  <span class="token operator">|</span> 
+  <span class="token operator">|</span>--- <span class="token punctuation">[</span> etc <span class="token punctuation">(</span>/etc<span class="token punctuation">)</span> <span class="token punctuation">]</span>
+            <span class="token operator">|</span>
+            <span class="token operator">|</span>- .bashrc
+            <span class="token operator">|</span>
+            <span class="token operator">|</span>- .bash_profile<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="프로그램-구성"><a href="#프로그램-구성" class="headerlink" title="프로그램 구성"></a>프로그램 구성</h4><blockquote>
 <p>프로그램이 실행될 때 필요한 구성 정보를 저장</p>
 </blockquote>
@@ -539,12 +544,13 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/01/Linux/basic-command/">
+                <a href="/2024/01/01/MLOps/dvc/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/linux-logo.png" class="responsive-img" alt="[Linux] Basic Command">
                         
-                        <span class="card-title diy-neon-red">[Linux] Basic Command</span>
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="[MLOps] DVC">
+                        
+                        <span class="card-title diy-neon-red">[MLOps] DVC</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -561,8 +567,8 @@ gitment.render('gitment-content');
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
+                            <a href="/categories/MLOps/" class="post-category">
+                                    MLOps
                                 </a>
                             
                             
@@ -572,8 +578,8 @@ gitment.render('gitment-content');
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
+                    <a href="/tags/MLOps/">
+                        <span class="chip bg-color">MLOps</span>
                     </a>
                     
                 </div>
@@ -587,18 +593,18 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/01/Linux/mount-networker/">
+                <a href="/2024/01/01/Python/dict-to-dataFrame/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/linux-logo.png" class="responsive-img" alt="[Linux] Mount">
+                        <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Dict-to-DataFrame">
                         
-                        <span class="card-title diy-neon-red">[Linux] Mount</span>
+                        <span class="card-title diy-neon-red">[Python] Dict-to-DataFrame</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            Dict-to-DataFrame
                         
                     </div>
                     <div class="publish-info">
@@ -609,8 +615,8 @@ gitment.render('gitment-content');
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
+                            <a href="/categories/Python/" class="post-category">
+                                    Python
                                 </a>
                             
                             
@@ -620,8 +626,8 @@ gitment.render('gitment-content');
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
+                    <a href="/tags/Python/">
+                        <span class="chip bg-color">Python</span>
                     </a>
                     
                 </div>

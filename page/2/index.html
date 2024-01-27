@@ -270,65 +270,7 @@
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/18/Kubernetes/practice/hostpath/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] hostpath">
-                            
-                            <span class="card-title diy-neon-red">[Kubernetes] hostpath</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                work1$ sudo mkdir /var/htdocs
-
-$ sudo -i
-$ echo "work1" > /var/htdocs/index.html
-
-
-
-work2$ sudo mkdir /var/htdocs
-
-
-$ su
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-18
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Kubernetes/" class="post-category">
-                                    Kubernetes
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Kubernetes/">
-                            <span class="chip bg-color">Kubernetes</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/01/18/Kubernetes/practice/emptyDir/">
+                    <a href="/2024/01/18/Kubernetes/practice/emptyDir-%EB%AF%B8%EC%99%84-/">
                         <div class="card-image">
                             
                             <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] emptyDir">
@@ -340,14 +282,11 @@ $ su
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                emptyDir을 활용한 파일 시스템 공유
-공유 스토리지가 없는 동일한 포드의 세 개의 컨테이넌
-
-두 개의 볼륨을 공유하는 세 개의 컨테이너
-
+                                emptyDir이란?
+Kubernetes에서 사용되는 볼륨 유형 중 하나로, Pod 내의 여러 컨테이너 간에 임시 데이터를 공유하고 전달하는 데 사용됩니다.
 
 emptyDir 볼륨 사용하기
-볼륨을 공유하는 두 개의 애플리케이션을 
+볼륨을 공유하는 두 개의 
                             
                         </div>
                         <div class="publish-info">
@@ -383,37 +322,52 @@ emptyDir 볼륨 사용하기
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/17/Airflow/kubernetes_executor-%EB%AF%B8%EC%99%84-/">
+                    <a href="/2024/01/18/Kubernetes/practice/hostpath-%EB%AF%B8%EC%99%84-/">
                         <div class="card-image">
                             
+                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] hostpath">
                             
-                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                            
-                            <span class="card-title diy-neon-red"></span>
+                            <span class="card-title diy-neon-red">[Kubernetes] hostpath</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                $ docker run --privileged -d --restart=unless-stopped -p 8080:443 --name rancher rancher/rancher:v2.8.0
+                                hostpath란?
+호스트 머신의 파일 시스템 경로를 Pod의 컨테이너에 마운트할 때 사용되는 설정
 
-docker run –rm 
+work1# host 머신에서 /var/htdocs라는 임시 폴더를 생성
+$ mkdir /var/htdocs
+
+#
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-17
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-18
                             </span>
                             <span class="publish-author">
                                 
-                                <i class="fas fa-user fa-fw"></i>
-                                Gyuwon Hong
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
+                                </a>
+                                
                                 
                             </span>
                         </div>
                     </div>
 
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Kubernetes/">
+                            <span class="chip bg-color">Kubernetes</span>
+                        </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -422,191 +376,7 @@ docker run –rm
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/17/Kubernetes/practice/readiness_probe/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                            
-                            <span class="card-title diy-neon-red"></span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                apiVersion: v1
-kind: Pod
-metadata:
-  name: goproxy
-  labels:
-    app: goproxy
-spec:
-  containers:
-  - name: goproxy
-    
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-17
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-user fa-fw"></i>
-                                Gyuwon Hong
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/01/17/Kubernetes/practice/liveness_probe/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                            
-                            <span class="card-title diy-neon-red"></span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                $ kubectl delete all --all
-
-apiVersion: v1
-kind: Pod
-metadata:
-  labels:
-    test: liveness
-  name: liveness-exec
-spec:
-
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-17
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-user fa-fw"></i>
-                                Gyuwon Hong
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/01/17/Kubernetes/practice/pod/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                            
-                            <span class="card-title diy-neon-red"></span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                
-모든 리소스 삭제
-$ kubectl delete all
-
-YAML을 사용하여 도커이미지 jenkins로 Jenkins-manual 파드를 생성하기
-
-
-apiVersion: v1
-kind: Pod
-metadata:
-
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-17
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-user fa-fw"></i>
-                                Gyuwon Hong
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/01/17/Kubernetes/comfortable_option/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                            
-                            <span class="card-title diy-neon-red"></span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                –dry-run&#x3D;client
-
-리소스를 생성하지 않음단순히 명령을 테스트하려는 경우에 사용명령어가 올바른지 알려줌
-
--o yaml
-
-화면에 YAML 형식의 리소스 정의를 출력
-
-
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-17
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-user fa-fw"></i>
-                                Gyuwon Hong
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/01/17/Data-Analysis/4_funnel/">
+                    <a href="/2024/01/17/Data-Analysis/4_funnel-%EB%AF%B8%EC%99%84-/">
                         <div class="card-image">
                             
                             
@@ -647,7 +417,7 @@ CREATE TABLE users (
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/17/Data-Analysis/3_aarrr_cohort/">
+                    <a href="/2024/01/17/Data-Analysis/3_aarrr_cohort-%EB%AF%B8%EC%99%84-/">
                         <div class="card-image">
                             
                             
@@ -688,7 +458,7 @@ CREATE TABLE users (
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/17/Data-Analysis/2_aarrr/">
+                    <a href="/2024/01/17/Data-Analysis/2_aarrr-%EB%AF%B8%EC%99%84-/">
                         <div class="card-image">
                             
                             
@@ -725,6 +495,264 @@ Ret
             </div>
               <!-- 隐藏某个文章 -->
             
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/01/17/Data-Architecture/practice/staging-%EB%AF%B8%EC%99%84-/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                            
+                            <span class="card-title diy-neon-red"></span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                CREATE TABLE staging.dim_product (
+    product_pk INT IDENTITY(1,1) PRIMARY KEY,
+    product_name VARCHAR(255),
+    cate
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-17
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Gyuwon Hong
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/01/17/Airflow/kubernetes_executor-%EB%AF%B8%EC%99%84-/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] rancher">
+                            
+                            <span class="card-title diy-neon-red">[Kubernetes] rancher</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                rancher란?
+Rancher는 컨테이너 오케스트레이션 및 클러스터 관리 플랫폼 중 하나로, 다양한 환경에서 컨테이너화된 어플리케이션을 관리하고 배포하기 위한 툴
+
+도커로 실행하기$ docker run --priv
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-17
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Kubernetes/">
+                            <span class="chip bg-color">Kubernetes</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/01/17/Kubernetes/practice/pod/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] rancher">
+                            
+                            <span class="card-title diy-neon-red">[Kubernetes] rancher</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                kuberctl에 유용한 커맨드 옵션–dry-run&#x3D;client
+리소스를 생성하지 않습니다. 단순히 명령을 테스트하려는 경우에 사용하며 명령어가 올바른지 알려줍니다.
+
+-o yaml
+화면에 YAML 형식의 
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-17
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Kubernetes/">
+                            <span class="chip bg-color">Kubernetes</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/01/16/PySpark/spark-web-ui-%EB%AF%B8%EC%99%84-/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[PySpark] PySpark 웹 UI에서 Job을 명시적으로 구분하기">
+                            
+                            <span class="card-title diy-neon-red">[PySpark] PySpark 웹 UI에서 Job을 명시적으로 구분하기</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                from pyspark import SparkContext
+
+sc = SparkContext(master="local")
+sc.setJobGroup("job_to_cancel", "some description")
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-16
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Kubernetes/">
+                            <span class="chip bg-color">Kubernetes</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/01/16/SQL/count-%EB%AF%B8%EC%99%84-/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[SQL] basic">
+                            
+                            <span class="card-title diy-neon-red">[SQL] basic</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                SELECTSELECT
+column_name
+FROM table_nam
+
+
+SELECT
+first_name,
+last_name
+FROM actor
+;
+
+SELECT
+*
+FROM actor
+;
+
+-- 1. Format
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-16
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Kubernetes/">
+                            <span class="chip bg-color">Kubernetes</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
         </div>
     </article>
 
@@ -742,7 +770,7 @@ Ret
             
         </div>
         <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">2 / 19</div>
+            <div class="center-align b-text-gray">2 / 18</div>
         </div>
         <div class="col s6 m4 l4">
             

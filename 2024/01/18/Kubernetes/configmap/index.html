@@ -312,30 +312,35 @@
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ kubectl create configmap <span class="token operator">&lt;</span>map-name<span class="token operator">></span> <span class="token operator">&lt;</span>data-source<span class="token operator">></span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
-<li>test 파일을 생성하고 그 파일을 환경 변수로 저장</li>
+<li>1234라는 문자가 들어간 test 파일을 하나 생성하고 그 파일을 환경 변수로 저장하는 예시</li>
 </ul>
-<p>$ echo -n 1234 &gt; test<br>$ kubectl creat configamp map-name –from-file&#x3D;test<br>configmap&#x2F;map-name-created</p>
-<ul>
-<li>저장한 내용 확인<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ kubectl get configmap map-name <span class="token parameter variable">-o</span> yaml<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-</ul>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">echo</span> <span class="token parameter variable">-n</span> <span class="token number">1234</span> <span class="token operator">></span> <span class="token builtin class-name">test</span>
+
+
+$ kubectl creat configamp map-name --from-file<span class="token operator">=</span>test
+configmap/map-name-created
+
+<span class="token comment"># 생성한 map-name 이름의 configmap을 yaml 파일로 저장</span>
+$ kubectl get configmap map-name <span class="token parameter variable">-o</span> yaml <span class="token operator">></span> map-name.yaml
+
+<span class="token comment"># configmap을 생성할 수 있는 yaml의 구조 보기</span>
+$ <span class="token function">cat</span> map-name.yaml<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>map-name.yaml</span></div><code class="language-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
 <span class="token key atrule">data</span><span class="token punctuation">:</span>
   <span class="token key atrule">test</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
     1234</span>
 <span class="token key atrule">kind</span><span class="token punctuation">:</span> ConfigMap
-<span class="token punctuation">[</span>중략<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">...</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">env</span><span class="token punctuation">:</span>
-  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> DEMO
-    <span class="token key atrule">value</span><span class="token punctuation">:</span> <span class="token string">"Hello from the ~"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">env</span><span class="token punctuation">:</span>
-  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> DEMO
+<h2 id="configmap에-등록한-변수를-다른-yaml에서-읽는-방법"><a href="#configmap에-등록한-변수를-다른-yaml에서-읽는-방법" class="headerlink" title="configmap에 등록한 변수를 다른 yaml에서 읽는 방법"></a>configmap에 등록한 변수를 다른 yaml에서 읽는 방법</h2><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">env</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> test
     <span class="token key atrule">valueFrom</span><span class="token punctuation">:</span>
       <span class="token key atrule">configMapKeyRef</span><span class="token punctuation">:</span> configmap<span class="token punctuation">-</span>name <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">env</span><span class="token punctuation">:</span>
-  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> DEMO
+<h2 id="secretKeyRef도-config와-유사하게-사용-가능"><a href="#secretKeyRef도-config와-유사하게-사용-가능" class="headerlink" title="secretKeyRef도 config와 유사하게 사용 가능"></a>secretKeyRef도 config와 유사하게 사용 가능</h2><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">env</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> secretkey<span class="token punctuation">-</span>test
     <span class="token key atrule">valueFrom</span><span class="token punctuation">:</span>
       <span class="token key atrule">secretKeyRef</span><span class="token punctuation">:</span> secret<span class="token punctuation">-</span>name<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
@@ -510,13 +515,12 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/18/Kubernetes/node-os-upgrade/">
+                <a href="/2024/01/18/Kubernetes/volume/">
                     <div class="card-image">
                         
+                        <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] Volume">
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title diy-neon-red"></span>
+                        <span class="card-title diy-neon-red">[Kubernetes] Volume</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -531,11 +535,23 @@ gitment.render('gitment-content');
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Gyuwon Hong
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/kubernetes/" class="post-category">
+                                    kubernetes
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/kubernetes/">
+                        <span class="chip bg-color">kubernetes</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -547,18 +563,18 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/18/Kubernetes/gce/">
+                <a href="/2024/01/18/Kubernetes/env-%EB%AF%B8%EC%99%84-/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] GCE 영구 스토리지 사용하기">
+                        <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] env">
                         
-                        <span class="card-title diy-neon-red">[Kubernetes] GCE 영구 스토리지 사용하기</span>
+                        <span class="card-title diy-neon-red">[Kubernetes] env</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            GCE 영구 스토리지 사용하기
+                            
                         
                     </div>
                     <div class="publish-info">
@@ -569,8 +585,8 @@ gitment.render('gitment-content');
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Kubernetes/" class="post-category">
-                                    Kubernetes
+                            <a href="/categories/kubernetes/" class="post-category">
+                                    kubernetes
                                 </a>
                             
                             
@@ -580,8 +596,8 @@ gitment.render('gitment-content');
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Kubernetes/">
-                        <span class="chip bg-color">Kubernetes</span>
+                    <a href="/tags/kubernetes/">
+                        <span class="chip bg-color">kubernetes</span>
                     </a>
                     
                 </div>

@@ -4,13 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[Linux] Mount, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Hardware CommandCPU 정보 확인$ cat /etc/proc/cpuinfo
-
-시스템의 메모리 사용량 정보 확인free
-마운트mount
-  -f    # 특정 파일시스템만 선택적 마운트
-  -n    # ">
+    <meta name="keywords" content="[Linux] Hardware, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="Hardware Command">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -22,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[Linux] Mount | Keyhong</title>
+    <title>[Linux] Hardware | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -238,7 +233,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [Linux] Mount</h1>
+                        [Linux] Hardware</h1>
                 </div>
             </div>
         </div>
@@ -311,39 +306,40 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Hardware-Command"><a href="#Hardware-Command" class="headerlink" title="Hardware Command"></a>Hardware Command</h1><h4 id="CPU-정보-확인"><a href="#CPU-정보-확인" class="headerlink" title="CPU 정보 확인"></a>CPU 정보 확인</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">cat</span> /etc/proc/cpuinfo<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h2 id="Hardware"><a href="#Hardware" class="headerlink" title="Hardware"></a>Hardware</h2><h4 id="cpu-info"><a href="#cpu-info" class="headerlink" title="cpu info"></a>cpu info</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">cat</span> /etc/proc/cpuinfo<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h4 id="시스템의-메모리-사용량-정보-확인"><a href="#시스템의-메모리-사용량-정보-확인" class="headerlink" title="시스템의 메모리 사용량 정보 확인"></a>시스템의 메모리 사용량 정보 확인</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">free</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="마운트"><a href="#마운트" class="headerlink" title="마운트"></a>마운트</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mount</span>
-  <span class="token parameter variable">-f</span>    <span class="token comment"># 특정 파일시스템만 선택적 마운트</span>
-  <span class="token parameter variable">-n</span>    <span class="token comment"># mount에 대한 기록을 남기지 않고 실행</span>
-  <span class="token parameter variable">-w</span>    <span class="token comment"># 현재 mount를 선택적 해제</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="memory-usage-info"><a href="#memory-usage-info" class="headerlink" title="memory usage info"></a>memory usage info</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">free</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h4 id="파티션-분할"><a href="#파티션-분할" class="headerlink" title="파티션 분할"></a>파티션 분할</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">fdisk</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h1 id="Mount"><a href="#Mount" class="headerlink" title="Mount"></a>Mount</h1><h2 id="마운트-1"><a href="#마운트-1" class="headerlink" title="마운트"></a>마운트</h2><blockquote>
+<h4 id="mount"><a href="#mount" class="headerlink" title="mount"></a>mount</h4><blockquote>
 <p>물리적인 장치를 특정 위치(디렉토리)에 연결시켜주는 과정</p>
 </blockquote>
-<h2 id="fstab"><a href="#fstab" class="headerlink" title="fstab"></a>fstab</h2><blockquote>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">mount</span>
+    <span class="token parameter variable">-f</span> <span class="token comment"># 특정 파일시스템만 선택적 마운트</span>
+    <span class="token parameter variable">-n</span> <span class="token comment"># mount에 대한 기록을 남기지 않고 실행</span>
+    <span class="token parameter variable">-w</span> <span class="token comment"># 현재 mount를 선택적 해제</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="파티션-분할"><a href="#파티션-분할" class="headerlink" title="파티션 분할"></a>파티션 분할</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">fdisk</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="fstab"><a href="#fstab" class="headerlink" title="fstab"></a>fstab</h4><blockquote>
 <p>시스템 부팅 시 자동으로 마운트 되게 하기 위해 설정해야 하는 파일</p>
 </blockquote>
 <ul>
 <li>일반적으로 &#x2F;etc 에 위치</li>
 </ul>
-<h1 id="Partition"><a href="#Partition" class="headerlink" title="Partition"></a>Partition</h1><blockquote>
+<h2 id="Partition"><a href="#Partition" class="headerlink" title="Partition"></a>Partition</h2><blockquote>
 <p>파티션은 실린더를 기준으로 분할</p>
 </blockquote>
-<h2 id="주-Primary-파티션"><a href="#주-Primary-파티션" class="headerlink" title="주(Primary) 파티션"></a>주(Primary) 파티션</h2><ul>
+<h4 id="주-Primary-파티션"><a href="#주-Primary-파티션" class="headerlink" title="주(Primary) 파티션"></a>주(Primary) 파티션</h4><ul>
 <li>부팅 가능한 파티션으로 디스크에 하나 이상 존재</li>
 <li>하나의 디스크에 총 4개까지 사용 가능</li>
 </ul>
-<h2 id="확장-Extended-파티션"><a href="#확장-Extended-파티션" class="headerlink" title="확장(Extended) 파티션"></a>확장(Extended) 파티션</h2><ul>
+<h4 id="확장-Extended-파티션"><a href="#확장-Extended-파티션" class="headerlink" title="확장(Extended) 파티션"></a>확장(Extended) 파티션</h4><ul>
 <li>2개 이상 설정 불가</li>
 <li>5개 이상의 파티션이 필요한 경우, 확장 파티션 선언이 필수</li>
 <li>확장 파티션을 선언하면 논리 파티션 선언 가능</li>
 <li>1개의 확장 파티션은 6개의 주 파티션으로 분할 가능</li>
 </ul>
-<h2 id="스왑-SWAP-파티션"><a href="#스왑-SWAP-파티션" class="headerlink" title="스왑(SWAP) 파티션"></a>스왑(SWAP) 파티션</h2><blockquote>
+<h4 id="스왑-SWAP-파티션"><a href="#스왑-SWAP-파티션" class="headerlink" title="스왑(SWAP) 파티션"></a>스왑(SWAP) 파티션</h4><blockquote>
 <p>컴퓨터 메모리(RAM)이 넘칠 때 추가적으로 실행되는 프로그램들을 실행하기 위한 예비 공간</p>
 </blockquote>
 <ul>
@@ -351,72 +347,44 @@
 <li>스왑활용도(Swappiness)를 설정하여 메모리-스왑 파티션 간의 메모리 항목 이동 빈도를 설정 가능</li>
 <li>절전 모드시 메모리의 항목을 저장하는 공간으로 사용</li>
 </ul>
-<h2 id="파티션-분할-권장-영역"><a href="#파티션-분할-권장-영역" class="headerlink" title="파티션 분할 권장 영역"></a>파티션 분할 권장 영역</h2><ul>
+<h4 id="파티션-분할-권장-영역"><a href="#파티션-분할-권장-영역" class="headerlink" title="파티션 분할 권장 영역"></a>파티션 분할 권장 영역</h4><ul>
 <li>&#x2F;etc</li>
 <li>&#x2F;tmp </li>
 <li>&#x2F;var</li>
 </ul>
-<h1 id="Network"><a href="#Network" class="headerlink" title="Network"></a>Network</h1><h2 id="DHCP-Dynamic-Host-Configuration-Protocol"><a href="#DHCP-Dynamic-Host-Configuration-Protocol" class="headerlink" title="DHCP(Dynamic Host Configuration Protocol)"></a>DHCP(Dynamic Host Configuration Protocol)</h2><blockquote>
+<h2 id="Network"><a href="#Network" class="headerlink" title="Network"></a>Network</h2><h4 id="DHCP-Dynamic-Host-Configuration-Protocol"><a href="#DHCP-Dynamic-Host-Configuration-Protocol" class="headerlink" title="DHCP(Dynamic Host Configuration Protocol)"></a>DHCP(Dynamic Host Configuration Protocol)</h4><blockquote>
 <p>다수의 IP를 확보해두고 다른 시스템에 유동적으로 할당하는 네트워크에서 사용</p>
 </blockquote>
-<h2 id="Linux-네트워크-커매늗"><a href="#Linux-네트워크-커매늗" class="headerlink" title="Linux 네트워크 커매늗"></a>Linux 네트워크 커매늗</h2><ul>
-<li>네트워크 연결 확인</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">netstat</span> <span class="token punctuation">[</span>-option<span class="token punctuation">]</span>
+<h4 id="네트워크-연결-확인"><a href="#네트워크-연결-확인" class="headerlink" title="네트워크 연결 확인"></a>네트워크 연결 확인</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">netstat</span> <span class="token punctuation">[</span>-option<span class="token punctuation">]</span>
   <span class="token parameter variable">-a</span> <span class="token builtin class-name">:</span> 모두
   <span class="token parameter variable">-n</span> <span class="token builtin class-name">:</span> 포트넘버
   <span class="token parameter variable">-t</span> <span class="token builtin class-name">:</span> TCP<span class="token punctuation">(</span>Transaction Control Protocol<span class="token punctuation">)</span>
   <span class="token parameter variable">-u</span> <span class="token builtin class-name">:</span> UDP<span class="token punctuation">(</span>User Datagram Protocol<span class="token punctuation">)</span>
   <span class="token parameter variable">-p</span> <span class="token builtin class-name">:</span> PID <span class="token punctuation">(</span>Process ID<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<ul>
-<li>오픈된 포트 보기</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">netstat</span> <span class="token parameter variable">-antup</span> <span class="token operator">|</span> <span class="token function">grep</span> LISTEN <span class="token operator">|</span> <span class="token function">sort</span> <span class="token parameter variable">-n</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="오픈된-포트-보기"><a href="#오픈된-포트-보기" class="headerlink" title="오픈된 포트 보기"></a>오픈된 포트 보기</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">netstat</span> <span class="token parameter variable">-antup</span> <span class="token operator">|</span> <span class="token function">grep</span> LISTEN <span class="token operator">|</span> <span class="token function">sort</span> <span class="token parameter variable">-n</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<ul>
-<li>시스템의 네트워크 인터페이스 정보 확인</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">
-$ <span class="token function">ifconfig</span>
+<h4 id="시스템의-네트워크-인터페이스-정보-확인"><a href="#시스템의-네트워크-인터페이스-정보-확인" class="headerlink" title="시스템의 네트워크 인터페이스 정보 확인"></a>시스템의 네트워크 인터페이스 정보 확인</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ifconfig</span>
 
 $ <span class="token function">netstat</span> <span class="token parameter variable">-l</span>
 
-$ route<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+$ route<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<ul>
-<li>다른 서버의 호스트로 연결되는 과정 조회</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">traceroute</span> <span class="token operator">&lt;</span>다른 서버의 호스트<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="다른-서버의-호스트로-연결되는-과정-조회"><a href="#다른-서버의-호스트로-연결되는-과정-조회" class="headerlink" title="다른 서버의 호스트로 연결되는 과정 조회"></a>다른 서버의 호스트로 연결되는 과정 조회</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">traceroute</span> <span class="token operator">&lt;</span>다른 서버의 호스트<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<ul>
-<li>특정 호스트의 IP주소 조회</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">nslookup</span> <span class="token operator">&lt;</span>호스트<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="특정-호스트의-IP주소-조회"><a href="#특정-호스트의-IP주소-조회" class="headerlink" title="특정 호스트의 IP주소 조회"></a>특정 호스트의 IP주소 조회</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">nslookup</span> <span class="token operator">&lt;</span>호스트<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<ul>
-<li>네트워크 어댑터 다운시키기</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ifconfig</span> <span class="token operator">&lt;</span>네트워크 어댑터<span class="token operator">></span> down<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="네트워크-어댑터-다운시키기"><a href="#네트워크-어댑터-다운시키기" class="headerlink" title="네트워크 어댑터 다운시키기"></a>네트워크 어댑터 다운시키기</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ifconfig</span> <span class="token operator">&lt;</span>네트워크 어댑터<span class="token operator">></span> down<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
-<h1 id="Linux-Process-Command"><a href="#Linux-Process-Command" class="headerlink" title="Linux Process Command"></a>Linux Process Command</h1><ul>
-<li>Java 프로세스 확인 (Java virtual machine Process Status tool)</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ jps <span class="token punctuation">[</span>-option<span class="token punctuation">]</span>
+<h2 id="Linux-Process-Command"><a href="#Linux-Process-Command" class="headerlink" title="Linux Process Command"></a>Linux Process Command</h2><h4 id="Java-프로세스-확인-Java-virtual-machine-Process-Status-tool"><a href="#Java-프로세스-확인-Java-virtual-machine-Process-Status-tool" class="headerlink" title="Java 프로세스 확인 (Java virtual machine Process Status tool)"></a>Java 프로세스 확인 (Java virtual machine Process Status tool)</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ jps <span class="token punctuation">[</span>-option<span class="token punctuation">]</span>
     <span class="token parameter variable">-None</span>  <span class="token builtin class-name">:</span> 
     <span class="token parameter variable">-m</span>     <span class="token builtin class-name">:</span> 메인 메소드의 args 표시
     <span class="token parameter variable">-v</span>     <span class="token builtin class-name">:</span> jvm 파라미터 표시<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<ul>
-<li>현재 백그라운드에서 동작중인 프로세스를 포어그라운드로 이동</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">fg</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="현재-백그라운드에서-동작중인-프로세스를-포어그라운드로-이동"><a href="#현재-백그라운드에서-동작중인-프로세스를-포어그라운드로-이동" class="headerlink" title="현재 백그라운드에서 동작중인 프로세스를 포어그라운드로 이동"></a>현재 백그라운드에서 동작중인 프로세스를 포어그라운드로 이동</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">fg</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<ul>
-<li>현재 쉘에서 실행시킨 백그라운드 목록 보기</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">jobs</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="현재-쉘에서-실행시킨-백그라운드-목록-보기"><a href="#현재-쉘에서-실행시킨-백그라운드-목록-보기" class="headerlink" title="현재 쉘에서 실행시킨 백그라운드 목록 보기"></a>현재 쉘에서 실행시킨 백그라운드 목록 보기</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">jobs</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -553,7 +521,7 @@ $ route<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Mon Jan 01 2024 22:59:44 GMT+0900',
+    id: 'Mon Jan 01 2024 00:00:00 GMT+0900',
     owner: '',
     repo: '',
     oauth: {
@@ -588,18 +556,18 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/01/Linux/environment/">
+                <a href="/2024/01/01/Linux/authority/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/linux-logo.png" class="responsive-img" alt="[Linux] Environment">
+                        <img src="/images/logos/linux-logo.png" class="responsive-img" alt="[Linux] Authority">
                         
-                        <span class="card-title diy-neon-red">[Linux] Environment</span>
+                        <span class="card-title diy-neon-red">[Linux] Authority</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            user cmd & Permission & Ownership
                         
                     </div>
                     <div class="publish-info">
@@ -636,12 +604,12 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/01/Linux/ubuntu-22.04-installation-without-vm/">
+                <a href="/2024/01/01/Linux/root-directory/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/linux-logo.png" class="responsive-img" alt="[Linux] Virtual Machine 없이 Ubuntu 설치하기">
+                        <img src="/images/logos/linux-logo.png" class="responsive-img" alt="[Linux] 루트 디렉터리 구조를 알아보자!">
                         
-                        <span class="card-title diy-neon-red">[Linux] Virtual Machine 없이 Ubuntu 설치하기</span>
+                        <span class="card-title diy-neon-red">[Linux] 루트 디렉터리 구조를 알아보자!</span>
                     </div>
                 </a>
                 <div class="card-content article-content">

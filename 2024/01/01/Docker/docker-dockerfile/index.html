@@ -5,10 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="[Docker] Dockerfile, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="DockerfileDockerfile 이란?
-애플리케이션을 패키징하기 위한 간단한 스크립트. 일련의 인스트럭션으로 구성, 인스트럭션을 실행한 결과로 도커 이미지 생성.
-
-Dockerfile 작성하기도커 컨테이너에도 ">
+    <meta name="description" content="Dockerfile">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -309,11 +306,13 @@ Dockerfile 작성하기도커 컨테이너에도 ">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h1><h2 id="Dockerfile-이란"><a href="#Dockerfile-이란" class="headerlink" title="Dockerfile 이란?"></a>Dockerfile 이란?</h2><blockquote>
-<p>애플리케이션을 패키징하기 위한 간단한 스크립트. 일련의 인스트럭션으로 구성, 인스트럭션을 실행한 결과로 도커 이미지 생성.</p>
+                <h2 id="Dockerfile-이란"><a href="#Dockerfile-이란" class="headerlink" title="Dockerfile 이란?"></a>Dockerfile 이란?</h2><blockquote>
+<p>애플리케이션을 패키징하기 위한 간단한 스크립트입니다. 일련의 인스트럭션으로 구성, 인스트럭션을 실행한 결과로 도커 이미지 생성됩니다.</p>
 </blockquote>
-<h2 id="Dockerfile-작성하기"><a href="#Dockerfile-작성하기" class="headerlink" title="Dockerfile 작성하기"></a>Dockerfile 작성하기</h2><p>도커 컨테이너에도 단일 드라이브로 된 파일 시스템이 있음.<br>이 파일 시스템은 이미지 속 파일로부터 생성.</p>
-<h4 id="Dockerfile-예시"><a href="#Dockerfile-예시" class="headerlink" title="Dockerfile 예시"></a>Dockerfile 예시</h4><pre class="line-numbers language-docker" data-language="docker"><code class="language-docker"><span class="token instruction"><span class="token keyword">FROM</span> example/node</span>
+<ul>
+<li>도커 컨테이너에도 단일 드라이브로 된 파일 시스템이 있습니다. 이 파일 시스템은 레이어를 쌓아 올린 이미지 속 파일로부터 생성됩니다.</li>
+</ul>
+<h2 id="Dockerfile-작성하기"><a href="#Dockerfile-작성하기" class="headerlink" title="Dockerfile 작성하기"></a>Dockerfile 작성하기</h2><h4 id="Dockerfile-예시"><a href="#Dockerfile-예시" class="headerlink" title="Dockerfile 예시"></a>Dockerfile 예시</h4><pre class="line-numbers language-docker" data-language="docker"><code class="language-docker"><span class="token instruction"><span class="token keyword">FROM</span> example/node</span>
 
 <span class="token instruction"><span class="token keyword">ENV</span> TARGET=<span class="token string">"hi, it's my example"</span> </span>
 <span class="token instruction"><span class="token keyword">ENV</span> FUNC=<span class="token string">"Hello"</span></span>
@@ -325,23 +324,24 @@ Dockerfile 작성하기도커 컨테이너에도 ">
 <span class="token instruction"><span class="token keyword">CMD</span> [<span class="token string">"node"</span>, <span class="token string">"/my-workspace/app.js"</span>]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
-<li><p>FROM : 모든 이미지는 다른 이미지로부터 출발. 이 이미지의 시작점은 example&#x2F;node 이다. 이 이미지에는 my-workspace 앱을 실행하는 데 필요한 런타임인 Node.js가 설치되어 있다.</p>
+<li><p><code>FROM</code>: 모든 이미지는 다른 이미지로부터 출발. 이 이미지의 시작점은 example&#x2F;node 이다. 이 이미지에는 my-workspace 앱을 실행하는 데 필요한 런타임인 Node.js가 설치되어 있다.</p>
 </li>
-<li><p>ENV  : 환경 변수 값을 지정하기 위한 인스트럭션. 값을 지정하기 위해 [key]&#x3D;”[value]” 형식을 따름</p>
+<li><p><code>ENV</code>: 환경 변수 값을 지정하기 위한 인스트럭션. 값을 지정하기 위해 [key]&#x3D;”[value]” 형식을 따름</p>
 </li>
-<li><p>WORKDIR : 컨테이너 이미지 파일 시스템에 디렉토리를 만들고, 해당 디렉토리를 작업 디렉토리로 지정하는 인스트럭션. 구분자로 “&#x2F;“ (슬래시)를 사용 (window, linux 동일)</p>
+<li><p><code>WORKDIR</code>: 컨테이너 이미지 파일 시스템에 디렉토리를 만들고, 해당 디렉토리를 작업 디렉토리로 지정하는 인스트럭션. 구분자로 “&#x2F;“ (슬래시)를 사용 (window, linux 동일)</p>
 </li>
-<li><p>COPY : 로컬 파일 시스템의 파일 혹은 디렉토리를 컨테이너 이미지로 복사하는 인스트럭션. “COPY [원본경로] [복사경로]” 형식으로 지정</p>
+<li><p><code>COPY</code>: 로컬 파일 시스템의 파일 혹은 디렉토리를 컨테이너 이미지로 복사하는 인스트럭션. “COPY [원본경로] [복사경로]” 형식으로 지정</p>
 </li>
-<li><p>CMD : 이미지로부터 컨테이너를 실행했을 때, 실행할 명령을 지정하는 인스트럭션</p>
+<li><p><code>CMD</code>: 이미지로부터 컨테이너를 실행했을 때, 실행할 명령을 지정하는 인스트럭션</p>
 </li>
 </ul>
-<h2 id="컨테이너-이미지-빌드하기"><a href="#컨테이너-이미지-빌드하기" class="headerlink" title="컨테이너 이미지 빌드하기"></a>컨테이너 이미지 빌드하기</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> image build <span class="token parameter variable">--tag</span> my-app <span class="token builtin class-name">.</span> 
-* tag <span class="token builtin class-name">:</span> 이미지의 이름
-* <span class="token builtin class-name">.</span> <span class="token builtin class-name">:</span> 컨텍스트 <span class="token punctuation">(</span>Dockerfile 및 이미지에 포함시킬 파일이 위치한 경로<span class="token punctuation">)</span>. <span class="token string">"."</span> 은 현재 작업 디렉토리를 의미.
+<h2 id="컨테이너-이미지-빌드하기"><a href="#컨테이너-이미지-빌드하기" class="headerlink" title="컨테이너 이미지 빌드하기"></a>컨테이너 이미지 빌드하기</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> image build <span class="token parameter variable">--tag</span> <span class="token operator">&lt;</span>tag명<span class="token operator">></span> <span class="token operator">&lt;</span>Dockerfile의 상대경로<span class="token operator">></span>
 
-성공시 <span class="token string">"successfully built"</span>, <span class="token string">"successfully tagged"</span> 메세지 출력
-빌드된 이미지는 로컬 이미지 캐시에 저장, 도커 명령<span class="token punctuation">(</span>docker image <span class="token function">ls</span> <span class="token string">'m*'</span> 으로 <span class="token string">'m'</span>으로 시작하는 이미지 목록 조회<span class="token punctuation">)</span>으로 확인<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment"># tag명은 네이밍 할 이미지의 이름입니다. 보통 "keyhong/myapp-1.0.0"처럼 "사용자/앱이름-버전" 형식으로 쓰는 것이 관례입니다."</span>
+<span class="token comment"># Dockerfile의 상대경로로 '.'이 default 값인데, 이는 현재 작업 디렉토리를 의미합니다.</span>
+
+<span class="token comment"># 성공시 "successfully built", "successfully tagged" 메세지 출력</span>
+<span class="token comment"># 빌드된 이미지는 로컬 이미지 캐시에 저장, 도커 명령(docker image ls 'm*' 으로 'm'으로 시작하는 이미지 목록 조회)으로 확인</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -478,7 +478,7 @@ Dockerfile 작성하기도커 컨테이너에도 ">
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Mon Jan 01 2024 22:59:44 GMT+0900',
+    id: 'Mon Jan 01 2024 00:00:00 GMT+0900',
     owner: '',
     repo: '',
     oauth: {
@@ -513,18 +513,18 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/01/Git/gitignore/">
+                <a href="/2024/01/01/Docker/docker-basic-concept-%EB%AF%B8%EC%99%84-/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/git-logo.png" class="responsive-img" alt="[Git] .gitignore">
+                        <img src="/images/logos/docker-logo.png" class="responsive-img" alt="[Docker] Concept">
                         
-                        <span class="card-title diy-neon-red">[Git] .gitignore</span>
+                        <span class="card-title diy-neon-red">[Docker] Concept</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            Docker Concept
                         
                     </div>
                     <div class="publish-info">
@@ -535,8 +535,8 @@ gitment.render('gitment-content');
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Git/" class="post-category">
-                                    Git
+                            <a href="/categories/Docker/" class="post-category">
+                                    Docker
                                 </a>
                             
                             
@@ -546,8 +546,8 @@ gitment.render('gitment-content');
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Git/">
-                        <span class="chip bg-color">Git</span>
+                    <a href="/tags/Docker/">
+                        <span class="chip bg-color">Docker</span>
                     </a>
                     
                 </div>
@@ -572,7 +572,7 @@ gitment.render('gitment-content');
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            Docker Image
                         
                     </div>
                     <div class="publish-info">
