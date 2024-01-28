@@ -496,24 +496,23 @@ SUBSTRING<span class="token punctuation">(</span>email <span class="token keywor
 <h4 id="TO-CHAR"><a href="#TO-CHAR" class="headerlink" title="TO_CHAR"></a>TO_CHAR</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
 TO_CHAR <span class="token punctuation">(</span><span class="token keyword">date</span><span class="token operator">/</span><span class="token keyword">time</span><span class="token operator">/</span><span class="token keyword">interval</span><span class="token punctuation">,</span> format<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h4 id="UPPER-LOWER-LENGTH"><a href="#UPPER-LOWER-LENGTH" class="headerlink" title="UPPER &amp; LOWER &amp; LENGTH"></a>UPPER &amp; LOWER &amp; LENGTH</h4><pre><code class="sql">-- Syntax
-SELECT 
-UPPER(email) AS email_upper,
-LOWER(email) AS email_lower,
-LENGTH(email)
-FROM customer
-WHERE LENGTH(email) &lt; 30
-;
+<h4 id="UPPER-LOWER-LENGTH"><a href="#UPPER-LOWER-LENGTH" class="headerlink" title="UPPER &amp; LOWER &amp; LENGTH"></a>UPPER &amp; LOWER &amp; LENGTH</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
+<span class="token keyword">SELECT</span> 
+UPPER<span class="token punctuation">(</span>email<span class="token punctuation">)</span> <span class="token keyword">AS</span> email_upper<span class="token punctuation">,</span>
+LOWER<span class="token punctuation">(</span>email<span class="token punctuation">)</span> <span class="token keyword">AS</span> email_lower<span class="token punctuation">,</span>
+LENGTH<span class="token punctuation">(</span>email<span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> customer
+<span class="token keyword">WHERE</span> LENGTH<span class="token punctuation">(</span>email<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">30</span>
+<span class="token punctuation">;</span>
 
 
-SELECT 
-LOWER(first_name) AS first_name,
-LOWER(last_name) AS last_name
-FROM customer
-WHERE LENGTH(first_name) &gt; 10
-OR LENGTH(last_name) &gt; 10
-;
-</code></pre>
+<span class="token keyword">SELECT</span> 
+LOWER<span class="token punctuation">(</span>first_name<span class="token punctuation">)</span> <span class="token keyword">AS</span> first_name<span class="token punctuation">,</span>
+LOWER<span class="token punctuation">(</span>last_name<span class="token punctuation">)</span> <span class="token keyword">AS</span> last_name
+<span class="token keyword">FROM</span> customer
+<span class="token keyword">WHERE</span> LENGTH<span class="token punctuation">(</span>first_name<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">10</span>
+<span class="token operator">OR</span> LENGTH<span class="token punctuation">(</span>last_name<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">10</span>
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -745,7 +744,7 @@ gitment.render('gitment-content');
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            Volume
                         
                     </div>
                     <div class="publish-info">

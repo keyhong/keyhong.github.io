@@ -339,18 +339,16 @@ HDFS에 저장된 데이터(directory&amp;#x2F">
 <li>Hadoop Install</li>
 </ol>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 환경변수 설정</span>
-$ <span class="token function">vi</span> .bash_profile
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+$ <span class="token function">vi</span> .bash_profile<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<pre class="line-numbers language-conf" data-language="conf"><code class="language-conf">		
-# HIVE_HOME 환경 변수 등록
-export HADOOP_HOME&#x3D;&#39;~&#x2F;apache-hadoop-&lt;x.y.z&gt;-bin&#39; 
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>.bashrc</span></div><code class="language-bash"><span class="token comment"># HIVE_HOME 환경 변수 등록</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">HADOOP_HOME</span><span class="token operator">=</span><span class="token string">'~/apache-hadoop-&lt;x.y.z>-bin'</span> 
 
-# PATH 환경 변수 등록
-export PATH&#x3D;$PATH:$HIVE_HOME&#x2F;bin
+<span class="token comment"># PATH 환경 변수 등록</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token environment constant">$PATH</span><span class="token builtin class-name">:</span><span class="token variable">$HIVE_HOME</span>/bin
 
-# 하둡 Li 경로
-export CLASSPATH&#x3D;$CLASSPATH:&#x2F;usr&#x2F;local&#x2F;hadoop&#x2F;lib&#x2F;* <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment"># 하둡 Li 경로</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">CLASSPATH</span><span class="token operator">=</span><span class="token variable">$CLASSPATH</span>:/usr/local/hadoop/lib/* <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hadoop
 $ start-yarn.sh
@@ -380,14 +378,14 @@ $ <span class="token function">tar</span> <span class="token parameter variable"
 <span class="token comment"># 환경변수 설정</span>
 $ <span class="token function">vi</span> .bash_profile<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<pre class="line-numbers language-conf" data-language="conf"><code class="language-conf"># HIVE_HOME 환경 변수 등록
-export HIVE_HOME&#x3D;~&#x2F;apache-hive-&lt;x.y.z&gt;-bin
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>.bashrc</span></div><code class="language-bash"><span class="token comment"># HIVE_HOME 환경 변수 등록</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">HIVE_HOME</span><span class="token operator">=~</span>/apache-hive-<span class="token operator">&lt;</span>x.y.z<span class="token operator">></span>-bin
 
-# PATH 환경 변수 등록
-export PATH&#x3D;$PATH:$HIVE_HOME&#x2F;bin
+<span class="token comment"># PATH 환경 변수 등록</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token environment constant">$PATH</span><span class="token builtin class-name">:</span><span class="token variable">$HIVE_HOME</span>/bin
 
-# 하이브 Lib 경로
-export CLASSPATH&#x3D;$CLASSPATH:&#x2F;usr&#x2F;local&#x2F;hive&#x2F;lib*<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment"># 하이브 Lib 경로</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">CLASSPATH</span><span class="token operator">=</span><span class="token variable">$CLASSPATH</span>:/usr/local/hive/lib*<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 환경설정 적용</span>
 $ <span class="token builtin class-name">source</span> .bash_profile<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -437,7 +435,7 @@ $ <span class="token function">vi</span> hive-site.xml<span aria-hidden="true" c
 <ul>
 <li>hive-site.xml 편집</li>
 </ul>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+<pre class="line-numbers language-markup" data-language="markup"><div class="caption"><span>hive-site.xml</span></div><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
 	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>javax.jdo.option.ConnectionURL<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
 	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>jdbc:oracle:thin:@//&#123;hive server ip&#125;/xe<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
@@ -627,7 +625,7 @@ gitment.render('gitment-content');
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            Hive Config
                         
                     </div>
                     <div class="publish-info">
@@ -664,18 +662,18 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/01/Hive/hiveql-tip/">
+                <a href="/2024/01/01/Linux/authority/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] HiveQL Tip">
+                        <img src="/images/logos/linux-logo.png" class="responsive-img" alt="[Linux] Authority">
                         
-                        <span class="card-title diy-neon-red">[Hive] HiveQL Tip</span>
+                        <span class="card-title diy-neon-red">[Linux] Authority</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            user cmd & Permission & Ownership
                         
                     </div>
                     <div class="publish-info">
@@ -686,8 +684,8 @@ gitment.render('gitment-content');
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Hive/" class="post-category">
-                                    Hive
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
                                 </a>
                             
                             
@@ -697,8 +695,8 @@ gitment.render('gitment-content');
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Hive/">
-                        <span class="chip bg-color">Hive</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
                 </div>

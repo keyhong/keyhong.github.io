@@ -306,13 +306,63 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="지원하는-파일-시스템"><a href="#지원하는-파일-시스템" class="headerlink" title="지원하는 파일 시스템"></a>지원하는 파일 시스템</h2><p>구조화 되지 않은 text 파일, 반구조화된 json 파일, 구조화된 csv 파일 등 다양한 형식 지원<br>시퀀스파일(SequenceFiles)과 프로토콜 버퍼(protobufs)와 같이 일반적으로 직렬화된 이진 인코딩 형식 지원<br>파케이(Parquet) 및 ORC 같은 컬럼 방식의 파일 지원</p>
-<h2 id="URI-스키마로-파일시스템-지정하기"><a href="#URI-스키마로-파일시스템-지정하기" class="headerlink" title="URI 스키마로 파일시스템 지정하기"></a>URI 스키마로 파일시스템 지정하기</h2><p>URI 스키마를 통해 파일 시스템을 지정 할 수 있다.</p>
-<p>접두사 뒤에 :&#x2F;&#x2F; 붙임<br>스파크에서 지원하는 일반적인 파일 시스템의 스키마와 URI 구조 요약</p>
-<hr>
-<h2 id="File-System-URI-구조"><a href="#File-System-URI-구조" class="headerlink" title="File System | URI 구조"></a>File System | URI 구조</h2><h2 id="Local-File-System-file-pathHDFS-hdfs-hdfs-pathAmazon-S3-s3-bucket-path-also-used-are-s3a-and-s3n-OpenStack-Swift-swift-container-PROVIDER-path"><a href="#Local-File-System-file-pathHDFS-hdfs-hdfs-pathAmazon-S3-s3-bucket-path-also-used-are-s3a-and-s3n-OpenStack-Swift-swift-container-PROVIDER-path" class="headerlink" title="Local File System | file :&#x2F;&#x2F; pathHDFS** | hdfs :&#x2F;&#x2F; hdfs_pathAmazon S3 | s3 :&#x2F;&#x2F; bucket&#x2F;path (also used are s3a and s3n)OpenStack Swift | swift :&#x2F;&#x2F; container.PROVIDER&#x2F;path"></a>Local File System | file :&#x2F;&#x2F; path<br>HDFS** | hdfs :&#x2F;&#x2F; hdfs_path<br>Amazon S3 | s3 :&#x2F;&#x2F; bucket&#x2F;path (also used are s3a and s3n)<br>OpenStack Swift | swift :&#x2F;&#x2F; container.PROVIDER&#x2F;path</h2><p>** 파일 시스템 구성 매개변수 설정 필요</p>
-<h2 id="SparkConetxt로-데이터-소싱하는-Method"><a href="#SparkConetxt로-데이터-소싱하는-Method" class="headerlink" title="SparkConetxt로 데이터 소싱하는 Method"></a>SparkConetxt로 데이터 소싱하는 Method</h2><p>파일(압축 또는 비압축), 디렉토리 또는 글로브(glob) 패턴(와일드 카드가 있는 파일 패턴)에서 RDD 생성</p>
-<h4 id="textFile"><a href="#textFile" class="headerlink" title="textFile()"></a>textFile()</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python">sc<span class="token punctuation">.</span>textFile<span class="token punctuation">(</span>name<span class="token punctuation">,</span> minPartitions<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> use_unicode<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+                <h2 id="지원하는-파일-시스템"><a href="#지원하는-파일-시스템" class="headerlink" title="지원하는 파일 시스템"></a>지원하는 파일 시스템</h2><blockquote>
+<p>하나 이상의 파일로부터 RDD 를 생성하기 위해 스파크 메서드는 여러 파일 시스템을 지원</p>
+</blockquote>
+<ul>
+<li><p>구조화 되지 않은 Text 파일, 반구조화된 Json 파일, 구조화된 CSV 파일 등 다양한 형식 지원</p>
+</li>
+<li><p>시퀀스파일(SequenceFiles)과 프로토콜 버퍼(protobufs)와 같이 일반적으로 직렬화된 이진 인코딩 형식 지원</p>
+</li>
+<li><p>파케이(Parquet) 및 ORC 같은 컬럼 방식의 파일 지원</p>
+</li>
+</ul>
+<h2 id="URI-스키마로-파일시스템-지정하기"><a href="#URI-스키마로-파일시스템-지정하기" class="headerlink" title="URI 스키마로 파일시스템 지정하기"></a>URI 스키마로 파일시스템 지정하기</h2><blockquote>
+<p>URI 스키마를 통해 파일 시스템을 지정</p>
+</blockquote>
+<ul>
+<li><p>접두사 뒤에 <code>://</code> 붙임</p>
+</li>
+<li><p>스파크에서 지원하는 일반적인 파일 시스템의 스키마와 URI 구조 요약</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>File System</th>
+<th>URI 구조</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Local File System</td>
+<td>file<code>://</code>path</td>
+</tr>
+<tr>
+<td>HDFS**</td>
+<td>hdfs<code>://</code>hdfs_path</td>
+</tr>
+<tr>
+<td>Amazon S3</td>
+<td>s3<code>://</code>bucket&#x2F;path (also used are s3a and s3n)</td>
+</tr>
+<tr>
+<td>OpenStack Swift</td>
+<td>swift<code>://</code>container.PROVIDER&#x2F;path</td>
+</tr>
+</tbody></table>
+<h4 id="하둡-파일-시스템-구성-매개변수-설정-필요"><a href="#하둡-파일-시스템-구성-매개변수-설정-필요" class="headerlink" title="**: 하둡 파일 시스템 구성 매개변수 설정 필요"></a>**: 하둡 파일 시스템 구성 매개변수 설정 필요</h4><ul>
+<li><p>스파크에서 HDFS 파일을 읽으려면 클러스터의 모든 작업자 노드에서 HADOOP_CONF_DIR 환경변수 설정</p>
+</li>
+<li><p>하둡 config 디렉토리에는 스파크가 적절한 HDFS 클러스터에 연결하는 데 사용하는 모든 정보가 있습니다.</p>
+</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>bashrc 또는 spark-env.sh</span></div><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">HADOOP_CONF_DIR</span><span class="token operator">=</span><span class="token variable">$HADOOP_HOME</span>/conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<h4 id="textFile"><a href="#textFile" class="headerlink" title="textFile()"></a>textFile()</h4><blockquote>
+<p>파일(압축 또는 비압축), 디렉토리 또는 글로브(glob) 패턴 (와일드 카드가 있는 파일 패턴)에서 RDD 생성</p>
+</blockquote>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">sc<span class="token punctuation">.</span>textFile<span class="token punctuation">(</span>name<span class="token punctuation">,</span> minPartitions<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> use_unicode<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 
 <span class="token triple-quoted-string string">"""
 Parameter
@@ -320,7 +370,7 @@ Parameter
 name : 파일 시스템의 스키마를 포함해 참조될 경로
 
 minPartitions : 파티션 수를 얼마나 만들지 결정
-  - HDFS 를 사용할 경우 파일의 각 블록(128 MB)은 단일 파티션 생성
+  - HDFS를 사용할 경우 파일의 각 블록(128 MB)은 단일 파티션 생성
   - 한 블록당 한 파티션이 기본
   - 블록보다 많은 파티션 요청가능
   - 파티션 수를 블록보다 적게 지정해도 한 블록당 파티션인 기본 상태로 돌아감
@@ -339,15 +389,9 @@ logs <span class="token operator">=</span> sc<span class="token punctuation">.</
 <span class="token comment"># 글로브 패턴을 사용해 파일 로드</span>
 logs <span class="token operator">=</span> sc<span class="token punctuation">.</span>textFile<span class="token punctuation">(</span><span class="token string">"hdfs:///demo/data/website/Website-Logs/*_1001.txt"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<ul>
-<li><p>HDFS에서 파일을 읽으려면 클러스터의 모든 worker node에서 HADOOP_CONF_DIR 환경변수 설정를 읽어야 한다. 이를 OS환경 변수나 <code>spakr-env.sh</code>로 지정할 수 있다.</p>
-</li>
-<li><p>Hadoop conf 디렉터리는 Spark가 HDFS 클러스터 노드에 연결하는 데 사용하는 모든 정보가 있다.</p>
-</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>~/.bashrc</span></div><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">HADOOP_CONF_DIR</span><span class="token operator">=</span><span class="token variable">$&#123;HADOOP_HOME&#125;</span>/conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h4 id="wholeTextFiles"><a href="#wholeTextFiles" class="headerlink" title="wholeTextFiles()"></a>wholeTextFiles()</h4><p>여러 파일이 포함된 디렉토리를 읽기. 각 파일은 파일 이름을 포함한 key와 파일 내용을 포함한 value로 구성된 레코드로 표시</p>
+<h4 id="wholeTextFiles"><a href="#wholeTextFiles" class="headerlink" title="wholeTextFiles()"></a>wholeTextFiles()</h4><blockquote>
+<p>여러 파일이 포함된 디렉토리를 읽기. 각 파일은 key(파일 이름을 포함): value(파일 내용을 포함)로 구성된 레코드로 표시</p>
+</blockquote>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> pyspark <span class="token keyword">import</span> SparkContext <span class="token keyword">as</span> sc
 
 <span class="token comment"># 전체 디렉토리의 내용을 키/값 쌍으로 로드</span>
@@ -367,6 +411,9 @@ textFiles<span class="token punctuation">.</span>collect<span class="token punct
 
 <span class="token comment"># 출력 결과</span>
 <span class="token comment"># [(a-hdfs-path/part-00000, its content), (a-hdfs-path/part-00001, its content) ... (a-hdfs-path/part-nnnnn, its content)]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>-『Data Analytics with Spark Using Python』- Jeffrey Aven</p>
+
                 
             </div>
             <hr/>

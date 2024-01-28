@@ -5,15 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="[Kubernetes] Volume, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="볼륨(Volume)
-컨테이너가 외부 스토리지에 액세스하고 공유하는 방법
-
-
-포드의 각 컨테이너에는 고유의 분리된 파일 시스템 존재
-
-볼륨은 포드의 컴포넌트이며 포드의 스펙에 의해 정의
-
-독립적인 쿠버네티스 오브젝트가">
+    <meta name="description" content="Volume">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -366,6 +358,43 @@
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ kubectl get pods <span class="token parameter variable">--namespace</span> kube-system
 
 $ kubectl describe pod fluentd-gcp-<span class="token punctuation">..</span>. <span class="token parameter variable">--namespace</span> kube-system<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="hostpath란"><a href="#hostpath란" class="headerlink" title="hostpath란?"></a>hostpath란?</h2><blockquote>
+<p>호스트 머신의 파일 시스템 경로를 Pod의 컨테이너에 마운트할 때 사용되는 설정</p>
+</blockquote>
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>work1</span></div><code class="language-bash"><span class="token comment"># host 머신에서 /var/htdocs라는 임시 폴더를 생성</span>
+$ <span class="token function">mkdir</span> /var/htdocs
+
+<span class="token comment"># index.html을 만들고 work1이라는 문자열을 생성</span>
+$ <span class="token builtin class-name">echo</span> <span class="token string">"work1"</span> <span class="token operator">></span> /var/htdocs/index.html<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>work2</span></div><code class="language-bash"><span class="token comment"># host 머신에서 /var/htdocs라는 임시 폴더를 생성</span>
+$ <span class="token function">mkdir</span> /var/htdocs
+
+<span class="token comment"># index.html을 만들고 work2이라는 문자열을 생성</span>
+$ <span class="token builtin class-name">echo</span> <span class="token string">"work2"</span> <span class="token operator">></span> /var/htdocs/index.html
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>hostpath-httpd.yaml</span></div><code class="language-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Pod
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> hostpath<span class="token punctuation">-</span>http
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">containers</span><span class="token punctuation">:</span>   
+  <span class="token punctuation">-</span> <span class="token key atrule">image</span><span class="token punctuation">:</span> httpd
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> web<span class="token punctuation">-</span>server
+    <span class="token key atrule">volumeMounts</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> html
+      <span class="token key atrule">mountPath</span><span class="token punctuation">:</span> /usr/local/apache2/htdocs
+      <span class="token key atrule">readOnly</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+      <span class="token key atrule">protocol</span><span class="token punctuation">:</span> TCP
+  <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> html
+    <span class="token key atrule">hostPath</span><span class="token punctuation">:</span>
+      <span class="token key atrule">path</span><span class="token punctuation">:</span> /var/htdocs
+      <span class="token key atrule">type</span><span class="token punctuation">:</span> Directory<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -585,18 +614,18 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/18/Kubernetes/configmap/">
+                <a href="/2024/01/18/Kubernetes/env-%EB%AF%B8%EC%99%84-/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] 환경변수를 ConfigMap에 저장하는 방법">
+                        <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] env">
                         
-                        <span class="card-title diy-neon-red">[Kubernetes] 환경변수를 ConfigMap에 저장하는 방법</span>
+                        <span class="card-title diy-neon-red">[Kubernetes] env</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            환경변수를 ConfigMap에 저장하는 방법
+                            
                         
                     </div>
                     <div class="publish-info">
@@ -607,8 +636,8 @@ gitment.render('gitment-content');
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Kubernetes/" class="post-category">
-                                    Kubernetes
+                            <a href="/categories/kubernetes/" class="post-category">
+                                    kubernetes
                                 </a>
                             
                             
@@ -618,8 +647,8 @@ gitment.render('gitment-content');
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Kubernetes/">
-                        <span class="chip bg-color">Kubernetes</span>
+                    <a href="/tags/kubernetes/">
+                        <span class="chip bg-color">kubernetes</span>
                     </a>
                     
                 </div>

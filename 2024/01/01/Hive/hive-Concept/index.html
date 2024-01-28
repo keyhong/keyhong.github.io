@@ -5,15 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="[Hive] Concept, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Hive ConceptHive
-하둡 기반의 데이터 웨어하우징 프레임워크
-
-
-페이스북에서 개발
-
-자바 프로그래밍은 부족하지만 강력한 SQL 기술을 가진 분석가를 위해 개발
-
-복잡한 머신러닝 알고리즘을 구현하기에는 적합">
+    <meta name="description" content="Hive Concept">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -314,7 +306,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Hive-Concept"><a href="#Hive-Concept" class="headerlink" title="Hive Concept"></a>Hive Concept</h1><h2 id="Hive"><a href="#Hive" class="headerlink" title="Hive"></a>Hive</h2><blockquote>
+                <h2 id="Hive"><a href="#Hive" class="headerlink" title="Hive"></a>Hive</h2><blockquote>
 <p>하둡 기반의 데이터 웨어하우징 프레임워크</p>
 </blockquote>
 <ul>
@@ -323,6 +315,120 @@
 <li><p>자바 프로그래밍은 부족하지만 강력한 SQL 기술을 가진 분석가를 위해 개발</p>
 </li>
 <li><p>복잡한 머신러닝 알고리즘을 구현하기에는 적합하지 않음</p>
+</li>
+</ul>
+<blockquote>
+<p>MySQL에 사용하는 것처럼 HDFS 클러스터 전체에 걸쳐 저장된 데이터에 표준 SQL 쿼리를 실행</p>
+</blockquote>
+<ul>
+<li><p>SQL을 MapReduce나 TEZ 명령어로 번역하여 작동, 이 둘은 YARN 클러스터 관리자 위에서 실행</p>
+</li>
+<li><p>HVIE는 SQL 쿼리를 매퍼와 맵리듀스로 분해. 클러스터 전체에 걸쳐 어떻게 실행할지 알아냄</p>
+</li>
+<li><p>사용자 관점에서는 데이터 웨어하우스를 사용하는 것처럼 SQL 데이터베이스에 쿼리하는 것과 동일</p>
+</li>
+<li><p>이미 SQL에 익숙하고 데이터베이스나 데이터 웨어하우스에 경험이 있다면 아주 강력한 도구</p>
+</li>
+</ul>
+<h2 id="Why-Hive"><a href="#Why-Hive" class="headerlink" title="Why Hive?"></a>Why Hive?</h2><ul>
+<li><p>SQL 문법과 친숙 (HiveQL). SQL의 변형이고 MySQL 구문과 굉장히 비슷</p>
+<ul>
+<li>자바에서 MapReduce 를 작성하는 것보다 훨씬 쉬움</li>
+</ul>
+</li>
+<li><p>상호적인 성격을 띄고 있어, 대화형 명령 프롬프트를 사용</p>
+</li>
+<li><p>확장과 축소가 가능</p>
+<ul>
+<li><p>단일 호스트에 제한되는 전통적 데이터베이스와 달리 컴퓨터 클러스터 전체에 분배된 데이터 사용</p>
+</li>
+<li><p>대용량 데이터 세트에 쿼리를 실행하거나 데이터 웨어하우스 유형의 애플리케이션에 유용한 도구</p>
+</li>
+</ul>
+</li>
+<li><p>OLAP(Online Analytics Processing)를 위한 것</p>
+<ul>
+<li><p>단일 데이터베이스 인스턴스에서보다 훨씬 큰 데이터 처리 가능</p>
+</li>
+<li><p>즉각적인 대답은 아니지만, 상식적인 시간 내 결과 획득</p>
+</li>
+</ul>
+</li>
+<li><p>높은 확장성</p>
+<ul>
+<li><p>사용자 정의 함수에 플러그인해 고유의 매퍼 생성 가능</p>
+</li>
+<li><p>Thrift 서버를 활용해 외부에서도 사용자가 Hive와 소통 가능</p>
+</li>
+<li><p>JDBC나 ODBC 드라이버를 사용해 Hive가 다른 데이터베이스와 똑같아 보이도록 함</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Why-not-Hive"><a href="#Why-not-Hive" class="headerlink" title="Why not Hive?"></a>Why not Hive?</h2><ul>
+<li><p>OLTP(Online Transaction Processing)가 아닌 OLATP를 위한 것</p>
+<ul>
+<li><p>고 처리량 저 대기 시간을 원한다면 좋은 선택이 아님</p>
+</li>
+<li><p>SQL 명령어를 MapReduce로 번역을 해야 하기 때문에 시간이 소모</p>
+</li>
+<li><p>Hive에 동시에 많은 요청을 하면 안되며, 몇 분안에 결과가 나오지 않음</p>
+</li>
+<li><p>대용량 데이터 세트를 다룰 때 다른 대안보다 훨씬 효율적인 처리가 가능</p>
+</li>
+<li><p>다른 데서는 불가능한 쿼리 사용 가능</p>
+</li>
+</ul>
+</li>
+<li><p>비정규화 데이터를 사용</p>
+<ul>
+<li><p>내부적으로는 진짜 관계형 데이터베이스가 아님</p>
+</li>
+<li><p>단순한 텍스트 파일</p>
+</li>
+<li><p>연결된 별도의 테이블이나 키 등을 갖고 있지 않음</p>
+</li>
+<li><p>관계형 데이터베이스에 익숙하다면 그 특성에 의지하지 말 것</p>
+</li>
+</ul>
+</li>
+<li><p>SQL도 한계가 존재</p>
+<ul>
+<li><p>복잡한 쿼리를 해야 한다면 Pig나 Spark 가 좀 더 적합</p>
+</li>
+<li><p>VIEW를 통해 연계해서는 사용가능</p>
+</li>
+</ul>
+</li>
+<li><p>진짜 데이터베이스가 아님 (내부적으로는 MapReduce이기 때문에 데이터가 실제로 처리되지 않음)</p>
+<ul>
+<li><p>업데이트나, 삽입, 삭제 등을 해도 기록되지 않음 (애초에 내부적으로는 실제 데이터베이스가 없기 때문)</p>
+</li>
+<li><p>단지 매퍼와 리듀서를 통과하는 거대한 텍스트 파일만 존재</p>
+</li>
+</ul>
+</li>
+<li><p>HiveQL은 SQL의 변형</p>
+<ul>
+<li><p>MySQL과 문법적으로 대동소이</p>
+</li>
+<li><p>Hive에 특화된 부분이 존재 : View</p>
+</li>
+<li><p>어떤 쿼리의 결과를 View에 저장하고, 그 View를 다음 쿼리의 테이블로 유용하게 사용</p>
+</li>
+<li><p>복잡한 쿼리를 개별 쿼리로 분할해 해당 View를 발전시키며 층층이 쌓아 구축 가능</p>
+</li>
+</ul>
+</li>
+<li><p>데이터베이스의 구체화 화면(materialized view)과는 약간 다름</p>
+<ul>
+<li><p>데이터베이스의 구체화 화면은 실제로 데이터를 저장</p>
+</li>
+<li><p>Hive의 View는 논리 구조(데이터를 실제로 저장하지는 않음)</p>
+</li>
+</ul>
+</li>
+<li><p>HiveQL은 데이터를 구조화하고 파티션을 나누어 저장하는 여러가지 옵션이 있어 데이터를 다양한 곳에서 사용 가능</p>
 </li>
 </ul>
 <h2 id="하이브-쉘"><a href="#하이브-쉘" class="headerlink" title="하이브 쉘"></a>하이브 쉘</h2><blockquote>
@@ -409,6 +515,18 @@
 <li><p>각 버킷에 전체 데이터 세트의 알려진 임의 비율이 포함되므로 무작위 샘플링에 유용</p>
 </li>
 </ul>
+<h2 id="HiveQL"><a href="#HiveQL" class="headerlink" title="HiveQL"></a>HiveQL</h2><ol>
+<li><p>HiveQL 은 일반적으로 대소문자를 구분하지 않음 (문자열 비교는 제외)</p>
+</li>
+<li><p>탭 키를 사용하면 하이브가 제공하는 예약어와 함수를 자동 완성 가능</p>
+</li>
+<li><p>처음 설치하고 ‘SHOW TABLES;’ 명령어를 입력하면 사용자 머신에 메타스토어 데이터베이스를 생성 (수 초 소모)</p>
+</li>
+<li><p>데이터베이스 사용자가 hive 명령어를 실행한 위치에 <code>metastore_db</code> 디렉토리를 만들어 필요한 파일 저장</p>
+</li>
+<li><p>명령행에 직접 쿼리를 입력하여 실행하는 경우 (hive -e <query>) 끝에 세미콜론을 붙이지 않아도 됨</p>
+</li>
+</ol>
 
                 
             </div>
@@ -592,7 +710,7 @@ gitment.render('gitment-content');
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            Hive Architecture
                         
                     </div>
                     <div class="publish-info">
@@ -629,18 +747,18 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/01/Hive/hive-concept2/">
+                <a href="/2024/01/01/Hive/hive-config/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] Concept2">
+                        <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] Config">
                         
-                        <span class="card-title diy-neon-red">[Hive] Concept2</span>
+                        <span class="card-title diy-neon-red">[Hive] Config</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            Hive Config
                         
                     </div>
                     <div class="publish-info">
