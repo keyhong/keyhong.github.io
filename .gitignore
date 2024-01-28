@@ -7,5 +7,5 @@ public/
 .deploy*/
 _multiconfig.yml
 *.exe
-*미완*.md
-*미완*/
+2023/**/*미완*/
+2024/**/*미완*/

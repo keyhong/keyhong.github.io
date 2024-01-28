@@ -306,23 +306,19 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">
-$ kubectl get nods
+                <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ kubectl get nods
 
 $ kubectl drain worker-1
 
 
--- daemonset, <span class="token builtin class-name">local</span> storage 무시
+<span class="token comment"># daemonset, local storage 무시</span>
 $ kubectl drain worker-1 --delete-local-data --ignore-daemonsets <span class="token parameter variable">--force</span>
 
 
 $ kubectl get nods
 
 STATUS
-READY,SchedulingDisabled <span class="token comment"># Colden 명령어가 실행되서 이렇게 나옴</span>
-
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+READY,SchedulingDisabled <span class="token comment"># Colden 명령어가 실행되서 이렇게 나옴</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>

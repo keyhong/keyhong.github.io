@@ -316,7 +316,6 @@
 </ul>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">echo</span> <span class="token parameter variable">-n</span> <span class="token number">1234</span> <span class="token operator">></span> <span class="token builtin class-name">test</span>
 
-
 $ kubectl creat configamp map-name --from-file<span class="token operator">=</span>test
 configmap/map-name-created
 
@@ -324,7 +323,7 @@ configmap/map-name-created
 $ kubectl get configmap map-name <span class="token parameter variable">-o</span> yaml <span class="token operator">></span> map-name.yaml
 
 <span class="token comment"># configmap을 생성할 수 있는 yaml의 구조 보기</span>
-$ <span class="token function">cat</span> map-name.yaml<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+$ <span class="token function">cat</span> map-name.yaml<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>map-name.yaml</span></div><code class="language-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
 <span class="token key atrule">data</span><span class="token punctuation">:</span>
