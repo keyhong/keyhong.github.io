@@ -306,73 +306,142 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="🙊-글을-쓰는-이유"><a href="#🙊-글을-쓰는-이유" class="headerlink" title="🙊 글을 쓰는 이유"></a>🙊 글을 쓰는 이유</h3><h3 id="작업환경-만들기"><a href="#작업환경-만들기" class="headerlink" title="작업환경 만들기"></a>작업환경 만들기</h3><p>요즘 도커 많이들 쓰시죠? 제가 쓴 글을 읽어도 좋지만, 직접 치면서 배우는 게 훨씬 더 좋답니다. 그래서 제가 세팅하는 환경을 소개하려고 해요. (도커 설치에 대한 부분은 인터넷 레퍼런스를 참고해주세요!)</p>
-<ol>
-<li>ubuntu 도커 실행</li>
-</ol>
-<p>ubuntu는 2년 마다 LTS(Long Term Support) 버전을 내고 있어요. 월은 4월에 나와요. 그래서 지금 글을 보는 시점으로 저는 ubuntu:22.04 버전을 사용할 거에요. <code>docker run</code> 명령어로 바로 사용할 거고 tag(:22.04)를 안주면 그 보다 높은 버전인 latest를 줍니다. 여기 연습에는 상관없지만 프로덕션에서는 LTS를 사용해요.</p>
+                <h3 id="🙊-글을-쓰는-이유"><a href="#🙊-글을-쓰는-이유" class="headerlink" title="🙊 글을 쓰는 이유"></a>🙊 글을 쓰는 이유</h3><p>쉘 스크립트를 읽을 때 항상 리디렉션이 복병이었는 데, 최근 조금 더 기본기를 다지면서 공부한 내용을 적어봅니다.  </p>
+<h3 id="작업환경-만들기-docker-ubuntu"><a href="#작업환경-만들기-docker-ubuntu" class="headerlink" title="작업환경 만들기(docker - ubuntu)"></a>작업환경 만들기(docker - ubuntu)</h3><ul>
+<li><p>ubuntu는 짝수년도 4월에 LTS(Long Term Support) 버전을 내고 있어요. 지금 시점으로 ubuntu:22.04 버전을 사용할 거에요.</p>
+</li>
+<li><p><code>docker run</code> 명령어로 tag(:22.04)를 안주면 latest로 보다 높은 버전을 줄 수도 있어요.</p>
+</li>
+</ul>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> run <span class="token parameter variable">-it</span> ubuntu:22.04<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>-it(-interactive, -tty)는 터미널과 인터랙티브하게 커맨드를 주고 받겠다는 의미입니다. ubuntu는 또한 운영체제 특성상 CLI로 커널과 대화하기 때문에 뒤에 다른 컨테이너처럼 bash를 적어주지 않아도 default로 실행되요.</p>
-<h3 id="스트림-이해하기"><a href="#스트림-이해하기" class="headerlink" title="스트림 이해하기"></a>스트림 이해하기</h3><p>우리가 보고있는 프롬프트는 명령어를 날리면 실행 결과를 받아요. 우리가 코딩으로 함수를 짜듯 모든 명령어는 시스템을 만든 개발자에 의해 의도되어 있어요. 따라서 CLI에서 명령어를 날리면, 해당 명령어가 무엇이냐에 따라 처리하는 프로세스가 처리 후에 반환 결과를 보여줘요. 당연히 우리가 보는 쉘(shell)도 하나의 프로세스라면 두 프로세스 간의 통신이 필요하겠죠?</p>
+<ul>
+<li><p>it(-interactive, -tty)는 터미널(단말)에서 인터랙티브하게 커맨드를 주고 받겠다는 의미입니다.</p>
+</li>
+<li><p>ubuntu image는 다른 컨테이너처럼 터미널로 실행할 때 bash를 적어주지 않아도 default로 실행되요.</p>
+</li>
+</ul>
+<h3 id="스트림"><a href="#스트림" class="headerlink" title="스트림"></a>스트림</h3><blockquote>
+<p>두 프로세스 간의 실행 결과를 전달하고 받을 수 있도록 이어주는 매체</p>
+</blockquote>
+<ul>
+<li><p>프롬프트에서 명령어를 날리면 성공(stdout) 혹은 에러(stderr)에 대한 실행 결과를 전달 받아요.</p>
+</li>
+<li><p>우리가 보는 shell도 하나의 프로세스라면 shell과 애플리케이션 두 프로세스 사이에는 통신이 필요해요.</p>
+</li>
+<li><p>스트림은 실행 결과를 어디로 전달할 지 두 프로세스를 이어주는 역할을 해요. </p>
+</li>
+<li><p>이게 왜 중요하나면, 실제 애플리케이션을 운영하면 사용자의 행동에 대한 무수한 로그가 찍히는 데 우리는 에러 로그를 별도의 파일로 분리하고 싶을 때가 있어요.</p>
+</li>
+</ul>
+<h4 id="스트림-출력의-3종류"><a href="#스트림-출력의-3종류" class="headerlink" title="스트림 출력의 3종류"></a>스트림 출력의 3종류</h4><ul>
+<li>표준 입력(standard input)</li>
+</ul>
 <blockquote>
-<p><strong>두 프로세스 간의 실행 결과를 전달하고 받을 수 있도록 이어주는 매체</strong>를 말해요.</p>
+<p>사용자의 입력을 보내는 스트림</p>
 </blockquote>
-<p>일반적으로 우리가 보는 화면에는 성공(stdout)과 에러(stderr)를 같이 보긴하지만, 실제 애플리케이션을 배포할 때는 사용자의 행동 하나하나가 다 로그로 찍히게 되서 우리는 그 중 에러 발생을 따로 분리할 필요가 있어요. 그래서 스트림의 세 종류를 먼저 알아봐요.</p>
-<h4 id="표준-입력-standard-input"><a href="#표준-입력-standard-input" class="headerlink" title="표준 입력(standard input)"></a>표준 입력(standard input)</h4><blockquote>
-<p>사용자의 입력을 보내는 스트림이에요.</p>
+<ul>
+<li>표준 출력(standard output)</li>
+</ul>
+<blockquote>
+<p>정상적인 표준 출력을 받는 스트림</p>
 </blockquote>
-<h4 id="표준-출력-standard-output"><a href="#표준-출력-standard-output" class="headerlink" title="표준 출력(standard output)"></a>표준 출력(standard output)</h4><blockquote>
-<p>정상적인 표준 출력을 받는 스트림이에요.</p>
+<ul>
+<li>표준 에러(standard output)</li>
+</ul>
+<blockquote>
+<p>정상적인 표준 에러를 받는 스트림</p>
 </blockquote>
-<h4 id="표준-에러-standard-output"><a href="#표준-에러-standard-output" class="headerlink" title="표준 에러(standard output)"></a>표준 에러(standard output)</h4><blockquote>
-<p>정상적인 표준 에러를 받는 스트림이에요.</p>
-</blockquote>
-<p>중요한 건 표준 출력과 표준 에러를 보내는 거에요.</p>
-<h3 id="스트림-활용하기"><a href="#스트림-활용하기" class="headerlink" title="스트림 활용하기"></a>스트림 활용하기</h3><p>요즘 추세가 Cloud Native 환경으로 변화하다 보니 shell programming(미리 커맨드를 적어둔 쉘 파일을 만드는 프로그래밍)이 더 빈번해졌어요. 따라서 스트림을 다른 프로세스나 파일에 전달하는 방법인 리디렉션(&gt;, &gt;&gt; ..)과 파이프라인(|)을 이해하는 건 중요한 기본기라고 생각해요. 파이프는 쉬우니까 디렉션을 소개할게요 :)</p>
+<h4 id="스트림-활용하기"><a href="#스트림-활용하기" class="headerlink" title="스트림 활용하기"></a>스트림 활용하기</h4><ul>
+<li><p>요즘 추세가 Cloud Native라 Dockerfile을 작성하기 위해서는 shell programming이 필수적이에요.</p>
+</li>
+<li><p>쉘에서 가장 복잡한 게 스트림을 다른 프로세스나 파일에 전달하는 방법인 리디렉션(&gt;, &gt;&gt; ..)과 파이프라인(|)인 것 같아요.</p>
+</li>
+</ul>
 <h4 id="리디렉션-Redirection"><a href="#리디렉션-Redirection" class="headerlink" title="리디렉션(Redirection)"></a>리디렉션(Redirection)</h4><blockquote>
-<p>리디렉션은 어떤 프로세스의 스트림을 다른 프로세스에 전달하는 방법이에요.</p>
+<p>어떤 프로세스의 스트림을 다른 프로세스에 전달하는 방법</p>
 </blockquote>
-<p>음, 설명보다 사실 자주 쓰는 예제를 설명하는 방법으로 소개할게요. <code>echo</code> 명령어는 문자열을 출력하는 커맨드에요. 여기서 나온 출력 결과를 hi라는 파일로 넘길 수 있어요.</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 출력 리디렉션</span>
+<ul>
+<li><code>echo</code> 명령어는 문자열을 출력하는 커맨드에요. 여기서 나온 출력 결과를 부등호 기호(&lt;, &gt;, &lt;&lt;, &gt;&gt;)의 리디렉션을 통해 내가 보는 프롬프트가 아닌 파일로 넘길 수 있어요.</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 출력 리디렉션(본래 내 프롬프트에 출력되어야 할 결과를 'hi'라는 파일로 전달)</span>
 $ <span class="token builtin class-name">echo</span> <span class="token string">"hi"</span> <span class="token operator">></span> hi
 
+<span class="token comment"># 'hi'라는 파일 내용 확인</span>
 $ <span class="token function">cat</span> hi
-hi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+hi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>여기서 <code>&gt;</code> 를 <code>&gt;&gt;</code>로 바꾸고 만들어진 hi라는 파일에 또 보내면 기존 파일의 마지막에 새로운 줄을 만들어서 글을 덧붙이기(append) 할 수 있어요. 조심해야 할 건 <code>&gt;&gt;</code>가 아니라 <code>&gt;</code>를 쓰고 커맨드를 썼다면 덧붙이기가 아닌 덮어쓰기(overwrite)가 수행되니 주의해야 해요.</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 출력 리디렉션(추가 모드)</span>
+<ul>
+<li><p>여기서 <code>&gt;</code> 를 <code>&gt;&gt;</code>로 바꾸면면 기존 파일의 마지막에 새로운 줄을 덧붙이기(append) 할 수 있어요.</p>
+</li>
+<li><p><code>&gt;</code>: 덮어쓰기(overwrite)</p>
+</li>
+<li><p><code>&gt;&gt;</code>: 덧붙이기(append)</p>
+</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>리디렉션(append)</span></div><code class="language-bash"><span class="token comment"># (1) 파일 확인</span>
+$ <span class="token function">cat</span> hi
+hi
+
+<span class="token comment"># (2) echo의 결과를 리디렉션</span>
 $ <span class="token builtin class-name">echo</span> <span class="token string">"hi"</span> <span class="token operator">>></span> hi
 
+<span class="token comment"># (3) 파일 확인</span>
+$ <span class="token function">cat</span> hi
+hi
+hi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>리디렉션(overwrite)</span></div><code class="language-bash"><span class="token comment"># (1) 파일 확인</span>
 $ <span class="token function">cat</span> hi
 hi
 hi
 
-<span class="token comment"># 다시 > 로 덮어쓰기(overwrite)</span>
+<span class="token comment"># (2) echo의 결과를 리디렉션</span>
 $ <span class="token builtin class-name">echo</span> <span class="token string">"hi2"</span> <span class="token operator">></span> hi
 
+<span class="token comment"># (3) 다시 파일 확인</span>
 $ <span class="token function">cat</span> hi
-hi2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+hi2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>여기까지는 누구나 알 것 같아요. 이제 조금 더 심화를 해보자면 우리는 hi라는 파일을 만들었는 데 아래와 같이 cd(change directory) 명령어로 파일을 쓴 결과를 hi2라는 파일로 보내려고 해요. hi2의 내용은 어떻게 나올 까요?</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">cd</span> hi <span class="token operator">></span> hi2
+<ul>
+<li>우리는 hi라는 디렉터리가 아닌 파일을 만들었는 데 cd(change directory) 명령어로 hi에 접속하려고 한 결과를 hi2로 리디렉션하면 결과는 어떻게 나올 까요?</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># (1) 에러가 발생할 결과를 리디렉션. 프로프트에는 출력</span>
+$ <span class="token builtin class-name">cd</span> hi <span class="token operator">></span> hi2
 bash: cd: hi: Not a directory
 
+<span class="token comment"># (2) hi2파일은 생성됬지만, 어떤 결과도 리디렉션 되지 않음</span>
 $ <span class="token function">cat</span> hi2
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>프롬프트에서 <code>cd hi</code>는 <code>bash: cd: hi: Not a directory</code>라는 출력을 보여줘요. 분명히 hi2 파일은 새로 생성됬어요. 하지만 <code>cat hi2</code>를 했을 때 우리가 프롬프트로 확인한 표준 에러는 파일로 들어가지 않았어요. 우리는 프로그래밍 할 때 어떤 함수의 파라미터에 사용자 입력을 받지 않았을 때 default를 설정해요. 그것과 같이 <code>&gt;</code> 라는 리디렉션은 사실 <code>1&gt;</code>과 같아요. <code>1</code>이 생략되어 있는 거죠. 이는 표준 출력을 보내겠다는 말이에요. 만약 위의 에러 출력을 hi2로 보내고 싶다면 <code>2&gt;</code>를 하면 되요.</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 아래 커맨드 후 에러가 터미널에서는 보이지 않아요.</span>
+<ul>
+<li><p>우리는 프로그래밍 할 때 어떤 함수의 파라미터에 사용자 입력을 받지 않았을 때 default를 설정해요. 유사하게 리디렉션 <code>&gt;</code>은 <code>1&gt;</code>과 같아요. <code>1</code>이 생략되어 있는 거죠.</p>
+</li>
+<li><p><code>&gt;1</code>은 표준 출력을 보내겠다는 말이에요. 만약 프롬프트로 전달된 에러를 hi2로 보내고 싶다면 <code>2&gt;</code>를 하면 되요.</p>
+</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>표준 에러를 리디렉션 하기(2>)</span></div><code class="language-bash"><span class="token comment"># 아래 커맨드 후 에러가 터미널에서는 보이지 않아요.</span>
 $ <span class="token builtin class-name">cd</span> hi <span class="token operator"><span class="token file-descriptor important">2</span>></span> hi2
 
+<span class="token comment"># 대신 hi2라는 파일에 표준 출력이 전달됬어요.</span>
 $ <span class="token function">cat</span> hi2
-bash: cd: hi: Not a directory<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+bash: cd: hi: Not a directory<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>그럼 표준 출력과 에러를 둘 다 보내고 싶다면 다음 숫자는? <strong><code>3&gt;</code>!!.. 은 없습니다.</strong> 이 때부터는 파일 디스크립터(file descriptor)로 리디렉션해야 해요.</p>
-<blockquote>
-<p>파일 디스크립터는 파일 작업을 실행해주는 객체에요. 실제로 모든 파일에 대한 작업은 파일 디스크립터를 통해 수행이 되어져요.</p>
+<ul>
+<li><p>표준 출력과 에러를 둘 다 보내고 싶을 수도 있습니다. 하지만 <code>3&gt;</code>은 없습니다.</p>
+</li>
+<li><p>이 때부터는 파일 디스크립터(file descriptor)로 리디렉션해야 해요.</p>
+</li>
+</ul>
+<h4 id="파일-디스크립터"><a href="#파일-디스크립터" class="headerlink" title="파일 디스크립터"></a>파일 디스크립터</h4><blockquote>
+<p>파일 디스크립터는 파일 작업을 실행해주는 객체</p>
 </blockquote>
-<p>그래서 파일 디스크립터를 통행 표준 출력과 표준 에러를 모두 보내는 코드는 자주 보셨을 거에요.</p>
+<ul>
+<li><p>모든 파일에 대한 작업은 파일 디스크립터를 통해 수행이 되어져요.</p>
+</li>
+<li><p>파일 디스크립터를 통행 표준 출력과 표준 에러를 모두 전달하는 방법은 아래처럼 쓸 수 있어요.</p>
+</li>
+</ul>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 리디렉션(파일 디스크립터)</span>
 $ <span class="token builtin class-name">cd</span> hi <span class="token operator">&amp;></span> hi2
 
