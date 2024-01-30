@@ -5,7 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="[Hive] Explode &amp; Lateral View, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Explode &amp; Lateral View">
+    <meta name="description" content="Explode()컬럼의 값에 있는 배열의 모든 요소를 별도의 행으로 생성한다. 데이터가 많으면 행이 무수히 많아져 크기가 급속도로 커지므로 사용시에 항상 Out Of Memory 에러에 주의가 필요하다.
+
+-- 기본">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -85,17 +87,6 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/tags" class="waves-effect waves-light">
-      
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
-      
-      <span>Tags</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
     <a href="/categories" class="waves-effect waves-light">
       
       <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
@@ -163,17 +154,6 @@
 			    <i class="fa-fw fas fa-home"></i>
 			
 			Index
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/tags" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-tags"></i>
-			
-			Tags
 		</a>
           
         </li>
@@ -255,13 +235,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/Hive/">
-                                <span class="chip bg-color">Hive</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -469,11 +445,7 @@ LATERAL <span class="token keyword">VIEW</span> EXPLODE<span class="token punctu
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/Hive/">
-                                    <span class="chip bg-color">Hive</span>
-                                </a>
-                            
+                            <span class="chip bg-color">No tag</span>
                         </div>
                     
                 </div>
@@ -589,7 +561,7 @@ gitment.render('gitment-content');
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            DDL
+                            
                         
                     </div>
                     <div class="publish-info">
@@ -607,14 +579,6 @@ gitment.render('gitment-content');
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Hive/">
-                        <span class="chip bg-color">Hive</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -637,7 +601,7 @@ gitment.render('gitment-content');
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            NO_DROP과 OFFLINE으로 Table 보호하기
+                            
                         
                     </div>
                     <div class="publish-info">
@@ -655,14 +619,6 @@ gitment.render('gitment-content');
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Hive/">
-                        <span class="chip bg-color">Hive</span>
-                    </a>
-                    
                 </div>
                 
             </div>

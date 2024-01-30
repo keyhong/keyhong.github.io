@@ -5,7 +5,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="[Kubernetes] 환경변수를 ConfigMap에 저장하는 방법, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="환경변수를 ConfigMap에 저장하는 방법">
+    <meta name="description" content="환경변수를 ConfigMap에 저장하는 방법
+kubectl 명령어를 사용하여 바로 저장할 수 있음
+
+$ kubectl create configmap &amp;lt;map-name&gt; &amp;lt;data-source&gt; 
+
+
+123">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -85,17 +91,6 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/tags" class="waves-effect waves-light">
-      
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
-      
-      <span>Tags</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
     <a href="/categories" class="waves-effect waves-light">
       
       <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
@@ -163,17 +158,6 @@
 			    <i class="fa-fw fas fa-home"></i>
 			
 			Index
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/tags" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-tags"></i>
-			
-			Tags
 		</a>
           
         </li>
@@ -255,13 +239,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/Kubernetes/">
-                                <span class="chip bg-color">Kubernetes</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -405,11 +385,7 @@ $ <span class="token function">cat</span> map-name.yaml<span aria-hidden="true" 
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/Kubernetes/">
-                                    <span class="chip bg-color">Kubernetes</span>
-                                </a>
-                            
+                            <span class="chip bg-color">No tag</span>
                         </div>
                     
                 </div>
@@ -514,18 +490,18 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/19/SQL/Postgresql/lecture4/concatenate/">
+                <a href="/2024/01/19/SQL/concatenate/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/sql-logo.png" class="responsive-img" alt="[SQL] strings function">
+                        <img src="/images/logos/sql-logo.png" class="responsive-img" alt="[SQL] String Functions">
                         
-                        <span class="card-title diy-neon-red">[SQL] strings function</span>
+                        <span class="card-title diy-neon-red">[SQL] String Functions</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            strings function
+                            
                         
                     </div>
                     <div class="publish-info">
@@ -545,14 +521,6 @@ gitment.render('gitment-content');
                     </div>
                 </div>
                 
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/SQL/">
-                        <span class="chip bg-color">SQL</span>
-                    </a>
-                    
-                </div>
-                
             </div>
         </div>
         
@@ -562,12 +530,12 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/16/PySpark/spark-web-ui-%EB%AF%B8%EC%99%84-/">
+                <a href="/2024/01/16/SQL/count-%EB%AF%B8%EC%99%84-/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[PySpark] PySpark 웹 UI에서 Job을 명시적으로 구분하기">
+                        <img src="/images/logos/sql-logo.png" class="responsive-img" alt="[SQL] basic">
                         
-                        <span class="card-title diy-neon-red">[PySpark] PySpark 웹 UI에서 Job을 명시적으로 구분하기</span>
+                        <span class="card-title diy-neon-red">[SQL] basic</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -584,21 +552,13 @@ gitment.render('gitment-content');
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Kubernetes/" class="post-category">
-                                    Kubernetes
+                            <a href="/categories/SQL/" class="post-category">
+                                    SQL
                                 </a>
                             
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Kubernetes/">
-                        <span class="chip bg-color">Kubernetes</span>
-                    </a>
-                    
                 </div>
                 
             </div>

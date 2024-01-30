@@ -4,10 +4,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[Python] tuple, set, dict 정복하기, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="tuple, set, dict 정복하기tuple왜 쓸까?
-프로그램을 작동하는 동안 변경되지 않는 데이터의 저장 (Immutable)Ex) 학번, 이름, 우편번호 등등
-함수의 반환 값등 사용자의 실수에 의한 에러를 사">
+    <meta name="keywords" content="[Python] Tuple, Set, Dict, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="tuple (튜플)왜 쓸까?
+프로그램을 작동하는 동안 변경되지 않는 데이터의 저장 (Immutable)(Ex) 학번, 이름, 우편번호 등등
+함수의 반환 값등 사용자의 실수에 의한 에러를 사전에 방지
+
+t &amp;#x3D;">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +21,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[Python] tuple, set, dict 정복하기 | Keyhong</title>
+    <title>[Python] Tuple, Set, Dict | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -81,17 +83,6 @@
       <i class="fas fa-home" style="zoom: 0.6;"></i>
       
       <span>Index</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/tags" class="waves-effect waves-light">
-      
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
-      
-      <span>Tags</span>
     </a>
     
   </li>
@@ -171,17 +162,6 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/tags" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-tags"></i>
-			
-			Tags
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
 		<a href="/categories" class="waves-effect waves-light">
 			
 			    <i class="fa-fw fas fa-bookmark"></i>
@@ -235,7 +215,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [Python] tuple, set, dict 정복하기</h1>
+                        [Python] Tuple, Set, Dict</h1>
                 </div>
             </div>
         </div>
@@ -257,13 +237,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/Python/">
-                                <span class="chip bg-color">Python</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -308,13 +284,13 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="tuple-set-dict-정복하기"><a href="#tuple-set-dict-정복하기" class="headerlink" title="tuple, set, dict 정복하기"></a>tuple, set, dict 정복하기</h1><h2 id="tuple"><a href="#tuple" class="headerlink" title="tuple"></a>tuple</h2><h2 id="왜-쓸까"><a href="#왜-쓸까" class="headerlink" title="왜 쓸까?"></a>왜 쓸까?</h2><ul>
-<li>프로그램을 작동하는 동안 변경되지 않는 데이터의 저장 (Immutable)<br>Ex) 학번, 이름, 우편번호 등등</li>
+                <h2 id="tuple-튜플"><a href="#tuple-튜플" class="headerlink" title="tuple (튜플)"></a>tuple (튜플)</h2><h2 id="왜-쓸까"><a href="#왜-쓸까" class="headerlink" title="왜 쓸까?"></a>왜 쓸까?</h2><ul>
+<li>프로그램을 작동하는 동안 변경되지 않는 데이터의 저장 (Immutable)<br>(Ex) 학번, 이름, 우편번호 등등</li>
 <li>함수의 반환 값등 사용자의 실수에 의한 에러를 사전에 방지</li>
 </ul>
 <p>t &#x3D; (1) # int로 인식<br>1</p>
 <p>t &#x3D; (1, ) # 값이 하나일 경우 () 없이 정의하면 int()로 정의됩니다. 하나의 값에는 Tuple은 반드시 ‘,’ 를 붙어주어야 tuple로 정의됩니다.<br>(1,)</p>
-<h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><blockquote>
+<h2 id="set-셋"><a href="#set-셋" class="headerlink" title="set (셋)"></a>set (셋)</h2><blockquote>
 <p>집합</p>
 </blockquote>
 <ul>
@@ -390,56 +366,50 @@ s<span class="token punctuation">.</span>remove<span class="token punctuation">(
 s <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 s<span class="token punctuation">.</span>discard<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
 <span class="token comment"># 출력</span>
-<span class="token comment"># None</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment"># None</span>
+
+s<span class="token punctuation">.</span>clear<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 모든 원소 삭제</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="집합-연산"><a href="#집합-연산" class="headerlink" title="집합 연산"></a>집합 연산</h4><ul>
+<li>두 개 이상의 set 자료형은 수학에서 활용하는 다양한 집합 연산이 가능합니다.</li>
+</ul>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">s1 <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+s2 <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token comment"># s1과 s2의 합집합</span>
+s1<span class="token punctuation">.</span>union<span class="token punctuation">(</span>s2<span class="token punctuation">)</span>
+<span class="token comment"># 출력</span>
+<span class="token comment"># &#123;1, 2, 3, 4, 5, 6, 7&#125;</span>
+
+<span class="token comment"># s1과 s2의 합집합을 파이프(|) 연산 기호로도 표현 가능합니다.</span>
+s1 <span class="token operator">|</span> s2
+<span class="token comment"># 출력</span>
+<span class="token comment"># &#123;1, 2, 3, 4, 5, 6, 7&#125; </span>
+
+<span class="token comment"># s1과 s2의 교집합</span>
+s1<span class="token punctuation">.</span>intersection<span class="token punctuation">(</span>s2<span class="token punctuation">)</span> 
+<span class="token comment"># 출력</span>
+<span class="token comment"># &#123;3, 4, 5&#125;</span>
+
+<span class="token comment"># s1과 s2의 합집합을 앰퍼샌드(&amp;) 연산 기호로도 표현 가능합니다.</span>
+s1 <span class="token operator">&amp;</span> s2
+<span class="token comment"># 출력</span>
+<span class="token comment"># &#123;3, 4, 5&#125;</span>
+
+<span class="token comment"># s1과 s2의 차집합(s1에서 s2의 요소를 제거)</span>
+s1<span class="token punctuation">.</span>difference<span class="token punctuation">(</span>s2<span class="token punctuation">)</span> 
+<span class="token comment"># 출력</span>
+<span class="token comment"># &#123;1, 2&#125;</span>
+
+<span class="token comment"># s1과 s2의 차집합을 마이너스(-) 연산 기호로도 표현 가능합니다.</span>
+s1 <span class="token operator">-</span> s2
+<span class="token comment"># 출력</span>
+<span class="token comment"># &#123;1, 2&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
 
-
-<p>s.clear() # 모든 원소 삭제</p>
-<pre class="line-numbers language-none"><code class="language-none">
-#### 집합 연산
-
-- 두 개 이상의 set 자료형은 수학에서 활용하는 다양한 집합 연산이 가능합니다.
-
-&#96;&#96;&#96;python
-s1 &#x3D; set([1, 2, 3, 4, 5])
-s2 &#x3D; set([3, 4, 5, 6, 7])
-
-# s1과 s2의 합집합
-s1.union(s2)
-# 출력
-# &#123;1, 2, 3, 4, 5, 6, 7&#125;
-
-# s1과 s2의 합집합을 파이프(|) 연산 기호로도 표현 가능합니다.
-s1 | s2
-# 출력
-# &#123;1, 2, 3, 4, 5, 6, 7&#125; 
-
-# s1과 s2의 교집합
-s1.intersection(s2) 
-# 출력
-# &#123;3, 4, 5&#125;
-
-# s1과 s2의 합집합을 앰퍼샌드(&amp;) 연산 기호로도 표현 가능합니다.
-s1 &amp; s2
-# 출력
-# &#123;3, 4, 5&#125;
-
-# s1과 s2의 차집합(s1에서 s2의 요소를 제거)
-s1.difference(s2) 
-# 출력
-# &#123;1, 2&#125;
-
-# s1과 s2의 차집합을 마이너스(-) 연산 기호로도 표현 가능합니다.
-s1 - s2
-# 출력
-# &#123;1, 2&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-
-<h2 id="dict-dictionary-map"><a href="#dict-dictionary-map" class="headerlink" title="dict(dictionary) &#x3D;&#x3D; map"></a>dict(dictionary) &#x3D;&#x3D; map</h2><ul>
+<h2 id="dict-딕셔너리-map"><a href="#dict-딕셔너리-map" class="headerlink" title="dict (딕셔너리) (&#x3D;&#x3D; map)"></a>dict (딕셔너리) (&#x3D;&#x3D; map)</h2><ul>
 <li><p>삽입&#x2F;삭제 : O(1) (python 기준) </p>
 </li>
 <li><p>key, value 자료구조</p>
@@ -573,11 +543,7 @@ country_code<span class="token punctuation">.</span>values<span class="token pun
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/Python/">
-                                    <span class="chip bg-color">Python</span>
-                                </a>
-                            
+                            <span class="chip bg-color">No tag</span>
                         </div>
                     
                 </div>
@@ -693,7 +659,7 @@ gitment.render('gitment-content');
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Brute Force
+                            
                         
                     </div>
                     <div class="publish-info">
@@ -711,14 +677,6 @@ gitment.render('gitment-content');
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Algorithm/">
-                        <span class="chip bg-color">Algorithm</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -759,14 +717,6 @@ gitment.render('gitment-content');
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Python/">
-                        <span class="chip bg-color">Python</span>
-                    </a>
-                    
                 </div>
                 
             </div>

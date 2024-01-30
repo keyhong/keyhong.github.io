@@ -81,17 +81,6 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/tags" class="waves-effect waves-light">
-      
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
-      
-      <span>Tags</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
     <a href="/categories" class="waves-effect waves-light">
       
       <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
@@ -159,17 +148,6 @@
 			    <i class="fa-fw fas fa-home"></i>
 			
 			Index
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/tags" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-tags"></i>
-			
-			Tags
 		</a>
           
         </li>
@@ -263,63 +241,10 @@
 
     
 
-    <!-- 所有文章卡片 -->
     <article id="articles" class="container articles">
         <div class="row article-row">
             
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/01/08/Data-Architecture/ods/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="[Data Architecture] ODS">
-                            
-                            <span class="card-title diy-neon-red">[Data Architecture] ODS</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                ODS를 만들어야 할 때를 구분해봐요.
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-08
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Data-Architecture/" class="post-category">
-                                    Data Architecture
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Data-Architecture/">
-                            <span class="chip bg-color">Data Architecture</span>
-                        </a>
-                        
-                        <a href="/tags/ODS/">
-                            <span class="chip bg-color">ODS</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
             
-             <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2024/01/07/Airflow/basic-comand/">
@@ -327,16 +252,16 @@
                             
                             <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] 자주 사용하는 CLI 정리">
                             
-                            <span class="card-title diy-neon-red">[Airflow] 자주 사용하는 CLI 정리</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Airflow] 자주 사용하는 CLI 정리</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
-                        <div class="summary block-with-text">
+                        <!-- <div class="summary block-with-text">
                             
-                                GUI? API? CLI? 그 전에 Document!
+                                🙊 글을 쓰는 이유Airflow는 파이썬의 Web Framework인 Flask로 만든 편리한 Web Server를 컴포넌트로 제공하고 있어요. Web으로도 충분한 활용이 가능하지만, GUI가 Airflow API
                             
-                        </div>
+                        </div> -->
                         <div class="publish-info">
                             <span class="publish-date">
                                 <i class="far fa-clock fa-fw icon-date"></i>2024-01-07
@@ -354,37 +279,32 @@
                         </div>
                     </div>
 
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Airflow/">
-                            <span class="chip bg-color">Airflow</span>
-                        </a>
-                        
-                    </div>
-                    
+                    <!--  -->
                 </div>
             </div>
-              <!-- 隐藏某个文章 -->
             
-             <!-- 隐藏某个文章 -->
+            
+            
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2024/01/06/Data-Architecture/data-vault-2.0/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="[Data Architecture] Data Warehouse">
+                            <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="[Data Architecture] Data Vault 2.0">
                             
-                            <span class="card-title diy-neon-red">[Data Architecture] Data Warehouse</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Data Architecture] Data Vault 2.0</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
-                        <div class="summary block-with-text">
+                        <!-- <div class="summary block-with-text">
                             
-                                Data Warehouse, 왜 필요한 걸까요?
+                                Hub, Link, Satellite
+HUB: Unique list of business keys
+
+LINK: Unique list of (n to n) relationships between business key
                             
-                        </div>
+                        </div> -->
                         <div class="publish-info">
                             <span class="publish-date">
                                 <i class="far fa-clock fa-fw icon-date"></i>2024-01-06
@@ -402,24 +322,12 @@
                         </div>
                     </div>
 
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Data-Architecture/">
-                            <span class="chip bg-color">Data Architecture</span>
-                        </a>
-                        
-                        <a href="/tags/Data-Warehouse/">
-                            <span class="chip bg-color">Data Warehouse</span>
-                        </a>
-                        
-                    </div>
-                    
+                    <!--  -->
                 </div>
             </div>
-              <!-- 隐藏某个文章 -->
             
-             <!-- 隐藏某个文章 -->
+            
+            
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2024/01/06/Data-Architecture/data-warehouse/">
@@ -427,16 +335,16 @@
                             
                             <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="[Data Architecture] Data Warehouse">
                             
-                            <span class="card-title diy-neon-red">[Data Architecture] Data Warehouse</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Data Architecture] Data Warehouse</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
-                        <div class="summary block-with-text">
+                        <!-- <div class="summary block-with-text">
                             
                                 Data Warehouse, 왜 필요한 걸까요?
                             
-                        </div>
+                        </div> -->
                         <div class="publish-info">
                             <span class="publish-date">
                                 <i class="far fa-clock fa-fw icon-date"></i>2024-01-06
@@ -454,24 +362,12 @@
                         </div>
                     </div>
 
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Data-Architecture/">
-                            <span class="chip bg-color">Data Architecture</span>
-                        </a>
-                        
-                        <a href="/tags/Data-Warehouse/">
-                            <span class="chip bg-color">Data Warehouse</span>
-                        </a>
-                        
-                    </div>
-                    
+                    <!--  -->
                 </div>
             </div>
-              <!-- 隐藏某个文章 -->
             
-             <!-- 隐藏某个文章 -->
+            
+            
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2024/01/06/Data-Architecture/dimension-modeling(2)/">
@@ -479,16 +375,16 @@
                             
                             <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="[Data Architecture] Dimension Modeling(2)">
                             
-                            <span class="card-title diy-neon-red">[Data Architecture] Dimension Modeling(2)</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Data Architecture] Dimension Modeling(2)</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
-                        <div class="summary block-with-text">
+                        <!-- <div class="summary block-with-text">
                             
                                 D-
                             
-                        </div>
+                        </div> -->
                         <div class="publish-info">
                             <span class="publish-date">
                                 <i class="far fa-clock fa-fw icon-date"></i>2024-01-06
@@ -506,24 +402,12 @@
                         </div>
                     </div>
 
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Data-Architecture/">
-                            <span class="chip bg-color">Data Architecture</span>
-                        </a>
-                        
-                        <a href="/tags/Data-Warehouse/">
-                            <span class="chip bg-color">Data Warehouse</span>
-                        </a>
-                        
-                    </div>
-                    
+                    <!--  -->
                 </div>
             </div>
-              <!-- 隐藏某个文章 -->
             
-             <!-- 隐藏某个文章 -->
+            
+            
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2024/01/06/Data-Architecture/role-playing-dimension/">
@@ -531,16 +415,16 @@
                             
                             <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="[Data Architecture] Role-playing Dimension">
                             
-                            <span class="card-title diy-neon-red">[Data Architecture] Role-playing Dimension</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Data Architecture] Role-playing Dimension</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
-                        <div class="summary block-with-text">
+                        <!-- <div class="summary block-with-text">
                             
                                 Role-playing Dimension 만들기
                             
-                        </div>
+                        </div> -->
                         <div class="publish-info">
                             <span class="publish-date">
                                 <i class="far fa-clock fa-fw icon-date"></i>2024-01-06
@@ -558,24 +442,12 @@
                         </div>
                     </div>
 
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Data-Architecture/">
-                            <span class="chip bg-color">Data Architecture</span>
-                        </a>
-                        
-                        <a href="/tags/Data-Warehouse/">
-                            <span class="chip bg-color">Data Warehouse</span>
-                        </a>
-                        
-                    </div>
-                    
+                    <!--  -->
                 </div>
             </div>
-              <!-- 隐藏某个文章 -->
             
-             <!-- 隐藏某个文章 -->
+            
+            
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2024/01/06/Data-Architecture/slowly-changing-dimension/">
@@ -583,16 +455,16 @@
                             
                             <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="[Data Architecture] Slowly Changing Dimensions">
                             
-                            <span class="card-title diy-neon-red">[Data Architecture] Slowly Changing Dimensions</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Data Architecture] Slowly Changing Dimensions</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
-                        <div class="summary block-with-text">
+                        <!-- <div class="summary block-with-text">
                             
                                 Data Warehouse, 왜 필요한 걸까요?
                             
-                        </div>
+                        </div> -->
                         <div class="publish-info">
                             <span class="publish-date">
                                 <i class="far fa-clock fa-fw icon-date"></i>2024-01-06
@@ -610,24 +482,12 @@
                         </div>
                     </div>
 
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Data-Architecture/">
-                            <span class="chip bg-color">Data Architecture</span>
-                        </a>
-                        
-                        <a href="/tags/Data-Warehouse/">
-                            <span class="chip bg-color">Data Warehouse</span>
-                        </a>
-                        
-                    </div>
-                    
+                    <!--  -->
                 </div>
             </div>
-              <!-- 隐藏某个文章 -->
             
-             <!-- 隐藏某个文章 -->
+            
+            
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2024/01/01/Airflow/subdags/">
@@ -635,12 +495,12 @@
                             
                             <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] SubDags">
                             
-                            <span class="card-title diy-neon-red">[Airflow] SubDags</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Airflow] SubDags</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
-                        <div class="summary block-with-text">
+                        <!-- <div class="summary block-with-text">
                             
                                 Airflow WebUi에서 시각적으로 결합
 
@@ -650,7 +510,7 @@
 
 SubDag를 생성하려면 
                             
-                        </div>
+                        </div> -->
                         <div class="publish-info">
                             <span class="publish-date">
                                 <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
@@ -668,20 +528,56 @@ SubDag를 생성하려면
                         </div>
                     </div>
 
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Airflow/">
-                            <span class="chip bg-color">Airflow</span>
-                        </a>
-                        
-                    </div>
-                    
+                    <!--  -->
                 </div>
             </div>
-              <!-- 隐藏某个文章 -->
             
-             <!-- 隐藏某个文章 -->
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/01/01/Flink/flink-datastream-api-%EB%AF%B8%EC%99%84-/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/flink-logo.png" class="responsive-img" alt="[Flink] DataStream API">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Flink] DataStream API</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                Flink DataStream API
+데이터스트림에 대한 변환(필터링, 상태 업데이트, 창 정의, 집계 등)을 구현
+
+
+데이터스트림의 소스 : Message Queue, Socket Stream, File, Kafa
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Flink/" class="post-category">
+                                    Flink
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
+            
+            
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2024/01/01/Docker/docker-command-%EB%AF%B8%EC%99%84-/">
@@ -689,14 +585,14 @@ SubDag를 생성하려면
                             
                             <img src="/images/logos/docker-logo.png" class="responsive-img" alt="[Docker] Container Command">
                             
-                            <span class="card-title diy-neon-red">[Docker] Container Command</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Docker] Container Command</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
-                        <div class="summary block-with-text">
+                        <!-- <div class="summary block-with-text">
                             
-                                Docker Container Command
+                                
 docker-compose.yaml 실행
 
 $ docker-compose up -d
@@ -706,9 +602,9 @@ $ docker-compose up -d -t [시간(초)]
 
 도커 실행하기
 
-$ 
+$ docker exec -it &lt;cont
                             
-                        </div>
+                        </div> -->
                         <div class="publish-info">
                             <span class="publish-date">
                                 <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
@@ -726,20 +622,12 @@ $
                         </div>
                     </div>
 
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Docker/">
-                            <span class="chip bg-color">Docker</span>
-                        </a>
-                        
-                    </div>
-                    
+                    <!--  -->
                 </div>
             </div>
-              <!-- 隐藏某个文章 -->
             
-             <!-- 隐藏某个文章 -->
+            
+            
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2024/01/01/Docker/docker-container-concept/">
@@ -747,20 +635,21 @@ $
                             
                             <img src="/images/logos/docker-logo.png" class="responsive-img" alt="[Docker] Container">
                             
-                            <span class="card-title diy-neon-red">[Docker] Container</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Docker] Container</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
-                        <div class="summary block-with-text">
+                        <!-- <div class="summary block-with-text">
                             
-                                Docker Container컨테이너란?
+                                컨테이너란?
 애플리케이션과 애플리케이션을 실행할 컴퓨터(IP 주소, 컴퓨터 이름, 디스크 드라이브)를 담은 가상 환경&#96;&#96;
 
 
-컨테이너는 개별 호스트명, IP주소, 디스크 드
+컨테이너는 개별 호스트명, IP주소, 디스크 드라이브를 갖음
+모든 컨테이너는
                             
-                        </div>
+                        </div> -->
                         <div class="publish-info">
                             <span class="publish-date">
                                 <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
@@ -778,18 +667,10 @@ $
                         </div>
                     </div>
 
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Docker/">
-                            <span class="chip bg-color">Docker</span>
-                        </a>
-                        
-                    </div>
-                    
+                    <!--  -->
                 </div>
             </div>
-              <!-- 隐藏某个文章 -->
+            
             
         </div>
     </article>
