@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[SQL] Procedure, Data Engineering,Data Analysis,Python Backend">
+    <meta name="keywords" content="[SQL] Procedure 사용하기, Data Engineering,Data Analysis,Python Backend">
     <meta name="description" content="SQL에서 Procedure 사용하기">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[SQL] Procedure | Keyhong</title>
+    <title>[SQL] Procedure 사용하기 | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -233,7 +233,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [SQL] Procedure</h1>
+                        [SQL] Procedure 사용하기</h1>
                 </div>
             </div>
         </div>
@@ -306,7 +306,10 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="non-parametic-procedure"><a href="#non-parametic-procedure" class="headerlink" title="non-parametic procedure"></a>non-parametic procedure</h1><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">DELIMITER</span> $$
+                <h2 id="Procedure"><a href="#Procedure" class="headerlink" title="Procedure"></a>Procedure</h2><blockquote>
+<p>일련의 SQL 문을 포함하는 미리 정의된 데이터베이스 객체</p>
+</blockquote>
+<h2 id="Non-parametric-procedure"><a href="#Non-parametric-procedure" class="headerlink" title="Non-parametric procedure"></a>Non-parametric procedure</h2><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">DELIMITER</span> $$
 <span class="token keyword">CREATE</span> <span class="token keyword">PROCEDURE</span> procedure_name<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">BEGIN</span>
     <span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> employees
@@ -349,10 +352,16 @@
 <span class="token keyword">CALL</span> select_employees<span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h1 id="parametric-procedure"><a href="#parametric-procedure" class="headerlink" title="parametric procedure"></a>parametric procedure</h1><p>저장된 프로시저(Stored Procedure)는 입력값을 활용하여 계산을 수행하고 그 결과를 출력값으로 반환할 수 있습니다.</p>
-<p>저장 프로시저는 입력값을 받아 프로시저 몸체에 작성된 쿼리 또는 쿼리들에서 이를 사용할 수 있습니다.</p>
-<p>이 값을 나타내는 것이 IN 매개변수입니다.</p>
-<p>계산이 완료되면 결과가 반환됩니다.</p>
+<h2 id="Parametric-procedure"><a href="#Parametric-procedure" class="headerlink" title="Parametric procedure"></a>Parametric procedure</h2><ul>
+<li><p>저장된 프로시저(Stored Procedure)는 입력값을 활용하여 계산을 수행하고 그 결과를 출력값으로 반환할 수 있습니다.</p>
+</li>
+<li><p>저장 프로시저는 입력값을 받아 프로시저 몸체에 작성된 쿼리 또는 쿼리들에서 이를 사용할 수 있습니다.</p>
+</li>
+<li><p>이 값을 나타내는 것이 IN 매개변수입니다.</p>
+</li>
+<li><p>계산이 완료되면 결과가 반환됩니다.</p>
+</li>
+</ul>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">DELIMITER</span> $$
 <span class="token keyword">CREATE</span> <span class="token keyword">PROCEDURE</span> procedure_name<span class="token punctuation">(</span><span class="token operator">in</span> parameter<span class="token punctuation">)</span>
 <span class="token keyword">BEGIN</span>
@@ -402,7 +411,7 @@ DELMITER $$
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">CALL</span> emp_avg_salary<span class="token punctuation">(</span><span class="token number">11300</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
-<h1 id="2-parametic-procedure"><a href="#2-parametic-procedure" class="headerlink" title="2 parametic procedure"></a>2 parametic procedure</h1><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">DELMITER $$
+<h2 id="2-Parametic-procedure"><a href="#2-Parametic-procedure" class="headerlink" title="2 Parametic procedure"></a>2 Parametic procedure</h2><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">DELMITER $$
 <span class="token keyword">CREATE</span> <span class="token keyword">PROCEDURE</span> procedure_name<span class="token punctuation">(</span><span class="token operator">in</span> parameter<span class="token punctuation">,</span> <span class="token keyword">out</span> parameter<span class="token punctuation">)</span>
 <span class="token keyword">BEGIN</span>
     <span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> employees
@@ -592,45 +601,47 @@ gitment.render('gitment-content');
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2024/01/25/Airflow/operator-%EB%AF%B8%EC%99%84-/">
+                <a href="/2024/01/22/SQL/Mysql/procedure/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] Operator">
+                        <img src="/images/logos/sql-logo.png" class="responsive-img" alt="[SQL] Procedure 사용하기">
                         
-                        <span class="card-title diy-neon-red">[Airflow] Operator</span>
+                        <span class="card-title diy-neon-yellow">[SQL] Procedure 사용하기</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Operator
+                            SQL에서 Procedure 사용하기
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-25
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-22
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Airflow/" class="post-category">
-                                    Airflow
+                            <a href="/categories/SQL/" class="post-category">
+                                    SQL
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Airflow/">
-                        <span class="chip bg-color">Airflow</span>
+                    <a href="/tags/SQL/">
+                        <span class="chip bg-color">SQL</span>
                     </a>
                     
                 </div>
@@ -644,7 +655,7 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/20/DBT/snowflake-setup/">
+                <a href="/2024/01/20/DBT/dbt-snowflake-setup/">
                     <div class="card-image">
                         
                         <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] DBT 설치하기">

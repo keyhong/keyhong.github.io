@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[Kubernetes] EC2 clutser 구축하기, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="EC2에서 kubernetes clutser 구축하기">
+    <meta name="keywords" content="[DBT] DBT 설치하기, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="DBT 설치하기">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[Kubernetes] EC2 clutser 구축하기 | Keyhong</title>
+    <title>[DBT] DBT 설치하기 | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -227,13 +227,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/kubernetes-logo.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/dbt-logo.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [Kubernetes] EC2 clutser 구축하기</h1>
+                        [DBT] DBT 설치하기</h1>
                 </div>
             </div>
         </div>
@@ -257,8 +257,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Kubernetes/">
-                                <span class="chip bg-color">Kubernetes</span>
+                            <a href="/tags/DBT/">
+                                <span class="chip bg-color">DBT</span>
                             </a>
                         
                     </div>
@@ -269,8 +269,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Kubernetes/" class="post-category">
-                                Kubernetes
+                            <a href="/categories/DBT/" class="post-category">
+                                DBT
                             </a>
                         
                     </div>
@@ -282,7 +282,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2024-01-19
+                    2024-01-20
                 </div>
                 
 
@@ -306,172 +306,175 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>control plain - data plain(인프라)</p>
-<p>Service Descriptor - template, yaml</p>
-<p>kubeadm : 클러스터 구성<br>kubectl : command<br>kubelet : daemon (docker한테 올리라고 말함)</p>
-<p>Desired State -&gt; Current State (X)<br>Current State -&gt; Desired State (O)</p>
-<h1 id="Region을-선택한다"><a href="#Region을-선택한다" class="headerlink" title="Region을 선택한다."></a>Region을 선택한다.</h1><p>AWS Region을 선택한다. Region별 이용 가격에 차이가 있다. (아르헨티나, 유럽이 가장 비싸고 나머지는 비슷하다.) Region은 물리적 서버가 얼마나 가까이 있는 지를 결정한다. 프로덕션 환경에서는 서비스를 제공하는 국가와 있는 것이 좋다.</p>
-<h2 id="먼저-EC2-인스턴스-하나를-생성한다"><a href="#먼저-EC2-인스턴스-하나를-생성한다" class="headerlink" title="먼저 EC2 인스턴스 하나를 생성한다."></a>먼저 EC2 인스턴스 하나를 생성한다.</h2><h2 id="생성된-인스턴스에-진입-후"><a href="#생성된-인스턴스에-진입-후" class="headerlink" title="생성된 인스턴스에 진입 후"></a>생성된 인스턴스에 진입 후</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># root 계정 전환</span>
-<span class="token function">sudo</span> <span class="token function">su</span> - 
+                <h2 id="DBT-Data-Build-Tool-란"><a href="#DBT-Data-Build-Tool-란" class="headerlink" title="DBT (Data Build Tool)란?"></a>DBT (Data Build Tool)란?</h2><blockquote>
+<p>dbt™ is a SQL-first transformation workflow that lets teams quickly and collaboratively deploy analytics code following software engineering best practices like modularity, portability, CI&#x2F;CD, and documentation. Now anyone on the data team can safely contribute to production-grade data pipelines.</p>
+</blockquote>
+<p>SQL 기반의 변환 작업 흐름으로, 팀이 모듈화, 이식성, CI&#x2F;CD 및 문서화와 같은 소프트웨어 엔지니어링의 최상의 관행을 따르면서 빠르게 협업하여 분석 코드를 배포할 수 있게 합니다. 이제 데이터 팀의 누구나 안전하게 프로덕션급 데이터 파이프라인에 기여할 수 있습니다.</p>
+<h2 id="DBT-사용하기"><a href="#DBT-사용하기" class="headerlink" title="DBT 사용하기"></a>DBT 사용하기</h2><p>dbt는 데이터베이스, 웨어하우스, 레이크 또는 쿼리 엔진에 연결하여 SQL을 실행합니다. 이러한 SQL 기반 플랫폼을 통칭하여 데이터 플랫폼 이라고 합니다 . dbt는 각각 전용 어댑터 플러그인을 사용하여 데이터 플랫폼과 연결됩니다. 플러그인은 시스템에 설치된 경우 dbt Core가 검색하는 Python 모듈로 구축됩니다. 어댑터 빌드, 테스트, 문서화 및 승격 가이드를 참조하세요 .</p>
+<p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/supported-data-platforms">가이드</a></p>
+<h2 id="Snowflake-설정"><a href="#Snowflake-설정" class="headerlink" title="Snowflake 설정"></a>Snowflake 설정</h2><p>dbt를 사용하려면 먼저 데이터베이스를 사용할 수 있는 계정을 만들어야 합니다. </p>
+<h3 id="Snowflake-유저-생성"><a href="#Snowflake-유저-생성" class="headerlink" title="Snowflake 유저 생성"></a>Snowflake 유저 생성</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Use an admin role</span>
+<span class="token keyword">USE</span> ROLE ACCOUNTADMIN<span class="token punctuation">;</span>
 
-<span class="token comment"># hostctl로 hostname 변경</span>
-hostnamectl set-hostname master
+<span class="token comment">-- Create the `transform` role</span>
+<span class="token keyword">CREATE</span> ROLE <span class="token keyword">IF</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span> transform<span class="token punctuation">;</span>
+<span class="token keyword">GRANT</span> ROLE TRANSFORM <span class="token keyword">TO</span> ROLE ACCOUNTADMIN<span class="token punctuation">;</span>
 
-<span class="token comment"># hostname 변경확인</span>
-<span class="token function">hostname</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment">-- Create the default warehouse if necessary</span>
+<span class="token keyword">CREATE</span> WAREHOUSE <span class="token keyword">IF</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span> COMPUTE_WH<span class="token punctuation">;</span>
+<span class="token keyword">GRANT</span> OPERATE <span class="token keyword">ON</span> WAREHOUSE COMPUTE_WH <span class="token keyword">TO</span> ROLE TRANSFORM<span class="token punctuation">;</span>
 
-<h2 id="도커-설치"><a href="#도커-설치" class="headerlink" title="도커 설치"></a>도커 설치</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">
-<span class="token comment"># 도커 설치</span>
-<span class="token comment"># https://docs.docker.com/engine/install/ubuntu/</span>
+<span class="token comment">-- Create the `dbt` user and assign to role</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">USER</span> <span class="token keyword">IF</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span> dbt
+  LOGIN_NAME<span class="token operator">=</span><span class="token string">'dbt'</span>
+  PASSWORD<span class="token operator">=</span><span class="token string">'dbtPassword123'</span>
+  MUST_CHANGE_PASSWORD<span class="token operator">=</span><span class="token boolean">FALSE</span>
+  DEFAULT_ROLE<span class="token operator">=</span><span class="token string">'transform'</span>
+  DEFAULT_WAREHOUSE<span class="token operator">=</span><span class="token string">'COMPUTE_WH'</span>
+  DEFAULT_NAMESPACE<span class="token operator">=</span><span class="token string">'AIRBNB.RAW'</span>
+  <span class="token keyword">COMMENT</span><span class="token operator">=</span><span class="token string">'DBT user used for data transformation'</span><span class="token punctuation">;</span>
+<span class="token keyword">GRANT</span> ROLE transform <span class="token keyword">to</span> <span class="token keyword">USER</span> dbt<span class="token punctuation">;</span>
 
-<span class="token comment"># 1) 패키지 매니저 업데이트</span>
-$ <span class="token function">sudo</span> <span class="token function">apt-get</span> update
+<span class="token comment">-- Create our database and schemas</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">DATABASE</span> <span class="token keyword">IF</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span> AIRBNB<span class="token punctuation">;</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">SCHEMA</span> <span class="token keyword">IF</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span> AIRBNB<span class="token punctuation">.</span>RAW<span class="token punctuation">;</span>
 
-<span class="token comment"># 2) https를 사용해서 레포지토리를 사용할 수 있도록 필요한 패키지를 설치한다. </span>
-$ <span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> <span class="token parameter variable">-y</span>  apt-transport-https ca-certificates <span class="token function">curl</span> software-properties-common
+<span class="token comment">-- Set up permissions to role `transform`</span>
+<span class="token keyword">GRANT</span> <span class="token keyword">ALL</span> <span class="token keyword">ON</span> WAREHOUSE COMPUTE_WH <span class="token keyword">TO</span> ROLE transform<span class="token punctuation">;</span> 
+<span class="token keyword">GRANT</span> <span class="token keyword">ALL</span> <span class="token keyword">ON</span> <span class="token keyword">DATABASE</span> AIRBNB <span class="token keyword">to</span> ROLE transform<span class="token punctuation">;</span>
+<span class="token keyword">GRANT</span> <span class="token keyword">ALL</span> <span class="token keyword">ON</span> <span class="token keyword">ALL</span> SCHEMAS <span class="token operator">IN</span> <span class="token keyword">DATABASE</span> AIRBNB <span class="token keyword">to</span> ROLE transform<span class="token punctuation">;</span>
+<span class="token keyword">GRANT</span> <span class="token keyword">ALL</span> <span class="token keyword">ON</span> FUTURE SCHEMAS <span class="token operator">IN</span> <span class="token keyword">DATABASE</span> AIRBNB <span class="token keyword">to</span> ROLE transform<span class="token punctuation">;</span>
+<span class="token keyword">GRANT</span> <span class="token keyword">ALL</span> <span class="token keyword">ON</span> <span class="token keyword">ALL</span> <span class="token keyword">TABLES</span> <span class="token operator">IN</span> <span class="token keyword">SCHEMA</span> AIRBNB<span class="token punctuation">.</span>RAW <span class="token keyword">to</span> ROLE transform<span class="token punctuation">;</span>
+<span class="token keyword">GRANT</span> <span class="token keyword">ALL</span> <span class="token keyword">ON</span> FUTURE <span class="token keyword">TABLES</span> <span class="token operator">IN</span> <span class="token keyword">SCHEMA</span> AIRBNB<span class="token punctuation">.</span>RAW <span class="token keyword">to</span> ROLE transform<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<span class="token comment"># 3) Docker 공식 리포지토리에서 패키지를 다운로드 받았을 때 위변조 확인을 위한 GPG 키를 추가한다.</span>
-$ <span class="token function">curl</span> <span class="token parameter variable">-fsSL</span> https://download.docker.com/linux/ubuntu/gpg <span class="token operator">|</span> <span class="token function">sudo</span> apt-key <span class="token function">add</span> -
+<h2 id="DBT-설치"><a href="#DBT-설치" class="headerlink" title="DBT 설치"></a>DBT 설치</h2><p>데이터베이스 설정이 끝났다면 로컬에 dbt를 설치합니다.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># venv 가상환경 만들기</span>
+$ virtualenv venv 
 
-<span class="token comment"># 4) Docker.com 의 GPG 키가 등록됐는지 확인한다. </span>
-$ apt-key fingerprint     
-
-<span class="token comment"># 5) Docker 공식 저장소를 리포지토리로 등록한다.</span>
-$ add-apt-repository <span class="token string">"deb [arch=amd64] https://download.docker.com/linux/ubuntu <span class="token variable"><span class="token variable">$(</span>lsb_release <span class="token parameter variable">-cs</span><span class="token variable">)</span></span> stable"</span>
-
-
-<span class="token comment"># 6) 저장소 등록정보에 기록됐는지 확인한다. </span>
-$ <span class="token function">grep</span> <span class="token function">docker</span> /etc/apt/sources.list
-deb <span class="token punctuation">[</span>arch<span class="token operator">=</span>amd64<span class="token punctuation">]</span> https://download.docker.com/linux/ubuntu bionic stable
-
-<span class="token comment"># 7) 리포지토리 정보를 갱신</span>
-$ <span class="token function">apt-get</span> update
-
-<span class="token comment"># 8) docker container engine 을 설치한다.</span>
-$ <span class="token function">apt-get</span> <span class="token function">install</span> <span class="token parameter variable">-y</span> docker-ce
-
-<span class="token comment"># 9) docker version</span>
-$ <span class="token function">docker</span> 버전 확인
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>docker container engine 을 설치한다.</p>
-<p>AWS에서는 스왑핑 기능이 없기 때문에 아래 과정은 고려하지 않아도 된다. 그러나 로컬에 직접 설치한다면 반드시 해줘야 하는 과정이다.</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 보완리눅스가 설치되어 있다면</span>
-$ setenforce <span class="token number">0</span>
-
-<span class="token comment"># 방화벽 끄기</span>
-$ ufw disable
-
-<span class="token comment"># modprobe br_netfilter</span>
-$ <span class="token function">cat</span> <span class="token operator">&lt;&lt;</span><span class="token string">EOF<span class="token bash punctuation"> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> /etc/modules-load.d/k8s.conf</span>
-br_netfilter
-EOF</span>
-
-$ <span class="token function">cat</span> <span class="token operator">&lt;&lt;</span><span class="token string">EOF<span class="token bash punctuation"> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> /etc/sysctl.d/k8s.conf</span>
-net.bridge.bridge-nf-call-ip6tables = 1
-net.bridge.bridge-nf-call-iptables = 1
-EOF</span>
-
-$ <span class="token function">sudo</span> <span class="token function">sysctl</span> <span class="token parameter variable">--system</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="쿠버네티스-kubeadm-kubelet-kubectl-설치-1-21버전까지만-도커-지원"><a href="#쿠버네티스-kubeadm-kubelet-kubectl-설치-1-21버전까지만-도커-지원" class="headerlink" title="쿠버네티스(kubeadm&#x2F;kubelet&#x2F;kubectl) 설치 (1.21버전까지만 도커 지원)"></a>쿠버네티스(kubeadm&#x2F;kubelet&#x2F;kubectl) 설치 (1.21버전까지만 도커 지원)</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 1) </span>
-$ <span class="token function">apt</span> update
-
-<span class="token comment"># 2) </span>
-$ <span class="token function">apt-get</span> <span class="token function">install</span> <span class="token parameter variable">-y</span> apt-transport-https ca-certificates <span class="token function">curl</span>
-
-<span class="token comment"># 3) </span>
-$ <span class="token function">curl</span> <span class="token parameter variable">-s</span> https://packages.cloud.google.com/apt/doc/apt-key.gpg <span class="token operator">|</span> <span class="token function">sudo</span> apt-key <span class="token function">add</span> -
-
-<span class="token comment"># 4) </span>
-$ 
-<span class="token function">cat</span> <span class="token operator">&lt;&lt;</span><span class="token string">EOF<span class="token bash punctuation"> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> /etc/apt/sources.list.d/kubernetes.list</span>
-deb https://apt.kubernetes.io/ kubernetes-xenial main
-EOF</span>
-
-<span class="token comment"># 5)</span>
-$ <span class="token function">apt</span> update
-
-<span class="token comment"># 6)</span>
-$ <span class="token function">apt-get</span> <span class="token function">install</span> <span class="token parameter variable">-y</span> <span class="token assign-left variable">kubelet</span><span class="token operator">=</span><span class="token number">1.24</span>.0-00 <span class="token assign-left variable">kubeadm</span><span class="token operator">=</span><span class="token number">1.24</span>.0-00 <span class="token assign-left variable">kubectl</span><span class="token operator">=</span><span class="token number">1.24</span>.0-00
-
-<span class="token comment"># 7)</span>
-$ kubectl version
-$ kubelet <span class="token parameter variable">--version</span>
-$ kubeadm version
-
-<span class="token comment"># 8)</span>
-$ apt-mark hold kubelet kubeadm kubectl
-
-<span class="token comment"># cgroup</span>
-<span class="token function">cat</span> <span class="token operator">&lt;&lt;</span><span class="token string">EOF<span class="token bash punctuation"> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> /etc/docker/daemon.json</span>
-&#123;
-  "exec-opts": ["native.cgroupdriver=systemd"],
-  "log-driver": "json-file",
-  "log-opts": &#123;
-    "max-size": "100m"
-  &#125;,
-  "storage-driver": "overlay2"
-&#125;
-EOF</span>
-
-$ <span class="token function">sudo</span> systemctl <span class="token builtin class-name">enable</span> <span class="token function">docker</span>
-$ <span class="token function">sudo</span> systemctl daemon-reload
-$ <span class="token function">sudo</span> systemctl restart <span class="token function">docker</span>
-
-<span class="token comment"># 7. containerd</span>
-
-$ <span class="token function">vi</span> /etc/containerd/config.toml
-:q<span class="token operator">!</span>
-$ <span class="token function">rm</span> /etc/containerd/config.toml
-$ systemctl restart containerd
-$ systemctl <span class="token builtin class-name">enable</span> containerd
-$ <span class="token function">apt</span> update<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h1 id="지금까지-vm-이미지-복사"><a href="#지금까지-vm-이미지-복사" class="headerlink" title="지금까지 vm 이미지 복사"></a>지금까지 vm 이미지 복사</h1><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Alternatively, <span class="token keyword">if</span> you are the root user, you can run:
-<span class="token builtin class-name">export</span> <span class="token assign-left variable">KUBECONFIG</span><span class="token operator">=</span>/etc/kubernetes/admin.conf <span class="token punctuation">(</span>  root 사용자의 홈디렉토리 쉘 환경파일에 편집<span class="token punctuation">)</span>
-You should now deploy a pod network to the cluster.
-
-$ kubeadm init
-
-<span class="token function">apt-get</span> <span class="token function">install</span> <span class="token parameter variable">-y</span> <span class="token assign-left variable">kubelet</span><span class="token operator">=</span><span class="token number">1.25</span>.0-00 <span class="token assign-left variable">kubectl</span><span class="token operator">=</span><span class="token number">1.25</span>.0-00 <span class="token assign-left variable">kubeadm</span><span class="token operator">=</span><span class="token number">1.25</span>.0-00
+<span class="token comment"># dbt adapter 설치 (만약 postgres dbt라면, dbt-postgres 처럼 스토리지에 맞게 install 해주어야 합니다.)</span>
+$ pip <span class="token function">install</span> dbt-snowflake
 
 
-$ <span class="token function">mkdir</span> <span class="token parameter variable">-p</span> <span class="token environment constant">$HOME</span>/.kube
-$ <span class="token function">sudo</span> <span class="token function">cp</span> <span class="token parameter variable">-i</span> /etc/kubernetes/admin.conf <span class="token environment constant">$HOME</span>/.kube/config
-$ <span class="token function">sudo</span> <span class="token function">chown</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">id</span> <span class="token parameter variable">-u</span><span class="token variable">)</span></span><span class="token builtin class-name">:</span><span class="token variable"><span class="token variable">$(</span><span class="token function">id</span> <span class="token parameter variable">-g</span><span class="token variable">)</span></span> <span class="token environment constant">$HOME</span>/.kube/config
+<span class="token comment"># HOME 디렉터리에 .dbt 히든 디렉터리 생성 (storage와 연결할 계정 정보 파일이 존재하는 곳)</span>
+$ <span class="token function">mkdir</span> ~/.dbt
 
-$ kubeadm <span class="token function">join</span> <span class="token number">172.31</span>.29.172:6443 <span class="token parameter variable">--token</span> eov08p.501r15runnzb46pk <span class="token punctuation">\</span>
-        --discovery-token-ca-cert-hash sha256:61f467570400f620dc064e670a7f2666558faceb9f9c470e49f21372deeb475f
+<span class="token comment"># dbt init &lt;프로젝트명></span>
+$ dbt init <span class="token operator">&lt;</span>project<span class="token operator">></span>
+<span class="token comment"># $ dbt init dbtlearn</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-$ <span class="token function">vi</span> ~/.bashrc
-<span class="token builtin class-name">export</span> <span class="token assign-left variable">KUBECONFIG</span><span class="token operator">=</span>/etc/kubernetes/admin.conf
-$ <span class="token builtin class-name">source</span> .bashrc
+<p>그럼 아래와 같이 프롬프트로 데이터베이스와 연결할 수 있는 계정 설정에 대한 몇 가지 질문을 받게됩니다. 입력해주십시다.</p>
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>프롬프트 화면</span></div><code class="language-bash"><span class="token comment"># Which database would you like to use?</span>
+<span class="token comment"># [1] snowflake</span>
 
-<span class="token comment"># join을 위한 토큰 발행</span>
-$ <span class="token function">cat</span> <span class="token operator">></span> token.sh
-$ kubeadm <span class="token function">join</span> <span class="token number">172.31</span>.29.172:6443 <span class="token parameter variable">--token</span> eov08p.501r15runnzb46pk <span class="token punctuation">\</span>
-        --discovery-token-ca-cert-hash sha256:61f467570400f620dc064e670a7f2666558faceb9f9c470e49f21372deeb475f
+<span class="token comment"># (Don't see the one you want? https://docs.getdbt.com/docs/available-adapters)</span>
 
-<span class="token comment"># CNI</span>
-$ <span class="token function">wget</span> https://docs.projectcalico.org/manifests/calico.yaml
-$ kubectl apply <span class="token parameter variable">-f</span> calico.yaml
-
-<span class="token comment"># 확인</span>
-$ kubectl get pods <span class="token parameter variable">-n</span> kube-system
-
-$ kubectl get <span class="token function">node</span> <span class="token parameter variable">-o</span> wide
-
-
-** worker 노드에서는 kubectl 명령어가 먹질 않는다.
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token number">1</span>
 
 
 
-<h1 id="component"><a href="#component" class="headerlink" title="component"></a>component</h1><ol>
-<li>상태를 etcd에 저장</li>
-</ol>
-<p>$ kubectl cluster-info</p>
-<p>$ kubectl config view</p>
+account <span class="token punctuation">(</span>https://<span class="token operator">&lt;</span>this_value<span class="token operator">></span>.snowflakecomputing.com<span class="token punctuation">)</span>: ---
+user <span class="token punctuation">(</span>dev username<span class="token punctuation">)</span>: dbt
+<span class="token assign-left variable">LOGIN_NAME</span><span class="token operator">=</span><span class="token string">'dbt'</span>
+
+<span class="token comment"># [1] password</span>
+<span class="token comment"># [2] keypair</span>
+<span class="token comment"># [3] sso</span>
+Desired authentication <span class="token builtin class-name">type</span> option <span class="token punctuation">(</span>enter a number<span class="token punctuation">)</span>: <span class="token number">1</span>
+password <span class="token punctuation">(</span>dev password<span class="token punctuation">)</span>: dbtPassword123
+<span class="token assign-left variable">PASSWORD</span><span class="token operator">=</span><span class="token string">'dbtPassword123'</span>
+ 
+role <span class="token punctuation">(</span>dev role<span class="token punctuation">)</span>: transform
+
+warehouse <span class="token punctuation">(</span>warehouse name<span class="token punctuation">)</span>: COMPUTE_WH
+
+database <span class="token punctuation">(</span>default database that dbt will build objects <span class="token keyword">in</span><span class="token punctuation">)</span>: AIRBNB
+
+schema <span class="token punctuation">(</span>default schema that dbt will build objects <span class="token keyword">in</span><span class="token punctuation">)</span>: DEV
+
+threads <span class="token punctuation">(</span><span class="token number">1</span> or <span class="token function">more</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>: <span class="token number">1</span>
+
+<span class="token comment"># 14:42:11  Profile dbtlearn written to C:\Users\wnhon\.d</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>완료를 했다면 dbt 프로젝트 안에서 debug 명령어로 커넥션을 체크합니다. 커넥션이 붙지 않는다면, ~&#x2F;.dbt에 생성된 <code>profiles.yml</code> 파일을 점검합니다.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># dbt init &lt;프로젝트>로 생성했던 프로젝트 폴더 안으로 진입</span>
+$ <span class="token builtin class-name">cd</span> dbtlearn
+
+<span class="token comment"># dbt debug 명령어로 커넥션 확인</span>
+$ dbt debug<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Snowflake-데이터-import"><a href="#Snowflake-데이터-import" class="headerlink" title="Snowflake 데이터 import"></a>Snowflake 데이터 import</h3><p>Copy these SQL statements into a Snowflake Worksheet, select all and execute them (i.e. pressing the play button).</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Set up the defaults</span>
+<span class="token keyword">USE</span> WAREHOUSE COMPUTE_WH<span class="token punctuation">;</span>
+<span class="token keyword">USE</span> <span class="token keyword">DATABASE</span> airbnb<span class="token punctuation">;</span>
+<span class="token keyword">USE</span> <span class="token keyword">SCHEMA</span> RAW<span class="token punctuation">;</span>
+
+<span class="token comment">-- Create our three tables and import the data from S3</span>
+<span class="token keyword">CREATE</span> <span class="token operator">OR</span> <span class="token keyword">REPLACE</span> <span class="token keyword">TABLE</span> raw_listings <span class="token punctuation">(</span>
+    id <span class="token keyword">integer</span><span class="token punctuation">,</span>
+    listing_url string<span class="token punctuation">,</span>
+    name string<span class="token punctuation">,</span>
+    room_type string<span class="token punctuation">,</span>
+    minimum_nights <span class="token keyword">integer</span><span class="token punctuation">,</span>
+    host_id <span class="token keyword">integer</span><span class="token punctuation">,</span>
+    price string<span class="token punctuation">,</span>
+    created_at <span class="token keyword">datetime</span><span class="token punctuation">,</span>
+    updated_at <span class="token keyword">datetime</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    
+COPY <span class="token keyword">INTO</span> raw_listings <span class="token punctuation">(</span>
+    id<span class="token punctuation">,</span>
+    listing_url<span class="token punctuation">,</span>
+    name<span class="token punctuation">,</span>
+    room_type<span class="token punctuation">,</span>
+    minimum_nights<span class="token punctuation">,</span>
+    host_id<span class="token punctuation">,</span>
+    price<span class="token punctuation">,</span>
+    created_at<span class="token punctuation">,</span>
+    updated_at
+<span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> <span class="token string">'s3://dbtlearn/listings.csv'</span>
+FILE_FORMAT <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">type</span> <span class="token operator">=</span> <span class="token string">'CSV'</span> skip_header <span class="token operator">=</span> <span class="token number">1</span>
+FIELD_OPTIONALLY_ENCLOSED_BY <span class="token operator">=</span> <span class="token string">'"'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    
+
+<span class="token keyword">CREATE</span> <span class="token operator">OR</span> <span class="token keyword">REPLACE</span> <span class="token keyword">TABLE</span> raw_reviews <span class="token punctuation">(</span>
+    listing_id <span class="token keyword">integer</span><span class="token punctuation">,</span>
+    <span class="token keyword">date</span> <span class="token keyword">datetime</span><span class="token punctuation">,</span>
+    reviewer_name string<span class="token punctuation">,</span>
+    comments string<span class="token punctuation">,</span>
+    sentiment string
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    
+COPY <span class="token keyword">INTO</span> raw_reviews <span class="token punctuation">(</span>
+    listing_id<span class="token punctuation">,</span>
+    <span class="token keyword">date</span><span class="token punctuation">,</span>
+    reviewer_name<span class="token punctuation">,</span>
+    comments<span class="token punctuation">,</span>
+    sentiment
+<span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> <span class="token string">'s3://dbtlearn/reviews.csv'</span>
+FILE_FORMAT <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">type</span> <span class="token operator">=</span> <span class="token string">'CSV'</span> skip_header <span class="token operator">=</span> <span class="token number">1</span>
+FIELD_OPTIONALLY_ENCLOSED_BY <span class="token operator">=</span> <span class="token string">'"'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    
+
+<span class="token keyword">CREATE</span> <span class="token operator">OR</span> <span class="token keyword">REPLACE</span> <span class="token keyword">TABLE</span> raw_hosts <span class="token punctuation">(</span>
+    id <span class="token keyword">integer</span><span class="token punctuation">,</span>
+    name string<span class="token punctuation">,</span>
+    is_superhost string<span class="token punctuation">,</span>
+    created_at <span class="token keyword">datetime</span><span class="token punctuation">,</span>
+    updated_at <span class="token keyword">datetime</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    
+COPY <span class="token keyword">INTO</span> raw_hosts <span class="token punctuation">(</span>
+    id<span class="token punctuation">,</span>
+    name<span class="token punctuation">,</span>
+    is_superhost<span class="token punctuation">,</span>
+    created_at<span class="token punctuation">,</span>
+    updated_at
+<span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> <span class="token string">'s3://dbtlearn/hosts.csv'</span>
+FILE_FORMAT <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">type</span> <span class="token operator">=</span> <span class="token string">'CSV'</span> skip_header <span class="token operator">=</span> <span class="token number">1</span>
+FIELD_OPTIONALLY_ENCLOSED_BY <span class="token operator">=</span> <span class="token string">'"'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -498,7 +501,7 @@ $ kubectl get <span class="token function">node</span> <span class="token parame
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/01/19/Kubernetes/lecture/wd/">http://example.com/2024/01/19/Kubernetes/lecture/wd/</a>
+                    <a href="http://example.com/2024/01/20/DBT/dbt-snowflake-setup/">http://example.com/2024/01/20/DBT/dbt-snowflake-setup/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -536,8 +539,8 @@ $ kubectl get <span class="token function">node</span> <span class="token parame
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Kubernetes/">
-                                    <span class="chip bg-color">Kubernetes</span>
+                                <a href="/tags/DBT/">
+                                    <span class="chip bg-color">DBT</span>
                                 </a>
                             
                         </div>
@@ -609,7 +612,7 @@ $ kubectl get <span class="token function">node</span> <span class="token parame
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Fri Jan 19 2024 00:00:00 GMT+0900',
+    id: 'Sat Jan 20 2024 00:00:00 GMT+0900',
     owner: '',
     repo: '',
     oauth: {
@@ -644,30 +647,30 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/20/DBT/snowflake-setup/">
+                <a href="/2024/01/22/SQL/Mysql/procedure/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] DBT 설치하기">
+                        <img src="/images/logos/sql-logo.png" class="responsive-img" alt="[SQL] Procedure 사용하기">
                         
-                        <span class="card-title diy-neon-red">[DBT] DBT 설치하기</span>
+                        <span class="card-title diy-neon-red">[SQL] Procedure 사용하기</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            DBT 설치하기
+                            SQL에서 Procedure 사용하기
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-20
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-22
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/DBT/" class="post-category">
-                                    DBT
+                            <a href="/categories/SQL/" class="post-category">
+                                    SQL
                                 </a>
                             
                             
@@ -677,8 +680,8 @@ gitment.render('gitment-content');
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/DBT/">
-                        <span class="chip bg-color">DBT</span>
+                    <a href="/tags/SQL/">
+                        <span class="chip bg-color">SQL</span>
                     </a>
                     
                 </div>
