@@ -316,7 +316,7 @@ pod가 사라지면 emptyDir의 데이터도 함께 사라집니다.
     <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> &lt;생성할 볼륨 이름 (i.e. /emptydir<span class="token punctuation">-</span>v)<span class="token punctuation">></span>
       <span class="token key atrule">emptyDir</span><span class="token punctuation">:</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="볼륨-정의-부분-spec-volumes"><a href="#볼륨-정의-부분-spec-volumes" class="headerlink" title="볼륨 정의 부분(.spec.volumes[])"></a>볼륨 정의 부분(.spec.volumes[])</h4><blockquote>
+<h3 id="볼륨-정의-부분-spec-volumes"><a href="#볼륨-정의-부분-spec-volumes" class="headerlink" title="볼륨 정의 부분(.spec.volumes[])"></a>볼륨 정의 부분(.spec.volumes[])</h3><blockquote>
 <p>.spec.volumes[] 하위 필드에서는 사용하려는 볼륨을 먼저 정의합니다.</p>
 </blockquote>
 <ul>
@@ -325,7 +325,7 @@ pod가 사라지면 emptyDir의 데이터도 함께 사라집니다.
 <li><p>.spec.volumes[].emptyDir: 필드값을 {}(빈 값)으로 지정합니다.</p>
 </li>
 </ul>
-<h4 id="컨테이너-내-마운트-부분-spec-containers-volumeMounts"><a href="#컨테이너-내-마운트-부분-spec-containers-volumeMounts" class="headerlink" title="컨테이너 내 마운트 부분 (.spec.containers[].volumeMounts)"></a>컨테이너 내 마운트 부분 (.spec.containers[].volumeMounts)</h4><blockquote>
+<h3 id="컨테이너-내-마운트-부분-spec-containers-volumeMounts"><a href="#컨테이너-내-마운트-부분-spec-containers-volumeMounts" class="headerlink" title="컨테이너 내 마운트 부분 (.spec.containers[].volumeMounts)"></a>컨테이너 내 마운트 부분 (.spec.containers[].volumeMounts)</h3><blockquote>
 <p>.spec.containers[].volumeMounts 하위 필드에서는 생성한 볼륨을 컨테이너 내부와 마운트 합니다.</p>
 </blockquote>
 <ul>

@@ -322,20 +322,6 @@
 <li><p>볼륨 관련 레퍼런스: <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/storage/volumes/">https://kubernetes.io/docs/concepts/storage/volumes/</a></p>
 </li>
 </ul>
-<h2 id="hostPath-볼륨"><a href="#hostPath-볼륨" class="headerlink" title="hostPath 볼륨"></a>hostPath 볼륨</h2><ul>
-<li><p>노드의 파일 시스템에 있는 특정 파일 또는 디렉터리 지정</p>
-</li>
-<li><p>영구 스토리지</p>
-</li>
-<li><p>다른 노드의 포드끼리 데이터 공유는 아님</p>
-</li>
-<li><p>hostPath 사용 현황 파악하기</p>
-</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ kubectl get pods <span class="token parameter variable">--namespace</span> kube-system
-
-$ kubectl describe pod fluentd-gcp-<span class="token punctuation">..</span>. <span class="token parameter variable">--namespace</span> kube-system<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
 
                 
             </div>
