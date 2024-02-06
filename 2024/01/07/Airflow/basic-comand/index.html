@@ -302,7 +302,7 @@ $ airflow tasks list <span class="token punctuation">[</span>-h<span class="toke
 <p><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html#test_repeat2">Task 테스트</a></p>
 </blockquote>
 <ul>
-<li>단일 task를 스케줄링에 영향을 주지 않고 테스트해보고 싶다면 실행 날짜(execution)를 같이 넣어서 사용 할 수 있어요. 아주 중요한 커맨드 입니다.</li>
+<li>현재 스케줄링에 영향을 주지않고 실행 날짜(execution)를 같이 넣어서 단일 task를 테스트 할 수 있습니다. 아주 중요한 커맨드 입니다.</li>
 </ul>
 <pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>airflow tasks test</span></div><code class="language-bash"><span class="token comment"># Test a task instance. This will run a task without checking for dependencies or recording its state in the database</span>
 $ airflow tasks <span class="token builtin class-name">test</span> <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-n<span class="token punctuation">]</span> <span class="token punctuation">[</span>--env-vars ENV_VARS<span class="token punctuation">]</span> <span class="token punctuation">[</span>--map-index MAP_INDEX<span class="token punctuation">]</span>
@@ -347,7 +347,7 @@ $ airflow dags unpause <span class="token punctuation">[</span>-h<span class="to
 <p><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html#upgrade">메타데이터 DB 업데이트</a></p>
 </blockquote>
 <ul>
-<li>dag를 올리고 web에 바로 반영이 안될 때 제가 사용하는 커맨드 에요. DAG폴더와 현재 메타데이터를 바로 동기화 시켜주는 역할을 합니다.</li>
+<li>dag를 올리고 web에 바로 반영이 안될 때 제가 사용하는 커맨드 입니다. DAG폴더와 현재 메타데이터를 바로 동기화 시켜주는 역할을 합니다.</li>
 </ul>
 <pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>airflow db upgrade</span></div><code class="language-bash">$ airflow db upgrade <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>--from-revision FROM_REVISION<span class="token punctuation">]</span>
                      <span class="token punctuation">[</span>--from-version FROM_VERSION<span class="token punctuation">]</span> <span class="token punctuation">[</span>-s<span class="token punctuation">]</span> <span class="token punctuation">[</span>-r TO_REVISION<span class="token punctuation">]</span>
@@ -365,7 +365,7 @@ $ airflow db reset <span class="token punctuation">[</span>-h<span class="token 
 <p><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html#create_repeat1">Airflow 계정 생성</a></p>
 </blockquote>
 <ul>
-<li>airflow 계정을 만드는 커맨드 입니다. airflow도 AWS의 IAM이나 Linux의 Permission을 부여하는 것처럼 다양한 계정의 권한을 설정할 수 있어요.</li>
+<li>airflow 계정을 만드는 커맨드 입니다. airflow도 AWS의 IAM이나 Linux의 Permission을 부여하는 것처럼 다양한 계정의 권한을 설정할 수 있습니다.</li>
 </ul>
 <pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>airflow users create</span></div><code class="language-bash"><span class="token comment"># Create a user</span>
 $ airflow <span class="token function">users</span> create <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token parameter variable">-e</span> EMAIL <span class="token parameter variable">-f</span> FIRSTNAME <span class="token parameter variable">-l</span> LASTNAME <span class="token punctuation">[</span>-p PASSWORD<span class="token punctuation">]</span> <span class="token parameter variable">-r</span>
