@@ -563,26 +563,24 @@ Redis를 사용하는 이유
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/12/19/Kubernetes/vm_installation/">
+                        <a href="/2023/12/19/Kubernetes/readiness-liveness-probe/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] ubuntu installation(미완)">
+                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] Readiness Probe &amp; Liveness Probe">
                                 
-                                <span class="card-title">[Kubernetes] ubuntu installation(미완)</span>
+                                <span class="card-title">[Kubernetes] Readiness Probe &amp; Liveness Probe</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    ubuntuos 버전 확인$ uname -a 
-
-$ ping &lt;>
-
-
-스왑 확인$ free -h 
-
-$ sudo swapoff -a # 현재 시스템에 적용(리부팅하면 재설정 필요)
-$ sudo sed -i '/
+                                    Readiness ProbePending - ContainerCreating - Running
+PodScheduled
+Initialized
+ContainersReady
+Ready
+apiVersion: v1
+kind:
                                 
                             </div>
                             <div class="publish-info">
@@ -623,24 +621,26 @@ $ sudo sed -i '/
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/12/19/Kubernetes/readiness-liveness-probe/">
+                        <a href="/2023/12/19/Kubernetes/vm_installation/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] Readiness Probe &amp; Liveness Probe">
+                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] ubuntu installation(미완)">
                                 
-                                <span class="card-title">[Kubernetes] Readiness Probe &amp; Liveness Probe</span>
+                                <span class="card-title">[Kubernetes] ubuntu installation(미완)</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Readiness ProbePending - ContainerCreating - Running
-PodScheduled
-Initialized
-ContainersReady
-Ready
-apiVersion: v1
-kind:
+                                    ubuntuos 버전 확인$ uname -a 
+
+$ ping &lt;>
+
+
+스왑 확인$ free -h 
+
+$ sudo swapoff -a # 현재 시스템에 적용(리부팅하면 재설정 필요)
+$ sudo sed -i '/
                                 
                             </div>
                             <div class="publish-info">

@@ -379,7 +379,7 @@ $ <span class="token function">cat</span> hi2
 <ul>
 <li><code>&gt;2</code>: 표준 에러 리디렉션</li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>표준 에러 리디렉션 하기(2>)</span></div><code class="language-bash"><span class="token comment"># 아래 커맨드 후 에러가 터미널에서는 보이지 않아요.</span>
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>표준 에러 리디렉션 하기 (2>)</span></div><code class="language-bash"><span class="token comment"># 아래 커맨드 후 에러가 터미널에서는 보이지 않아요.</span>
 $ <span class="token builtin class-name">cd</span> hi <span class="token operator"><span class="token file-descriptor important">2</span>></span> hi2
 
 <span class="token comment"># 대신 hi2라는 파일에 표준 출력이 전달됬어요.</span>
@@ -393,14 +393,12 @@ bash: cd: hi: Not a directory<span aria-hidden="true" class="line-numbers-rows">
 </li>
 </ul>
 <h4 id="파일-디스크립터"><a href="#파일-디스크립터" class="headerlink" title="파일 디스크립터"></a>파일 디스크립터</h4><blockquote>
-<p>파일 디스크립터는 파일 작업을 실행해주는 객체</p>
+<p>파일 디스크립터 <code>&amp;&gt;</code>는 파일 작업을 실행해주는 객체</p>
 </blockquote>
 <ul>
 <li><p>모든 파일에 대한 작업은 파일 디스크립터를 통해 수행이 되어집니다.</p>
 </li>
 <li><p>파일 디스크립터를 통행 표준 출력과 표준 에러를 모두 전달하는 방법은 아래처럼 쓸 수 있어요.</p>
-</li>
-<li><p>&#96;&amp;&gt;</p>
 </li>
 </ul>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 리디렉션(파일 디스크립터)</span>
@@ -467,13 +465,13 @@ $ <span class="token builtin class-name">cd</span> hi <span class="token operato
 
 
             <div class="tag_share" style="display: block;">
-                <div class="post-meta__tag-list" style="display: inline-block;">
+                <!-- <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
                             <span class="chip bg-color">No tag</span>
                         </div>
                     
-                </div>
+                </div> -->
                 <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
                     <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
 <div id="article-share">
@@ -488,7 +486,7 @@ $ <span class="token builtin class-name">cd</span> hi <span class="token operato
             </div>
             
                 <div id="reward">
-    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+    <!-- <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a> -->
 
     <!-- Modal Structure -->
     <div id="rewardModal" class="modal">

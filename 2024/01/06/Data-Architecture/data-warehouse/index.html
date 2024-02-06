@@ -351,11 +351,11 @@
 </li>
 <li><p>차원 모델링(Dimensional Modeling)으로 전체적인 구조를 만들어나가요. 흔히 우리가 배운 1·2·3차 정규화를 통해 엔티티 테이블 간의 논리적인 관계를 만드는 과정이에요.</p>
 <ul>
-<li><p><code>통계를 위한 집계 대상이 되는 측정 값(트랜잭션)을 &quot;Fact\&quot;</code>라고 해요. Fact 테이블은 보통 (PK &amp; FK &amp; Fact)로 이루어져 있어요.</p>
+<li><p><code>통계를 위한 집계 대상이 되는 측정 값(트랜잭션)을 &quot;Fact&quot;</code>라고 해요. Fact 테이블은 보통 (PK &amp; FK &amp; Fact)로 이루어져 있어요.</p>
 </li>
-<li><p>Fact 테이블에서 측정 값 이외의 <code>부수적인 맥락의 컬럼(예를 들어, 일자나 카테고리)의 값을 Dimension\&quot;</code>이라고 해요. Dimension 테이블은 해당 컬럼을 id로 바꾸어 참조 대상이 될 수 있도록 분리한 테이블을 말해요 해요. </p>
+<li><p>Fact 테이블에서 측정 값 이외의 <code>부수적인 맥락의 컬럼(예를 들어, 일자나 카테고리)의 값을 Dimension&quot;</code>이라고 해요. Dimension 테이블은 해당 컬럼을 id로 바꾸어 참조 대상이 될 수 있도록 분리한 테이블을 말해요 해요. </p>
 </li>
-<li><p>그럼 하나의 Fact 테이블을 중심으로 주변에 무수한 Dimension 테이블이 생기는 데, 이 모양이 별처럼 생겼다고 해서 <code>&quot;star schema\&quot;</code>라고 해요. Dimension 테이블에서 또 다른 Dimension 테이블이 생기면 더 복잡하겠죠? 그 때는 눈송이를 닮았다해서 <code>&quot;snowflake schema\&quot;</code>라고 해요.</p>
+<li><p>그럼 하나의 Fact 테이블을 중심으로 주변에 무수한 Dimension 테이블이 생기는 데, 이 모양이 별처럼 생겼다고 해서 <code>&quot;star schema&quot;</code>라고 해요. Dimension 테이블에서 또 다른 Dimension 테이블이 생기면 더 복잡하겠죠? 그 때는 눈송이를 닮았다해서 <code>&quot;snowflake schema&quot;</code>라고 해요.</p>
 </li>
 </ul>
 </li>
@@ -429,13 +429,13 @@
 
 
             <div class="tag_share" style="display: block;">
-                <div class="post-meta__tag-list" style="display: inline-block;">
+                <!-- <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
                             <span class="chip bg-color">No tag</span>
                         </div>
                     
-                </div>
+                </div> -->
                 <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
                     <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
 <div id="article-share">
@@ -450,7 +450,7 @@
             </div>
             
                 <div id="reward">
-    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+    <!-- <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a> -->
 
     <!-- Modal Structure -->
     <div id="rewardModal" class="modal">
@@ -537,18 +537,18 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/06/Data-Architecture/data-vault-2.0/">
+                <a href="/2024/01/06/Data-Architecture/dimension-modeling(2)/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="[Data Architecture] Data Vault 2.0">
+                        <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="[Data Architecture] Dimension Modeling(2)">
                         
-                        <span class="card-title diy-neon-red">[Data Architecture] Data Vault 2.0</span>
+                        <span class="card-title diy-neon-red">[Data Architecture] Dimension Modeling(2)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            D-
                         
                     </div>
                     <div class="publish-info">
@@ -577,18 +577,18 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/06/Data-Architecture/dimension-modeling(2)/">
+                <a href="/2024/01/06/Data-Architecture/slowly-changing-dimension/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="[Data Architecture] Dimension Modeling(2)">
+                        <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="[Data Architecture] Slowly Changing Dimensions">
                         
-                        <span class="card-title diy-neon-red">[Data Architecture] Dimension Modeling(2)</span>
+                        <span class="card-title diy-neon-red">[Data Architecture] Slowly Changing Dimensions</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            D-
+                            Data Warehouse, 왜 필요한 걸까요?
                         
                     </div>
                     <div class="publish-info">

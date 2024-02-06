@@ -296,7 +296,7 @@
 <li><code>FK</code> : 보통 하나의 Fact 테이블은 여러 개의 외래키를 가져요. FK는 Dimension 테이블에 참조 역할을 해요.</li>
 <li><code>Fact</code> : 매출, 이익, 예산 등의 집계 대상이에요.</li>
 </ol>
-<h4 id="Fact의-성격"><a href="#Fact의-성격" class="headerlink" title="Fact의 성격"></a>Fact의 성격</h4><p>문맥을 설명하는 것보다 분석 대상으로 <code>측정 가능한 성격(measurable\)</code>을 뛰고 있어요. </p>
+<h4 id="Fact의-성격"><a href="#Fact의-성격" class="headerlink" title="Fact의 성격"></a>Fact의 성격</h4><p>문맥을 설명하는 것보다 분석 대상으로 <code>측정 가능한 성격(measurable)</code>을 뛰고 있어요. </p>
 <h4 id="ETC"><a href="#ETC" class="headerlink" title="ETC"></a>ETC</h4><ul>
 <li><p><code>집계할 수 있다고 모든 대상이 Fact가 되지는 않아요.</code> 거래날짜나 트랜잭션일자도 Fact 테이블에 있지만 year·month·day를 집계한다고 의미있는 분석결과를 얻을 수는 없어요. 이런 값들은 Fact가 아닌 Dimension이에요.</p>
 </li>
@@ -315,7 +315,7 @@
 </li>
 <li><p><code>Dimension</code> : Fact에 대한 의미 있는 맥락을 더해주는 것이에요.</p>
 </li>
-<li><p><code>[FK\]</code> : Dimension 테이블에서 또 다른 Dimension 테이블이 생길 수도 있어요. <code>FK가 있다면 Snowflake Schema</code>로 볼 수 있어요.</p>
+<li><p><code>[FK]</code> : Dimension 테이블에서 또 다른 Dimension 테이블이 생길 수도 있어요. <code>FK가 있다면 Snowflake Schema</code>로 볼 수 있어요.</p>
 </li>
 </ul>
 <h4 id="Dimension의-성격"><a href="#Dimension의-성격" class="headerlink" title="Dimension의 성격"></a>Dimension의 성격</h4><p><code>설명적(descriptive)인 성격</code>을 가져요. people, products, places, time 등 맥락 Fact가 발생했을 때의 문맥을 설명하는 성격을 뛰고 있어요.</p>
@@ -392,13 +392,13 @@
 
 
             <div class="tag_share" style="display: block;">
-                <div class="post-meta__tag-list" style="display: inline-block;">
+                <!-- <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
                             <span class="chip bg-color">No tag</span>
                         </div>
                     
-                </div>
+                </div> -->
                 <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
                     <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
 <div id="article-share">
@@ -413,7 +413,7 @@
             </div>
             
                 <div id="reward">
-    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+    <!-- <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a> -->
 
     <!-- Modal Structure -->
     <div id="rewardModal" class="modal">

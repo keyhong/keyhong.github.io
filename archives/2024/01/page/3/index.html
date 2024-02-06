@@ -341,22 +341,22 @@
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/Git/gitignore/">
+                        <a href="/2024/01/01/Git/git-history-command/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/git-logo.png" class="responsive-img" alt="[Git] .gitignore">
+                                <img src="/images/logos/git-logo.png" class="responsive-img" alt="[Git] GitHub에 보안 파일 커밋 이력 지우기">
                                 
-                                <span class="card-title">[Git] .gitignore</span>
+                                <span class="card-title">[Git] GitHub에 보안 파일 커밋 이력 지우기</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    .gitignore
-local git repository에서 추적을 하지 않은 폴더 또는 파일의 확장자를 정의하는 파일
+                                    GitHub에 보안 상의 파일을 commit한 경우# 캐시 삭제하기
+git rm -r --cached &lt;파일>
 
-생성방법 1 : github 레포지터리에서 생성하기
-github repository에서 프로젝
+# .gitignore 에 보안 파일 등록하기
+$ echo &lt;파일> >> .gitignore
                                 
                             </div>
                             <div class="publish-info">
@@ -679,22 +679,29 @@ Spark 2.0에서 ‘DataFrame’과 상반된 ‘DataSet’ 도입
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/Python-Data-Structure/basic-data-structure/">
+                        <a href="/2024/01/01/Python-Algorithm/brute-force/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Tuple, Set, Dict">
+                                <img src="/images/logos/algorithm-logo.png" class="responsive-img" alt="[Algorithm] Brute Force">
                                 
-                                <span class="card-title">[Python] Tuple, Set, Dict</span>
+                                <span class="card-title">[Algorithm] Brute Force</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    tuple (튜플)왜 쓸까?
-프로그램을 작동하는 동안 변경되지 않는 데이터의 저장 (Immutable)(Ex) 학번, 이름, 우편번호 등등
-함수의 반환 값등 사용자의 실수에 의한 에러를 사전에 방지
+                                    완전탐색
+장점 : 반드시 답을 찾을 수 있다
 
-t &#x3D;
+전부 살펴봤는 데 답이 없다면? 답이 존재하지 않는다는 사실을 알아낸 것!
+
+
+단점 : 오래 걸린다
+
+리소스를 많이 잡아 먹는다
+
+
+trade-off 관계 : 컴퓨팅 자
                                 
                             </div>
                             <div class="publish-info">
@@ -705,8 +712,8 @@ t &#x3D;
                                     
                                     <i class="fas fa-bookmark fa-fw icon-category"></i>
                                     
-                                    <a href="/categories/Python/" class="post-category">
-                                    Python
+                                    <a href="/categories/Algorithm/" class="post-category">
+                                    Algorithm
                                     </a>
                                     
                                     
@@ -853,25 +860,22 @@ List, Tuple, Dict에 대한 Python Built-in 확장 자료 구조(모듈)
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/Python-Data-Structure/linked-list/">
+                        <a href="/2024/01/01/Python-Data-Structure/basic-data-structure/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Linked List">
+                                <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Tuple, Set, Dict">
                                 
-                                <span class="card-title">[Python] Linked List</span>
+                                <span class="card-title">[Python] Tuple, Set, Dict</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Linked List (연결리스트)
-삽입&#x2F;삭제 : O(1)
+                                    tuple (튜플)왜 쓸까?
+프로그램을 작동하는 동안 변경되지 않는 데이터의 저장 (Immutable)(Ex) 학번, 이름, 우편번호 등등
+함수의 반환 값등 사용자의 실수에 의한 에러를 사전에 방지
 
-탐색 : O(N)
-
-PS(Problem Solving)에서는 잘 안쓰이지만, 다른 자료구조들을 구현할 때 많이 쓰임
-
-임의접근(Random Acc
+t &#x3D;
                                 
                             </div>
                             <div class="publish-info">
