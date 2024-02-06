@@ -451,22 +451,19 @@ docker는 애플리케이션 개발, 배송 및 실행을 위한 개방형 플�
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/Docker/docker-dockerfile/">
+                        <a href="/2024/01/01/Docker/docker-image/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/docker-logo.png" class="responsive-img" alt="[Docker] Dockerfile">
+                                <img src="/images/logos/docker-logo.png" class="responsive-img" alt="[Docker] Image">
                                 
-                                <span class="card-title">[Docker] Dockerfile</span>
+                                <span class="card-title">[Docker] Image</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Dockerfile 이란?
-애플리케이션을 패키징하기 위한 간단한 스크립트입니다. 일련의 인스트럭션으로 구성, 인스트럭션을 실행한 결과로 도커 이미지 생성됩니다.
-
-
-도커 컨테이너에도 단일 드라이브로 된 파일 시스템이
+                                    Docker Image와 Image Layer
+도커 이미지는 이미지 레이어가 모인 논리적 대상. 레이어는 도커 엔진의 캐시에 물리적으로 저장된 파일입니다. 이미지 레이어는 여러 이미지와 컨테이너에서 공유되기 때문에 
                                 
                             </div>
                             <div class="publish-info">
@@ -507,19 +504,22 @@ docker는 애플리케이션 개발, 배송 및 실행을 위한 개방형 플�
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/Docker/docker-image/">
+                        <a href="/2024/01/01/Docker/docker-dockerfile/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/docker-logo.png" class="responsive-img" alt="[Docker] Image">
+                                <img src="/images/logos/docker-logo.png" class="responsive-img" alt="[Docker] Dockerfile">
                                 
-                                <span class="card-title">[Docker] Image</span>
+                                <span class="card-title">[Docker] Dockerfile</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Docker Image와 Image Layer
-도커 이미지는 이미지 레이어가 모인 논리적 대상. 레이어는 도커 엔진의 캐시에 물리적으로 저장된 파일입니다. 이미지 레이어는 여러 이미지와 컨테이너에서 공유되기 때문에 
+                                    Dockerfile 이란?
+애플리케이션을 패키징하기 위한 간단한 스크립트입니다. 일련의 인스트럭션으로 구성, 인스트럭션을 실행한 결과로 도커 이미지 생성됩니다.
+
+
+도커 컨테이너에도 단일 드라이브로 된 파일 시스템이
                                 
                             </div>
                             <div class="publish-info">
@@ -780,25 +780,26 @@ global
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/Hive/hive-architecture/">
+                        <a href="/2024/01/01/Hive/hive-config/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] Architecture">
+                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] Config">
                                 
-                                <span class="card-title">[Hive] Architecture</span>
+                                <span class="card-title">[Hive] Config</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Hive ArchitectureMajor components
-UI
+                                    hive-site.xml
+Hive 환경 설정을 위한 XML 설정 파일
 
 
-사용자가 쿼리 및 기타 작업을 시스템에 제출하기 위한 사용자 인터페이스
+Hive의 conf 디렉토리에 위치
 
+사용자가 Hive를 실행할 때마다 필요한 속성을 설정
 
-Hive Web UI, 커맨드라인 (HD Insight는 Window 
+hive-default.xml.template을 
                                 
                             </div>
                             <div class="publish-info">
