@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="[Airflow] 자주 사용하는 CLI 정리, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="🙊 글을 쓰는 이유Airflow는 파이썬의 Web Framework인 Flask로 만든 편리한 Web Server를 컴포넌트로 제공하고 있어요. Web으로도 충분한 활용이 가능하지만, GUI가 Airflow API">
+    <meta name="description" content="🙊 글을 쓰는 이유Airflow는 파이썬의 Web Framework인 Flask로 만든 편리한 Web Server를 컴포넌트로 제공하고 있습니다. Web으로도 충분한 활용이 가능하지만, GUI가 Airflow AP">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -233,10 +233,15 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
-                          </div>
+                        <div class="article-tag">
+                            <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                                <span class="chip bg-color">
+                                    2024-01-07</span>
+                        </div>
                     
+                    
+
+
                 </div>
                 <div class="col s5 right-align">
                     
@@ -251,23 +256,6 @@
                     
                 </div>
             </div>
-
-            <div class="post-info">
-                
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2024-01-07
-                </div>
-                
-
-                
-
-                
-
-                
-
-                
-            </div>
         </div>
         <hr class="clearfix">
 
@@ -280,137 +268,148 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="🙊-글을-쓰는-이유"><a href="#🙊-글을-쓰는-이유" class="headerlink" title="🙊 글을 쓰는 이유"></a>🙊 글을 쓰는 이유</h3><p>Airflow는 파이썬의 Web Framework인 Flask로 만든 편리한 Web Server를 컴포넌트로 제공하고 있어요. Web으로도 충분한 활용이 가능하지만, GUI가 Airflow API를 CLI로 호출하는 명령어와 매핑한 UI라는 걸 알면 플랫폼의 바라보는 관점이 조금 더 다양해져요 :)</p>
-<p>또 Web Server를 못 사용할 때 CLI를 사용할 수 있다는 건 매우 강력한 장점이랍니다! 그래서 오늘은 제가 자주 썼었던 일부 API를 가져와 봤어요. API에는 도큐먼트의 링크를 같이 걸어 났어요. Airflow를 써봤다면 익숙한 커맨드들도 있으실 거에요.</p>
-<p><strong>핵심은 API는 외우는 게 아니라는 거, 아시죠? 모든 API를 외워서 사용할 수 있는 개발자는 없답니다. 다만, 도큐먼트를 보는 법을 알게되고 활용할 수 있게 되면 더 이상 외우지 않고 필요할 때마다 사용할 수 있게 되요. 그렇기 때문에 API 자체보다 도큐먼트를 중심으로 이해하는 연습을 하면 좋을 것 같아요.</strong></p>
-<h3 id="dags"><a href="#dags" class="headerlink" title="dags"></a>dags</h3><h4 id="모든-DAG-목록-조회"><a href="#모든-DAG-목록-조회" class="headerlink" title="모든 DAG 목록 조회"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html#list_repeat2">모든 DAG 목록 조회</a></h4><ul>
-<li><p>Web UI의 메인화면에 나타나는 모든 dag의 리스트와 같아요.</p>
-</li>
-<li><p>List all the DAGs</p>
-</li>
+                <h3 id="🙊-글을-쓰는-이유"><a href="#🙊-글을-쓰는-이유" class="headerlink" title="🙊 글을 쓰는 이유"></a>🙊 글을 쓰는 이유</h3><p>Airflow는 파이썬의 Web Framework인 Flask로 만든 편리한 Web Server를 컴포넌트로 제공하고 있습니다. Web으로도 충분한 활용이 가능하지만, GUI가 Airflow API를 CLI로 호출하는 명령어와 매핑한 UI라는 걸 알면 플랫폼을 바라보는 관점이 넓어집니다</p>
+<p>또 Web Server를 못 사용할 때 CLI를 사용할 수 있다는 건 매우 강력한 장점입니다. 그래서 자주 썼었던 일부 API를 정리해보았습니다. API에는 도큐먼트의 링크를 같이 걸어 났는 데, 아마 Airflow를 써봤다면 익숙한 커맨드들도 있으실 것 같습니다.</p>
+<p><code>중요한 건 모든 API를 외우는 게 아닙니다. API를 외우지 못하더라도 필요할 때마다 도큐먼트를 보는 법을 알면 언제든 찾아서 쓸 수 있습니다.</code> 그렇기 때문에 API 자체보다도 도큐먼트를 중심으로 이해하는 연습을 하면 좋을 것 같습니다.</p>
+<h3 id="dags"><a href="#dags" class="headerlink" title="dags"></a>dags</h3><h4 id="airflow-dags-list"><a href="#airflow-dags-list" class="headerlink" title="airflow dags list"></a>airflow dags list</h4><blockquote>
+<p><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html#list_repeat2">모든 DAG 목록 조회</a></p>
+</blockquote>
+<ul>
+<li>Web UI의 메인화면에 나타나는 모든 dag의 리스트와 같습니다.</li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow dags list <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-o table, json, yaml, plain<span class="token punctuation">]</span> <span class="token punctuation">[</span>-S SUBDIR<span class="token punctuation">]</span> <span class="token punctuation">[</span>-v<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>airflow dags list</span></div><code class="language-bash"><span class="token comment"># List all the DAGs </span>
+$ airflow dags list <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-o table, json, yaml, plain<span class="token punctuation">]</span> <span class="token punctuation">[</span>-S SUBDIR<span class="token punctuation">]</span> <span class="token punctuation">[</span>-v<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h4 id="DAG의-모든-메타데이터를-제거"><a href="#DAG의-모든-메타데이터를-제거" class="headerlink" title="DAG의 모든 메타데이터를 제거"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html#delete_repeat1">DAG의 모든 메타데이터를 제거</a></h4><ul>
-<li><p>Web UI의 메인화면에서 dag를 선택해서 지우는 기능과 같아요. dag의 모든 이력들이 제거되요.</p>
-</li>
-<li><p>Delete all DB records related to the specified DAG</p>
-</li>
+<h4 id="airflow-dags-delete"><a href="#airflow-dags-delete" class="headerlink" title="airflow dags delete"></a>airflow dags delete</h4><blockquote>
+<p><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html#delete_repeat1">DAG의 모든 메타데이터를 제거</a></p>
+</blockquote>
+<ul>
+<li>Web UI의 메인화면에서 dag를 선택해서 지우는 기능과 같습니다. 메타스토어에서 해당 dag와 관련된 모든 데이터가 제거됩니다. DAG파일(.py)을 삭제되지 않습니다.</li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow dags delete <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-v<span class="token punctuation">]</span> <span class="token punctuation">[</span>-y<span class="token punctuation">]</span> dag_id
-    - y, <span class="token parameter variable">--yes</span> <span class="token builtin class-name">:</span> Do not prompt to confirm. Use with care<span class="token operator">!</span> <span class="token punctuation">(</span>Default: False<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>airflow dags delete</span></div><code class="language-bash"><span class="token comment"># Delete all DB records related to the specified DAG</span>
+$ airflow dags delete <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-v<span class="token punctuation">]</span> <span class="token punctuation">[</span>-y<span class="token punctuation">]</span> dag_id
+    - y, <span class="token parameter variable">--yes</span> <span class="token builtin class-name">:</span> Do not prompt to confirm. Use with care<span class="token operator">!</span> <span class="token punctuation">(</span>Default: False<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="특정-DAG의-Task-실행-기록-초기화"><a href="#특정-DAG의-Task-실행-기록-초기화" class="headerlink" title="특정 DAG의 Task 실행 기록 초기화"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html#clear">특정 DAG의 Task 실행 기록 초기화</a></h4><ul>
-<li><p>Web UI에서 실행중인 dag의 task를 버튼으로 팝업창에서 멈추 본 적 있나요? 이 커맨드가 그 역할을 해요.</p>
-</li>
-<li><p>Clear a set of task instance, as if they never ran</p>
-</li>
+<h3 id="tasks"><a href="#tasks" class="headerlink" title="tasks"></a>tasks</h3><h4 id="airflow-tasks-list"><a href="#airflow-tasks-list" class="headerlink" title="airflow tasks list"></a>airflow tasks list</h4><blockquote>
+<p><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html#list_repeat6">Task 목록 조회</a></p>
+</blockquote>
+<ul>
+<li>특정 dag에 정의된 task 리스트를 확인할 때 사용합니다.</li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow tasks <span class="token function">clear</span> <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-R<span class="token punctuation">]</span> <span class="token punctuation">[</span>-d<span class="token punctuation">]</span> <span class="token punctuation">[</span>-e END_DATE<span class="token punctuation">]</span> <span class="token punctuation">[</span>-X<span class="token punctuation">]</span> <span class="token punctuation">[</span>-x<span class="token punctuation">]</span> <span class="token punctuation">[</span>-f<span class="token punctuation">]</span> <span class="token punctuation">[</span>-r<span class="token punctuation">]</span>
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>airflow tasks list</span></div><code class="language-bash"><span class="token comment"># List the tasks within a DAG</span>
+$ airflow tasks list <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-S SUBDIR<span class="token punctuation">]</span> <span class="token punctuation">[</span>-t<span class="token punctuation">]</span> <span class="token punctuation">[</span>-v<span class="token punctuation">]</span> dag_id<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="airflow-tasks-test"><a href="#airflow-tasks-test" class="headerlink" title="airflow tasks test"></a>airflow tasks test</h4><blockquote>
+<p><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html#test_repeat2">Task 테스트</a></p>
+</blockquote>
+<ul>
+<li>단일 task를 스케줄링에 영향을 주지 않고 테스트해보고 싶다면 실행 날짜(execution)를 같이 넣어서 사용 할 수 있어요. 아주 중요한 커맨드 입니다.</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>airflow tasks test</span></div><code class="language-bash"><span class="token comment"># Test a task instance. This will run a task without checking for dependencies or recording its state in the database</span>
+$ airflow tasks <span class="token builtin class-name">test</span> <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-n<span class="token punctuation">]</span> <span class="token punctuation">[</span>--env-vars ENV_VARS<span class="token punctuation">]</span> <span class="token punctuation">[</span>--map-index MAP_INDEX<span class="token punctuation">]</span>
+                     <span class="token punctuation">[</span>-m<span class="token punctuation">]</span> <span class="token punctuation">[</span>-S SUBDIR<span class="token punctuation">]</span> <span class="token punctuation">[</span>-t TASK_PARAMS<span class="token punctuation">]</span> <span class="token punctuation">[</span>-v<span class="token punctuation">]</span>
+                     dag_id task_id <span class="token punctuation">[</span>execution_date_or_run_id<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="airflow-tasks-clear"><a href="#airflow-tasks-clear" class="headerlink" title="airflow tasks clear"></a>airflow tasks clear</h4><blockquote>
+<p><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html#clear">특정 DAG의 Task 실행 기록 초기화</a></p>
+</blockquote>
+<ul>
+<li>Web UI에서 실행중인 dag의 task를 버튼으로 팝업창에서 멈추능 기능과 같습니다. 해당 커맨드가 그 역할을 합니다.</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>airflow tasks clear</span></div><code class="language-bash"><span class="token comment"># lear a set of task instance, as if they never ran</span>
+$ airflow tasks <span class="token function">clear</span> <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-R<span class="token punctuation">]</span> <span class="token punctuation">[</span>-d<span class="token punctuation">]</span> <span class="token punctuation">[</span>-e END_DATE<span class="token punctuation">]</span> <span class="token punctuation">[</span>-X<span class="token punctuation">]</span> <span class="token punctuation">[</span>-x<span class="token punctuation">]</span> <span class="token punctuation">[</span>-f<span class="token punctuation">]</span> <span class="token punctuation">[</span>-r<span class="token punctuation">]</span>
                       <span class="token punctuation">[</span>-s START_DATE<span class="token punctuation">]</span> <span class="token punctuation">[</span>-S SUBDIR<span class="token punctuation">]</span> <span class="token punctuation">[</span>-t TASK_REGEX<span class="token punctuation">]</span> <span class="token punctuation">[</span>-u<span class="token punctuation">]</span> <span class="token punctuation">[</span>-v<span class="token punctuation">]</span> <span class="token punctuation">[</span>-y<span class="token punctuation">]</span>
                       dag_id
     -d, <span class="token parameter variable">--downstream</span> <span class="token builtin class-name">:</span> Include downstream tasks <span class="token punctuation">(</span>Default: False<span class="token punctuation">)</span>
     -u, <span class="token parameter variable">--upstream</span> <span class="token builtin class-name">:</span> Include upstream tasks <span class="token punctuation">(</span>Default: False<span class="token punctuation">)</span>
     -f, --only-failed <span class="token builtin class-name">:</span> Only failed <span class="token function">jobs</span> <span class="token punctuation">(</span>Default: False<span class="token punctuation">)</span>
-    -r, --only-running <span class="token builtin class-name">:</span> Only running <span class="token function">jobs</span> <span class="token punctuation">(</span>Default: False<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="실행중인-DAG-중지-중지-해제"><a href="#실행중인-DAG-중지-중지-해제" class="headerlink" title="실행중인 DAG 중지 &amp; 중지 해제"></a>실행중인 DAG <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html#pause">중지</a> &amp; <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html#unpause">중지 해제</a></h4><ul>
-<li><p>실행중인 dag를 일시 중지 시킬 수 있어요.</p>
-</li>
-<li><p>Pause a DAG</p>
-</li>
-<li><p>Resume a paused DAG</p>
-</li>
+    -r, --only-running <span class="token builtin class-name">:</span> Only running <span class="token function">jobs</span> <span class="token punctuation">(</span>Default: False<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="airflow-tasks-pause-unpause"><a href="#airflow-tasks-pause-unpause" class="headerlink" title="airflow tasks pause&#x2F;unpause"></a>airflow tasks pause&#x2F;unpause</h4><blockquote>
+<p>실행중인 DAG <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html#pause">중지</a> &amp; <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html#unpause">중지 해제</a></p>
+</blockquote>
+<ul>
+<li>실행중인 dag를 일시 중지 시킬 수 있습니다.</li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 실행중인 dag 중지 </span>
-$ airflow dags pause <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-S SUBDIR<span class="token punctuation">]</span> <span class="token punctuation">[</span>-v<span class="token punctuation">]</span> dag_id
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>airflow dags pause</span></div><code class="language-bash"><span class="token comment"># Pause a DAG</span>
+$ airflow dags pause <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-S SUBDIR<span class="token punctuation">]</span> <span class="token punctuation">[</span>-v<span class="token punctuation">]</span> dag_id<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<span class="token comment"># 실행중인 dag 중지 해제 </span>
-$ airflow dags unpause <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-S SUBDIR<span class="token punctuation">]</span> <span class="token punctuation">[</span>-v<span class="token punctuation">]</span> dag_id<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>airflow dags unpause</span></div><code class="language-bash"><span class="token comment"># Resume a paused DAG</span>
+$ airflow dags unpause <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-S SUBDIR<span class="token punctuation">]</span> <span class="token punctuation">[</span>-v<span class="token punctuation">]</span> dag_id<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h3 id="tasks"><a href="#tasks" class="headerlink" title="tasks"></a>tasks</h3><h4 id="Task-목록-조회"><a href="#Task-목록-조회" class="headerlink" title="Task 목록 조회"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html#list_repeat6">Task 목록 조회</a></h4><ul>
-<li><p>특정 dag에 정의된 task 리스트를 확인할 때 사용해요.</p>
-</li>
-<li><p>List the tasks within a DAG</p>
-</li>
+<h3 id="db"><a href="#db" class="headerlink" title="db"></a>db</h3><h4 id="airflow-db-init"><a href="#airflow-db-init" class="headerlink" title="airflow db init"></a>airflow db init</h4><blockquote>
+<p><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html#init">메타데이터 DB 초기화</a></p>
+</blockquote>
+<ul>
+<li>airflow를 설치하고 airflow.cfg을 읽어 처음에 메타데이터 데이터베이스를 설정하고 초기화 시켜주는 커맨드 입니다.</li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow tasks list <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-S SUBDIR<span class="token punctuation">]</span> <span class="token punctuation">[</span>-t<span class="token punctuation">]</span> <span class="token punctuation">[</span>-v<span class="token punctuation">]</span> dag_id<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>airflow db init</span></div><code class="language-bash">$ airflow db init <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-v<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h4 id="Task-테스트"><a href="#Task-테스트" class="headerlink" title="Task 테스트"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html#test_repeat2">Task 테스트</a></h4><ul>
-<li><p>단일 task를 스케줄링에 영향을 주지 않고 테스트해보고 싶다? 이럴 때 실행 날짜를 같이 넣어서 사용할 수 있어요.</p>
-</li>
-<li><p>Test a task instance. This will run a task without checking for dependencies or recording its state in the database</p>
-</li>
+<h4 id="airflow-db-upgrade"><a href="#airflow-db-upgrade" class="headerlink" title="airflow db upgrade"></a>airflow db upgrade</h4><blockquote>
+<p><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html#upgrade">메타데이터 DB 업데이트</a></p>
+</blockquote>
+<ul>
+<li>dag를 올리고 web에 바로 반영이 안될 때 제가 사용하는 커맨드 에요. DAG폴더와 현재 메타데이터를 바로 동기화 시켜주는 역할을 합니다.</li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow tasks <span class="token builtin class-name">test</span> <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-n<span class="token punctuation">]</span> <span class="token punctuation">[</span>--env-vars ENV_VARS<span class="token punctuation">]</span> <span class="token punctuation">[</span>--map-index MAP_INDEX<span class="token punctuation">]</span>
-                     <span class="token punctuation">[</span>-m<span class="token punctuation">]</span> <span class="token punctuation">[</span>-S SUBDIR<span class="token punctuation">]</span> <span class="token punctuation">[</span>-t TASK_PARAMS<span class="token punctuation">]</span> <span class="token punctuation">[</span>-v<span class="token punctuation">]</span>
-                     dag_id task_id <span class="token punctuation">[</span>execution_date_or_run_id<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="db"><a href="#db" class="headerlink" title="db"></a>db</h3><h4 id="메타데이터-DB-초기화"><a href="#메타데이터-DB-초기화" class="headerlink" title="메타데이터 DB 초기화"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html#init">메타데이터 DB 초기화</a></h4><ul>
-<li>airflow를 설치하고 airflow.cfg에서 메타데이터 데이터베이스를 설정하고 초기화 시켜줬던 커맨드에요.</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow db init <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-v<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h4 id="메타데이터-DB-업데이트"><a href="#메타데이터-DB-업데이트" class="headerlink" title="메타데이터 DB 업데이트"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html#upgrade">메타데이터 DB 업데이트</a></h4><ul>
-<li>dag를 올리고 web에 바로 반영이 안될 때 제가 사용하는 커맨드에요.</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow db upgrade <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>--from-revision FROM_REVISION<span class="token punctuation">]</span>
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>airflow db upgrade</span></div><code class="language-bash">$ airflow db upgrade <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>--from-revision FROM_REVISION<span class="token punctuation">]</span>
                      <span class="token punctuation">[</span>--from-version FROM_VERSION<span class="token punctuation">]</span> <span class="token punctuation">[</span>-s<span class="token punctuation">]</span> <span class="token punctuation">[</span>-r TO_REVISION<span class="token punctuation">]</span>
                      <span class="token punctuation">[</span>-n TO_VERSION<span class="token punctuation">]</span> <span class="token punctuation">[</span>-v<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="메타데이터-DB-소각"><a href="#메타데이터-DB-소각" class="headerlink" title="메타데이터 DB 소각"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html#reset">메타데이터 DB 소각</a></h4><ul>
-<li><p><strong>메타데이터가 전부 날라가기 때문에 주의 하셔야 해요.</strong> 거의 쓸 일이 없지만, 쓰면 안됨을 인지해야 해서 넣었어요.</p>
-</li>
-<li><p>Burn down and rebuild the metadata database</p>
-</li>
+<h4 id="airflow-db-reset"><a href="#airflow-db-reset" class="headerlink" title="airflow db reset"></a>airflow db reset</h4><blockquote>
+<p><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html#reset">메타데이터 DB 소각</a></p>
+</blockquote>
+<ul>
+<li>전체 메타데이터를 소각시키는 커맨드입니다. <code>프로덕션에서는 절대 쓰면 안됩니다.</code> 해당 명령어에 대한 주의를 인지해야 해서 넣었습니다.</li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow db reset <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-s<span class="token punctuation">]</span> <span class="token punctuation">[</span>-v<span class="token punctuation">]</span> <span class="token punctuation">[</span>-y<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>airflow db reset</span></div><code class="language-bash"><span class="token comment"># Burn down and rebuild the metadata database</span>
+$ airflow db reset <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-s<span class="token punctuation">]</span> <span class="token punctuation">[</span>-v<span class="token punctuation">]</span> <span class="token punctuation">[</span>-y<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h3 id="users"><a href="#users" class="headerlink" title="users"></a>users</h3><h4 id="Airflow-계정-생성"><a href="#Airflow-계정-생성" class="headerlink" title="Airflow 계정 생성"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html#create_repeat1">Airflow 계정 생성</a></h4><ul>
-<li><p>airflow를 설치하고 Web을 접속하기 전 처음 썼던 커맨드에요. 기억하시죠? airflow도 AWS의 IAM이나 Linux의 Permission을 부여하는 것처럼 다양한 계정의 권한을 설정할 수 있어요.</p>
-</li>
-<li><p>Create a user</p>
-</li>
+<h3 id="users"><a href="#users" class="headerlink" title="users"></a>users</h3><h4 id="airflow-users-create"><a href="#airflow-users-create" class="headerlink" title="airflow users create"></a>airflow users create</h4><blockquote>
+<p><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html#create_repeat1">Airflow 계정 생성</a></p>
+</blockquote>
+<ul>
+<li>airflow 계정을 만드는 커맨드 입니다. airflow도 AWS의 IAM이나 Linux의 Permission을 부여하는 것처럼 다양한 계정의 권한을 설정할 수 있어요.</li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow <span class="token function">users</span> create <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token parameter variable">-e</span> EMAIL <span class="token parameter variable">-f</span> FIRSTNAME <span class="token parameter variable">-l</span> LASTNAME <span class="token punctuation">[</span>-p PASSWORD<span class="token punctuation">]</span> <span class="token parameter variable">-r</span>
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>airflow users create</span></div><code class="language-bash"><span class="token comment"># Create a user</span>
+$ airflow <span class="token function">users</span> create <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token parameter variable">-e</span> EMAIL <span class="token parameter variable">-f</span> FIRSTNAME <span class="token parameter variable">-l</span> LASTNAME <span class="token punctuation">[</span>-p PASSWORD<span class="token punctuation">]</span> <span class="token parameter variable">-r</span>
                        ROLE <span class="token punctuation">[</span>--use-random-password<span class="token punctuation">]</span> <span class="token parameter variable">-u</span> USERNAME <span class="token punctuation">[</span>-v<span class="token punctuation">]</span>
     -e, <span class="token parameter variable">--email</span> <span class="token builtin class-name">:</span> Email of the user
     -f, <span class="token parameter variable">--firstname</span> <span class="token builtin class-name">:</span> First name of the user
     -l, <span class="token parameter variable">--lastname</span> <span class="token builtin class-name">:</span> Last name of the user
     -p, <span class="token parameter variable">--password</span> <span class="token builtin class-name">:</span> Password of the user, required to create a user without –use-random-password
-    -r, <span class="token parameter variable">--role</span> <span class="token builtin class-name">:</span> Role of the user. Existing roles include Admin, User, Op, Viewer, and Public<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    -r, <span class="token parameter variable">--role</span> <span class="token builtin class-name">:</span> Role of the user. Existing roles include Admin, User, Op, Viewer, and Public<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="Airflow-계정-조회"><a href="#Airflow-계정-조회" class="headerlink" title="Airflow 계정 조회"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html#list_repeat7">Airflow 계정 조회</a></h4><ul>
-<li><p>만들어진 계정들을 탐색하는 커맨드에요.</p>
+<h4 id="airflow-users-list"><a href="#airflow-users-list" class="headerlink" title="airflow users list"></a>airflow users list</h4><ul>
+<li><p><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html#list_repeat7">Airflow 계정 조회</a></p>
 </li>
-<li><p>List users</p>
-</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow <span class="token function">users</span> list <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-o table, json, yaml, plain<span class="token punctuation">]</span> <span class="token punctuation">[</span>-v<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="webserver"><a href="#webserver" class="headerlink" title="webserver"></a>webserver</h3><h4 id="웹서버-시작하기"><a href="#웹서버-시작하기" class="headerlink" title="웹서버 시작하기"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html#webserver">웹서버 시작하기</a></h4><ul>
-<li><p>웹서버를 시작하는 커맨드에요. -D 옵션을 주면 nohup ~ $ 을 쓰지 않아도 백그라운드로 실행시킬 수 있어요.</p>
-</li>
-<li><p>Start a Airflow webserver instance</p>
+<li><p>만들어진 계정들을 탐색하는 커맨드 입니다.</p>
 </li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow webserver <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-A ACCESS_LOGFILE<span class="token punctuation">]</span> <span class="token punctuation">[</span>-L ACCESS_LOGFORMAT<span class="token punctuation">]</span> <span class="token punctuation">[</span>-D<span class="token punctuation">]</span> <span class="token punctuation">[</span>-d<span class="token punctuation">]</span>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># List users</span>
+$ airflow <span class="token function">users</span> list <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-o table, json, yaml, plain<span class="token punctuation">]</span> <span class="token punctuation">[</span>-v<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="webserver"><a href="#webserver" class="headerlink" title="webserver"></a>webserver</h3><h4 id="airflow-webserver"><a href="#airflow-webserver" class="headerlink" title="airflow webserver"></a>airflow webserver</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html#webserver">웹서버 시작하기</a></li>
+</ul>
+<blockquote>
+<p>웹서버 프로세스를 시작하는 커맨드 입니다. -D 옵션을 주면 nohup ~ $ 을 쓰지 않아도 백그라운드로 실행시킬 수 있습니다.</p>
+</blockquote>
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>airflow webserver</span></div><code class="language-bash"><span class="token comment"># Start a Airflow webserver instance</span>
+$ airflow webserver <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-A ACCESS_LOGFILE<span class="token punctuation">]</span> <span class="token punctuation">[</span>-L ACCESS_LOGFORMAT<span class="token punctuation">]</span> <span class="token punctuation">[</span>-D<span class="token punctuation">]</span> <span class="token punctuation">[</span>-d<span class="token punctuation">]</span>
                     <span class="token punctuation">[</span>-E ERROR_LOGFILE<span class="token punctuation">]</span> <span class="token punctuation">[</span>-H <span class="token environment constant">HOSTNAME</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>-l LOG_FILE<span class="token punctuation">]</span> <span class="token punctuation">[</span>--pid <span class="token punctuation">[</span>PID<span class="token punctuation">]</span><span class="token punctuation">]</span>
                     <span class="token punctuation">[</span>-p PORT<span class="token punctuation">]</span> <span class="token punctuation">[</span>--ssl-cert SSL_CERT<span class="token punctuation">]</span> <span class="token punctuation">[</span>--ssl-key SSL_KEY<span class="token punctuation">]</span>
                     <span class="token punctuation">[</span>--stderr STDERR<span class="token punctuation">]</span> <span class="token punctuation">[</span>--stdout STDOUT<span class="token punctuation">]</span> <span class="token punctuation">[</span>-t WORKER_TIMEOUT<span class="token punctuation">]</span>
                     <span class="token punctuation">[</span>-k <span class="token punctuation">&#123;</span>sync,eventlet,gevent,tornado<span class="token punctuation">&#125;</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>-w WORKERS<span class="token punctuation">]</span>
-    -D, <span class="token parameter variable">--daemon</span> <span class="token builtin class-name">:</span>  Daemonize instead of running <span class="token keyword">in</span> the foreground <span class="token punctuation">(</span>Default: False<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="scheduler"><a href="#scheduler" class="headerlink" title="scheduler"></a>scheduler</h2><ul>
-<li>스케줄러를 시작하는 커맨드에요. -D 옵션을 주면 nohup ~ $ 을 쓰지 않아도 백그라운드로 실행시킬 수 있어요.</li>
+    -D, <span class="token parameter variable">--daemon</span> <span class="token builtin class-name">:</span>  Daemonize instead of running <span class="token keyword">in</span> the foreground <span class="token punctuation">(</span>Default: False<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="scheduler"><a href="#scheduler" class="headerlink" title="scheduler"></a>scheduler</h2><h4 id="airflow-scheduler"><a href="#airflow-scheduler" class="headerlink" title="airflow scheduler"></a>airflow scheduler</h4><blockquote>
+<p>스케줄러 프로세스를 시작하는 커맨드 입니다. -D 옵션을 주면 nohup ~ $ 을 쓰지 않아도 백그라운드로 실행시킬 수 있습니다.</p>
+</blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html#scheduler">스케줄러 시작하기</a></li>
 </ul>
-<h4 id="스케줄러-시작하기"><a href="#스케줄러-시작하기" class="headerlink" title="스케줄러 시작하기"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html#scheduler">스케줄러 시작하기</a></h4><ul>
-<li>Start a scheduler instance</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow scheduler <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-D<span class="token punctuation">]</span> <span class="token punctuation">[</span>-p<span class="token punctuation">]</span> <span class="token punctuation">[</span>-l LOG_FILE<span class="token punctuation">]</span> <span class="token punctuation">[</span>-n NUM_RUNS<span class="token punctuation">]</span> <span class="token punctuation">[</span>--pid <span class="token punctuation">[</span>PID<span class="token punctuation">]</span><span class="token punctuation">]</span>
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>airflow scheduler</span></div><code class="language-bash"><span class="token comment"># Start a scheduler instance</span>
+$ airflow scheduler <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-D<span class="token punctuation">]</span> <span class="token punctuation">[</span>-p<span class="token punctuation">]</span> <span class="token punctuation">[</span>-l LOG_FILE<span class="token punctuation">]</span> <span class="token punctuation">[</span>-n NUM_RUNS<span class="token punctuation">]</span> <span class="token punctuation">[</span>--pid <span class="token punctuation">[</span>PID<span class="token punctuation">]</span><span class="token punctuation">]</span>
                     <span class="token punctuation">[</span>-s<span class="token punctuation">]</span> <span class="token punctuation">[</span>--stderr STDERR<span class="token punctuation">]</span> <span class="token punctuation">[</span>--stdout STDOUT<span class="token punctuation">]</span> <span class="token punctuation">[</span>-S SUBDIR<span class="token punctuation">]</span> <span class="token punctuation">[</span>-v<span class="token punctuation">]</span>
-    -D, <span class="token parameter variable">--daemon</span> <span class="token builtin class-name">:</span>  Daemonize instead of running <span class="token keyword">in</span> the foreground<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+    -D, <span class="token parameter variable">--daemon</span> <span class="token builtin class-name">:</span>  Daemonize instead of running <span class="token keyword">in</span> the foreground<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
-<li><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html">Command Line Interface and Environment Variables Reference</a></li>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/cli-and-env-variables-ref.html">airflow.apache.org&#x2F;docs&#x2F;apache-airflow&#x2F;stable&#x2F;cli-and-env-variables-ref</a></li>
 </ul>
 
                 

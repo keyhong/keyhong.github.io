@@ -233,10 +233,15 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
-                          </div>
+                        <div class="article-tag">
+                            <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                                <span class="chip bg-color">
+                                    2023-06-24</span>
+                        </div>
                     
+                    
+
+
                 </div>
                 <div class="col s5 right-align">
                     
@@ -250,23 +255,6 @@
                     </div>
                     
                 </div>
-            </div>
-
-            <div class="post-info">
-                
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2023-06-24
-                </div>
-                
-
-                
-
-                
-
-                
-
-                
             </div>
         </div>
         <hr class="clearfix">
@@ -282,55 +270,55 @@
             <div id="articleContent">
                 <h2 id="Airflow-Config"><a href="#Airflow-Config" class="headerlink" title="Airflow Config"></a>Airflow Config</h2><p>에어플로우를 사용하며, Excutor별로 중요하고 유용한 config 정리하였다. airflow config 설정은 airflow.cfg에서 default 값을 보고 변경할 수 있다. airflow 설치 후 아무 작업을 하지 않았다면, default_airflow.cfg 라는 파일명으로 존재하는데, 파일명으로 airflow.cfg 로 바꿔서 사용하면 된다.<br> <br>기본적으로 airflow.cfg 파일을 읽어 들여 default value를 설정하지만, 특정 dag나 task별로 config 설정을 다르게 하고 싶은 경우도 있을 것이다. 그럴 때는 dag.py에서 class(DAG, Operator)내 파라미터를 지정(파라미터가 많기 때문에 없는 것은 default_agrs에 “key: value”의 딕셔너리 인자로 넣을 수 있다.)함으로써 실행하는 Context에 변화를 줄 수 있습니다.</p>
 <h2 id="Common-Conifg"><a href="#Common-Conifg" class="headerlink" title="Common Conifg"></a>Common Conifg</h2><p>어떤 executor를 사용하던 공통적으로 중요하다고 생각되는 config들을 정리하였습니다. airflow.cfg는 단일 파일으로써 <code>executor</code> config 값에 따라 읽는 config 값들이 달라질 수 있습니다. 하지만 <code>executor</code>의 변화에도 config 파일이 분리되어 있지 않고, 단일 airflow.cfg 파일을 읽기 때문에 사용자가 어느 어떤 executor를 사용하던 공통적으로 중요한 값들은 미리 정리해놓는 게 좋습니다. 아래는 그에 대한 config 값들과 </p>
-<pre class="line-numbers language-conf" data-language="conf"><div class="caption"><span>airflow.cfg</span></div><code class="language-conf"># Airflow Pipeline이 있는 폴더. 절대경로로 지정
-dags_folder &#x3D; $&#123;AIRFLOW_HOME&#125;&#x2F;dags
+<pre class="line-numbers language-ini" data-language="ini"><div class="caption"><span>airflow.cfg</span></div><code class="language-ini"><span class="token comment"># Airflow Pipeline이 있는 폴더. 절대경로로 지정</span>
+<span class="token key attr-name">dags_folder</span> <span class="token punctuation">=</span> <span class="token value attr-value">$&#123;AIRFLOW_HOME&#125;/dags</span>
 
-# Airflow에서 사용할 Executor Class. 다음 중 선택 가능
-# SequentialExecutor, LocalExecutor, CeleryExecutor, DaskExecutor, KubernetesExecutor, CeleryKubernetesExecutor, custom executor
-executor &#x3D; SequentialExecutor
+<span class="token comment"># Airflow에서 사용할 Executor Class. 다음 중 선택 가능</span>
+<span class="token comment"># SequentialExecutor, LocalExecutor, CeleryExecutor, DaskExecutor, KubernetesExecutor, CeleryKubernetesExecutor, custom executor</span>
+<span class="token key attr-name">executor</span> <span class="token punctuation">=</span> <span class="token value attr-value">SequentialExecutor</span>
 
-# 메타데이터 DBMS에 대한 SqlAlchemy 연결 문자열
-# executor, database에 따라 달라지며 백엔드로 사용할 metadata db에 커넥션 방법은 아래 도큐먼트를 참조하여 구축할 수 있습니다.
-# https:&#x2F;&#x2F;airflow.apache.org&#x2F;docs&#x2F;apache-airflow&#x2F;stable&#x2F;howto&#x2F;set-up-database.html#database-uri)
-sql_alchemy_conn &#x3D; sqlite:&#x2F;&#x2F;&#x2F;$&#123;AIRFLOW_HOME&#125;&#x2F;airflow.db
+<span class="token comment"># 메타데이터 DBMS에 대한 SqlAlchemy 연결 문자열</span>
+<span class="token comment"># executor, database에 따라 달라지며 백엔드로 사용할 metadata db에 커넥션 방법은 아래 도큐먼트를 참조하여 구축할 수 있습니다.</span>
+<span class="token comment"># https://airflow.apache.org/docs/apache-airflow/stable/howto/set-up-database.html#database-uri)</span>
+<span class="token key attr-name">sql_alchemy_conn</span> <span class="token punctuation">=</span> <span class="token value attr-value">sqlite:///$&#123;AIRFLOW_HOME&#125;/airflow.db</span>
 
-# Airflow에서 기본적으로 제공되는 시범용 DAG 예제 파일들을 로드 할 지 여부입니다.
-# default가 True 이기 때문에, 프로덕션 환경에서는 반드시 False로 설정합니다. 
-load_examples &#x3D; True
+<span class="token comment"># Airflow에서 기본적으로 제공되는 시범용 DAG 예제 파일들을 로드 할 지 여부입니다.</span>
+<span class="token comment"># default가 True 이기 때문에, 프로덕션 환경에서는 반드시 False로 설정합니다. </span>
+<span class="token key attr-name">load_examples</span> <span class="token punctuation">=</span> <span class="token value attr-value">True</span>
 
-# Airlfow Web UI 포트 변경 (default 8080. 다른 플랫폼에서 8080을 쓰고 있다면 변경 필요)
-web_server_port &#x3D; 8080
+<span class="token comment"># Airlfow Web UI 포트 변경 (default 8080. 다른 플랫폼에서 8080을 쓰고 있다면 변경 필요)</span>
+<span class="token key attr-name">web_server_port</span> <span class="token punctuation">=</span> <span class="token value attr-value">8080</span>
 
-# 서버에서 제공된 시간이 naive object (timezone이 없는 datetime 객체) 일 때, 기본 timezone 설정
-# 한국시간은 &quot;utc + 9&quot; 입니다. 이후 airflow db upgrade로 메타데이터 정보를 업데이트 합니다. 
-# 1. 해당 설정을 하더라도 dag 파일 내에서는 aware datetime objects를 사용 (에러 발생 가능성 방지 목적)
-# 2. (start, end) date의 Timezone만 변경할 뿐, logical_date는 UTC 기준으로 실행된다 (주의 사항)
-default_timezone &#x3D; utc
+<span class="token comment"># 서버에서 제공된 시간이 naive object (timezone이 없는 datetime 객체) 일 때, 기본 timezone 설정</span>
+<span class="token comment"># 한국시간은 "utc + 9" 입니다. 이후 airflow db upgrade로 메타데이터 정보를 업데이트 합니다. </span>
+<span class="token comment"># 1. 해당 설정을 하더라도 dag 파일 내에서는 aware datetime objects를 사용 (에러 발생 가능성 방지 목적)</span>
+<span class="token comment"># 2. (start, end) date의 Timezone만 변경할 뿐, logical_date는 UTC 기준으로 실행된다 (주의 사항)</span>
+<span class="token key attr-name">default_timezone</span> <span class="token punctuation">=</span> <span class="token value attr-value">utc</span>
 
-# 스케줄러당 동시에 실행할 수 있는 최대 작업 인스턴스 수 
-# 클러스터 구성이라면 클러스터 전체에서 최대 작업 가능 수 (worker와 연관)
-# 작업 수행에 사용할 리소스를 제어합니다.
-parallelism &#x3D; 32
+<span class="token comment"># 스케줄러당 동시에 실행할 수 있는 최대 작업 인스턴스 수 </span>
+<span class="token comment"># 클러스터 구성이라면 클러스터 전체에서 최대 작업 가능 수 (worker와 연관)</span>
+<span class="token comment"># 작업 수행에 사용할 리소스를 제어합니다.</span>
+<span class="token key attr-name">parallelism</span> <span class="token punctuation">=</span> <span class="token value attr-value">32</span>
 
-# 각 DAG에서 동시에 실행할 수 있는 최대 작업 인스턴스 수
-max_active_tasks_per_dag &#x3D; 16
+<span class="token comment"># 각 DAG에서 동시에 실행할 수 있는 최대 작업 인스턴스 수</span>
+<span class="token key attr-name">max_active_tasks_per_dag</span> <span class="token punctuation">=</span> <span class="token value attr-value">16</span>
 
-# 로그 파일을 저장하는 폴더. 절대경로로 지정
-base_log_folder &#x3D; $&#123;AIRFLOW_HOME&#125;&#x2F;logs
+<span class="token comment"># 로그 파일을 저장하는 폴더. 절대경로로 지정</span>
+<span class="token key attr-name">base_log_folder</span> <span class="token punctuation">=</span> <span class="token value attr-value">$&#123;AIRFLOW_HOME&#125;/logs</span>
 
-# Logging level 설정 : CRITICAL, ERROR, WARNING, INFO, DEBUG
-logging_level &#x3D; INFO
+<span class="token comment"># Logging level 설정 : CRITICAL, ERROR, WARNING, INFO, DEBUG</span>
+<span class="token key attr-name">logging_level</span> <span class="token punctuation">=</span> <span class="token value attr-value">INFO</span>
 
-# 저장되는 로그 파일의 이름 템플릿입니다.
-## &#123;&#123; &#125;&#125;는 jinja-template이며, config처럼 미리 정의한 방법을 실행해 정의한 값을 읽습니다.
-log_filename_template &#x3D; dag_id&#x3D;&#123;&#123;&#123;&#123; ti.dag_id &#125;&#125;&#125;&#125;&#x2F;run_id&#x3D;&#123;&#123;&#123;&#123; ti.run_id &#125;&#125;&#125;&#125;&#x2F;task_id&#x3D;&#123;&#123;&#123;&#123; ti.task_id &#125;&#125;&#125;&#125;&#x2F;&#123;&#123;%% if ti.map_index &gt;&#x3D; 0 %%&#125;&#125;map_index&#x3D;&#123;&#123;&#123;&#123; ti.map_index &#125;&#125;&#125;&#125;&#x2F;&#123;&#123;%% endif %%&#125;&#125;attempt&#x3D;&#123;&#123;&#123;&#123; try_number &#125;&#125;&#125;&#125;.log
+<span class="token comment"># 저장되는 로그 파일의 이름 템플릿입니다.</span>
+<span class="token comment">## &#123;&#123; &#125;&#125;는 jinja-template이며, config처럼 미리 정의한 방법을 실행해 정의한 값을 읽습니다.</span>
+<span class="token key attr-name">log_filename_template</span> <span class="token punctuation">=</span> <span class="token value attr-value">dag_id=&#123;&#123;&#123;&#123; ti.dag_id &#125;&#125;&#125;&#125;/run_id=&#123;&#123;&#123;&#123; ti.run_id &#125;&#125;&#125;&#125;/task_id=&#123;&#123;&#123;&#123; ti.task_id &#125;&#125;&#125;&#125;/&#123;&#123;%% if ti.map_index >= 0 %%&#125;&#125;map_index=&#123;&#123;&#123;&#123; ti.map_index &#125;&#125;&#125;&#125;/&#123;&#123;%% endif %%&#125;&#125;attempt=&#123;&#123;&#123;&#123; try_number &#125;&#125;&#125;&#125;.log</span>
 
-# 스케줄러당 동시에 실행할 수 있는 최대 작업 인스턴스 수 
-# 클러스터 구성이라면 클러스터 전체에서 최대 작업 가능 수 (cluster의 worker와 연관된 옵션입니다). 작업 수행에 사용할 리소스를 제어합니다.
-parallelism &#x3D; 32
+<span class="token comment"># 스케줄러당 동시에 실행할 수 있는 최대 작업 인스턴스 수 </span>
+<span class="token comment"># 클러스터 구성이라면 클러스터 전체에서 최대 작업 가능 수 (cluster의 worker와 연관된 옵션입니다). 작업 수행에 사용할 리소스를 제어합니다.</span>
+<span class="token key attr-name">parallelism</span> <span class="token punctuation">=</span> <span class="token value attr-value">32</span>
 
-# 각 DAG에서 동시에 실행할 수 있는 최대 작업 인스턴스 수
-max_active_tasks_per_dag &#x3D; 16<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment"># 각 DAG에서 동시에 실행할 수 있는 최대 작업 인스턴스 수</span>
+<span class="token key attr-name">max_active_tasks_per_dag</span> <span class="token punctuation">=</span> <span class="token value attr-value">16</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -498,12 +486,12 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2023/07/01/Kafka/kafka-sh-command/">
+                <a href="/2023/07/01/Kafka/kafka-server-propery-options/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Kafka Shell Command">
+                        <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Kafka Server Propery Options">
                         
-                        <span class="card-title diy-neon-red">[Kafka] Kafka Shell Command</span>
+                        <span class="card-title diy-neon-red">[Kafka] Kafka Server Propery Options</span>
                     </div>
                 </a>
                 <div class="card-content article-content">

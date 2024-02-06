@@ -11,7 +11,8 @@ SORT BY
 DISTRIBUTED BY
 CLUSTER BY
 
-(1) ORDER BY데이터 전체 정렬에 사용된다. 데이터의 전체 순서를 보장하며, 이를 위해 S">
+(1) ORDER BY
+데이터 전체 정렬에 사용된다. 데이터의 전체 순서를 보장하며, 이를 위해 ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -239,10 +240,15 @@ CLUSTER BY
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
-                          </div>
+                        <div class="article-tag">
+                            <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                                <span class="chip bg-color">
+                                    2023-12-13</span>
+                        </div>
                     
+                    
+
+
                 </div>
                 <div class="col s5 right-align">
                     
@@ -257,23 +263,6 @@ CLUSTER BY
                     
                 </div>
             </div>
-
-            <div class="post-info">
-                
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2023-12-13
-                </div>
-                
-
-                
-
-                
-
-                
-
-                
-            </div>
         </div>
         <hr class="clearfix">
 
@@ -286,30 +275,41 @@ CLUSTER BY
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Hive에서-정렬을-수행하는-4개의-절"><a href="#Hive에서-정렬을-수행하는-4개의-절" class="headerlink" title="Hive에서 정렬을 수행하는 4개의 절"></a>Hive에서 정렬을 수행하는 4개의 절</h2><ul>
+                <h3 id="Hive에서-정렬을-수행하는-4개의-절"><a href="#Hive에서-정렬을-수행하는-4개의-절" class="headerlink" title="Hive에서 정렬을 수행하는 4개의 절"></a>Hive에서 정렬을 수행하는 4개의 절</h3><ul>
 <li>ORDER BY</li>
 <li>SORT BY</li>
 <li>DISTRIBUTED BY</li>
 <li>CLUSTER BY</li>
 </ul>
-<h3 id="1-ORDER-BY"><a href="#1-ORDER-BY" class="headerlink" title="(1) ORDER BY"></a>(1) ORDER BY</h3><p>데이터 전체 정렬에 사용된다. 데이터의 전체 순서를 보장하며, 이를 위해 Single Reducer를 통과한다.</p>
-<h4 id="주의사항"><a href="#주의사항" class="headerlink" title="주의사항"></a>주의사항</h4><ol>
-<li><p>ORDER BY는 모든 데이터를 단일 리듀서를 통해 데이터를 반환하기 때문에 <strong>실제 프로덕션 환경에서는 상당히 고비용</strong>이 드는 쿼리이다. <strong>따라서 LIMIT 절을 필수적으로 사용</strong>하여 전체 데이터를 모두 반환하는 게 아니라 필요 수 만큼만 반환하도록 해야 한다.</p>
+<h4 id="1-ORDER-BY"><a href="#1-ORDER-BY" class="headerlink" title="(1) ORDER BY"></a>(1) ORDER BY</h4><blockquote>
+<p>데이터 전체 정렬에 사용된다. 데이터의 전체 순서를 보장하며, 이를 위해 Single Reducer를 통과한다.</p>
+</blockquote>
+<ul>
+<li>주의사항</li>
+</ul>
+<ol>
+<li><p>ORDER BY는 모든 데이터를 단일 리듀서를 통해 데이터를 반환하기 때문에 <code>실제 프로덕션 환경에서는 상당히 고비용</code>이 드는 쿼리이다. <code>따라서 LIMIT 절을 필수적으로 사용</code>하여 전체 데이터를 모두 반환하는 게 아니라 필요 수 만큼만 반환하도록 해야 한다.</p>
 </li>
-<li><p>s<strong>NULL 값 부터 시작하여 오름차순으로 정렬</strong>된다.</p>
+<li><p>ORDER BY는 <code>NULL 값 부터 시작하여 오름차순으로 정렬</code>된다.</p>
 </li>
 </ol>
-<h4 id="Query"><a href="#Query" class="headerlink" title="Query"></a>Query</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> col <span class="token keyword">FROM</span> table_name <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> col<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>ORDER BY</span></div><code class="language-sql"><span class="token keyword">SELECT</span> col <span class="token keyword">FROM</span> table_name <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> col<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
-<h3 id="2-SORT-BY"><a href="#2-SORT-BY" class="headerlink" title="(2) SORT BY"></a>(2) SORT BY</h3><p>ORDER BY와 비슷하지만, <strong>여러 개의 리듀서에서 각각 정렬이 수행</strong>된다는 점에서 차이가 있다. 따라서 <strong>전체 데이터의 정렬이 보장 되지 않고, 각 리듀서를 통과하는 데이터 내에서 각각 정렬</strong>이 된다.</p>
-<h4 id="Query-1"><a href="#Query-1" class="headerlink" title="Query"></a>Query</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> col <span class="token keyword">FROM</span> table_name SORT <span class="token keyword">BY</span> col<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="2-SORT-BY"><a href="#2-SORT-BY" class="headerlink" title="(2) SORT BY"></a>(2) SORT BY</h4><blockquote>
+<p>ORDER BY와 비슷하지만, <code>여러 개의 리듀서에서 각각 정렬이 수행</code>된다는 점에서 차이가 있다. 따라서 <code>전체 데이터의 정렬이 보장 되지 않고, 각 리듀서를 통과하는 데이터 내에서 각각 정렬</code>이 된다.</p>
+</blockquote>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>SORT BY</span></div><code class="language-sql"><span class="token keyword">SELECT</span> col <span class="token keyword">FROM</span> table_name SORT <span class="token keyword">BY</span> col<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="3-DISTRIBUTED-BY"><a href="#3-DISTRIBUTED-BY" class="headerlink" title="(3) DISTRIBUTED BY"></a>(3) DISTRIBUTED BY</h3><p>DISTRIBUTED BY 절은 <strong>키-값 쌍을 이용해 어떤 키가 어떤 리듀서로 갈 지를 결정</strong>한다. <strong>컬럼 값에 따라 동일한 범주의 값을 가진 모든 행들이 특정한 리듀서로 모이도록 보장</strong>한다. 하지만, 이 구문은 <strong>실제 정렬을 수행하지는 않는다. 단순히 값들을 리듀서에 분배하는 Map 역할을 할 뿐이다. 정렬을 수행하려면 SORT BY 절을 결합해야 한다.</strong> 이 역시 SORT BY 이기 때문에 각 리듀서별로 정렬이 수행된다.</p>
-<h4 id="Query-2"><a href="#Query-2" class="headerlink" title="Query"></a>Query</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> col <span class="token keyword">FROM</span> table_name <span class="token keyword">DISTRIBUTED</span> <span class="token keyword">BY</span> col SORT <span class="token keyword">BY</span> col<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="3-DISTRIBUTED-BY"><a href="#3-DISTRIBUTED-BY" class="headerlink" title="(3) DISTRIBUTED BY"></a>(3) DISTRIBUTED BY</h4><blockquote>
+<p>DISTRIBUTED BY는 <code>키-값 쌍을 이용해 어떤 키가 어떤 리듀서로 갈 지를 결정</code>한다. <code>컬럼 값에 따라 동일한 범주의 값을 가진 모든 행들이 특정한 리듀서로 모이도록 보장</code>한다. 하지만, 이 구문은 <code>실제 정렬을 수행하지는 않는다. 단순히 값들을 리듀서에 분배하는 Map 역할을 할 뿐이다. 정렬을 수행하려면 SORT BY 절을 결합해야 한다.</code> 이 역시 SORT BY 이기 때문에 각 리듀서별로 정렬이 수행된다.</p>
+</blockquote>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>DISTRIBUTED BY</span></div><code class="language-sql"><span class="token keyword">SELECT</span> col <span class="token keyword">FROM</span> table_name <span class="token keyword">DISTRIBUTED</span> <span class="token keyword">BY</span> col SORT <span class="token keyword">BY</span> col<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="4-CLUSTER-BY"><a href="#4-CLUSTER-BY" class="headerlink" title="(4) CLUSTER BY"></a>(4) CLUSTER BY</h3><p><strong>( DISTRIBUTE BY + SORT BY )의 짧은 형태</strong>일 뿐이다. 로직 상으로 아무것도 다르지 않다.</p>
-<h4 id="Query-3"><a href="#Query-3" class="headerlink" title="Query"></a>Query</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> col <span class="token keyword">FROM</span> table_name CLUSTER <span class="token keyword">BY</span> col<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="4-CLUSTER-BY"><a href="#4-CLUSTER-BY" class="headerlink" title="(4) CLUSTER BY"></a>(4) CLUSTER BY</h4><blockquote>
+<p><code>( DISTRIBUTE BY + SORT BY )의 짧은 형태</code>일 뿐이다. 로직 상으로 아무것도 다르지 않다.</p>
+</blockquote>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>CLUSTER BY</span></div><code class="language-sql"><span class="token keyword">SELECT</span> col <span class="token keyword">FROM</span> table_name CLUSTER <span class="token keyword">BY</span> col<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
                 
             </div>

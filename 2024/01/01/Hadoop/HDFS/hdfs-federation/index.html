@@ -5,10 +5,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="[HDFS] Federation, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Federation 필요성
-네임노드는 파일시스템의 모든 파일과 각 블록에 대한 참조 정보를 메모리에서 관리. 따라서 파일이 많은 대형 클러스에서 확장성에 가장 큰 걸림돌이 되는 것은 메모리
+    <meta name="description" content="Federation
+여러 개의 독립적인 namenode와 datanode 클러스터를 하나의 논리적인 단일 namenode로 조합하는 방법
 
-HDFS 페더레이션(HD">
+Federation 필요성
+namenode는 파일시스템의 모든 파일과 각 블">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -236,10 +237,15 @@ HDFS 페더레이션(HD">
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
-                          </div>
+                        <div class="article-tag">
+                            <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                                <span class="chip bg-color">
+                                    2024-01-01</span>
+                        </div>
                     
+                    
+
+
                 </div>
                 <div class="col s5 right-align">
                     
@@ -254,23 +260,6 @@ HDFS 페더레이션(HD">
                     
                 </div>
             </div>
-
-            <div class="post-info">
-                
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2024-01-01
-                </div>
-                
-
-                
-
-                
-
-                
-
-                
-            </div>
         </div>
         <hr class="clearfix">
 
@@ -283,41 +272,42 @@ HDFS 페더레이션(HD">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Federation-필요성"><a href="#Federation-필요성" class="headerlink" title="Federation 필요성"></a>Federation 필요성</h2><blockquote>
-<p>네임노드는 파일시스템의 모든 파일과 각 블록에 대한 참조 정보를 메모리에서 관리. 따라서 파일이 많은 대형 클러스에서 확장성에 가장 큰 걸림돌이 되는 것은 메모리</p>
+                <h2 id="Federation"><a href="#Federation" class="headerlink" title="Federation"></a>Federation</h2><blockquote>
+<p>여러 개의 독립적인 namenode와 datanode 클러스터를 하나의 논리적인 단일 namenode로 조합하는 방법</p>
 </blockquote>
-<h2 id="HDFS-페더레이션-HDFS-Federation"><a href="#HDFS-페더레이션-HDFS-Federation" class="headerlink" title="HDFS 페더레이션(HDFS Federation)"></a>HDFS 페더레이션(HDFS Federation)</h2><blockquote>
-<p>네임노드의 메모리 관련 확장성 문제를 해결하기 위해 2.x 릴리즈부터 지원</p>
+<h2 id="Federation-필요성"><a href="#Federation-필요성" class="headerlink" title="Federation 필요성"></a>Federation 필요성</h2><blockquote>
+<p>namenode는 파일시스템의 모든 파일과 각 블록에 대한 참조 정보를 메모리에서 관리. 따라서 파일이 많은 대형 클러스터의 확장성에 가장 큰 걸림돌이 되는 것은 메모리</p>
 </blockquote>
-<ul>
-<li><p>각각의 네임노드가 파일시스템의 네임스페이스 일부를 나누어 관리하는 방식으로 새로운 네임노드 추가 가능</p>
+<h2 id="Federation-특징"><a href="#Federation-특징" class="headerlink" title="Federation 특징"></a>Federation 특징</h2><ul>
+<li><p>namenode의 메모리 관련 확장성 문제를 해결하기 위해 2.x 릴리즈부터 지원</p>
 </li>
-<li><p>예를 들어, &#x2F;user 디렉터리와 &#x2F;share 디렉터리를 서로 다른 네임노드가 나누어 관리</p>
+<li><p>각각의 namenode가 파일시스템의 네임스페이스 일부를 나누어 관리하는 방식으로 새로운 namenode 추가 가능</p>
 </li>
-<li><p>페더레이션 클러스터에 접근하기 위해 클라이언트는 파일 경로와 네임노드를 매핑한 클라이언트 측 마운트 테이블을 이용</p>
+<li><p>예를 들어, &#x2F;user 디렉터리와 &#x2F;share 디렉터리를 서로 다른 namenode가 나누어 관리</p>
+</li>
+<li><p>페더레이션 클러스터에 접근하기 위해 클라이언트는 파일 경로와 namenode를 매핑한 클라이언트 측 마운트 테이블을 이용</p>
 </li>
 <li><p>환경 설정에서 ViewFileSystem과 viewfs:&#x2F;&#x2F;URI 를 사용하여 관리</p>
 </li>
+<li><p>Federation 적용시 각 자기만의 namenode는 네임스페이스 볼륨(namespace volume)과 블록 풀(block pool)을 관리</p>
+</li>
 </ul>
-<h2 id="HDFS-페더레이션-적용시"><a href="#HDFS-페더레이션-적용시" class="headerlink" title="HDFS 페더레이션 적용시"></a>HDFS 페더레이션 적용시</h2><blockquote>
-<p>각 네임노드는 네임스페이스 볼륨과 블록 풀을 관리</p>
-</blockquote>
-<h4 id="네임스페이스-볼륨-namespace-volume"><a href="#네임스페이스-볼륨-namespace-volume" class="headerlink" title="네임스페이스 볼륨(namespace volume)"></a>네임스페이스 볼륨(namespace volume)</h4><blockquote>
+<h3 id="namespace-volume"><a href="#namespace-volume" class="headerlink" title="namespace volume"></a>namespace volume</h3><blockquote>
 <p>네임스페이스의 메타데이터를 구성</p>
 </blockquote>
 <ul>
 <li><p>네임스페이스는 볼륨은 서로 독립적</p>
 </li>
-<li><p>네임노드는 서로 통신할 필요 X</p>
+<li><p>namenode는 서로 통신할 필요 X</p>
 </li>
-<li><p>특정 네임노드의 장애는 다른 네임노드가 관리하는 네임스페이스의 가용성에 영향 X</p>
+<li><p>특정 namenode의 장애는 다른 namenode가 관리하는 네임스페이스의 가용성에 영향 X</p>
 </li>
 </ul>
-<h4 id="블록-풀-block-pool"><a href="#블록-풀-block-pool" class="headerlink" title="블록 풀(block pool)"></a>블록 풀(block pool)</h4><blockquote>
+<h3 id="block-pool"><a href="#block-pool" class="headerlink" title="block pool"></a>block pool</h3><blockquote>
 <p>네임스페이스에 포함된 파일의 전체 블록을 보관</p>
 </blockquote>
 <ul>
-<li><p>모든 데이터노드는 클러스터의 각 네임노드마다 등록</p>
+<li><p>모든 datanode는 클러스터의 각 namenode마다 등록</p>
 </li>
 <li><p>여러 블록 풀로부터 블록을 저장</p>
 </li>

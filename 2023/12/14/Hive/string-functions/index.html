@@ -5,10 +5,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="[Hive] String Functions, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="String Functions☆ CONCAT (string|binary A, string|binary B…)
+    <meta name="description" content="☆ CONCAT
 두 문자열을 결합하여 반환한다.
 
-SELECT CONCAT(col1, &#39;-&#39;, col3) FROM tabl">
+-- Syntax: CONCAT (string|binary A, string|binary B...)
+SELECT CONCAT(col1, &#39;-&#39;, col3) FROM ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -236,10 +237,15 @@ SELECT CONCAT(col1, &#39;-&#39;, col3) FROM tabl">
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
-                          </div>
+                        <div class="article-tag">
+                            <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                                <span class="chip bg-color">
+                                    2023-12-14</span>
+                        </div>
                     
+                    
+
+
                 </div>
                 <div class="col s5 right-align">
                     
@@ -254,23 +260,6 @@ SELECT CONCAT(col1, &#39;-&#39;, col3) FROM tabl">
                     
                 </div>
             </div>
-
-            <div class="post-info">
-                
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2023-12-14
-                </div>
-                
-
-                
-
-                
-
-                
-
-                
-            </div>
         </div>
         <hr class="clearfix">
 
@@ -283,111 +272,124 @@ SELECT CONCAT(col1, &#39;-&#39;, col3) FROM tabl">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="String-Functions"><a href="#String-Functions" class="headerlink" title="String Functions"></a>String Functions</h2><h4 id="☆-CONCAT-string-binary-A-string-binary-B…"><a href="#☆-CONCAT-string-binary-A-string-binary-B…" class="headerlink" title="☆ CONCAT (string|binary A, string|binary B…)"></a>☆ CONCAT (string|binary A, string|binary B…)</h4><blockquote>
+                <h4 id="☆-CONCAT"><a href="#☆-CONCAT" class="headerlink" title="☆ CONCAT"></a>☆ CONCAT</h4><blockquote>
 <p>두 문자열을 결합하여 반환한다.</p>
 </blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> CONCAT<span class="token punctuation">(</span>col1<span class="token punctuation">,</span> <span class="token string">'-'</span><span class="token punctuation">,</span> col3<span class="token punctuation">)</span> <span class="token keyword">FROM</span> table1<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax: CONCAT (string|binary A, string|binary B...)</span>
+<span class="token keyword">SELECT</span> CONCAT<span class="token punctuation">(</span>col1<span class="token punctuation">,</span> <span class="token string">'-'</span><span class="token punctuation">,</span> col3<span class="token punctuation">)</span> <span class="token keyword">FROM</span> table1<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h4 id="LENGTH-string-A"><a href="#LENGTH-string-A" class="headerlink" title="LENGTH (string A)"></a>LENGTH (string A)</h4><blockquote>
+<h4 id="LENGTH"><a href="#LENGTH" class="headerlink" title="LENGTH"></a>LENGTH</h4><blockquote>
 <p>컬럼에 있는 개별 값들의 문자열의 길이를 반환한다.</p>
 </blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> LENGTH<span class="token punctuation">(</span>col3<span class="token punctuation">)</span> <span class="token keyword">FROM</span> table1<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax: LENGTH (string A)</span>
+<span class="token keyword">SELECT</span> LENGTH<span class="token punctuation">(</span>col3<span class="token punctuation">)</span> <span class="token keyword">FROM</span> table1<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h4 id="LOWER-string-A"><a href="#LOWER-string-A" class="headerlink" title="LOWER (string A)"></a>LOWER (string A)</h4><blockquote>
+<h4 id="LOWER"><a href="#LOWER" class="headerlink" title="LOWER"></a>LOWER</h4><blockquote>
 <p>모든 대문자를 소문자로 변환한 문자열을 반환한다.</p>
 </blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> LOWER<span class="token punctuation">(</span>col3<span class="token punctuation">)</span> <span class="token keyword">FROM</span> table1<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax: LOWER (string A)</span>
+<span class="token keyword">SELECT</span> LOWER<span class="token punctuation">(</span>col3<span class="token punctuation">)</span> <span class="token keyword">FROM</span> table1<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h4 id="UPPER-string-A"><a href="#UPPER-string-A" class="headerlink" title="UPPER (string A)"></a>UPPER (string A)</h4><blockquote>
+<h4 id="UPPER"><a href="#UPPER" class="headerlink" title="UPPER"></a>UPPER</h4><blockquote>
 <p>모든 소문자를 대문자로 변환한 문자열을 반환한다.</p>
 </blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> UPPER<span class="token punctuation">(</span>col3<span class="token punctuation">)</span> <span class="token keyword">FROM</span> table1<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax: UPPER (string A)</span>
+<span class="token keyword">SELECT</span> UPPER<span class="token punctuation">(</span>col3<span class="token punctuation">)</span> <span class="token keyword">FROM</span> table1<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h4 id="LPAD-string-str-int-len-string-pad"><a href="#LPAD-string-str-int-len-string-pad" class="headerlink" title="LPAD (string str, int len, string pad)"></a>LPAD (string str, int len, string pad)</h4><blockquote>
+<h4 id="LPAD"><a href="#LPAD" class="headerlink" title="LPAD"></a>LPAD</h4><blockquote>
 <p>원하는 문자를 문자열의 길이를 만족할 때까지 왼쪽부터 채워서 반환한다.</p>
 </blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> LPAD<span class="token punctuation">(</span>col3<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token string">'v'</span><span class="token punctuation">)</span> <span class="token keyword">FROM</span> table1<span class="token punctuation">;</span>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax: LPAD (string str, int len, string pad)</span>
+<span class="token keyword">SELECT</span> LPAD<span class="token punctuation">(</span>col3<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token string">'v'</span><span class="token punctuation">)</span> <span class="token keyword">FROM</span> table1<span class="token punctuation">;</span>
 
-<span class="token comment">-- Return</span>
-<span class="token comment">-- vvvEngland</span>
-<span class="token comment">-- vvvEngland</span>
-<span class="token comment">-- vvvvvWales</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment">-- Return --</span>
+vvvEngland
+vvvEngland
+vvvvvWales<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="RPAD-string-str-int-len-string-pad"><a href="#RPAD-string-str-int-len-string-pad" class="headerlink" title="RPAD (string str, int len, string pad)"></a>RPAD (string str, int len, string pad)</h4><blockquote>
+<h4 id="RPAD"><a href="#RPAD" class="headerlink" title="RPAD"></a>RPAD</h4><blockquote>
 <p>원하는 문자를 문자열의 길이를 만족할 때 까지 오른쪽부터 채워서 반환한다.</p>
 </blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> RPAD<span class="token punctuation">(</span>col3<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token string">'v'</span><span class="token punctuation">)</span> <span class="token keyword">FROM</span> table1<span class="token punctuation">;</span>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax: RPAD (string str, int len, string pad)</span>
+<span class="token keyword">SELECT</span> RPAD<span class="token punctuation">(</span>col3<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token string">'v'</span><span class="token punctuation">)</span> <span class="token keyword">FROM</span> table1<span class="token punctuation">;</span>
 
-<span class="token comment">-- Return</span>
+<span class="token comment">-- Return --</span>
 Englandvvv
 Englandvvv
-Walesvvvvv<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+Walesvvvvv<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="LTRIM-string-A"><a href="#LTRIM-string-A" class="headerlink" title="LTRIM (string A)"></a>LTRIM (string A)</h4><blockquote>
+<h4 id="LTRIM"><a href="#LTRIM" class="headerlink" title="LTRIM"></a>LTRIM</h4><blockquote>
 <p>문자열 안의 공백을 왼쪽부터 모두 잘라내어 반환한다.</p>
 </blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> LTRIM<span class="token punctuation">(</span><span class="token string">'       jivesh'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax: LTRIM (string A)</span>
+<span class="token keyword">SELECT</span> LTRIM<span class="token punctuation">(</span><span class="token string">'       jivesh'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token comment">-- Return</span>
+<span class="token comment">-- Return --</span>
 <span class="token string">'jivesh'</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="RTRIM-string-A"><a href="#RTRIM-string-A" class="headerlink" title="RTRIM (string A)"></a>RTRIM (string A)</h4><blockquote>
+<h4 id="RTRIM"><a href="#RTRIM" class="headerlink" title="RTRIM"></a>RTRIM</h4><blockquote>
 <p>문자열 안의 공백을 오른쪽부터 모두 잘라내어 반환한다.</p>
 </blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> 	RTRIM<span class="token punctuation">(</span><span class="token string">'jivesh       '</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax: RTRIM (string A)</span>
+<span class="token keyword">SELECT</span> 	RTRIM<span class="token punctuation">(</span><span class="token string">'jivesh       '</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token comment">-- Return</span>
-<span class="token string">'jivesh'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment">-- Return --</span>
+<span class="token string">'jivesh'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="REPEAT-string-str-int-n"><a href="#REPEAT-string-str-int-n" class="headerlink" title="REPEAT (string str, int n)"></a>REPEAT (string str, int n)</h4><blockquote>
+<h4 id="REPEAT"><a href="#REPEAT" class="headerlink" title="REPEAT"></a>REPEAT</h4><blockquote>
 <p>원하는 문자열을 원하는 개수만큼 반복해서 결합한 문자열을 반환한다.</p>
 </blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token keyword">REPEAT</span><span class="token punctuation">(</span>col3<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">FROM</span> table1<span class="token punctuation">;</span>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax: REPEAT (string str, int n)</span>
+<span class="token keyword">SELECT</span> <span class="token keyword">REPEAT</span><span class="token punctuation">(</span>col3<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">FROM</span> table1<span class="token punctuation">;</span>
 
-<span class="token comment">-- Return</span>
+<span class="token comment">-- Return --</span>
 EnglandEngland
 EnglandEngland
-WalesWales<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+WalesWales<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="REVERSE-string-A"><a href="#REVERSE-string-A" class="headerlink" title="REVERSE (string A)"></a>REVERSE (string A)</h4><blockquote>
+<h4 id="REVERSE"><a href="#REVERSE" class="headerlink" title="REVERSE"></a>REVERSE</h4><blockquote>
 <p>문자열을 뒤집어서 반환한다.</p>
 </blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> REVERSE<span class="token punctuation">(</span>col3<span class="token punctuation">)</span> <span class="token keyword">FROM</span> table1<span class="token punctuation">;</span>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax: REVERSE (string A)</span>
+<span class="token keyword">SELECT</span> REVERSE<span class="token punctuation">(</span>col3<span class="token punctuation">)</span> <span class="token keyword">FROM</span> table1<span class="token punctuation">;</span>
 
-<span class="token comment">-- Return</span>
+<span class="token comment">-- Return --</span>
 dnalgnE
 dnalgnE
-selaW<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+selaW<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="☆-SPLIT-string-str-string-pat"><a href="#☆-SPLIT-string-str-string-pat" class="headerlink" title="☆ SPLIT (string str, string pat)"></a>☆ SPLIT (string str, string pat)</h4><blockquote>
+<h4 id="☆-SPLIT"><a href="#☆-SPLIT" class="headerlink" title="☆ SPLIT"></a>☆ SPLIT</h4><blockquote>
 <p>구분 기호나 특수 문자를 기준으로 문자열을 분할한다.</p>
 </blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> SPLIT<span class="token punctuation">(</span><span class="token string">'hive:hadoop'</span><span class="token punctuation">,</span> <span class="token string">':'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax: SPLIT (string str, string pat)</span>
+<span class="token keyword">SELECT</span> SPLIT<span class="token punctuation">(</span><span class="token string">'hive:hadoop'</span><span class="token punctuation">,</span> <span class="token string">':'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token comment">-- retunrs</span>
-<span class="token punctuation">[</span><span class="token string">"hive"</span><span class="token punctuation">,</span> <span class="token string">"hadoop"</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment">-- Return -- </span>
+<span class="token punctuation">[</span><span class="token string">"hive"</span><span class="token punctuation">,</span> <span class="token string">"hadoop"</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="☆-SUBSTR-string-binary-A-int-start"><a href="#☆-SUBSTR-string-binary-A-int-start" class="headerlink" title="☆ SUBSTR (string|binary A, int start)"></a>☆ SUBSTR (string|binary A, int start)</h4><blockquote>
+<h4 id="☆-SUBSTR"><a href="#☆-SUBSTR" class="headerlink" title="☆ SUBSTR"></a>☆ SUBSTR</h4><blockquote>
 <p>문자열에서 주어진 인덱스만큼의 문자열을 빼내어 반환한다. 하이브에서 첫번째 문자의 인덱스는 1부터 시작한다.</p>
 </blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> SUBSTR<span class="token punctuation">(</span><span class="token string">'hive is querying tool'</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax: SUBSTR (string|binary A, int start)</span>
+<span class="token keyword">SELECT</span> SUBSTR<span class="token punctuation">(</span><span class="token string">'hive is querying tool'</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token comment">-- Return</span>
+<span class="token comment">-- Return --</span>
 <span class="token string">'e is querying tool'</span>
 
 <span class="token keyword">SELECT</span> SUBSTR<span class="token punctuation">(</span><span class="token string">'hive is querying tool'</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token comment">-- Return</span>
-<span class="token string">'e i'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment">-- Return --</span>
+<span class="token string">'e i'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="☆-INSTR-string-str-string-substr"><a href="#☆-INSTR-string-str-string-substr" class="headerlink" title="☆ INSTR (string str, string substr)"></a>☆ INSTR (string str, string substr)</h4><blockquote>
+<h4 id="☆-INSTR"><a href="#☆-INSTR" class="headerlink" title="☆ INSTR"></a>☆ INSTR</h4><blockquote>
 <p>문자열에서 주어진 특정 문자나 문자열의 위치를 인덱스로 반환한다.</p>
 </blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> SUBSTR<span class="token punctuation">(</span><span class="token string">'hive is querying tool'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax: INSTR (string str, string substr)</span>
+<span class="token keyword">SELECT</span> SUBSTR<span class="token punctuation">(</span><span class="token string">'hive is querying tool'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token comment">-- Return</span>
-<span class="token number">4</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment">-- Return --</span>
+<span class="token number">4</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>

@@ -5,11 +5,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="[PySpark] Installation, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="우분투에서 단일 노드(Single Node) 스파크 배포
+    <meta name="description" content="Ubuntu에서 단일 노드(Single Node) 스파크 배포
 패키지 색인 파일(패키지 저장소가 제공하는 패키지에 대한 정보 파일) 업데이트
 
 # Debian 계열 리눅스(Ubuntu)
-$ sudo apt-get upda">
+$ sudo apt-get u">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -237,10 +237,15 @@ $ sudo apt-get upda">
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
-                          </div>
+                        <div class="article-tag">
+                            <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                                <span class="chip bg-color">
+                                    2023-08-25</span>
+                        </div>
                     
+                    
+
+
                 </div>
                 <div class="col s5 right-align">
                     
@@ -255,23 +260,6 @@ $ sudo apt-get upda">
                     
                 </div>
             </div>
-
-            <div class="post-info">
-                
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2023-08-25
-                </div>
-                
-
-                
-
-                
-
-                
-
-                
-            </div>
         </div>
         <hr class="clearfix">
 
@@ -284,7 +272,7 @@ $ sudo apt-get upda">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="우분투에서-단일-노드-Single-Node-스파크-배포"><a href="#우분투에서-단일-노드-Single-Node-스파크-배포" class="headerlink" title="우분투에서 단일 노드(Single Node) 스파크 배포"></a>우분투에서 단일 노드(Single Node) 스파크 배포</h2><ol>
+                <h2 id="Ubuntu에서-단일-노드-Single-Node-스파크-배포"><a href="#Ubuntu에서-단일-노드-Single-Node-스파크-배포" class="headerlink" title="Ubuntu에서 단일 노드(Single Node) 스파크 배포"></a>Ubuntu에서 단일 노드(Single Node) 스파크 배포</h2><ol>
 <li>패키지 색인 파일(패키지 저장소가 제공하는 패키지에 대한 정보 파일) 업데이트</li>
 </ol>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Debian 계열 리눅스(Ubuntu)</span>
@@ -486,9 +474,7 @@ $ ./<span class="token variable">$&#123;SPARK_HOME&#125;</span>/sbin/stop-master
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ ./<span class="token variable">$&#123;SPARK_HOME&#125;</span>/sbin/start-workers.sh <span class="token operator">&lt;</span>master-spark-URL<span class="token operator">></span>
 $ ./<span class="token variable">$&#123;SPARK_HOME&#125;</span>/sbin/stop-workers.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h2 id="Spark-App에서-SparkSession-생성시-master-설정"><a href="#Spark-App에서-SparkSession-생성시-master-설정" class="headerlink" title="Spark App에서 SparkSession 생성시 master 설정"></a>Spark App에서 SparkSession 생성시 master 설정</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">
-<span class="token comment"># master: SPARK_MASTER_HOST:SPARK_MASTER_PORT</span>
-
+<h2 id="Spark-App에서-SparkSession-생성시-master-설정"><a href="#Spark-App에서-SparkSession-생성시-master-설정" class="headerlink" title="Spark App에서 SparkSession 생성시 master 설정"></a>Spark App에서 SparkSession 생성시 master 설정</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># master: SPARK_MASTER_HOST:SPARK_MASTER_PORT</span>
 spark <span class="token operator">=</span> SparkSession<span class="token punctuation">.</span>builder \
   <span class="token punctuation">.</span>master<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">&#123;</span>master<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span> \ 
   <span class="token punctuation">.</span>appName<span class="token punctuation">(</span><span class="token string">"Spark Application"</span><span class="token punctuation">)</span> \
@@ -496,13 +482,9 @@ spark <span class="token operator">=</span> SparkSession<span class="token punct
   <span class="token punctuation">.</span>config<span class="token punctuation">(</span><span class="token string">"spark.executor.memory"</span><span class="token punctuation">,</span> <span class="token string">"4g"</span><span class="token punctuation">)</span> \
   <span class="token punctuation">.</span>config<span class="token punctuation">(</span><span class="token string">"spark.driver.maxResultSize"</span><span class="token punctuation">,</span> <span class="token string">"1g"</span><span class="token punctuation">)</span> \
   <span class="token punctuation">.</span>config<span class="token punctuation">(</span><span class="token string">"spark.executor.cores"</span><span class="token punctuation">,</span>  <span class="token number">1</span><span class="token punctuation">)</span> \
-  <span class="token punctuation">.</span>getOrCreate<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  <span class="token punctuation">.</span>getOrCreate<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-<h2 id="Process별-Spark-Web-UI"><a href="#Process별-Spark-Web-UI" class="headerlink" title="Process별 Spark Web UI"></a>Process별 Spark Web UI</h2><h4 id="Master-Web-UI-SPARK-MASTER-IP-SPARK-MASTER-WEBUI-PORT"><a href="#Master-Web-UI-SPARK-MASTER-IP-SPARK-MASTER-WEBUI-PORT" class="headerlink" title="Master Web UI (SPARK_MASTER_IP:SPARK_MASTER_WEBUI_PORT)"></a>Master Web UI (SPARK_MASTER_IP:SPARK_MASTER_WEBUI_PORT)</h4><p>SPARK_MASTER_HOST:7077 </p>
-<h4 id="Worker-Web-UI-SPARK-MASTER-IP-SPARK-WORKER-WEBUI-PORT"><a href="#Worker-Web-UI-SPARK-MASTER-IP-SPARK-WORKER-WEBUI-PORT" class="headerlink" title="Worker Web UI (SPARK_MASTER_IP:SPARK_WORKER_WEBUI_PORT)"></a>Worker Web UI (SPARK_MASTER_IP:SPARK_WORKER_WEBUI_PORT)</h4><p>만약 단일 서버에서 standalone을 구축한다면 host는 같게, worker process의 포트는 다르게 실행해주세요.</p>
-<p>(ex) SPARK_WORKER_HOST1:8081, SPARK_WORKER_HOST2:8081, SPARK_WORKER_HOST3:8081 .. </p>
-<h4 id="애플리케이션-Web-UI-Driver가-뛰워지는-서버-ClinetNode-4040"><a href="#애플리케이션-Web-UI-Driver가-뛰워지는-서버-ClinetNode-4040" class="headerlink" title="애플리케이션 Web UI(Driver가 뛰워지는 서버) (ClinetNode:4040)"></a>애플리케이션 Web UI(Driver가 뛰워지는 서버) (ClinetNode:4040)</h4><p>(ex) localhost:4040</p>
+<h2 id="Process별-Spark-Web-UI"><a href="#Process별-Spark-Web-UI" class="headerlink" title="Process별 Spark Web UI"></a>Process별 Spark Web UI</h2><p>| Master Web UI (SPARK_MASTER_IP:SPARK_MASTER_WEBUI_PORT) | SPARK_MASTER_HOST:7077 <br>| Worker Web UI (SPARK_MASTER_IP:SPARK_WORKER_WEBUI_PORT) | SPARK_WORKER_HOST1:8081, SPARK_WORKER_HOST2:8081, SPARK_WORKER_HOST3:8081 .. <br>| Application Web UI(Driver)                              | ClinetNode:4040 (i.e. localhost:4040)</p>
 
                 
             </div>

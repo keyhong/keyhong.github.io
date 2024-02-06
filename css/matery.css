@@ -101,7 +101,7 @@ blockquote {
 }
 
 pre {
-    padding: 2rem 1rem 1rem 3rem !important;
+    padding: 2.2rem 1rem 1rem 3rem !important;
     border-radius: 0.35rem;
     tab-size: 4;
 }
@@ -121,12 +121,12 @@ pre {
 }
 
 code {
-    padding: 1px 5px;
+    padding: 1.5px 5px;
     top: 13px !important;
-    font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace;
+    font-family: 'GmarketSansTTFMedium', Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace;
     font-size: 0.91rem;
-    color: #e96900;
-    background-color: #f8f8f8;
+    color: yellow;
+    background-color: #000;
     border-radius: 2px;
 }
 
@@ -715,7 +715,7 @@ You can comment out everything if you don't want it, or change it to a color you
 .recommend .post-card .post-body {
     position: relative;
     margin: 0 auto;
-    padding: 1.8rem 1.25rem;
+    padding: 6rem 1.25rem;
     z-index: 2;
 }
 
@@ -954,7 +954,7 @@ article .article-tags .chip {
 
 #artDetail .article-info {
     padding: 20px 30px 1px 40px;
-    margin-bottom: -5px;
+    margin-bottom: -45px;
 }
 
 #artDetail .article-tag .chip {
@@ -1048,7 +1048,7 @@ article .article-tags .chip {
 
     #artDetail .article-info {
         padding: 15px 20px 0 28px;
-        margin-bottom: -5px;
+        margin-bottom: -20px;
     }
 }
 
@@ -1882,7 +1882,8 @@ p.search-result-summary{
 
 .caption {
     text-align: center;
-    margin: 0 auto 15px auto;
+    border-top: 0.5px solid #fff;
+    border-bottom: 0.5px solid #fff;
 }
 
 .center-caption {

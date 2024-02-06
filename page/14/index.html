@@ -223,17 +223,8 @@
 
 
 
-<style>
-    #index-video { z-index: -1; position: absolute; top: 0; left: 0; height: 100vh; width: 100%; object-fit: cover;}
-    @media only screen and (max-width: 760px) { #index-video { display: none;}}
-    @media only screen and (min-width: 760px) { .bg-cover { background-image: none!important;}}
-</style>
-<!-- <video id="index-video" autoplay loop muted> -->
-<video id="index-video" autoplay muted>
 
-    <source src="/media/journey.mp4">
 
-</video>
 
 <main class="content">
 
@@ -243,49 +234,6 @@
 
     <article id="articles" class="container articles">
         <div class="row article-row">
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2023/07/08/PySpark/dataframe/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/pyspark-logo.png" class="responsive-img" alt="[PySpark] pyspark.sql.DataFrame">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[PySpark] pyspark.sql.DataFrame</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                RDD vs DataFrame
-RDD는 정보를 가진 행이나, 정보가 어떤 유형(type)인지 구체적 명시가 불가능하다.
-DataFrame이 Spark에서 하는 일은 RDD를 DataFrame 객체로 확장하는 것
-Da
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-08
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/PySpark/" class="post-category">
-                                    PySpark
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
             
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
@@ -430,7 +378,7 @@ GZIP, ZIP(&#x3D;DEFLATE, 압축 방법을 사용해 생성된 모든 압축 아�
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                카프카 acks에 대한 공부를 하다. 고승범님이 쓰신 Kafka 운영자가 말하는 Producer ACKS라는 글을 보게 되었다. 상당히 정리가 잘 되어 있어 이해하기 너무나 좋았고, 나 또한 학습을 하며 글을 정리하
+                                전개최근 kafka의 acks에 대한 공부를 하다 고승범님이 쓰신 Kafka 운영자가 말하는 Producer ACKS 글을 보게 되었습니다. 상당히 정리가 잘 되어 있어 이해하기 너무나 편했고, 저 또한 학습을 하며
                             
                         </div> -->
                         <div class="publish-info">
@@ -479,49 +427,6 @@ GZIP, ZIP(&#x3D;DEFLATE, 압축 방법을 사용해 생성된 모든 압축 아�
 세그먼트의 파일 이름은 오프셋 중 가장 작은 값
 
 “segment.bytes” 옵션으로 1개의 세그먼
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Kafka/" class="post-category">
-                                    Kafka
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2023/07/01/Kafka/kafka-server-propery-options/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Kafka Server Propery Options">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Kafka] Kafka Server Propery Options</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                클러스터의 브로커를 구분하기 위한 id# 클러스터 내 브로커마다 id는 다 달라야 합니다.
-broker.id&#x3D;[N]
-
-카프카 브로커 통신을 위해 열어둘 인터페이스 HOST, Port, 프로토콜 설정# 브로커
                             
                         </div> -->
                         <div class="publish-info">
@@ -631,6 +536,49 @@ broker.id&#x3D;[N]
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/2023/07/01/Kafka/kafka-server-propery-options/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Kafka Server Propery Options">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Kafka] Kafka Server Propery Options</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                클러스터의 브로커를 구분하기 위한 id# 클러스터 내 브로커마다 id는 다 달라야 합니다.
+broker.id&#x3D;[N]
+
+카프카 브로커 통신을 위해 열어둘 인터페이스 HOST, Port, 프로토콜 설정# 브로커
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Kafka/" class="post-category">
+                                    Kafka
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
                     <a href="/2023/06/24/Airflow/airflow-common-config/">
                         <div class="card-image">
                             
@@ -644,6 +592,52 @@ broker.id&#x3D;[N]
                         <!-- <div class="summary block-with-text">
                             
                                 Airflow Config에어플로우를 사용하며, Excutor별로 중요하고 유용한 config 정리하였다. airflow config 설정은 airflow.cfg에서 default 값을 보고 변경할 수 있다. air
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-24
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Airflow/" class="post-category">
+                                    Airflow
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/06/24/Airflow/basic-concept/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] Basic Concept">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Airflow] Basic Concept</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                Airflow란?
+작업을 올바른 방식으로, 올바른 순서로, 올바른 시간에 실행하는 오픈소스 오케스트레이터입니다.
+
+
+Kafka, Spark, Hive 등 영러 플랫폼들과 상호작용할 수 있습니다.
+
+파이썬으로 구현되어
                             
                         </div> -->
                         <div class="publish-info">

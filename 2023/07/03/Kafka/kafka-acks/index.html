@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="[Kafka] Acks, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="카프카 acks에 대한 공부를 하다. 고승범님이 쓰신 Kafka 운영자가 말하는 Producer ACKS라는 글을 보게 되었다. 상당히 정리가 잘 되어 있어 이해하기 너무나 좋았고, 나 또한 학습을 하며 글을 정리하">
+    <meta name="description" content="전개최근 kafka의 acks에 대한 공부를 하다 고승범님이 쓰신 Kafka 운영자가 말하는 Producer ACKS 글을 보게 되었습니다. 상당히 정리가 잘 되어 있어 이해하기 너무나 편했고, 저 또한 학습을 하며">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -233,10 +233,15 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
-                          </div>
+                        <div class="article-tag">
+                            <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                                <span class="chip bg-color">
+                                    2023-07-03</span>
+                        </div>
                     
+                    
+
+
                 </div>
                 <div class="col s5 right-align">
                     
@@ -251,23 +256,6 @@
                     
                 </div>
             </div>
-
-            <div class="post-info">
-                
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2023-07-03
-                </div>
-                
-
-                
-
-                
-
-                
-
-                
-            </div>
         </div>
         <hr class="clearfix">
 
@@ -280,17 +268,18 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id=""><a href="#" class="headerlink" title=""></a></h2><p>카프카 acks에 대한 공부를 하다. 고승범님이 쓰신 <a target="_blank" rel="noopener" href="https://www.popit.kr/kafka-%EC%9A%B4%EC%98%81%EC%9E%90%EA%B0%80-%EB%A7%90%ED%95%98%EB%8A%94-producer-acks/">Kafka 운영자가 말하는 Producer ACKS</a>라는 글을 보게 되었다. 상당히 정리가 잘 되어 있어 이해하기 너무나 좋았고, 나 또한 학습을 하며 글을 정리하고 일부 내용을 추가했다.</p>
-<h1 id="Kafka-Acks"><a href="#Kafka-Acks" class="headerlink" title="Kafka Acks"></a>Kafka Acks</h1><h2 id="Acks-Acknowledgments"><a href="#Acks-Acknowledgments" class="headerlink" title="Acks(Acknowledgments)"></a>Acks(Acknowledgments)</h2><blockquote>
-<p>프로듀서가 메시지를 보내고 그 메시지를 카프카가 잘 받았는지 확인하는 옵션</p>
+                <h3 id="전개"><a href="#전개" class="headerlink" title="전개"></a>전개</h3><p>최근 kafka의 acks에 대한 공부를 하다 고승범님이 쓰신 <a target="_blank" rel="noopener" href="https://www.popit.kr/kafka-%EC%9A%B4%EC%98%81%EC%9E%90%EA%B0%80-%EB%A7%90%ED%95%98%EB%8A%94-producer-acks/">Kafka 운영자가 말하는 Producer ACKS</a> 글을 보게 되었습니다. 상당히 정리가 잘 되어 있어 이해하기 너무나 편했고, 저 또한 학습을 하며 글의 내용을 정리하고 내용에 대한 설명을 일부 일부 추가해보았습니다.</p>
+<h3 id="Acks-Acknowledgments"><a href="#Acks-Acknowledgments" class="headerlink" title="Acks (Acknowledgments)"></a>Acks (Acknowledgments)</h3><blockquote>
+<p>producer가 메시지를 보내고 그 메시지를 kafka가 잘 받았는지 확인하는 옵션</p>
 </blockquote>
 <ul>
-<li><p>프로듀서가 사용하는 옵션</p>
+<li><p>producer가 사용하는 옵션</p>
 </li>
-<li><p>카프카의 성능을 좌우하는 중요 옵션</p>
+<li><p>kafka의 성능을 좌우하는 중요 옵션</p>
+</li>
+<li><p>acks에 따라 kafka의 성능이 좌우되는 이유는 producer가 broker로 메세지를 보내는 방식이 비동기(async) 처리이기 때문</p>
 </li>
 </ul>
-<p>acks에 따라 카프카의 성능이 좌우되는 이유는 producer가 브로커로 메세지를 보내는 방식이 비동기 처리이기 때문이다.</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">KafkaProducer</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span> producer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">KafkaProducer</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span><span class="token punctuation">(</span>properties<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token class-name">ProducerRecord</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span> record <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ProducerRecord</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token string">"topic"</span><span class="token punctuation">,</span> <span class="token string">"msg"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -299,8 +288,8 @@ producer<span class="token punctuation">.</span><span class="token function">sen
 
 producer<span class="token punctuation">.</span><span class="token function">flush</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="Acks-종류"><a href="#Acks-종류" class="headerlink" title="Acks 종류"></a>Acks 종류</h2><h4 id="acks-0"><a href="#acks-0" class="headerlink" title="acks&#x3D;0"></a>acks&#x3D;0</h4><blockquote>
-<p>프로듀서는 자신이 보낸 메세지에 대해 브로커로부터 확인을 기다리지 않음</p>
+<h3 id="Acks-종류"><a href="#Acks-종류" class="headerlink" title="Acks 종류"></a>Acks 종류</h3><h4 id="acks-0"><a href="#acks-0" class="headerlink" title="acks&#x3D;0"></a>acks&#x3D;0</h4><blockquote>
+<p>producer는 자신이 보낸 메세지에 대해 broker로부터 확인을 기다리지 않음</p>
 </blockquote>
 <ul>
 <li><p>메세지 손실 가능성 높음</p>
@@ -311,7 +300,7 @@ producer<span class="token punctuation">.</span><span class="token function">flu
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219922&authkey=%21ALdhpDYMwUC5i30&width=660" width="660" height="auto" />
 
 <h4 id="acks-1"><a href="#acks-1" class="headerlink" title="acks&#x3D;1"></a>acks&#x3D;1</h4><blockquote>
-<p>프로듀서는 자신이 보낸 메세지에 대해 브로커의 leader로부터 leader의 수신 확인 메세지만 기다림. follower의 수신 확인은 검토하지 않음</p>
+<p>producer는 자신이 보낸 메세지에 대해 broker의 leader로부터 leader의 수신 확인 메세지만 기다림. follower의 수신 확인은 검토하지 않음</p>
 </blockquote>
 <ul>
 <li><p>acks의 default value</p>
@@ -324,7 +313,7 @@ producer<span class="token punctuation">.</span><span class="token function">flu
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219923&authkey=%21AA9C81YOs0oy5p4&width=660" width="660" height="auto" />
 
 <h4 id="acks-all-1"><a href="#acks-all-1" class="headerlink" title="acks&#x3D;all(-1)"></a>acks&#x3D;all(-1)</h4><blockquote>
-<p>프로듀서는 자신이 보낸 메세지에 대해 브로커의 leader로부터 leader와 follower의 수신이 모두 되었다는 확인 메세지를 기다림</p>
+<p>producer는 자신이 보낸 메세지에 대해 broker의 leader로부터 leader와 follower의 수신이 모두 되었다는 확인 메세지를 기다림</p>
 </blockquote>
 <ul>
 <li><p>메세지 손실 가능성 낮음</p>
@@ -335,19 +324,19 @@ producer<span class="token punctuation">.</span><span class="token function">flu
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219924&authkey=%21AI2Ds6LiV3BB6vQ&width=660" width="660" height="auto" />
 
 
-<h2 id="ISR-In-Sync-Replica"><a href="#ISR-In-Sync-Replica" class="headerlink" title="ISR(In Sync Replica)"></a>ISR(In Sync Replica)</h2><blockquote>
+<h3 id="ISR-In-Sync-Replica"><a href="#ISR-In-Sync-Replica" class="headerlink" title="ISR(In Sync Replica)"></a>ISR(In Sync Replica)</h3><blockquote>
 <p>리더 파티션과 동기화된 모든 파티션 복제본</p>
 </blockquote>
 <ul>
-<li><p>리더와 동기화의 기준은 replica.lag.time.max.ms 설정에 따라 다름. default value는 10000 (10초) </p>
+<li><p>리더와 동기화의 기준은 <code>replica.lag.time.max.ms</code> 설정에 따라 다름. default value는 10000 (10초) </p>
 </li>
 <li><p>follower는 주기적으로(기본적으로 500ms마다) Fetch Requests을 전송하여 리더에서 자신에게 데이터를 복제</p>
 </li>
 <li><p>RF(Replication Factor)로 설정된 broker 개수 내에서 ISR 설정에 따라, leader가 consumer에게 메시지 수신 확인 통신을 보낼 지 결정 (acks&#x3D;-1 일 때)</p>
 </li>
 </ul>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li>출처 : <a target="_blank" rel="noopener" href="https://www.popit.kr/kafka-%EC%9A%B4%EC%98%81%EC%9E%90%EA%B0%80-%EB%A7%90%ED%95%98%EB%8A%94-producer-acks/">Kafka 운영자가 말하는 Producer ACKS</a></li>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.popit.kr/kafka-%EC%9A%B4%EC%98%81%EC%9E%90%EA%B0%80-%EB%A7%90%ED%95%98%EB%8A%94-producer-acks/">Kafka 운영자가 말하는 Producer ACKS</a></li>
 </ul>
 
                 

@@ -223,17 +223,8 @@
 
 
 
-<style>
-    #index-video { z-index: -1; position: absolute; top: 0; left: 0; height: 100vh; width: 100%; object-fit: cover;}
-    @media only screen and (max-width: 760px) { #index-video { display: none;}}
-    @media only screen and (min-width: 760px) { .bg-cover { background-image: none!important;}}
-</style>
-<!-- <video id="index-video" autoplay loop muted> -->
-<video id="index-video" autoplay muted>
 
-    <source src="/media/journey.mp4">
 
-</video>
 
 <main class="content">
 
@@ -243,94 +234,6 @@
 
     <article id="articles" class="container articles">
         <div class="row article-row">
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/01/01/PySpark/dataset/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/pyspark-logo.png" class="responsive-img" alt="[PySpark] DataSet">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[PySpark] DataSet</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                
-Spark 2.0에서 ‘DataFrame’과 상반된 ‘DataSet’ 도입
-
-파이썬에서는 둘의 경계가 모호. Python에서는 모든 것이 동적으로 입력되기 때문
-
-‘DataFrame’은 행 객체의 ‘DataSet’
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/PySpark/" class="post-category">
-                                    PySpark
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/01/01/PySpark/spark-streaming-shutdown/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/pyspark-logo.png" class="responsive-img" alt="[PySpark] Spark Streaming Gracefully Shutdown">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[PySpark] Spark Streaming Gracefully Shutdown</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                sparkStreamContext.stop()
-코드 상에서 sparkStreamContext.stop()를 call 하는 것은 그만
-
-방법 1 : spark.streaming.stopGracefullyOnShutdo
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/PySpark/" class="post-category">
-                                    PySpark
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
             
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
@@ -516,6 +419,53 @@ V &#x3D; { 1, 2, 3, 4, 5
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/2024/01/01/Python-Data-Structure/priority-queue/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Priority Queue">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Python] Priority Queue</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                Priority Queue (우선순위 큐) (&#x3D;Heap)
+삽입&#x2F;삭제 : O(logN)
+
+이진트리 형태
+
+최상단(root node)에 가장 큰 값이 위치 : max-heap (c++)
+
+최상단(roo
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Python/" class="post-category">
+                                    Python
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
                     <a href="/2024/01/01/Python-Data-Structure/linked-list/">
                         <div class="card-image">
                             
@@ -563,26 +513,23 @@ PS(Problem Solving)에서는 잘 안쓰이지만, 다른 자료구조들을 구�
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Python-Data-Structure/priority-queue/">
+                    <a href="/2024/01/01/Python-Data-Structure/time-complexity/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Priority Queue">
+                            <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] 시간복잡도">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Python] Priority Queue</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Python] 시간복잡도</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Priority Queue (우선순위 큐) (&#x3D;Heap)
-삽입&#x2F;삭제 : O(logN)
+                                Time-Complexity (시간복잡도)자료구조와 알고리즘 성능
 
-이진트리 형태
+가상컴퓨터(Virtual Machine) + 가상언어(Pseudo Language) + 가상코드(Pseudo Code)
 
-최상단(root node)에 가장 큰 값이 위치 : max-heap (c++)
-
-최상단(roo
+.. image:: htt
                             
                         </div> -->
                         <div class="publish-info">
@@ -661,23 +608,74 @@ print('size:', len
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Python-Data-Structure/time-complexity/">
+                    <a href="/2024/01/01/Python-Data-Structure/vecotr/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] 시간복잡도">
+                            <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Vecotr">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Python] 시간복잡도</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Python] Vecotr</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Time-Complexity (시간복잡도)자료구조와 알고리즘 성능
+                                Vecotr (벡터)
+삽입&#x2F;삭제 : O(N)
 
-가상컴퓨터(Virtual Machine) + 가상언어(Pseudo Language) + 가상코드(Pseudo Code)
+탐색 : O(1)
 
-.. image:: htt
+동적 배열 (size 변경가능)
+
+
+# python
+v = []
+v.append((123, 456))
+v.append((789, 987))
+
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Python/" class="post-category">
+                                    Python
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/01/01/Python/global-interpreter-lock-%EB%AF%B8%EC%99%84-/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Global Interpreter Lock">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Python] Global Interpreter Lock</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                GIL (Global Interpreter Lock)
+파이썬 인터프리터가 한 스레드만 하나의 바이트코드를 실행 시킬 수 있도록 해주는 Lock
+
+하나의 스레드에 모든 자원을 허락하고 그 후에는 Lock을 걸어 다른 
                             
                         </div> -->
                         <div class="publish-info">
