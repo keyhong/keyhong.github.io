@@ -4,11 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[PySpark] pyspark.sql.DataFrame, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="RDD vs DataFrame
-RDD는 정보를 가진 행이나, 정보가 어떤 유형(type)인지 구체적 명시가 불가능하다.
-DataFrame이 Spark에서 하는 일은 RDD를 DataFrame 객체로 확장하는 것
-Da">
+    <meta name="keywords" content="[PySpark] Caching, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="Caching의 필요성스파크는 RDD는 action을 call 하기 전까지 여러 narrow&amp;#x2F;wide transformation로 구성된 stage를 연이어 쌓은 계보(Lineage)를 가진다. 이 Line">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +17,7 @@ Da">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[PySpark] pyspark.sql.DataFrame | Keyhong</title>
+    <title>[PySpark] Caching | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -214,7 +211,7 @@ Da">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [PySpark] pyspark.sql.DataFrame</h1>
+                        [PySpark] Caching</h1>
                 </div>
             </div>
         </div>
@@ -259,7 +256,7 @@ Da">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2023-07-08
+                    2023-08-17
                 </div>
                 
 
@@ -283,49 +280,34 @@ Da">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="RDD-vs-DataFrame"><a href="#RDD-vs-DataFrame" class="headerlink" title="RDD vs DataFrame"></a>RDD vs DataFrame</h2><ul>
-<li>RDD는 정보를 가진 행이나, 정보가 어떤 유형(type)인지 구체적 명시가 불가능하다.</li>
-<li>DataFrame이 Spark에서 하는 일은 RDD를 DataFrame 객체로 확장하는 것</li>
-<li>DataFrame은 행 객체가 들어있고, 그 행에는 구조화된 데이터가 들어있음 (schema를 가짐)</li>
-<li>데이터 유형과 이름이 주어진 실제 열(column)을 가진 DataFrame에 구조화된 정보</li>
-<li>그러면 Spark 의 DataFrame에 SQL 쿼리 실행 가능</li>
+                <h2 id="Caching의-필요성"><a href="#Caching의-필요성" class="headerlink" title="Caching의 필요성"></a>Caching의 필요성</h2><p>스파크는 RDD는 action을 call 하기 전까지 여러 narrow&#x2F;wide transformation로 구성된 stage를 연이어 쌓은 계보(Lineage)를 가진다. 이 Lineage는 DAG(Directed Acyclic Graph)라는 방향성은 있지만 순환하지 않는 그래프 자료 구조인데, 도로로 비유하자면 일반통행만 가능한 도로라고 생각하면 된다. 이 도로의 종착점은 action이고 지나오는 중간 지점들이 transformation이다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110157&authkey=%21AEmB1Ph9LUNzM20&width=673&height=579" width="673" height="579" alt="transformation, stage, DAG"/>
+
+<p>문제는 action을 call 할 때마다 해당 Lineage의 처음부터 다시 수행한다는 점이다, 가끔씩 스파크에서 중간 단계의 RDD를 재사용해야 하는 경우가 있다. 예를 들어, 데이터 소스에서 큰 데이터를 fetch 하는 데 많은 시간을 소요했는 데, 또 다시 이러한 고비용의 과정을 반복하는 것은 프로세싱 시간과 리소스에 있어 비효율적이다. 이를 해결하기 위한 방법은 간단하다. 중간 지점까지 수행한 RDD의 상태를 메모리나 디스크에 저장하는 것이다. 스파크에서는 이런 경우를 대비해 기존의 RDD를 재사용 할 수 있도록 <code>persist</code>와 <code>cache</code>가 함수를 지원한다.</p>
+<p>원래 스파크는 in-memory 방식을 사용한다고 하는 데, 대체 왜 이런 함수를 지원하는 걸까? 스파크는 대용량의 데이터를 처리하고 다루는 데 초점이 맞춰져 있다. 당연하게도 빅데이터를 다루는 일이기에, 모든 중간 stage 과정마다 가공한 결과를 전부 메모리에 저장하고 있는 것은 당연히 불가능하다. 그렇게 한다면, OOM(Out Of Memory) 에러를 맛보고 프로세스가 중지되어 버릴 것이다. 때문에 처리하는 과정을 넘어 갈 때마다 LRU 알고리즘에 의해 오래된 데이터를 메모리에서 제거하게 된다.</p>
+<p>그럼 cache도 중간 데이터를 메모리에 저장하도록 명시적으로 지시하는 것인데, cache를 위한 메모리 용량은 어떻게 설정하는 지를 봐야한다. 스파크는 Context나 Session을 만들 때 config를 수정하여 memory를 설정 할 수 있다. Spark Memory는 Storage Memory(클러스터 전체에 내부 데이터를 캐싱하고 전파)와 Execution Memory(셔플, 조인, 정렬 및 집계에서 계산에 사용)을 위한 메모리가 핵심이다. </p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110156&authkey=%21ALzf-xm8E1DuXsU&width=1016&height=236" width="1016" height="236" alt="Spark Executor 메모리 구조 중 caching을 위한 Storage Memory"/>
+
+<p>RDD를 유지하면 각 노드는 메모리에서 계산하는 파티션을 저장하고 해당 데이터 세트(또는 여기에서 파생된 데이터 세트)의 다른 작업에서 재사용한다. 이를 통해 향후 작업이 훨씬 빨라질 수 있다(종종 10배 이상). 캐싱은 반복 알고리즘과 빠른 대화식 사용을 위한 핵심 도구이다.</p>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h4 id="persist"><a href="#persist" class="headerlink" title="persist()"></a>persist()</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> pyspark
+
+pyspark<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>DataFrame<span class="token punctuation">.</span>persist<span class="token punctuation">(</span>
+    storageLevel<span class="token punctuation">:</span> pyspark<span class="token punctuation">.</span>storagelevel<span class="token punctuation">.</span>StorageLevel <span class="token operator">=</span> StorageLevel<span class="token punctuation">(</span><span class="token boolean">True</span><span class="token punctuation">,</span> <span class="token boolean">True</span><span class="token punctuation">,</span> <span class="token boolean">False</span><span class="token punctuation">,</span> <span class="token boolean">True</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span> → pyspark<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>dataframe<span class="token punctuation">.</span>DataFrame<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="스파크-내에서-storageLevel을-미리-정의한-객체를-불러와-사용하는-것이-편하다"><a href="#스파크-내에서-storageLevel을-미리-정의한-객체를-불러와-사용하는-것이-편하다" class="headerlink" title="스파크 내에서 storageLevel을 미리 정의한 객체를 불러와 사용하는 것이 편하다."></a>스파크 내에서 storageLevel을 미리 정의한 객체를 불러와 사용하는 것이 편하다.</h1><p>from pyspark.storagelevel import StorageLevel<br>DataFrame.persist(StorageLevel.MEMORY_AND_DISK_DESER)</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110158&authkey=%21AMY4RLzM3DbNpVI&width=560&height=437" width="560" height="437" alt="Storage Level 정리표"/>
+
+<h4 id="cache"><a href="#cache" class="headerlink" title="cache()"></a>cache()</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> pyspark
+
+pyspark<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>DataFrame<span class="token punctuation">.</span>cache<span class="token punctuation">(</span><span class="token punctuation">)</span> → pyspark<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>dataframe<span class="token punctuation">.</span>DataFrame<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>** cache()는 스파크 데이터프레임의 default storage level인 persist(MEMORY_AND_DISK)를 호출하는 것과 같다.</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://spark.apache.org/docs/latest/rdd-programming-guide.html#rdd-persistence">rdd-persistence</a></li>
+<li><a target="_blank" rel="noopener" href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.StorageLevel.html">pyspark.StorageLevel</a></li>
 </ul>
-<h2 id="장점"><a href="#장점" class="headerlink" title="장점"></a>장점</h2><ul>
-<li>DataFrame과 연관된 스키마가 있고, 그 안에 실제 유형 정보가 담겨있어 데이터를 효율적으로 저장하거나 네트워크를 통해 전송</li>
-<li>SQL 쿼리를 최적화하여 Spark를 더 빠르고 효율적으로 만들 수 있다.</li>
-<li>이는 JSON(JavaScript Object Notation)이나 Hive, Parquet 등의 구조화된 데이터 양식을 읽거나 작성이 가능하다.</li>
-<li>데이터를 고수준으로 볼 수 있는 시각화 BI 도구인 Tableau 같은 시스템에 JDBC&#x2F;ODBC를 사용해 소통 가능</li>
-</ul>
-<h2 id="파이썬에서-SparkSQL-사용"><a href="#파이썬에서-SparkSQL-사용" class="headerlink" title="파이썬에서 SparkSQL 사용"></a>파이썬에서 SparkSQL 사용</h2><ul>
-<li>파이썬에서는 모든 것이 동적으로 입력되기 때문에 구조화 데이터에 입력된 것은 파이썬과 잘 어울리지는 않는다.</li>
-<li>하지만 동적이기 때문에 사용하기에는 쉽다.</li>
-<li>기본적으로 SQLContext와 Row를 스크립트로 불러옴</li>
-</ul>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> pyspark <span class="token keyword">import</span> SparkContext
-<span class="token keyword">from</span> pyspark<span class="token punctuation">.</span>sql <span class="token keyword">import</span> SQLContext<span class="token punctuation">,</span> Row
 
-<span class="token comment"># 스파크 컨텍스트 객체 생성 (여기서는 예전방식이지만, 요즘은 Entry Point가 합쳐진 SparkSession을 쓴다.)</span>
-sc <span class="token operator">=</span> SparkContext<span class="token punctuation">(</span>conf<span class="token punctuation">)</span>
-
-<span class="token comment"># 하이브 컨텍스트 객체 생성</span>
-hiveContext <span class="token operator">=</span> HiveContext<span class="token punctuation">(</span>sc<span class="token punctuation">)</span>
-
-<span class="token comment"># JSON 데이터 읽기</span>
-inputData <span class="token operator">=</span> spark<span class="token punctuation">.</span>read<span class="token punctuation">.</span>json<span class="token punctuation">(</span>dataFile<span class="token punctuation">)</span>
-
-<span class="token comment"># 추상화된 View에 적재</span>
-inputData<span class="token punctuation">.</span>createOrReplaceTempView<span class="token punctuation">(</span><span class="token string">"myStructedStuff"</span><span class="token punctuation">)</span>
-
-<span class="token comment"># View에서 쿼리를 통해 데이터 로딩</span>
-myResultDataFrame <span class="token operator">=</span> hiveContext<span class="token punctuation">.</span>sql<span class="token punctuation">(</span><span class="token string">"SELECT foo FROM bar ORDER BY foobar"</span><span class="token punctuation">)</span>
-
-myResultDataFrame<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
-myResultDataFrame<span class="token punctuation">.</span>select<span class="token punctuation">(</span><span class="token string">"someFieldName"</span><span class="token punctuation">)</span>
-myResultDataFrame<span class="token punctuation">.</span><span class="token builtin">filter</span><span class="token punctuation">(</span>myResultDataFrame<span class="token punctuation">(</span><span class="token string">"someFieldName"</span> <span class="token operator">></span> <span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-myResultDataFrame<span class="token punctuation">.</span>groupBy<span class="token punctuation">(</span>myResultDataFrame<span class="token punctuation">(</span><span class="token string">"someFieldName"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>mean<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-<span class="token comment"># DatFrame은 RDD 위에 구축되었기에, 내재된 RDD를 추출하여 RDD 수준의 작업도 가능</span>
-myResultDataFrame<span class="token punctuation">.</span>rdd<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">map</span><span class="token punctuation">(</span>mapperFunction<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -351,7 +333,7 @@ myResultDataFrame<span class="token punctuation">.</span>rdd<span class="token p
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2023/07/08/PySpark/spark-sql-dataframe/">http://example.com/2023/07/08/PySpark/spark-sql-dataframe/</a>
+                    <a href="http://example.com/2023/08/17/PySpark/caching/">http://example.com/2023/08/17/PySpark/caching/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -458,7 +440,7 @@ myResultDataFrame<span class="token punctuation">.</span>rdd<span class="token p
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Sat Jul 08 2023 00:00:00 GMT+0900',
+    id: 'Thu Aug 17 2023 00:00:00 GMT+0900',
     owner: '',
     repo: '',
     oauth: {
@@ -493,12 +475,12 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2023/07/08/PySpark/spark-directory-structure/">
+                <a href="/2023/08/19/PySpark/components/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/pyspark-logo.png" class="responsive-img" alt="[PySpark] Directory Structure">
+                        <img src="/images/logos/pyspark-logo.png" class="responsive-img" alt="[PySpark] Components">
                         
-                        <span class="card-title diy-neon-red">[PySpark] Directory Structure</span>
+                        <span class="card-title diy-neon-red">[PySpark] Components</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -509,7 +491,7 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-07-08
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-08-19
                         </span>
                         <span class="publish-author">
                             
@@ -533,12 +515,12 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/07/06/PySpark/compression/">
+                <a href="/2023/08/15/PySpark/jdbc-parallel-sourcing/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/pyspark-logo.png" class="responsive-img" alt="[PySpark] Compression">
+                        <img src="/images/logos/pyspark-logo.png" class="responsive-img" alt="[PySpark] JDBC Parallel Sourcing">
                         
-                        <span class="card-title diy-neon-red">[PySpark] Compression</span>
+                        <span class="card-title diy-neon-red">[PySpark] JDBC Parallel Sourcing</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -549,7 +531,7 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-15
                             </span>
                         <span class="publish-author">
                             

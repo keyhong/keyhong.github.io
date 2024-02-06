@@ -4,11 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[PySpark] pyspark.RDD, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="RDD(Resilient Distributed Dataset)
-스파크 프로그래밍에서 사용되는 가장 기본적인 데이터 객체
+    <meta name="keywords" content="[PySpark] DataSet, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="
+Spark 2.0에서 ‘DataFrame’과 상반된 ‘DataSet’ 도입
 
-한글로 해석하면 복원 분산 데이터 집합이다. Spark에서 사용되는 가장 기본적인 데이터 객체">
+파이썬에서는 둘의 경계가 모호. Python에서는 모든 것이 동적으로 입력되기 때문
+
+‘DataFrame’은 행 객체의 ‘DataSet’">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +22,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[PySpark] pyspark.RDD | Keyhong</title>
+    <title>[PySpark] DataSet | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -214,7 +216,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [PySpark] pyspark.RDD</h1>
+                        [PySpark] DataSet</h1>
                 </div>
             </div>
         </div>
@@ -259,7 +261,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2023-06-24
+                    2024-01-01
                 </div>
                 
 
@@ -283,131 +285,59 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="RDD-Resilient-Distributed-Dataset"><a href="#RDD-Resilient-Distributed-Dataset" class="headerlink" title="RDD(Resilient Distributed Dataset)"></a>RDD(Resilient Distributed Dataset)</h2><blockquote>
-<p>스파크 프로그래밍에서 사용되는 가장 기본적인 데이터 객체</p>
+                <ul>
+<li><p>Spark 2.0에서 ‘DataFrame’과 상반된 ‘DataSet’ 도입</p>
+</li>
+<li><p>파이썬에서는 둘의 경계가 모호. Python에서는 모든 것이 동적으로 입력되기 때문</p>
+</li>
+<li><p>‘DataFrame’은 행 객체의 ‘DataSet’라는 것을 이해</p>
+</li>
+<li><p>‘DataSet’이 더 포괄적인 용어로써, 안에는 ‘DataFrame’에서 사용하는 행 객체를 포함해 어떤 유형의 정보도 포함 가능</p>
+</li>
+<li><p>이는 Spark가 데이터의 구조에 앞서 더 많은 정보를 가져올 수 있는 방법</p>
+</li>
+<li><p>이렇게 되면 에러를 런타임까지 기다리는 대신 컴파일 타임에 잡아낼 수 있음 (DataSet의 진정한 힘)</p>
+</li>
+<li><p>또한 스크립트 내에 SQL 쿼리를 사용해 추가적인 최적화 도모</p>
+</li>
+<li><p>파이썬에서 큰 차이는 없으나, java나 scala에서는 중요한 요소</p>
+</li>
+</ul>
+<h2 id="Shell-Access"><a href="#Shell-Access" class="headerlink" title="Shell Access"></a>Shell Access</h2><ul>
+<li><p>SparkSQL을 사용해 데이터베이스 서버를 시작해 연결할 수 있고, 다른 데이터베이스에게 하듯 쿼리도 가능 (with Hive Support)</p>
+</li>
+<li><p>Spark에 내재된 ‘thriftserver’를 시작하면 JDBC나 ODBC를 통해 연결 가능 (sbin&#x2F;start-thriftserver.sh)</p>
+</li>
+<li><p>기본 포트로 10000을 listening</p>
+</li>
+<li><p>bin&#x2F;beeline -u jdbc:hive2:&#x2F;&#x2F;localhost:10000 을 통해 접속 가능</p>
+</li>
+<li><p>새로운 테이블을 만들거나, hiveCtx.cacheTable(“tableName”)를 통해 기존 캐쉬된 테이블을 쿼리 가능</p>
+</li>
+</ul>
+<h2 id="SparkSQL-확장성"><a href="#SparkSQL-확장성" class="headerlink" title="SparkSQL 확장성"></a>SparkSQL 확장성</h2><h4 id="User-defined-functions-UDF’s"><a href="#User-defined-functions-UDF’s" class="headerlink" title="User-defined functions(UDF’s)"></a>User-defined functions(UDF’s)</h4><blockquote>
+<p>SQL에 플러그인하는 사용자 정의 함수(UDF)를 만들어 SQL 쿼리에 사용 가능</p>
 </blockquote>
-<p>한글로 해석하면 복원 분산 데이터 집합이다. Spark에서 사용되는 가장 기본적인 데이터 객체이며, 데이터를 파티션에 따라 분리한 행의 묶음 집합이다.</p>
-<ul>
-<li><p>스파크 응용 프로그램 내의 데이터 집합</p>
-</li>
-<li><p>로드된 초기 데이터 집합, 중간 데이터 집합, 최종 결과 데이터 집합 모두 포함</p>
-</li>
-<li><p>분산된 객체 모음으로, 객체는 스파크 프로그램에서 사용되는 데이터</p>
-<ul>
-<li><p>pyspark 의 RDD 는 리스트, 튜플, 딕셔너리와 같은 분산 파이썬 객체</p>
-</li>
-<li><p>RDD 내의 객체는 literal(정수, 부동소수점, 문자열 등 기본 데이터)와 복합 유형(튜플, 딕셔너리, 리스트) 같은 모든 유형</p>
-</li>
-<li><p>Python의 “Everything is Object”를 이해하고 함께 생각해볼 것</p>
-</li>
-<li><p>스칼라 및 자바 API 에서의 RDD는 각 스칼라 또는 자바 객체의 모음으로 구성</p>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="RDD의-필요성"><a href="#RDD의-필요성" class="headerlink" title="RDD의 필요성"></a>RDD의 필요성</h1><p>RDD는 Spark가 처음으로 출시한 API 이다. 최근에 들어서는 조금 더 편리하고 간단한 고수준의 API인 DataFrame과 DataSet이 생기긴 했지만, 여전히 강력하고 또한 중요하다. 왜냐하면 고수준의 API는 여전히 RDD를 이용하고 있고, RDD를 기반으로 개선하고 레이어를 쌓아 올렸기 때문에 간혹 레거시 코드를 봐야 하는 경우가 생길수도 있다.</p>
-<h4 id="메모리-처리-프레임워크"><a href="#메모리-처리-프레임워크" class="headerlink" title="메모리 처리 프레임워크"></a>메모리 처리 프레임워크</h4><blockquote>
-<p>주로 메모리에 저장되거나 적어도 가능한 한 메모리에 저장되도록 해야 함</p>
-</blockquote>
-<ul>
-<li><p>RDD 를 디스크에 저장하는 옵션이 있지만, 디스크에 저장해야 하는 것이 좋음</p>
-</li>
-<li><p>초기 용도는 머신 러닝을 지원하는 것으로 제한된 형식의 공유 메모리 제공</p>
-</li>
-<li><p>연속적이고 반복적인 연산을 수행할 때, 데이터의 효율적인 재사용을 가능하게 함</p>
-</li>
-</ul>
-<h4 id="하둡-맵리듀스의-단점을-보완"><a href="#하둡-맵리듀스의-단점을-보완" class="headerlink" title="하둡 맵리듀스의 단점을 보완"></a>하둡 맵리듀스의 단점을 보완</h4><blockquote>
-<p>맵리듀스(MapReduce) 는 중간 데이터를 디스크에 지속적으로 저장하고, 런타임 중 노드 간의 데이터를 복사</p>
-</blockquote>
-<ul>
-<li><p>맵리듀는의 데이터 공유 분산 처리 방식은 복원력과 내결함성을 제공</p>
-</li>
-<li><p>하지만 지연 시간이 발생. 이에 대안으로 스파크 프로젝트가 활성화</p>
-</li>
-</ul>
-<h2 id="RDD-용어-분해"><a href="#RDD-용어-분해" class="headerlink" title="RDD 용어 분해"></a>RDD 용어 분해</h2><blockquote>
-<p>RDD : 복원 분산 데이터 집합</p>
-</blockquote>
-<p>한글로 해석하면 복원 분산 데이터 집합이다. Spark에서 사용되는 가장 기본적인 데이터 객체이며, 데이터를 파티션에 따라 분리한 행의 묶음 집합이다.</p>
-<ul>
-<li>스파크 응용 프로그램 내의 데이터 집합이다.</li>
-<li>로드된 초기 데이터 집합, 중간 데이터 집합, 최종 결과 데이터 집합 모두 포함한다.</li>
-</ul>
-<h4 id="R-Resilient-탄력적"><a href="#R-Resilient-탄력적" class="headerlink" title="R(Resilient): 탄력적"></a>R(Resilient): 탄력적</h4><ul>
-<li><p>Spark 작업을 수행 중 노드(worker node)가 손실될 경우, 데이터 집합을 재구성한다. 이는 각 RDD가 RDD를 만드는 일련의 단계인 Lineage를 갖기 때문이다.</p>
-</li>
-<li><p>소스부터 프로세싱하고 싱크를 만드는 일련의 과정은 DAG(Directed Acyclic Graph)이며, 각 단계별 RDD 객체가 불변(Immutable) 객체이기 때문에 마지막 싱크 단계에서 action 함수를 호출하면 모든 과정이 처음부터 수행된다. 물론 cache() 또는 persist() 메서드를 호출하면 중간 처리 데이터를 메모리에서 재사용하는 것은 가능하다.</p>
-</li>
-<li><p>스파크 작업을 수행 중 노드(worker node)가 손실될 경우, 데이터 집합을 재구성</p>
-</li>
-<li><p>각 RDD 리니지(Lineage, RDD 를 만드는 일련의 단계)를 알고 있기 때문. DAG(Directed Acyclic Graph)와 관련</p>
-</li>
-</ul>
-<h4 id="D-Distributed-분산"><a href="#D-Distributed-분산" class="headerlink" title="D(Distributed): 분산"></a>D(Distributed): 분산</h4><ul>
-<li><p>전체 데이터를 파티션에 따라 하나 또는 여러 개로 나누고, 클러스터의 작업자 노드를 통해 RDD 데이터를 메모리 내 객체의 모음으로 분산된다.</p>
-</li>
-<li><p>RDD는 서로 다른 노드(worker node)의 프로세스(executor) 사이에서 데이터를 교환(shuffle)하기 위한 효율적인 공유 메모리 형태 제공한다.</p>
-</li>
-<li><p>파티션을 하나 또는 여러 개로 나누고, 클러스터의 작업자 노드를 통해 RDD 데이터를 메모리 내 객체의 모음으로 분산</p>
-</li>
-<li><p>RDD 는 서로 다른 노드(worker node)의 프로세스(executor) 사이에 데이터를 교환하기 위한 효율적인 공유 메모리 형태 제공</p>
-</li>
-</ul>
-<h4 id="D-Dataset-레코드로-구성된-데이터-집합"><a href="#D-Dataset-레코드로-구성된-데이터-집합" class="headerlink" title="D(Dataset): 레코드로 구성된 데이터 집합"></a>D(Dataset): 레코드로 구성된 데이터 집합</h4><ul>
-<li><p>레코드는 데이터 집합 안의 고유하고 식별가능한 데이터 모음이다. 관계형 DBMS의 Table에 있는 행(Row) 또는 인스턴스(Instance)와 유사하며, 다른 형식의 필드의 모음이 가능하다.</p>
-</li>
-<li><p>RDD는 각 파티션이 고유한 레코드 세트를 포함한다. 즉, 여러 개의 레코드의 묶음 집합이다.</p>
-</li>
-<li><p>레코드는 데이터 집합 안의 고유하고 식별가능한 데이터 모음(관게형 DB의 테이블 행 또는 인스턴스와 유사. 다른 형식의 필드의 모음)</p>
-</li>
-<li><p>RDD 는 각 파티션이 고유한 레코드 세트를 포함하도록 작성</p>
-</li>
-<li><p>독립적으로 동작 가능. 비공유 접근법(shared nothing)</p>
-</li>
-</ul>
-<h2 id="불변성-Immutable"><a href="#불변성-Immutable" class="headerlink" title="불변성(Immutable)"></a>불변성(Immutable)</h2><blockquote>
-<p>RDD 가 인스턴스화되고 데이터로 채워진 후에는 업데이트 불가</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> pyspark <span class="token keyword">import</span> SparkContext
+<span class="token keyword">from</span> pyspark<span class="token punctuation">.</span>sql <span class="token keyword">import</span> IntegerType
+
+sc <span class="token operator">=</span> SparkContext<span class="token punctuation">(</span>conf<span class="token punctuation">)</span>
+hiveCtx <span class="token operator">=</span> HiveContext<span class="token punctuation">(</span>sc<span class="token punctuation">)</span>
+
+hiveCtx<span class="token punctuation">.</span>registerFunction<span class="token punctuation">(</span><span class="token string">"square"</span><span class="token punctuation">,</span> <span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token operator">*</span>x<span class="token punctuation">,</span> IntegerType<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+df <span class="token operator">=</span> hiveCtx<span class="token punctuation">.</span>sql<span class="token punctuation">(</span><span class="token string">"SELECT square('somNumericField') FROM tableName"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="기억할-점"><a href="#기억할-점" class="headerlink" title="기억할 점"></a>기억할 점</h4><blockquote>
+<p>Spark의 다양한 하부 조직에 사이에 작용하는 통일된 API</p>
 </blockquote>
 <ul>
-<li><p>대신 map, filter 함수와 같은 변환을 변환 연산을 통해 기존 RDD 를 기반으로 새로운 RDD 생성 가능</p>
+<li><p>Spark 2.0 의 머신러닝 라이브러리(MLLib)나 스트리밍 라이브러리 등에서 ‘DataSet’ 을 기반으로 한 API 사용</p>
 </li>
-<li><p>RDD가 인스턴스화되고 데이터로 채워진 후에는 업데이트 불가능하다. 대신 map, filter 함수와 같은 변환(transformation)을 통해 기존 RDD를 기반으로 변환 연산을 적용한 새로운 RDD이 생성 가능하다.</p>
+<li><p>다양한 시스템 사이에서 데이터를 전달하는 데, 공통분모의 역할</p>
 </li>
-</ul>
-<h4 id="변환-transformation"><a href="#변환-transformation" class="headerlink" title="변환(transformation)"></a>변환(transformation)</h4><blockquote>
-<p>외부 데이터로 RDD 를 로드해 연산을 수행한 뒤 새로운 RDD 를 생성하는 작업</p>
-</blockquote>
-<ul>
-<li><p>Map, groupby, reduceby, sortbykey, filter, join, union</p>
-</li>
-<li><p>지연실행(lazy evaluation)을 따르고 액션 연산이 호출 될 때까지 데이터를 일시적으로 보유</p>
-</li>
-<li><p>외부 데이터를 RDD를 로드해 연산을 수행한 뒤 새로운 RDD를 생성하는 작업이다.</p>
-</li>
-<li><p>map, groupBy, reduceByKey, sortByKey, filter, join, union ..</p>
-</li>
-<li><p>지연실행(Lazy Evaluation)을 따르고 Action 연산이 호출 될 때까지 데이터를 일시적으로 보유한다.</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://sparkbyexamples.com/spark/spark-rdd-transformations-2/">transformation</a></p>
+<li><p>Spark 2.0의 ‘DataSet’ 을 사용함으로써, 성능적 이득 + Spark 위에 구축된 다양한 기술들을 더 쉽게 사용하고 이들을 다양한 방식으로 혼합하여 사용</p>
 </li>
 </ul>
-<h4 id="액션-action"><a href="#액션-action" class="headerlink" title="액션(action)"></a>액션(action)</h4><blockquote>
-<p>응용 프로그램의 결과를 파일 시스템(로컬, HDFS, S3 ..)에 기록하는 등 궁극적으로 원한는 결과물을 출력하거나 저장하는 작업</p>
-</blockquote>
-<ul>
-<li><p>Reduce, Collect, Take, First, SaveAsTextfile, saveAsSequenceFile, foreach</p>
-</li>
-<li><p>RDD 내의 레코드 수를 반환하는 함수 등 다양한 액션 함수 존재</p>
-</li>
-<li><p>reduce, collect, take, first, saveAsTextfile, saveAsSequenceFile, foreach ..</p>
-</li>
-<li><p>RDD 내의 레코드 수를 반환, 파일로 저장, 하는 함수 등 다양한 액션 함수 존재한다.</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://sparkbyexamples.com/spark/spark-rdd-actions/">action</a></p>
-</li>
-</ul>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>-『Data Analytics with Spark Using Python』 - Jeffrey Aven</p>
 
                 
             </div>
@@ -434,7 +364,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2023/06/24/PySpark/spark-rdd/">http://example.com/2023/06/24/PySpark/spark-rdd/</a>
+                    <a href="http://example.com/2024/01/01/PySpark/dataset/">http://example.com/2024/01/01/PySpark/dataset/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -541,7 +471,7 @@
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Sat Jun 24 2023 00:00:00 GMT+0900',
+    id: 'Mon Jan 01 2024 22:59:44 GMT+0900',
     owner: '',
     repo: '',
     oauth: {
@@ -576,12 +506,12 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2023/06/24/Python/sqlalchemy_delete/">
+                <a href="/2024/01/01/PySpark/data-locality/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] sqlalchemy delete">
+                        <img src="/images/logos/pyspark-logo.png" class="responsive-img" alt="[PySpark] Data Locality">
                         
-                        <span class="card-title diy-neon-red">[Python] sqlalchemy delete</span>
+                        <span class="card-title diy-neon-red">[PySpark] Data Locality</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -592,14 +522,14 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-06-24
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Python/" class="post-category">
-                                    Python
+                            <a href="/categories/PySpark/" class="post-category">
+                                    PySpark
                                 </a>
                             
                             
@@ -616,12 +546,12 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/06/23/Python/no-pandas-append/">
+                <a href="/2024/01/01/PySpark/spark-streaming-shutdown/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] pandas의 append()를 안 쓰기 시작한 이유">
+                        <img src="/images/logos/pyspark-logo.png" class="responsive-img" alt="[PySpark] Spark Streaming Gracefully Shutdown">
                         
-                        <span class="card-title diy-neon-red">[Python] pandas의 append()를 안 쓰기 시작한 이유</span>
+                        <span class="card-title diy-neon-red">[PySpark] Spark Streaming Gracefully Shutdown</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -632,14 +562,14 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-23
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Python/" class="post-category">
-                                    Python
+                            <a href="/categories/PySpark/" class="post-category">
+                                    PySpark
                                 </a>
                             
                             

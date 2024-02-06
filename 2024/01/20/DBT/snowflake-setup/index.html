@@ -4,16 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[AWS] DynamoDB, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="DynamoDBDynamoDB
-NoSQL 데이터베이스 서비스
-
-
-키-값, 문서 데이터 모델 지원
-
-서버리스 서비스(사용자가 서버를 관리할 필요가 없음)
-
-용량에 맞게 자동으로 확장 및 축소(Auto Scaling) ">
+    <meta name="keywords" content="[DBT] DBT 설치하기, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="DBT (Data Build Tool)란?
+dbt™ is a SQL-first transformation workflow that lets teams quickly and collaboratively deploy a">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -25,7 +18,7 @@ NoSQL 데이터베이스 서비스
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[AWS] DynamoDB | Keyhong</title>
+    <title>[DBT] DBT 설치하기 | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -213,13 +206,13 @@ NoSQL 데이터베이스 서비스
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/aws-logo.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/dbt-logo.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [AWS] DynamoDB</h1>
+                        [DBT] DBT 설치하기</h1>
                 </div>
             </div>
         </div>
@@ -251,8 +244,8 @@ NoSQL 데이터베이스 서비스
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/AWS/" class="post-category">
-                                AWS
+                            <a href="/categories/DBT/" class="post-category">
+                                DBT
                             </a>
                         
                     </div>
@@ -264,7 +257,7 @@ NoSQL 데이터베이스 서비스
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2023-12-03
+                    2024-01-20
                 </div>
                 
 
@@ -288,25 +281,175 @@ NoSQL 데이터베이스 서비스
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="DynamoDB"><a href="#DynamoDB" class="headerlink" title="DynamoDB"></a>DynamoDB</h1><h2 id="DynamoDB-1"><a href="#DynamoDB-1" class="headerlink" title="DynamoDB"></a>DynamoDB</h2><blockquote>
-<p>NoSQL 데이터베이스 서비스</p>
+                <h2 id="DBT-Data-Build-Tool-란"><a href="#DBT-Data-Build-Tool-란" class="headerlink" title="DBT (Data Build Tool)란?"></a>DBT (Data Build Tool)란?</h2><blockquote>
+<p>dbt™ is a SQL-first transformation workflow that lets teams quickly and collaboratively deploy analytics code following software engineering best practices like modularity, portability, CI&#x2F;CD, and documentation. Now anyone on the data team can safely contribute to production-grade data pipelines.</p>
 </blockquote>
-<ul>
-<li><p>키-값, 문서 데이터 모델 지원</p>
-</li>
-<li><p>서버리스 서비스(사용자가 서버를 관리할 필요가 없음)</p>
-</li>
-<li><p>용량에 맞게 자동으로 확장 및 축소(Auto Scaling) 하므로 관리 및 운영 오버헤드 최소화</p>
-</li>
-<li><p>10 밀리 초 미만의 빠른 응답을 제공(RDS와 달리 관계가 맺어있지 않아 퍼포먼스가 빠름)</p>
-</li>
-<li><p>초당 수백만개 이상의 요청 처리 가능</p>
-</li>
-<li><p>지연시간이 짧고 빠른 응답이 필요한 애플리케이션에 사용</p>
-</li>
-<li><p>쇼핑몰 장바구니, 은행 트랜잭션, 게임 플레이어 기록 저장 등에 사용</p>
-</li>
-</ul>
+<p>SQL 기반의 변환 작업 흐름으로, 팀이 모듈화, 이식성, CI&#x2F;CD 및 문서화와 같은 소프트웨어 엔지니어링의 최상의 관행을 따르면서 빠르게 협업하여 분석 코드를 배포할 수 있게 합니다. 이제 데이터 팀의 누구나 안전하게 프로덕션급 데이터 파이프라인에 기여할 수 있습니다.</p>
+<h2 id="DBT-사용하기"><a href="#DBT-사용하기" class="headerlink" title="DBT 사용하기"></a>DBT 사용하기</h2><p>dbt는 데이터베이스, 웨어하우스, 레이크 또는 쿼리 엔진에 연결하여 SQL을 실행합니다. 이러한 SQL 기반 플랫폼을 통칭하여 데이터 플랫폼 이라고 합니다 . dbt는 각각 전용 어댑터 플러그인을 사용하여 데이터 플랫폼과 연결됩니다. 플러그인은 시스템에 설치된 경우 dbt Core가 검색하는 Python 모듈로 구축됩니다. 어댑터 빌드, 테스트, 문서화 및 승격 가이드를 참조하세요 .</p>
+<p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/supported-data-platforms">가이드</a></p>
+<h2 id="Snowflake-설정"><a href="#Snowflake-설정" class="headerlink" title="Snowflake 설정"></a>Snowflake 설정</h2><p>dbt를 사용하려면 먼저 데이터베이스를 사용할 수 있는 계정을 만들어야 합니다. </p>
+<h3 id="Snowflake-유저-생성"><a href="#Snowflake-유저-생성" class="headerlink" title="Snowflake 유저 생성"></a>Snowflake 유저 생성</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Use an admin role</span>
+<span class="token keyword">USE</span> ROLE ACCOUNTADMIN<span class="token punctuation">;</span>
+
+<span class="token comment">-- Create the `transform` role</span>
+<span class="token keyword">CREATE</span> ROLE <span class="token keyword">IF</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span> transform<span class="token punctuation">;</span>
+<span class="token keyword">GRANT</span> ROLE TRANSFORM <span class="token keyword">TO</span> ROLE ACCOUNTADMIN<span class="token punctuation">;</span>
+
+<span class="token comment">-- Create the default warehouse if necessary</span>
+<span class="token keyword">CREATE</span> WAREHOUSE <span class="token keyword">IF</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span> COMPUTE_WH<span class="token punctuation">;</span>
+<span class="token keyword">GRANT</span> OPERATE <span class="token keyword">ON</span> WAREHOUSE COMPUTE_WH <span class="token keyword">TO</span> ROLE TRANSFORM<span class="token punctuation">;</span>
+
+<span class="token comment">-- Create the `dbt` user and assign to role</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">USER</span> <span class="token keyword">IF</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span> dbt
+  LOGIN_NAME<span class="token operator">=</span><span class="token string">'dbt'</span>
+  PASSWORD<span class="token operator">=</span><span class="token string">'dbtPassword123'</span>
+  MUST_CHANGE_PASSWORD<span class="token operator">=</span><span class="token boolean">FALSE</span>
+  DEFAULT_ROLE<span class="token operator">=</span><span class="token string">'transform'</span>
+  DEFAULT_WAREHOUSE<span class="token operator">=</span><span class="token string">'COMPUTE_WH'</span>
+  DEFAULT_NAMESPACE<span class="token operator">=</span><span class="token string">'AIRBNB.RAW'</span>
+  <span class="token keyword">COMMENT</span><span class="token operator">=</span><span class="token string">'DBT user used for data transformation'</span><span class="token punctuation">;</span>
+<span class="token keyword">GRANT</span> ROLE transform <span class="token keyword">to</span> <span class="token keyword">USER</span> dbt<span class="token punctuation">;</span>
+
+<span class="token comment">-- Create our database and schemas</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">DATABASE</span> <span class="token keyword">IF</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span> AIRBNB<span class="token punctuation">;</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">SCHEMA</span> <span class="token keyword">IF</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span> AIRBNB<span class="token punctuation">.</span>RAW<span class="token punctuation">;</span>
+
+<span class="token comment">-- Set up permissions to role `transform`</span>
+<span class="token keyword">GRANT</span> <span class="token keyword">ALL</span> <span class="token keyword">ON</span> WAREHOUSE COMPUTE_WH <span class="token keyword">TO</span> ROLE transform<span class="token punctuation">;</span> 
+<span class="token keyword">GRANT</span> <span class="token keyword">ALL</span> <span class="token keyword">ON</span> <span class="token keyword">DATABASE</span> AIRBNB <span class="token keyword">to</span> ROLE transform<span class="token punctuation">;</span>
+<span class="token keyword">GRANT</span> <span class="token keyword">ALL</span> <span class="token keyword">ON</span> <span class="token keyword">ALL</span> SCHEMAS <span class="token operator">IN</span> <span class="token keyword">DATABASE</span> AIRBNB <span class="token keyword">to</span> ROLE transform<span class="token punctuation">;</span>
+<span class="token keyword">GRANT</span> <span class="token keyword">ALL</span> <span class="token keyword">ON</span> FUTURE SCHEMAS <span class="token operator">IN</span> <span class="token keyword">DATABASE</span> AIRBNB <span class="token keyword">to</span> ROLE transform<span class="token punctuation">;</span>
+<span class="token keyword">GRANT</span> <span class="token keyword">ALL</span> <span class="token keyword">ON</span> <span class="token keyword">ALL</span> <span class="token keyword">TABLES</span> <span class="token operator">IN</span> <span class="token keyword">SCHEMA</span> AIRBNB<span class="token punctuation">.</span>RAW <span class="token keyword">to</span> ROLE transform<span class="token punctuation">;</span>
+<span class="token keyword">GRANT</span> <span class="token keyword">ALL</span> <span class="token keyword">ON</span> FUTURE <span class="token keyword">TABLES</span> <span class="token operator">IN</span> <span class="token keyword">SCHEMA</span> AIRBNB<span class="token punctuation">.</span>RAW <span class="token keyword">to</span> ROLE transform<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="DBT-설치"><a href="#DBT-설치" class="headerlink" title="DBT 설치"></a>DBT 설치</h2><p>데이터베이스 설정이 끝났다면 로컬에 dbt를 설치합니다.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># venv 가상환경 만들기</span>
+$ virtualenv venv 
+
+<span class="token comment"># dbt adapter 설치 (만약 postgres dbt라면, dbt-postgres 처럼 스토리지에 맞게 install 해주어야 합니다.)</span>
+$ pip <span class="token function">install</span> dbt-snowflake
+
+
+<span class="token comment"># HOME 디렉터리에 .dbt 히든 디렉터리 생성 (storage와 연결할 계정 정보 파일이 존재하는 곳)</span>
+$ <span class="token function">mkdir</span> ~/.dbt
+
+<span class="token comment"># dbt init &lt;프로젝트명></span>
+$ dbt init <span class="token operator">&lt;</span>project<span class="token operator">></span>
+<span class="token comment"># $ dbt init dbtlearn</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>그럼 아래와 같이 프롬프트로 데이터베이스와 연결할 수 있는 계정 설정에 대한 몇 가지 질문을 받게됩니다. 입력해주십시다.</p>
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>프롬프트 화면</span></div><code class="language-bash"><span class="token comment"># Which database would you like to use?</span>
+<span class="token comment"># [1] snowflake</span>
+
+<span class="token comment"># (Don't see the one you want? https://docs.getdbt.com/docs/available-adapters)</span>
+
+<span class="token number">1</span>
+
+
+
+account <span class="token punctuation">(</span>https://<span class="token operator">&lt;</span>this_value<span class="token operator">></span>.snowflakecomputing.com<span class="token punctuation">)</span>: ---
+user <span class="token punctuation">(</span>dev username<span class="token punctuation">)</span>: dbt
+<span class="token assign-left variable">LOGIN_NAME</span><span class="token operator">=</span><span class="token string">'dbt'</span>
+
+<span class="token comment"># [1] password</span>
+<span class="token comment"># [2] keypair</span>
+<span class="token comment"># [3] sso</span>
+Desired authentication <span class="token builtin class-name">type</span> option <span class="token punctuation">(</span>enter a number<span class="token punctuation">)</span>: <span class="token number">1</span>
+password <span class="token punctuation">(</span>dev password<span class="token punctuation">)</span>: dbtPassword123
+<span class="token assign-left variable">PASSWORD</span><span class="token operator">=</span><span class="token string">'dbtPassword123'</span>
+ 
+role <span class="token punctuation">(</span>dev role<span class="token punctuation">)</span>: transform
+
+warehouse <span class="token punctuation">(</span>warehouse name<span class="token punctuation">)</span>: COMPUTE_WH
+
+database <span class="token punctuation">(</span>default database that dbt will build objects <span class="token keyword">in</span><span class="token punctuation">)</span>: AIRBNB
+
+schema <span class="token punctuation">(</span>default schema that dbt will build objects <span class="token keyword">in</span><span class="token punctuation">)</span>: DEV
+
+threads <span class="token punctuation">(</span><span class="token number">1</span> or <span class="token function">more</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>: <span class="token number">1</span>
+
+<span class="token comment"># 14:42:11  Profile dbtlearn written to C:\Users\wnhon\.d</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>완료를 했다면 dbt 프로젝트 안에서 debug 명령어로 커넥션을 체크합니다. 커넥션이 붙지 않는다면, ~&#x2F;.dbt에 생성된 <code>profiles.yml</code> 파일을 점검합니다.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># dbt init &lt;프로젝트>로 생성했던 프로젝트 폴더 안으로 진입</span>
+$ <span class="token builtin class-name">cd</span> dbtlearn
+
+<span class="token comment"># dbt debug 명령어로 커넥션 확인</span>
+$ dbt debug<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Snowflake-데이터-import"><a href="#Snowflake-데이터-import" class="headerlink" title="Snowflake 데이터 import"></a>Snowflake 데이터 import</h3><p>Copy these SQL statements into a Snowflake Worksheet, select all and execute them (i.e. pressing the play button).</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Set up the defaults</span>
+<span class="token keyword">USE</span> WAREHOUSE COMPUTE_WH<span class="token punctuation">;</span>
+<span class="token keyword">USE</span> <span class="token keyword">DATABASE</span> airbnb<span class="token punctuation">;</span>
+<span class="token keyword">USE</span> <span class="token keyword">SCHEMA</span> RAW<span class="token punctuation">;</span>
+
+<span class="token comment">-- Create our three tables and import the data from S3</span>
+<span class="token keyword">CREATE</span> <span class="token operator">OR</span> <span class="token keyword">REPLACE</span> <span class="token keyword">TABLE</span> raw_listings <span class="token punctuation">(</span>
+    id <span class="token keyword">integer</span><span class="token punctuation">,</span>
+    listing_url string<span class="token punctuation">,</span>
+    name string<span class="token punctuation">,</span>
+    room_type string<span class="token punctuation">,</span>
+    minimum_nights <span class="token keyword">integer</span><span class="token punctuation">,</span>
+    host_id <span class="token keyword">integer</span><span class="token punctuation">,</span>
+    price string<span class="token punctuation">,</span>
+    created_at <span class="token keyword">datetime</span><span class="token punctuation">,</span>
+    updated_at <span class="token keyword">datetime</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    
+COPY <span class="token keyword">INTO</span> raw_listings <span class="token punctuation">(</span>
+    id<span class="token punctuation">,</span>
+    listing_url<span class="token punctuation">,</span>
+    name<span class="token punctuation">,</span>
+    room_type<span class="token punctuation">,</span>
+    minimum_nights<span class="token punctuation">,</span>
+    host_id<span class="token punctuation">,</span>
+    price<span class="token punctuation">,</span>
+    created_at<span class="token punctuation">,</span>
+    updated_at
+<span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> <span class="token string">'s3://dbtlearn/listings.csv'</span>
+FILE_FORMAT <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">type</span> <span class="token operator">=</span> <span class="token string">'CSV'</span> skip_header <span class="token operator">=</span> <span class="token number">1</span>
+FIELD_OPTIONALLY_ENCLOSED_BY <span class="token operator">=</span> <span class="token string">'"'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    
+
+<span class="token keyword">CREATE</span> <span class="token operator">OR</span> <span class="token keyword">REPLACE</span> <span class="token keyword">TABLE</span> raw_reviews <span class="token punctuation">(</span>
+    listing_id <span class="token keyword">integer</span><span class="token punctuation">,</span>
+    <span class="token keyword">date</span> <span class="token keyword">datetime</span><span class="token punctuation">,</span>
+    reviewer_name string<span class="token punctuation">,</span>
+    comments string<span class="token punctuation">,</span>
+    sentiment string
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    
+COPY <span class="token keyword">INTO</span> raw_reviews <span class="token punctuation">(</span>
+    listing_id<span class="token punctuation">,</span>
+    <span class="token keyword">date</span><span class="token punctuation">,</span>
+    reviewer_name<span class="token punctuation">,</span>
+    comments<span class="token punctuation">,</span>
+    sentiment
+<span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> <span class="token string">'s3://dbtlearn/reviews.csv'</span>
+FILE_FORMAT <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">type</span> <span class="token operator">=</span> <span class="token string">'CSV'</span> skip_header <span class="token operator">=</span> <span class="token number">1</span>
+FIELD_OPTIONALLY_ENCLOSED_BY <span class="token operator">=</span> <span class="token string">'"'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    
+
+<span class="token keyword">CREATE</span> <span class="token operator">OR</span> <span class="token keyword">REPLACE</span> <span class="token keyword">TABLE</span> raw_hosts <span class="token punctuation">(</span>
+    id <span class="token keyword">integer</span><span class="token punctuation">,</span>
+    name string<span class="token punctuation">,</span>
+    is_superhost string<span class="token punctuation">,</span>
+    created_at <span class="token keyword">datetime</span><span class="token punctuation">,</span>
+    updated_at <span class="token keyword">datetime</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    
+COPY <span class="token keyword">INTO</span> raw_hosts <span class="token punctuation">(</span>
+    id<span class="token punctuation">,</span>
+    name<span class="token punctuation">,</span>
+    is_superhost<span class="token punctuation">,</span>
+    created_at<span class="token punctuation">,</span>
+    updated_at
+<span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> <span class="token string">'s3://dbtlearn/hosts.csv'</span>
+FILE_FORMAT <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">type</span> <span class="token operator">=</span> <span class="token string">'CSV'</span> skip_header <span class="token operator">=</span> <span class="token number">1</span>
+FIELD_OPTIONALLY_ENCLOSED_BY <span class="token operator">=</span> <span class="token string">'"'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -333,7 +476,7 @@ NoSQL 데이터베이스 서비스
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2023/12/03/AWS/dynamodb/">http://example.com/2023/12/03/AWS/dynamodb/</a>
+                    <a href="http://example.com/2024/01/20/DBT/snowflake-setup/">http://example.com/2024/01/20/DBT/snowflake-setup/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -440,7 +583,7 @@ NoSQL 데이터베이스 서비스
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Sun Dec 03 2023 00:00:00 GMT+0900',
+    id: 'Sat Jan 20 2024 00:00:00 GMT+0900',
     owner: '',
     repo: '',
     oauth: {
@@ -475,12 +618,12 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2023/12/03/AWS/ci_cd/">
+                <a href="/2024/01/22/SQL/procedure/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/aws-logo.png" class="responsive-img" alt="[AWS] EC2 CI/CI sPipeline">
+                        <img src="/images/logos/sql-logo.png" class="responsive-img" alt="[SQL] Procedure">
                         
-                        <span class="card-title diy-neon-red">[AWS] EC2 CI/CI sPipeline</span>
+                        <span class="card-title diy-neon-red">[SQL] Procedure</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -491,14 +634,14 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-12-03
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-22
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/AWS/" class="post-category">
-                                    AWS
+                            <a href="/categories/SQL/" class="post-category">
+                                    SQL
                                 </a>
                             
                             
@@ -515,12 +658,12 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/12/03/AWS/ec2/">
+                <a href="/2024/01/19/SQL/concatenate/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/aws-logo.png" class="responsive-img" alt="[AWS] EC2">
+                        <img src="/images/logos/sql-logo.png" class="responsive-img" alt="[SQL] String Functions">
                         
-                        <span class="card-title diy-neon-red">[AWS] EC2</span>
+                        <span class="card-title diy-neon-red">[SQL] String Functions</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -531,14 +674,14 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-03
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-19
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/AWS/" class="post-category">
-                                    AWS
+                            <a href="/categories/SQL/" class="post-category">
+                                    SQL
                                 </a>
                             
                             

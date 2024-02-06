@@ -365,47 +365,46 @@ EOF</span>
 $ <span class="token builtin class-name">cd</span> <span class="token variable">$SPARK_HOME</span>/conf/
 $ <span class="token function">sudo</span> <span class="token function">cp</span> spark-defaults.conf.template spark-defaults.conf<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<pre class="line-numbers language-conf" data-language="conf"><code class="language-conf"># 1. Spark Cluster Manager : Standalone Mode
-spark.master    spark:&#x2F;&#x2F;&lt;Master Hostname&gt;:&lt;Port&gt;
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>spark-defaults.conf</span></div><code class="language-bash"><span class="token comment"># 1. Spark Cluster Manager : Standalone Mode</span>
+spark.master    spark://<span class="token operator">&lt;</span>Master Hostname<span class="token operator">></span>:<span class="token operator">&lt;</span>Port<span class="token operator">></span>
 
-# 2. Spark Cluster Manager : YARN
-spark.master    yarn 
+<span class="token comment"># 2. Spark Cluster Manager : YARN</span>
+spark.master    <span class="token function">yarn</span> 
 
-# Spark Event Log Use? 
-spark.eventLog.enabled    true
+<span class="token comment"># Spark Event Log Use? </span>
+spark.eventLog.enabled    <span class="token boolean">true</span>
 
-# Spark Event Log Directory
-spark.eventLog.dir    &lt;Spark Log Directory&gt;
+<span class="token comment"># Spark Event Log Directory</span>
+spark.eventLog.dir    <span class="token operator">&lt;</span>Spark Log Directory<span class="token operator">></span>
 
-# Spark Driver Memory 
-spark.driver.memory    &lt;N&gt;g
+<span class="token comment"># Spark Driver Memory </span>
+spark.driver.memory    <span class="token operator">&lt;</span>N<span class="token operator">></span>g
 
-# Spark Executor Memory
-spark.executor.memory    &lt;N&gt;g
+<span class="token comment"># Spark Executor Memory</span>
+spark.executor.memory    <span class="token operator">&lt;</span>N<span class="token operator">></span>g
 
-# Spark Executor Cores
-spark.executor.cores    &lt;N&gt;
-&#96;&#96;&#96;    
+<span class="token comment"># Spark Executor Cores</span>
+spark.executor.cores    <span class="token operator">&lt;</span>N<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-3. 각 호스트에 spark-env.sh 환경변수 등록
+<ol start="3">
+<li>각 호스트에 spark-env.sh 환경변수 등록</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># spark-defaults.conf 파일 구성 </span>
+$ <span class="token builtin class-name">cd</span> <span class="token variable">$SPARK_HOME</span>/conf/
+$ <span class="token function">sudo</span> <span class="token function">cp</span> spark-env.sh.template spark-env.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-&#96;&#96;&#96;bash
-# spark-defaults.conf 파일 구성 
-$ cd $SPARK_HOME&#x2F;conf&#x2F;
-$ sudo cp spark-env.sh.template spark-env.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>spark-env.sh</span></div><code class="language-bash"><span class="token comment"># SPARK_MASTER_HOST, SPARK_MASTER_PORT</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">SPARK_MASTER_HOST</span><span class="token operator">=</span><span class="token operator">&lt;</span>Master Hostname<span class="token operator">></span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">SPARK_MASTER_PORT</span><span class="token operator">=</span><span class="token number">7077</span>
 
-<pre class="line-numbers language-conf" data-language="conf"><code class="language-conf"># SPARK_MASTER_HOST, SPARK_MASTER_PORT
-export SPARK_MASTER_HOST&#x3D;&lt;Master Hostname&gt;
-export SPARK_MASTER_PORT&#x3D;7077
+<span class="token comment"># HADOOP_CONF_DIR </span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">HADOOP_CONF_DIR</span><span class="token operator">=</span><span class="token operator">&lt;</span>Hadoop Config Directory<span class="token operator">></span>
 
-# HADOOP_CONF_DIR 
-export HADOOP_CONF_DIR&#x3D;&lt;Hadoop Config Directory&gt;
+<span class="token comment"># SPARK_MASTER_WEBUI_PORT</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">SPARK_MASTER_WEBUI_PORT</span><span class="token operator">=</span><span class="token number">8080</span>
 
-# SPARK_MASTER_WEBUI_PORT
-export SPARK_MASTER_WEBUI_PORT&#x3D;8080
-
-# PYSPARK_PYTHON
-export PYSPARK_PYTHON&#x3D;&lt;Python Binaray File&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment"># PYSPARK_PYTHON</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">PYSPARK_PYTHON</span><span class="token operator">=</span><span class="token operator">&lt;</span>Python Binaray File<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 <h2 id="Stand-alone-스파크-클러스터-배포"><a href="#Stand-alone-스파크-클러스터-배포" class="headerlink" title="Stand-alone 스파크 클러스터 배포"></a>Stand-alone 스파크 클러스터 배포</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">SPARK_VERSION</span><span class="token operator">=</span><span class="token number">3.4</span>.1
@@ -443,13 +442,47 @@ export SPARK_WORKER_CORES=3
 export SPARK_WORKER_MEMORY=3g
 EOF</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="Environment-Variable-설명"><a href="#Environment-Variable-설명" class="headerlink" title="Environment Variable 설명"></a>Environment Variable 설명</h2><hr>
-<h2 id="Environment-Variable-Description-default-value"><a href="#Environment-Variable-Description-default-value" class="headerlink" title="Environment Variable | Description | default value"></a>Environment Variable | Description | default value</h2><p>SPARK_MASTER_HOST | Bind the master to a specific hostname or IP address, for example a public one. |<br>SPARK_MASTER_PORT | Start the master on a different port | 7077<br>SPARK_MASTER_WEBUI_PORT	| Port for the master web UI | 8080<br>SPARK_WORKER_CORES | Total number of cores to allow Spark applications to use on the machine<br>SPARK_WORKER_MEMORY | Total amount of memory to allow Spark applications to use on the machine, e.g. 1000m, 2g | 1 GB</p>
-<p><a target="_blank" rel="noopener" href="https://spark.apache.org/docs/3.4.1/spark-standalone.html#cluster-launch-scripts">Standalone Mode 추가 환경 변수 설명 참조</a></p>
+<h2 id="Environment-Variable-설명"><a href="#Environment-Variable-설명" class="headerlink" title="Environment Variable 설명"></a>Environment Variable 설명</h2><table>
+<thead>
+<tr>
+<th>Environment Variable</th>
+<th>Description</th>
+<th>default value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SPARK_MASTER_HOST</td>
+<td>Bind the master to a specific hostname or IP address, for example a public one.</td>
+<td></td>
+</tr>
+<tr>
+<td>SPARK_MASTER_PORT</td>
+<td>Start the master on a different port</td>
+<td>7077</td>
+</tr>
+<tr>
+<td>SPARK_MASTER_WEBUI_PORT</td>
+<td>Port for the master web UI</td>
+<td>8080</td>
+</tr>
+<tr>
+<td>SPARK_WORKER_CORES</td>
+<td>Total number of cores to allow Spark applications to use on the machine</td>
+<td></td>
+</tr>
+<tr>
+<td>SPARK_WORKER_MEMORY</td>
+<td>Total amount of memory to allow Spark applications to use on the machine, e.g. 1000m, 2g</td>
+<td>1 GB</td>
+</tr>
+</tbody></table>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://spark.apache.org/docs/3.4.1/spark-standalone.html#cluster-launch-scripts">Standalone Mode 추가 환경 변수 설명 참조</a></li>
+</ul>
 <h2 id="스파크-Standalone-Master-Worker-process-시작"><a href="#스파크-Standalone-Master-Worker-process-시작" class="headerlink" title="스파크 Standalone Master, Worker process 시작"></a>스파크 Standalone Master, Worker process 시작</h2><h4 id="Master-프로세스-시작-중지"><a href="#Master-프로세스-시작-중지" class="headerlink" title="Master 프로세스 시작&#x2F;중지"></a>Master 프로세스 시작&#x2F;중지</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ ./<span class="token variable">$&#123;SPARK_HOME&#125;</span>/sbin/start-master.sh
 $ ./<span class="token variable">$&#123;SPARK_HOME&#125;</span>/sbin/stop-master.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h4 id="Worker-프로세스-시작-중지"><a href="#Worker-프로세스-시작-중지" class="headerlink" title="Worker 프로세스 시작&#x2F;중지"></a>Worker 프로세스 시작&#x2F;중지</h4><p><code>master-spark-URL</code>은 master를 실행한 서버의 web UI(<a href="http://localhost:8080)에서">http://localhost:8080)에서</a> 확인할 수 있습니다. 보통 8080 포트를 웹 프로세스들이 많이 쓰기 때문에 다른 프로세스가 이미 점유하고 있다면, 위의 spark.env.sh에서 <code>SPARK_MASTER_WEBUI_PORT</code>를 다른 포트로 정의행주세요.</p>
+<h4 id="Worker-프로세스-시작-중지"><a href="#Worker-프로세스-시작-중지" class="headerlink" title="Worker 프로세스 시작&#x2F;중지"></a>Worker 프로세스 시작&#x2F;중지</h4><p><code>master-spark-URL</code>은 master를 실행한 서버의 web UI(<a href="http://localhost:8080)에서">http://localhost:8080)에서</a> 확인할 수 있습니다. 보통 8080 포트를 웹 프로세스들이 많이 쓰기 때문에 다른 프로세스가 이미 점유하고 있다면, 위의 spark.env.sh에서 <code>SPARK_MASTER_WEBUI_PORT</code>를 다른 포트로 정의해주세요.</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ ./<span class="token variable">$&#123;SPARK_HOME&#125;</span>/sbin/start-workers.sh <span class="token operator">&lt;</span>master-spark-URL<span class="token operator">></span>
 $ ./<span class="token variable">$&#123;SPARK_HOME&#125;</span>/sbin/stop-workers.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 

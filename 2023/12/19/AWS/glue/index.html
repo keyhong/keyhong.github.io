@@ -303,29 +303,25 @@
 <li>AWS Glue Trigger : <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/ko_kr/glue/latest/dg/about-triggers.html">https://docs.aws.amazon.com/ko_kr/glue/latest/dg/about-triggers.html</a></li>
 </ul>
 <h2 id="②-Glue-Data-Catalog"><a href="#②-Glue-Data-Catalog" class="headerlink" title="② Glue Data Catalog"></a>② Glue Data Catalog</h2><p><strong>Athena(AWS presto), EMR(AWS Hadoop Cluster), Redshift(AWS DW), Glue ETL 등의 analysis 또는 etl 작업을 위한 솔루션에서 데이터와 매핑하여 사용할 메타 데이터를 저장한다.</strong> Hadoop에서 Hive를 사용할 때 HDFS 데이터를 조회하기 위한 <strong>메타데이터를 저장하는 Hive Metastore와 비슷하다.</strong></p>
-<img alt="데이터 스토어 > Glue Crawler > *Glue Data Catalog">
-
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110214&authkey=%21ALfKyKgUGe3BDdo&width=727&height=384" width="727" height="384" alt="데이터 스토어 > Glue Crawler > *Glue Data Catalog"/>
 
 <p>앞서 Glue Crawler를 통해 Data Catalog에 스키마를 만든다고 했는 데, <strong>꼭 크롤러를 사용하지 않더라도 사용자가 수동으로 정의할 수도 있다.</strong> 그래서 S3 Bucket 안에 하나의 폴더를 만들어서 테이블 스키마를 정의하고 매핑해 보았다.</p>
 <ul>
 <li>우선 <strong>콘솔에서 Data Catalog를 접속한다.</strong></li>
 </ul>
-<img alt="AWS 콘솔에서 Data Catalog 검색">
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110213&authkey=%21AAdbyEQuVeZpT70&width=696&height=287" width="696" height="287" alt="AWS 콘솔에서 Data Catalog 검색"/>
 
-<p>AWS 콘솔에서 Data Catalog 검색</p>
 <ul>
 <li>그럼 다음 페이지를 확인 할 수 있는 데, 나는 이미 하나의 테이블 정의서를 만들어 놓았기 때문에 리스트가 나온다.</li>
 </ul>
 <p>이 페이지에서 주목할 부분은 두 가지인 것 같다.</p>
 <p>[ Add tables using crawler ] : Glue Crawler로 메타 데이터 만들기<br><strong>[ Add table ] : 유저가 직접 정의하여 메타 데이터 만들기</strong><br>나는 직접 메타데이터를 정의할 것이라 Add table을 선택 하였다.</p>
-<img alt="">
-
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110215&authkey=%21ALzG7R-IpKLew7M&width=942&height=202" width="942" height="202" />
 
 <ul>
 <li>보다시피 <strong>RDB 테이블을 만드는 과정과 큰 차이가 없다. 테이블명, 데이터베이스명, 테이블 Comment를 넣는다.</strong></li>
 </ul>
-<img alt="">
-
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110216&authkey=%21AHixG3FvaYRqyaA&width=922&height=486" width="922" height="486" />
 
 <ul>
 <li>스크롤을 내리면 추가적인 설정이 있다.</li>
@@ -340,12 +336,12 @@
 <li>Data Foramt</li>
 </ul>
 <p><strong>Classification : 폴더 내에 저장되는 파일의 포맷이다.</strong></p>
-<img alt="">
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110218&authkey=%21AJ96lUr1xlfzlkE&width=745&height=655" width="745" height="655" />
 
 <ul>
 <li>다음 페이지로 넘어와서 이어 진행한다. <strong>Define or upload schema를 눌러 직접 스키마 정의를 한다. Add 버튼을 누르면 컬럼의 열에 대한 스키마를 추가 할 수 있다.</strong></li>
 </ul>
-<img>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110217&authkey=%21AOEVjd5j8OZcZOM&width=751&height=277" width="751" height="277" />
 
 <ul>
 <li>Add를 누르면 팝업이 하나 뜬다. 안에는 [ Set as partition key? ] 라는 체킹박스가 있다. <strong>특정 컬럼을 partition key로 사용하는 이유는 Comment 안과 같다. Data Lake는 DW와 달리 Index에 제한적인 부분이 많다.</strong></li>
@@ -353,7 +349,7 @@
 <p>이는 데이터 자체의 특성도 있고, Data Lake의 목적도 있다. <strong>Data Lake는 비정형&#x2F;반정형 데이터를 저장하기 위해 스키마를 미리 만들어 두지 않는다. 스키마를 미리 정의하고 데이터를 적재하는 것은데이터가 적재될 때 Index나 제약조건, 혹은 컬럼 타입에 대한 검증이 이루어지고 적재되는 것이므로 속도를 느리게 만드는 요소이다.</strong> 대신, 읽을 때는 미리 만든 Index를 통해 빠른 탐색이 가능하다. </p>
 <p>하지만 <strong>Data Lake는 “schema on write”가 아닌 “schema on read”이다. 이를 통해서 데이터의 형태가 변화하거나 컬럼의 확장 가능성에 대해 좀 더 개방적이고 빠른 스키마 수정을 가능하게 한다.</strong> 이러한 이유로 DW와 같은 방법으로 쿼리의 최적화를 이끌어내는 것은 당연히 무리가 있다.</p>
 <p>같은 WHERE 절이라도 Data Lake에서는 파티셔닝을 이용하여 파티션 컬럼 값에 따라 하위 폴더로 만들어 데이터를 나누어 담는다. 그런 방법으로 쿼리의 비약적인 퍼포먼스 향상을 얻을 수 있다.</p>
-<img>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110219&authkey=%21AL225ocihkbxGdo&width=748&height=356" width="748" height="356" />
 
 <ul>
 <li>이후 Add indexes를 눌러 <strong>앞서 만들었던 파티션 컬럼에 Index를 매핑해준다.</strong></li>
@@ -363,7 +359,7 @@
 <ul>
 <li>AWS 설명 : <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/ko_kr/glue/latest/dg/partition-indexes.html">https://docs.aws.amazon.com/ko_kr/glue/latest/dg/partition-indexes.html</a></li>
 </ul>
-<img>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110220&authkey=%21AHzeGawXukgR1y8&width=749&height=133" width="749" height="133" />
                 
             </div>
             <hr/>
