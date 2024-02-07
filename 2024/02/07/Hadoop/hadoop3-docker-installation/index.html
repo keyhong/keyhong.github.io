@@ -269,11 +269,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="시작"><a href="#시작" class="headerlink" title="시작"></a>시작</h2><p>그간 인터넷에 무수히 많은 hadoop 설치 글을 보았습니다. 그 동안 hadoop을 클러스터 모드로 설치하는 과정이 복잡해서 조금 미뤄온 감이 있었습니다, 그래서 이번에 docker-compose도 익숙해졌겠다, hadoop 3 버전을 저도 설치해보려고 시도하였고 그 설치 과정을 적어봅니다. </p>
-<h2 id="구축-결과"><a href="#구축-결과" class="headerlink" title="구축 결과"></a>구축 결과</h2><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110229&authkey=%21AAZ0JWSh0TVpcKM&width=375&height=172" width="375" height="172" alt="master-server"/>
-
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110229&authkey=%21AAZ0JWSh0TVpcKM&width=375&height=172" width="375" height="172" alt="slave-server-1"/>
-
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110228&authkey=%21ALtjSeFuRax1YLo&width=338&height=141" width="338" height="141" alt="slave-server-2"/>
+<h2 id="구축-결과"><a href="#구축-결과" class="headerlink" title="구축 결과"></a>구축 결과</h2><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110230&authkey=%21AIAZpNCoMXi-8_w&width=955&height=228" width="955" height="228" alt="hadoop HA cluster server process (mysql server 제외)"/>
 
 <h2 id="설치-프로그램"><a href="#설치-프로그램" class="headerlink" title="설치 프로그램"></a>설치 프로그램</h2><h3 id="네트워크-구성"><a href="#네트워크-구성" class="headerlink" title="네트워크 구성"></a>네트워크 구성</h3><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>docker-compose.yaml</span></div><code class="language-yaml"><span class="token comment"># 172.28.1.0: Network IP, 172.28.1.255: Broadcast IP</span>
 <span class="token comment"># CIDR가 172.28.0.0/16이기 때문에 172.28.*.1 ~ 172.28.*.254 까지 사용 가능합니다(*는 일치)  </span>
