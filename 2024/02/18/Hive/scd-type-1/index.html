@@ -4,17 +4,18 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="SCD Type 2
-Versioning
-
-Flagging 
-
-Effective Date
-
-
-
-SCD Type 2 Versioning: Sequence number is used to represent the chan">
+    <meta name="keywords" content="[Hive] SCD Type 1 Insert, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="SELECT * FROM table1;
+John 1300
+Albert 1200
+Mark 1000
+Frank 1150
+Loopa 1100
+Lui 1300
+Lesa 900 
+Pars 800
+leo 700
+lock 650">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -26,7 +27,7 @@ SCD Type 2 Versioning: Sequence number is used to represent the chan">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Keyhong</title>
+    <title>[Hive] SCD Type 1 Insert | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -214,13 +215,13 @@ SCD Type 2 Versioning: Sequence number is used to represent the chan">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/hive-logo.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        </h1>
+                        [Hive] SCD Type 1 Insert</h1>
                 </div>
             </div>
         </div>
@@ -254,6 +255,15 @@ SCD Type 2 Versioning: Sequence number is used to represent the chan">
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Hive/" class="post-category">
+                                Hive
+                            </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -268,30 +278,7 @@ SCD Type 2 Versioning: Sequence number is used to represent the chan">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="SCD-Type-2"><a href="#SCD-Type-2" class="headerlink" title="SCD Type 2"></a>SCD Type 2</h1><ul>
-<li><p>Versioning</p>
-</li>
-<li><p>Flagging </p>
-</li>
-<li><p>Effective Date</p>
-</li>
-</ul>
-<ul>
-<li>SCD Type 2 Versioning: Sequence number is used to represent the change. The latest sequence number always represents the current row and the previous number represents the past data.</li>
-</ul>
-<p>1 1 Marston Illions 1</p>
-<p>1 1 Marston Illions 1<br>2 1 Martson Seattle 2</p>
-<ul>
-<li>SCD Type 2 Flagging: A flag column is created. The current record have value as 1 and the previous records will have the flag as 0.</li>
-</ul>
-<p>1 1 Marston Chicago 0</p>
-<p>1 1 Marston Chicago 0<br>1 1 Marston Seattle 1</p>
-<ul>
-<li>SCD Type 2 Effective Date: In Effective Date method, the period of the change is tracked using the start_date and end_date column in the dimension table.</li>
-</ul>
-<p>1 1 Marston Chicago 01-Mar-2010 NULL</p>
-<p>1 1 Marston Chicago 01-Mar-2010 20-Feb-2010<br>1 1 Marston Chicago 20-Feb-2010 NULL</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> table1<span class="token punctuation">;</span>
+                <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> table1<span class="token punctuation">;</span>
 John <span class="token number">1300</span>
 Albert <span class="token number">1200</span>
 Mark <span class="token number">1000</span>
@@ -340,12 +327,6 @@ Lio <span class="token number">500</span><span aria-hidden="true" class="line-nu
           <span class="token keyword">FULL</span> <span class="token keyword">OUTER</span> <span class="token keyword">JOIN</span> table2
             <span class="token keyword">ON</span> table1<span class="token punctuation">.</span>col1 <span class="token operator">=</span> table2<span class="token punctuation">.</span>col1
        <span class="token punctuation">)</span> <span class="token keyword">AS</span> b1 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<p>  )</p>
-<pre><code>
-</code></pre>
-
                 
             </div>
             <hr/>
@@ -361,7 +342,7 @@ Lio <span class="token number">500</span><span aria-hidden="true" class="line-nu
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">Gyuwon Hong</a>
+                    <a href="/about" rel="external nofollow noreferrer">Keyhong</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -384,7 +365,7 @@ Lio <span class="token number">500</span><span aria-hidden="true" class="line-nu
                     use
                     <a href="cc_by_url" rel="external nofollow noreferrer" target="_blank">cc_by_name</a>
                     licensed
-                    <a href="/about" target="_blank">Gyuwon Hong</a>
+                    <a href="/about" target="_blank">Keyhong</a>
                     !
                 </span>
             </div> -->
@@ -478,7 +459,7 @@ Lio <span class="token number">500</span><span aria-hidden="true" class="line-nu
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Sun Feb 18 2024 16:02:55 GMT+0900',
+    id: 'Sun Feb 18 2024 00:00:00 GMT+0900',
     owner: '',
     repo: '',
     oauth: {
@@ -513,13 +494,13 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/02/18/Kotlin/data-classes/">
+                <a href="/2024/02/19/Life/toss-analytics-engineering/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="[면접] Toss Analytics Engineer">
                         
-                        <span class="card-title diy-neon-red"></span>
+                        <span class="card-title diy-neon-red">[면접] Toss Analytics Engineer</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -530,12 +511,16 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-02-18
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-02-19
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Gyuwon Hong
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Life/" class="post-category">
+                                    Life
+                                </a>
+                            
                             
                         </span>
                     </div>
