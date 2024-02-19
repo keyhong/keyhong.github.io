@@ -242,7 +242,7 @@ table2
                         <div class="article-tag">
                             <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                                 <span class="chip bg-color">
-                                    2023-02-18</span>
+                                    2024-02-19</span>
                         </div>
                     
                     
@@ -281,49 +281,78 @@ table2
 </li>
 </ul>
 <p>|———–|———|———|——-|<br>| ProductID | OrderID | Product | Price |</p>
-<pre><code class="python"># Skew 데이터 불러오기
-import numpy as np
-import random
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># Skew 데이터 불러오기</span>
+<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<span class="token keyword">import</span> random
 
-# sales
-key_1 = [101] * 1
-key_2 = [201] * 8 # skew가 발생하는 key
-key_3 = [301] * 4
-key_4 = [401] * 2
+<span class="token comment"># sales dataset:</span>
 
-OrderID = key_1 + key_2 + key_3 + key_4
-random.shuffle(OrderID) # shuffle
+<span class="token comment">############ table 1 ############ </span>
 
-Qty_1 = list(np.random.randint(low=1, high=100, size=len(key_1)))
-Qty_2 = list(np.random.randint(low=1, high=100, size=len(key_2)))
-Qty_3 = list(np.random.randint(low=1, high=100, size=len(key_3)))
-Qty_4 = list(np.random.randint(low=1, high=100, size=len(key_4)))
-Qty = Qty_1 + Qty_2 + Qty_3 + Qty_4
+key_1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">101</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">1</span>
+key_2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">201</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">8</span> <span class="token comment"># skew가 발생하는 key</span>
+key_3 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">301</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">4</span>
+key_4 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">401</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">2</span>
 
-Sales_1 = list(np.random.randint(low=10, high=100, size=len(key_1)))
-Sales_2 = list(np.random.randint(low=50, high=3400, size=len(key_2)))
-Sales_3 = list(np.random.randint(low=12, high=2000, size=len(key_3)))
-Sales_4 = list(np.random.randint(low=40, high=1000, size=len(key_4)))
-Sales = Sales_1 + Sales_2 + Sales_3 + Sales_4
+OrderID <span class="token operator">=</span> key_1 <span class="token operator">+</span> key_2 <span class="token operator">+</span> key_3 <span class="token operator">+</span> key_4
+random<span class="token punctuation">.</span>shuffle<span class="token punctuation">(</span>OrderID<span class="token punctuation">)</span> <span class="token comment"># shuffle</span>
 
-Discount = list(np.random.randint(low=0, high=2, size=len(OrderID)))
-data1 = list(zip(OrderID, Qty, Sales, Discount))
+Qty_1 <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span>low<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> high<span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">,</span> size<span class="token operator">=</span><span class="token builtin">len</span><span class="token punctuation">(</span>key_1<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+Qty_2 <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span>low<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> high<span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">,</span> size<span class="token operator">=</span><span class="token builtin">len</span><span class="token punctuation">(</span>key_2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+Qty_3 <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span>low<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> high<span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">,</span> size<span class="token operator">=</span><span class="token builtin">len</span><span class="token punctuation">(</span>key_3<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+Qty_4 <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span>low<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> high<span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">,</span> size<span class="token operator">=</span><span class="token builtin">len</span><span class="token punctuation">(</span>key_4<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+Qty <span class="token operator">=</span> Qty_1 <span class="token operator">+</span> Qty_2 <span class="token operator">+</span> Qty_3 <span class="token operator">+</span> Qty_4
 
-# Create the pandas.DataFrame
-data_skew = pd.DataFrame(data1, columns=[&quot;OrderID&quot;, &quot;Qty&quot;, &quot;Sales&quot;, &quot;Discount&quot;])
+Sales_1 <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span>low<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">,</span> high<span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">,</span> size<span class="token operator">=</span><span class="token builtin">len</span><span class="token punctuation">(</span>key_1<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+Sales_2 <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span>low<span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">,</span> high<span class="token operator">=</span><span class="token number">3400</span><span class="token punctuation">,</span> size<span class="token operator">=</span><span class="token builtin">len</span><span class="token punctuation">(</span>key_2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+Sales_3 <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span>low<span class="token operator">=</span><span class="token number">12</span><span class="token punctuation">,</span> high<span class="token operator">=</span><span class="token number">2000</span><span class="token punctuation">,</span> size<span class="token operator">=</span><span class="token builtin">len</span><span class="token punctuation">(</span>key_3<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+Sales_4 <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span>low<span class="token operator">=</span><span class="token number">40</span><span class="token punctuation">,</span> high<span class="token operator">=</span><span class="token number">1000</span><span class="token punctuation">,</span> size<span class="token operator">=</span><span class="token builtin">len</span><span class="token punctuation">(</span>key_4<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+Sales <span class="token operator">=</span> Sales_1 <span class="token operator">+</span> Sales_2 <span class="token operator">+</span> Sales_3 <span class="token operator">+</span> Sales_4
+
+Discount <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span>low<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> high<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> size<span class="token operator">=</span><span class="token builtin">len</span><span class="token punctuation">(</span>OrderID<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+data1 <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">zip</span><span class="token punctuation">(</span>OrderID<span class="token punctuation">,</span> Qty<span class="token punctuation">,</span> Sales<span class="token punctuation">,</span> Discount<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># Create PySpark DF from Pandas</span>
+
+<span class="token comment"># Optimize conversion between PySpark and Pandas DF: Enable arrow-based columnar data transfer</span>
+<span class="token comment"># 데이터를 열형식으로 jvm 프로세스에 전송하는 옵션</span>
+spark<span class="token punctuation">.</span>conf<span class="token punctuation">.</span><span class="token builtin">set</span><span class="token punctuation">(</span><span class="token string">"spark.sql.execution.arrow.enabled"</span><span class="token punctuation">,</span> <span class="token string">"true"</span><span class="token punctuation">)</span>
+
+df_skew <span class="token operator">=</span> spark<span class="token punctuation">.</span>createDataFrame<span class="token punctuation">(</span>data_skew<span class="token punctuation">)</span>
+df_skew<span class="token punctuation">.</span>printSchema<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+df_skew<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
+df_skew<span class="token punctuation">.</span>rdd<span class="token punctuation">.</span>getNumPartitions<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># Create the pandas.DataFrame</span>
+data_skew <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>data1<span class="token punctuation">,</span> columns<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">"OrderID"</span><span class="token punctuation">,</span> <span class="token string">"Qty"</span><span class="token punctuation">,</span> <span class="token string">"Sales"</span><span class="token punctuation">,</span> <span class="token string">"Discount"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token comment">############ table 2 ############ </span>
+
+data2 <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">101</span><span class="token punctuation">,</span> <span class="token string">"pencil"</span><span class="token punctuation">,</span> <span class="token number">4.99</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">101</span><span class="token punctuation">,</span> <span class="token string">"book"</span><span class="token punctuation">,</span> <span class="token number">9.5</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">101</span><span class="token punctuation">,</span> <span class="token string">"scissors"</span><span class="token punctuation">,</span> <span class="token number">14</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">301</span><span class="token punctuation">,</span> <span class="token string">"glue"</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">201</span><span class="token punctuation">,</span> <span class="token string">"marker"</span><span class="token punctuation">,</span> <span class="token number">8.49</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">301</span><span class="token punctuation">,</span> <span class="token string">"label"</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">201</span><span class="token punctuation">,</span> <span class="token string">"calculator"</span><span class="token punctuation">,</span> <span class="token number">3.99</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">501</span><span class="token punctuation">,</span> <span class="token string">"eraser"</span><span class="token punctuation">,</span> <span class="token number">1.55</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span>
+
+data_small <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>data2<span class="token punctuation">,</span> columns<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">"ProductID"</span><span class="token punctuation">,</span> <span class="token string">"OrderID"</span><span class="token punctuation">,</span> <span class="token string">"Product"</span><span class="token punctuation">,</span> <span class="token string">"Price"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>        
+
+df_small <span class="token operator">=</span> spark<span class="token punctuation">.</span>createDataFrame<span class="token punctuation">(</span>data_small<span class="token punctuation">)</span>
+df_small<span class="token punctuation">.</span>printSchema<span class="token punctuation">(</span><span class="token punctuation">)</span>
+df_small<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
+df_small<span class="token punctuation">.</span>rdd<span class="token punctuation">.</span>getNumPartitions<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>join</span></div><code class="language-python">joined_df <span class="token operator">=</span> df_skew<span class="token punctuation">.</span>join<span class="token punctuation">(</span>df_small<span class="token punctuation">,</span> df<span class="token punctuation">.</span>skew<span class="token punctuation">.</span>OrderID <span class="token operator">==</span> df<span class="token punctuation">.</span>small<span class="token punctuation">.</span>OrderID<span class="token punctuation">,</span> how<span class="token operator">=</span><span class="token string">"inner"</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
-
-
-
-
-pair_skew = list(zip(keys, values))
-
-# RDD로 데이터 로드하기 (8개의 파티션)
-rdd = sc.parallelize(pair_skew, 8)
-</code></pre>
+<h1 id="RDD로-데이터-로드하기-8개의-파티션"><a href="#RDD로-데이터-로드하기-8개의-파티션" class="headerlink" title="RDD로 데이터 로드하기 (8개의 파티션)"></a>RDD로 데이터 로드하기 (8개의 파티션)</h1><p>rdd &#x3D; sc.parallelize(pair_skew, 8)</p>
 
                 
             </div>
@@ -350,7 +379,7 @@ rdd = sc.parallelize(pair_skew, 8)
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2023/02/18/PySpark/dataframe-skew-optimization/">http://example.com/2023/02/18/PySpark/dataframe-skew-optimization/</a>
+                    <a href="http://example.com/2024/02/19/PySpark/dataframe-skew-optimization/">http://example.com/2024/02/19/PySpark/dataframe-skew-optimization/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -457,7 +486,7 @@ rdd = sc.parallelize(pair_skew, 8)
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Sat Feb 18 2023 00:00:00 GMT+0900',
+    id: 'Mon Feb 19 2024 00:00:00 GMT+0900',
     owner: '',
     repo: '',
     oauth: {
@@ -492,12 +521,12 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2023/06/18/Trino/the-definitive_guide-1/">
+                <a href="/2024/02/19/Life/toss-analytics-engineering/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/trino-logo.png" class="responsive-img" alt="[Trino] The Definitive Guide에서 설명하는 Trino의 탄생 (1)">
+                        <img src="/images/logos/life-logo.jpg" class="responsive-img" alt="[면접] Toss Analytics Engineer">
                         
-                        <span class="card-title diy-neon-red">[Trino] The Definitive Guide에서 설명하는 Trino의 탄생 (1)</span>
+                        <span class="card-title diy-neon-red">[면접] Toss Analytics Engineer</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -508,14 +537,14 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-06-18
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-02-19
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Trino/" class="post-category">
-                                    Trino
+                            <a href="/categories/Life/" class="post-category">
+                                    Life
                                 </a>
                             
                             
@@ -529,15 +558,15 @@ gitment.render('gitment-content');
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/02/18/PySpark/dataframe-skew-optimization/">
+                <a href="/2024/02/18/Hive/scd-type-1/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/pyspark-logo.png" class="responsive-img" alt="[PySpark] DataFrame Skewness Optimization">
+                        <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] SCD Type 1 Insert">
                         
-                        <span class="card-title">[PySpark] DataFrame Skewness Optimization</span>
+                        <span class="card-title diy-neon-red">[Hive] SCD Type 1 Insert</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -548,21 +577,20 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-18
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-18
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/PySpark/" class="post-category">
-                                    PySpark
+                            <a href="/categories/Hive/" class="post-category">
+                                    Hive
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>

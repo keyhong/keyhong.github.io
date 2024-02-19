@@ -7,8 +7,8 @@
     <meta name="keywords" content="[Airflow] Operators, Data Engineering,Data Analysis,Python Backend">
     <meta name="description" content="BashOperatorfrom airflow.operators.bash_operator import BashOperator
 
-templated_command = &#34;&#34;&#34;
-    &amp;#123;% for i in range">
+# Saving forex_rates.json in HDFS
+bash_task = Bash">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -273,21 +273,14 @@ templated_command = &#34;&#34;&#34;
             <div id="articleContent">
                 <h4 id="BashOperator"><a href="#BashOperator" class="headerlink" title="BashOperator"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/operators/bash/index.html#module-airflow.operators.bash">BashOperator</a></h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>bash_operator <span class="token keyword">import</span> BashOperator
 
-templated_command <span class="token operator">=</span> <span class="token triple-quoted-string string">"""
-    &#123;% for i in range(5) %&#125;
-        echo "&#123;&#123; ds &#125;&#125;"
-        echo "&#123;&#123; macros.ds_add(ds, 7)&#125;&#125;"
-        echo "&#123;&#123; params.my_param &#125;&#125;"
-    &#123;% endfor %&#125;
-"""</span>
-
 <span class="token comment"># Saving forex_rates.json in HDFS</span>
-saving_rates <span class="token operator">=</span> BashOperator<span class="token punctuation">(</span>
-    task_id<span class="token operator">=</span><span class="token string">"saving_rates"</span><span class="token punctuation">,</span>
-    bash_command<span class="token operator">=</span><span class="token triple-quoted-string string">"""
+bash_task <span class="token operator">=</span> BashOperator<span class="token punctuation">(</span>
+    task_id<span class="token operator">=</span><span class="token string">"bash_task"</span><span class="token punctuation">,</span>
+    bash_command<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> <span class="token comment"># 실행할 command 또는 set of commands 또는 bash script(‘.sh’여야 함)</span>
+    <span class="token triple-quoted-string string">"""
         hdfs dfs -mkdir -p /forex &amp;&amp; \
         hdfs dfs -put -f $AIRFLOW_HOME/dags/files/forex_rates.json /forex
-        """</span>
+    """</span>
 <span class="token punctuation">)</span>
 
 <span class="token comment"># template으로 bash command 실행하기</span>
@@ -299,34 +292,29 @@ templated_command <span class="token operator">=</span> <span class="token tripl
     &#123;% endfor %&#125;
 """</span>
 
-<span class="token comment"># template으로 bash command 실행하기2</span>
-templated_command2<span class="token operator">=</span><span class="token triple-quoted-string string">"""
-    &#123;% for task in dag.task_ids %&#125;
-        echo "&#123;&#123; task &#125;&#125;"
-        echo "&#123;&#123; ti.xcom_pull(task) &#125;&#125;"
-    &#123;% endfor %&#125;
-"""</span>
-
-t3 <span class="token operator">=</span> BashOperator<span class="token punctuation">(</span>
+bash_task2 <span class="token operator">=</span> BashOperator<span class="token punctuation">(</span>
     task_id<span class="token operator">=</span><span class="token string">"templated"</span><span class="token punctuation">,</span>
-    bash_command<span class="token operator">=</span>templated_command<span class="token punctuation">,</span>
-    params<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string">"my_param"</span><span class="token punctuation">:</span> <span class="token string">"Parameter I passed in"</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    dag<span class="token operator">=</span>dag<span class="token punctuation">,</span>
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    bash_command<span class="token operator">=</span>templated_command
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="PythonOperator"><a href="#PythonOperator" class="headerlink" title="PythonOperator"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/operators/python/index.html#airflow.operators.python.PythonOperator">PythonOperator</a></h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>python_operator <span class="token keyword">import</span> PythonOperator
 
-<span class="token comment"># Parsing forex_pairs.csv and downloading the files</span>
-downloading_rates <span class="token operator">=</span> PythonOperator<span class="token punctuation">(</span>
-    task_id<span class="token operator">=</span><span class="token string">"downloading_rates"</span><span class="token punctuation">,</span>
-    python_callable<span class="token operator">=</span>download_rates
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">def</span> <span class="token function">my_sleeping_function</span><span class="token punctuation">(</span>random_base<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""This is a function that will run within the DAG execution"""</span>
+    time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span>random_base<span class="token punctuation">)</span>
+
+    i <span class="token operator">=</span> <span class="token number">5</span>
+
+    sleeping_task <span class="token operator">=</span> PythonOperator<span class="token punctuation">(</span>
+        task_id<span class="token operator">=</span><span class="token string-interpolation"><span class="token string">f"sleep_for_</span><span class="token interpolation"><span class="token punctuation">&#123;</span>i<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">,</span>
+        python_callable<span class="token punctuation">:</span> Callable <span class="token operator">=</span>my_sleeping_function<span class="token punctuation">,</span> <span class="token comment"># 호출 가능한 객체에 대한 참조</span>
+        <span class="token comment"># op_args: Collection[Any] | None  # 함수 호출 시 펼쳐질 positional argument의 list</span>
+        op_kwargs<span class="token punctuation">:</span> Mapping<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">,</span> Any<span class="token punctuation">]</span> <span class="token operator">|</span> <span class="token boolean">None</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">"random_base"</span><span class="token punctuation">:</span> i <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">&#125;</span> <span class="token comment"># 함수 호출시 펼쳐질 keyword argument의 dictionary</span>
+    <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="BranchPythonOperator"><a href="#BranchPythonOperator" class="headerlink" title="BranchPythonOperator"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/operators/python/index.html#airflow.operators.python.BranchPythonOperator">BranchPythonOperator</a></h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>python_operator <span class="token keyword">import</span> BranchPythonOperator
 
-<span class="token comment"># BranchPythonOperator</span>
-<span class="token comment"># The next task depends on the return from the</span>
-<span class="token comment"># python function check_api</span>
+<span class="token comment"># 다음 작업은 파이썬 함수 check_api의 결과 값에 따라 달라집니다.</span>
 check_api <span class="token operator">=</span> BranchPythonOperator<span class="token punctuation">(</span>
     task_id<span class="token operator">=</span><span class="token string">'check_api'</span><span class="token punctuation">,</span>
     python_callable<span class="token operator">=</span>check_api
@@ -334,19 +322,15 @@ check_api <span class="token operator">=</span> BranchPythonOperator<span class=
 
 check_api <span class="token operator">>></span> none <span class="token operator">>></span> save
 
-<span class="token comment"># Dynamically create tasks according to the APIs</span>
+<span class="token comment"># API에 따라 동적으로 task를 생성합니다.</span>
 <span class="token keyword">for</span> api <span class="token keyword">in</span> IP_GEOLOCATION_APIS<span class="token punctuation">:</span>
     process <span class="token operator">=</span> DummyOperator<span class="token punctuation">(</span>
         task_id<span class="token operator">=</span>api
     <span class="token punctuation">)</span>
 
-    check_api <span class="token operator">>></span> process <span class="token operator">>></span> save
-```    
+    check_api <span class="token operator">>></span> process <span class="token operator">>></span> save<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<span class="token comment">#### BranchDateTimeOperator</span>
-
-```python
-<span class="token keyword">from</span> airflow<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>datetime <span class="token keyword">import</span> BranchDateTimeOperator
+<h4 id="BranchDateTimeOperator"><a href="#BranchDateTimeOperator" class="headerlink" title="BranchDateTimeOperator"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/howto/operator/datetime.html#branchdatetimeoperator">BranchDateTimeOperator</a></h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>datetime <span class="token keyword">import</span> BranchDateTimeOperator
 
 is_in_timeframe <span class="token operator">=</span> BranchDateTimeOperator<span class="token punctuation">(</span>
     task_id<span class="token operator">=</span><span class="token string">"is_in_timeframe"</span><span class="token punctuation">,</span>
@@ -355,22 +339,21 @@ is_in_timeframe <span class="token operator">=</span> BranchDateTimeOperator<spa
     target_lower<span class="token operator">=</span>time<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     target_upper<span class="token operator">=</span>time<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     use_task_execution_date<span class="token operator">=</span><span class="token boolean">True</span>
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 <h4 id="HttpSensor"><a href="#HttpSensor" class="headerlink" title="HttpSensor"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow-providers-http/stable/_api/airflow/providers/http/sensors/http/index.html#airflow.providers.http.sensors.http.HttpSensor">HttpSensor</a></h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>sensors<span class="token punctuation">.</span>http_sensor <span class="token keyword">import</span> HttpSensor
 
 <span class="token comment"># Checking if forex rates are avaiable</span>
 <span class="token comment"># TODO: Check SSL</span>
-is_forex_rates_available <span class="token operator">=</span> HttpSensor<span class="token punctuation">(</span>
-        task_id<span class="token operator">=</span><span class="token string">"is_forex_rates_available"</span><span class="token punctuation">,</span>
-        method<span class="token operator">=</span><span class="token string">"GET"</span><span class="token punctuation">,</span>
-        http_conn_id<span class="token operator">=</span><span class="token string">"forex_api"</span><span class="token punctuation">,</span>
-        endpoint<span class="token operator">=</span><span class="token string">"latest"</span><span class="token punctuation">,</span>
-        response_check<span class="token operator">=</span><span class="token keyword">lambda</span> response<span class="token punctuation">:</span> <span class="token string">"rates"</span> <span class="token keyword">in</span> response<span class="token punctuation">.</span>text<span class="token punctuation">,</span>
-        poke_interval<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span>
-        timeout<span class="token operator">=</span><span class="token number">20</span>
+my_http_sensor <span class="token operator">=</span> HttpSensor<span class="token punctuation">(</span>
+    task_id<span class="token operator">=</span><span class="token string">"my_http_sensor"</span><span class="token punctuation">,</span> 
+    method<span class="token operator">=</span><span class="token string">"GET"</span><span class="token punctuation">,</span> <span class="token comment"># 사용할 HTTP 요청 방법</span>
+    http_conn_id<span class="token operator">=</span><span class="token string">"forex_api"</span><span class="token punctuation">,</span> <span class="token comment"># 센서를 실행하기 위한 HTTP 연결</span>
+    endpoint<span class="token operator">=</span><span class="token string">"latest"</span><span class="token punctuation">,</span> <span class="token comment"># 전체 URL의 상대적인 부분</span>
+    response_check<span class="token operator">=</span><span class="token keyword">lambda</span> response<span class="token punctuation">:</span> <span class="token string">"rates"</span> <span class="token keyword">in</span> response<span class="token punctuation">.</span>text<span class="token punctuation">,</span> <span class="token comment">#  '요청' 응답 객체에 대한 검사하는 함수</span>
+    poke_interval<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token comment"># 센서가 조건을 확인하는 주기</span>
+    timeout<span class="token operator">=</span><span class="token number">20</span> <span class="token comment"># 센서가 조건을 확인 할 최대 시간</span>
 <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="SimpleHttpOperator"><a href="#SimpleHttpOperator" class="headerlink" title="SimpleHttpOperator"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow-providers-http/stable/_api/airflow/providers/http/operators/http/index.html#airflow.providers.http.operators.http.SimpleHttpOperator">SimpleHttpOperator</a></h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>http_operator <span class="token keyword">import</span> SimpleHttpOperator
@@ -378,7 +361,7 @@ is_forex_rates_available <span class="token operator">=</span> HttpSensor<span c
 <span class="token comment"># get forex rates of JPY and push them into XCOM</span>
 get_forex_rate_EUR <span class="token operator">=</span> SimpleHttpOperator<span class="token punctuation">(</span>
     task_id<span class="token operator">=</span><span class="token string">'get_forex_rate_EUR'</span><span class="token punctuation">,</span>
-    method<span class="token operator">=</span><span class="token string">'GET'</span><span class="token punctuation">,</span>
+    method<span class="token operator">=</span><span class="token string">'GET'</span><span class="token punctuation">,</span> <span class="token comment"># 사용할 HTTP 메소드, 기본값 = 'POST'</span>
     priority_weight<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span>
     pool<span class="token operator">=</span><span class="token string">'forex_api_pool'</span><span class="token punctuation">,</span>
     http_conn_id<span class="token operator">=</span><span class="token string">'forex_api'</span><span class="token punctuation">,</span>
@@ -388,23 +371,23 @@ get_forex_rate_EUR <span class="token operator">=</span> SimpleHttpOperator<span
 
 <h4 id="FileSensor"><a href="#FileSensor" class="headerlink" title="FileSensor"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/sensors/filesystem/index.html#airflow.sensors.filesystem.FileSensor">FileSensor</a></h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>contrib<span class="token punctuation">.</span>sensors<span class="token punctuation">.</span>file_sensor <span class="token keyword">import</span> FileSensor
 
-<span class="token comment"># Checking if the file containing the forex pairs we want to observe is arrived</span>
-<span class="token comment"># TODO: Speak about the fact that the path in connection forex_path must be specified</span>
+<span class="token comment"># 관찰할 파일이 있는 지 확인</span>
+<span class="token comment"># Web에서 fs_conn_id를 필수적으로 연결해서 경로를 지정해야 한다</span>
 <span class="token comment"># in the extra parameter as JSON</span>
-is_forex_currencies_file_available <span class="token operator">=</span> FileSensor<span class="token punctuation">(</span>
-        task_id<span class="token operator">=</span><span class="token string">"is_forex_currencies_file_available"</span><span class="token punctuation">,</span>
-        fs_conn_id<span class="token operator">=</span><span class="token string">"forex_path"</span><span class="token punctuation">,</span>
-        filepath<span class="token operator">=</span><span class="token string">"forex_currencies.csv"</span><span class="token punctuation">,</span>
-        poke_interval<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span>
-        timeout<span class="token operator">=</span><span class="token number">20</span>
+is_file_available <span class="token operator">=</span> FileSensor<span class="token punctuation">(</span>
+    task_id<span class="token operator">=</span><span class="token string">"is_file_available"</span><span class="token punctuation">,</span>
+    fs_conn_id<span class="token operator">=</span><span class="token string">"forex_path"</span><span class="token punctuation">,</span> <span class="token comment"># 파일 (경로) 연결 ID에 대한 참조</span>
+    filepath<span class="token operator">=</span><span class="token string">"forex_currencies.csv"</span><span class="token punctuation">,</span> <span class="token comment"># 파일 또는 폴더 이름 (fs_conn_id에 설정 기본 경로를 기준으로 상대경로)</span>
+    poke_interval<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span>
+    timeout<span class="token operator">=</span><span class="token number">20</span>
 <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="HiveOperator"><a href="#HiveOperator" class="headerlink" title="HiveOperator"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow-providers-apache-hive/stable/_api/airflow/providers/apache/hive/operators/hive/index.html#airflow.providers.apache.hive.operators.hive.HiveOperator">HiveOperator</a></h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>hive_operator <span class="token keyword">import</span> HiveOperator
 
-<span class="token comment"># Creating a hive table named forex_rates</span>
-creating_forex_rates_table <span class="token operator">=</span> HiveOperator<span class="token punctuation">(</span>
-    task_id<span class="token operator">=</span><span class="token string">"creating_forex_rates_table"</span><span class="token punctuation">,</span>
-    hive_cli_conn_id<span class="token operator">=</span><span class="token string">"hive_conn"</span><span class="token punctuation">,</span>
+<span class="token comment"># HiveOperator로 테이블 만들기</span>
+creating_hive_table <span class="token operator">=</span> HiveOperator<span class="token punctuation">(</span>
+    task_id<span class="token operator">=</span><span class="token string">"creating_hive_table"</span><span class="token punctuation">,</span>
+    hive_cli_conn_id<span class="token operator">=</span><span class="token string">"hive_conn"</span><span class="token punctuation">,</span> <span class="token comment"># Hive 데이터베이스에 대한 참조</span>
     hql<span class="token operator">=</span><span class="token triple-quoted-string string">"""
         CREATE EXTERNAL TABLE IF NOT EXISTS forex_rates(
             base STRING,
@@ -415,7 +398,7 @@ creating_forex_rates_table <span class="token operator">=</span> HiveOperator<sp
             gbp DOUBLE,
             jpy DOUBLE,
             cad DOUBLE
-            )
+        )
         ROW FORMAT DELIMITED
         FIELDS TERMINATED BY ','
         STORED AS TEXTFILE
@@ -425,39 +408,40 @@ creating_forex_rates_table <span class="token operator">=</span> HiveOperator<sp
 
 <h4 id="SparkSubmitOperator"><a href="#SparkSubmitOperator" class="headerlink" title="SparkSubmitOperator"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow-providers-apache-spark/stable/_api/airflow/providers/apache/spark/operators/spark_submit/index.html#airflow.providers.apache.spark.operators.spark_submit.SparkSubmitOperator">SparkSubmitOperator</a></h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>contrib<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>spark_submit_operator <span class="token keyword">import</span> SparkSubmitOperator
 
-<span class="token comment"># Running Spark Job to process the data</span>
-forex_processing <span class="token operator">=</span> SparkSubmitOperator<span class="token punctuation">(</span>
-    task_id<span class="token operator">=</span><span class="token string">"forex_processing"</span><span class="token punctuation">,</span>
-    conn_id<span class="token operator">=</span><span class="token string">"spark_conn"</span><span class="token punctuation">,</span>
-    application<span class="token operator">=</span><span class="token string">"/usr/local/airflow/dags/scripts/forex_processing.py"</span><span class="token punctuation">,</span>
-    verbose<span class="token operator">=</span><span class="token boolean">False</span>
+<span class="token comment"># 데이터 처리를 위해 Spark Job 실행하기</span>
+spark_processing <span class="token operator">=</span> SparkSubmitOperator<span class="token punctuation">(</span>
+    task_id<span class="token operator">=</span><span class="token string">"spark_processing"</span><span class="token punctuation">,</span>
+    application<span class="token operator">=</span><span class="token string">"/usr/local/airflow/dags/scripts/spark_processing.py"</span><span class="token punctuation">,</span> <span class="token comment"># 작업으로 제출된 응용 프로그램, jar 또는 py 파일</span>
+    conn_id<span class="token operator">=</span><span class="token string">"spark_conn"</span><span class="token punctuation">,</span> <span class="token comment"># Airflow 관리에서 구성된 연결 ID. 잘못된 연결 ID가 제공되면 기본적으로 yarn으로 설정</span>
+    verbose<span class="token operator">=</span><span class="token boolean">False</span> <span class="token comment"># 디버깅을 위해 verbose 플래그를 spark-submit 프로세스에 전달할지 여부</span>
 <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="EmailOperator"><a href="#EmailOperator" class="headerlink" title="EmailOperator"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/operators/email/index.html#airflow.operators.email.EmailOperator">EmailOperator</a></h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>email_operator <span class="token keyword">import</span> EmailOperator
 
-<span class="token comment"># Sending a notification by email</span>
+<span class="token comment"># 이메일 알림 전송하기</span>
 <span class="token comment"># https://stackoverflow.com/questions/51829200/how-to-set-up-airflow-send-email</span>
 sending_email_notification <span class="token operator">=</span> EmailOperator<span class="token punctuation">(</span>
     task_id<span class="token operator">=</span><span class="token string">"sending_email"</span><span class="token punctuation">,</span>
-    to<span class="token operator">=</span><span class="token string">"airflow_course@yopmail.com"</span><span class="token punctuation">,</span>
-    subject<span class="token operator">=</span><span class="token string">"forex_data_pipeline"</span><span class="token punctuation">,</span>
-    html_content<span class="token operator">=</span><span class="token triple-quoted-string string">"""
+    to<span class="token punctuation">:</span> <span class="token builtin">list</span><span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">]</span> <span class="token operator">|</span> <span class="token builtin">str</span> <span class="token operator">=</span> <span class="token string">"airflow_course@yopmail.com"</span><span class="token punctuation">,</span> <span class="token comment"># 이메일을 보낼 이메일 목록</span>
+    subject<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span><span class="token string">"forex_data_pipeline"</span><span class="token punctuation">,</span> <span class="token comment"># 이메일의 제목</span>
+    html_content<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> <span class="token comment"># 이메일의 내용, HTML 마크업이 허용됩니다. </span>
+    <span class="token triple-quoted-string string">"""
         &lt;h3>forex_data_pipeline succeeded&lt;/h3>
-    """</span>
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    """</span> 
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 <h4 id="SlackAPIPostOperator"><a href="#SlackAPIPostOperator" class="headerlink" title="SlackAPIPostOperator"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow-providers-slack/stable/_api/airflow/providers/slack/operators/slack/index.html#airflow.providers.slack.operators.slack.SlackAPIPostOperator">SlackAPIPostOperator</a></h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>slack_operator <span class="token keyword">import</span> SlackAPIPostOperator
 
-<span class="token comment"># Sending a notification by Slack message</span>
+<span class="token comment"># Slack 메시지를 통한 알림 전송</span>
 <span class="token comment"># TODO: Improvements - add on_failure for tasks</span>
 <span class="token comment"># https://medium.com/datareply/integrating-slack-alerts-in-airflow-c9dcd155105</span>
 sending_slack_notification <span class="token operator">=</span> SlackAPIPostOperator<span class="token punctuation">(</span>
-    task_id<span class="token operator">=</span><span class="token string">"sending_slack"</span><span class="token punctuation">,</span>
-    token<span class="token operator">=</span><span class="token string">"xoxp-753801195270-740121926339-751642514144-8391b800988bed43247926b03742459e"</span><span class="token punctuation">,</span>
-    username<span class="token operator">=</span><span class="token string">"airflow"</span><span class="token punctuation">,</span>
-    text<span class="token operator">=</span><span class="token string">"DAG forex_data_pipeline: DONE"</span><span class="token punctuation">,</span>
-    channel<span class="token operator">=</span><span class="token string">"#airflow-exploit"</span>
+    task_id<span class="token operator">=</span><span class="token string">"sending_slack"</span><span class="token punctuation">,</span> 
+    channel<span class="token operator">=</span><span class="token string">"#airflow-exploit"</span><span class="token punctuation">,</span> <span class="token comment"># Slack에 메시지를 게시할 채널 이름(#general) 또는 ID(C12318391)</span>
+    username<span class="token operator">=</span><span class="token string">"airflow"</span><span class="token punctuation">,</span> <span class="token comment"># Airflow가 Slack에 게시할 사용자 이름</span>
+    text<span class="token operator">=</span><span class="token string">"DAG forex_data_pipeline: DONE"</span><span class="token punctuation">,</span> <span class="token comment"># Slack으로 보낼 메시지</span>
+    token<span class="token operator">=</span><span class="token string">"xoxp-753801195270-740121926339-751642514144-8391b800988bed43247926b03742459e"</span>
 <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
@@ -476,10 +460,10 @@ subdag_1 <span class="token operator">=</span> SubDagOperator<span class="token 
 
 <h4 id="ExternalTaskSensor"><a href="#ExternalTaskSensor" class="headerlink" title="ExternalTaskSensor"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/sensors/external_task/index.html#airflow.sensors.external_task.ExternalTaskSensor">ExternalTaskSensor</a></h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>sensors<span class="token punctuation">.</span>external_task_sensor <span class="token keyword">import</span> ExternalTaskSensor
 
-sensor <span class="token operator">=</span> ExternalTaskSensor<span class="token punctuation">(</span>
-    task_id<span class="token operator">=</span><span class="token string">'sensor'</span><span class="token punctuation">,</span>
-    external_dag_id<span class="token operator">=</span><span class="token string">'sleep_dag'</span><span class="token punctuation">,</span>
-    external_task_id<span class="token operator">=</span><span class="token string">'t2'</span>    
+external_sensor <span class="token operator">=</span> ExternalTaskSensor<span class="token punctuation">(</span>
+    task_id<span class="token operator">=</span><span class="token string">'external_sensor'</span><span class="token punctuation">,</span>
+    external_dag_id<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span><span class="token string">'sleep_dag'</span><span class="token punctuation">,</span> <span class="token comment"># 기다리려는 task가 포함된 DAG의 dag_id</span>
+    external_task_id<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span><span class="token string">'t2'</span> <span class="token comment"># 기다리려는 task가 포함된 task_id</span>
 <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
@@ -487,8 +471,8 @@ sensor <span class="token operator">=</span> ExternalTaskSensor<span class="toke
 
 create_table <span class="token operator">=</span> PostgresOperator<span class="token punctuation">(</span>
     task_id<span class="token operator">=</span><span class="token string">"create_table"</span><span class="token punctuation">,</span>
-    postgres_conn_id<span class="token operator">=</span><span class="token string">"postgres"</span>
-    sql<span class="token operator">=</span><span class="token string">"CREATE TABLE test_table (table_value TEXT NOT NULL, PRIMARY KEY (table_value));"</span>
+    sql<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> <span class="token string">"CREATE TABLE test_table (table_value TEXT NOT NULL, PRIMARY KEY (table_value));"</span><span class="token punctuation">,</span> <span class="token comment"># SQL code </span>
+    postgres_conn_id<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> <span class="token string">"postgres"</span> <span class="token comment"># 특정 PostgreSQL 데이터베이스를 참조하는 Postgres 연결 ID.</span>
 <span class="token punctuation">)</span>
 
 <span class="token comment"># PostgresOperator를 상속받아 sql에 param을 넣을 수 있게 재구현</span>
@@ -511,12 +495,10 @@ create_table <span class="token operator">=</span> CustomPostgresOperator<span c
 <h4 id="TriggerDagRunOperator"><a href="#TriggerDagRunOperator" class="headerlink" title="TriggerDagRunOperator"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/operators/trigger_dagrun/index.html#airflow.operators.trigger_dagrun.TriggerDagRunOperator">TriggerDagRunOperator</a></h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>dagrun_operator <span class="token keyword">import</span> TriggerDagRunOperator
 
 trigger <span class="token operator">=</span> TriggerDagRunOperator<span class="token punctuation">(</span>
-    task_id<span class="token operator">=</span><span class="token string">"trigger_dag"</span><span class="token punctuation">,</span>
-    trigger_dag_id<span class="token operator">=</span><span class="token string">"triggerdagop_target_dag"</span><span class="token punctuation">,</span>
-    provide_context<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
-    python_callable<span class="token operator">=</span>conditionally_trigger<span class="token punctuation">,</span>
-    params<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string">'condition_param'</span><span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span> <span class="token string">'message'</span><span class="token punctuation">:</span> <span class="token string">'Hi from the controller'</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    task_id<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span><span class="token string">"trigger_dag"</span><span class="token punctuation">,</span> 
+    trigger_dag_id<span class="token operator">=</span><span class="token string">"triggerdagop_target_dag"</span><span class="token punctuation">,</span> <span class="token comment"># 트리거할 DAG의 dag_id</span>
+    execution_date<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">|</span> datetime<span class="token punctuation">.</span>datetime <span class="token operator">|</span> <span class="token boolean">None</span> <span class="token operator">=</span> <span class="token string">"20240208"</span> <span class="token comment">#  dag의 Execution date</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
