@@ -496,11 +496,13 @@
                         
                     
                 </div> -->
-                <a href="/2024/01/08/Data-Architecture/ods/">
-                    <h3 class="post-title diy-neon-green">[Data Architecture] ODS</h3>
+                <a href="/2024/01/09/Data-Architecture/dimension-modeling(1)/">
+                    <h3 class="post-title diy-neon-green">[Data Architecture] Dimension Modeling(1)</h3>
                 </a>
-                <!-- <p class="post-description diy-neon-green">ODS를 만들어야 할 때를 구분해봐요.</p> -->
-                <a href="/2024/01/08/Data-Architecture/ods/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #1AD6FD 0%, #1D62F0 100%)" target="_blank">
+                <!-- <p class="post-description diy-neon-green">🙊 글을 쓰는 이유
+
+혹시 이런 복잡한 도면을 본 적 있나요? 😱 저는 DB 회사에 다녔지만 항상 이 모델링 도면이 무섭더</p> -->
+                <a href="/2024/01/09/Data-Architecture/dimension-modeling(1)/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #1AD6FD 0%, #1D62F0 100%)" target="_blank">
                     <i class="icon fa-regular fa-face-smile"></i>Read more
                 </a>
             </div>
@@ -520,13 +522,11 @@
                         
                     
                 </div> -->
-                <a href="/2024/01/09/Data-Architecture/dimension-modeling(1)/">
-                    <h3 class="post-title diy-neon-green">[Data Architecture] Dimension Modeling(1)</h3>
+                <a href="/2024/01/08/Data-Architecture/ods/">
+                    <h3 class="post-title diy-neon-green">[Data Architecture] ODS</h3>
                 </a>
-                <!-- <p class="post-description diy-neon-green">🙊 글을 쓰는 이유
-
-혹시 이런 복잡한 도면을 본 적 있나요? 😱 저는 DB 회사에 다녔지만 항상 이 모델링 도면이 무섭더라구요. ‘이런 걸 어떻게 </p> -->
-                <a href="/2024/01/09/Data-Architecture/dimension-modeling(1)/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FFCC00 0%, #FF9500 100%)" target="_blank">
+                <!-- <p class="post-description diy-neon-green">ODS를 만들어야 할 때를 구분해봐요.</p> -->
+                <a href="/2024/01/08/Data-Architecture/ods/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FFCC00 0%, #FF9500 100%)" target="_blank">
                     <i class="icon fa-regular fa-face-smile"></i>Read more
                 </a>
             </div>
@@ -886,25 +886,19 @@ pod가 사라지면 emptyDir의 데이터도 함께 사라집니다.
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/02/01/Kubernetes/hostpath/">
+                    <a href="/2024/02/01/Kubernetes/k8s-volume/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] hostPath">
+                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] k8s Volume">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Kubernetes] hostPath</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Kubernetes] k8s Volume</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                hostPath
-pod가 실행된 host의 파일이나 디렉터리를 pod에 마운트하는 방법
-
-
-emtyDir과 다르게 pod가 삭제되도 host에 데이터가 남습니다.(영구 스토리지)
-
-다른 노드의 pod끼리 데이터 공유
+                                Stateless한 애플리케이션일반적으로 컨테이너는 stateless(상태를 저장하지 않는) 방식의 앱 컨테이너를 사용합니다. 이러한 장점으로 어떤 노드에 문제가 발생했을 때, 다른 노드로 옮길 수 있는 장점이 있습
                             
                         </div> -->
                         <div class="publish-info">
@@ -932,19 +926,25 @@ emtyDir과 다르게 pod가 삭제되도 host에 데이터가 남습니다.(영�
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/02/01/Kubernetes/k8s-volume/">
+                    <a href="/2024/02/01/Kubernetes/hostpath/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] k8s Volume">
+                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] hostPath">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Kubernetes] k8s Volume</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Kubernetes] hostPath</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Stateless한 애플리케이션일반적으로 컨테이너는 stateless(상태를 저장하지 않는) 방식의 앱 컨테이너를 사용합니다. 이러한 장점으로 어떤 노드에 문제가 발생했을 때, 다른 노드로 옮길 수 있는 장점이 있습
+                                hostPath
+pod가 실행된 host의 파일이나 디렉터리를 pod에 마운트하는 방법
+
+
+emtyDir과 다르게 pod가 삭제되도 host에 데이터가 남습니다.(영구 스토리지)
+
+다른 노드의 pod끼리 데이터 공유
                             
                         </div> -->
                         <div class="publish-info">
