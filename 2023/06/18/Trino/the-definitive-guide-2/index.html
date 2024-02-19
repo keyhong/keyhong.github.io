@@ -299,21 +299,26 @@ Trino is a tool designed to efficiently query vast amounts of data by using dist
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110136&authkey=%21AGAysSFe2xKJhGc&width=865&height=352" width="865" height="352" alt="SQL-on-Anything"/>
 
 <ul>
-<li>요약 : Trino는 초기에 HDFS에서 효율적으로 쿼리하도록 설계되었지만, 오브젝트 스토리지, 관계형 DB, NoSQL 등 다른 시스템에도 쿼리를 사용할 수 있는 엔진이다.</li>
+<li>요약 : Trino는 초기에 HDFS에서 효율적으로 쿼리하도록 설계되었지만, 오브젝트 스토리지, 관계형 DB, NoSQL 등 다른 시스템에도 쿼리를 사용할 수 있는 엔진이다. 대부분의 DB에서 사용가능하다.</li>
 </ul>
-<p>대부분의 DB에서 사용할 수 있는 쿼리 엔진이다.</p>
+<blockquote>
 <p>Trino queries data where it lives and does not require a migration of data to a single location. So Trino allows you to query data in HDFS and other distributed object storage systems. It allows you to query RDBMSs and other data sources. By querying data wherever it lives, Trino can therefore replace the traditional, expensive, and heavy extract, transform, and load (ETL) processes. Or at a minimum, it can help you by providing a query engine to run high-performance ETL processes with modern tools such as dbt across all data sources where necessary, and reduce or even avoid the need for ETL processes. So Trino is clearly not just another SQL-on-Hadoop solution.</p>
+</blockquote>
 <ul>
 <li>요약 : Trino는 데이터가 위치한 곳에서 쿼리를 수행하며, 다른 단일 경로로 마이그레이션을 하지 않는다.</li>
 </ul>
 <p>또한 HDFS나 오브젝트 스토리지에서도 가능하며 데이터가 어디 있던 비용이 많이 드는 기존 ETL을 대체할 수 있다. 또는 최소한으로 dbt 같은 최신 도구를 사용해 ETL 프로세스를 하거나 프로세스의 필요성을 없애도록 도와준다.</p>
 <p>이는 단순한 SQL-on-Hadoop 솔루션이 아님을 의미한다.</p>
 <p>(데이터가 위치한 경로에서 읽고 처리하기 때문에 마이그레이션이 필요없고, 이는 처리 비용이 줄어 기존의 ETL을 대체하거나 줄여준다. 대용량을 빠르게 처리하기 때문에 기존처럼 꼭 미리 ETL을 할 게 아니라, 필요할 때 수행을 해도 된다는 의미 같다. 참고로, trino는 etl을 위한 용도가 아닌 interactive하게 쿼리를 주고 받기 위한 용도이다.)</p>
+<blockquote>
 <p>Object storage systems include Amazon S3, Microsoft Azure Blob Storage, Google Cloud Storage, and S3-compatible storage such as MinIO and Ceph. These systems can use the traditional Hive table format, as well as the newer replacements Delta Lake and Iceberg. Trino can query traditional RDBMSs such as Microsoft SQL Server, PostgreSQL, MySQL, Oracle, Teradata, and Amazon Redshift. Trino can also 6 | Chapter 1: Introducing Trino query NoSQL systems such as Apache Cassandra, Apache Kafka, MongoDB, or Elasticsearch. Trino can query virtually anything and is truly an SQL-on-Anything system.</p>
+</blockquote>
 <ul>
 <li>요약 : Hive table 포맷과 새로운 대체격인 Delta Lake, Iceberg를 사용할 수 있는 오브젝트 스토리지(S3, Blob Storage, Google Cloud Storage, MinlO, Ceph), RDB(MSSql, PostgreSQL, MySQL, Oracle, Teradata, Amazon Redshift), NoSQL(Cassandra, Kafka, MongoDB, Elasticsearch) 등 모든 것에 다 사용 가능하다. SQL-on-Anything. 어떤 DB라도 연결성이 좋다.</li>
 </ul>
+<blockquote>
 <p>For users, this means that suddenly they no longer have to rely on specific query languages or tools to interact with the data in those specific systems. They can simply leverage Trino and their existing SQL skills and their well-understood analytics, dashboarding, and reporting tools. These tools, built on top of using SQL, allow analysis of those additional data sets, which are otherwise locked in separate systems. Users can even use Trino to query across different systems with the same SQL they already know.</p>
+</blockquote>
 <ul>
 <li>요약 : 특정한 질의 언어나 도구에 의존하지 않고도 기존 SQL을 통해서 해당 시스템의 데이터와 상호작용 할 수 있고, 동일 쿼리를 여러 DB에 날리거나 여러 DB 간에 통합적인 분석을 끌어낼 수 있다.<br>(기존의 SQL로 여러 매커니즘의 DB를 사용할 수 있게 해준다.)</li>
 </ul>
@@ -326,7 +331,7 @@ Trino is a tool designed to efficiently query vast amounts of data by using dist
 <li>요약 : Trino는 DB가 아니며, 저장소 레이어와는 분리되어 쿼리를 할 수 있는 컴퓨팅 레이어에 속한다. 이에 따라 요구사항에 따라 컴퓨팅 리소스를 수평으로 스케일링하여 처리 능력을 확장시킨다.</li>
 </ul>
 <p>DB가 아닌 쿼리엔진!!.. 강조를 상당히 많이 하는 것으로 보아 키 포인트가 분명하다. 저장소 레이어가 아닌 매우 Big한 데이터에서 쿼리의 성능에만 집중화된 컴퓨팅 레이어이기에 범용 하드웨어로 노드를 늘려 확장성을 갖출 수 있다.. 저장소와 쿼리의 분리라니, HDFS와 MapReduce 같은 느낌이 난다. 물론 trino(이전 presto)는 하둡에서의 Hive의 한계를 극복하기 위해 나왔기 때문에 당연한 걸지도 모르겠다.</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://trino.io/trino-the-definitive-guide.html">Trino_The Definitive Guide</a></li>
 </ul>
 

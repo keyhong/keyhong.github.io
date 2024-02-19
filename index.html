@@ -438,23 +438,21 @@
     
     <div class="col s12" >
         
-            <div class="post-card" style="background-image: url('/images/logos/data-architecture-logo.png')">
+            <div class="post-card" style="background-image: url('/images/logos/airflow-logo.png')">
         
             <div class="post-body" style="">
                 <!-- <div class="post-categories">
                     
                         
-                            <a href="/categories/Data-Architecture/" class="category">Data Architecture</a>
+                            <a href="/categories/Airflow/" class="category">Airflow</a>
                         
                     
                 </div> -->
-                <a href="/2024/01/09/Data-Architecture/dimension-modeling(1)/">
-                    <h3 class="post-title diy-neon-green">[Data Architecture] Dimension Modeling(1)</h3>
+                <a href="/2023/06/19/Airflow/file-sensor/">
+                    <h3 class="post-title diy-neon-green">[Airflow] FileSensor</h3>
                 </a>
-                <!-- <p class="post-description diy-neon-green">🙊 글을 쓰는 이유
-
-혹시 이런 복잡한 도면을 본 적 있나요? 😱 저는 DB 회사에 다녔지만 항상 이 모델링 도면이 무섭더라구요. ‘이런 걸 어떻게 </p> -->
-                <a href="/2024/01/09/Data-Architecture/dimension-modeling(1)/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FF5E3A 0%, #FF2A68 100%)" target="_blank">
+                <!-- <p class="post-description diy-neon-green">🙊 글을 쓰는 이유사내에서 비주기적으로 들어오는 Adhoc 데이터를 전처리 해야 할 일이 생겼어요. 비주기적이라 생성되는 파일을 지속적으로 감시하고 그</p> -->
+                <a href="/2023/06/19/Airflow/file-sensor/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FF5E3A 0%, #FF2A68 100%)" target="_blank">
                     <i class="icon fa-regular fa-face-smile"></i>Read more
                 </a>
             </div>
@@ -498,11 +496,13 @@
                         
                     
                 </div> -->
-                <a href="/2024/01/08/Data-Architecture/ods/">
-                    <h3 class="post-title diy-neon-green">[Data Architecture] ODS</h3>
+                <a href="/2024/01/09/Data-Architecture/dimension-modeling(1)/">
+                    <h3 class="post-title diy-neon-green">[Data Architecture] Dimension Modeling(1)</h3>
                 </a>
-                <!-- <p class="post-description diy-neon-green">ODS를 만들어야 할 때를 구분해봐요.</p> -->
-                <a href="/2024/01/08/Data-Architecture/ods/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #1AD6FD 0%, #1D62F0 100%)" target="_blank">
+                <!-- <p class="post-description diy-neon-green">🙊 글을 쓰는 이유
+
+혹시 이런 복잡한 도면을 본 적 있나요? 😱 저는 DB 회사에 다녔지만 항상 이 모델링 도면이 무섭더</p> -->
+                <a href="/2024/01/09/Data-Architecture/dimension-modeling(1)/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #1AD6FD 0%, #1D62F0 100%)" target="_blank">
                     <i class="icon fa-regular fa-face-smile"></i>Read more
                 </a>
             </div>
@@ -512,21 +512,21 @@
     
     <div class="col s12" data-aos="zoom-in-up">
         
-            <div class="post-card" style="background-image: url('/images/logos/airflow-logo.png')">
+            <div class="post-card" style="background-image: url('/images/logos/data-architecture-logo.png')">
         
             <div class="post-body" style="">
                 <!-- <div class="post-categories">
                     
                         
-                            <a href="/categories/Airflow/" class="category">Airflow</a>
+                            <a href="/categories/Data-Architecture/" class="category">Data Architecture</a>
                         
                     
                 </div> -->
-                <a href="/2023/06/19/Airflow/file-sensor/">
-                    <h3 class="post-title diy-neon-green">[Airflow] FileSensor</h3>
+                <a href="/2024/01/08/Data-Architecture/ods/">
+                    <h3 class="post-title diy-neon-green">[Data Architecture] ODS</h3>
                 </a>
-                <!-- <p class="post-description diy-neon-green">🙊 글을 쓰는 이유사내에서 비주기적으로 들어오는 Adhoc 데이터를 전처리 해야 할 일이 생겼어요. 비주기적이라 생성되는 파일을 지속적으로 감시하고 그</p> -->
-                <a href="/2023/06/19/Airflow/file-sensor/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FFCC00 0%, #FF9500 100%)" target="_blank">
+                <!-- <p class="post-description diy-neon-green">ODS를 만들어야 할 때를 구분해봐요.</p> -->
+                <a href="/2024/01/08/Data-Architecture/ods/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FFCC00 0%, #FF9500 100%)" target="_blank">
                     <i class="icon fa-regular fa-face-smile"></i>Read more
                 </a>
             </div>
@@ -573,6 +573,346 @@
 
     <article id="articles" class="container articles">
         <div class="row article-row">
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/02/19/Basic/columnar-format/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;"></span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                
+Column Pruning
+
+Pruning이라는 말을 가지치기를 말합니다. 빅데이터에서 Columnar Format이 자주 쓰이는 주된 이유는 특정 컬럼 데이터만 빠르게 메모리로 올릴 수 있기 때문입니다. 일반적인
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-19
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Gyuwon Hong
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/02/19/Life/toss-analytics-engineering/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="[면접] Toss Analytics Engineer">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[면접] Toss Analytics Engineer</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                Toss Analytics Engineering우선, 대규모 사전 과제를 봤고 모델링과 SQL을 구현하여 통과하였다. 그간 강의로 배워왔던 첫 모델링을 실험하는 과정이었는 데, 해당 사전 과제를 수행하며 스스로 해결
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-19
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Life/" class="post-category">
+                                    Life
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/02/18/Kotlin/data-classes/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;"></span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                Data Class
+Kotlin의 데이터 클래스는 주로 데이터를 보관하는 데 사용
+
+data class User(val name: String, val age: Int)
+
+
+컴파일러가 추가 멤버 함수를 자동으로 생성
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-18
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Gyuwon Hong
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/02/18/Hive/scd-type-1/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;"></span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                SCD Type 2
+Versioning
+
+Flagging 
+
+Effective Date
+
+
+
+SCD Type 2 Versioning: Sequence number is used to represent the chan
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-18
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Gyuwon Hong
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/02/17/Zookeeper/zookeeper/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;"></span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                ZooKeeper
+a high-performance coordination service for distributed applications.
+
+
+expose common services - such as namin
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-17
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Gyuwon Hong
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/02/08/Airflow/operators/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] Operators">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Airflow] Operators</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                BashOperatorfrom airflow.operators.bash_operator import BashOperator
+
+templated_command = """
+    &#123;% for i in range
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-08
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Airflow/" class="post-category">
+                                    Airflow
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/02/07/Airflow/kubernetes-executor-installation/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] Kubernetes Executor Installation">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Airflow] Kubernetes Executor Installation</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                Kubernetes Installtion먼저 VirtaulBox와 Vagrant를 설치합니다. 
+그 이후 저는 아래 글을 참고하였습니다. 저의 경우 window10을 사용하고 있습니다.
+https://kubetm.g
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-07
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Airflow/" class="post-category">
+                                    Airflow
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/02/07/Flink/flink-datastream-api-%EB%AF%B8%EC%99%84-/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/flink-logo.png" class="responsive-img" alt="[Flink] DataStream API">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Flink] DataStream API</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                Flink DataStream API
+데이터스트림에 대한 변환(필터링, 상태 업데이트, 창 정의, 집계 등)을 구현
+
+
+데이터스트림의 소스 : Message Queue, Socket Stream, File, Kafa
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-07
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Flink/" class="post-category">
+                                    Flink
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
             
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
@@ -650,372 +990,6 @@ Hadoop 3.0 새
                                 
                                 <a href="/categories/Hadoop/" class="post-category">
                                     Hadoop
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/02/01/Kubernetes/emptyDir/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] emptyDir">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Kubernetes] emptyDir</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                emptyDir
-pod가 실행되는 host의 디스크를 임시로 컨테이너 볼륨으로 할당해서 사용하는 방법
-
-
-pod가 사라지면 emptyDir의 데이터도 함께 사라집니다.
-
-주로 메모리와 디스크를 함께 이용하는 대용량 
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Kubernetes/" class="post-category">
-                                    Kubernetes
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/02/01/Kubernetes/hostpath/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] hostPath">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Kubernetes] hostPath</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                hostPath
-pod가 실행된 host의 파일이나 디렉터리를 pod에 마운트하는 방법
-
-
-emtyDir과 다르게 pod가 삭제되도 host에 데이터가 남습니다.(영구 스토리지)
-
-다른 노드의 pod끼리 데이터 공유
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Kubernetes/" class="post-category">
-                                    Kubernetes
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/02/01/Kubernetes/k8s-volume/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] k8s Volume">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Kubernetes] k8s Volume</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                Stateless한 애플리케이션일반적으로 컨테이너는 stateless(상태를 저장하지 않는) 방식의 앱 컨테이너를 사용합니다. 이러한 장점으로 어떤 노드에 문제가 발생했을 때, 다른 노드로 옮길 수 있는 장점이 있습
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Kubernetes/" class="post-category">
-                                    Kubernetes
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/01/22/SQL/procedure/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/sql-logo.png" class="responsive-img" alt="[SQL] Procedure">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[SQL] Procedure</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                Test DBMS
-MySQL
-
-Procedure
-일련의 SQL문을 포함하는 미리 정의된 데이터베이스 객체
-
-세미콜론(semi-colons, “;”)
-세미콜론은 SQL에서 기본적인 문장 종결자(statement ter
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-22
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/SQL/" class="post-category">
-                                    SQL
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/01/20/DBT/snowflake-setup/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] DBT 설치하기">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[DBT] DBT 설치하기</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                DBT (Data Build Tool)란?
-dbt™ is a SQL-first transformation workflow that lets teams quickly and collaboratively deploy a
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-20
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/DBT/" class="post-category">
-                                    DBT
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/01/19/SQL/concatenate/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/sql-logo.png" class="responsive-img" alt="[SQL] String Functions">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[SQL] String Functions</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                CONCAT (CONCATENATE)-- Syntax
-SELECT
-LEFT(first_name, 1) || LEFT(last_name, 1),
-first_name,
-last_name
-FROM customer
-;
-
-S
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-19
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/SQL/" class="post-category">
-                                    SQL
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/01/18/Kubernetes/configmap/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] 환경변수를 ConfigMap에 저장하는 방법">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Kubernetes] 환경변수를 ConfigMap에 저장하는 방법</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                환경변수를 ConfigMap에 저장하는 방법
-kubectl 명령어를 사용하여 바로 저장할 수 있음
-
-$ kubectl create configmap &lt;map-name> &lt;data-source> 
-
-
-123
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-18
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Kubernetes/" class="post-category">
-                                    Kubernetes
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/01/16/SQL/count-%EB%AF%B8%EC%99%84-/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/sql-logo.png" class="responsive-img" alt="[SQL] basic">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[SQL] basic</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                SELECT
-데이터베이스에서 데이터를 조회하기 위해 사용되는 기본적인 명령문
-
--- Syntax
-SELECT
-column_name
-FROM table_nam
-
-
-SELECT
-first_name,
-last_name
-F
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-16
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/SQL/" class="post-category">
-                                    SQL
                                 </a>
                                 
                                 

@@ -4,8 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[PySpark] RDD Skewness Optimizing, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Optimizing Skewness스파크에서 skewness(왜도, 비대칭도)를 해결하는 것은 스파크 튜닝의 중요한 요소이다. 왜 skewness를 해결해야 하는 지는 스파크가 분산 처리 프레임워크라는 것을 생각한다">
+    <meta name="keywords" content="[Airflow] Kubernetes Executor Installation, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="Kubernetes Installtion먼저 VirtaulBox와 Vagrant를 설치합니다. 
+그 이후 저는 아래 글을 참고하였습니다. 저의 경우 window10을 사용하고 있습니다.
+https://kubetm.g">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +19,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[PySpark] RDD Skewness Optimizing | Keyhong</title>
+    <title>[Airflow] Kubernetes Executor Installation | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -205,13 +207,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/pyspark-logo.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/airflow-logo.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [PySpark] RDD Skewness Optimizing</h1>
+                        [Airflow] Kubernetes Executor Installation</h1>
                 </div>
             </div>
         </div>
@@ -236,7 +238,7 @@
                         <div class="article-tag">
                             <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                                 <span class="chip bg-color">
-                                    2023-12-15</span>
+                                    2024-02-07</span>
                         </div>
                     
                     
@@ -248,8 +250,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/PySpark/" class="post-category">
-                                PySpark
+                            <a href="/categories/Airflow/" class="post-category">
+                                Airflow
                             </a>
                         
                     </div>
@@ -268,61 +270,115 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Optimizing-Skewness"><a href="#Optimizing-Skewness" class="headerlink" title="Optimizing Skewness"></a>Optimizing Skewness</h2><p>스파크에서 skewness(왜도, 비대칭도)를 해결하는 것은 스파크 튜닝의 중요한 요소이다. 왜 skewness를 해결해야 하는 지는 스파크가 분산 처리 프레임워크라는 것을 생각한다면 당연하게 받아 들일 수 있다. 우리가 소싱한 데이터는 파티션에 의해 여러 개로 수평 분할되어 클러스터의 여러 노드에 전달 된다.</p>
-<p>각 노드에서 데이터를 처리(transformation, action)하는 데, 처리하는 과정 속에서 데이터를 특정 조건으로 filter 하거나 shuffle 연산(groupBy, reduceByKey ..)을 수행하면 처음에 동일 혹은 비슷하게 분배했었던 파티션별 소유 데이터의 양이 한 쪽으로 치우치는 현상을 만들어낸다. 이미지를 그려내보면 다음과 같다. </p>
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110148&authkey=%21ABYYfKJCDZ5B6D4&width=606&height=273" width="606" height="273" alt="skewness가 발생해 다른 파티션이 병렬처리를 하지 못하는 상황"/>
+                <h2 id="Kubernetes-Installtion"><a href="#Kubernetes-Installtion" class="headerlink" title="Kubernetes Installtion"></a>Kubernetes Installtion</h2><p>먼저 <a target="_blank" rel="noopener" href="https://www.virtualbox.org/wiki/Downloads">VirtaulBox</a>와 <a target="_blank" rel="noopener" href="https://developer.hashicorp.com/vagrant/install?product_intent=vagrant">Vagrant</a>를 설치합니다. </p>
+<p>그 이후 저는 아래 글을 참고하였습니다. 저의 경우 window10을 사용하고 있습니다.</p>
+<p><a target="_blank" rel="noopener" href="https://kubetm.github.io/k8s/02-beginner/cluster-install-case6/">https://kubetm.github.io/k8s/02-beginner/cluster-install-case6/</a></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mkdir</span> k8s <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> k8s
 
-<p>어떤 연산을 수행한 다음 특정 RDD의 파티션으로 데이터가 몰린 상황이 발생했다고 가정하자. Partition3는 적어지고 Partition1은 많아졌다. 만약 이 다음에 수행될 연산이 map 연산(narrow transformation)과 shuffle 연산(wide transformation)이 연이어 일어난다면 어떻게 될까? 각 RDD별로 map연산을 수행하고, 다음 shuffle 연산을 하기 직전까지 모든 파티션은 다음 shuffle 연산을 실행해도 되는 상황인지 확인하고 대기할 것이다.</p>
-<p>문제는 여기서 발생한다. 각 RDD별로 처리해야 할 데이터 크기가 다르기 때문에 양이 적은 Partition3, Partition4, Partition2 순서대로 일찍 작업을 끝내고 Partition1이 작업을 끝내기 전까지 대기할 것이다. 이 때 대기하는 파티션은 프로세싱을 할 수 있는 리소스가 있음에도 불구하고 처리할 수 있는 데이터가 더 이상 없어 처리를 못하는 CPU 휴유시간(idle time)이 발생한다. 반면, 양이 많은 Partition1은 단일 코어(일반적으로 1 partition &#x3D; 1 core &#x3D; 1 task)에서 거대한 데이터를 처리해야 하므로 데 오랜 시간이 걸릴 것이다.</p>
-<p>스파크의 목적은 빅데이터를 여러 노드를 이용하여 빠르게 분산 처리하기 위함에 있다. 병목현상은 스파크가 본래의 목표를 제대로 달성하지 못하게 한다. 결국 분산 처리를 하기 위해서는 가급적이면 모든 파티션이 최대한 동등한 데이터의 크기를 나눠갖게 하고, 비슷한 시점에 일이 끝날 수 있게 사용자가 최적화하는 작업을 해주어야 한다. 이를 Skewness를 Optimizing 한다고 표현한다.</p>
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110151&authkey=%21AMWq5rHzHvllhno&width=566&height=318" width="566" height="318" alt="이상적인 분산 처리에서의 데이터 분배"/>
+<span class="token comment"># Vagrant 스크립트 다운로드</span>
+<span class="token function">curl</span> <span class="token parameter variable">-O</span> https://kubetm.github.io/yamls/k8s-install/Vagrantfile
 
-<h2 id="Salting"><a href="#Salting" class="headerlink" title="Salting"></a>Salting</h2><blockquote>
-<p>조인키(join key)에 랜덤한 값을 추가하여 데이터를 균등하게 파티셔닝 할 수 있는 기술</p>
-</blockquote>
-<h3 id="Pyspark에서-Salting-Code-구현"><a href="#Pyspark에서-Salting-Code-구현" class="headerlink" title="Pyspark에서 Salting Code 구현"></a>Pyspark에서 Salting Code 구현</h3><h4 id="1-Skew가-발생하도록-데이터를-불규칙적으로-생성"><a href="#1-Skew가-발생하도록-데이터를-불규칙적으로-생성" class="headerlink" title="(1) Skew가 발생하도록 데이터를 불규칙적으로 생성"></a>(1) Skew가 발생하도록 데이터를 불규칙적으로 생성</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># Skew 데이터 불러오기</span>
-<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
-<span class="token keyword">import</span> random
+<span class="token comment"># Rocky Linux Repo 세팅</span>
+<span class="token function">curl</span> <span class="token parameter variable">-O</span> https://raw.githubusercontent.com/k8s-1pro/install/main/ground/k8s-1.27/vagrant-2.3.4/rockylinux-repo.json
+vagrant box <span class="token function">add</span> rockylinux-repo.json
 
-key_1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">10</span>
-key_2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'b'</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">6_000_000</span> <span class="token comment"># skew가 발생하는 key</span>
-key_3 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'c'</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">800</span>
-key_4 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'d'</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">10_000</span>
+<span class="token comment"># Vagrant Disk 설정 Plugin 설치 </span>
+vagrant plugin <span class="token function">install</span> vagrant-vbguest vagrant-disksize<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-keys <span class="token operator">=</span> key_1 <span class="token operator">+</span> key_2 <span class="token operator">+</span> key_3 <span class="token operator">+</span> key_4
-random<span class="token punctuation">.</span>shuffle<span class="token punctuation">(</span>keys<span class="token punctuation">)</span> <span class="token comment"># shuffle</span>
+<p>설치 시간이 길어져 잠깐 나갔다 왔더니, 저의 경우 <code>설치 도중에 SSH Connection이 끊기는 문제</code>가 생겼습니다. 그래서 <code>Vagrantfile 파일에 config.ssh.keep_alive = true</code>을 추가하여 다시 실행하였습니다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110240&authkey=%21AKjZRljCNYJwczg&width=918&height=181" width="918" height="181" alt="설치 도중에 SSH Connection이 끊기는 문제"/>
 
-values_1 <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span>low<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> high<span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">,</span> size<span class="token operator">=</span><span class="token builtin">len</span><span class="token punctuation">(</span>key_1<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-values_2 <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span>low<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> high<span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">,</span> size<span class="token operator">=</span><span class="token builtin">len</span><span class="token punctuation">(</span>key_2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-values_3 <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span>low<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> high<span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">,</span> size<span class="token operator">=</span><span class="token builtin">len</span><span class="token punctuation">(</span>key_3<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-values_4 <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span>low<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> high<span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">,</span> size<span class="token operator">=</span><span class="token builtin">len</span><span class="token punctuation">(</span>key_4<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110241&authkey=%21AOvSw1BadELkh8k&width=600&height=150" width="600" height="150" alt="config.ssh.keep_alive = true" />
 
-values <span class="token operator">=</span> values_1 <span class="token operator">+</span> values_2 <span class="token operator">+</span> values_3 <span class="token operator">+</span> values_4
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># vagrant up으로 머신 생성</span>
+vagrant up --no-provision --destroy-on-error <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-pair_skew <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">zip</span><span class="token punctuation">(</span>keys<span class="token punctuation">,</span> values<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<p>만약 저와 같이 중간에 설치하다 문제가 생긴 경우, destroy로 machine을 지운 후 다시 vagrant up으로 올려주시면 됩니다. 꼭 정상 설치가 되야 하는 이유는 중간 설치가 끊기더라도 machine을 살아있지만 k8s 패키지들이 설치되지 않아 사용할 수 없기 때문입니다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110241&authkey=%21AOvSw1BadELkh8k&width=600&height=150" width="600" height="150" alt="vagrant status로 destory할 machine NAME 확인"/>
 
-<span class="token comment"># RDD로 데이터 로드하기 (8개의 파티션)</span>
-rdd <span class="token operator">=</span> sc<span class="token punctuation">.</span>parallelize<span class="token punctuation">(</span>pair_skew<span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># vagrant machine 상태 조회</span>
+vagrant status
 
-<h4 id="2-Salting을-위해-Key에-랜던함-숫자-문자열을-붙여줄-수-있는-함수-생성"><a href="#2-Salting을-위해-Key에-랜던함-숫자-문자열을-붙여줄-수-있는-함수-생성" class="headerlink" title="(2) Salting을 위해 Key에 랜던함 숫자 문자열을 붙여줄 수 있는 함수 생성"></a>(2) Salting을 위해 Key에 랜던함 숫자 문자열을 붙여줄 수 있는 함수 생성</h4><p>기존에는 [(‘b’: 24), (‘b’: 13), (‘b’: 32), (‘b’: 41) …] 이런 형태이다. value는 많지만 key는 ‘a’, ‘b’, ‘c’, ‘d’ 4개 밖에 없기 때문에 groupby를 하면 데이터가 많은 ‘b’가 하나의 파티션으로 데이터가 쏠린다(skewness).** 이러한 쏠림을 방지하지 위해 salting은 기존에 있던 key에 랜덤한 숫자를 덧붙여주어 key를 변형시키고 분산시키는 과정이다.</p>
-<p>위 예시를 들면, <code>&#39;b&#39; + &#39;_&#39; + 랜덤한 숫자</code> 형태로 만들어준다. 그 결과 <code>[(&#39;b_2&#39;: 24), (&#39;b_4&#39;: 13), (&#39;b_1&#39;: 32), (&#39;b_5&#39;: 41) ...]</code> 처럼 기존의 a, b, c, d 4개 보다 훨씬 많은 key가 만들어지게 된다. 이 후 groupby를 하면 key를 여러 파티션에 고루 분산되고 따라서 모든 파티션이 이전보다 균등한 작업량으로 병렬처리를 할 수 있게 된다.</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> random
+<span class="token comment"># vagrant destory NAME</span>
+vagrant destroy k8s-master
 
-<span class="token keyword">def</span> <span class="token function">salting</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    tmp <span class="token operator">=</span> val <span class="token operator">+</span> <span class="token string">'_'</span> <span class="token operator">+</span> <span class="token builtin">str</span><span class="token punctuation">(</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 랜덤 값의 범위는 시도해야 함</span>
-    <span class="token keyword">return</span> tmp
-    
-<span class="token comment"># salting method</span>
-rdd_salting <span class="token operator">=</span> rdd<span class="token punctuation">.</span><span class="token builtin">map</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> <span class="token punctuation">(</span>salting<span class="token punctuation">(</span>x<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment"># 다시 vagrant up으로 머신 생성</span>
+vagrant up<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<span class="token comment"># groupbykey</span>
-grouped_rdd <span class="token operator">=</span> rdd_salting<span class="token punctuation">.</span>groupByKey<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>cache<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<p>정상적으로 3개의 머신을 설치 후 kubeadmin으로 master 노드의 쿠버네티스 클러스터에 join할 token을 워커 노드에 등록해서 클러스터에 조인하게 해야 합니다.</p>
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>k8s-master</span></div><code class="language-bash"><span class="token function">cat</span>
+kubeadm <span class="token function">join</span> <span class="token number">192.168</span>.56.30:6443 <span class="token parameter variable">--token</span> ct3sn0.at9wnt1lzpja9r4b --discovery-token-ca-cert-hash sha256:657e6372bb2dfb0d3a5a3bdc565c3a784bad2a8343f40082789ea8f9d49f27da<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<span class="token comment"># skew 데이터에서 map()을 통해 간단한 data transformation 실행해보기</span>
-grouped_rdd<span class="token punctuation">.</span><span class="token builtin">map</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> pair<span class="token punctuation">:</span> <span class="token punctuation">(</span>pair<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> pair<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>count<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="Spark-Web-UI에서-Before-Salting-vs-After-Salting-비교하기"><a href="#Spark-Web-UI에서-Before-Salting-vs-After-Salting-비교하기" class="headerlink" title="Spark Web UI에서 Before Salting vs. After Salting 비교하기"></a>Spark Web UI에서 Before Salting vs. After Salting 비교하기</h3><h4 id="Before-Salting"><a href="#Before-Salting" class="headerlink" title="Before Salting"></a>Before Salting</h4><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110150&authkey=%21ANeT1LvIe9-GwBo&width=1037&height=399" width="1037" height="399" alt="[Before Salting] 하나의 파티션에 Skew가 몰려있다. 소요시간은 23초이다."/>
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>k8s-node1/k8s-node2</span></div><code class="language-bash">kubeadm <span class="token function">join</span> <span class="token number">192.168</span>.56.30:6443 <span class="token parameter variable">--token</span> ct3sn0.at9wnt1lzpja9r4b --discovery-token-ca-cert-hash sha256:657e6372bb2dfb0d3a5a3bdc565c3a784bad2a8343f40082789ea8f9d49f27da<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h4 id="After-Salting"><a href="#After-Salting" class="headerlink" title="After Salting"></a>After Salting</h4><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110149&authkey=%21AERlRn_ivY9tOQI&width=1034&height=392" width="1034" height="392" alt="[After Salting] 전체적으로 Skew가 균등하고 소요시간이 7초로 단축되었다."/>
+<p>쿠버네티스 대시보드에 <a target="_blank" rel="noopener" href="https://192.168.56.30:30000/#/login">https://192.168.56.30:30000/#/login</a> 접속하여 클러스터가 정상적으로 구성됬는 지 확인합니다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110243&authkey=%21AOl24ndLxfQxsck&width=963&height=467" width="963" height="467" alt="kubernetes dashboard"/>
+
+<h1 id="Git-Installation"><a href="#Git-Installation" class="headerlink" title="Git Installation"></a>Git Installation</h1><pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>Git Installation</span></div><code class="language-bash"><span class="token function">sudo</span> dnf <span class="token function">install</span> <span class="token function">git</span> <span class="token parameter variable">-y</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h1 id="Helm-Installation"><a href="#Helm-Installation" class="headerlink" title="Helm Installation"></a>Helm Installation</h1><pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>Helm Installation</span></div><code class="language-bash">$ <span class="token function">curl</span> <span class="token parameter variable">-fsSL</span> <span class="token parameter variable">-o</span> get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+$ <span class="token function">chmod</span> <span class="token number">700</span> get_helm.sh
+$ ./get_helm.sh
+
+$ helm version
+version.BuildInfo<span class="token punctuation">&#123;</span>Version:<span class="token string">"v3.14.0"</span>, GitCommit:<span class="token string">"3fc9f4b2638e76f26739cd77c7017139be81d0ea"</span>, GitTreeState:<span class="token string">"clean"</span>, GoVersion:<span class="token string">"go1.21.5"</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>Airflow Helm Repo Installation</span></div><code class="language-bash"><span class="token comment"># helm repository 등록</span>
+$ helm repo <span class="token function">add</span> apache-airflow https://airflow.apache.org
+
+<span class="token comment"># helm repository 목록 조회</span>
+<span class="token comment"># $ helm repo list </span>
+
+<span class="token comment"># helm repository 삭제</span>
+<span class="token comment"># $ helm repo remove </span>
+
+<span class="token comment"># helm chart에서 repository 검색</span>
+<span class="token comment"># $ helm search repo airflow </span>
+
+<span class="token comment"># airflow 네임스페이스를 만들고, repo upgrade &amp; install(실행 커맨드) </span>
+$ helm upgrade <span class="token parameter variable">--install</span> airflow apache-airflow/airflow <span class="token parameter variable">--namespace</span> airflow --create-namespace <span class="token parameter variable">--debug</span> <span class="token parameter variable">--timeout</span> 10m0s
+
+<span class="token comment"># helm release uninstall (차트의 모든 리소스 제거)</span>
+<span class="token comment"># helm uninstall airflow --namespace airflow</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>좋은 컴퓨터라면 여기까지 했을 때 쿠버네티스 위에서 celery executor를 사용할 수 있습니다. 여기서 kubernetes executor를 사용하려면 차트의 value.yaml를 설정하여야 합니다. 저는 노트북 리소스가 부족해서.. deployment가 생성되다 중지됩니다. 아무래도, helm chart의 default executor가 celery인데 flower, redis, postgres, webserver, scheduler, worker 등 기본 프로세스 + 쿠버네티스 service, cronjob, secret 등 함께 올라가서 그런 것 같습니다. 저는 제 컴퓨터 리소스에 맞게 다른 방법을 찾아야 할 것 같습니다.</p>
+<p>뛰어지는 pod는 <a target="_blank" rel="noopener" href="https://artifacthub.io/packages/helm/apache-airflow/airflow">airflow 헬름 차트</a>의 템플릿에서 확인 할 수 있습니다. 차후 value.yaml을 kubernetes executor로 변경하면 다시 글을 보완하러 와야 할 것 같습니다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110244&authkey=%21AMFgNAs9pLhvxFA&width=1168&height=189" width="1168" height="189" alt="리소스 부족 문제"/>
+
+
+
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>test 중인 연습코드</span></div><code class="language-bash"><span class="token comment"># $$ helm ls -n airflow</span>
+<span class="token comment"># $ kubectl get pods -n airflow -o wide</span>
+<span class="token comment"># $ kubectl logs &lt;pod-name> -n airflow</span>
+<span class="token comment"># $ kubectl get pods --all-namespaces</span>
+
+<span class="token comment"># $ helm show values airflow-stable/airflow > airflow-stable-values.yaml</span>
+
+<span class="token comment"># kubectl get pods -n airflow</span>
+<span class="token comment"># kubectl get services -n airflow</span>
+<span class="token comment"># kubectl port-forward svc/airflow-webserver 8080:8080 -n airflow</span>
+
+<span class="token comment"># helm uninstall &lt;서비스 이름> -n &lt;네임스페이스></span>
+<span class="token comment"># kubectl get namespaces</span>
+<span class="token comment"># kubectl get pods --all-namespaces</span>
+<span class="token comment"># vagrant halt</span>
+
+<span class="token comment"># kubectl get deployments --all-namespaces -o wide</span>
+<span class="token comment"># kubectl delete deployments kubernetes-dashboard -n kubernetes-dashboard</span>
+<span class="token comment"># kubectl delete deployments dashboard-metrics-scraper -n kubernetes-dashboard</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
+
+
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://kubetm.github.io/k8s/02-beginner/cluster-install-case6/">kubetm.github.io&#x2F;k8s&#x2F;02-beginner&#x2F;cluster-install-case6</a></li>
+<li><a target="_blank" rel="noopener" href="https://helm.sh/ko/docs/intro/install/">helm.sh&#x2F;ko&#x2F;docs&#x2F;intro&#x2F;install</a></li>
+<li><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/helm-chart/stable/index.html">airflow.apache.org&#x2F;docs&#x2F;helm-chart&#x2F;stable&#x2F;index</a></li>
+</ul>
+
                 
             </div>
             <hr/>
@@ -348,7 +404,7 @@ grouped_rdd<span class="token punctuation">.</span><span class="token builtin">m
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2023/12/15/PySpark/rdd-skew-optimizing/">http://example.com/2023/12/15/PySpark/rdd-skew-optimizing/</a>
+                    <a href="http://example.com/2024/02/07/Airflow/kubernetes-executor-installation/">http://example.com/2024/02/07/Airflow/kubernetes-executor-installation/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -455,7 +511,7 @@ grouped_rdd<span class="token punctuation">.</span><span class="token builtin">m
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Fri Dec 15 2023 00:00:00 GMT+0900',
+    id: 'Wed Feb 07 2024 00:00:00 GMT+0900',
     owner: '',
     repo: '',
     oauth: {
@@ -490,12 +546,12 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2023/12/16/Hive/hive-no-drop-offline/">
+                <a href="/2024/02/08/Airflow/operators/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] NO_DROP과 OFFLINE으로 Table 보호하기">
+                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] Operators">
                         
-                        <span class="card-title diy-neon-red">[Hive] NO_DROP과 OFFLINE으로 Table 보호하기</span>
+                        <span class="card-title diy-neon-red">[Airflow] Operators</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -506,14 +562,14 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-12-16
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-02-08
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Hive/" class="post-category">
-                                    Hive
+                            <a href="/categories/Airflow/" class="post-category">
+                                    Airflow
                                 </a>
                             
                             
@@ -530,12 +586,12 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/12/14/Hive/conditional-functions/">
+                <a href="/2024/02/07/Flink/flink-datastream-api-%EB%AF%B8%EC%99%84-/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] Conditional Functions">
+                        <img src="/images/logos/flink-logo.png" class="responsive-img" alt="[Flink] DataStream API">
                         
-                        <span class="card-title diy-neon-red">[Hive] Conditional Functions</span>
+                        <span class="card-title diy-neon-red">[Flink] DataStream API</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -546,14 +602,14 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-07
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Hive/" class="post-category">
-                                    Hive
+                            <a href="/categories/Flink/" class="post-category">
+                                    Flink
                                 </a>
                             
                             

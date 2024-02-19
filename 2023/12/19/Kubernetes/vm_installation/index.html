@@ -4,16 +4,15 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[Kubernetes] ubuntu installation(미완), Data Engineering,Data Analysis,Python Backend">
+    <meta name="keywords" content="[Kubernetes] ubuntu installation, Data Engineering,Data Analysis,Python Backend">
     <meta name="description" content="ubuntuos 버전 확인$ uname -a 
 
 $ ping &amp;lt;&gt;
 
+/etc/hosts 설정$ cat /etc/hosts
 
-스왑 확인$ free -h 
-
-$ sudo swapoff -a # 현재 시스템에 적용(리부팅하면 재설정 필요)
-$ sudo sed -i &#39;/">
+127.0.0.1        localhost
+127.0.1.1        k8s-">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -25,7 +24,7 @@ $ sudo sed -i &#39;/">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[Kubernetes] ubuntu installation(미완) | Keyhong</title>
+    <title>[Kubernetes] ubuntu installation | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -219,7 +218,7 @@ $ sudo sed -i &#39;/">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [Kubernetes] ubuntu installation(미완)</h1>
+                        [Kubernetes] ubuntu installation</h1>
                 </div>
             </div>
         </div>
@@ -280,15 +279,55 @@ $ sudo sed -i &#39;/">
 
 $ <span class="token function">ping</span> <span class="token operator">&lt;></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>/etc/hosts 설정</span></div><code class="language-bash">$ <span class="token function">cat</span> /etc/hosts
 
-<h1 id="스왑-확인"><a href="#스왑-확인" class="headerlink" title="스왑 확인"></a>스왑 확인</h1><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">free</span> <span class="token parameter variable">-h</span> 
+<span class="token number">127.0</span>.0.1        localhost
+<span class="token number">127.0</span>.1.1        k8s-master
+<span class="token number">192.168</span>.56.200   k8s-master
+<span class="token number">192.168</span>.56.201   k8s-node1
+<span class="token number">192.168</span>.56.202   k8s-node2
 
-$ <span class="token function">sudo</span> swapoff <span class="token parameter variable">-a</span> <span class="token comment"># 현재 시스템에 적용(리부팅하면 재설정 필요)</span>
-$ <span class="token function">sudo</span> <span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">'/ swap / s/^\(.*\)$/#\1/g'</span> /etc/fstab <span class="token comment"># 리부팅 필수</span>
+```bash 리눅스 패키지 설치
+$ <span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> <span class="token parameter variable">-y</span> oepnssh-server <span class="token function">vim</span> net-tools<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
-```bash
-<span class="token comment"># Using Docker Repository</span>
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>.vimrc 설정</span></div><code class="language-bash"><span class="token function">vi</span> ~/.vimrc
+
+<span class="token builtin class-name">set</span> number
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">tabstop</span><span class="token operator">=</span><span class="token number">4</span>
+<span class="token builtin class-name">set</span> ai
+<span class="token builtin class-name">set</span> si
+<span class="token builtin class-name">set</span> ruler
+autocmd FileType yaml setlocal <span class="token assign-left variable">ts</span><span class="token operator">=</span><span class="token number">2</span> <span class="token assign-left variable">sw</span><span class="token operator">=</span><span class="token number">2</span> expandtab<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>ubuntu 방화벽 끄기</span></div><code class="language-bash">$ <span class="token function">sudo</span> ufw disable
+Firewall stopped and disabled on system startup
+
+$ <span class="token function">sudo</span> ufw status
+Status: inactive<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>스왑 메모리 끄기</span></div><code class="language-bash">$ <span class="token function">free</span> <span class="token parameter variable">-h</span>
+         total     used     <span class="token function">free</span>     shared   buff/cache   available
+Mem:     <span class="token number">3</span>.8Gi    558Mi    <span class="token number">2</span>.6Gi       13Mi        705Mi       <span class="token number">3</span>.0Gi
+Swap:    <span class="token number">9</span>.3Gi       0B    <span class="token number">9</span>.3Gi
+
+<span class="token comment"># 현재 시스템에 적용(리부팅하면 재설정 필요)</span>
+$ <span class="token function">sudo</span> swapoff <span class="token parameter variable">-a</span>
+
+$ <span class="token function">free</span> <span class="token parameter variable">-h</span>
+         total     used     <span class="token function">free</span>     shared   buff/cache   available
+Mem:     <span class="token number">3</span>.8Gi    558Mi    <span class="token number">2</span>.6Gi       13Mi        705Mi       <span class="token number">3</span>.0Gi
+Swap:       0B       0B       0B
+
+<span class="token comment"># (1 or 2) kernel 속성의 swap를 disable, root 사용자로 전환 후 수행</span>
+$ <span class="token function">sudo</span> <span class="token builtin class-name">echo</span> <span class="token number">0</span> <span class="token operator">></span> /proc/sys/vm/swappiness
+
+<span class="token comment"># (1 or 2) swap을 하는 파일 시스템을 찾아서 삭제</span>
+$ <span class="token function">sudo</span> <span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">'/swap/ s/^\(.*\)$/#\1/g'</span> /etc/fstab <span class="token comment"># 리부팅 필수</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Using Docker Repository</span>
 $ <span class="token function">sudo</span> <span class="token function">apt</span> update
 $ <span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> <span class="token parameter variable">-y</span> ca-certificates <span class="token function">curl</span> gnupg lsb-release
 $ <span class="token function">curl</span> <span class="token parameter variable">-fsSL</span> https://download.docker.com/linux/ubuntu/gpg <span class="token operator">|</span> <span class="token function">sudo</span> gpg <span class="token parameter variable">--dearmor</span> <span class="token parameter variable">-o</span> /usr/share/keyrings/docker-archive-keyring.gpg
@@ -310,7 +349,7 @@ $ <span class="token function">sudo</span> <span class="token function">sed</spa
 $ <span class="token function">sudo</span> systemctl restart containerd
 
 <span class="token comment"># 소켓이 있는지 확인한다.</span>
-$ <span class="token function">ls</span> /var/run/containerd/containerd.sock<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+$ <span class="token function">ls</span> /var/run/containerd/containerd.sock<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h1 id=""><a href="#" class="headerlink" title=""></a></h1><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">sudo</span> <span class="token function">mkdir</span> /etc/apt/keyrings
 
