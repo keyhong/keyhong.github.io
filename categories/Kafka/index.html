@@ -238,20 +238,20 @@
                 
                 
                 
-                <a href="/categories/Airflow/" title="Airflow: 8">
+                <a href="/categories/AWS/" title="AWS: 9">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F9EBEA;">Airflow
-                        <span class="tag-length">8</span>
+                            style="background-color: #F9EBEA;">AWS
+                        <span class="tag-length">9</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/AWS/" title="AWS: 9">
+                <a href="/categories/Airflow/" title="Airflow: 8">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F5EEF8;">AWS
-                        <span class="tag-length">9</span>
+                            style="background-color: #F5EEF8;">Airflow
+                        <span class="tag-length">8</span>
                     </span>
                 </a>
                 
@@ -301,11 +301,11 @@
                 </a>
                 
                 
-                <a href="/categories/Hadoop/" title="Hadoop: 11">
+                <a href="/categories/Flink/" title="Flink: 5">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D7BDE2;">Hadoop
-                        <span class="tag-length">11</span>
+                            style="background-color: #D7BDE2;">Flink
+                        <span class="tag-length">5</span>
                     </span>
                 </a>
                 
@@ -319,11 +319,11 @@
                 </a>
                 
                 
-                <a href="/categories/Flink/" title="Flink: 5">
+                <a href="/categories/Hadoop/" title="Hadoop: 11">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #85C1E9;">Flink
-                        <span class="tag-length">5</span>
+                            style="background-color: #85C1E9;">Hadoop
+                        <span class="tag-length">11</span>
                     </span>
                 </a>
                 
@@ -391,15 +391,6 @@
                 </a>
                 
                 
-                <a href="/categories/Algorithm/" title="Algorithm: 4">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #D7BDE2;">Algorithm
-                        <span class="tag-length">4</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/PySpark/" title="PySpark: 17">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -418,15 +409,6 @@
                 </a>
                 
                 
-                <a href="/categories/Redis/" title="Redis: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F9EBEA;">Redis
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/SQL/" title="SQL: 7">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -441,6 +423,24 @@
                              chip-default "
                             style="background-color: #85C1E9;">Postgresql
                         <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Redis/" title="Redis: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F9EBEA;">Redis
+                        <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Algorithm/" title="Algorithm: 4">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #D7BDE2;">Algorithm
+                        <span class="tag-length">4</span>
                     </span>
                 </a>
                 
@@ -582,26 +582,19 @@ broker.id&#x3D;[N]
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/01/Kafka/kafka-cleanup-policy/">
+                    <a href="/2023/07/01/Kafka/kafka-basic/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Cleanup Policy">
+                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Kafka Basic Concept">
                             
-                            <span class="card-title diy-neon-red">[Kafka] Cleanup Policy</span>
+                            <span class="card-title diy-neon-red">[Kafka] Kafka Basic Concept</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                세그먼트(Segment)
-토픽의 데이터를 저장하는 명시적인 파일 시스템 단위
-
-
-세그먼트는 파티션마다 별개 생성
-
-세그먼트의 파일 이름은 오프셋 중 가장 작은 값
-
-“segment.bytes” 옵션으로 1개의 세그먼
+                                Kafka vs. MessageQueue 
+|                | AMQP (Advanced Message Queing Protocol) | Kafka|————————————————————————————-
                             
                         </div>
                         <div class="publish-info">
@@ -627,19 +620,26 @@ broker.id&#x3D;[N]
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/01/Kafka/kafka-basic/">
+                    <a href="/2023/07/01/Kafka/kafka-cleanup-policy/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Kafka Basic Concept">
+                            <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Cleanup Policy">
                             
-                            <span class="card-title diy-neon-red">[Kafka] Kafka Basic Concept</span>
+                            <span class="card-title diy-neon-red">[Kafka] Cleanup Policy</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Kafka vs. MessageQueue 
-|                | AMQP (Advanced Message Queing Protocol) | Kafka|————————————————————————————-
+                                세그먼트(Segment)
+토픽의 데이터를 저장하는 명시적인 파일 시스템 단위
+
+
+세그먼트는 파티션마다 별개 생성
+
+세그먼트의 파일 이름은 오프셋 중 가장 작은 값
+
+“segment.bytes” 옵션으로 1개의 세그먼
                             
                         </div>
                         <div class="publish-info">
