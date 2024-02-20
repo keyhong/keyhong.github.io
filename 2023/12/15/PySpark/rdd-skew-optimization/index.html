@@ -268,13 +268,14 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Optimizing-Skewness"><a href="#Optimizing-Skewness" class="headerlink" title="Optimizing Skewness"></a>Optimizing Skewness</h2><p>스파크에서 skewness(왜도, 비대칭도)를 해결하는 것은 스파크 튜닝의 중요한 요소이다. 왜 skewness를 해결해야 하는 지는 스파크가 분산 처리 프레임워크라는 것을 생각한다면 당연하게 받아 들일 수 있다. 우리가 소싱한 데이터는 파티션에 의해 여러 개로 수평 분할되어 클러스터의 여러 노드에 전달 된다.</p>
+                <h2 id="Optimizing-Skewness"><a href="#Optimizing-Skewness" class="headerlink" title="Optimizing Skewness"></a>Optimizing Skewness</h2><p><code>스파크에서 skewness(왜도, 비대칭도)를 해결하는 것은 스파크 튜닝의 중요한 요소</code>이다. 왜 skewness를 해결해야 하는 지는 스파크가 분산 처리 프레임워크라는 것을 생각한다면 당연하게 받아 들일 수 있다. 우리가 소싱한 데이터는 파티션에 의해 여러 개로 수평 분할되어 클러스터의 여러 노드에 전달 된다.</p>
 <p>각 노드에서 데이터를 처리(transformation, action)하는 데, 처리하는 과정 속에서 데이터를 특정 조건으로 filter 하거나 shuffle 연산(groupBy, reduceByKey ..)을 수행하면 처음에 동일 혹은 비슷하게 분배했었던 파티션별 소유 데이터의 양이 한 쪽으로 치우치는 현상을 만들어낸다. 이미지를 그려내보면 다음과 같다. </p>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110148&authkey=%21ABYYfKJCDZ5B6D4&width=606&height=273" width="606" height="273" alt="skewness가 발생해 다른 파티션이 병렬처리를 하지 못하는 상황"/>
 
+
 <p>어떤 연산을 수행한 다음 특정 RDD의 파티션으로 데이터가 몰린 상황이 발생했다고 가정하자. Partition3는 적어지고 Partition1은 많아졌다. 만약 이 다음에 수행될 연산이 map 연산(narrow transformation)과 shuffle 연산(wide transformation)이 연이어 일어난다면 어떻게 될까? 각 RDD별로 map연산을 수행하고, 다음 shuffle 연산을 하기 직전까지 모든 파티션은 다음 shuffle 연산을 실행해도 되는 상황인지 확인하고 대기할 것이다.</p>
-<p>문제는 여기서 발생한다. 각 RDD별로 처리해야 할 데이터 크기가 다르기 때문에 양이 적은 Partition3, Partition4, Partition2 순서대로 일찍 작업을 끝내고 Partition1이 작업을 끝내기 전까지 대기할 것이다. 이 때 대기하는 파티션은 프로세싱을 할 수 있는 리소스가 있음에도 불구하고 처리할 수 있는 데이터가 더 이상 없어 처리를 못하는 CPU 휴유시간(idle time)이 발생한다. 반면, 양이 많은 Partition1은 단일 코어(일반적으로 1 partition &#x3D; 1 core &#x3D; 1 task)에서 거대한 데이터를 처리해야 하므로 데 오랜 시간이 걸릴 것이다.</p>
-<p>스파크의 목적은 빅데이터를 여러 노드를 이용하여 빠르게 분산 처리하기 위함에 있다. 병목현상은 스파크가 본래의 목표를 제대로 달성하지 못하게 한다. 결국 분산 처리를 하기 위해서는 가급적이면 모든 파티션이 최대한 동등한 데이터의 크기를 나눠갖게 하고, 비슷한 시점에 일이 끝날 수 있게 사용자가 최적화하는 작업을 해주어야 한다. 이를 Skewness를 Optimizing 한다고 표현한다.</p>
+<p>문제는 여기서 발생한다. <code>각 RDD별로 처리해야 할 데이터 크기가 다르기 때문에 양이 적은 Partition3, Partition4, Partition2 순서대로 일찍 작업을 끝내고 Partition1이 작업을 끝내기 전까지 대기</code>할 것이다. 이 때 <code>대기하는 파티션은 프로세싱을 할 수 있는 리소스가 있음에도 불구하고 처리할 수 있는 데이터가 더 이상 없어 처리를 못하는 CPU 휴유시간(idle time)이 발생</code>한다. 반면, 양이 많은 Partition1은 단일 코어(일반적으로 1 partition &#x3D; 1 core &#x3D; 1 task)에서 거대한 데이터를 처리해야 하므로 데 오랜 시간이 걸릴 것이다.</p>
+<p><code>스파크의 목적은 빅데이터를 여러 노드를 이용하여 빠르게 분산 처리하기 위함</code>에 있다. 병목현상은 스파크가 본래의 목표를 제대로 달성하지 못하게 한다. 결국 분산 처리를 하기 위해서는 가급적이면 <code>모든 파티션이 최대한 동등한 데이터의 크기를 나눠갖게 하고, 비슷한 시점에 일이 끝날 수 있게 사용자가 최적화하는 작업을 해주어야 한다.</code> 이를 Skewness를 Optimizing 한다고 표현한다.</p>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110151&authkey=%21AMWq5rHzHvllhno&width=566&height=318" width="566" height="318" alt="이상적인 분산 처리에서의 데이터 분배"/>
 
 <h2 id="Salting"><a href="#Salting" class="headerlink" title="Salting"></a>Salting</h2><blockquote>

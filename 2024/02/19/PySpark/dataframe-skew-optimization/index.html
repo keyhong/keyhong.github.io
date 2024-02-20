@@ -316,10 +316,10 @@ import random">
 
 <span class="token comment">############ table 1 ############ </span>
 
-key_1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">101</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">1</span>
-key_2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">201</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">8</span> <span class="token comment"># skew가 발생하는 key</span>
-key_3 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">301</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">4</span>
-key_4 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">401</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">2</span>
+key_1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">101</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">100</span>
+key_2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">201</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">7_000_000</span> <span class="token comment"># skew가 발생하는 key</span>
+key_3 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">301</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">500</span>
+key_4 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">401</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">10_000</span>
 
 OrderID <span class="token operator">=</span> key_1 <span class="token operator">+</span> key_2 <span class="token operator">+</span> key_3 <span class="token operator">+</span> key_4
 random<span class="token punctuation">.</span>shuffle<span class="token punctuation">(</span>OrderID<span class="token punctuation">)</span> <span class="token comment"># shuffle</span>
@@ -396,26 +396,77 @@ df_small<span class="token punctuation">.</span>rdd<span class="token punctuatio
 
 
 <pre class="line-numbers language-python" data-language="python"><div class="caption"><span>join</span></div><code class="language-python"><span class="token comment"># DF increases the partition number to 200 automatically when spark performs data shuffling (join, aggregation)</span>
-joined_df <span class="token operator">=</span> df_skew<span class="token punctuation">.</span>join<span class="token punctuation">(</span>df_small<span class="token punctuation">,</span> df<span class="token punctuation">.</span>skew<span class="token punctuation">.</span>OrderID <span class="token operator">==</span> df<span class="token punctuation">.</span>small<span class="token punctuation">.</span>OrderID<span class="token punctuation">,</span> how<span class="token operator">=</span><span class="token string">"inner"</span><span class="token punctuation">)</span>
+joined_df <span class="token operator">=</span> df_skew<span class="token punctuation">.</span>join<span class="token punctuation">(</span>df_small<span class="token punctuation">,</span> df_skew<span class="token punctuation">.</span>OrderID <span class="token operator">==</span> df_small<span class="token punctuation">.</span>OrderID<span class="token punctuation">,</span> how<span class="token operator">=</span><span class="token string">"inner"</span><span class="token punctuation">)</span>
 joined_df<span class="token punctuation">.</span>rdd<span class="token punctuation">.</span>getNumPartitions<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 200</span>
 joined_df<span class="token punctuation">.</span>rdd<span class="token punctuation">.</span>glom<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>collect<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-<span class="token comment"># Solution</span>
+<span class="token comment"># Solution : shuffling 후 파티션의 개수를 명시적으로 지정 (200 파티션을 피하기 위함)</span>
 spark<span class="token punctuation">.</span>conf<span class="token punctuation">.</span><span class="token builtin">set</span><span class="token punctuation">(</span><span class="token string">"spark.sql.shuffle.partitions"</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span>
 
 <span class="token comment"># run join</span>
-joined_df <span class="token operator">=</span> df_skew<span class="token punctuation">.</span>join<span class="token punctuation">(</span>df_small<span class="token punctuation">,</span> df<span class="token punctuation">.</span>skew<span class="token punctuation">.</span>OrderID <span class="token operator">==</span> df<span class="token punctuation">.</span>small<span class="token punctuation">.</span>OrderID<span class="token punctuation">,</span> how<span class="token operator">=</span><span class="token string">"inner"</span><span class="token punctuation">)</span>
+joined_df <span class="token operator">=</span> df_skew<span class="token punctuation">.</span>join<span class="token punctuation">(</span>df_small<span class="token punctuation">,</span> df_skew<span class="token punctuation">.</span>OrderID <span class="token operator">==</span> df_small<span class="token punctuation">.</span>OrderID<span class="token punctuation">,</span> how<span class="token operator">=</span><span class="token string">"inner"</span><span class="token punctuation">)</span>
 joined_df<span class="token punctuation">.</span>rdd<span class="token punctuation">.</span>getNumPartitions<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 8</span>
 joined_df<span class="token punctuation">.</span>rdd<span class="token punctuation">.</span>glom<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>collect<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 <span class="token comment"># perform a join() and descriptive statistics on a skewed data</span>
 <span class="token keyword">from</span> pyspark<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>functions <span class="token keyword">import</span> <span class="token operator">*</span>
 
-groups <span class="token operator">=</span> df_skew<span class="token punctuation">.</span>join<span class="token punctuation">(</span>df_small<span class="token punctuation">,</span> df<span class="token punctuation">.</span>skew<span class="token punctuation">.</span>OrderID <span class="token operator">==</span> df<span class="token punctuation">.</span>small<span class="token punctuation">.</span>OrderID<span class="token punctuation">,</span> how<span class="token operator">=</span><span class="token string">"inner"</span><span class="token punctuation">)</span>
+groups <span class="token operator">=</span> df_skew<span class="token punctuation">.</span>join<span class="token punctuation">(</span>df_small<span class="token punctuation">,</span> df_skew<span class="token punctuation">.</span>OrderID <span class="token operator">==</span> df_small<span class="token punctuation">.</span>OrderID<span class="token punctuation">,</span> how<span class="token operator">=</span><span class="token string">"inner"</span><span class="token punctuation">)</span>
 summary <span class="token operator">=</span> groups<span class="token punctuation">.</span>select<span class="token punctuation">(</span>
     mean<span class="token punctuation">(</span>groups<span class="token punctuation">.</span>Sales<span class="token punctuation">)</span><span class="token punctuation">.</span>alias<span class="token punctuation">(</span><span class="token string">"AVG(Sales)"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-    <span class="token comment"># 진행 중 (~2024.02.19)</span>
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    stddev<span class="token punctuation">(</span>groups<span class="token punctuation">.</span>Sales<span class="token punctuation">)</span><span class="token punctuation">.</span>alias<span class="token punctuation">(</span><span class="token string">"STD(Sales)"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment"># 표준편차</span>
+    <span class="token builtin">min</span><span class="token punctuation">(</span>groups<span class="token punctuation">.</span>Sales<span class="token punctuation">)</span><span class="token punctuation">.</span>alias<span class="token punctuation">(</span><span class="token string">"MIN(Sales)"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token builtin">max</span><span class="token punctuation">(</span>groups<span class="token punctuation">.</span>Sales<span class="token punctuation">)</span><span class="token punctuation">.</span>alias<span class="token punctuation">(</span><span class="token string">"MAX(Sales)"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span>
+
+summary<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="Salting"><a href="#Salting" class="headerlink" title="Salting"></a>Salting</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> pyspark<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>functions <span class="token keyword">import</span> <span class="token operator">*</span>
+
+spark<span class="token punctuation">.</span>conf<span class="token punctuation">.</span><span class="token builtin">set</span><span class="token punctuation">(</span><span class="token string">"spark.sql.shuffle.partitions"</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span>
+
+<span class="token comment"># add random value [0 7]</span>
+df_skew_salting <span class="token operator">=</span> df_skew<span class="token punctuation">.</span>withColumn<span class="token punctuation">(</span><span class="token string">"_salt_"</span><span class="token punctuation">,</span> <span class="token builtin">round</span><span class="token punctuation">(</span>rand<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+df_small_salting <span class="token operator">=</span> df_small<span class="token punctuation">.</span>withColumn<span class="token punctuation">(</span><span class="token string">"_salt_"</span><span class="token punctuation">,</span> <span class="token builtin">round</span><span class="token punctuation">(</span>rand<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+df_skew_salting<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
+df_small_salting<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># repartition using "_salt_"</span>
+df_skew_salting <span class="token operator">=</span> df_skew_salting<span class="token punctuation">.</span>repartition<span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span> <span class="token string">"_salt_"</span><span class="token punctuation">)</span>
+df_small_salting <span class="token operator">=</span> df_small_salting<span class="token punctuation">.</span>repartition<span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span> <span class="token string">"_salt_"</span><span class="token punctuation">)</span>
+
+<span class="token comment"># df_skew_salting.rdd.glom().collect()</span>
+<span class="token comment"># df_small_salting.rdd.glom().collect()</span>
+
+<span class="token comment"># drop salting</span>
+df_skew_salting<span class="token punctuation">.</span>drop<span class="token punctuation">(</span><span class="token string">"_salt_"</span><span class="token punctuation">)</span>
+df_small_salting<span class="token punctuation">.</span>drop<span class="token punctuation">(</span><span class="token string">"_salt_"</span><span class="token punctuation">)</span>
+
+<span class="token comment"># apply join()</span>
+groups <span class="token operator">=</span> df_skew_salting<span class="token punctuation">.</span>join<span class="token punctuation">(</span>df_small_salting<span class="token punctuation">,</span> df<span class="token punctuation">.</span>skew<span class="token punctuation">.</span>OrderID <span class="token operator">==</span> df<span class="token punctuation">.</span>small<span class="token punctuation">.</span>OrderID<span class="token punctuation">,</span> how<span class="token operator">=</span><span class="token string">"inner"</span><span class="token punctuation">)</span>
+
+summary <span class="token operator">=</span> groups<span class="token punctuation">.</span>select<span class="token punctuation">(</span>
+    mean<span class="token punctuation">(</span>groups<span class="token punctuation">.</span>Sales<span class="token punctuation">)</span><span class="token punctuation">.</span>alias<span class="token punctuation">(</span><span class="token string">"AVG(Sales)"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    stddev<span class="token punctuation">(</span>groups<span class="token punctuation">.</span>Sales<span class="token punctuation">)</span><span class="token punctuation">.</span>alias<span class="token punctuation">(</span><span class="token string">"STD(Sales)"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token builtin">min</span><span class="token punctuation">(</span>groups<span class="token punctuation">.</span>Sales<span class="token punctuation">)</span><span class="token punctuation">.</span>alias<span class="token punctuation">(</span><span class="token string">"MIN(Sales)"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token builtin">max</span><span class="token punctuation">(</span>groups<span class="token punctuation">.</span>Sales<span class="token punctuation">)</span><span class="token punctuation">.</span>alias<span class="token punctuation">(</span><span class="token string">"MAX(Sales)"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span>
+
+summary<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="other-solution"><a href="#other-solution" class="headerlink" title="other solution"></a>other solution</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># Connection refused error [Errorno 111]</span>
+spark<span class="token punctuation">.</span>conf<span class="token punctuation">.</span><span class="token builtin">set</span><span class="token punctuation">(</span><span class="token string">"spark.executor.memory"</span><span class="token punctuation">,</span> <span class="token string">"70g"</span><span class="token punctuation">)</span>
+spark<span class="token punctuation">.</span>conf<span class="token punctuation">.</span><span class="token builtin">set</span><span class="token punctuation">(</span><span class="token string">"spark.driver.memory"</span><span class="token punctuation">,</span> <span class="token string">"70g"</span><span class="token punctuation">)</span>
+spark<span class="token punctuation">.</span>conf<span class="token punctuation">.</span><span class="token builtin">set</span><span class="token punctuation">(</span><span class="token string">"spark.memory.offHeap.size"</span><span class="token punctuation">,</span> <span class="token string">"16g"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
+
+
                 
             </div>
             <hr/>
