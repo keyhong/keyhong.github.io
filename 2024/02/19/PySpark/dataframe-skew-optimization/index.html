@@ -6,12 +6,27 @@
     <meta charset="utf-8">
     <meta name="keywords" content="[PySpark] DataFrame Skewness Optimization, Data Engineering,Data Analysis,Python Backend">
     <meta name="description" content="
-table1|———|—–|——-|————————|| OrderID | Qty | Sales | Discount (yes&amp;#x3D;1, no&amp;#x3D;0) |
-
-table2
+table1
 
 
-|———–|———|———|——-|| P">
+
+
+OrderID
+Qty
+Sales
+Discount (yes&amp;#x3D;1, no&amp;#x3D;0)
+
+
+
+
+
+
+
+
+
+# Skew 데이터 불러오기
+import numpy as np
+import random">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -275,12 +290,24 @@ table2
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <ul>
-<li><p>table1<br>|———|—–|——-|————————|<br>| OrderID | Qty | Sales | Discount (yes&#x3D;1, no&#x3D;0) |</p>
-</li>
-<li><p>table2</p>
-</li>
+<li>table1</li>
 </ul>
-<p>|———–|———|———|——-|<br>| ProductID | OrderID | Product | Price |</p>
+<table>
+<thead>
+<tr>
+<th>OrderID</th>
+<th>Qty</th>
+<th>Sales</th>
+<th>Discount (yes&#x3D;1, no&#x3D;0)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># Skew 데이터 불러오기</span>
 <span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
 <span class="token keyword">import</span> random
@@ -324,6 +351,26 @@ df_skew<span class="token punctuation">.</span>printSchema<span class="token pun
 df_skew<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
 df_skew<span class="token punctuation">.</span>rdd<span class="token punctuation">.</span>getNumPartitions<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+
+<ul>
+<li>table2</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>ProductID</th>
+<th>OrderID</th>
+<th>Product</th>
+<th>Price</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># Create the pandas.DataFrame</span>
 data_skew <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>data1<span class="token punctuation">,</span> columns<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">"OrderID"</span><span class="token punctuation">,</span> <span class="token string">"Qty"</span><span class="token punctuation">,</span> <span class="token string">"Sales"</span><span class="token punctuation">,</span> <span class="token string">"Discount"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 
@@ -348,12 +395,27 @@ df_small<span class="token punctuation">.</span>show<span class="token punctuati
 df_small<span class="token punctuation">.</span>rdd<span class="token punctuation">.</span>getNumPartitions<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
-<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>join</span></div><code class="language-python">joined_df <span class="token operator">=</span> df_skew<span class="token punctuation">.</span>join<span class="token punctuation">(</span>df_small<span class="token punctuation">,</span> df<span class="token punctuation">.</span>skew<span class="token punctuation">.</span>OrderID <span class="token operator">==</span> df<span class="token punctuation">.</span>small<span class="token punctuation">.</span>OrderID<span class="token punctuation">,</span> how<span class="token operator">=</span><span class="token string">"inner"</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>join</span></div><code class="language-python"><span class="token comment"># DF increases the partition number to 200 automatically when spark performs data shuffling (join, aggregation)</span>
+joined_df <span class="token operator">=</span> df_skew<span class="token punctuation">.</span>join<span class="token punctuation">(</span>df_small<span class="token punctuation">,</span> df<span class="token punctuation">.</span>skew<span class="token punctuation">.</span>OrderID <span class="token operator">==</span> df<span class="token punctuation">.</span>small<span class="token punctuation">.</span>OrderID<span class="token punctuation">,</span> how<span class="token operator">=</span><span class="token string">"inner"</span><span class="token punctuation">)</span>
+joined_df<span class="token punctuation">.</span>rdd<span class="token punctuation">.</span>getNumPartitions<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 200</span>
+joined_df<span class="token punctuation">.</span>rdd<span class="token punctuation">.</span>glom<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>collect<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
+<span class="token comment"># Solution</span>
+spark<span class="token punctuation">.</span>conf<span class="token punctuation">.</span><span class="token builtin">set</span><span class="token punctuation">(</span><span class="token string">"spark.sql.shuffle.partitions"</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span>
 
-<h1 id="RDD로-데이터-로드하기-8개의-파티션"><a href="#RDD로-데이터-로드하기-8개의-파티션" class="headerlink" title="RDD로 데이터 로드하기 (8개의 파티션)"></a>RDD로 데이터 로드하기 (8개의 파티션)</h1><p>rdd &#x3D; sc.parallelize(pair_skew, 8)</p>
+<span class="token comment"># run join</span>
+joined_df <span class="token operator">=</span> df_skew<span class="token punctuation">.</span>join<span class="token punctuation">(</span>df_small<span class="token punctuation">,</span> df<span class="token punctuation">.</span>skew<span class="token punctuation">.</span>OrderID <span class="token operator">==</span> df<span class="token punctuation">.</span>small<span class="token punctuation">.</span>OrderID<span class="token punctuation">,</span> how<span class="token operator">=</span><span class="token string">"inner"</span><span class="token punctuation">)</span>
+joined_df<span class="token punctuation">.</span>rdd<span class="token punctuation">.</span>getNumPartitions<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 8</span>
+joined_df<span class="token punctuation">.</span>rdd<span class="token punctuation">.</span>glom<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>collect<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
+<span class="token comment"># perform a join() and descriptive statistics on a skewed data</span>
+<span class="token keyword">from</span> pyspark<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>functions <span class="token keyword">import</span> <span class="token operator">*</span>
+
+groups <span class="token operator">=</span> df_skew<span class="token punctuation">.</span>join<span class="token punctuation">(</span>df_small<span class="token punctuation">,</span> df<span class="token punctuation">.</span>skew<span class="token punctuation">.</span>OrderID <span class="token operator">==</span> df<span class="token punctuation">.</span>small<span class="token punctuation">.</span>OrderID<span class="token punctuation">,</span> how<span class="token operator">=</span><span class="token string">"inner"</span><span class="token punctuation">)</span>
+summary <span class="token operator">=</span> groups<span class="token punctuation">.</span>select<span class="token punctuation">(</span>
+    mean<span class="token punctuation">(</span>groups<span class="token punctuation">.</span>Sales<span class="token punctuation">)</span><span class="token punctuation">.</span>alias<span class="token punctuation">(</span><span class="token string">"AVG(Sales)"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token comment"># 진행 중 (~2024.02.19)</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>

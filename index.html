@@ -496,11 +496,13 @@
                         
                     
                 </div> -->
-                <a href="/2024/01/08/Data-Architecture/ods/">
-                    <h3 class="post-title diy-neon-green">[Data Architecture] ODS</h3>
+                <a href="/2024/01/09/Data-Architecture/dimension-modeling(1)/">
+                    <h3 class="post-title diy-neon-green">[Data Architecture] Dimension Modeling(1)</h3>
                 </a>
-                <!-- <p class="post-description diy-neon-green">ODS를 만들어야 할 때를 구분해봐요.</p> -->
-                <a href="/2024/01/08/Data-Architecture/ods/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #1AD6FD 0%, #1D62F0 100%)" target="_blank">
+                <!-- <p class="post-description diy-neon-green">🙊 글을 쓰는 이유
+
+혹시 이런 복잡한 도면을 본 적 있나요? 😱 저는 DB 회사에 다녔지만 항상 이 모델링 도면이 무섭더</p> -->
+                <a href="/2024/01/09/Data-Architecture/dimension-modeling(1)/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #1AD6FD 0%, #1D62F0 100%)" target="_blank">
                     <i class="icon fa-regular fa-face-smile"></i>Read more
                 </a>
             </div>
@@ -520,13 +522,11 @@
                         
                     
                 </div> -->
-                <a href="/2024/01/09/Data-Architecture/dimension-modeling(1)/">
-                    <h3 class="post-title diy-neon-green">[Data Architecture] Dimension Modeling(1)</h3>
+                <a href="/2024/01/08/Data-Architecture/ods/">
+                    <h3 class="post-title diy-neon-green">[Data Architecture] ODS</h3>
                 </a>
-                <!-- <p class="post-description diy-neon-green">🙊 글을 쓰는 이유
-
-혹시 이런 복잡한 도면을 본 적 있나요? 😱 저는 DB 회사에 다녔지만 항상 이 모델링 도면이 무섭더라구요. ‘이런 걸 어떻게 </p> -->
-                <a href="/2024/01/09/Data-Architecture/dimension-modeling(1)/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FFCC00 0%, #FF9500 100%)" target="_blank">
+                <!-- <p class="post-description diy-neon-green">ODS를 만들어야 할 때를 구분해봐요.</p> -->
+                <a href="/2024/01/08/Data-Architecture/ods/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FFCC00 0%, #FF9500 100%)" target="_blank">
                     <i class="icon fa-regular fa-face-smile"></i>Read more
                 </a>
             </div>
@@ -573,6 +573,49 @@
 
     <article id="articles" class="container articles">
         <div class="row article-row">
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/02/19/Airflow/airflow-config/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] airflow.cfg 풀어보기">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Airflow] airflow.cfg 풀어보기</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                airflow.cfg[core]
+# Airflow 파이프라인 파일이 저장되는 디렉터리의 경로를 설정합니다.
+# 주로 코드 리포지토리 내의 하위 디렉터리로 설정됩니다.
+# 아래 path는 반드시 절대 경로로 지정되어야
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-19
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Airflow/" class="post-category">
+                                    Airflow
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
             
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
@@ -630,12 +673,27 @@
                         <!-- <div class="summary block-with-text">
                             
                                 
-table1|———|—–|——-|————————|| OrderID | Qty | Sales | Discount (yes&#x3D;1, no&#x3D;0) |
-
-table2
+table1
 
 
-|———–|———|———|——-|| P
+
+
+OrderID
+Qty
+Sales
+Discount (yes&#x3D;1, no&#x3D;0)
+
+
+
+
+
+
+
+
+
+# Skew 데이터 불러오기
+import numpy as np
+import random
                             
                         </div> -->
                         <div class="publish-info">
@@ -871,52 +929,6 @@ Hadoop 3.0 새
                                 
                                 <a href="/categories/Hadoop/" class="post-category">
                                     Hadoop
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/02/01/Kubernetes/emptyDir/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] emptyDir">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Kubernetes] emptyDir</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                emptyDir
-pod가 실행되는 host의 디스크를 임시로 컨테이너 볼륨으로 할당해서 사용하는 방법
-
-
-pod가 사라지면 emptyDir의 데이터도 함께 사라집니다.
-
-주로 메모리와 디스크를 함께 이용하는 대용량 
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Kubernetes/" class="post-category">
-                                    Kubernetes
                                 </a>
                                 
                                 
