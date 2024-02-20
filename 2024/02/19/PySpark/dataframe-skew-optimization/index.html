@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="[PySpark] DataFrame Skewness Optimization, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="
+    <meta name="description" content="Skew 데이터 생성하기
 table1
 
 
@@ -24,9 +24,14 @@ Discount (yes&amp;#x3D;1, no&amp;#x3D;0)
 
 
 
+
+
+
+
+
+
 # Skew 데이터 불러오기
-import numpy as np
-import random">
+import numpy ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -289,7 +294,7 @@ import random">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <ul>
+                <h2 id="Skew-데이터-생성하기"><a href="#Skew-데이터-생성하기" class="headerlink" title="Skew 데이터 생성하기"></a>Skew 데이터 생성하기</h2><ul>
 <li>table1</li>
 </ul>
 <table>
@@ -302,6 +307,12 @@ import random">
 </tr>
 </thead>
 <tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td></td>
 <td></td>
 <td></td>
@@ -340,7 +351,6 @@ Discount <span class="token operator">=</span> <span class="token builtin">list<
 data1 <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">zip</span><span class="token punctuation">(</span>OrderID<span class="token punctuation">,</span> Qty<span class="token punctuation">,</span> Sales<span class="token punctuation">,</span> Discount<span class="token punctuation">)</span><span class="token punctuation">)</span>
 
 <span class="token comment"># Create PySpark DF from Pandas</span>
-
 <span class="token comment"># Optimize conversion between PySpark and Pandas DF: Enable arrow-based columnar data transfer</span>
 <span class="token comment"># 데이터를 열형식으로 jvm 프로세스에 전송하는 옵션</span>
 spark<span class="token punctuation">.</span>conf<span class="token punctuation">.</span><span class="token builtin">set</span><span class="token punctuation">(</span><span class="token string">"spark.sql.execution.arrow.enabled"</span><span class="token punctuation">,</span> <span class="token string">"true"</span><span class="token punctuation">)</span>
@@ -349,7 +359,7 @@ df_skew <span class="token operator">=</span> spark<span class="token punctuatio
 df_skew<span class="token punctuation">.</span>printSchema<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 df_skew<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
-df_skew<span class="token punctuation">.</span>rdd<span class="token punctuation">.</span>getNumPartitions<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+df_skew<span class="token punctuation">.</span>rdd<span class="token punctuation">.</span>getNumPartitions<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 <ul>
@@ -365,6 +375,12 @@ df_skew<span class="token punctuation">.</span>rdd<span class="token punctuation
 </tr>
 </thead>
 <tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td></td>
 <td></td>
 <td></td>
@@ -395,7 +411,7 @@ df_small<span class="token punctuation">.</span>show<span class="token punctuati
 df_small<span class="token punctuation">.</span>rdd<span class="token punctuation">.</span>getNumPartitions<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
-<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>join</span></div><code class="language-python"><span class="token comment"># DF increases the partition number to 200 automatically when spark performs data shuffling (join, aggregation)</span>
+<h2 id="Salting-없이-join"><a href="#Salting-없이-join" class="headerlink" title="Salting 없이 join"></a>Salting 없이 join</h2><pre class="line-numbers language-python" data-language="python"><div class="caption"><span>join</span></div><code class="language-python"><span class="token comment"># DF increases the partition number to 200 automatically when spark performs data shuffling (join, aggregation)</span>
 joined_df <span class="token operator">=</span> df_skew<span class="token punctuation">.</span>join<span class="token punctuation">(</span>df_small<span class="token punctuation">,</span> df_skew<span class="token punctuation">.</span>OrderID <span class="token operator">==</span> df_small<span class="token punctuation">.</span>OrderID<span class="token punctuation">,</span> how<span class="token operator">=</span><span class="token string">"inner"</span><span class="token punctuation">)</span>
 joined_df<span class="token punctuation">.</span>rdd<span class="token punctuation">.</span>getNumPartitions<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 200</span>
 joined_df<span class="token punctuation">.</span>rdd<span class="token punctuation">.</span>glom<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>collect<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -422,7 +438,7 @@ summary <span class="token operator">=</span> groups<span class="token punctuati
 summary<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
-<h2 id="Salting"><a href="#Salting" class="headerlink" title="Salting"></a>Salting</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> pyspark<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>functions <span class="token keyword">import</span> <span class="token operator">*</span>
+<h2 id="Salting-후에-join"><a href="#Salting-후에-join" class="headerlink" title="Salting 후에 join"></a>Salting 후에 join</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> pyspark<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>functions <span class="token keyword">import</span> <span class="token operator">*</span>
 
 spark<span class="token punctuation">.</span>conf<span class="token punctuation">.</span><span class="token builtin">set</span><span class="token punctuation">(</span><span class="token string">"spark.sql.shuffle.partitions"</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span>
 
@@ -456,7 +472,7 @@ summary <span class="token operator">=</span> groups<span class="token punctuati
 
 summary<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="other-solution"><a href="#other-solution" class="headerlink" title="other solution"></a>other solution</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># Connection refused error [Errorno 111]</span>
+<h2 id="Salting-이외의-다른-solution"><a href="#Salting-이외의-다른-solution" class="headerlink" title="Salting 이외의 다른 solution"></a>Salting 이외의 다른 solution</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># Connection refused error [Errorno 111]</span>
 spark<span class="token punctuation">.</span>conf<span class="token punctuation">.</span><span class="token builtin">set</span><span class="token punctuation">(</span><span class="token string">"spark.executor.memory"</span><span class="token punctuation">,</span> <span class="token string">"70g"</span><span class="token punctuation">)</span>
 spark<span class="token punctuation">.</span>conf<span class="token punctuation">.</span><span class="token builtin">set</span><span class="token punctuation">(</span><span class="token string">"spark.driver.memory"</span><span class="token punctuation">,</span> <span class="token string">"70g"</span><span class="token punctuation">)</span>
 spark<span class="token punctuation">.</span>conf<span class="token punctuation">.</span><span class="token builtin">set</span><span class="token punctuation">(</span><span class="token string">"spark.memory.offHeap.size"</span><span class="token punctuation">,</span> <span class="token string">"16g"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
