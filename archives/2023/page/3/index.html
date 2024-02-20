@@ -612,22 +612,23 @@ Hive에서 제공하는 특수기능으로 A의 하위 문자열이 B와 일치�
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/12/14/Hive/string-functions/">
+                        <a href="/2023/12/14/Hive/partitioning/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] String Functions">
+                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] Partitioning">
                                 
-                                <span class="card-title">[Hive] String Functions</span>
+                                <span class="card-title">[Hive] Partitioning</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    ☆ CONCAT
-두 문자열을 결합하여 반환한다.
+                                    Partitioning
+분할 키를 기반으로 테이블의 데이터를 여러 부분으로 구성하는 방법
 
--- Syntax: CONCAT (string|binary A, string|binary B...)
-SELECT CONCAT(col1, '-', col3) FROM 
+Partitioning의 두 종류는 정적 파티셔닝과 동적 파티셔닝이 있다.
+
+Static Partitioning (정적 파티
                                 
                             </div>
                             <div class="publish-info">
@@ -668,23 +669,22 @@ SELECT CONCAT(col1, '-', col3) FROM
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/12/14/Hive/partitioning/">
+                        <a href="/2023/12/14/Hive/string-functions/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] Partitioning">
+                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] String Functions">
                                 
-                                <span class="card-title">[Hive] Partitioning</span>
+                                <span class="card-title">[Hive] String Functions</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Partitioning
-분할 키를 기반으로 테이블의 데이터를 여러 부분으로 구성하는 방법
+                                    ☆ CONCAT
+두 문자열을 결합하여 반환한다.
 
-Partitioning의 두 종류는 정적 파티셔닝과 동적 파티셔닝이 있다.
-
-Static Partitioning (정적 파티
+-- Syntax: CONCAT (string|binary A, string|binary B...)
+SELECT CONCAT(col1, '-', col3) FROM 
                                 
                             </div>
                             <div class="publish-info">

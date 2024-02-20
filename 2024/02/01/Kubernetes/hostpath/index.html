@@ -379,8 +379,15 @@ test.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></
 <li><p>.spec.containers[].volumeMounts.name: .spec.volumes[]에서 만든 볼륨의 이름입니다.</p>
 </li>
 </ul>
-<h2 id="경고"><a href="#경고" class="headerlink" title="경고"></a>경고</h2><p><code>HostPath 볼륨에는 많은 보안 위험이 있으며, 가능하면 HostPath를 사용하지 않는 것이 좋습니다.</code></p>
-<p>HostPath 볼륨을 사용해야 하는 경우, 필요한 파일 또는 디렉터리로만 범위를 지정하고 ReadOnly로 마운트해야 해야 합니다.<br>AdmissionPolicy를 사용하여 특정 디렉터리로의 HostPath 액세스를 제한하는 경우, readOnly 마운트를 사용하는 정책이 유효하려면 volumeMounts가 반드시 지정되어야 합니다.</p>
+<h2 id="경고"><a href="#경고" class="headerlink" title="경고"></a>경고</h2><blockquote>
+<p><code>HostPath 볼륨에는 많은 보안 위험이 있으며, 가능하면 HostPath를 사용하지 않는 것이 좋습니다.</code></p>
+</blockquote>
+<ul>
+<li><p>HostPath 볼륨을 사용해야 하는 경우, 필요한 파일 또는 디렉터리로만 범위를 지정하고 ReadOnly로 마운트해야 해야 합니다.</p>
+</li>
+<li><p>AdmissionPolicy를 사용하여 특정 디렉터리로의 HostPath 액세스를 제한하는 경우, readOnly 마운트를 사용하는 정책이 유효하려면 volumeMounts가 반드시 지정되어야 합니다.</p>
+</li>
+</ul>
 
                 
             </div>
