@@ -405,9 +405,9 @@ $ <span class="token function">make</span> delete-all<span aria-hidden="true" cl
 </li>
 </ul>
 <p>단, <code>Kudu는 저장소 역할만 하는 플랫폼이기에 쿼리를 처리를 할 수 있는 엔진이 필요</code>한 데 흔히 impala를 함께 결합하지만, <code>저는 hive와 kudu를 하나의 세션에서 같이 사용하는 게 편리하다고 생각되어 trino를 사용</code>하였습니다.</p>
-<h2 id="ELT-Tool-선택-dbt-trino"><a href="#ELT-Tool-선택-dbt-trino" class="headerlink" title="ELT Tool 선택 : dbt-trino"></a>ELT Tool 선택 : dbt-trino</h2><p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/supported-data-platforms">supported-data-platforms</a></p>
-<h4 id="impala-대신-trino를-사용한-이유"><a href="#impala-대신-trino를-사용한-이유" class="headerlink" title="impala 대신 trino를 사용한 이유"></a>impala 대신 trino를 사용한 이유</h4><p><code>Transform 도구로 DBT Core를 사용하려고 시도</code>했습니다.</p>
-<p>여러 adapter 중 하나를 선택할 수 있었는 데, dbt가 아직은 성장하는 플랫폼이라 trino에서 제공하는 검증된 어댑터(Verified adapters)를<br>사용하는 것이 좋다고 생각했습니다. 그래서 impala가 아닌 spark와 trino 중 고민을 했습니다.</p>
+<h2 id="ELT-Tool-선택-dbt-trino"><a href="#ELT-Tool-선택-dbt-trino" class="headerlink" title="ELT Tool 선택 : dbt-trino"></a>ELT Tool 선택 : dbt-trino</h2><h4 id="impala-대신-trino를-사용한-이유"><a href="#impala-대신-trino를-사용한-이유" class="headerlink" title="impala 대신 trino를 사용한 이유"></a>impala 대신 trino를 사용한 이유</h4><p><code>Transform 도구로 DBT Core를 사용하려고 시도</code>했습니다.</p>
+<p>여러 adapter 중 하나를 선택할 수 있었는 데, dbt가 아직은 성장하는 플랫폼이라 trino에서 제공하는 검증된 어댑터(Verified adapters)를 사용하는 것이 좋다고 생각했습니다. 그래서 impala가 아닌 spark와 trino 중 고민을 했습니다.</p>
+<p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/supported-data-platforms">supported-data-platforms</a></p>
 <h4 id="dbt-trino-vs-dbt-spark-dbt-trinio를-선택한-이유"><a href="#dbt-trino-vs-dbt-spark-dbt-trinio를-선택한-이유" class="headerlink" title="dbt-trino vs. dbt-spark (dbt-trinio를 선택한 이유)"></a>dbt-trino vs. dbt-spark (dbt-trinio를 선택한 이유)</h4><p>spark는 사용자도 많고 충분히 성장한 플랫폼이지만, 제가 생각하는 <code>spark의 장점은 스파크에서 제공하는 함수로 복잡한 프로세싱을 IDE와 결합하여 처리하는 프로그램밍 방식인 데, sql만으로는 그 장점이 줄어든다고 생각</code>했습니다. 또한, learning curve가 다소 있는 플랫폼이라는 점도 고려했습니다.</p>
 <p><code>trino는 hive의 한계인 이종 시스템에 대한 연합 쿼리를 가능하게 하는 분산처리 엔진</code>입니다. <code>확장성이 높고, ANSI SQL 문법을 지향</code>합니다. 그래서 빠른 학습이 가능하다는 장점이 있다고 생각했습니다.</p>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110289&authkey=%21AOD15AKtu8t3vLQ&width=577&height=326" width="577" height="326" alt="연합 쿼리가 가능한 trino"/>
