@@ -1,0 +1,1051 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[Toy] Dimension Modeling + Hadoop + Hive + Kudu + Trino + DBT, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="Next Step다시 취준생이 되고 항상 탈락이라는 경험은 아픈 것 같습니다. 하지만 엔지니어로써 더 나아갈 내일을 봐야하고, 더 좋은 날이 올 것이라 믿기에 마지막으로 글을 정리하고 툴툴 털어내려고 합니다. 제가 ">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>[Toy] Dimension Modeling + Hadoop + Hive + Kudu + Trino + DBT | Keyhong</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span diy-happy-monkey">Keyhong</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <!-- <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a> -->
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Keyhong</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/life-logo.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title diy-neon-red">
+                        [Toy] Dimension Modeling + Hadoop + Hive + Kudu + Trino + DBT</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                        <div class="article-tag">
+                            <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                                <span class="chip bg-color">
+                                    2024-02-21</span>
+                        </div>
+                    
+                    
+
+
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Toy/" class="post-category">
+                                Toy
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="Next-Step"><a href="#Next-Step" class="headerlink" title="Next Step"></a>Next Step</h2><p>다시 취준생이 되고 항상 탈락이라는 경험은 아픈 것 같습니다. 하지만 엔지니어로써 더 나아갈 내일을 봐야하고, 더 좋은 날이 올 것이라 믿기에 마지막으로 글을 정리하고 툴툴 털어내려고 합니다. 제가 면접에서 보여드리지는 못했지만 하둡 구축에 어려움을 겪으시는 분들이 활용할 수 있도록 만든 play ground와 생각했던 과정들을 정리하려고 합니다.</p>
+<p>play ground는 Hadoop + Hive + Kudu + Trion가 연결된 docker-compose.yaml 입니다. Hadoop을 올릴 떄 처음 메타스토어를 초기화하는 작업을 하는 과정 모두 Dockerfile에 만들어 넣었습니다. 사용하신다면, 컨테이너가 올라간 이후 DBeaver 같은 툴로 Trino(localhost:8080)에 연결해서 바로 kudu와 hive를 사용할 수 있습니다 😊</p>
+<h2 id="차원-모델링"><a href="#차원-모델링" class="headerlink" title="차원 모델링"></a>차원 모델링</h2><p>ERD를 직접 그려 보았습니다. 도구는 <a target="_blank" rel="noopener" href="https://app.diagrams.net/">draw.io</a> 입니다. 바탕색과 테이블 색을 설정할 수 있고, 엔티티 간의 관계를 쉽게 그릴 수 있는 도구입니다. 저는 Fact와 Dimension으로 차원 모델링을 했고, 이력 테이블에 대해서는 SCD 4 (SCD2 + Historical Table)로 풀어보았습니다.<br>** 테이블 내의 상세 컬럼은 가려두었습니다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110286&authkey=%21ABxAnt1AM6OGtkc&width=414&height=400" width="414" height="400" />
+
+
+<h2 id="목표했던-아키텍처"><a href="#목표했던-아키텍처" class="headerlink" title="목표했던 아키텍처"></a>목표했던 아키텍처</h2><p>짧은 시간으로 CI&#x2F;CD 까지는 하지 못했지만 Hadoop, Hive, Kudu, Trion, DBT는 사용가능합니다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110290&authkey=%21ANLiqU1wrXocfIc&width=1024" width="1024" height="auto" />
+
+<h2 id="프로젝트-구조"><a href="#프로젝트-구조" class="headerlink" title="프로젝트 구조"></a>프로젝트 구조</h2><p>폴더 구조는 .env(secret file), conf, docker, mnt,init-sql로 나누었습니다. 이 최상단 폴더에 .gitignore, docker-compose.yml, Makefile, README.md 같은 레벨으로 있습니다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110291&authkey=%21ACFeR1Sox-jUY-8&width=1024" width="1024" height="auto" />
+
+<h2 id="프로세스-정리"><a href="#프로세스-정리" class="headerlink" title="프로세스 정리"></a>프로세스 정리</h2><table>
+<thead>
+<tr>
+<th>프로그램</th>
+<th>버전</th>
+<th>프로세스</th>
+<th>포트</th>
+<th>실행 환경</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MySQL</td>
+<td>8.0.36</td>
+<td>namenode</td>
+<td>3306</td>
+<td>container</td>
+</tr>
+<tr>
+<td>Apache Hadoop</td>
+<td>3.3.6</td>
+<td>namenode</td>
+<td>9870</td>
+<td>container</td>
+</tr>
+<tr>
+<td>Apache Hadoop</td>
+<td>3.3.6</td>
+<td>datanode</td>
+<td>9864</td>
+<td>container</td>
+</tr>
+<tr>
+<td>Apache Hive</td>
+<td>3.1.3</td>
+<td>metastore</td>
+<td>10000</td>
+<td>container</td>
+</tr>
+<tr>
+<td>Apache Hive</td>
+<td>3.1.3</td>
+<td>hiveserver2</td>
+<td>10002</td>
+<td>container</td>
+</tr>
+<tr>
+<td>Apache Kudu</td>
+<td>1.17</td>
+<td>master</td>
+<td>8051</td>
+<td>container</td>
+</tr>
+<tr>
+<td>Apache Kudu</td>
+<td>1.17</td>
+<td>tserver</td>
+<td>8050</td>
+<td>container</td>
+</tr>
+<tr>
+<td>Trino</td>
+<td>438</td>
+<td>coordinator(worker)</td>
+<td>8080</td>
+<td>container</td>
+</tr>
+<tr>
+<td>dbt-trino</td>
+<td>1.7.1</td>
+<td></td>
+<td></td>
+<td>local</td>
+</tr>
+</tbody></table>
+<p>** Hadoop과 Kudu의 replica를 1으로 설정<br>** ELT 프로세스를 하나만 사용하기 때문에 yarn은 올리지 않았습니다.<br>** 쿼리엔진으로 trino를 사용하기 때문에 mapreduce는 올리지 않았습니다.<br>** hiveserver2는 올려도 되고, 안올려도 상관없습니다. 저는 초기에 10000번 포트로 접속해서 작업을 했습니다.<br>** trino는 JDK 버전호환 (21이상)을 위해 eclipse-temurin 이미지를 사용하였습니다.<br>** dbt-trino는 로컬에서 trino(8080)으로 연결하여 사용하였습니다.</p>
+<h2 id="Makefile로-시작하기"><a href="#Makefile로-시작하기" class="headerlink" title="Makefile로 시작하기"></a>Makefile로 시작하기</h2><p>make가 설치되어있다면, 순서대로 이미지 먼저 빌드합니다. 다운을 받는 CDN 사이트를 변경했지만, 그래도 시간이 조금은 걸리는 편입니다.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># base 이미지 빌드</span>
+$ <span class="token function">make</span> build
+
+<span class="token comment"># base 이미지 위의 추가 이미지 빌드 &amp; docker-compose 실행</span>
+$ <span class="token function">make</span> up
+
+<span class="token comment"># docker container 내리기</span>
+$ <span class="token function">make</span> down
+
+<span class="token comment"># image와 mnt 디렉터리 안 저장한 데이터 지우기</span>
+$ <span class="token function">make</span> delete-all<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="Kudu의-도입"><a href="#Kudu의-도입" class="headerlink" title="Kudu의 도입"></a>Kudu의 도입</h2><p>빅데이터 환경에서 데이터 모델링을 그려보다 보니, Dimension 테이블에 대한 변경을 어떻게 할 까라는 고민이 들었습니다. Data Lake에서는 Schema-on-read이기 때문에 특정 컬림이 추가되어 들어올 수가 있습니다. 이럴 때 단순히 Hive만으로 테이블에 새로운 컬럼을 추가하려면 데이터를 지우고 테이블을 다시 만든 후 insert를 해야하기 때문에 테이블의 확장성에 있어 어려움이 많았습니다. 이에 Dimension 테이블을 Kudu에 저장해 향후에도 확장성을 높이려는 시도를 하였습니다.</p>
+<p>Kudu는 Columnar storage로, ACID가 가능한 분산 스토리지 입니다. Replica를 설정하여 데이터의 durability를 보장할 수 있습니다. 또 꼭 Hadoop이 아니어도 구축가능합니다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110288&authkey=%21ANOYaAw5KekVAaA&width=660" width="660" height="auto" alt="kudu architecture"/>
+
+<p>kudu에서 master는 카탈로그를 저장하는 역할을 하고, tablet 서버는 실제 데이터를 저장합니다. Hadoop의 master-slave와 비슷한 구조를 갖고 있습니다. 테이블을 trino로 생성하는 쿼리를 보시면 여러가지 특징을 알 수 있습니다.</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- 1-2. 고객 테이블 생성</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token keyword">IF</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span> KUDU<span class="token punctuation">.</span>DW<span class="token punctuation">.</span>DIM_CUSTOMER_INFO <span class="token punctuation">(</span>
+    CUSTOMER_ID                       <span class="token keyword">INT</span>         <span class="token keyword">WITH</span> <span class="token punctuation">(</span>primary_key<span class="token operator">=</span><span class="token boolean">true</span><span class="token punctuation">)</span>
+    <span class="token comment">-- 컬럼 일부 생략</span>
+  <span class="token punctuation">,</span> EFFECTIVE_DATE                    <span class="token keyword">DATE</span>        
+  <span class="token punctuation">,</span> END_DATE                          <span class="token keyword">DATE</span>        
+  <span class="token punctuation">,</span> DW_LOAD_DT                        <span class="token keyword">TIMESTAMP</span>   
+<span class="token punctuation">)</span>
+<span class="token keyword">WITH</span> <span class="token punctuation">(</span>
+  partition_by_hash_columns <span class="token operator">=</span> ARRAY<span class="token punctuation">[</span><span class="token string">'CUSTOMER_ID'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  partition_by_hash_buckets <span class="token operator">=</span> <span class="token number">5</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><p>PK를 지정 할 수 있습니다.</p>
+</li>
+<li><p>PK로 사용되는 컬럼 중 일부를 반드시 partition_by_hash_columns으로 설정해야 한다. </p>
+</li>
+<li><p>partition_by_hash_buckets은 최소 2 이상이어야 합니다.</p>
+</li>
+<li><p>Secondary 인덱스나 foreign keys는 지원이 되지 않습니다.</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://kudu.apache.org/docs/known_issues.html#_other_usage_limitations">Other usage limitations</a></p>
+</li>
+</ul>
+<p>단, Kudu는 저장소 역할만 하는 플랫폼이기에 쿼리를 처리를 할 수 있는 엔진이 필요한 데 흔히 impala를 함께 결합하지만, 저는 hive와 kudu를 하나의 세션에서 같이 사용하는 게 편리하다고 생각되어 trino를 사용하였습니다.</p>
+<h2 id="ELT-Tool-선택-dbt-trino"><a href="#ELT-Tool-선택-dbt-trino" class="headerlink" title="ELT Tool 선택 : dbt-trino"></a>ELT Tool 선택 : dbt-trino</h2><p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/supported-data-platforms">supported-data-platforms</a></p>
+<h4 id="impala-대신-trino를-사용한-이유"><a href="#impala-대신-trino를-사용한-이유" class="headerlink" title="impala 대신 trino를 사용한 이유"></a>impala 대신 trino를 사용한 이유</h4><p>Transform 도구로 <code>DBT Core</code> 를 사용하려고 시도했습니다.</p>
+<p>여러 adapter 중 하나를 선택할 수 있었는 데, dbt가 아직은 성장하는 플랫폼이라 trino에서 제공하는 검증된 어댑터(Verified adapters)를<br>사용하는 것이 좋다고 생각했습니다. 그래서 impala가 아닌 spark와 trino 중 고민을 했습니다.</p>
+<h4 id="dbt-trino-vs-dbt-spark-dbt-trinio를-선택한-이유"><a href="#dbt-trino-vs-dbt-spark-dbt-trinio를-선택한-이유" class="headerlink" title="dbt-trino vs. dbt-spark (dbt-trinio를 선택한 이유)"></a>dbt-trino vs. dbt-spark (dbt-trinio를 선택한 이유)</h4><p>spark는 사용자도 많고 충분히 성장한 플랫폼이지만, 제가 생각하는 spark의 장점은 스파크에서 제공하는 함수로 복잡한 프로세싱을 IDE와 결합하여 처리하는 프로그램밍 방식이 아닌 sql로는 그 장점이 줄어든다고 생각했습니다. 또한, learning curve가 다소 있는 플랫폼이라는 점도 고려했습니다.</p>
+<p>trino는 hive의 한계인 이종 시스템에 대한 연합 쿼리를 가능하게 하는 분산처리 엔진입니다. 확장성이 높고, ANSI SQL 문법을 지향합니다. 그래서 빠른 학습이 가능하다는 장점이 있다고 생각했습니다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110289&authkey=%21AOD15AKtu8t3vLQ&width=577&height=326" width="577" height="326" alt="연합 쿼리가 가능한 trino"/>
+
+<h2 id="dbt와-trino의-시너지"><a href="#dbt와-trino의-시너지" class="headerlink" title="dbt와 trino의 시너지"></a>dbt와 trino의 시너지</h2><p>dbt는 파이썬으로 구성된 오픈소스 transform 툴입니다. 쿼리를 CTE(Common Table Expression) 문법으로 구상하기 때문에 서브쿼리가 덜하다는 장점이 있습니다. 하지만 dbt를 통해 짠 쿼리가 파이썬의 모델이라는 객체를 통해 변환되고, 변환된 쿼리는 시각적으로 확인하기 어려운 단점이 있습니다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110292&authkey=%21AD6AC4r6UN9ipGs&width=1024" width="1024" height="auto" />
+
+<p>trino가 제공하는 웹에서 실행된 쿼리 구문을 볼 수 있습니다. dbt로 etl를 실행했을 때, 실패한다면 파싱이 제대로 안되었는 지 혹은 구문이 잘못되었는 지 웹을 통해 확인 가능한 장점이 있습니다. 저는 이를 통해 쿼리에 대한 트러블 슈팅을 보다 편하게 할 수 있었습니다.</p>
+<h2 id="dbt가-제공하는-무결성-테스트"><a href="#dbt가-제공하는-무결성-테스트" class="headerlink" title="dbt가 제공하는 무결성 테스트"></a>dbt가 제공하는 무결성 테스트</h2><p>dbt를 써보며 느꼈던 큰 장점은 파이썬이라는 프로그래밍이 접목되어 있어, 유틸리티를 편하게 쓸 수 있었다는 점이었습니다. 보시다시피 dbt에서는 무결성을 위한 테스트를 할 수 있도록 지원하는 데, 따로 쿼리를 짤 필요 없이 yaml 파일을 통해 쉽게 테스트를 할 수 있었습니다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110293&authkey=%21AGIJAM2MJq7vvzI&width=1024" width="1024" height="auto" />
+
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/build/data-tests#generic-data-tests">generic-data-tests</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/build/data-tests#singular-data-tests">singular-data-tests</a></p>
+</li>
+</ul>
+<p>물론, 테스트의 결과를 알려줄 뿐 실패시 에러가 아닌 에러구문의 정상 표준 출력하기 때문에 json으로 로그를 남기고 파싱하거나 하는 방법을 추가로 구현해야 할 것 같다는 생각은 들었습니다. </p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>- </p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Keyhong</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2024/02/21/Toy/side-project/">http://example.com/2024/02/21/Toy/side-project/</a>
+                </span>
+            </div>
+            <!-- <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        reprint:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    use
+                    <a href="cc_by_url" rel="external nofollow noreferrer" target="_blank">cc_by_name</a>
+                    licensed
+                    <a href="/about" target="_blank">Keyhong</a>
+                    !
+                </span>
+            </div> -->
+        
+    </div>
+
+    <!-- <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script> -->
+
+
+
+            <div class="tag_share" style="display: block;">
+                <!-- <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                        </div>
+                    
+                </div> -->
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <!-- <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a> -->
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+        <link rel="stylesheet" href="/libs/gitment/gitment-default.css">
+<link rel="stylesheet" href="/css/gitment.css">
+
+<div class="gitment-card card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>댓글</span>
+    </div>
+    <div id="gitment-content" class="card-content"></div>
+</div>
+
+<script src="/libs/gitment/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+    id: 'Wed Feb 21 2024 00:00:00 GMT+0900',
+    owner: '',
+    repo: '',
+    oauth: {
+        client_id: '',
+        client_secret: ''
+    }
+});
+
+gitment.render('gitment-content');
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2024/02/21/Kubernetes/deployment/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        
+                        <span class="card-title diy-neon-red"></span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-02-21
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Gyuwon Hong
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/02/19/Airflow/airflow-config/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] airflow.cfg 풀어보기">
+                        
+                        <span class="card-title diy-neon-red">[Airflow] airflow.cfg 풀어보기</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Airflow/" class="post-category">
+                                    Airflow
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;목차</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2024</span>
+            
+            <a href="/about" target="_blank">Gyuwon Hong</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;Total visits:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;Total visitors:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/keyhong" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:wnhong96@gmail.com" class="tooltipped" target="_blank" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
