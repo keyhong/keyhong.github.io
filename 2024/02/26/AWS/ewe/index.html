@@ -4,15 +4,16 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[Django] Static &amp; Media 파일, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Static &amp;amp; Media 파일Static 파일
-개발 리소스로서의 정적인 파일 (js, css, image 등)
+    <meta name="keywords" content="[AWS] Serivce 개요, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="AWS (Amazon Web Service)
+Amazon 내부 운영 시스템을 발전시켜 외부 서비스 형태로 제공하는 public cloud service
 
 
-앱 &amp;#x2F; 프로젝트 단위로 저장&amp;#x2F;서빙
+AWS 장점
 
-Media 파일
-FileField &amp;#">
+1. 
+Cloud Service 유형
+clou">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -24,7 +25,7 @@ FileField &amp;#">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[Django] Static &amp; Media 파일 | Keyhong</title>
+    <title>[AWS] Serivce 개요 | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -212,13 +213,13 @@ FileField &amp;#">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/django-logo.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/aws-logo.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [Django] Static &amp; Media 파일</h1>
+                        [AWS] Serivce 개요</h1>
                 </div>
             </div>
         </div>
@@ -243,7 +244,7 @@ FileField &amp;#">
                         <div class="article-tag">
                             <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                                 <span class="chip bg-color">
-                                    2023-12-28</span>
+                                    2024-02-26</span>
                         </div>
                     
                     
@@ -255,8 +256,8 @@ FileField &amp;#">
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Django/" class="post-category">
-                                Django
+                            <a href="/categories/AWS/" class="post-category">
+                                AWS
                             </a>
                         
                     </div>
@@ -275,35 +276,35 @@ FileField &amp;#">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Static-Media-파일"><a href="#Static-Media-파일" class="headerlink" title="Static &amp; Media 파일"></a>Static &amp; Media 파일</h2><h3 id="Static-파일"><a href="#Static-파일" class="headerlink" title="Static 파일"></a>Static 파일</h3><blockquote>
-<p>개발 리소스로서의 정적인 파일 (js, css, image 등)</p>
+                <h2 id="AWS-Amazon-Web-Service"><a href="#AWS-Amazon-Web-Service" class="headerlink" title="AWS (Amazon Web Service)"></a>AWS (Amazon Web Service)</h2><blockquote>
+<p>Amazon 내부 운영 시스템을 발전시켜 외부 서비스 형태로 제공하는 public cloud service</p>
 </blockquote>
 <ul>
-<li>앱 &#x2F; 프로젝트 단위로 저장&#x2F;서빙</li>
+<li>AWS 장점</li>
 </ul>
-<h3 id="Media-파일"><a href="#Media-파일" class="headerlink" title="Media 파일"></a>Media 파일</h3><blockquote>
-<p>FileField &#x2F; ImageField를 통해 저장한 모든 파일</p>
+<p>1. </p>
+<h2 id="Cloud-Service-유형"><a href="#Cloud-Service-유형" class="headerlink" title="Cloud Service 유형"></a>Cloud Service 유형</h2><ul>
+<li>cloud 서비스를 사용하는 대상&#x2F;목적에 따라 분기</li>
+</ul>
+<h3 id="IaaS-Infrastructure-as-a-Service"><a href="#IaaS-Infrastructure-as-a-Service" class="headerlink" title="IaaS (Infrastructure as a Service)"></a>IaaS (Infrastructure as a Service)</h3><blockquote>
+<p>Server 환경 (Infrastructure)만 빌려서 사용</p>
 </blockquote>
 <ul>
-<li><p>DB필드에는 저장경로를 저장하며, 파일은 파일 스토리지에 저장. <strong>실제로 문자열을 저장하는 필드</strong></p>
+<li><p>Cloud Service 업체에서 제공하는 Infrastructure 활용</p>
 </li>
-<li><p>프로젝트 단위로 저장&#x2F;서빙</p>
+<li><p>H&#x2F;W 환경</p>
 </li>
-<li><p>이미지 파일을 다루려면 Pillow 라이브러리를 설치해야 한다.</p>
+<li><p>O&#x2F;S 환경</p>
 </li>
-<li><p>포토샵과 같은 고품질의 이미지처리를 하기 위해서는 ImageMagick 라이브러리를 사용한다.</p>
+<li><p>Network 환경</p>
 </li>
 </ul>
-<h4 id="Media-파일-처리-순서"><a href="#Media-파일-처리-순서" class="headerlink" title="Media 파일 처리 순서"></a>Media 파일 처리 순서</h4><ol>
-<li><p>HttpRequest.FILES를 통해 파일이 전달</p>
-</li>
-<li><p>뷰 로직이나 폼 로직을 통해, 유효성 검증을 수행하고,</p>
-</li>
-<li><p>FileField&#x2F;ImageField 필드에 “경로(문자열)”을 저장하고,</p>
-</li>
-<li><p>settings.MEDIA_ROOT 경로에 파일을 저장합니다.</p>
-</li>
-</ol>
+<h3 id="PaaS-Platform-as-a-Service"><a href="#PaaS-Platform-as-a-Service" class="headerlink" title="PaaS (Platform as a Service)"></a>PaaS (Platform as a Service)</h3><blockquote>
+<p>Platform을 빌려서 사용. Application을 개발하고 동작할 수 있는 환경</p>
+</blockquote>
+<ul>
+<li>Cloud Service 업체에서 제공하는 Infra</li>
+</ul>
 
                 
             </div>
@@ -330,7 +331,7 @@ FileField &amp;#">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2023/12/28/Django/mediafiles%20copy/">http://example.com/2023/12/28/Django/mediafiles%20copy/</a>
+                    <a href="http://example.com/2024/02/26/AWS/ewe/">http://example.com/2024/02/26/AWS/ewe/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -437,7 +438,7 @@ FileField &amp;#">
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Thu Dec 28 2023 00:00:00 GMT+0900',
+    id: 'Mon Feb 26 2024 00:00:00 GMT+0900',
     owner: '',
     repo: '',
     oauth: {
@@ -468,56 +469,17 @@ gitment.render('gitment-content');
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
-            <div class="card">
-                <a href="/2023/12/28/Django/html-form/">
-                    <div class="card-image">
-                        
-                        <img src="/images/logos/django-logo.png" class="responsive-img" alt="[Django] HTML Form">
-                        
-                        <span class="card-title diy-neon-red">[Django] HTML Form</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-12-28
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Django/" class="post-category">
-                                    Django
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
             </div>
             <div class="card">
-                <a href="/2023/12/28/Django/model-fields/">
+                <a href="/2024/02/26/AWS/ewe/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/django-logo.png" class="responsive-img" alt="[Django] Django 모델 필드">
+                        <img src="/images/logos/aws-logo.png" class="responsive-img" alt="[AWS] Serivce 개요">
                         
-                        <span class="card-title diy-neon-red">[Django] Django 모델 필드</span>
+                        <span class="card-title diy-neon-yellow">[AWS] Serivce 개요</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -528,14 +490,55 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-28
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-26
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Django/" class="post-category">
-                                    Django
+                            <a href="/categories/AWS/" class="post-category">
+                                    AWS
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/02/21/Toy/side-project/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/life-logo.jpg" class="responsive-img" alt="[Toy] Dimension Modeling + Hadoop + Hive + Kudu + Trino + DBT">
+                        
+                        <span class="card-title diy-neon-red">[Toy] Dimension Modeling + Hadoop + Hive + Kudu + Trino + DBT</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-21
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Toy/" class="post-category">
+                                    Toy
                                 </a>
                             
                             

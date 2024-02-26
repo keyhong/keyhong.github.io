@@ -269,7 +269,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="Next-Step"><a href="#Next-Step" class="headerlink" title="Next Step"></a>Next Step</h2><p>다시 취준생이 되고 항상 탈락이라는 경험은 아픈 것 같습니다. 하지만 엔지니어로써 더 나아갈 내일을 봐야하고, 더 좋은 날이 올 것이라 믿기에 마지막으로 글을 정리하고 툴툴 털어내려고 합니다. 제가 면접에서 보여드리지는 못했지만 하둡 구축에 어려움을 겪으시는 분들이 활용할 수 있도록 만든 play ground와 생각했던 과정들을 정리하려고 합니다.</p>
-<p>play ground는 Hadoop + Hive + Kudu + Trion가 연결된 docker-compose.yaml 입니다. Hadoop을 올릴 떄 처음 메타스토어를 초기화하는 작업을 하는 과정 모두 Dockerfile에 만들어 넣었습니다. 사용하신다면, 컨테이너가 올라간 이후 DBeaver 같은 툴로 Trino(localhost:8080)에 연결해서 바로 kudu와 hive를 사용할 수 있습니다 😊</p>
+<p>play ground는 Hadoop + Hive + Kudu + Trino가 연결된 docker-compose.yaml 입니다. Hadoop을 올릴 떄 처음 메타스토어를 초기화하는 작업을 하는 과정 모두 Dockerfile에 만들어 넣었습니다. 사용하신다면, 컨테이너가 올라간 이후 DBeaver 같은 툴로 Trino(localhost:8080)에 연결해서 바로 kudu와 hive를 사용할 수 있습니다 😊</p>
 <h2 id="차원-모델링"><a href="#차원-모델링" class="headerlink" title="차원 모델링"></a>차원 모델링</h2><p>이번에 ERD를 직접 그려 보았습니다. 도구는 <a target="_blank" rel="noopener" href="https://app.diagrams.net/">draw.io</a> 입니다. 바탕색과 테이블 색을 설정할 수 있고, 엔티티 간의 관계를 쉽게 그릴 수 있는 도구입니다. 저는 Fact와 Dimension으로 차원 모델링을 했고, 이력 테이블에 대해서는 SCD 4 (SCD2 + Historical Table)로 풀어보았습니다.</p>
 <p>** 테이블 내의 상세 컬럼은 가려두었습니다.</p>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110286&authkey=%21ABxAnt1AM6OGtkc&width=414&height=400" width="414" height="400" alt="Dimension Modeling ERD"/>
@@ -602,17 +602,16 @@ gitment.render('gitment-content');
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/02/21/Toy/side-project/">
+                <a href="/2024/02/26/AWS/ewe/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/life-logo.jpg" class="responsive-img" alt="[Toy] Dimension Modeling + Hadoop + Hive + Kudu + Trino + DBT">
+                        <img src="/images/logos/aws-logo.png" class="responsive-img" alt="[AWS] Serivce 개요">
                         
-                        <span class="card-title diy-neon-yellow">[Toy] Dimension Modeling + Hadoop + Hive + Kudu + Trino + DBT</span>
+                        <span class="card-title diy-neon-red">[AWS] Serivce 개요</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -622,22 +621,21 @@ gitment.render('gitment-content');
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-21
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-02-26
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Toy/" class="post-category">
-                                    Toy
+                            <a href="/categories/AWS/" class="post-category">
+                                    AWS
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
