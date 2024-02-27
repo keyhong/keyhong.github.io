@@ -6,9 +6,8 @@
     <meta charset="utf-8">
     <meta name="keywords" content="[Airflow] airflow.cfg 풀어보기, Data Engineering,Data Analysis,Python Backend">
     <meta name="description" content="airflow.cfg[core]
-# Airflow 파이프라인 파일이 저장되는 디렉터리의 경로를 설정합니다.
-# 주로 코드 리포지토리 내의 하위 디렉터리로 설정됩니다.
-# 아래 path는 반드시 절대 경로로 지정되어야">
+# Airflow 파이프라인 파일이 저장되는 디렉터리의 경로를 설정
+# 주로 코드 리포지토리 내의 하위 디렉터리로 설정. 아래 path는 반드시 절대 경로로 지정되어야 함 (예: /p">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -272,18 +271,16 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <pre class="line-numbers language-ini" data-language="ini"><div class="caption"><span>airflow.cfg</span></div><code class="language-ini"><span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">core</span><span class="token punctuation">]</span></span>
-<span class="token comment"># Airflow 파이프라인 파일이 저장되는 디렉터리의 경로를 설정합니다.</span>
-<span class="token comment"># 주로 코드 리포지토리 내의 하위 디렉터리로 설정됩니다.</span>
-<span class="token comment"># 아래 path는 반드시 절대 경로로 지정되어야 합니다. (예: /path/to/your/airflow/dags)</span>
-<span class="token comment"># 파이프라인 파일들은 이 디렉터리에 저장되며, Airflow는 여기에서 파이프라인을 찾아 실행합니다.</span>
+<span class="token comment"># Airflow 파이프라인 파일이 저장되는 디렉터리의 경로를 설정</span>
+<span class="token comment"># 주로 코드 리포지토리 내의 하위 디렉터리로 설정. 아래 path는 반드시 절대 경로로 지정되어야 함 (예: /path/to/your/airflow/dags)</span>
+<span class="token comment"># 파이프라인 파일들은 이 디렉터리에 저장되며, Airflow는 여기에서 파이프라인을 찾아 실행함</span>
 <span class="token key attr-name">dags_folder</span> <span class="token punctuation">=</span> <span class="token value attr-value">/usr/local/airflow/dags</span>
 
-<span class="token comment"># Airflow가 로그 파일을 저장해야 하는 폴더입니다.</span>
-<span class="token comment"># 아래 path는 반드시 절대 경로여야 합니다.</span>
+<span class="token comment"># Airflow가 로그 파일을 저장하는 폴더. 아래 path는 반드시 절대 경로여야 함</span>
 <span class="token key attr-name">base_log_folder</span> <span class="token punctuation">=</span> <span class="token value attr-value">/usr/local/airflow/logs</span>
 
-<span class="token comment"># Airflow은 AWS S3, Google Cloud Storage 또는 Elastic Search에 원격으로 로그를 저장할 수 있습니다.</span>
-<span class="token comment"># 사용자는 저장 위치에 액세스할 수 있는 Airflow 연결 ID를 제공해야 합니다.</span>
+<span class="token comment"># Airflow은 AWS S3, Google Cloud Storage 또는 Elastic Search에 원격으로 로그를 저장할 수 있음</span>
+<span class="token comment"># 사용자는 저장 위치에 액세스할 수 있는 Airflow 연결 ID를 제공해야 함</span>
 <span class="token comment"># 만약 remote_logging이 true로 설정된 경우, 추가적인 구성 요구 사항에 대한 정보는 UPDATING.md를 참고하세요.</span>
 <span class="token key attr-name">remote_logging</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
 <span class="token key attr-name">remote_log_conn_id</span> <span class="token punctuation">=</span>
@@ -293,19 +290,16 @@
 <span class="token comment"># 로깅 레벨</span>
 <span class="token key attr-name">logging_level</span> <span class="token punctuation">=</span> <span class="token value attr-value">INFO</span>
 
-<span class="token comment"># Flask-appbuilder UI의 로깅 레벨</span>
-<span class="token comment"># ** airflow의 Web UI는 python 웹 프레임워크인 flask로 구현되었다.</span>
+<span class="token comment"># Flask-appbuilder UI의 로깅 레벨 (** airflow의 Web UI는 python 웹 프레임워크인 flask로 구현)</span>
 <span class="token key attr-name">fab_logging_level</span> <span class="token punctuation">=</span> <span class="token value attr-value">WARN</span>
 
-<span class="token comment"># 로깅 클래스</span>
-<span class="token comment"># 로깅 구성을 지정할 클래스입니다.</span>
-<span class="token comment"># 이 클래스는 python class path에 있어야 합니다.</span>
+<span class="token comment"># 로깅 클래스 (로깅 구성을 지정할 클래스). 이 클래스는 python class path에 있어야 함</span>
 <span class="token comment"># logging_config_class = my.path.default_local_settings.LOGGING_CONFIG</span>
 <span class="token comment"># 사용자 정의된 로깅 설정 클래스를 만들어 logging_config_class에 설정할 수 있습니다.</span>
 <span class="token key attr-name">logging_config_class</span> <span class="token punctuation">=</span>
 
 <span class="token comment"># Console에서컬러 로그를 활성화/비활성화하는 플래그</span>
-<span class="token comment"># 제어 터미널이 TTY일 때 로그에 색을 입힙니다.</span>
+<span class="token comment"># 제어 터미널이 TTY일 때 로그에 색을 입힘</span>
 <span class="token key attr-name">colored_console_log</span> <span class="token punctuation">=</span> <span class="token value attr-value">True</span>
 
 <span class="token comment"># 컬러 로그가 활성화된 경우의 로그 형식</span>
@@ -391,14 +385,14 @@
 <span class="token comment"># pool의 최대 overflow 크기</span>
 <span class="token comment"># 풀 크기(pool_size)로 설정된 연결 수에 도달하면, 추가적인 연결이 이 한도까지 반환됩니다.</span>
 <span class="token comment"># 추가적인 연결이 pool로 반환될 때, 그들은 연결이 끊겨 폐기됩니다.</span>
-<span class="token comment"># poll이 허용하는 동시 연결의 총 수는 pool_size + max_overflow입니다.</span>
-<span class="token comment"># 그리고 pool이 허용하는 "대기 중" 연결의 총 수는 pool_size입니다.</span>
-<span class="token comment"># max_overflow를 -1로 설정하여 오버플로우 제한이 없음을 나타낼 수 있습니다.</span>
+<span class="token comment"># poll이 허용하는 동시 연결의 총 수는 pool_size + max_overflow</span>
+<span class="token comment"># 그리고 pool이 허용하는 "대기 중" 연결의 총 수는 pool_size</span>
+<span class="token comment"># max_overflow를 -1로 설정하여 오버플로우 제한이 없음을 나타냄</span>
 <span class="token comment"># 총 동시 연결 수에 대한 제한이 없습니다. 기본값은 10입니다.</span>
 <span class="token key attr-name">sql_alchemy_max_overflow</span> <span class="token punctuation">=</span> <span class="token value attr-value">10</span>
 
 <span class="token comment"># sql_alchemy_pool_recycle은 연결이 재사용되기 전에 보관되는 시간입니다.</span>
-<span class="token comment"># pool에서 유휴 상태(idle)로 있는 연결이 무효화되기 전에 보유될 수 있는 시간(초)을 나타냅니다.</span>
+<span class="token comment"># pool에서 유휴 상태(idle)로 있는 연결이 무효화되기 전에 보유될 수 있는 시간(초)</span>
 <span class="token comment"># 이 설정은 SQLite에는 적용되지 않습니다. </span>
 <span class="token comment"># DB 연결 수가 한 번에 초과되는 경우, 더 낮은 구성 값은 시스템이 더 빨리 복구되도록 할 수 있습니다.</span>
 <span class="token key attr-name">sql_alchemy_pool_recycle</span> <span class="token punctuation">=</span> <span class="token value attr-value">1800</span>
@@ -408,11 +402,11 @@
 <span class="token key attr-name">sql_alchemy_reconnect_timeout</span> <span class="token punctuation">=</span> <span class="token value attr-value">300</span>
 
 <span class="token comment"># 메타데이터 데이터베이스에 사용할 스키마(schema)</span>
-<span class="token comment"># SQLAlchemy는 다중 스키마 개념을 지원하는 데이터베이스를 지원합니다.</span>
+<span class="token comment"># SQLAlchemy는 다중 스키마 개념을 지원하는 데이터베이스를 지원</span>
 <span class="token key attr-name">sql_alchemy_schema</span> <span class="token punctuation">=</span>
 
-<span class="token comment"># executor에 대한 병렬성 설정의 양입니다.</span>
-<span class="token comment"># Airflow 설치에서 동시에 실행되는 task instance의 최대 수를 정의합니다.</span>
+<span class="token comment"># executor에 대한 병렬성 설정의 양</span>
+<span class="token comment"># Airflow 설치에서 동시에 실행되는 task instance의 최대 수를 정의</span>
 <span class="token key attr-name">parallelism</span> <span class="token punctuation">=</span> <span class="token value attr-value">32</span>
 
 <span class="token comment"># 스케줄러에 의해 동시에 실행되는 task instance의 수입니다.</span>
@@ -504,9 +498,8 @@
 <span class="token key attr-name">endpoint_url</span> <span class="token punctuation">=</span> <span class="token value attr-value">http://localhost:8080</span>
 
 <span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">debug</span><span class="token punctuation">]</span></span> 
-와 함께만 사용됩니다
-<span class="token comment"># DebugExecutor에서만 사용됩니다.</span>
-<span class="token comment"># 만약 True로 설정된다면, DAG는 첫 번째 실패한 작업과 함께 실패합니다. 디버깅 목적으로 유용합니다.</span>
+<span class="token comment"># DebugExecutor에서만 사용</span>
+<span class="token comment"># 만약 True로 설정된다면, DAG는 첫 번째 실패한 작업과 함께 실패합니다. 디버깅 목적으로 유용</span>
 <span class="token key attr-name">fail_fast</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
 
 <span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">api</span><span class="token punctuation">]</span></span>
@@ -514,7 +507,7 @@
 <span class="token key attr-name">auth_backend</span> <span class="token punctuation">=</span> <span class="token value attr-value">airflow.api.auth.backend.default</span>
 
 <span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">lineage</span><span class="token punctuation">]</span></span>
-<span class="token comment"># 어떤 lineage backend를 사용할 지</span>
+<span class="token comment"># 어떤 lineage backend를 사용할 지 설정</span>
 <span class="token key attr-name">backend</span> <span class="token punctuation">=</span>
 
 <span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">atlas</span><span class="token punctuation">]</span></span>
@@ -525,7 +518,7 @@
 <span class="token key attr-name">password</span> <span class="token punctuation">=</span>
 
 <span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">operators</span><span class="token punctuation">]</span></span>
-<span class="token comment"># 기본 owner가 명시적으로 제공되지 않거나 `default_args`를 통해 전달되지 않는 한, 각 새로운 오퍼레이터에 할당됩니다.</span>
+<span class="token comment"># 기본 owner가 명시적으로 제공되지 않거나 `default_args`를 통해 전달되지 않는 한, 각 새로운 오퍼레이터에 할당</span>
 <span class="token key attr-name">default_owner</span> <span class="token punctuation">=</span> <span class="token value attr-value">airflow</span>
 <span class="token key attr-name">default_cpus</span> <span class="token punctuation">=</span> <span class="token value attr-value">1</span>
 <span class="token key attr-name">default_ram</span> <span class="token punctuation">=</span> <span class="token value attr-value">512</span>
@@ -533,11 +526,11 @@
 <span class="token key attr-name">default_gpus</span> <span class="token punctuation">=</span> <span class="token value attr-value">0</span>
 
 <span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">hive</span><span class="token punctuation">]</span></span>
-<span class="token comment"># HiveOperator task를 위한 default mapreduce queue입니다.</span>
+<span class="token comment"># HiveOperator task를 위한 default mapreduce queue</span>
 <span class="token key attr-name">default_hive_mapred_queue</span> <span class="token punctuation">=</span>
 
 <span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">webserver</span><span class="token punctuation">]</span></span>
-<span class="token comment"># Airflow는 domain이나 CNAME을 추측할 수 없으므로, 웹 사이트의 기본 URL입니다.</span>
+<span class="token comment"># Airflow는 domain이나 CNAME(Canonical Name, DNS (Domain Name System) 레코드 유형 중 하나)을 추측할 수 없으므로, 웹 사이트의 기본 URL</span>
 <span class="token comment"># 이것은 Airflow가 보내는 automated email에서 링크를 올바른 웹 서버로 연결하는 데 사용됨</span>
 <span class="token key attr-name">base_url</span> <span class="token punctuation">=</span> <span class="token value attr-value">http://localhost:8080</span>
 
@@ -571,81 +564,77 @@
 <span class="token comment"># Gunicorn 웹 서버를 실행할 worker의 수</span>
 <span class="token key attr-name">workers</span> <span class="token punctuation">=</span> <span class="token value attr-value">4</span>
 
-<span class="token comment"># The worker class gunicorn should use. Choices include</span>
-<span class="token comment"># sync (default), eventlet, gevent</span>
+<span class="token comment"># gunicorn이 사용할 작업자 클래스</span>
+<span class="token comment"># 선택 사항: sync (default), eventlet, gevent</span>
 <span class="token key attr-name">worker_class</span> <span class="token punctuation">=</span> <span class="token value attr-value">sync</span>
 
-<span class="token comment"># Log files for the gunicorn webserver. '-' means log to stderr.</span>
+<span class="token comment"># gunicorn 웹 서버의 로그 파일입니다. '-'는 표준에러(stderr)를 의미합니다. </span>
 <span class="token key attr-name">access_logfile</span> <span class="token punctuation">=</span> <span class="token value attr-value">-</span>
 <span class="token key attr-name">error_logfile</span> <span class="token punctuation">=</span> <span class="token value attr-value">-</span>
 
-<span class="token comment"># Expose the configuration file in the web server</span>
-<span class="token comment"># This is only applicable for the flask-admin based web UI (non FAB-based).</span>
-<span class="token comment"># In the FAB-based web UI with RBAC feature,</span>
-<span class="token comment"># access to configuration is controlled by role permissions.</span>
+<span class="token comment"># 웹 서버에서 config 파일을 노출합니다.</span>
+<span class="token comment"># 이는 Flask-Admin 기반의 웹 UI (FAB 기반이 아닌 경우)에만 해당됩니다.</span>
+<span class="token comment"># FAB 기반의 웹 UI에서 RBAC 기능을 사용하는 경우, config에 대한 액세스는 role permission에 의해 제어됩니다.</span>
 <span class="token key attr-name">expose_config</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
 
-<span class="token comment"># Expose hostname in the web server</span>
+<span class="token comment"># 웹 서버에서 호스트 이름을 노출합니다.</span>
 <span class="token key attr-name">expose_hostname</span> <span class="token punctuation">=</span> <span class="token value attr-value">True</span>
 
-<span class="token comment"># Expose stacktrace in the web server</span>
+<span class="token comment"># 웹 서버에서 stacktrace를 노출합니다.</span>
 <span class="token key attr-name">expose_stacktrace</span> <span class="token punctuation">=</span> <span class="token value attr-value">True</span>
 
-<span class="token comment"># Set to true to turn on authentication:</span>
-<span class="token comment"># https://airflow.apache.org/security.html#web-authentication</span>
+<span class="token comment"># 인증(authentication)을 켜려면 true로 설정하세요: https://airflow.apache.org/security.html#web-authentication</span>
 <span class="token key attr-name">authenticate</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
 
-<span class="token comment"># Filter the list of dags by owner name (requires authentication to be enabled)</span>
+<span class="token comment"># 소유자 이름에 따라 DAG 목록을 필터링 (authentication이 활성화되어 있어야 함)</span>
 <span class="token key attr-name">filter_by_owner</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
 
-<span class="token comment"># Filtering mode. Choices include user (default) and ldapgroup.</span>
-<span class="token comment"># Ldap group filtering requires using the ldap backend</span>
-<span class="token comment">#</span>
-<span class="token comment"># Note that the ldap server needs the "memberOf" overlay to be set up</span>
-<span class="token comment"># in order to user the ldapgroup mode.</span>
+<span class="token comment"># 필터링 모드. 선택사항: user (default), ldapgroup</span>
+<span class="token comment"># LDAP 그룹 필터링을 사용하려면 LDAP 백엔드를 사용해야 합니다.</span>
+<span class="token comment"># "ldapgroup" 모드를 사용하려면 LDAP 서버에 "memberOf" 오버레이가 설정되어 있어야 합니다.</span>
 <span class="token key attr-name">owner_mode</span> <span class="token punctuation">=</span> <span class="token value attr-value">user</span>
 
-<span class="token comment"># Default DAG view.  Valid values are:</span>
-<span class="token comment"># tree, graph, duration, gantt, landing_times</span>
+<span class="token comment"># Default DAG view.</span>
+<span class="token comment"># 유효 값: tree, graph, duration, gantt, landing_times</span>
 <span class="token key attr-name">dag_default_view</span> <span class="token punctuation">=</span> <span class="token value attr-value">tree</span>
 
-<span class="token comment"># Default DAG orientation. Valid values are:</span>
-<span class="token comment"># LR (Left->Right), TB (Top->Bottom), RL (Right->Left), BT (Bottom->Top)</span>
+<span class="token comment"># Default DAG orientation.</span>
+<span class="token comment"># 유효 값: LR (Left->Right), TB (Top->Bottom), RL (Right->Left), BT (Bottom->Top)</span>
 <span class="token key attr-name">dag_orientation</span> <span class="token punctuation">=</span> <span class="token value attr-value">LR</span>
 
-<span class="token comment"># Puts the webserver in demonstration mode; blurs the names of Operators for privacy.</span>
+<span class="token comment"># 웹 서버를 데모 모드로 설정합니다; 개인 정보 보호를 위해 Operator의 이름을 흐리게 표시합니다.</span>
 <span class="token key attr-name">demo_mode</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
 
-<span class="token comment"># The amount of time (in secs) webserver will wait for initial handshake</span>
-<span class="token comment"># while fetching logs from other worker machine</span>
+<span class="token comment"># 웹 서버가 다른 worker 머신에서 로그를 fetch 할 때 initial handshake를 기다리는 시간(초)</span>
 <span class="token key attr-name">log_fetch_timeout_sec</span> <span class="token punctuation">=</span> <span class="token value attr-value">5</span>
 
-<span class="token comment"># Time interval (in secs) to wait before next log fetching.</span>
+<span class="token comment"># 다음 log fetching을 기다리는 시간 간격(초)</span>
 <span class="token key attr-name">log_fetch_delay_sec</span> <span class="token punctuation">=</span> <span class="token value attr-value">2</span>
 
+<span class="token comment"># TODO: 차후 다시 체킹할 config 항목</span>
 <span class="token comment"># Distance away from page bottom to enable auto tailing.</span>
 <span class="token key attr-name">log_auto_tailing_offset</span> <span class="token punctuation">=</span> <span class="token value attr-value">30</span>
 
+<span class="token comment"># TODO: 차후 다시 체킹할 config 항목</span>
 <span class="token comment"># Animation speed for auto tailing log display.</span>
 <span class="token key attr-name">log_animation_speed</span> <span class="token punctuation">=</span> <span class="token value attr-value">1000</span>
 
-<span class="token comment"># By default, the webserver shows paused DAGs. Flip this to hide paused</span>
-<span class="token comment"># DAGs by default</span>
+<span class="token comment"># 기본적으로, 웹 서버는 일시 중지된 DAG를 표시. 이를 기본값으로 숨기도록 변경</span>
 <span class="token key attr-name">hide_paused_dags_by_default</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
 
-<span class="token comment"># Consistent page size across all listing views in the UI</span>
+<span class="token comment"># UI의 모든 listing view에서 일관된 page size를 유지합니다.</span>
 <span class="token key attr-name">page_size</span> <span class="token punctuation">=</span> <span class="token value attr-value">100</span>
 
-<span class="token comment"># Use FAB-based webserver with RBAC feature</span>
+<span class="token comment"># FAB 기반 웹 서버와 RBAC 기능을 사용</span>
 <span class="token key attr-name">rbac</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
 
-<span class="token comment"># Define the color of navigation bar</span>
+<span class="token comment"># navigation bar의 색상을 정의</span>
 <span class="token key attr-name">navbar_color</span> <span class="token punctuation">=</span> <span class="token value attr-value">#007A87</span>
 
-<span class="token comment"># Default dagrun to show in UI</span>
+<span class="token comment"># default로 UI에 표시할 dagrun의 수를 정의</span>
 <span class="token key attr-name">default_dag_run_display_number</span> <span class="token punctuation">=</span> <span class="token value attr-value">25</span>
 
-<span class="token comment"># Enable werkzeug `ProxyFix` middleware</span>
+<span class="token comment"># werkzeug의 ProxyFix 미들웨어를 활성화</span>
 <span class="token key attr-name">enable_proxy_fix</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
 
 <span class="token comment"># Number of values to trust for ``X-Forwarded-For``.</span>
@@ -1288,7 +1277,7 @@
 <span class="token comment"># The Key-value pairs to be given to worker pods.</span>
 <span class="token comment"># The worker pods will be given these static labels, as well as some additional dynamic labels</span>
 <span class="token comment"># to identify the task.</span>
-<span class="token comment"># Should be supplied in the format: ``key = value``</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment"># Should be supplied in the format: ``key = value``</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
