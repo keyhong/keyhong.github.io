@@ -7,8 +7,8 @@
     <meta name="keywords" content="[Airflow] Operators, Data Engineering,Data Analysis,Python Backend">
     <meta name="description" content="BashOperatorfrom airflow.operators.bash_operator import BashOperator
 
-# Saving forex_rates.json in HDFS
-bash_task = Bash">
+# case 1: 일반적인 방법으로 bash command 실행
+bash_task1 = B">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -273,17 +273,19 @@ bash_task = Bash">
             <div id="articleContent">
                 <h4 id="BashOperator"><a href="#BashOperator" class="headerlink" title="BashOperator"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/operators/bash/index.html#module-airflow.operators.bash">BashOperator</a></h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>bash_operator <span class="token keyword">import</span> BashOperator
 
-<span class="token comment"># Saving forex_rates.json in HDFS</span>
-bash_task <span class="token operator">=</span> BashOperator<span class="token punctuation">(</span>
-    task_id<span class="token operator">=</span><span class="token string">"bash_task"</span><span class="token punctuation">,</span>
-    bash_command<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> <span class="token comment"># 실행할 command 또는 set of commands 또는 bash script(‘.sh’여야 함)</span>
+<span class="token comment"># case 1: 일반적인 방법으로 bash command 실행</span>
+bash_task1 <span class="token operator">=</span> BashOperator<span class="token punctuation">(</span>
+    task_id<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> <span class="token string">"bash_task1"</span><span class="token punctuation">,</span>
+    bash_command<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span>
+    <span class="token comment"># 실행할 command 또는 set of commands 또는 bash script(‘.sh’여야 함)</span>
     <span class="token triple-quoted-string string">"""
         hdfs dfs -mkdir -p /forex &amp;&amp; \
         hdfs dfs -put -f $AIRFLOW_HOME/dags/files/forex_rates.json /forex
     """</span>
 <span class="token punctuation">)</span>
 
-<span class="token comment"># template으로 bash command 실행하기</span>
+<span class="token triple-quoted-string string">""""""</span>
+<span class="token comment"># case 2: template으로 bash command 실행</span>
 templated_command <span class="token operator">=</span> <span class="token triple-quoted-string string">"""
     &#123;% for i in range(5) %&#125;
         echo "&#123;&#123; ds &#125;&#125;"
@@ -293,9 +295,9 @@ templated_command <span class="token operator">=</span> <span class="token tripl
 """</span>
 
 bash_task2 <span class="token operator">=</span> BashOperator<span class="token punctuation">(</span>
-    task_id<span class="token operator">=</span><span class="token string">"templated"</span><span class="token punctuation">,</span>
-    bash_command<span class="token operator">=</span>templated_command
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    task_id<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span><span class="token string">"bash_task2"</span><span class="token punctuation">,</span>
+    bash_command<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> templated_command
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="PythonOperator"><a href="#PythonOperator" class="headerlink" title="PythonOperator"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/operators/python/index.html#airflow.operators.python.PythonOperator">PythonOperator</a></h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>python_operator <span class="token keyword">import</span> PythonOperator
 
@@ -306,7 +308,7 @@ bash_task2 <span class="token operator">=</span> BashOperator<span class="token 
     i <span class="token operator">=</span> <span class="token number">5</span>
 
     sleeping_task <span class="token operator">=</span> PythonOperator<span class="token punctuation">(</span>
-        task_id<span class="token operator">=</span><span class="token string-interpolation"><span class="token string">f"sleep_for_</span><span class="token interpolation"><span class="token punctuation">&#123;</span>i<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">,</span>
+        task_id<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> <span class="token string-interpolation"><span class="token string">f"sleep_for_</span><span class="token interpolation"><span class="token punctuation">&#123;</span>i<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">,</span>
         python_callable<span class="token punctuation">:</span> Callable <span class="token operator">=</span> my_sleeping_function<span class="token punctuation">,</span> <span class="token comment"># 호출 가능한 객체에 대한 참조</span>
         <span class="token comment"># op_args: Collection[Any] | None  # 함수 호출 시 펼쳐질 positional argument의 list</span>
         op_kwargs<span class="token punctuation">:</span> Mapping<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">,</span> Any<span class="token punctuation">]</span> <span class="token operator">|</span> <span class="token boolean">None</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">"random_base"</span><span class="token punctuation">:</span> i <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">&#125;</span> <span class="token comment"># 함수 호출시 펼쳐질 keyword argument의 dictionary</span>
@@ -316,8 +318,8 @@ bash_task2 <span class="token operator">=</span> BashOperator<span class="token 
 
 <span class="token comment"># 다음 작업은 파이썬 함수 check_api의 결과 값에 따라 달라집니다.</span>
 check_api <span class="token operator">=</span> BranchPythonOperator<span class="token punctuation">(</span>
-    task_id<span class="token operator">=</span><span class="token string">'check_api'</span><span class="token punctuation">,</span>
-    python_callable<span class="token operator">=</span>check_api
+    task_id<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span><span class="token string">'check_api'</span><span class="token punctuation">,</span>
+    python_callable<span class="token punctuation">:</span> Callable <span class="token operator">=</span> check_api
 <span class="token punctuation">)</span>
 
 check_api <span class="token operator">>></span> none <span class="token operator">>></span> save
@@ -325,7 +327,7 @@ check_api <span class="token operator">>></span> none <span class="token operato
 <span class="token comment"># API에 따라 동적으로 task를 생성합니다.</span>
 <span class="token keyword">for</span> api <span class="token keyword">in</span> IP_GEOLOCATION_APIS<span class="token punctuation">:</span>
     process <span class="token operator">=</span> DummyOperator<span class="token punctuation">(</span>
-        task_id<span class="token operator">=</span>api
+        task_id<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> api
     <span class="token punctuation">)</span>
 
     check_api <span class="token operator">>></span> process <span class="token operator">>></span> save<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
