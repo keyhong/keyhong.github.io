@@ -296,11 +296,12 @@ The followi">
 
 <h2 id="Deprecated-variables"><a href="#Deprecated-variables" class="headerlink" title="Deprecated variables"></a>Deprecated variables</h2><p>The following variables are deprecated. They are kept for backward compatibility, but you should convert existing code to use other variables instead.</p>
 <p>다음 변수들은 사용이 중단되었습니다. 역 호환성을 유지하기 위해 남겨졌지만, 기존 코드를 다른 변수들을 사용하도록 변환하는 것이 좋습니다.</p>
-<p>| | |<br>| | |</p>
+<p>| Deprecated Variable | Description |<br>| <code>&#123;&#123; execution_date &#125;&#125;</code> | the execution date (logical date), same as <code>logical_date</code> |<br>| <code>&#123;&#123; next_execution_date &#125;&#125;</code> | the logical date of the next scheduled run (if applicable); you may be able to use <code>data_interval_end</code> instead |<br>| <code>&#123;&#123; next_ds &#125;&#125;</code> | the next execution date as <code>YYYY-MM-DD</code> if exists, else <code>None</code> |<br>| <code>&#123;&#123; next_ds_nodash &#125;&#125;</code> | the next execution date as <code>YYYYMMDD</code> if exists, else None |<br>| <code>&#123;&#123; prev_execution_date &#125;&#125;</code> | the logical date of the previous scheduled run (if applicable) |<br>| <code>&#123;&#123; prev_ds &#125;&#125;</code> | the previous execution date as <code>YYYY-MM-DD</code> if exists, else <code>None</code> |<br>| <code>&#123;&#123; prev_ds_nodash &#125;&#125;</code> | the previous execution date as <code>YYYYMMDD</code> if exists, else <code>None</code> |<br>| <code>&#123;&#123; yesterday_ds &#125;&#125;</code> | the day before the execution date as <code>YYYY-MM-DD</code> |<br>| <code>&#123;&#123; yesterday_ds_nodash &#125;&#125;</code> | the day before the execution date as <code>YYYYMMDD</code> |<br>| <code>&#123;&#123; tomorrow_ds &#125;&#125;</code> | the day after the execution date as <code>YYYY-MM-DD</code> |<br>| <code>&#123;&#123; tomorrow_ds_nodash &#125;&#125;</code> | the day after the execution date as <code>YYYYMMDD</code> |<br>| <code>&#123;&#123; prev_execution_date_success &#125;&#125;</code> | execution date from prior successful DAG run; you may be able to use <code>prev_data_interval_start_success``instead if the timetable/schedule you use for the DAG defines ``data_interval_start</code> compatible with the legacy <code>execution_date</code>. |</p>
 <p>Note that you can access the object’s attributes and methods with simple dot notation. Here are some examples of what is possible: <code>&#123;&#123; task.owner &#125;&#125;</code>, <code>&#123;&#123; task.task_id &#125;&#125;</code>, <code>&#123;&#123; ti.hostname &#125;&#125;</code>, … Refer to the models documentation for more information on the objects’ attributes and methods.</p>
 <p>객체의 속성 및 메서드에는 간단한 점 표기법(dot notation)을 사용하여 액세스할 수 있습니다. 다음은 가능한 몇 가지 예시입니다: <code>&#123;&#123; task.owner &#125;&#125;</code>, <code>&#123;&#123; task.task_id &#125;&#125;</code>, <code>&#123;&#123; ti.hostname &#125;&#125;</code> 등등. 더 많은 정보를 원하시면 모델 문서를 참조하십시오.</p>
 <h2 id="Airflow-Variables-in-Templates"><a href="#Airflow-Variables-in-Templates" class="headerlink" title="Airflow Variables in Templates"></a>Airflow Variables in Templates</h2><p>The <code>var</code> template variable allows you to access Airflow Variables. You can access them as either plain-text or JSON. If you use JSON, you are also able to walk nested structures, such as dictionaries like: <code>&#123;&#123; var.json.my_dict_var.key1 &#125;&#125;</code>.</p>
 <p>It is also possible to fetch a variable by string if needed (for example your variable key contains dots) with <code>&#123;&#123; var.value.get('my.var', 'fallback') &#125;&#125;</code> or <code>&#123;&#123; var.json.get('my.dict.var', &#123;'key1': 'val1'&#125;) &#125;&#125;</code>. Defaults can be supplied in case the variable does not exist.</p>
+<p><code>var</code> 템플릿 변수를 사용하면 Airflow 변수에 액세스할 수 있습니다. 이를 일반 텍스트 또는 JSON으로 액세스할 수 있습니다. JSON을 사용하는 경우 딕셔너리와 같은 중첩된 구조를 탐색할 수도 있습니다. 예를 들어, <code>&#123;&#123; var.json.my_dict_var.key1 &#125;&#125;</code>와 같이 사용할 수 있습니다.</p>
 <p>필요한 경우 변수 키에 점이 포함되어 있는 경우 문자열로 변수를 가져올 수도 있습니다. 예를 들어, <code>&#123;&#123; var.value.get('my.var', 'fallback') &#125;&#125;</code> 또는 <code>&#123;&#123; var.json.get('my.dict.var', &#123;'key1': 'val1'&#125;) &#125;&#125;</code>와 같이 사용할 수 있습니다. 변수가 존재하지 않는 경우 기본값을 제공할 수 있습니다.</p>
 <h2 id="Airflow-Connections-in-Templates"><a href="#Airflow-Connections-in-Templates" class="headerlink" title="Airflow Connections in Templates"></a>Airflow Connections in Templates</h2><p>Similarly, Airflow Connections data can be accessed via the <code>conn</code> template variable. For example, you could use expressions in your templates like <code>&#123;&#123; conn.my_conn_id.login &#125;&#125;</code>, <code>&#123;&#123; conn.my_conn_id.password &#125;&#125;</code>, etc.</p>
 <p>Just like with <code>var</code> it’s possible to fetch a connection by string (e.g. <code>&#123;&#123; conn.get('my_conn_id_'+index).host &#125;&#125;</code> ) or provide defaults (e.g <code>&#123;&#123; conn.get('my_conn_id', &#123;"host": "host1", "login": "user1"&#125;).host &#125;&#125;</code>).</p>
@@ -310,10 +311,45 @@ The followi">
 <p>또한, 연결의 extras 필드는 <code>extra_dejson</code> 필드를 사용하여 Python 사전으로 가져올 수 있습니다. 예를 들어, <code>conn.my_aws_conn_id.extra_dejson.region_name</code>은 <code>extras</code>에서 <code>region_name</code>을 가져올 것입니다. 이렇게 함으로써 <code>extras</code>에 대한 기본값을 제공할 수 있습니다 (예: <code>&#123;&#123; conn.my_aws_conn_id.extra_dejson.get('region_name', 'Europe (Frankfurt)') &#125;&#125;</code>).</p>
 <h2 id="Filters"><a href="#Filters" class="headerlink" title="Filters"></a>Filters</h2><p>Airflow defines some Jinja filters that can be used to format values.</p>
 <p>For example, using <code>&#123;&#123; logical_date | ds &#125;&#125;</code> will output the logical_date in the <code>YYYY-MM-DD</code> format.</p>
+<p>Airflow에서는 값의 형식을 지정하는 데 사용할 수 있는 Jinja 필터를 정의합니다.</p>
+<p>예를 들어, <code>&#123;&#123; logical_date | ds &#125;&#125;</code>를 사용하면 logical_date를 <code>YYYY-MM-DD</code> 형식으로 출력합니다.</p>
 <p>| Filter | Operates on | Description |<br>| <code>ds</code> | datetime | Format the datetime as <code>YYYY-MM-DD</code> |<br>| <code>ds_nodash</code> | datetime | Format the datetime as <code>YYYYMMDD</code> |<br>| <code>ts</code> | datetime | Same as <code>.isoformat()</code>, Example: <code>2018-01-01T00:00:00+00:00</code> |<br>| <code>ts_nodash</code> | datetime | Same as <code>ts</code> filter without <code>-</code>, <code>:</code> or TimeZone info. Example: <code>20180101T000000</code> |<br>| <code>ts_nodash_with_tz</code> | datetime | As <code>ts</code> filter without - or :. Example <code>20180101T000000+0000</code> |</p>
 <h2 id="Macros"><a href="#Macros" class="headerlink" title="Macros"></a>Macros</h2><p>Macros are a way to expose objects to your templates and live under the <code>macros</code> namespace in your templates.</p>
 <p>A few commonly used libraries and methods are made available.</p>
-<p>| Variable | Description |<br>| <code>macros.datetime</code> | The standard lib’s <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/datetime.html#datetime.datetime">datetime.datetime</a><br>| <code>macros.timedelta</code> | The standard lib’s <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/datetime.html#datetime.timedelta">datetime.timedelta</a><br>| <code>macros.dateutil</code> | A reference to the <code>dateutil</code> package |<br>| <code>macros.time</code> | The standard lib’s <a href="">time</a> |<br>| <code>macros.uuid</code> | The standard lib’s <a href="">uuid</a> |<br>| <code>macros.random</code> | The standard lib’s <strong>random.random</strong> | </p>
+<p>매크로는 템플릿에 객체를 노출하는 방법이며, 템플릿에서 <code>macros</code> 네임스페이스 아래에 있습니다.</p>
+<p>일반적으로 사용되는 몇 가지 라이브러리와 메서드가 제공됩니다.</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>macros.datetime</code></td>
+<td>The standard lib’s <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/datetime.html#datetime.datetime">datetime.datetime</a></td>
+</tr>
+<tr>
+<td><code>macros.timedelta</code></td>
+<td>The standard lib’s <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/datetime.html#datetime.timedelta">datetime.timedelta</a></td>
+</tr>
+<tr>
+<td><code>macros.dateutil</code></td>
+<td>A reference to the <code>dateutil</code> package</td>
+</tr>
+<tr>
+<td><code>macros.time</code></td>
+<td>The standard lib’s <a href="">time</a></td>
+</tr>
+<tr>
+<td><code>macros.uuid</code></td>
+<td>The standard lib’s <a href="">uuid</a></td>
+</tr>
+<tr>
+<td><code>macros.random</code></td>
+<td>The standard lib’s <strong>random.random</strong></td>
+</tr>
+</tbody></table>
 <p>Some airflow specific macros are also defined:</p>
 <blockquote>
 <p>airflow.macros.datetime_diff_for_humans(dt, since&#x3D;None)<a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_modules/airflow/macros.html#datetime_diff_for_humans">source</a></p>
