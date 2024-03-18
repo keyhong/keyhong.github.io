@@ -5,8 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="[Airflow] Templates reference, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Templates referenceVariables, macros and filters can be used in templates (see the Jinja Templating section)
-The followi">
+    <meta name="description" content="Templates reference
+
+Variables, macros and filters can be used in templates (see the Jinja Templating section)
+The follo">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -269,21 +271,201 @@ The followi">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Templates-reference"><a href="#Templates-reference" class="headerlink" title="Templates reference"></a>Templates reference</h1><p>Variables, macros and filters can be used in templates (see the <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/operators.html#concepts-jinja-templating">Jinja Templating</a> section)</p>
+                <h1 id="Templates-reference"><a href="#Templates-reference" class="headerlink" title="Templates reference"></a>Templates reference</h1><hr>
+
+<p>Variables, macros and filters can be used in templates (see the <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/operators.html#concepts-jinja-templating">Jinja Templating</a> section)</p>
 <p>The following come for free out of the box with Airflow. Additional custom macros can be added globally through <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/authoring-and-scheduling/plugins.html">Plugins</a>, or at a DAG level through the <code>DAG.user_defined_macros</code> argument.</p>
+<br>
+
 <p>Airflow에서는 템플릿에서 변수, 매크로 및 필터를 사용할 수 있습니다. 이는 Jinja Templating 섹션에서 확인할 수 있습니다.</p>
 <p>다음은 Airflow에서 기본적으로 제공됩니다. 추가적인 사용자 정의 매크로는 플러그인을 통해 전역적으로 추가하거나 <code>DAG.user_defined_macros</code> 인자를 통해 DAG 수준에서 추가할 수 있습니다.</p>
-<h2 id="Variables"><a href="#Variables" class="headerlink" title="Variables"></a>Variables</h2><p>The Airflow engine passes a few variables by default that are accessible in all templates</p>
+<hr>
+
+<h2 id="Variables"><a href="#Variables" class="headerlink" title="Variables"></a>Variables</h2><hr>
+
+<p>The Airflow engine passes a few variables by default that are accessible in all templates</p>
+<br>
+
 <p>Airflow 엔진은 기본적으로 모든 템플릿에서 접근 가능한 몇 가지 기본 변수를 전달합니다.</p>
-<p>| Variable | Type | Description |<br>| <code>&#123;&#123; data_interval_start &#125;&#125;</code> | <a target="_blank" rel="noopener" href="https://pendulum.eustace.io/docs/#introduction">pendulum.DateTime</a> | Start of the data interval. Added in version 2.2.<br>| <code>&#123;&#123; data_interval_end &#125;&#125;</code> | <a target="_blank" rel="noopener" href="https://pendulum.eustace.io/docs/#introduction">pendulum.DateTime</a> | End of the data interval. Added in version 2.2.<br>| <code>&#123;&#123; ds &#125;&#125;</code> | str | The DAG run’s logical date as <code>YYYY-MM-DD</code>. |<br>| | | Same as <code>&#123;&#123; dag_run.logical_date | ds &#125;&#125;</code>. |<br>| <code>&#123;&#123; ds_nodash &#125;&#125;</code> | str | Same as <code>&#123;&#123; dag_run.logical_date | ds_nodash &#125;&#125;</code>. |<br>| <code>&#123;&#123; ts &#125;&#125;</code> | str | Same as <code>&#123;&#123; dag_run.logical_date | ts &#125;&#125;</code>. |<br>| | | Example: <code>2018-01-01T00:00:00+00:00.</code> |<br>| <code>&#123;&#123; ts_nodash_with_tz &#125;&#125;</code>   | str | Same as <code>&#123;&#123; dag_run.logical_date | ts_nodash_with_tz &#125;&#125;</code>. |<br>| | | Example: <code>20180101T000000+0000</code>. |<br>| <code>&#123;&#123; ts_nodash &#125;&#125;</code> | str | Same as <code>&#123;&#123; dag_run.logical_date | ts_nodash &#125;&#125;</code>. |<br>| | | Example: <code>20180101T000000</code>. |<br>| <code>&#123;&#123; prev_data_interval_start_success &#125;&#125;</code> | <a target="_blank" rel="noopener" href="https://pendulum.eustace.io/docs/#introduction">pendulum.DateTime</a> | <code>None</code> | Start of the data interval of the prior successful <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/models/dagrun/index.html#airflow.models.dagrun.DagRun">DagRun</a>. |<br>| | | Added in version 2.2. |<br>| <code>&#123;&#123; prev_data_interval_end_success &#125;&#125;</code> | <a target="_blank" rel="noopener" href="https://pendulum.eustace.io/docs/#introduction">pendulum.DateTime</a> | <code>None</code> | End of the data interval of the prior successful <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/models/dagrun/index.html#airflow.models.dagrun.DagRun">DagRun</a>. |<br>| | | Added in version 2.2. |<br>| <code>&#123;&#123; prev_start_date_success &#125;&#125;</code> | <a target="_blank" rel="noopener" href="https://pendulum.eustace.io/docs/#introduction">pendulum.DateTime</a> | <code>None</code> | Start date from prior successful <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/models/dagrun/index.html#airflow.models.dagrun.DagRun">DagRun</a> (if available). |<br>| <code>&#123;&#123; dag &#125;&#125;</code> | DAG | The currently running <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/models/dag/index.html#airflow.models.dag.DAG">DAG</a>. You can read more about DAGs in <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/dags.html">DAGs</a>. |<br>| <code>&#123;&#123; task &#125;&#125;</code> | BaseOperator | The currently running <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/models/baseoperator/index.html#airflow.models.baseoperator.BaseOperator">BaseOperator</a>. You can read more about Tasks in <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/operators.html">Operators</a> |<br>| <code>&#123;&#123; macros &#125;&#125;</code> | | A reference to the macros package. See <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/templates-ref.html#macros">Macros</a> below. |<br>| <code>&#123;&#123; task_instance &#125;&#125;</code> | TaskInstance | The currently running <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/models/taskinstance/index.html#airflow.models.taskinstance.TaskInstance">TaskInstance</a>. |<br>| <code>&#123;&#123; ti &#125;&#125;</code> | TaskInstance | Same as <code>&#123;&#123; task_instance &#125;&#125;</code>. |<br>| <code>&#123;&#123; params &#125;&#125;</code> | dict[str, Any] | The user-defined params. This can be overridden by the mapping passed to <code>trigger_dag -c</code> if <code>dag_run_conf_overrides_params</code> is enabled in <code>airflow.cfg</code>. |<br>| <code>&#123;&#123; var.value &#125;&#125;</code> | | Airflow variables. See <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/templates-ref.html#airflow-variables-in-templates">Airflow Variables in Templates</a> below. |<br>| <code>&#123;&#123; var.json &#125;&#125;</code> | | Airflow variables. See <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/templates-ref.html#airflow-variables-in-templates">Airflow Variables in Templates</a> below. |<br>| <code>&#123;&#123; conn &#125;&#125;</code> | Airflow connections. See <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/templates-ref.html#airflow-connections-in-templates">Airflow Connections in Templates</a> below. |<br>| <code>&#123;&#123; task_instance_key_str &#125;&#125;</code> | str | A unique, human-readable key to the task instance. The format is <code>&#123;dag_id&#125;__&#123;task_id&#125;__&#123;ds_nodash&#125;</code>. |<br>| <code>&#123;&#123; conf &#125;&#125;</code> | AirflowConfigParser | he full configuration object representing the content of your <code>airflow.cfg</code>. See <strong>airflow.configuration.conf</strong>. |<br>| <code>&#123;&#123; run_id &#125;&#125;</code> | str | The currently running <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/models/dagrun/index.html#airflow.models.dagrun.DagRun">DagRun</a> run ID. |<br>| <code>&#123;&#123; dag_run &#125;&#125;</code> | DagRun | The currently running <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/models/dagrun/index.html#airflow.models.dagrun.DagRun">DagRun</a>. |<br>| <code>&#123;&#123; test_mode &#125;&#125;</code> | bool | Whether the task instance was run by the <code>airflow test</code> CLI. |<br>| <code>&#123;&#123; expanded_ti_count &#125;&#125;</code> | int | <code>None</code> | Number of task instances that a mapped task was expanded into. If the current task is not mapped, this should be <code>None</code>. Added in version 2.5. |<br>| <code>&#123;&#123; triggering_dataset_events &#125;&#125;</code> | dict[str, list[DatasetEvent]] | If in a Dataset Scheduled DAG, a map of Dataset URI to a list of triggering <strong>DatasetEvent</strong>(there may be more than one, if there are multiple Datasets with different frequencies).<br>Read more here <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/authoring-and-scheduling/datasets.html">Datasets</a>. |<br>| | Added in version 2.4. |</p>
+<hr>
+
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&#123;&#123; data_interval_start &#125;&#125;</code></td>
+<td><a target="_blank" rel="noopener" href="https://pendulum.eustace.io/docs/#introduction">pendulum.DateTime</a></td>
+<td>Start of the data interval. <br> Added in version 2.2.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; data_interval_end &#125;&#125;</code></td>
+<td><a target="_blank" rel="noopener" href="https://pendulum.eustace.io/docs/#introduction">pendulum.DateTime</a></td>
+<td>End of the data interval. <br> Added in version 2.2.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; ds &#125;&#125;</code></td>
+<td>str</td>
+<td>The DAG run’s logical date as <code>YYYY-MM-DD</code>.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Same as <code>&#123;&#123; dag_run.logical_date | ds &#125;&#125;</code>.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; ds_nodash &#125;&#125;</code></td>
+<td>str</td>
+<td>Same as <code>&#123;&#123; dag_run.logical_date | ds_nodash &#125;&#125;</code>.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; ts &#125;&#125;</code></td>
+<td>str</td>
+<td>Same as <code>&#123;&#123; dag_run.logical_date | ts &#125;&#125;</code>.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Example: <code>2018-01-01T00:00:00+00:00.</code></td>
+</tr>
+<tr>
+<td><code>&#123;&#123; ts_nodash_with_tz &#125;&#125;</code></td>
+<td>str</td>
+<td>Same as <code>&#123;&#123; dag_run.logical_date | ts_nodash_with_tz &#125;&#125;</code>.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Example: <code>20180101T000000+0000</code>.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; ts_nodash &#125;&#125;</code></td>
+<td>str</td>
+<td>Same as <code>&#123;&#123; dag_run.logical_date | ts_nodash &#125;&#125;</code>.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Example: <code>20180101T000000</code>.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; prev_data_interval_start_success &#125;&#125;</code></td>
+<td><a target="_blank" rel="noopener" href="https://pendulum.eustace.io/docs/#introduction">pendulum.DateTime</a> | <code>None</code></td>
+<td>Start of the data interval of the prior successful <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/models/dagrun/index.html#airflow.models.dagrun.DagRun">DagRun</a>. <br/><br/> Added in version 2.2.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; prev_data_interval_end_success &#125;&#125;</code></td>
+<td><a target="_blank" rel="noopener" href="https://pendulum.eustace.io/docs/#introduction">pendulum.DateTime</a> | <code>None</code></td>
+<td>End of the data interval of the prior successful <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/models/dagrun/index.html#airflow.models.dagrun.DagRun">DagRun</a>. <br/><br/> Added in version 2.2.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; prev_start_date_success &#125;&#125;</code></td>
+<td><a target="_blank" rel="noopener" href="https://pendulum.eustace.io/docs/#introduction">pendulum.DateTime</a> | <code>None</code></td>
+<td>Start date from prior successful <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/models/dagrun/index.html#airflow.models.dagrun.DagRun">DagRun</a> (if available).</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; dag &#125;&#125;</code></td>
+<td>DAG</td>
+<td>The currently running <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/models/dag/index.html#airflow.models.dag.DAG">DAG</a>. You can read more about DAGs in <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/dags.html">DAGs</a>.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; task &#125;&#125;</code></td>
+<td>BaseOperator</td>
+<td>The currently running <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/models/baseoperator/index.html#airflow.models.baseoperator.BaseOperator">BaseOperator</a>. You can read more about Tasks in <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/operators.html">Operators</a></td>
+</tr>
+<tr>
+<td><code>&#123;&#123; macros &#125;&#125;</code></td>
+<td></td>
+<td>A reference to the macros package. See <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/templates-ref.html#macros">Macros</a> below.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; task_instance &#125;&#125;</code></td>
+<td>TaskInstance</td>
+<td>The currently running <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/models/taskinstance/index.html#airflow.models.taskinstance.TaskInstance">TaskInstance</a>.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; ti &#125;&#125;</code></td>
+<td>TaskInstance</td>
+<td>Same as <code>&#123;&#123; task_instance &#125;&#125;</code>.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; params &#125;&#125;</code></td>
+<td>dict[str, Any]</td>
+<td>The user-defined params. This can be overridden by the mapping passed to <code>trigger_dag -c</code> if <code>dag_run_conf_overrides_params</code> is enabled in <code>airflow.cfg</code>.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; var.value &#125;&#125;</code></td>
+<td></td>
+<td>Airflow variables. See <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/templates-ref.html#airflow-variables-in-templates">Airflow Variables in Templates</a> below.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; var.json &#125;&#125;</code></td>
+<td></td>
+<td>Airflow variables. See <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/templates-ref.html#airflow-variables-in-templates">Airflow Variables in Templates</a> below.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; conn &#125;&#125;</code></td>
+<td>Airflow connections. See <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/templates-ref.html#airflow-connections-in-templates">Airflow Connections in Templates</a> below.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&#123;&#123; task_instance_key_str &#125;&#125;</code></td>
+<td>str</td>
+<td>A unique, human-readable key to the task instance. The format is <code>&#123;dag_id&#125;__&#123;task_id&#125;__&#123;ds_nodash&#125;</code>.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; conf &#125;&#125;</code></td>
+<td>AirflowConfigParser</td>
+<td>he full configuration object representing the content of your <code>airflow.cfg</code>. See <strong>airflow.configuration.conf</strong>.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; run_id &#125;&#125;</code></td>
+<td>str</td>
+<td>The currently running <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/models/dagrun/index.html#airflow.models.dagrun.DagRun">DagRun</a> run ID.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; dag_run &#125;&#125;</code></td>
+<td>DagRun</td>
+<td>The currently running <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/models/dagrun/index.html#airflow.models.dagrun.DagRun">DagRun</a>.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; test_mode &#125;&#125;</code></td>
+<td>bool</td>
+<td>Whether the task instance was run by the <code>airflow test</code> CLI.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; expanded_ti_count &#125;&#125;</code></td>
+<td>int | <code>None</code></td>
+<td>Number of task instances that a mapped task was expanded into. If the current task is not mapped, this should be <code>None</code>. Added in version 2.5.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; triggering_dataset_events &#125;&#125;</code></td>
+<td>dict[str, list[DatasetEvent]]</td>
+<td>If in a Dataset Scheduled DAG, a map of Dataset URI to a list of triggering <strong>DatasetEvent</strong>(there may be more than one, if there are multiple Datasets with different frequencies). <br/><br/> Read more here <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/authoring-and-scheduling/datasets.html">Datasets</a>. <br/><br/> Added in version 2.4.</td>
+</tr>
+</tbody></table>
+<hr>
+
 <blockquote>
 <p>The DAG run’s logical date, and values derived from it, such as <code>ds</code> and <code>ts</code>, <strong>should not</strong> be considered unique in a DAG. Use <code>run_id</code> instead.</p>
 </blockquote>
+<br>
+
 <blockquote>
-<p>DAG 실행의 논리적인 날짜와 그로부터 파생된 값인 <code>ds</code>와 <code>ts</code>는 DAG 내에서 고유한 것으로 간주해서는 안됩니다. 대신 <code>run_id</code>를 사용하세요.</p>
+<p>DAG 실행의 logical date와 그로부터 파생된 값인 <code>ds</code>와 <code>ts</code>는 DAG 내에서 고유한 것으로 간주해서는 안됩니다. 대신 <code>run_id</code>를 사용하세요.</p>
 </blockquote>
-<h2 id="Accessing-Airflow-context-variables-from-TaskFlow-tasks"><a href="#Accessing-Airflow-context-variables-from-TaskFlow-tasks" class="headerlink" title="Accessing Airflow context variables from TaskFlow tasks"></a>Accessing Airflow context variables from TaskFlow tasks</h2><p>While <code>@task</code> decorated tasks don’t support rendering jinja templates passed as arguments, all of the variables listed above can be accessed directly from tasks. The following code block is an example of accessing a <code>task_instance</code> object from its task:</p>
+<h2 id="Accessing-Airflow-context-variables-from-TaskFlow-tasks"><a href="#Accessing-Airflow-context-variables-from-TaskFlow-tasks" class="headerlink" title="Accessing Airflow context variables from TaskFlow tasks"></a>Accessing Airflow context variables from TaskFlow tasks</h2><hr>
+
+<p>While <code>@task</code> decorated tasks don’t support rendering jinja templates passed as arguments, all of the variables listed above can be accessed directly from tasks. The following code block is an example of accessing a <code>task_instance</code> object from its task:</p>
+<br>
+
 <p><code>@task</code>로 데코레이트된 작업은 인수로 전달된 Jinja 템플릿을 렌더링하는 것을 지원하지 않지만, 위에 나열된 모든 변수들은 작업에서 직접 액세스할 수 있습니다. 다음 코드 블록은 작업에서 <code>task_instance</code> 객체에 접근하는 예시입니다:</p>
+<hr>
+
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>models<span class="token punctuation">.</span>taskinstance <span class="token keyword">import</span> TaskInstance
 <span class="token keyword">from</span> airflow<span class="token punctuation">.</span>models<span class="token punctuation">.</span>dagrun <span class="token keyword">import</span> DagRun
 
@@ -294,30 +476,154 @@ The followi">
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Duration: </span><span class="token interpolation"><span class="token punctuation">&#123;</span>task_instance<span class="token punctuation">.</span>duration<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>  <span class="token comment"># Duration: 0.972019</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"DAG Run queued at: </span><span class="token interpolation"><span class="token punctuation">&#123;</span>dag_run<span class="token punctuation">.</span>queued_at<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>  <span class="token comment"># 2023-08-10 00:00:01+02:20</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="Deprecated-variables"><a href="#Deprecated-variables" class="headerlink" title="Deprecated variables"></a>Deprecated variables</h2><p>The following variables are deprecated. They are kept for backward compatibility, but you should convert existing code to use other variables instead.</p>
+<h2 id="Deprecated-variables"><a href="#Deprecated-variables" class="headerlink" title="Deprecated variables"></a>Deprecated variables</h2><hr>
+
+<p>The following variables are deprecated. They are kept for backward compatibility, but you should convert existing code to use other variables instead.</p>
+<br>
+
 <p>다음 변수들은 사용이 중단되었습니다. 역 호환성을 유지하기 위해 남겨졌지만, 기존 코드를 다른 변수들을 사용하도록 변환하는 것이 좋습니다.</p>
-<p>| Deprecated Variable | Description |<br>| <code>&#123;&#123; execution_date &#125;&#125;</code> | the execution date (logical date), same as <code>logical_date</code> |<br>| <code>&#123;&#123; next_execution_date &#125;&#125;</code> | the logical date of the next scheduled run (if applicable); you may be able to use <code>data_interval_end</code> instead |<br>| <code>&#123;&#123; next_ds &#125;&#125;</code> | the next execution date as <code>YYYY-MM-DD</code> if exists, else <code>None</code> |<br>| <code>&#123;&#123; next_ds_nodash &#125;&#125;</code> | the next execution date as <code>YYYYMMDD</code> if exists, else None |<br>| <code>&#123;&#123; prev_execution_date &#125;&#125;</code> | the logical date of the previous scheduled run (if applicable) |<br>| <code>&#123;&#123; prev_ds &#125;&#125;</code> | the previous execution date as <code>YYYY-MM-DD</code> if exists, else <code>None</code> |<br>| <code>&#123;&#123; prev_ds_nodash &#125;&#125;</code> | the previous execution date as <code>YYYYMMDD</code> if exists, else <code>None</code> |<br>| <code>&#123;&#123; yesterday_ds &#125;&#125;</code> | the day before the execution date as <code>YYYY-MM-DD</code> |<br>| <code>&#123;&#123; yesterday_ds_nodash &#125;&#125;</code> | the day before the execution date as <code>YYYYMMDD</code> |<br>| <code>&#123;&#123; tomorrow_ds &#125;&#125;</code> | the day after the execution date as <code>YYYY-MM-DD</code> |<br>| <code>&#123;&#123; tomorrow_ds_nodash &#125;&#125;</code> | the day after the execution date as <code>YYYYMMDD</code> |<br>| <code>&#123;&#123; prev_execution_date_success &#125;&#125;</code> | execution date from prior successful DAG run; you may be able to use <code>prev_data_interval_start_success``instead if the timetable/schedule you use for the DAG defines ``data_interval_start</code> compatible with the legacy <code>execution_date</code>. |</p>
+<hr>
+
+<table>
+<thead>
+<tr>
+<th>Deprecated Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&#123;&#123; execution_date &#125;&#125;</code></td>
+<td>the execution date (logical date), same as <code>logical_date</code></td>
+</tr>
+<tr>
+<td><code>&#123;&#123; next_execution_date &#125;&#125;</code></td>
+<td>the logical date of the next scheduled run (if applicable); you may be able to use <code>data_interval_end</code> instead</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; next_ds &#125;&#125;</code></td>
+<td>the next execution date as <code>YYYY-MM-DD</code> if exists, else <code>None</code></td>
+</tr>
+<tr>
+<td><code>&#123;&#123; next_ds_nodash &#125;&#125;</code></td>
+<td>the next execution date as <code>YYYYMMDD</code> if exists, else None</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; prev_execution_date &#125;&#125;</code></td>
+<td>the logical date of the previous scheduled run (if applicable)</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; prev_ds &#125;&#125;</code></td>
+<td>the previous execution date as <code>YYYY-MM-DD</code> if exists, else <code>None</code></td>
+</tr>
+<tr>
+<td><code>&#123;&#123; prev_ds_nodash &#125;&#125;</code></td>
+<td>the previous execution date as <code>YYYYMMDD</code> if exists, else <code>None</code></td>
+</tr>
+<tr>
+<td><code>&#123;&#123; yesterday_ds &#125;&#125;</code></td>
+<td>the day before the execution date as <code>YYYY-MM-DD</code></td>
+</tr>
+<tr>
+<td><code>&#123;&#123; yesterday_ds_nodash &#125;&#125;</code></td>
+<td>the day before the execution date as <code>YYYYMMDD</code></td>
+</tr>
+<tr>
+<td><code>&#123;&#123; tomorrow_ds &#125;&#125;</code></td>
+<td>the day after the execution date as <code>YYYY-MM-DD</code></td>
+</tr>
+<tr>
+<td><code>&#123;&#123; tomorrow_ds_nodash &#125;&#125;</code></td>
+<td>the day after the execution date as <code>YYYYMMDD</code></td>
+</tr>
+<tr>
+<td><code>&#123;&#123; prev_execution_date_success &#125;&#125;</code></td>
+<td>execution date from prior successful DAG run; you may be able to use <code>prev_data_interval_start_success``instead if the timetable/schedule you use for the DAG defines ``data_interval_start</code> compatible with the legacy <code>execution_date</code>.</td>
+</tr>
+</tbody></table>
+<hr>
+
 <p>Note that you can access the object’s attributes and methods with simple dot notation. Here are some examples of what is possible: <code>&#123;&#123; task.owner &#125;&#125;</code>, <code>&#123;&#123; task.task_id &#125;&#125;</code>, <code>&#123;&#123; ti.hostname &#125;&#125;</code>, … Refer to the models documentation for more information on the objects’ attributes and methods.</p>
+<br>
+
 <p>객체의 속성 및 메서드에는 간단한 점 표기법(dot notation)을 사용하여 액세스할 수 있습니다. 다음은 가능한 몇 가지 예시입니다: <code>&#123;&#123; task.owner &#125;&#125;</code>, <code>&#123;&#123; task.task_id &#125;&#125;</code>, <code>&#123;&#123; ti.hostname &#125;&#125;</code> 등등. 더 많은 정보를 원하시면 모델 문서를 참조하십시오.</p>
-<h2 id="Airflow-Variables-in-Templates"><a href="#Airflow-Variables-in-Templates" class="headerlink" title="Airflow Variables in Templates"></a>Airflow Variables in Templates</h2><p>The <code>var</code> template variable allows you to access Airflow Variables. You can access them as either plain-text or JSON. If you use JSON, you are also able to walk nested structures, such as dictionaries like: <code>&#123;&#123; var.json.my_dict_var.key1 &#125;&#125;</code>.</p>
+<hr>
+
+<h2 id="Airflow-Variables-in-Templates"><a href="#Airflow-Variables-in-Templates" class="headerlink" title="Airflow Variables in Templates"></a>Airflow Variables in Templates</h2><hr>
+
+<p>The <code>var</code> template variable allows you to access Airflow Variables. You can access them as either plain-text or JSON. If you use JSON, you are also able to walk nested structures, such as dictionaries like: <code>&#123;&#123; var.json.my_dict_var.key1 &#125;&#125;</code>.</p>
 <p>It is also possible to fetch a variable by string if needed (for example your variable key contains dots) with <code>&#123;&#123; var.value.get('my.var', 'fallback') &#125;&#125;</code> or <code>&#123;&#123; var.json.get('my.dict.var', &#123;'key1': 'val1'&#125;) &#125;&#125;</code>. Defaults can be supplied in case the variable does not exist.</p>
+<br>
+
 <p><code>var</code> 템플릿 변수를 사용하면 Airflow 변수에 액세스할 수 있습니다. 이를 일반 텍스트 또는 JSON으로 액세스할 수 있습니다. JSON을 사용하는 경우 딕셔너리와 같은 중첩된 구조를 탐색할 수도 있습니다. 예를 들어, <code>&#123;&#123; var.json.my_dict_var.key1 &#125;&#125;</code>와 같이 사용할 수 있습니다.</p>
 <p>필요한 경우 변수 키에 점이 포함되어 있는 경우 문자열로 변수를 가져올 수도 있습니다. 예를 들어, <code>&#123;&#123; var.value.get('my.var', 'fallback') &#125;&#125;</code> 또는 <code>&#123;&#123; var.json.get('my.dict.var', &#123;'key1': 'val1'&#125;) &#125;&#125;</code>와 같이 사용할 수 있습니다. 변수가 존재하지 않는 경우 기본값을 제공할 수 있습니다.</p>
-<h2 id="Airflow-Connections-in-Templates"><a href="#Airflow-Connections-in-Templates" class="headerlink" title="Airflow Connections in Templates"></a>Airflow Connections in Templates</h2><p>Similarly, Airflow Connections data can be accessed via the <code>conn</code> template variable. For example, you could use expressions in your templates like <code>&#123;&#123; conn.my_conn_id.login &#125;&#125;</code>, <code>&#123;&#123; conn.my_conn_id.password &#125;&#125;</code>, etc.</p>
+<hr>
+
+<h2 id="Airflow-Connections-in-Templates"><a href="#Airflow-Connections-in-Templates" class="headerlink" title="Airflow Connections in Templates"></a>Airflow Connections in Templates</h2><hr>
+
+<p>Similarly, Airflow Connections data can be accessed via the <code>conn</code> template variable. For example, you could use expressions in your templates like <code>&#123;&#123; conn.my_conn_id.login &#125;&#125;</code>, <code>&#123;&#123; conn.my_conn_id.password &#125;&#125;</code>, etc.</p>
 <p>Just like with <code>var</code> it’s possible to fetch a connection by string (e.g. <code>&#123;&#123; conn.get('my_conn_id_'+index).host &#125;&#125;</code> ) or provide defaults (e.g <code>&#123;&#123; conn.get('my_conn_id', &#123;"host": "host1", "login": "user1"&#125;).host &#125;&#125;</code>).</p>
 <p>Additionally, the <code>extras</code> field of a connection can be fetched as a Python Dictionary with the <code>extra_dejson</code> field, e.g. <code>conn.my_aws_conn_id.extra_dejson.region_name</code> would fetch <code>region_name</code> out of <code>extras</code>. This way, defaults in <code>extras</code> can be provided as well (e.g. <code>&#123;&#123; conn.my_aws_conn_id.extra_dejson.get('region_name', 'Europe (Frankfurt)') &#125;&#125;</code>).</p>
+<br>
+
 <p>비슷하게, Airflow 연결 데이터는 <code>conn</code> 템플릿 변수를 통해 액세스할 수 있습니다. 예를 들어, 템플릿에서 <code>&#123;&#123; conn.my_conn_id.login &#125;&#125;</code>, <code>&#123;&#123; conn.my_conn_id.password &#125;&#125;</code> 등과 같은 표현식을 사용할 수 있습니다.</p>
 <p><code>var</code>와 마찬가지로 연결을 문자열로 가져오거나 기본값을 제공할 수 있습니다. 예를 들어, <code>&#123;&#123; conn.get('my_conn_id_'+index).host &#125;&#125;</code>와 같이 사용하거나 기본값을 제공할 수 있습니다. (예: <code>&#123;&#123; conn.get('my_conn_id', &#123;"host": "host1", "login": "user1"&#125;).host &#125;&#125;</code>).</p>
 <p>또한, 연결의 extras 필드는 <code>extra_dejson</code> 필드를 사용하여 Python 사전으로 가져올 수 있습니다. 예를 들어, <code>conn.my_aws_conn_id.extra_dejson.region_name</code>은 <code>extras</code>에서 <code>region_name</code>을 가져올 것입니다. 이렇게 함으로써 <code>extras</code>에 대한 기본값을 제공할 수 있습니다 (예: <code>&#123;&#123; conn.my_aws_conn_id.extra_dejson.get('region_name', 'Europe (Frankfurt)') &#125;&#125;</code>).</p>
-<h2 id="Filters"><a href="#Filters" class="headerlink" title="Filters"></a>Filters</h2><p>Airflow defines some Jinja filters that can be used to format values.</p>
+<h2 id="Filters"><a href="#Filters" class="headerlink" title="Filters"></a>Filters</h2><hr>
+
+<p>Airflow defines some Jinja filters that can be used to format values.</p>
 <p>For example, using <code>&#123;&#123; logical_date | ds &#125;&#125;</code> will output the logical_date in the <code>YYYY-MM-DD</code> format.</p>
+<br>
+
 <p>Airflow에서는 값의 형식을 지정하는 데 사용할 수 있는 Jinja 필터를 정의합니다.</p>
 <p>예를 들어, <code>&#123;&#123; logical_date | ds &#125;&#125;</code>를 사용하면 logical_date를 <code>YYYY-MM-DD</code> 형식으로 출력합니다.</p>
-<p>| Filter | Operates on | Description |<br>| <code>ds</code> | datetime | Format the datetime as <code>YYYY-MM-DD</code> |<br>| <code>ds_nodash</code> | datetime | Format the datetime as <code>YYYYMMDD</code> |<br>| <code>ts</code> | datetime | Same as <code>.isoformat()</code>, Example: <code>2018-01-01T00:00:00+00:00</code> |<br>| <code>ts_nodash</code> | datetime | Same as <code>ts</code> filter without <code>-</code>, <code>:</code> or TimeZone info. Example: <code>20180101T000000</code> |<br>| <code>ts_nodash_with_tz</code> | datetime | As <code>ts</code> filter without - or :. Example <code>20180101T000000+0000</code> |</p>
-<h2 id="Macros"><a href="#Macros" class="headerlink" title="Macros"></a>Macros</h2><p>Macros are a way to expose objects to your templates and live under the <code>macros</code> namespace in your templates.</p>
+<hr>
+
+<table>
+<thead>
+<tr>
+<th>Filter</th>
+<th>Operates on</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ds</code></td>
+<td>datetime</td>
+<td>Format the datetime as <code>YYYY-MM-DD</code></td>
+</tr>
+<tr>
+<td><code>ds_nodash</code></td>
+<td>datetime</td>
+<td>Format the datetime as <code>YYYYMMDD</code></td>
+</tr>
+<tr>
+<td><code>ts</code></td>
+<td>datetime</td>
+<td>Same as <code>.isoformat()</code>, Example: <code>2018-01-01T00:00:00+00:00</code></td>
+</tr>
+<tr>
+<td><code>ts_nodash</code></td>
+<td>datetime</td>
+<td>Same as <code>ts</code> filter without <code>-</code>, <code>:</code> or TimeZone info. Example: <code>20180101T000000</code></td>
+</tr>
+<tr>
+<td><code>ts_nodash_with_tz</code></td>
+<td>datetime</td>
+<td>As <code>ts</code> filter without - or :. Example <code>20180101T000000+0000</code></td>
+</tr>
+</tbody></table>
+<hr>
+
+<h2 id="Macros"><a href="#Macros" class="headerlink" title="Macros"></a>Macros</h2><hr>
+
+<p>Macros are a way to expose objects to your templates and live under the <code>macros</code> namespace in your templates.</p>
 <p>A few commonly used libraries and methods are made available.</p>
+<br>
+
 <p>매크로는 템플릿에 객체를 노출하는 방법이며, 템플릿에서 <code>macros</code> 네임스페이스 아래에 있습니다.</p>
 <p>일반적으로 사용되는 몇 가지 라이브러리와 메서드가 제공됩니다.</p>
+<hr>
+
 <table>
 <thead>
 <tr>
@@ -339,64 +645,61 @@ The followi">
 </tr>
 <tr>
 <td><code>macros.time</code></td>
-<td>The standard lib’s <a href="">time</a></td>
+<td>The standard lib’s <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/time.html#module-time">time</a></td>
 </tr>
 <tr>
 <td><code>macros.uuid</code></td>
-<td>The standard lib’s <a href="">uuid</a></td>
+<td>The standard lib’s <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/uuid.html#module-uuid">uuid</a></td>
 </tr>
 <tr>
 <td><code>macros.random</code></td>
 <td>The standard lib’s <strong>random.random</strong></td>
 </tr>
 </tbody></table>
+<hr>
+
 <p>Some airflow specific macros are also defined:</p>
+<br>
+
+<p>일부 Airflow 전용 매크로가 정의되어 있습니다:</p>
+<hr>
+
 <blockquote>
-<p>airflow.macros.datetime_diff_for_humans(dt, since&#x3D;None)<a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_modules/airflow/macros.html#datetime_diff_for_humans">source</a></p>
-</blockquote>
-<p>Return a human-readable&#x2F;approximate difference between datetimes.</p>
-<p>When only one datetime is provided, the comparison will be based on now.</p>
+<p>airflow.macros.datetime_diff_for_humans(dt, since&#x3D;None)<a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_modules/airflow/macros.html#datetime_diff_for_humans">source</a> <hr><br>Return a human-readable&#x2F;approximate difference between datetimes. <br><br>When only one datetime is provided, the comparison will be based on now. <hr><br>두 날짜 사이의 인간이 읽기 쉬운&#x2F;대략적인 차이를 반환합니다. <br><br>하나의 datetime만 제공된 경우 비교는 현재 시간을 기준으로 합니다.</p>
 <blockquote>
-<blockquote>
-<p>Parameters</p>
-</blockquote>
-</blockquote>
+<p>Parameters <hr></p>
 <ul>
 <li><strong>dt</strong> (Any) – The datetime to display the diff for</li>
 <li><strong>since</strong> (DateTime | None) – When to display the date from. If <code>None</code> then the diff is between <code>dt</code> and now.</li>
 </ul>
-<blockquote>
-<p>airflow.macros.ds_add(ds, days)<a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_modules/airflow/macros.html#ds_add">source</a></p>
-</blockquote>
-<p>Add or subtract days from a YYYY-MM-DD.</p>
-<blockquote>
-<blockquote>
-<p>Parameters</p>
 </blockquote>
 </blockquote>
+<blockquote>
+<p>airflow.macros.ds_add(ds, days)<a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_modules/airflow/macros.html#ds_add">source</a> <hr><br>Add or subtract days from a YYYY-MM-DD. <br><br>날짜(YYYY-MM-DD)에 일을 더하거나 빼려면 다음과 같이 합니다:</p>
+<blockquote>
+<p>Parameters <hr></p>
 <ul>
 <li><strong>ds</strong> (<a target="_blank" rel="noopener" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>) – anchor date in <code>YYYY-MM-DD</code> format to add to</li>
 <li><strong>days</strong> (<a target="_blank" rel="noopener" href="https://docs.python.org/3/library/functions.html#int">int</a>) – number of days to add to the ds, you can use negative values</li>
 </ul>
+</blockquote>
+</blockquote>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> ds_add<span class="token punctuation">(</span><span class="token string">"2015-01-01"</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>
 <span class="token string">'2015-01-06'</span>
 <span class="token operator">>></span><span class="token operator">></span> ds_add<span class="token punctuation">(</span><span class="token string">"2015-01-06"</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">)</span>
 <span class="token string">'2015-01-01'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <blockquote>
-<p>airflow.macros.ds_format(ds, input_format, output_format)<a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_modules/airflow/macros.html#ds_format">source</a></p>
-</blockquote>
-<p>Output datetime string in a given format.</p>
+<p>airflow.macros.ds_format(ds, input_format, output_format)<a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_modules/airflow/macros.html#ds_format">source</a> <hr><br>Output datetime string in a given format. <hr><br>주어진 형식에 따라 datetime 문자열을 출력합니다.</p>
 <blockquote>
-<blockquote>
-<p>Parameters  </p>
-</blockquote>
-</blockquote>
+<p>Parameters <hr></p>
 <ul>
 <li><strong>ds</strong> (<a target="_blank" rel="noopener" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>) – input string which contains a date</li>
 <li><strong>input_format</strong> (<a target="_blank" rel="noopener" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>) – input string format. E.g. %Y-%m-%d</li>
 <li><strong>output_format</strong> (<a target="_blank" rel="noopener" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>) – output string format E.g. %Y-%m-%d</li>
 </ul>
+</blockquote>
+</blockquote>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> ds_format<span class="token punctuation">(</span><span class="token string">"2015-01-01"</span><span class="token punctuation">,</span> <span class="token string">"%Y-%m-%d"</span><span class="token punctuation">,</span> <span class="token string">"%m-%d-%y"</span><span class="token punctuation">)</span>
 <span class="token string">'01-01-15'</span>
 <span class="token operator">>></span><span class="token operator">></span> ds_format<span class="token punctuation">(</span><span class="token string">"1/5/2015"</span><span class="token punctuation">,</span> <span class="token string">"%m/%d/%Y"</span><span class="token punctuation">,</span> <span class="token string">"%Y-%m-%d"</span><span class="token punctuation">)</span>
@@ -405,6 +708,9 @@ The followi">
 <blockquote>
 <p>airflow.macros.random()→ x in the interval [0, 1).</p>
 </blockquote>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/templates-ref.html#">https://airflow.apache.org/docs/apache-airflow/stable/templates-ref.html#</a></li>
+</ul>
 
                 
             </div>
@@ -569,17 +875,16 @@ gitment.render('gitment-content');
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/03/16/Airflow/docs/REFERENCES/Templates/">
+                <a href="/2024/03/17/MongoDB/PyMongo/PyMongo%204.6.2%20Documentation/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] Templates reference">
+                        <img src="/images/logos/mongodb-logo.png" class="responsive-img" alt="[PyMongo] PyMongo 4.6.2 Documentation">
                         
-                        <span class="card-title diy-neon-yellow">[Airflow] Templates reference</span>
+                        <span class="card-title diy-neon-red">[PyMongo] PyMongo 4.6.2 Documentation</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -589,22 +894,21 @@ gitment.render('gitment-content');
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-16
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-03-17
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Airflow/" class="post-category">
-                                    Airflow
+                            <a href="/categories/MongoDB/" class="post-category">
+                                    MongoDB
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
@@ -615,13 +919,12 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/03/01/Airflow/docs/1/">
+                <a href="/2024/03/14/Airflow/docs/CONTENT/Overview/">
                     <div class="card-image">
                         
+                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] What is Airflow™?">
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title diy-neon-red"></span>
+                        <span class="card-title diy-neon-red">[Airflow] What is Airflow™?</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -632,12 +935,16 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-14
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Gyuwon Hong
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Airflow/" class="post-category">
+                                    Airflow
+                                </a>
+                            
                             
                         </span>
                     </div>
