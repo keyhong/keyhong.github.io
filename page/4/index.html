@@ -238,24 +238,143 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/07/Airflow/basic-comand/">
+                    <a href="/2024/02/19/PySpark/dataframe-skew-optimization/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] 자주 사용하는 CLI 정리">
+                            <img src="/images/logos/pyspark-logo.png" class="responsive-img" alt="[PySpark] DataFrame Skewness Optimization">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Airflow] 자주 사용하는 CLI 정리</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[PySpark] DataFrame Skewness Optimization</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                🙊 글을 쓰는 이유Airflow는 파이썬의 Web Framework인 Flask로 만든 편리한 Web Server를 컴포넌트로 제공하고 있습니다. Web으로도 충분한 활용이 가능하지만, GUI가 Airflow AP
+                                Skew 데이터 생성하기
+table1
+
+
+
+
+OrderID
+Qty
+Sales
+Discount (yes&#x3D;1, no&#x3D;0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Skew 데이터 불러오기
+import numpy 
                             
                         </div> -->
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-19
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/PySpark/" class="post-category">
+                                    PySpark
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/02/18/Hive/scd-type-1/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] SCD Type 1 Insert">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Hive] SCD Type 1 Insert</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                SELECT * FROM table1;
+John 1300
+Albert 1200
+Mark 1000
+Frank 1150
+Loopa 1100
+Lui 1300
+Lesa 900 
+Pars 800
+leo 700
+lock 650
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-18
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Hive/" class="post-category">
+                                    Hive
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/02/08/Airflow/operators/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] Operators">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Airflow] Operators</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                BashOperatorfrom airflow.operators.bash_operator import BashOperator
+
+# case 1: 일반적인 방법으로 bash command 실행
+bash_task1 = B
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-08
                             </span>
                             <span class="publish-author">
                                 
@@ -278,34 +397,33 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/06/Data-Architecture/data-vault-2.0/">
+                    <a href="/2024/02/07/Airflow/kubernetes-executor-installation/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="[Data Architecture] Data Vault 2.0">
+                            <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] Kubernetes Executor Installation">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Data Architecture] Data Vault 2.0</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Airflow] Kubernetes Executor Installation</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Hub, Link, Satellite
-HUB: Unique list of business keys
-
-LINK: Unique list of (n to n) relationships between business key
+                                Kubernetes Installtion먼저 VirtaulBox와 Vagrant를 설치합니다. 
+그 이후 저는 아래 글을 참고하였습니다. 저의 경우 window10을 사용하고 있습니다.
+https://kubetm.g
                             
                         </div> -->
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-07
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Data-Architecture/" class="post-category">
-                                    Data Architecture
+                                <a href="/categories/Airflow/" class="post-category">
+                                    Airflow
                                 </a>
                                 
                                 
@@ -321,31 +439,31 @@ LINK: Unique list of (n to n) relationships between business key
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/06/Data-Architecture/data-warehouse/">
+                    <a href="/2024/02/07/Hadoop/hadoop3-docker-installation/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="[Data Architecture] Data Warehouse">
+                            <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="[Hadoop] Hadoop3 HA Docker-Compose 구축기">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Data Architecture] Data Warehouse</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Hadoop] Hadoop3 HA Docker-Compose 구축기</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Data Warehouse, 왜 필요한 걸까요?
+                                시작그간 인터넷에 무수히 많은 hadoop 설치 글을 보았습니다. 그 동안 hadoop을 클러스터 모드로 설치하는 과정이 복잡해서 조금 미뤄온 감이 있었습니다, 그래서 이번에 docker-compose도 익숙해졌겠다
                             
                         </div> -->
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-07
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Data-Architecture/" class="post-category">
-                                    Data Architecture
+                                <a href="/categories/Hadoop/" class="post-category">
+                                    Hadoop
                                 </a>
                                 
                                 
@@ -361,31 +479,39 @@ LINK: Unique list of (n to n) relationships between business key
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/06/Data-Architecture/role-playing-dimension/">
+                    <a href="/2024/02/05/Hadoop/hadoop-3/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="[Data Architecture] Role-playing Dimension">
+                            <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="[Hadoop] Hadoop3.0">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Data Architecture] Role-playing Dimension</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Hadoop] Hadoop3.0</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Role-playing Dimension 만들기
+                                Hadoop 2.0 새로운 특징
+네임노드 실패에 대한 고가용성(HA)를 보장
+
+네임노드 filling up으로 Federation 기능이 추가
+
+블록 사이즈가 64MB에서 128MB로 변경
+
+
+Hadoop 3.0 새
                             
                         </div> -->
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-05
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Data-Architecture/" class="post-category">
-                                    Data Architecture
+                                <a href="/categories/Hadoop/" class="post-category">
+                                    Hadoop
                                 </a>
                                 
                                 
@@ -401,31 +527,37 @@ LINK: Unique list of (n to n) relationships between business key
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/06/Data-Architecture/slowly-changing-dimension/">
+                    <a href="/2024/02/01/Kubernetes/emptyDir/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="[Data Architecture] Slowly Changing Dimensions">
+                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] emptyDir">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Data Architecture] Slowly Changing Dimensions</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Kubernetes] emptyDir</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Data Warehouse, 왜 필요한 걸까요?
+                                emptyDir
+pod가 실행되는 host의 디스크를 임시로 컨테이너 볼륨으로 할당해서 사용하는 방법
+
+
+pod가 사라지면 emptyDir의 데이터도 함께 사라집니다.
+
+주로 메모리와 디스크를 함께 이용하는 대용량 
                             
                         </div> -->
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-01
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Data-Architecture/" class="post-category">
-                                    Data Architecture
+                                <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
                                 </a>
                                 
                                 
@@ -441,41 +573,37 @@ LINK: Unique list of (n to n) relationships between business key
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Docker/docker-command-%EB%AF%B8%EC%99%84-/">
+                    <a href="/2024/02/01/Kubernetes/hostpath/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/docker-logo.png" class="responsive-img" alt="[Docker] Container Command">
+                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] hostPath">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Docker] Container Command</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Kubernetes] hostPath</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                
-docker-compose.yaml 실행
-
-$ docker-compose up -d
-
-$ docker-compose up -d -t [시간(초)]
+                                hostPath
+pod가 실행된 host의 파일이나 디렉터리를 pod에 마운트하는 방법
 
 
-도커 실행하기
+emtyDir과 다르게 pod가 삭제되어도 host에 데이터가 남습니다.(영구 스토리지)
 
-$ docker exec -it &lt;cont
+Pod가 생성된 Node File
                             
                         </div> -->
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-01
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Docker/" class="post-category">
-                                    Docker
+                                <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
                                 </a>
                                 
                                 
@@ -491,36 +619,31 @@ $ docker exec -it &lt;cont
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Docker/docker-container-concept/">
+                    <a href="/2024/02/01/Kubernetes/k8s-volume/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/docker-logo.png" class="responsive-img" alt="[Docker] Container">
+                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] k8s Volume">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Docker] Container</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Kubernetes] k8s Volume</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                컨테이너란?
-애플리케이션과 애플리케이션을 실행할 컴퓨터(IP 주소, 컴퓨터 이름, 디스크 드라이브)를 담은 가상 환경&#96;&#96;
-
-
-컨테이너는 개별 호스트명, IP주소, 디스크 드라이브를 갖음
-모든 컨테이너는
+                                Stateless한 애플리케이션일반적으로 컨테이너는 stateless(상태를 저장하지 않는) 방식의 앱 컨테이너를 사용합니다. 이러한 장점으로 어떤 노드에 문제가 발생했을 때, 다른 노드로 옮길 수 있는 장점이 있습
                             
                         </div> -->
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-01
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Docker/" class="post-category">
-                                    Docker
+                                <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
                                 </a>
                                 
                                 
@@ -536,126 +659,38 @@ $ docker exec -it &lt;cont
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/Git/git-history-command/">
+                    <a href="/2024/01/22/SQL/procedure/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/git-logo.png" class="responsive-img" alt="[Git] GitHub에 보안 파일 커밋 이력 지우기">
+                            <img src="/images/logos/sql-logo.png" class="responsive-img" alt="[SQL] Procedure">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Git] GitHub에 보안 파일 커밋 이력 지우기</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[SQL] Procedure</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                GitHub에 보안 상의 파일을 commit한 경우# 캐시 삭제하기
-git rm -r --cached &lt;파일>
+                                Test DBMS
+MySQL
 
-# .gitignore 에 보안 파일 등록하기
-$ echo &lt;파일> >> .gitignore
+Procedure
+일련의 SQL문을 포함하는 미리 정의된 데이터베이스 객체
+
+세미콜론(semi-colons, “;”)
+세미콜론은 SQL에서 기본적인 문장 종결자(statement ter
                             
                         </div> -->
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-22
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Git/" class="post-category">
-                                    Git
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/01/01/Git/gitignore/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/git-logo.png" class="responsive-img" alt="[Git] .gitignore">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Git] .gitignore</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                .gitignore
-local git repository에서 추적을 하지 않은 폴더 또는 파일의 확장자를 정의하는 파일
-
-생성방법 1 : github 레포지터리에서 생성하기
-github repository에서 프로젝
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Git/" class="post-category">
-                                    Git
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/01/01/Linux/environment/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/linux-logo.png" class="responsive-img" alt="[Linux] Environment">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Linux] Environment</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                리눅스 환경변수
-시스템 또는 사용자 수준에서 사용되는 설정 정보를 저장하는데 사용되는 변수
-
-시스템 구성
-시스템 전반적인 설정을 저장
-
-
-PATH 환경변수는 실행 파일의 경로를 지정하여 명령어를 실행할 때 프로그램을
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Linux/" class="post-category">
-                                    Linux
+                                <a href="/categories/SQL/" class="post-category">
+                                    SQL
                                 </a>
                                 
                                 
@@ -685,7 +720,7 @@ PATH 환경변수는 실행 파일의 경로를 지정하여 명령어를 실행
             
         </div>
         <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">4 / 17</div>
+            <div class="center-align b-text-gray">4 / 19</div>
         </div>
         <div class="col s6 m4 l4">
             

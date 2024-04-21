@@ -834,21 +834,262 @@ collect <span class="token operator">=</span> table_env<span class="token punctu
 <span class="token comment"># My custom operator: 29f5f706d2144f4a4f9f52a0...</span>
 <span class="token comment"># ...</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h3 id="Changelog-Unification"><a href="#Changelog-Unification" class="headerlink" title="Changelog Unification"></a>Changelog Unification</h3><p>In most cases, the pipeline definition itself can remain constant in both Table API and DataStream API when switching from streaming to batch mode and vice versa. However, as mentioned before, the resulting changelog streams might differ due to the avoidance of incremental operations in batch mode.</p>
+<p>Time-based operations that rely on event-time and leverage watermarks as a completeness marker are able to produce an insert-only changelog stream that is independent of the runtime mode.</p>
+<p>The following Java example illustrates a Flink program that is not only unified on an API level but also in the resulting changelog stream. The example joins two tables in SQL (<code>UserTable</code> and <code>OrderTable</code>) using an interval join based on the time attributes in both tables (<code>ts</code>). It uses DataStream API to implement a custom operator that deduplicates the user name using a <code>KeyedProcessFunction</code> and value state.</p>
+<p>대부분의 경우에는 스트리밍 모드에서 배치 모드로 전환하거나 그 반대로 전환할 때 파이프라인 정의 자체는 Table API 및 DataStream API에서 동일할 수 있습니다. 그러나 앞에서 언급한 바와 같이 배치 모드에서는 증분적인 작업을 피하기 때문에 결과적인 변경 로그 스트림이 다를 수 있습니다.</p>
+<p>이벤트 시간에 의존하고 워터마크를 사용하여 완료 마커로 작동하는 시간 기반 작업은 런타임 모드와 독립적인 삽입 전용 변경 로그 스트림을 생성할 수 있습니다.</p>
+<p>다음의 Java 예제는 Flink 프로그램을 보여줍니다. 이 예제는 API 수준뿐만 아니라 결과적인 변경 로그 스트림에서도 통일되어 있습니다. 이 예제는 두 개의 테이블(<code>UserTable</code>과 <code>OrderTable</code>)을 SQL에서 (<code>ts</code>를 기반으로 한 인터벌 조인을 사용하여) 조인합니다. 또한 <code>KeyedProcessFunction</code>과 값을 상태로 사용하여 사용자 이름을 중복 제거하는 사용자 정의 연산자를 DataStream API를 사용하여 구현합니다.</p>
+<pre class="line-numbers language-java" data-language="java"><div class="caption"><span>java</span></div><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>api<span class="token punctuation">.</span>common<span class="token punctuation">.</span></span><span class="token class-name">RuntimeExecutionMode</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>api<span class="token punctuation">.</span>common<span class="token punctuation">.</span>state<span class="token punctuation">.</span></span><span class="token class-name">ValueState</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>api<span class="token punctuation">.</span>common<span class="token punctuation">.</span>state<span class="token punctuation">.</span></span><span class="token class-name">ValueStateDescriptor</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>api<span class="token punctuation">.</span>common<span class="token punctuation">.</span>typeinfo<span class="token punctuation">.</span></span><span class="token class-name">Types</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>configuration<span class="token punctuation">.</span></span><span class="token class-name">Configuration</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>streaming<span class="token punctuation">.</span>api<span class="token punctuation">.</span>datastream<span class="token punctuation">.</span></span><span class="token class-name">DataStream</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>streaming<span class="token punctuation">.</span>api<span class="token punctuation">.</span>environment<span class="token punctuation">.</span></span><span class="token class-name">StreamExecutionEnvironment</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>streaming<span class="token punctuation">.</span>api<span class="token punctuation">.</span>functions<span class="token punctuation">.</span></span><span class="token class-name">KeyedProcessFunction</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>table<span class="token punctuation">.</span>api<span class="token punctuation">.</span></span><span class="token class-name">DataTypes</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>table<span class="token punctuation">.</span>api<span class="token punctuation">.</span></span><span class="token class-name">Schema</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>table<span class="token punctuation">.</span>api<span class="token punctuation">.</span></span><span class="token class-name">Table</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>table<span class="token punctuation">.</span>api<span class="token punctuation">.</span>bridge<span class="token punctuation">.</span>java<span class="token punctuation">.</span></span><span class="token class-name">StreamTableEnvironment</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>types<span class="token punctuation">.</span></span><span class="token class-name">Row</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Collector</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>time<span class="token punctuation">.</span></span><span class="token class-name">LocalDateTime</span></span><span class="token punctuation">;</span>
 
+<span class="token comment">// setup DataStream API</span>
+<span class="token class-name">StreamExecutionEnvironment</span> env <span class="token operator">=</span> <span class="token class-name">StreamExecutionEnvironment</span><span class="token punctuation">.</span><span class="token function">getExecutionEnvironment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
+<span class="token comment">// use BATCH or STREAMING mode</span>
+env<span class="token punctuation">.</span><span class="token function">setRuntimeMode</span><span class="token punctuation">(</span><span class="token class-name">RuntimeExecutionMode</span><span class="token punctuation">.</span><span class="token constant">BATCH</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
+<span class="token comment">// setup Table API</span>
+<span class="token class-name">StreamTableEnvironment</span> tableEnv <span class="token operator">=</span> <span class="token class-name">StreamTableEnvironment</span><span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
+<span class="token comment">// create a user stream</span>
+<span class="token class-name">DataStream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Row</span><span class="token punctuation">></span></span> userStream <span class="token operator">=</span> env
+    <span class="token punctuation">.</span><span class="token function">fromElements</span><span class="token punctuation">(</span>
+        <span class="token class-name">Row</span><span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token class-name">LocalDateTime</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token string">"2021-08-21T13:00:00"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">"Alice"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token class-name">Row</span><span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token class-name">LocalDateTime</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token string">"2021-08-21T13:05:00"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">"Bob"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token class-name">Row</span><span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token class-name">LocalDateTime</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token string">"2021-08-21T13:10:00"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">"Bob"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">returns</span><span class="token punctuation">(</span>
+        <span class="token class-name">Types</span><span class="token punctuation">.</span><span class="token function">ROW_NAMED</span><span class="token punctuation">(</span>
+            <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">&#123;</span><span class="token string">"ts"</span><span class="token punctuation">,</span> <span class="token string">"uid"</span><span class="token punctuation">,</span> <span class="token string">"name"</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+            <span class="token class-name">Types</span><span class="token punctuation">.</span><span class="token constant">LOCAL_DATE_TIME</span><span class="token punctuation">,</span> <span class="token class-name">Types</span><span class="token punctuation">.</span><span class="token constant">INT</span><span class="token punctuation">,</span> <span class="token class-name">Types</span><span class="token punctuation">.</span><span class="token constant">STRING</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
+<span class="token comment">// create an order stream</span>
+<span class="token class-name">DataStream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Row</span><span class="token punctuation">></span></span> orderStream <span class="token operator">=</span> env
+    <span class="token punctuation">.</span><span class="token function">fromElements</span><span class="token punctuation">(</span>
+        <span class="token class-name">Row</span><span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token class-name">LocalDateTime</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token string">"2021-08-21T13:02:00"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">122</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token class-name">Row</span><span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token class-name">LocalDateTime</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token string">"2021-08-21T13:07:00"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">239</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token class-name">Row</span><span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token class-name">LocalDateTime</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token string">"2021-08-21T13:11:00"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">999</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">returns</span><span class="token punctuation">(</span>
+        <span class="token class-name">Types</span><span class="token punctuation">.</span><span class="token function">ROW_NAMED</span><span class="token punctuation">(</span>
+            <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">&#123;</span><span class="token string">"ts"</span><span class="token punctuation">,</span> <span class="token string">"uid"</span><span class="token punctuation">,</span> <span class="token string">"amount"</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+            <span class="token class-name">Types</span><span class="token punctuation">.</span><span class="token constant">LOCAL_DATE_TIME</span><span class="token punctuation">,</span> <span class="token class-name">Types</span><span class="token punctuation">.</span><span class="token constant">INT</span><span class="token punctuation">,</span> <span class="token class-name">Types</span><span class="token punctuation">.</span><span class="token constant">INT</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
+<span class="token comment">// create corresponding tables</span>
+tableEnv<span class="token punctuation">.</span><span class="token function">createTemporaryView</span><span class="token punctuation">(</span>
+    <span class="token string">"UserTable"</span><span class="token punctuation">,</span>
+    userStream<span class="token punctuation">,</span>
+    <span class="token class-name">Schema</span><span class="token punctuation">.</span><span class="token function">newBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">column</span><span class="token punctuation">(</span><span class="token string">"ts"</span><span class="token punctuation">,</span> <span class="token class-name">DataTypes</span><span class="token punctuation">.</span><span class="token function">TIMESTAMP</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">column</span><span class="token punctuation">(</span><span class="token string">"uid"</span><span class="token punctuation">,</span> <span class="token class-name">DataTypes</span><span class="token punctuation">.</span><span class="token function">INT</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">column</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token class-name">DataTypes</span><span class="token punctuation">.</span><span class="token function">STRING</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">watermark</span><span class="token punctuation">(</span><span class="token string">"ts"</span><span class="token punctuation">,</span> <span class="token string">"ts - INTERVAL '1' SECOND"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
+tableEnv<span class="token punctuation">.</span><span class="token function">createTemporaryView</span><span class="token punctuation">(</span>
+    <span class="token string">"OrderTable"</span><span class="token punctuation">,</span>
+    orderStream<span class="token punctuation">,</span>
+    <span class="token class-name">Schema</span><span class="token punctuation">.</span><span class="token function">newBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">column</span><span class="token punctuation">(</span><span class="token string">"ts"</span><span class="token punctuation">,</span> <span class="token class-name">DataTypes</span><span class="token punctuation">.</span><span class="token function">TIMESTAMP</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">column</span><span class="token punctuation">(</span><span class="token string">"uid"</span><span class="token punctuation">,</span> <span class="token class-name">DataTypes</span><span class="token punctuation">.</span><span class="token function">INT</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">column</span><span class="token punctuation">(</span><span class="token string">"amount"</span><span class="token punctuation">,</span> <span class="token class-name">DataTypes</span><span class="token punctuation">.</span><span class="token function">INT</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">watermark</span><span class="token punctuation">(</span><span class="token string">"ts"</span><span class="token punctuation">,</span> <span class="token string">"ts - INTERVAL '1' SECOND"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
+<span class="token comment">// perform interval join</span>
+<span class="token class-name">Table</span> joinedTable <span class="token operator">=</span>
+    tableEnv<span class="token punctuation">.</span><span class="token function">sqlQuery</span><span class="token punctuation">(</span>
+        <span class="token string">"SELECT U.name, O.amount "</span> <span class="token operator">+</span>
+        <span class="token string">"FROM UserTable U, OrderTable O "</span> <span class="token operator">+</span>
+        <span class="token string">"WHERE U.uid = O.uid AND O.ts BETWEEN U.ts AND U.ts + INTERVAL '5' MINUTES"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
+<span class="token class-name">DataStream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Row</span><span class="token punctuation">></span></span> joinedStream <span class="token operator">=</span> tableEnv<span class="token punctuation">.</span><span class="token function">toDataStream</span><span class="token punctuation">(</span>joinedTable<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
+joinedStream<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
+<span class="token comment">// implement a custom operator using ProcessFunction and value state</span>
+joinedStream
+    <span class="token punctuation">.</span><span class="token function">keyBy</span><span class="token punctuation">(</span>r <span class="token operator">-></span> r<span class="token punctuation">.</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span><span class="token function">getFieldAs</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">process</span><span class="token punctuation">(</span>
+        <span class="token keyword">new</span> <span class="token class-name">KeyedProcessFunction</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Row</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
 
+          <span class="token class-name">ValueState</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> seen<span class="token punctuation">;</span>
 
+          <span class="token annotation punctuation">@Override</span>
+          <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token keyword">open</span><span class="token punctuation">(</span><span class="token class-name">OpenContext</span> openContext<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+              seen <span class="token operator">=</span> <span class="token function">getRuntimeContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getState</span><span class="token punctuation">(</span>
+                  <span class="token keyword">new</span> <span class="token class-name">ValueStateDescriptor</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token string">"seen"</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">&#125;</span>
 
+          <span class="token annotation punctuation">@Override</span>
+          <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">processElement</span><span class="token punctuation">(</span><span class="token class-name">Row</span> row<span class="token punctuation">,</span> <span class="token class-name">Context</span> ctx<span class="token punctuation">,</span> <span class="token class-name">Collector</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> out<span class="token punctuation">)</span>
+                  <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
+              <span class="token class-name">String</span> name <span class="token operator">=</span> row<span class="token punctuation">.</span><span class="token function">getFieldAs</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token keyword">if</span> <span class="token punctuation">(</span>seen<span class="token punctuation">.</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                  seen<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                  out<span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token punctuation">&#125;</span>
+          <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
+<span class="token comment">// execute unified pipeline</span>
+env<span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// prints (in both BATCH and STREAMING mode):</span>
+<span class="token comment">// +I[Bob, 239]</span>
+<span class="token comment">// +I[Alice, 122]</span>
+<span class="token comment">// +I[Bob, 999]</span>
+<span class="token comment">//</span>
+<span class="token comment">// Bob</span>
+<span class="token comment">// Alice</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> datetime <span class="token keyword">import</span> datetime
+<span class="token keyword">from</span> pyflink<span class="token punctuation">.</span>common <span class="token keyword">import</span> Row<span class="token punctuation">,</span> Types
+<span class="token keyword">from</span> pyflink<span class="token punctuation">.</span>datastream <span class="token keyword">import</span> StreamExecutionEnvironment<span class="token punctuation">,</span> RuntimeExecutionMode<span class="token punctuation">,</span>
+    KeyedProcessFunction<span class="token punctuation">,</span> RuntimeContext
+<span class="token keyword">from</span> pyflink<span class="token punctuation">.</span>datastream<span class="token punctuation">.</span>state <span class="token keyword">import</span> ValueStateDescriptor
+<span class="token keyword">from</span> pyflink<span class="token punctuation">.</span>table <span class="token keyword">import</span> StreamTableEnvironment<span class="token punctuation">,</span> Schema<span class="token punctuation">,</span> DataTypes
+
+<span class="token comment"># setup DataStream API</span>
+env <span class="token operator">=</span> StreamExecutionEnvironment<span class="token punctuation">.</span>get_execution_environment<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># use BATCH or STREAMING mode</span>
+env<span class="token punctuation">.</span>set_runtime_mode<span class="token punctuation">(</span>RuntimeExecutionMode<span class="token punctuation">.</span>BATCH<span class="token punctuation">)</span>
+
+<span class="token comment"># setup Table API</span>
+table_env <span class="token operator">=</span> StreamTableEnvironment<span class="token punctuation">.</span>create<span class="token punctuation">(</span>env<span class="token punctuation">)</span>
+
+<span class="token comment"># create a user stream</span>
+t_format <span class="token operator">=</span> <span class="token string">"%Y-%m-%dT%H:%M:%S"</span>
+user_stream <span class="token operator">=</span> env<span class="token punctuation">.</span>from_collection<span class="token punctuation">(</span>
+    <span class="token punctuation">[</span>Row<span class="token punctuation">(</span>datetime<span class="token punctuation">.</span>strptime<span class="token punctuation">(</span><span class="token string">"2021-08-21T13:00:00"</span><span class="token punctuation">,</span> t_format<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">"Alice"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+     Row<span class="token punctuation">(</span>datetime<span class="token punctuation">.</span>strptime<span class="token punctuation">(</span><span class="token string">"2021-08-21T13:05:00"</span><span class="token punctuation">,</span> t_format<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">"Bob"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+     Row<span class="token punctuation">(</span>datetime<span class="token punctuation">.</span>strptime<span class="token punctuation">(</span><span class="token string">"2021-08-21T13:10:00"</span><span class="token punctuation">,</span> t_format<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">"Bob"</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    type_info<span class="token operator">=</span>Types<span class="token punctuation">.</span>ROW_NAMED<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"ts1"</span><span class="token punctuation">,</span> <span class="token string">"uid"</span><span class="token punctuation">,</span> <span class="token string">"name"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                              <span class="token punctuation">[</span>Types<span class="token punctuation">.</span>SQL_TIMESTAMP<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Types<span class="token punctuation">.</span>INT<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Types<span class="token punctuation">.</span>STRING<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># create an order stream</span>
+order_stream <span class="token operator">=</span> env<span class="token punctuation">.</span>from_collection<span class="token punctuation">(</span>
+    <span class="token punctuation">[</span>Row<span class="token punctuation">(</span>datetime<span class="token punctuation">.</span>strptime<span class="token punctuation">(</span><span class="token string">"2021-08-21T13:02:00"</span><span class="token punctuation">,</span> t_format<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">122</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+     Row<span class="token punctuation">(</span>datetime<span class="token punctuation">.</span>strptime<span class="token punctuation">(</span><span class="token string">"2021-08-21T13:07:00"</span><span class="token punctuation">,</span> t_format<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">239</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+     Row<span class="token punctuation">(</span>datetime<span class="token punctuation">.</span>strptime<span class="token punctuation">(</span><span class="token string">"2021-08-21T13:11:00"</span><span class="token punctuation">,</span> t_format<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">999</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    type_info<span class="token operator">=</span>Types<span class="token punctuation">.</span>ROW_NAMED<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"ts1"</span><span class="token punctuation">,</span> <span class="token string">"uid"</span><span class="token punctuation">,</span> <span class="token string">"amount"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                        <span class="token punctuation">[</span>Types<span class="token punctuation">.</span>SQL_TIMESTAMP<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Types<span class="token punctuation">.</span>INT<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Types<span class="token punctuation">.</span>INT<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># # create corresponding tables</span>
+table_env<span class="token punctuation">.</span>create_temporary_view<span class="token punctuation">(</span>
+    <span class="token string">"user_table"</span><span class="token punctuation">,</span>
+    user_stream<span class="token punctuation">,</span>
+    Schema<span class="token punctuation">.</span>new_builder<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span>column_by_expression<span class="token punctuation">(</span><span class="token string">"ts"</span><span class="token punctuation">,</span> <span class="token string">"CAST(ts1 AS TIMESTAMP(3))"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span>column<span class="token punctuation">(</span><span class="token string">"uid"</span><span class="token punctuation">,</span> DataTypes<span class="token punctuation">.</span>INT<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span>column<span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> DataTypes<span class="token punctuation">.</span>STRING<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span>watermark<span class="token punctuation">(</span><span class="token string">"ts"</span><span class="token punctuation">,</span> <span class="token string">"ts - INTERVAL '1' SECOND"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span>build<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+table_env<span class="token punctuation">.</span>create_temporary_view<span class="token punctuation">(</span>
+    <span class="token string">"order_table"</span><span class="token punctuation">,</span>
+    order_stream<span class="token punctuation">,</span>
+    Schema<span class="token punctuation">.</span>new_builder<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span>column_by_expression<span class="token punctuation">(</span><span class="token string">"ts"</span><span class="token punctuation">,</span> <span class="token string">"CAST(ts1 AS TIMESTAMP(3))"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span>column<span class="token punctuation">(</span><span class="token string">"uid"</span><span class="token punctuation">,</span> DataTypes<span class="token punctuation">.</span>INT<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span>column<span class="token punctuation">(</span><span class="token string">"amount"</span><span class="token punctuation">,</span> DataTypes<span class="token punctuation">.</span>INT<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span>watermark<span class="token punctuation">(</span><span class="token string">"ts"</span><span class="token punctuation">,</span> <span class="token string">"ts - INTERVAL '1' SECOND"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span>build<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># perform interval join</span>
+joined_table <span class="token operator">=</span> table_env<span class="token punctuation">.</span>sql_query<span class="token punctuation">(</span>
+    <span class="token string">"SELECT U.name, O.amount "</span> <span class="token operator">+</span>
+    <span class="token string">"FROM user_table U, order_table O "</span> <span class="token operator">+</span>
+    <span class="token string">"WHERE U.uid = O.uid AND O.ts BETWEEN U.ts AND U.ts + INTERVAL '5' MINUTES"</span><span class="token punctuation">)</span>
+
+joined_stream <span class="token operator">=</span> table_env<span class="token punctuation">.</span>to_data_stream<span class="token punctuation">(</span>joined_table<span class="token punctuation">)</span>
+
+joined_stream<span class="token punctuation">.</span><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># implement a custom operator using ProcessFunction and value state</span>
+<span class="token keyword">class</span> <span class="token class-name">MyProcessFunction</span><span class="token punctuation">(</span>KeyedProcessFunction<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>seen <span class="token operator">=</span> <span class="token boolean">None</span>
+
+    <span class="token keyword">def</span> <span class="token function">open</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> runtime_context<span class="token punctuation">:</span> RuntimeContext<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        state_descriptor <span class="token operator">=</span> ValueStateDescriptor<span class="token punctuation">(</span><span class="token string">"seen"</span><span class="token punctuation">,</span> Types<span class="token punctuation">.</span>STRING<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>seen <span class="token operator">=</span> runtime_context<span class="token punctuation">.</span>get_state<span class="token punctuation">(</span>state_descriptor<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">process_element</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> value<span class="token punctuation">,</span> ctx<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        name <span class="token operator">=</span> value<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>seen<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>seen<span class="token punctuation">.</span>update<span class="token punctuation">(</span>name<span class="token punctuation">)</span>
+            <span class="token keyword">yield</span> name
+
+joined_stream \
+    <span class="token punctuation">.</span>key_by<span class="token punctuation">(</span><span class="token keyword">lambda</span> r<span class="token punctuation">:</span> r<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> \
+    <span class="token punctuation">.</span>process<span class="token punctuation">(</span>MyProcessFunction<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> \
+    <span class="token punctuation">.</span><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># execute unified pipeline</span>
+env<span class="token punctuation">.</span>execute<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># prints (in both BATCH and STREAMING mode):</span>
+<span class="token comment"># +I[Bob, 239]</span>
+<span class="token comment"># +I[Alice, 122]</span>
+<span class="token comment"># +I[Bob, 999]</span>
+<span class="token comment">#</span>
+<span class="token comment"># Bob</span>
+<span class="token comment"># Alice</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Handling-of-Insert-Only-Stream"><a href="#Handling-of-Insert-Only-Stream" class="headerlink" title="Handling of (Insert-Only) Stream"></a>Handling of (Insert-Only) Stream</h2><p>A StreamTableEnvironment offers the following methods to convert from and to DataStream API:</p>
+<ul>
+<li><p><code>fromDataStream(DataStream)</code>: Interprets a stream of insert-only changes and arbitrary type as a table. Event-time and watermarks are not propagated by default.</p>
+</li>
+<li><p><code>fromDataStream(DataStream, Schema)</code>: Interprets a stream of insert-only changes and arbitrary type as a table. The optional schema allows to enrich column data types and add time attributes, watermarks strategies, other computed columns, or primary keys.</p>
+</li>
+<li><p><code>createTemporaryView(String, DataStream)</code>: Registers the stream under a name to access it in SQL. It is a shortcut for <code>createTemporaryView(String, fromDataStream(DataStream))</code>.</p>
+</li>
+<li><p><code>createTemporaryView(String, DataStream, Schema)</code>: Registers the stream under a name to access it in SQL. It is a shortcut for <code>createTemporaryView(String, fromDataStream(DataStream, Schema))</code>.</p>
+</li>
+<li><p><code>toDataStream(Table)</code>: Converts a table into a stream of insert-only changes. The default stream record type is <code>org.apache.flink.types.Row</code>. A single rowtime attribute column is written back into the DataStream API’s record. Watermarks are propagated as well.</p>
+</li>
+<li><p><code>toDataStream(Table, AbstractDataType)</code>: Converts a table into a stream of insert-only changes. This method accepts a data type to express the desired stream record type. The planner might insert implicit casts and reorders columns to map columns to fields of the (possibly nested) data type.</p>
+</li>
+<li><p><code>toDataStream(Table, Class)</code>: A shortcut for <code>toDataStream(Table, DataTypes.of(Class))</code> to quickly create the desired data type reflectively.</p>
+</li>
+</ul>
+<p>From a Table API’s perspective, converting from and to DataStream API is similar to reading from or writing to a virtual table connector that has been defined using a <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/table/sql/create/#create-table">CREATE TABLE DDL</a> in SQL.</p>
+<p>The schema part in the virtual <code>CREATE TABLE name (schema) WITH (options)</code> statement can be automatically derived from the DataStream’s type information, enriched, or entirely defined manually using <code>org.apache.flink.table.api.Schema</code>.</p>
+<p>The virtual DataStream table connector exposes the following metadata for every row:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Data Type</th>
+<th>Description</th>
+<th>R&#x2F;W</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>rowtime</td>
+<td>TIMESTAMP_LTZ(3) NOT NULL</td>
+<td>Stream record’s timestamp.</td>
+<td>R&#x2F;W</td>
+</tr>
+</tbody></table>
+<p>The virtual DataStream table source implements <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/table/sourcessinks/#source-abilities">SupportsSourceWatermark</a> and thus allows calling the SOURCE_WATERMARK() built-in function as a watermark strategy to adopt watermarks from the DataStream API.</p>
+<p>스트림 테이블 환경(StreamTableEnvironment)은 다음과 같은 메서드를 제공하여 DataStream API로 변환하거나 DataStream API에서 변환할 수 있습니다:</p>
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/table/data_stream_api/">https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/table/data_stream_api/</a></li>
 </ul>
@@ -1020,12 +1261,12 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/03/23/Flink/Application%20Development/Table%20API%20&%20SQL/Concepts%20&%20Common%20API/">
+                <a href="/2024/03/23/Flink/Application%20Development/Table%20API%20&%20SQL/Overview/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/flink-logo.png" class="responsive-img" alt="[Flink] Table API &amp; SQL - Concepts &amp; Common API">
+                        <img src="/images/logos/flink-logo.png" class="responsive-img" alt="[Flink] Table API &amp; SQL - Overview">
                         
-                        <span class="card-title diy-neon-red">[Flink] Table API &amp; SQL - Concepts &amp; Common API</span>
+                        <span class="card-title diy-neon-red">[Flink] Table API &amp; SQL - Overview</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1060,12 +1301,12 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/03/23/Flink/Application%20Development/Table%20API%20&%20SQL/Overview/">
+                <a href="/2024/03/18/MongoDB/PyMongo/MongoDB%20Document/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/flink-logo.png" class="responsive-img" alt="[Flink] Table API &amp; SQL - Overview">
+                        <img src="/images/logos/mongodb-logo.png" class="responsive-img" alt="[PyMongo] Documents">
                         
-                        <span class="card-title diy-neon-red">[Flink] Table API &amp; SQL - Overview</span>
+                        <span class="card-title diy-neon-red">[PyMongo] Documents</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1076,14 +1317,14 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-23
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-18
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Flink/" class="post-category">
-                                    Flink
+                            <a href="/categories/MongoDB/" class="post-category">
+                                    MongoDB
                                 </a>
                             
                             
