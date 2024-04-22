@@ -5,7 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="[Flink] Concepts - Overview, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="ConceptsThe Hands-on Training explains the basic concepts of stateful and timely stream processing that underlie Flink’s">
+    <meta name="description" content="Concepts
+
+The Hands-on Training explains the basic concepts of stateful and timely stream processing that underlie Flink">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -268,11 +270,15 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts"></a>Concepts</h1><p>The <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/learn-flink/overview/">Hands-on Training</a> explains the basic concepts of stateful and timely stream processing that underlie Flink’s APIs, and provides examples of how these mechanisms are used in applications. Stateful stream processing is introduced in the context of <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/learn-flink/etl/#stateful-transformations">Data Pipelines &amp; ETL</a> and is further developed in the section on <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/learn-flink/fault_tolerance/">Fault Tolerance</a>. Timely stream processing is introduced in the section on <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/learn-flink/streaming_analytics/">Streaming Analytics</a>. <br><br>This <em><strong>Concepts in Depth</strong></em> section provides a deeper understanding of how Flink’s architecture and runtime implement these concepts.</p>
+                <h1 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts"></a>Concepts</h1><hr>
+
+<p>The <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/learn-flink/overview/">Hands-on Training</a> explains the basic concepts of stateful and timely stream processing that underlie Flink’s APIs, and provides examples of how these mechanisms are used in applications. Stateful stream processing is introduced in the context of <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/learn-flink/etl/#stateful-transformations">Data Pipelines &amp; ETL</a> and is further developed in the section on <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/learn-flink/fault_tolerance/">Fault Tolerance</a>. Timely stream processing is introduced in the section on <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/learn-flink/streaming_analytics/">Streaming Analytics</a>. <br><br>This <em><strong>Concepts in Depth</strong></em> section provides a deeper understanding of how Flink’s architecture and runtime implement these concepts.</p>
 <hr>
  
 <p><a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/learn-flink/overview/">핸즈온 트레이닝</a>은 Flink의 API에 기초를 둔 상태 및 적시 스트림 처리의 기본 개념을 설명하고, 이러한 메커니즘이 어떻게 응용 프로그램에서 사용되는지 예시를 제공합니다. 상태 기반 스트림 처리는 <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/learn-flink/etl/#stateful-transformations">데이터 파이프라인 및 ETL</a>의 맥락에서 소개되며, <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/learn-flink/fault_tolerance/">장애 내성</a>에 관한 섹션에서 더 발전됩니다. 적시 스트림 처리는 <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/learn-flink/streaming_analytics/">스트리밍 분석</a> 섹션에서 소개됩니다. <br><br>이 <em><strong>심층 개념</strong></em> 섹션은 Flink의 아키텍처와 런타임이 이러한 개념을 어떻게 구현하는지에 대한 심층적인 이해를 제공합니다. </p>
-<h2 id="Flink’s-APIs"><a href="#Flink’s-APIs" class="headerlink" title="Flink’s APIs"></a>Flink’s APIs</h2><p>Flink offers different levels of abstraction for developing streaming&#x2F;batch applications.</p>
+<h2 id="Flink’s-APIs"><a href="#Flink’s-APIs" class="headerlink" title="Flink’s APIs"></a>Flink’s APIs</h2><hr>
+
+<p>Flink offers different levels of abstraction for developing streaming&#x2F;batch applications.</p>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128684&authkey=%21ANJi3cBhEIfnTFI&width=1064&height=443" width="1064" height="443" />
 
 <ul>
@@ -299,7 +305,7 @@
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128684&authkey=%21ANJi3cBhEIfnTFI&width=1064&height=443" width="1064" height="443" />
 
 <ul>
-<li>가장 낮은 수준의 추상화는 단순히 <strong>상태 및 적시 스트림 처리</strong>를 제공합니다. 이는 <a href="">Process Function</a>를 통해 <a href="">DataStream API</a>에 내장됩니다. 사용자가 하나 이상의 스트림에서 이벤트를 자유롭게 처리할 수 있도록 하며, 일관성 있고 내고장성 있는 <em><strong>상태</strong></em>를 제공합니다. 또한 사용자는 이벤트 시간 및 처리 시간 콜백을 등록할 수 있어 프로그램이 정교한 계산을 실현할 수 있습니다.</li>
+<li>가장 낮은 수준의 추상화는 단순히 <strong>상태 및 적시 스트림 처리</strong>를 제공합니다. 이는 <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/datastream/operators/process_function/">Process Function</a>를 통해 <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/datastream/overview/">DataStream API</a>에 내장됩니다. 사용자가 하나 이상의 스트림에서 이벤트를 자유롭게 처리할 수 있도록 하며, 일관성 있고 내고장성 있는 <em><strong>상태</strong></em>를 제공합니다. 또한 사용자는 이벤트 시간 및 처리 시간 콜백을 등록할 수 있어 프로그램이 정교한 계산을 실현할 수 있습니다.</li>
 </ul>
 <br>
 
@@ -309,14 +315,16 @@
 <br>
 
 <ul>
-<li><strong>Table API</strong>는 <em><strong>테이블</strong></em>을 중심으로 한 선언적 DSL(도메인 특화 언어)로, 동적으로 변하는 테이블(스트림을 나타낼 때)일 수 있습니다. <a href="">Table API</a>는 (확장된) 관계형 모델을 따릅니다: 테이블에는 스키마가 첨부되어 있으며(관계형 데이터베이스의 테이블과 유사함), API는 select, project, join, group-by, aggregate 등과 같은 비슷한 작업을 제공합니다. Table API 프로그램은 정확한 <em><strong>작업 코드가 어떻게 보이는지</strong></em>를 명시하는 대신 <em><strong>논리적 작업이 무엇인지</strong></em>를 선언적으로 정의합니다. Table API는 다양한 유형의 사용자 정의 함수로 확장할 수 있지만, <em><strong>Core API</strong></em>보다 표현력이 적고 사용하기가 더 간결합니다(코드를 작성하는 데 필요한 양이 적음). 게다가, Table API 프로그램은 실행 전 최적화 규칙을 적용하는 옵티마이저를 거칩니다. <br><br>테이블과 <em><strong>DataStream&#x2F;DataSet</strong></em> 간에 원활하게 변환할 수 있으므로 프로그램에서 <em><strong>Table API</strong></em>를 <em><strong>DataStream</strong></em> 및 <em><strong>DataSet</strong></em> API와 혼합하여 사용할 수 있습니다.</li>
+<li><strong>Table API</strong>는 <em><strong>테이블</strong></em>을 중심으로 한 선언적 DSL(도메인 특화 언어)로, 동적으로 변하는 테이블(스트림을 나타낼 때)일 수 있습니다. <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.18/docs/dev/table/overview/">Table API</a>는 (확장된) 관계형 모델을 따릅니다: 테이블에는 스키마가 첨부되어 있으며(관계형 데이터베이스의 테이블과 유사함), API는 select, project, join, group-by, aggregate 등과 같은 비슷한 작업을 제공합니다. Table API 프로그램은 정확한 <em><strong>작업 코드가 어떻게 보이는지</strong></em>를 명시하는 대신 <em><strong>논리적 작업이 무엇인지</strong></em>를 선언적으로 정의합니다. Table API는 다양한 유형의 사용자 정의 함수로 확장할 수 있지만, <em><strong>Core API</strong></em>보다 표현력이 적고 사용하기가 더 간결합니다(코드를 작성하는 데 필요한 양이 적음). 게다가, Table API 프로그램은 실행 전 최적화 규칙을 적용하는 옵티마이저를 거칩니다. <br><br>테이블과 <em><strong>DataStream&#x2F;DataSet</strong></em> 간에 원활하게 변환할 수 있으므로 프로그램에서 <em><strong>Table API</strong></em>를 <em><strong>DataStream</strong></em> 및 <em><strong>DataSet</strong></em> API와 혼합하여 사용할 수 있습니다.</li>
 </ul>
 <br>
 
 <ul>
-<li>플링크가 제공하는 가장 높은 수준의 추상화는 <strong>SQL</strong>입니다. 이 추상화는 의미론적으로나 표현적으로 <em><strong>Table API</strong></em>와 유사하지만, 프로그램을 SQL 쿼리 표현식으로 나타냅니다. <a href="">SQL</a> 추상화는 Table API와 밀접하게 상호작용하며, <em><strong>Table API</strong></em>에서 정의된 테이블에 대해 SQL 쿼리를 실행할 수 있습니다.</li>
+<li>플링크가 제공하는 가장 높은 수준의 추상화는 <strong>SQL</strong>입니다. 이 추상화는 의미론적으로나 표현적으로 <em><strong>Table API</strong></em>와 유사하지만, 프로그램을 SQL 쿼리 표현식으로 나타냅니다. <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/table/overview/#sql">SQL</a> 추상화는 Table API와 밀접하게 상호작용하며, <em><strong>Table API</strong></em>에서 정의된 테이블에 대해 SQL 쿼리를 실행할 수 있습니다.</li>
 </ul>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>- </p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.18/docs/concepts/overview/">https://nightlies.apache.org/flink/flink-docs-release-1.18/docs/concepts/overview/</a></li>
+</ul>
 
                 
             </div>
@@ -525,12 +533,12 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/04/19/Flink/docs/Learn_Flink/Data_Pipelines_and_ETL/">
+                <a href="/2024/04/19/Flink/docs/Learn_Flink/Intro_to_the_DataStream_API/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/flink-logo.png" class="responsive-img" alt="[Flink] Learn_Flink - Data_Pipelines_and_ETL">
+                        <img src="/images/logos/flink-logo.png" class="responsive-img" alt="[Flink] Learn_Flink - Intro_to_the_DataStream_API">
                         
-                        <span class="card-title diy-neon-red">[Flink] Learn_Flink - Data_Pipelines_and_ETL</span>
+                        <span class="card-title diy-neon-red">[Flink] Learn_Flink - Intro_to_the_DataStream_API</span>
                     </div>
                 </a>
                 <div class="card-content article-content">

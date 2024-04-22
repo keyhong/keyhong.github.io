@@ -5,7 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="[Flink] Learn_Flink - Data_Pipelines_and_ETL, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Data Pipelines &amp;amp; ETLOne very common use case for Apache Flink is to implement ETL (extract, transform, load) pipelin">
+    <meta name="description" content="Data Pipelines &amp;amp; ETL
+
+One very common use case for Apache Flink is to implement ETL (extract, transform, load) pipel">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -268,14 +270,65 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Data-Pipelines-ETL"><a href="#Data-Pipelines-ETL" class="headerlink" title="Data Pipelines &amp; ETL"></a>Data Pipelines &amp; ETL</h1><p>One very common use case for Apache Flink is to implement ETL (extract, transform, load) pipelines that take data from one or more sources, perform some transformations and&#x2F;or enrichments, and then store the results somewhere. In this section we are going to look at how to use Flink’s DataStream API to implement this kind of application.</p>
-<p>Note that Flink’s <a href="">Table and SQL APIs</a> are well suited for many ETL use cases. But regardless of whether you ultimately use the DataStream API directly, or not, having a solid understanding the basics presented here will prove valuable.</p>
+                <h1 id="Data-Pipelines-ETL"><a href="#Data-Pipelines-ETL" class="headerlink" title="Data Pipelines &amp; ETL"></a>Data Pipelines &amp; ETL</h1><hr>
+
+<p>One very common use case for Apache Flink is to implement ETL (extract, transform, load) pipelines that take data from one or more sources, perform some transformations and&#x2F;or enrichments, and then store the results somewhere. In this section we are going to look at how to use Flink’s DataStream API to implement this kind of application.</p>
+<p>Note that Flink’s <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/table/overview/">Table and SQL APIs</a> are well suited for many ETL use cases. But regardless of whether you ultimately use the DataStream API directly, or not, having a solid understanding the basics presented here will prove valuable.</p>
+<hr>
+
 <p>아파치 Flink의 매우 일반적인 사용 사례 중 하나는 데이터를 하나 이상의 소스에서 추출하여 일부 변환 및&#x2F;또는 보강을 수행 한 다음 결과를 어딘가에 저장하는 ETL (추출, 변환, 로드) 파이프라인을 구현하는 것입니다. 이 섹션에서는 Flink의 DataStream API를 사용하여 이 유형의 응용 프로그램을 구현하는 방법에 대해 살펴 보겠습니다.</p>
-<p>Flink의 <code>Table and SQL APIs</code>는 많은 ETL 사용 사례에 적합합니다. 그러나 DataStream API를 직접 사용하든지 여부에 관계없이 여기에 제시된 기본 사항에 대한 견고한 이해는 가치가 있습니다.</p>
-<h2 id="Stateless-Transformations"><a href="#Stateless-Transformations" class="headerlink" title="Stateless Transformations"></a>Stateless Transformations</h2><p>This section covers <code>map()</code> and <code>flatmap()</code>, the basic operations used to implement stateless transformations. The examples in this section assume you are familiar with the Taxi Ride data used in the hands-on exercises in the <a href="">flink-training-repo</a> .</p>
-<p>이 섹션은 상태를 가지지 않는 변환을 구현하는 데 사용되는 기본 작업인 <code>map()</code> 및 <code>flatmap()</code>을 다룹니다. 이 섹션의 예제는 flink-training-repo의 실습에서 사용되는 택시 운행 데이터에 익숙하다고 가정합니다.</p>
-<h3 id="map"><a href="#map" class="headerlink" title="map()"></a>map()</h3><p>In the first exercise you filtered a stream of taxi ride events. In that same code base there’s a <code>GeoUtils</code> class that provides a static method <code>GeoUtils.mapToGridCell(float lon, float lat)</code> which maps a location (longitude, latitude) to a grid cell that refers to an area that is approximately 100x100 meters in size.</p>
+<p>Flink의 <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/table/overview/">Table and SQL APIs</a>는 많은 ETL 사용 사례에 적합합니다. 그러나 DataStream API를 직접 사용하든지 여부에 관계없이 여기에 제시된 기본 사항에 대한 견고한 이해는 가치가 있습니다.</p>
+<h2 id="Stateless-Transformations"><a href="#Stateless-Transformations" class="headerlink" title="Stateless Transformations"></a>Stateless Transformations</h2><hr>
+
+<p>This section covers <code>map()</code> and <code>flatmap()</code>, the basic operations used to implement stateless transformations. The examples in this section assume you are familiar with the Taxi Ride data used in the hands-on exercises in the <a target="_blank" rel="noopener" href="https://github.com/apache/flink-training/tree/release-1.17">flink-training-repo</a> .</p>
+<hr>
+
+<p>이 섹션은 상태를 가지지 않는 변환을 구현하는 데 사용되는 기본 작업인 <code>map()</code> 및 <code>flatmap()</code>을 다룹니다. 이 섹션의 예제는 <a target="_blank" rel="noopener" href="https://github.com/apache/flink-training/tree/release-1.17">flink-training-repo</a>의 실습에서 사용되는 택시 운행 데이터에 익숙하다고 가정합니다.</p>
+<h3 id="map"><a href="#map" class="headerlink" title="map()"></a>map()</h3><hr>
+
+<p>In the first exercise you filtered a stream of taxi ride events. In that same code base there’s a <code>GeoUtils</code> class that provides a static method <code>GeoUtils.mapToGridCell(float lon, float lat)</code> which maps a location (longitude, latitude) to a grid cell that refers to an area that is approximately 100x100 meters in size.</p>
 <p>Now let’s enrich our stream of taxi ride objects by adding <code>startCell</code> and <code>endCell</code> fields to each event. You can create an <code>EnrichedRide</code> object that extends <code>TaxiRide</code>, adding these fields:</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">EnrichedRide</span> <span class="token keyword">extends</span> <span class="token class-name">TaxiRide</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> startCell<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> endCell<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">EnrichedRide</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">EnrichedRide</span><span class="token punctuation">(</span><span class="token class-name">TaxiRide</span> ride<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>rideId <span class="token operator">=</span> ride<span class="token punctuation">.</span>rideId<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>isStart <span class="token operator">=</span> ride<span class="token punctuation">.</span>isStart<span class="token punctuation">;</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>startCell <span class="token operator">=</span> <span class="token class-name">GeoUtils</span><span class="token punctuation">.</span><span class="token function">mapToGridCell</span><span class="token punctuation">(</span>ride<span class="token punctuation">.</span>startLon<span class="token punctuation">,</span> ride<span class="token punctuation">.</span>startLat<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>endCell <span class="token operator">=</span> <span class="token class-name">GeoUtils</span><span class="token punctuation">.</span><span class="token function">mapToGridCell</span><span class="token punctuation">(</span>ride<span class="token punctuation">.</span>endLon<span class="token punctuation">,</span> ride<span class="token punctuation">.</span>endLat<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">","</span> <span class="token operator">+</span>
+            <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>startCell<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">","</span> <span class="token operator">+</span>
+            <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>endCell<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>You can then create an application that transforms the stream</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">DataStream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">TaxiRide</span><span class="token punctuation">></span></span> rides <span class="token operator">=</span> env<span class="token punctuation">.</span><span class="token function">addSource</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">TaxiRideSource</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token class-name">DataStream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">EnrichedRide</span><span class="token punctuation">></span></span> enrichedNYCRides <span class="token operator">=</span> rides
+    <span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">RideCleansingSolution<span class="token punctuation">.</span>NYCFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Enrichment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+enrichedNYCRides<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>with this MapFunction:</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Enrichment</span> <span class="token keyword">implements</span> <span class="token class-name">MapFunction</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">TaxiRide</span><span class="token punctuation">,</span> <span class="token class-name">EnrichedRide</span><span class="token punctuation">></span></span> <span class="token punctuation">&#123;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">EnrichedRide</span> <span class="token function">map</span><span class="token punctuation">(</span><span class="token class-name">TaxiRide</span> taxiRide<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">EnrichedRide</span><span class="token punctuation">(</span>taxiRide<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+
 <p>첫 번째 연습에서는 택시 운행 이벤트의 스트림을 필터링했습니다. 동일한 코드 기반에서 위치 (경도, 위도)를 약 100x100 미터 크기의 영역에 대응하는 그리드 셀로 매핑하는 정적 메서드 <code>GeoUtils.mapToGridCell(float lon, float lat)</code>를 제공하는 <code>GeoUtils</code> 클래스가 있습니다.</p>
 <p>지금은 택시 운행 객체의 스트림을 <code>startCell</code> 및 <code>endCell</code> 필드를 각 이벤트에 추가하여 보강해 보겠습니다. 이러한 필드를 추가하는 <code>EnrichedRide</code> 객체를 생성할 수 있습니다. 이 객체는 <code>TaxiRide</code>를 확장하여 작성됩니다:</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">EnrichedRide</span> <span class="token keyword">extends</span> <span class="token class-name">TaxiRide</span> <span class="token punctuation">&#123;</span>
@@ -299,7 +352,6 @@
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>You can then create an application that transforms the stream</p>
 <p>그런 다음 스트림을 변환하는 애플리케이션을 작성할 수 있습니다.</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">DataStream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">TaxiRide</span><span class="token punctuation">></span></span> rides <span class="token operator">=</span> env<span class="token punctuation">.</span><span class="token function">addSource</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">TaxiRideSource</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -309,7 +361,6 @@
 
 enrichedNYCRides<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>with this MapFunction:</p>
 <p>다음과 같은 MapFunction을 사용하여 이를 수행할 수 있습니다:</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Enrichment</span> <span class="token keyword">implements</span> <span class="token class-name">MapFunction</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">TaxiRide</span><span class="token punctuation">,</span> <span class="token class-name">EnrichedRide</span><span class="token punctuation">></span></span> <span class="token punctuation">&#123;</span>
 
@@ -319,8 +370,9 @@ enrichedNYCRides<span class="token punctuation">.</span><span class="token funct
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="flatmap"><a href="#flatmap" class="headerlink" title="flatmap()"></a>flatmap()</h3><p>A MapFunction is suitable only when performing a one-to-one transformation: for each and every stream element coming in, map() will emit one transformed element. Otherwise, you will want to use flatmap()</p>
-<p>MapFunction은 하나의 요소를 다른 하나로 변환할 때 적합합니다. 따라서 들어오는 각 스트림 요소에 대해 map()이 하나의 변환된 요소를 발행합니다. 그렇지 않은 경우 flatmap()을 사용해야 합니다.</p>
+<h3 id="flatmap"><a href="#flatmap" class="headerlink" title="flatmap()"></a>flatmap()</h3><hr>
+
+<p>A <code>MapFunction</code> is suitable only when performing a one-to-one transformation: for each and every stream element coming in, <code>map()</code> will emit one transformed element. Otherwise, you will want to use <code>flatmap()</code></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">DataStream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">TaxiRide</span><span class="token punctuation">></span></span> rides <span class="token operator">=</span> env<span class="token punctuation">.</span><span class="token function">addSource</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">TaxiRideSource</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token class-name">DataStream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">EnrichedRide</span><span class="token punctuation">></span></span> enrichedNYCRides <span class="token operator">=</span> rides
@@ -328,7 +380,29 @@ enrichedNYCRides<span class="token punctuation">.</span><span class="token funct
 
 enrichedNYCRides<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>together with a FlatMapFunction:</p>
+<p>together with a <code>FlatMapFunction</code>:</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">NYCEnrichment</span> <span class="token keyword">implements</span> <span class="token class-name">FlatMapFunction</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">TaxiRide</span><span class="token punctuation">,</span> <span class="token class-name">EnrichedRide</span><span class="token punctuation">></span></span> <span class="token punctuation">&#123;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">flatMap</span><span class="token punctuation">(</span><span class="token class-name">TaxiRide</span> taxiRide<span class="token punctuation">,</span> <span class="token class-name">Collector</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">EnrichedRide</span><span class="token punctuation">></span></span> out<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">FilterFunction</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">TaxiRide</span><span class="token punctuation">></span></span> valid <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RideCleansing<span class="token punctuation">.</span>NYCFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>valid<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>taxiRide<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            out<span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">EnrichedRide</span><span class="token punctuation">(</span>taxiRide<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>With the <code>Collector</code> provided in this interface, the <code>flatmap()</code> method can emit as many stream elements as you like, including none at all.</p>
+<hr>
+
+<p><code>MapFunction</code>은 하나의 요소를 다른 하나로 변환할 때 적합합니다. 따라서 들어오는 각 스트림 요소에 대해 <code>map()</code>이 하나의 변환된 요소를 발행합니다. 그렇지 않은 경우 <code>flatmap()</code>을 사용해야 합니다.</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">DataStream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">TaxiRide</span><span class="token punctuation">></span></span> rides <span class="token operator">=</span> env<span class="token punctuation">.</span><span class="token function">addSource</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">TaxiRideSource</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token class-name">DataStream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">EnrichedRide</span><span class="token punctuation">></span></span> enrichedNYCRides <span class="token operator">=</span> rides
+    <span class="token punctuation">.</span><span class="token function">flatMap</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">NYCEnrichment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+enrichedNYCRides<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>FlatMapFunction과 함께 사용합니다:</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">NYCEnrichment</span> <span class="token keyword">implements</span> <span class="token class-name">FlatMapFunction</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">TaxiRide</span><span class="token punctuation">,</span> <span class="token class-name">EnrichedRide</span><span class="token punctuation">></span></span> <span class="token punctuation">&#123;</span>
 
@@ -341,21 +415,42 @@ enrichedNYCRides<span class="token punctuation">.</span><span class="token funct
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>With the Collector provided in this interface, the flatmap() method can emit as many stream elements as you like, including none at all.</p>
-<p>이 인터페이스에서 제공된 Collector를 사용하여 flatmap() 메서드는 원하는 만큼 많은 스트림 요소를 발행할 수 있으며, 아예 발행하지 않을 수도 있습니다.</p>
-<h2 id="Keyed-Streams"><a href="#Keyed-Streams" class="headerlink" title="Keyed Streams"></a>Keyed Streams</h2><h3 id="keyBy"><a href="#keyBy" class="headerlink" title="keyBy()"></a>keyBy()</h3><p>It is often very useful to be able to partition a stream around one of its attributes, so that all events with the same value of that attribute are grouped together. For example, suppose you wanted to find the longest taxi rides starting in each of the grid cells. Thinking in terms of a SQL query, this would mean doing some sort of GROUP BY with the <code>startCell</code>, while in Flink this is done with <code>keyBy(KeySelector)</code></p>
-<p>스트림을 그 속성 주변에 파티션 할 수 있는 기능은 매우 유용합니다. 이렇게 함으로써 해당 속성의 동일한 값을 갖는 모든 이벤트가 함께 그룹화됩니다. 예를 들어, 각 그리드 셀에서 시작하는 가장 긴 택시 운행을 찾고자 한다고 가정해보십시오. SQL 쿼리로 생각하면 <code>startCell</code>을 기준으로 어떤 형태의 GROUP BY를 수행하는 것을 의미하며, Flink에서는 <code>keyBy(KeySelector)</code>를 사용하여 이 작업을 수행합니다.</p>
+<p>이 인터페이스에서 제공된 <code>Collector</code>를 사용하여 <code>flatmap()</code> 메서드는 원하는 만큼 많은 스트림 요소를 발행할 수 있으며, 아예 발행하지 않을 수도 있습니다.</p>
+<h2 id="Keyed-Streams"><a href="#Keyed-Streams" class="headerlink" title="Keyed Streams"></a>Keyed Streams</h2><hr>
+
+<h3 id="keyBy"><a href="#keyBy" class="headerlink" title="keyBy()"></a>keyBy()</h3><hr>
+
+<p>It is often very useful to be able to partition a stream around one of its attributes, so that all events with the same value of that attribute are grouped together. For example, suppose you wanted to find the longest taxi rides starting in each of the grid cells. Thinking in terms of a SQL query, this would mean doing some sort of GROUP BY with the <code>startCell</code>, while in Flink this is done with <code>keyBy(KeySelector)</code></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">rides
     <span class="token punctuation">.</span><span class="token function">flatMap</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">NYCEnrichment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token punctuation">.</span><span class="token function">keyBy</span><span class="token punctuation">(</span>enrichedRide <span class="token operator">-></span> enrichedRide<span class="token punctuation">.</span>startCell<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>Every <code>keyBy</code> causes a network shuffle that repartitions the stream. In general this is pretty expensive, since it involves network communication along with serialization and deserialization.</p>
-<p><code>keyBy</code>는 스트림을 리파티션하는 네트워크 셔플을 유발합니다. 일반적으로 이는 상당히 비용이 많이 듭니다. 왜냐하면 네트워크 통신과 함께 직렬화 및 역직렬화가 포함되기 때문입니다.</p>
-<img>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128697&authkey=%21ADu-fRKm2qaJPs0&width=533&height=303" width="533" height="303" />
 
-<h3 id="Keys-are-computed"><a href="#Keys-are-computed" class="headerlink" title="Keys are computed"></a>Keys are computed</h3><p>KeySelectors aren’t limited to extracting a key from your events. They can, instead, compute the key in whatever way you want, so long as the resulting key is deterministic, and has valid implementations of <code>hashCode()</code> and <code>equals()</code>. This restriction rules out KeySelectors that generate random numbers, or that return Arrays or Enums, but you can have composite keys using Tuples or POJOs, for example, so long as their elements follow these same rules.</p>
+<hr>
+
+<p>스트림을 그 속성 주변에 파티션 할 수 있는 기능은 매우 유용합니다. 이렇게 함으로써 해당 속성의 동일한 값을 갖는 모든 이벤트가 함께 그룹화됩니다. 예를 들어, 각 그리드 셀에서 시작하는 가장 긴 택시 운행을 찾고자 한다고 가정해보십시오. SQL 쿼리로 생각하면 <code>startCell</code>을 기준으로 어떤 형태의 GROUP BY를 수행하는 것을 의미하며, Flink에서는 <code>keyBy(KeySelector)</code>를 사용하여 이 작업을 수행합니다.</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">rides
+    <span class="token punctuation">.</span><span class="token function">flatMap</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">NYCEnrichment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">keyBy</span><span class="token punctuation">(</span>enrichedRide <span class="token operator">-></span> enrichedRide<span class="token punctuation">.</span>startCell<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><code>keyBy</code>는 스트림을 리파티션하는 네트워크 셔플을 유발합니다. 일반적으로 이는 상당히 비용이 많이 듭니다. 왜냐하면 네트워크 통신과 함께 직렬화 및 역직렬화가 포함되기 때문입니다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128697&authkey=%21ADu-fRKm2qaJPs0&width=533&height=303" width="533" height="303" />
+
+
+<h3 id="Keys-are-computed"><a href="#Keys-are-computed" class="headerlink" title="Keys are computed"></a>Keys are computed</h3><hr>
+
+<p>KeySelectors aren’t limited to extracting a key from your events. They can, instead, compute the key in whatever way you want, so long as the resulting key is deterministic, and has valid implementations of <code>hashCode()</code> and <code>equals()</code>. This restriction rules out KeySelectors that generate random numbers, or that return Arrays or Enums, but you can have composite keys using Tuples or POJOs, for example, so long as their elements follow these same rules.</p>
 <p>The keys must be produced in a deterministic way, because they are recomputed whenever they are needed, rather than being attached to the stream records.</p>
 <p>For example, rather than creating a new <code>EnrichedRide</code> class with a <code>startCell</code> field that we then use as a key via</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token function">keyBy</span><span class="token punctuation">(</span>enrichedRide <span class="token operator">-></span> enrichedRide<span class="token punctuation">.</span>startCell<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>we could do this, instead:</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token function">keyBy</span><span class="token punctuation">(</span>ride <span class="token operator">-></span> <span class="token class-name">GeoUtils</span><span class="token punctuation">.</span><span class="token function">mapToGridCell</span><span class="token punctuation">(</span>ride<span class="token punctuation">.</span>startLon<span class="token punctuation">,</span> ride<span class="token punctuation">.</span>startLat<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<hr>
+
 <p>KeySelector는 이벤트에서 키를 추출하는 데 제한되지 않습니다. 대신, 결과 키가 결정론적이며 <code>hashCode()</code> 및 <code>equals()</code>의 유효한 구현이 있는 한 원하는 방식으로 키를 계산할 수 있습니다. 이 제한으로 인해 무작위 숫자를 생성하는 KeySelector나 배열 또는 열거형을 반환하는 KeySelector는 사용할 수 없지만, 예를 들어 Tuples 또는 POJOs를 사용하여 구성된 키를 사용할 수 있습니다. 단, 그 요소들이 같은 규칙을 따르는 한입니다.</p>
 <p>키는 스트림 레코드에 첨부되는 것이 아니라 필요할 때마다 다시 계산되므로 결정론적인 방식으로 생성되어야 합니다.</p>
 <p>예를 들어, 새로운 <code>EnrichedRide</code> 클래스를 만드는 대신에 <code>startCell</code> 필드를 사용하여 키를 생성하는 경우,</p>
@@ -364,8 +459,9 @@ enrichedNYCRides<span class="token punctuation">.</span><span class="token funct
 <p>we could do this, instead:</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token function">keyBy</span><span class="token punctuation">(</span>ride <span class="token operator">-></span> <span class="token class-name">GeoUtils</span><span class="token punctuation">.</span><span class="token function">mapToGridCell</span><span class="token punctuation">(</span>ride<span class="token punctuation">.</span>startLon<span class="token punctuation">,</span> ride<span class="token punctuation">.</span>startLat<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="Aggregations-on-Keyed-Streams"><a href="#Aggregations-on-Keyed-Streams" class="headerlink" title="Aggregations on Keyed Streams"></a>Aggregations on Keyed Streams</h3><p>This bit of code creates a new stream of tuples containing the <code>startCell</code> and duration (in minutes) for each end-of-ride event:</p>
-<p>다음 코드는 각 종료 이벤트마다 <code>startCell</code> 및 지속 시간(분)을 포함하는 튜플의 새로운 스트림을 생성합니다:</p>
+<h3 id="Aggregations-on-Keyed-Streams"><a href="#Aggregations-on-Keyed-Streams" class="headerlink" title="Aggregations on Keyed Streams"></a>Aggregations on Keyed Streams</h3><hr>
+
+<p>This bit of code creates a new stream of tuples containing the <code>startCell</code> and duration (in minutes) for each end-of-ride event:</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>joda<span class="token punctuation">.</span>time<span class="token punctuation">.</span></span><span class="token class-name">Interval</span></span><span class="token punctuation">;</span>
 
 <span class="token class-name">DataStream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Tuple2</span><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">,</span> <span class="token class-name">Minutes</span><span class="token punctuation">></span><span class="token punctuation">></span></span> minutesByStartCell <span class="token operator">=</span> enrichedNYCRides
@@ -384,6 +480,45 @@ enrichedNYCRides<span class="token punctuation">.</span><span class="token funct
 
 <p>Now it is possible to produce a stream that contains only those rides that are the longest rides ever seen (to that point) for each <code>startCell</code>.</p>
 <p>There are a variety of ways that the field to use as the key can be expressed. Earlier you saw an example with an <code>EnrichedRide</code> POJO, where the field to use as the key was specified with its name. This case involves <code>Tuple2</code> objects, and the index within the tuple (starting from 0) is used to specify the key.</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">minutesByStartCell
+  <span class="token punctuation">.</span><span class="token function">keyBy</span><span class="token punctuation">(</span>value <span class="token operator">-></span> value<span class="token punctuation">.</span>f0<span class="token punctuation">)</span> <span class="token comment">// .keyBy(value -> value.startCell)</span>
+  <span class="token punctuation">.</span><span class="token function">maxBy</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">// duration</span>
+  <span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>The output stream now contains a record for each key every time the duration reaches a new maximum – as shown here with cell 50797:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">..</span>.
+<span class="token operator"><span class="token file-descriptor important">4</span>></span> <span class="token punctuation">(</span><span class="token number">64549</span>,5M<span class="token punctuation">)</span>
+<span class="token operator"><span class="token file-descriptor important">4</span>></span> <span class="token punctuation">(</span><span class="token number">46298</span>,18M<span class="token punctuation">)</span>
+<span class="token operator"><span class="token file-descriptor important">1</span>></span> <span class="token punctuation">(</span><span class="token number">51549</span>,14M<span class="token punctuation">)</span>
+<span class="token operator"><span class="token file-descriptor important">1</span>></span> <span class="token punctuation">(</span><span class="token number">53043</span>,13M<span class="token punctuation">)</span>
+<span class="token operator"><span class="token file-descriptor important">1</span>></span> <span class="token punctuation">(</span><span class="token number">56031</span>,22M<span class="token punctuation">)</span>
+<span class="token operator"><span class="token file-descriptor important">1</span>></span> <span class="token punctuation">(</span><span class="token number">50797</span>,6M<span class="token punctuation">)</span>
+<span class="token punctuation">..</span>.
+<span class="token operator"><span class="token file-descriptor important">1</span>></span> <span class="token punctuation">(</span><span class="token number">50797</span>,8M<span class="token punctuation">)</span>
+<span class="token punctuation">..</span>.
+<span class="token operator"><span class="token file-descriptor important">1</span>></span> <span class="token punctuation">(</span><span class="token number">50797</span>,11M<span class="token punctuation">)</span>
+<span class="token punctuation">..</span>.
+<span class="token operator"><span class="token file-descriptor important">1</span>></span> <span class="token punctuation">(</span><span class="token number">50797</span>,12M<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+
+<p>다음 코드는 각 종료 이벤트마다 <code>startCell</code> 및 지속 시간(분)을 포함하는 튜플의 새로운 스트림을 생성합니다:</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>joda<span class="token punctuation">.</span>time<span class="token punctuation">.</span></span><span class="token class-name">Interval</span></span><span class="token punctuation">;</span>
+
+<span class="token class-name">DataStream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Tuple2</span><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">,</span> <span class="token class-name">Minutes</span><span class="token punctuation">></span><span class="token punctuation">></span></span> minutesByStartCell <span class="token operator">=</span> enrichedNYCRides
+    <span class="token punctuation">.</span><span class="token function">flatMap</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FlatMapFunction</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">EnrichedRide</span><span class="token punctuation">,</span> <span class="token class-name">Tuple2</span><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">,</span> <span class="token class-name">Minutes</span><span class="token punctuation">></span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">flatMap</span><span class="token punctuation">(</span><span class="token class-name">EnrichedRide</span> ride<span class="token punctuation">,</span>
+                            <span class="token class-name">Collector</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Tuple2</span><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">,</span> <span class="token class-name">Minutes</span><span class="token punctuation">></span><span class="token punctuation">></span></span> out<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>ride<span class="token punctuation">.</span>isStart<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token class-name">Interval</span> rideInterval <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Interval</span><span class="token punctuation">(</span>ride<span class="token punctuation">.</span>startTime<span class="token punctuation">,</span> ride<span class="token punctuation">.</span>endTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token class-name">Minutes</span> duration <span class="token operator">=</span> rideInterval<span class="token punctuation">.</span><span class="token function">toDuration</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toStandardMinutes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                out<span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Tuple2</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span>ride<span class="token punctuation">.</span>startCell<span class="token punctuation">,</span> duration<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>이제 각 <code>startCell</code>에 대해 그동안 관찰된 가장 긴 운행만 포함하는 스트림을 생성할 수 있습니다.</p>
 <p>키로 사용할 필드를 표현하는 방법에는 여러 가지가 있습니다. 이전에 <code>EnrichedRide</code> POJO를 사용한 예제를 보았는데, 여기서 키로 사용할 필드는 해당 이름으로 지정되었습니다. 이 경우 <code>Tuple2</code> 객체가 사용되며 튜플 내의 인덱스(0부터 시작)가 키를 지정하는 데 사용됩니다.</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">minutesByStartCell
@@ -391,7 +526,6 @@ enrichedNYCRides<span class="token punctuation">.</span><span class="token funct
   <span class="token punctuation">.</span><span class="token function">maxBy</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">// duration</span>
   <span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>The output stream now contains a record for each key every time the duration reaches a new maximum – as shown here with cell 50797:</p>
 <p>출력 스트림에는 지속 시간이 새로운 최대값에 도달할 때마다 각 키에 대한 레코드가 포함됩니다. 여기에서는 셀 50797의 경우를 보여줍니다:</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">..</span>.
 <span class="token operator"><span class="token file-descriptor important">4</span>></span> <span class="token punctuation">(</span><span class="token number">64549</span>,5M<span class="token punctuation">)</span>
@@ -407,15 +541,25 @@ enrichedNYCRides<span class="token punctuation">.</span><span class="token funct
 <span class="token punctuation">..</span>.
 <span class="token operator"><span class="token file-descriptor important">1</span>></span> <span class="token punctuation">(</span><span class="token number">50797</span>,12M<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="Implicit-State"><a href="#Implicit-State" class="headerlink" title="(Implicit) State"></a>(Implicit) State</h3><p>This is the first example in this training that involves stateful streaming. Though the state is being handled transparently, Flink has to keep track of the maximum duration for each distinct key.</p>
+<h3 id="Implicit-State"><a href="#Implicit-State" class="headerlink" title="(Implicit) State"></a>(Implicit) State</h3><hr>
+
+<p>This is the first example in this training that involves stateful streaming. Though the state is being handled transparently, Flink has to keep track of the maximum duration for each distinct key.</p>
 <p>Whenever state gets involved in your application, you should think about how large the state might become. Whenever the key space is unbounded, then so is the amount of state Flink will need.</p>
 <p>When working with streams, it generally makes more sense to think in terms of aggregations <code>over finite windows</code>, rather than <code>over the entire stream</code>.</p>
+<hr>
+
 <p>이것은 상태를 가진 스트리밍을 포함하는 이 교육에서의 첫 번째 예제입니다. 상태는 투명하게 처리되지만 Flink는 각 고유한 키에 대한 최대 지속 시간을 추적해야 합니다.</p>
 <p>응용 프로그램에서 상태가 관련될 때 상태가 얼마나 커질 수 있는지를 고려해야 합니다. 키 공간이 무한하면 Flink가 필요로 하는 상태도 무한합니다.</p>
 <p>스트림 작업 시 <code>전체 스트림</code>보다는 <code>유한한 윈도우</code>에 대한 집계를 고려하는 것이 일반적으로 더 합리적입니다.</p>
-<h3 id="reduce-and-other-aggregators"><a href="#reduce-and-other-aggregators" class="headerlink" title="reduce() and other aggregators"></a><code>reduce()</code> and other aggregators</h3><p><code>maxBy()</code>, used above, is just one example of a number of aggregator functions available on Flink’s <code>KeyedStreams</code>. There is also a more general purpose <code>reduce()</code> function that you can use to implement your own custom aggregations.</p>
+<h3 id="reduce-and-other-aggregators"><a href="#reduce-and-other-aggregators" class="headerlink" title="reduce() and other aggregators"></a><code>reduce()</code> and other aggregators</h3><hr>
+
+<p><code>maxBy()</code>, used above, is just one example of a number of aggregator functions available on Flink’s <code>KeyedStreams</code>. There is also a more general purpose <code>reduce()</code> function that you can use to implement your own custom aggregations.</p>
+<hr>
+
 <p>위에서 사용된 <code>maxBy()</code>는 Flink의 <code>KeyedStreams</code>에서 사용할 수 있는 여러 집계 함수 중 하나에 불과합니다. 또한 자체 사용자 정의 집계를 구현하는 데 사용할 수 있는 보다 일반적인 용도의 <code>reduce()</code> 함수도 있습니다.</p>
-<h2 id="Stateful-Transformations"><a href="#Stateful-Transformations" class="headerlink" title="Stateful Transformations"></a>Stateful Transformations</h2><h3 id="Why-is-Flink-Involved-in-Managing-State"><a href="#Why-is-Flink-Involved-in-Managing-State" class="headerlink" title="Why is Flink Involved in Managing State?"></a>Why is Flink Involved in Managing State?</h3><p>Your applications are certainly capable of using state without getting Flink involved in managing it – but Flink offers some compelling features for the state it manages:</p>
+<h2 id="Stateful-Transformations"><a href="#Stateful-Transformations" class="headerlink" title="Stateful Transformations"></a>Stateful Transformations</h2><h3 id="Why-is-Flink-Involved-in-Managing-State"><a href="#Why-is-Flink-Involved-in-Managing-State" class="headerlink" title="Why is Flink Involved in Managing State?"></a>Why is Flink Involved in Managing State?</h3><hr>
+
+<p>Your applications are certainly capable of using state without getting Flink involved in managing it – but Flink offers some compelling features for the state it manages:</p>
 <ul>
 <li><strong>local</strong>: Flink state is kept local to the machine that processes it, and can be accessed at memory speed</li>
 <li><strong>durable</strong>: Flink state is fault-tolerant, i.e., it is automatically checkpointed at regular intervals, and is restored upon failure</li>
@@ -423,6 +567,8 @@ enrichedNYCRides<span class="token punctuation">.</span><span class="token funct
 <li><strong>horizontally scalable</strong>: Flink state is redistributed as your cluster grows and shrinks</li>
 </ul>
 <p>In this section you will learn how to work with Flink’s APIs that manage keyed state.</p>
+<hr>
+
 <p>당신의 응용 프로그램은 Flink의 관리 없이 상태를 사용할 수 있습니다. 그러나 Flink는 관리하는 상태에 대해 몇 가지 매력적인 기능을 제공합니다:</p>
 <ul>
 <li><strong>지역(local)</strong>: Flink 상태는 처리하는 머신에 로컬로 유지되며 메모리 속도로 액세스할 수 있습니다.</li>
@@ -431,10 +577,10 @@ enrichedNYCRides<span class="token punctuation">.</span><span class="token funct
 <li><strong>수평 확장 가능(horizontally scalable)</strong>: Flink 상태는 클러스터가 커지고 줄어들 때 상태가 재분배됩니다.</li>
 </ul>
 <p>이 섹션에서는 keyed state를 관리하는 Flink의 API를 사용하는 방법을 배우게 될 것입니다.</p>
-<h3 id="Rich-Functions"><a href="#Rich-Functions" class="headerlink" title="Rich Functions"></a>Rich Functions</h3><p>At this point you have already seen several of Flink’s function interfaces, including <code>FilterFunction</code>, <code>MapFunction</code>, and <code>FlatMapFunction</code>. These are all examples of the Single Abstract Method pattern.</p>
+<h3 id="Rich-Functions"><a href="#Rich-Functions" class="headerlink" title="Rich Functions"></a>Rich Functions</h3><hr>
+
+<p>At this point you have already seen several of Flink’s function interfaces, including <code>FilterFunction</code>, <code>MapFunction</code>, and <code>FlatMapFunction</code>. These are all examples of the Single Abstract Method pattern.</p>
 <p>For each of these interfaces, Flink also provides a so-called “rich” variant, e.g., <code>RichFlatMapFunction</code>, which has some additional methods, including:</p>
-<p>지금까지 <code>FilterFunction</code>, <code>MapFunction</code> 및 <code>FlatMapFunction</code>과 같은 Flink의 여러 함수 인터페이스를 보았습니다. 이들은 모두 단일 추상 메서드 패턴의 예입니다.</p>
-<p>각각의 인터페이스에 대해, Flink는 “rich” 변형이라고 불리는 것을 제공합니다. 예를 들어, <code>RichFlatMapFunction</code>은 추가적인 메서드를 포함합니다. 그 예로는 다음이 있습니다:</p>
 <ul>
 <li><code>open(Configuration c)</code></li>
 <li><code>close()</code></li>
@@ -442,10 +588,20 @@ enrichedNYCRides<span class="token punctuation">.</span><span class="token funct
 </ul>
 <p><code>open()</code> is called once, during operator initialization. This is an opportunity to load some static data, or to open a connection to an external service, for example.</p>
 <p><code>getRuntimeContext()</code> provides access to a whole suite of potentially interesting things, but most notably it is how you can create and access state managed by Flink.</p>
+<hr>
+
+<p>지금까지 <code>FilterFunction</code>, <code>MapFunction</code> 및 <code>FlatMapFunction</code>과 같은 Flink의 여러 함수 인터페이스를 보았습니다. 이들은 모두 단일 추상 메서드 패턴의 예입니다.</p>
+<p>각각의 인터페이스에 대해, Flink는 “rich” 변형이라고 불리는 것을 제공합니다. 예를 들어, <code>RichFlatMapFunction</code>은 추가적인 메서드를 포함합니다. 그 예로는 다음이 있습니다:</p>
+<ul>
+<li><code>open(Configuration c)</code></li>
+<li><code>close()</code></li>
+<li><code>getRuntimeContext()</code></li>
+</ul>
 <p><code>open()</code> 메서드는 연산자 초기화 중에 한 번 호출됩니다. 이는 정적 데이터를 로드하거나 외부 서비스에 연결하는 기회입니다.</p>
 <p><code>getRuntimeContext()</code>는 잠재적으로 흥미로운 다양한 요소에 액세스할 수 있지만, 가장 중요한 것은 Flink에서 관리하는 상태를 생성하고 액세스하는 방법입니다.</p>
-<h3 id="An-Example-with-Keyed-State"><a href="#An-Example-with-Keyed-State" class="headerlink" title="An Example with Keyed State"></a>An Example with Keyed State</h3><p>In this example, imagine you have a stream of events that you want to de-duplicate, so that you only keep the first event with each key. Here’s an application that does that, using a <code>RichFlatMapFunction</code> called <code>Deduplicator</code>:</p>
-<p>이 예에서는 각 키별로 첫 번째 이벤트만 유지하도록 이벤트 스트림을 중복 제거하고자 합니다. 이를 수행하는 애플리케이션인 <code>Deduplicator</code>라는 <code>RichFlatMapFunction</code>을 사용한 애플리케이션을 살펴보겠습니다.</p>
+<h3 id="An-Example-with-Keyed-State"><a href="#An-Example-with-Keyed-State" class="headerlink" title="An Example with Keyed State"></a>An Example with Keyed State</h3><hr>
+
+<p>In this example, imagine you have a stream of events that you want to de-duplicate, so that you only keep the first event with each key. Here’s an application that does that, using a <code>RichFlatMapFunction</code> called <code>Deduplicator</code>:</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Event</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token class-name">String</span> key<span class="token punctuation">;</span>
     <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">long</span> timestamp<span class="token punctuation">;</span>
@@ -465,11 +621,55 @@ enrichedNYCRides<span class="token punctuation">.</span><span class="token funct
 
 <p>To accomplish this, <code>Deduplicator</code> will need to somehow remember, for each key, whether or not there has already been an event for that key. It will do so using Flink’s <em>keyed state</em> interface.</p>
 <p>When you are working with a keyed stream like this one, Flink will maintain a key&#x2F;value store for each item of state being managed.</p>
-<p>Flink supports several different types of keyed state, and this example uses the simplest one, namely <code>ValueState</code>. This means that for <em>each key</em>, Flink will store a single object – in this case, an object of type <code>Boolean</code>.</p>
+<p>Flink supports several different types of keyed state, and this example uses the simplest one, namely <code>ValueState</code>. This means that <em><strong>for each key</strong></em>, Flink will store a single object – in this case, an object of type <code>Boolean</code>.</p>
 <p>Our <code>Deduplicator</code> class has two methods: <code>open()</code> and <code>flatMap()</code>. The open method establishes the use of managed state by defining a <code>ValueStateDescriptor&lt;Boolean&gt;</code>. The arguments to the constructor specify a name for this item of keyed state (“keyHasBeenSeen”), and provide information that can be used to serialize these objects (in this case, <code>Types.BOOLEAN</code>).</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Deduplicator</span> <span class="token keyword">extends</span> <span class="token class-name">RichFlatMapFunction</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Event</span><span class="token punctuation">,</span> <span class="token class-name">Event</span><span class="token punctuation">></span></span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">ValueState</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Boolean</span><span class="token punctuation">></span></span> keyHasBeenSeen<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token keyword">open</span><span class="token punctuation">(</span><span class="token class-name">Configuration</span> conf<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">ValueStateDescriptor</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Boolean</span><span class="token punctuation">></span></span> desc <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ValueStateDescriptor</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token string">"keyHasBeenSeen"</span><span class="token punctuation">,</span> <span class="token class-name">Types</span><span class="token punctuation">.</span><span class="token constant">BOOLEAN</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        keyHasBeenSeen <span class="token operator">=</span> <span class="token function">getRuntimeContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getState</span><span class="token punctuation">(</span>desc<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">flatMap</span><span class="token punctuation">(</span><span class="token class-name">Event</span> event<span class="token punctuation">,</span> <span class="token class-name">Collector</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Event</span><span class="token punctuation">></span></span> out<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>keyHasBeenSeen<span class="token punctuation">.</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            out<span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            keyHasBeenSeen<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>When the flatMap method calls <code>keyHasBeenSeen.value()</code>, Flink’s runtime looks up the value of this piece of state <em><strong>for the key in context</strong></em>, and only if it is <code>null</code> does it go ahead and collect the event to the output. It also updates <code>keyHasBeenSeen</code> to <code>true</code> in this case.</p>
+<p>This mechanism for accessing and updating key-partitioned state may seem rather magical, since the key is not explicitly visible in the implementation of our <code>Deduplicator</code>. When Flink’s runtime calls the <code>open</code> method of our <code>RichFlatMapFunction</code>, there is no event, and thus no key in context at that moment. But when it calls the <code>flatMap</code> method, the key for the event being processed is available to the runtime, and is used behind the scenes to determine which entry in Flink’s state backend is being operated on.</p>
+<p>When deployed to a distributed cluster, there will be many instances of this <code>Deduplicator</code>, each of which will responsible for a disjoint subset of the entire keyspace. Thus, when you see a single item of <code>ValueState</code>, such as</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">ValueState</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Boolean</span><span class="token punctuation">></span></span> keyHasBeenSeen<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>understand that this represents not just a single Boolean, but rather a distributed, sharded, key&#x2F;value store.</p>
+<hr>
+
+<p>이 예에서는 각 키별로 첫 번째 이벤트만 유지하도록 이벤트 스트림을 중복 제거하고자 합니다. 이를 수행하는 애플리케이션인 <code>Deduplicator</code>라는 <code>RichFlatMapFunction</code>을 사용한 애플리케이션을 살펴보겠습니다.</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Event</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token class-name">String</span> key<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">long</span> timestamp<span class="token punctuation">;</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">StreamExecutionEnvironment</span> env <span class="token operator">=</span> <span class="token class-name">StreamExecutionEnvironment</span><span class="token punctuation">.</span><span class="token function">getExecutionEnvironment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  
+    env<span class="token punctuation">.</span><span class="token function">addSource</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">EventSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">keyBy</span><span class="token punctuation">(</span>e <span class="token operator">-></span> e<span class="token punctuation">.</span>key<span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">flatMap</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Deduplicator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  
+    env<span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>이를 수행하기 위해 <code>Deduplicator</code>는 각 키마다 해당 키에 대한 이벤트가 이미 있는지 여부를 어떻게든 기억해야 합니다. 이를 위해 Flink의 <em>keyed state</em> 인터페이스를 사용할 것입니다.</p>
 <p>이와 같은 keyed stream을 다룰 때 Flink는 관리되는 각 상태 항목에 대해 키&#x2F;값 저장소를 유지합니다.</p>
-<p>Flink는 여러 종류의 keyed state를 지원하며, 이 예제에서는 가장 간단한 유형인 <code>ValueState</code>를 사용합니다. 이는 <em>각 키</em>마다 Flink가 단일 객체를 저장한다는 것을 의미합니다. 이 경우에는 <code>Boolean</code> 타입의 객체입니다.</p>
+<p>Flink는 여러 종류의 keyed state를 지원하며, 이 예제에서는 가장 간단한 유형인 <code>ValueState</code>를 사용합니다. 이는 <em><strong>각 키마다</strong></em> Flink가 단일 객체를 저장한다는 것을 의미합니다. 이 경우에는 <code>Boolean</code> 타입의 객체입니다.</p>
 <p>우리의 <code>Deduplicator</code> 클래스에는 두 개의 메서드가 있습니다: <code>open()</code>과 <code>flatMap()</code>. open() 메서드는 <code>ValueStateDescriptor&lt;Boolean&gt;</code>을 정의함으로써 관리 상태의 사용을 설정합니다. 생성자의 인수는 이러한 keyed state 항목에 대한 이름을 지정하고 이러한 객체를 직렬화하는 데 사용할 수 있는 정보를 제공합니다(이 경우 <code>Types.BOOLEAN</code>).</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Deduplicator</span> <span class="token keyword">extends</span> <span class="token class-name">RichFlatMapFunction</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Event</span><span class="token punctuation">,</span> <span class="token class-name">Event</span><span class="token punctuation">></span></span> <span class="token punctuation">&#123;</span>
     <span class="token class-name">ValueState</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Boolean</span><span class="token punctuation">></span></span> keyHasBeenSeen<span class="token punctuation">;</span>
@@ -489,38 +689,53 @@ enrichedNYCRides<span class="token punctuation">.</span><span class="token funct
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>When the flatMap method calls <code>keyHasBeenSeen.value()</code>, Flink’s runtime looks up the value of this piece of state <em>for the key in context</em>, and only if it is <code>null</code> does it go ahead and collect the event to the output. It also updates <code>keyHasBeenSeen</code> to <code>true</code> in this case.</p>
-<p>This mechanism for accessing and updating key-partitioned state may seem rather magical, since the key is not explicitly visible in the implementation of our <code>Deduplicator</code>. When Flink’s runtime calls the <code>open</code> method of our <code>RichFlatMapFunction</code>, there is no event, and thus no key in context at that moment. But when it calls the <code>flatMap</code> method, the key for the event being processed is available to the runtime, and is used behind the scenes to determine which entry in Flink’s state backend is being operated on.</p>
-<p>When deployed to a distributed cluster, there will be many instances of this <code>Deduplicator</code>, each of which will responsible for a disjoint subset of the entire keyspace. Thus, when you see a single item of <code>ValueState</code>, such as</p>
-<p>flatMap 메서드가 <code>keyHasBeenSeen.value()</code>를 호출하면 Flink의 런타임은 <em>컨텍스트의 키</em>에 대한 이 상태의 값을 찾아보고, 값이 <code>null</code>인 경우에만 이벤트를 출력에 수집합니다. 이 경우에는 <code>keyHasBeenSeen</code>도 <code>true</code>로 업데이트됩니다.</p>
+<p>flatMap 메서드가 <code>keyHasBeenSeen.value()</code>를 호출하면 Flink의 런타임은 <em><strong>컨텍스트의 키</strong></em>에 대한 이 상태의 값을 찾아보고, 값이 <code>null</code>인 경우에만 이벤트를 출력에 수집합니다. 이 경우에는 <code>keyHasBeenSeen</code>도 <code>true</code>로 업데이트됩니다.</p>
 <p>키-파티션 상태를 액세스하고 업데이트하는 이 메커니즘은 마법 같을 수 있습니다. 왜냐하면 <code>Deduplicator</code>의 구현에서 키가 명시적으로 표시되지 않기 때문입니다. Flink의 런타임이 <code>RichFlatMapFunction</code>의 <code>open</code> 메서드를 호출할 때는 이벤트가 없으므로 해당 시점에는 컨텍스트에 키가 없습니다. 그러나 <code>flatMap</code> 메서드를 호출할 때 처리 중인 이벤트의 키가 런타임에 사용 가능하며, Flink의 상태 백엔드에서 어떤 항목이 작동되는지를 결정하는 데 사용됩니다.</p>
 <p>분산 클러스터에 배포되면 이 <code>Deduplicator</code>의 많은 인스턴스가 있을 것이며, 각 인스턴스는 전체 키 공간의 겹치지 않는 하위 집합을 담당할 것입니다. 따라서 다음과 같은 단일한 <code>ValueState</code> 항목을 볼 때,</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">ValueState</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Boolean</span><span class="token punctuation">></span></span> keyHasBeenSeen<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>understand that this represents not just a single Boolean, but rather a distributed, sharded, key&#x2F;value store.</p>
 <p>이것은 단순히 단일 Boolean이 아니라 분산되고 샤딩된 키&#x2F;값 저장소를 나타내는 것이므로 이해하십시오.</p>
-<h3 id="Clearing-State"><a href="#Clearing-State" class="headerlink" title="Clearing State"></a>Clearing State</h3><p>There’s a potential problem with the example above: What will happen if the key space is unbounded? Flink is storing somewhere an instance of Boolean for every distinct key that is used. If there’s a bounded set of keys then this will be fine, but in applications where the set of keys is growing in an unbounded way, it’s necessary to clear the state for keys that are no longer needed. This is done by calling <code>clear()</code> on the state object, as in:</p>
-<p>위의 예제에는 잠재적인 문제가 있습니다: 키 공간이 무한한 경우 어떻게 될까요? Flink는 사용되는 각 고유한 키에 대해 Boolean 인스턴스를 어딘가에 저장하고 있습니다. 키의 집합이 유한하면 이는 괜찮지만, 키의 집합이 무한하게 커지는 응용 프로그램에서는 더 이상 필요하지 않은 키에 대한 상태를 지우는 것이 필요합니다. 이를 위해 상태 객체에서 <code>clear()</code>를 호출합니다:</p>
+<h3 id="Clearing-State"><a href="#Clearing-State" class="headerlink" title="Clearing State"></a>Clearing State</h3><hr>
+
+<p>There’s a potential problem with the example above: What will happen if the key space is unbounded? Flink is storing somewhere an instance of Boolean for every distinct key that is used. If there’s a bounded set of keys then this will be fine, but in applications where the set of keys is growing in an unbounded way, it’s necessary to clear the state for keys that are no longer needed. This is done by calling <code>clear()</code> on the state object, as in:</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">keyHasBeenSeen<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>You might want to do this, for example, after a period of inactivity for a given key. You’ll see how to use Timers to do this when you learn about <code>ProcessFunctions</code> in the section on event-driven applications.</p>
 <p>There’s also a <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/datastream/fault-tolerance/state/#state-time-to-live-ttl">State Time-to-Live (TTL)</a> option that you can configure with the state descriptor that specifies when you want the state for stale keys to be automatically cleared.</p>
-<p>예를 들어, 특정 키에 대한 비활동 기간 후에 이 작업을 수행할 수 있습니다. 이벤트 기반 응용 프로그램 섹션에서 <code>ProcessFunction</code>에 대해 배울 때 타이머를 사용하는 방법을 살펴볼 것입니다.</p>
-<p>또한 상태 설명자로 구성할 수 있는 <code>상태의 유효 기간 (TTL)</code> 옵션이 있습니다. 이를 사용하여 오래된 키에 대한 상태가 자동으로 지워지는 시기를 지정할 수 있습니다.</p>
-<h3 id="Non-keyed-State"><a href="#Non-keyed-State" class="headerlink" title="Non-keyed State"></a>Non-keyed State</h3><p>It is also possible to work with managed state in non-keyed contexts. This is sometimes called <a href="">operator state</a>. The interfaces involved are somewhat different, and since it is unusual for user-defined functions to need non-keyed state, it is not covered here. This feature is most often used in the implementation of sources and sinks.</p>
-<p>non-keyed 컨텍스트에서 관리 상태를 다룰 수도 있습니다. 이를 때로는 <code>오퍼레이터 상태라</code>고도 합니다. 관련된 인터페이스는 다소 다르며, 사용자 정의 함수가 non-keyed state가 필요한 경우가 드물기 때문에 여기에서는 다루지 않습니다. 이 기능은 주로 소스와 싱크의 구현에 사용됩니다.</p>
-<h2 id="Connected-Streams"><a href="#Connected-Streams" class="headerlink" title="Connected Streams"></a>Connected Streams</h2><p>Sometimes instead of applying a pre-defined transformation like this:</p>
-<p>가끔은 다음과 같이 미리 정의된 변환을 적용하는 대신:</p>
-<img>
+<hr>
 
-<p>you want to be able to dynamically alter some aspects of the transformation – by streaming in thresholds, or rules, or other parameters. The pattern in Flink that supports this is something called <em>connected streams</em>, wherein a single operator has two input streams, like this:</p>
-<p>어떤 측면의 변환을 동적으로 변경할 수 있는 기능이 필요할 때가 있습니다. 예를 들어, 임계값, 규칙 또는 다른 매개변수를 스트리밍으로 제공하고자 할 수 있습니다. Flink에서 이를 지원하는 패턴은 <em>연결된 스트림</em>입니다. 여기서 하나의 연산자에는 두 개의 입력 스트림이 있습니다:</p>
-<img>
+<p>위의 예제에는 잠재적인 문제가 있습니다: 키 공간이 무한한 경우 어떻게 될까요? Flink는 사용되는 각 고유한 키에 대해 Boolean 인스턴스를 어딘가에 저장하고 있습니다. 키의 집합이 유한하면 이는 괜찮지만, 키의 집합이 무한하게 커지는 응용 프로그램에서는 더 이상 필요하지 않은 키에 대한 상태를 지우는 것이 필요합니다. 이를 위해 상태 객체에서 <code>clear()</code>를 호출합니다:</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">keyHasBeenSeen<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>예를 들어, 특정 키에 대한 비활동 기간 후에 이 작업을 수행할 수 있습니다. 이벤트 기반 응용 프로그램 섹션에서 <code>ProcessFunction</code>에 대해 배울 때 타이머를 사용하는 방법을 살펴볼 것입니다.</p>
+<p>또한 상태 설명자로 구성할 수 있는 <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/datastream/fault-tolerance/state/#state-time-to-live-ttl">상태의 유효 기간 (TTL)</a> 옵션이 있습니다. 이를 사용하여 오래된 키에 대한 상태가 자동으로 지워지는 시기를 지정할 수 있습니다.</p>
+<h3 id="Non-keyed-State"><a href="#Non-keyed-State" class="headerlink" title="Non-keyed State"></a>Non-keyed State</h3><hr>
+
+<p>It is also possible to work with managed state in non-keyed contexts. This is sometimes called <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/datastream/fault-tolerance/state/#operator-state">operator state</a>. The interfaces involved are somewhat different, and since it is unusual for user-defined functions to need non-keyed state, it is not covered here. This feature is most often used in the implementation of sources and sinks.</p>
+<hr>
+
+<p>non-keyed 컨텍스트에서 관리 상태를 다룰 수도 있습니다. 이를 때로는 <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/datastream/fault-tolerance/state/#operator-state">오퍼레이터 상태</a>라고도 합니다. 관련된 인터페이스는 다소 다르며, 사용자 정의 함수가 non-keyed state가 필요한 경우가 드물기 때문에 여기에서는 다루지 않습니다. 이 기능은 주로 소스와 싱크의 구현에 사용됩니다.</p>
+<h2 id="Connected-Streams"><a href="#Connected-Streams" class="headerlink" title="Connected Streams"></a>Connected Streams</h2><hr>
+
+<p>Sometimes instead of applying a pre-defined transformation like this:</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128698&authkey=%21ACBFrcGWvP9EIXo&width=560&height=151" width="560" height="151" />
+
+<p>you want to be able to dynamically alter some aspects of the transformation – by streaming in thresholds, or rules, or other parameters. The pattern in Flink that supports this is something called <em><strong>connected streams</strong></em>, wherein a single operator has two input streams, like this:</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128699&authkey=%21AHJraEGqOlr9GcM&width=565&height=269" width="565" height="269" />
 
 <p>Connected streams can also be used to implement streaming joins.</p>
+<hr>
+
+<p>가끔은 다음과 같이 미리 정의된 변환을 적용하는 대신:</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128698&authkey=%21ACBFrcGWvP9EIXo&width=560&height=151" width="560" height="151" />
+
+<p>어떤 측면의 변환을 동적으로 변경할 수 있는 기능이 필요할 때가 있습니다. 예를 들어, 임계값, 규칙 또는 다른 매개변수를 스트리밍으로 제공하고자 할 수 있습니다. Flink에서 이를 지원하는 패턴은 <em><strong>연결된 스트림</strong></em>입니다. 여기서 하나의 연산자에는 두 개의 입력 스트림이 있습니다:</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128699&authkey=%21AHJraEGqOlr9GcM&width=565&height=269" width="565" height="269" />
+
 <p>연결된 스트림은 스트리밍 조인을 구현하는 데에도 사용될 수 있습니다.</p>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>In this example, a control stream is used to specify words which must be filtered out of the <code>streamOfWords</code>. A <code>RichCoFlatMapFunction</code> called <code>ControlFunction</code> is applied to the connected streams to get this done.</p>
-<p>이 예제에서는 제어 스트림을 사용하여 <code>streamOfWords</code>에서 제외해야 할 단어를 지정합니다. 이를 수행하기 위해 연결된 스트림에 <code>RichCoFlatMapFunction</code>인 <code>ControlFunction</code>을 적용합니다.</p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><hr>
+
+<p>In this example, a control stream is used to specify words which must be filtered out of the <code>streamOfWords</code>. A <code>RichCoFlatMapFunction</code> called <code>ControlFunction</code> is applied to the connected streams to get this done.</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
     <span class="token class-name">StreamExecutionEnvironment</span> env <span class="token operator">=</span> <span class="token class-name">StreamExecutionEnvironment</span><span class="token punctuation">.</span><span class="token function">getExecutionEnvironment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -542,6 +757,54 @@ enrichedNYCRides<span class="token punctuation">.</span><span class="token funct
 
 <p>Note that the two streams being connected must be keyed in compatible ways. The role of a keyBy is to partition a stream’s data, and when keyed streams are connected, they must be partitioned in the same way. This ensures that all of the events from both streams with the same key are sent to the same instance. This makes it possible, then, to join the two streams on that key, for example.</p>
 <p>In this case the streams are both of type <code>DataStream&lt;String&gt;</code>, and both streams are keyed by the string. As you will see below, this <code>RichCoFlatMapFunction</code> is storing a Boolean value in keyed state, and this Boolean is shared by the two streams.</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">ControlFunction</span> <span class="token keyword">extends</span> <span class="token class-name">RichCoFlatMapFunction</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">private</span> <span class="token class-name">ValueState</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Boolean</span><span class="token punctuation">></span></span> blocked<span class="token punctuation">;</span>
+      
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token keyword">open</span><span class="token punctuation">(</span><span class="token class-name">Configuration</span> config<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        blocked <span class="token operator">=</span> <span class="token function">getRuntimeContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">getState</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ValueStateDescriptor</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token string">"blocked"</span><span class="token punctuation">,</span> <span class="token class-name">Boolean</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+      
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">flatMap1</span><span class="token punctuation">(</span><span class="token class-name">String</span> control_value<span class="token punctuation">,</span> <span class="token class-name">Collector</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> out<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
+        blocked<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token class-name">Boolean</span><span class="token punctuation">.</span><span class="token constant">TRUE</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+      
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">flatMap2</span><span class="token punctuation">(</span><span class="token class-name">String</span> data_value<span class="token punctuation">,</span> <span class="token class-name">Collector</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> out<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>blocked<span class="token punctuation">.</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            out<span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span>data_value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>A <code>RichCoFlatMapFunction</code> is a kind of <code>FlatMapFunction</code> that can be applied to a pair of connected streams, and it has access to the rich function interface. This means that it can be made stateful.</p>
+<p>The <code>blocked</code> Boolean is being used to remember the keys (words, in this case) that have been mentioned on the <code>control</code> stream, and those words are being filtered out of the <code>streamOfWords</code> stream. This is <em><strong>keyed state</strong></em>, and it is shared between the two streams, which is why the two streams have to share the same keyspace.</p>
+<p><code>flatMap1</code> and <code>flatMap2</code> are called by the Flink runtime with elements from each of the two connected streams – in our case, elements from the <code>control</code> stream are passed into <code>flatMap1</code>, and elements from <code>streamOfWords</code> are passed into <code>flatMap2</code>. This was determined by the order in which the two streams are connected with <code>control.connect(streamOfWords)</code>.</p>
+<p>It is important to recognize that you have no control over the order in which the <code>flatMap1</code> and <code>flatMap2</code> callbacks are called. These two input streams are racing against each other, and the Flink runtime will do what it wants to regarding consuming events from one stream or the other. In cases where timing and&#x2F;or ordering matter, you may find it necessary to buffer events in managed Flink state until your application is ready to process them. (Note: if you are truly desperate, it is possible to exert some limited control over the order in which a two-input operator consumes its inputs by using a custom Operator that implements the <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/api/java//org/apache/flink/streaming/api/operators/InputSelectable.html">InputSelectable</a>)</p>
+<hr>
+
+<p>이 예제에서는 제어 스트림을 사용하여 <code>streamOfWords</code>에서 제외해야 할 단어를 지정합니다. 이를 수행하기 위해 연결된 스트림에 <code>RichCoFlatMapFunction</code>인 <code>ControlFunction</code>을 적용합니다.</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">StreamExecutionEnvironment</span> env <span class="token operator">=</span> <span class="token class-name">StreamExecutionEnvironment</span><span class="token punctuation">.</span><span class="token function">getExecutionEnvironment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token class-name">DataStream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> control <span class="token operator">=</span> env
+        <span class="token punctuation">.</span><span class="token function">fromElements</span><span class="token punctuation">(</span><span class="token string">"DROP"</span><span class="token punctuation">,</span> <span class="token string">"IGNORE"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">keyBy</span><span class="token punctuation">(</span>x <span class="token operator">-></span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token class-name">DataStream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> streamOfWords <span class="token operator">=</span> env
+        <span class="token punctuation">.</span><span class="token function">fromElements</span><span class="token punctuation">(</span><span class="token string">"Apache"</span><span class="token punctuation">,</span> <span class="token string">"DROP"</span><span class="token punctuation">,</span> <span class="token string">"Flink"</span><span class="token punctuation">,</span> <span class="token string">"IGNORE"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">keyBy</span><span class="token punctuation">(</span>x <span class="token operator">-></span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  
+    control
+        <span class="token punctuation">.</span><span class="token function">connect</span><span class="token punctuation">(</span>streamOfWords<span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">flatMap</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ControlFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    env<span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>두 개의 연결된 스트림은 호환되는 방식으로 키가 지정되어야 합니다. keyBy의 역할은 스트림 데이터를 파티션하는 것이며, 키가 지정된 스트림이 연결될 때 이들은 동일한 방식으로 파티션되어야 합니다. 이렇게 하면 동일한 키를 갖는 두 스트림의 모든 이벤트가 동일한 인스턴스로 전송되도록 보장됩니다. 그런 다음 이러한 키를 사용하여 두 스트림을 결합할 수 있습니다.</p>
 <p>이 경우 스트림은 모두 <code>DataStream&lt;String&gt;</code> 유형이며, 두 스트림 모두 문자열로 키가 지정됩니다. 아래에서 볼 수 있듯이, 이 <code>RichCoFlatMapFunction</code>은 keyed state에 Boolean 값을 저장하고 이 Boolean 값은 두 스트림에서 공유됩니다.</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">ControlFunction</span> <span class="token keyword">extends</span> <span class="token class-name">RichCoFlatMapFunction</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span> <span class="token punctuation">&#123;</span>
@@ -566,18 +829,17 @@ enrichedNYCRides<span class="token punctuation">.</span><span class="token funct
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>A <code>RichCoFlatMapFunction</code> is a kind of <code>FlatMapFunction</code> that can be applied to a pair of connected streams, and it has access to the rich function interface. This means that it can be made stateful.</p>
-<p>The <code>blocked</code> Boolean is being used to remember the keys (words, in this case) that have been mentioned on the <code>control</code> stream, and those words are being filtered out of the <code>streamOfWords</code> stream. This is <em>keyed state</em>, and it is shared between the two streams, which is why the two streams have to share the same keyspace.</p>
-<p><code>flatMap1</code> and <code>flatMap2</code> are called by the Flink runtime with elements from each of the two connected streams – in our case, elements from the <code>control</code> stream are passed into <code>flatMap1</code>, and elements from <code>streamOfWords</code> are passed into <code>flatMap2</code>. This was determined by the order in which the two streams are connected with <code>control.connect(streamOfWords)</code>.</p>
-<p>It is important to recognize that you have no control over the order in which the <code>flatMap1</code> and <code>flatMap2</code> callbacks are called. These two input streams are racing against each other, and the Flink runtime will do what it wants to regarding consuming events from one stream or the other. In cases where timing and&#x2F;or ordering matter, you may find it necessary to buffer events in managed Flink state until your application is ready to process them. (Note: if you are truly desperate, it is possible to exert some limited control over the order in which a two-input operator consumes its inputs by using a custom Operator that implements the <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/api/java//org/apache/flink/streaming/api/operators/InputSelectable.html">InputSelectable</a></p>
-<p>RichCoFlatMapFunction은 연결된 두 스트림에 적용할 수 있는 FlatMapFunction의 한 종류로, 풍부한 함수 인터페이스에 액세스할 수 있습니다. 즉, 상태를 가질 수 있습니다.</p>
-<p><code>blocked</code> 부울은 <code>제어</code> 스트림에서 언급된 키(이 경우 단어)를 기억하는 데 사용되며, 이러한 단어들은 <code>streamOfWords</code> 스트림에서 필터링됩니다. 이것은 <em>keyed state</em>이며, 두 스트림 간에 공유되므로 두 스트림은 동일한 키 공간을 공유해야 합니다.</p>
+<p><code>RichCoFlatMapFunction</code>은 연결된 두 스트림에 적용할 수 있는 <code>FlatMapFunction</code>의 한 종류로, 풍부한 함수 인터페이스에 액세스할 수 있습니다. 즉, 상태를 가질 수 있습니다.</p>
+<p><code>blocked</code> 부울은 <code>제어</code> 스트림에서 언급된 키(이 경우 단어)를 기억하는 데 사용되며, 이러한 단어들은 <code>streamOfWords</code> 스트림에서 필터링됩니다. 이것은 <em><strong>keyed</strong></em> state이며, 두 스트림 간에 공유되므로 두 스트림은 동일한 키 공간을 공유해야 합니다.</p>
 <p><code>flatMap1</code> 및 <code>flatMap2</code>는 Flink 런타임에 의해 두 연결된 스트림의 요소와 함께 호출됩니다. 여기서는 제어 스트림의 요소가 flatMap1로 전달되고, streamOfWords의 요소가 flatMap2로 전달됩니다. 이것은 <code>control.connect(streamOfWords)</code>로 두 스트림이 연결된 순서에 따라 결정되었습니다.</p>
-<p><code>flatMap1</code> 및 <code>flatMap2</code> 콜백이 호출되는 순서를 제어할 수 없다는 점을 인식하는 것이 중요합니다. 이 두 입력 스트림은 서로 경쟁하며, Flink 런타임은 하나의 스트림 또는 다른 스트림에서 이벤트를 소비하는 방법을 스스로 결정할 것입니다. 타이밍 및&#x2F;또는 순서가 중요한 경우, 관리되는 Flink 상태에서 이벤트를 버퍼링하여 응용 프로그램이 이를 처리할 준비가 될 때까지 기다리는 것이 필요할 수 있습니다. (참고: 만약 절망적인 상황이라면, 두 개의 입력을 갖는 연산자가 입력을 소비하는 순서를 일부 제어할 수 있도록 사용자 지정 Operator를 구현하는 방법을 사용할 수 있습니다.)</p>
+<p><code>flatMap1</code> 및 <code>flatMap2</code> 콜백이 호출되는 순서를 제어할 수 없다는 점을 인식하는 것이 중요합니다. 이 두 입력 스트림은 서로 경쟁하며, Flink 런타임은 하나의 스트림 또는 다른 스트림에서 이벤트를 소비하는 방법을 스스로 결정할 것입니다. 타이밍 및&#x2F;또는 순서가 중요한 경우, 관리되는 Flink 상태에서 이벤트를 버퍼링하여 응용 프로그램이 이를 처리할 준비가 될 때까지 기다리는 것이 필요할 수 있습니다. (참고: 만약 절대적으로 필요하다면, <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/api/java//org/apache/flink/streaming/api/operators/InputSelectable.html">InputSelectable</a>을 구현하는 사용자 정의 Operator를 사용하여 두 입력 연산자가 입력을 소비하는 순서를 제한적으로 제어할 수 있습니다.)</p>
 <h2 id="Hands-on"><a href="#Hands-on" class="headerlink" title="Hands-on"></a>Hands-on</h2><p>The hands-on exercise that goes with this section is the <a target="_blank" rel="noopener" href="https://github.com/apache/flink-training/tree/release-1.17">Rides and Fares</a> .</p>
 <h2 id="Further-Reading"><a href="#Further-Reading" class="headerlink" title="Further Reading"></a>Further Reading</h2><ul>
-<li>DataStream Transformations</li>
-<li>Stateful Stream Processing</li>
+<li><a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/datastream/operators/overview/#datastream-transformations">DataStream Transformations</a></li>
+<li><a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/concepts/stateful-stream-processing/">Stateful Stream Processing</a></li>
+</ul>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/learn-flink/etl/">https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/learn-flink/etl/</a></li>
 </ul>
 
                 
@@ -747,12 +1009,12 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/04/19/Flink/docs/Concepts/Overview/">
+                <a href="/2024/04/19/Flink/docs/Learn_Flink/Intro_to_the_DataStream_API/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/flink-logo.png" class="responsive-img" alt="[Flink] Concepts - Overview">
+                        <img src="/images/logos/flink-logo.png" class="responsive-img" alt="[Flink] Learn_Flink - Intro_to_the_DataStream_API">
                         
-                        <span class="card-title diy-neon-red">[Flink] Concepts - Overview</span>
+                        <span class="card-title diy-neon-red">[Flink] Learn_Flink - Intro_to_the_DataStream_API</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -787,12 +1049,12 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/04/19/Flink/docs/Learn_Flink/Intro_to_the_DataStream_API/">
+                <a href="/2024/04/19/Flink/docs/Learn_Flink/Overview/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/flink-logo.png" class="responsive-img" alt="[Flink] Learn_Flink - Intro_to_the_DataStream_API">
+                        <img src="/images/logos/flink-logo.png" class="responsive-img" alt="[Flink] Learn_Flink - Overview">
                         
-                        <span class="card-title diy-neon-red">[Flink] Learn_Flink - Intro_to_the_DataStream_API</span>
+                        <span class="card-title diy-neon-red">[Flink] Learn_Flink - Overview</span>
                     </div>
                 </a>
                 <div class="card-content article-content">

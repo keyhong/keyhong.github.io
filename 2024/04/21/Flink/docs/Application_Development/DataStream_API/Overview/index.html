@@ -5,7 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="[Flink] Application_Development - DataStream_API - Overview, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Flink DataStream API Programming GuideDataStream programs in Flink are regular programs that implement transformations o">
+    <meta name="description" content="Flink DataStream API Programming Guide
+
+DataStream programs in Flink are regular programs that implement transformations">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -268,13 +270,17 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Flink-DataStream-API-Programming-Guide"><a href="#Flink-DataStream-API-Programming-Guide" class="headerlink" title="Flink DataStream API Programming Guide"></a>Flink DataStream API Programming Guide</h1><p>DataStream programs in Flink are regular programs that implement transformations on data streams (e.g., filtering, updating state, defining windows, aggregating). The data streams are initially created from various sources (e.g., message queues, socket streams, files). Results are returned via sinks, which may for example write the data to files, or to standard output (for example the command line terminal). Flink programs run in a variety of contexts, standalone, or embedded in other programs. The execution can happen in a local JVM, or on clusters of many machines.</p>
+                <h1 id="Flink-DataStream-API-Programming-Guide"><a href="#Flink-DataStream-API-Programming-Guide" class="headerlink" title="Flink DataStream API Programming Guide"></a>Flink DataStream API Programming Guide</h1><hr>
+
+<p>DataStream programs in Flink are regular programs that implement transformations on data streams (e.g., filtering, updating state, defining windows, aggregating). The data streams are initially created from various sources (e.g., message queues, socket streams, files). Results are returned via sinks, which may for example write the data to files, or to standard output (for example the command line terminal). Flink programs run in a variety of contexts, standalone, or embedded in other programs. The execution can happen in a local JVM, or on clusters of many machines.</p>
 <p>In order to create your own Flink DataStream program, we encourage you to start with <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/datastream/overview/#anatomy-of-a-flink-program">anatomy of a Flink Program</a> and gradually add your own <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/datastream/operators/overview/">stream transformations</a>. The remaining sections act as references for additional operations and advanced features.</p>
 <hr>
 
 <p>DataStream 프로그램은 데이터 스트림에서의 변환을 구현하는 일반적인 프로그램입니다(예: 필터링, 상태 업데이트, 윈도우 정의, 집계). 데이터 스트림은 처음에 다양한 소스(예: 메시지 큐, 소켓 스트림, 파일)에서 생성됩니다. 결과는 시스템에서 반환되며, 예를 들어 데이터를 파일에 쓰거나 표준 출력(예: 명령 줄 터미널)으로 전송할 수 있습니다. Flink 프로그램은 독립형으로 실행되거나 다른 프로그램에 포함되어 실행될 수 있습니다. 실행은 로컬 JVM에서 또는 여러 대의 머신으로 구성된 클러스터에서 발생할 수 있습니다.</p>
-<p>Flink DataStream 프로그램을 만들기 위해선 Flink 프로그램의 구조부터 시작하고 점진적으로 <a href="">스트림 변환</a>을 추가하는 것을 권장합니다. 남은 섹션들은 추가 작업 및 고급 기능에 대한 참조로 작용합니다.</p>
-<h2 id="What-is-a-DataStream"><a href="#What-is-a-DataStream" class="headerlink" title="What is a DataStream?"></a>What is a DataStream?</h2><p>The DataStream API gets its name from the special <code>DataStream</code> class that is used to represent a collection of data in a Flink program. You can think of them as immutable collections of data that can contain duplicates. This data can either be finite or unbounded, the API that you use to work on them is the same.</p>
+<p>Flink DataStream 프로그램을 만들기 위해선 <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/datastream/overview/#anatomy-of-a-flink-program">Flink 프로그램의 구조</a>부터 시작하고 점진적으로 <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/datastream/operators/overview/">스트림 변환</a>을 추가하는 것을 권장합니다. 남은 섹션들은 추가 작업 및 고급 기능에 대한 참조로 작용합니다.</p>
+<h2 id="What-is-a-DataStream"><a href="#What-is-a-DataStream" class="headerlink" title="What is a DataStream?"></a>What is a DataStream?</h2><hr>
+
+<p>The DataStream API gets its name from the special <code>DataStream</code> class that is used to represent a collection of data in a Flink program. You can think of them as immutable collections of data that can contain duplicates. This data can either be finite or unbounded, the API that you use to work on them is the same.</p>
 <p>A <code>DataStream</code> is similar to a regular Java <code>Collection</code> in terms of usage but is quite different in some key ways. They are immutable, meaning that once they are created you cannot add or remove elements. You can also not simply inspect the elements inside but only work on them using the <code>DataStream</code> API operations, which are also called transformations.</p>
 <p>You can create an initial <code>DataStream</code> by adding a source in a Flink program. Then you can derive new streams from this and combine them by using API methods such as <code>map</code>, <code>filter</code>, and so on.</p>
 <hr>
@@ -282,7 +288,9 @@
 <p>DataStream API는 Flink 프로그램에서 데이터 컬렉션을 나타내는 특별한 <code>DataStream</code> 클래스에서 이름을 따옵니다. 이들은 중복을 포함할 수 있는 변경 불가능한 데이터 컬렉션으로 생각할 수 있습니다. 이 데이터는 유한하거나 무한할 수 있으며, 이를 처리하는 데 사용되는 API는 동일합니다.</p>
 <p><code>DataStream</code>은 사용 방법에서 일반적인 Java <code>컬렉션</code>과 유사하지만 일부 중요한 차이가 있습니다. 이들은 변경 불가능하며, 생성된 후에는 요소를 추가하거나 제거할 수 없습니다. 내부 요소를 단순히 검사할 수 없고, 오직 <code>DataStream</code> API 작업(변환으로도 불림)을 사용하여 작업할 수 있습니다.</p>
 <p>Flink 프로그램에서 소스를 추가하여 초기 <code>DataStream</code>을 생성할 수 있습니다. 그런 다음 <code>map</code>, <code>filter</code> 등의 API 메서드를 사용하여 이를 기반으로 새로운 스트림을 유도하고 결합할 수 있습니다.</p>
-<h2 id="Anatomy-of-a-Flink-Program"><a href="#Anatomy-of-a-Flink-Program" class="headerlink" title="Anatomy of a Flink Program"></a>Anatomy of a Flink Program</h2><p>Flink programs look like regular programs that transform <code>DataStreams</code>. Each program consists of the same basic parts:</p>
+<h2 id="Anatomy-of-a-Flink-Program"><a href="#Anatomy-of-a-Flink-Program" class="headerlink" title="Anatomy of a Flink Program"></a>Anatomy of a Flink Program</h2><hr>
+
+<p>Flink programs look like regular programs that transform <code>DataStreams</code>. Each program consists of the same basic parts:</p>
 <ol>
 <li>Obtain an <code>execution environment</code>,</li>
 <li>Load&#x2F;create the initial data,</li>
@@ -293,7 +301,7 @@
 <blockquote>
 <p>All Flink Scala APIs are deprecated and will be removed in a future Flink version. You can still build your application in Scala, but you should move to the Java version of either the DataStream and&#x2F;or Table API. <br><br>See <a target="_blank" rel="noopener" href="https://cwiki.apache.org/confluence/display/FLINK/FLIP-265+Deprecate+and+remove+Scala+API+support">FLIP-265 Deprecate and remove Scala API support</a></p>
 </blockquote>
-<p>We will now give an overview of each of those steps, please refer to the respective sections for more details. Note that all core classes of the Java DataStream API can be found in <a href="">org.apache.flink.streaming.api</a> .</p>
+<p>We will now give an overview of each of those steps, please refer to the respective sections for more details. Note that all core classes of the Java DataStream API can be found in <a target="_blank" rel="noopener" href="https://github.com/apache/flink/tree/release-1.19/flink-streaming-java/src/main/java/org/apache/flink/streaming/api">org.apache.flink.streaming.api</a> .</p>
 <p>The <code>StreamExecutionEnvironment</code> is the basis for all Flink programs. You can obtain one using these static methods on <code>StreamExecutionEnvironment</code>:</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token function">getExecutionEnvironment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -301,7 +309,7 @@
 
 <span class="token function">createRemoteEnvironment</span><span class="token punctuation">(</span><span class="token class-name">String</span> host<span class="token punctuation">,</span> <span class="token keyword">int</span> port<span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> jarFiles<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>Typically, you only need to use <code>getExecutionEnvironment()</code>, since this will do the right thing depending on the context: if you are executing your program inside an IDE or as a regular Java program it will create a local environment that will execute your program on your local machine. If you created a JAR file from your program, and invoke it through the <a href="">command line</a>, the Flink cluster manager will execute your main method and <code>getExecutionEnvironment()</code> will return an execution environment for executing your program on a cluster.</p>
+<p>Typically, you only need to use <code>getExecutionEnvironment()</code>, since this will do the right thing depending on the context: if you are executing your program inside an IDE or as a regular Java program it will create a local environment that will execute your program on your local machine. If you created a JAR file from your program, and invoke it through the <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/deployment/cli/">command line</a>, the Flink cluster manager will execute your main method and <code>getExecutionEnvironment()</code> will return an execution environment for executing your program on a cluster.</p>
 <p>For specifying data sources the execution environment has several methods to read from files using various methods: you can just read them line by line, as CSV files, or using any of the other provided sources. To just read a text file as a sequence of lines, you can use:</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">final</span> <span class="token class-name">StreamExecutionEnvironment</span> env <span class="token operator">=</span> <span class="token class-name">StreamExecutionEnvironment</span><span class="token punctuation">.</span><span class="token function">getExecutionEnvironment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -346,7 +354,7 @@
 <blockquote>
 <p>모든 Flink Scala API는 더 이상 사용되지 않으며, 향후 Flink 버전에서 제거될 예정입니다. 여전히 Scala로 응용 프로그램을 작성할 수 있지만, DataStream 및&#x2F;또는 Table API의 Java 버전으로 전환해야 합니다. <br><br><a target="_blank" rel="noopener" href="https://cwiki.apache.org/confluence/display/FLINK/FLIP-265+Deprecate+and+remove+Scala+API+support">FLIP-265 Deprecate and remove Scala API support</a>를 참조하세요.</p>
 </blockquote>
-<p>이제 각 단계에 대한 개요를 제공하겠습니다. 자세한 내용은 해당 섹션을 참조하세요. Java DataStream API의 모든 핵심 클래스는 <a href="">org.apache.flink.streaming.api</a>에서 찾을 수 있습니다.</p>
+<p>이제 각 단계에 대한 개요를 제공하겠습니다. 자세한 내용은 해당 섹션을 참조하세요. Java DataStream API의 모든 핵심 클래스는 <a target="_blank" rel="noopener" href="https://github.com/apache/flink/tree/release-1.19/flink-streaming-java/src/main/java/org/apache/flink/streaming/api">org.apache.flink.streaming.api</a>에서 찾을 수 있습니다.</p>
 <p><code>StreamExecutionEnvironment는</code> 모든 Flink 프로그램의 기초입니다. <code>StreamExecutionEnvironment</code>에서 이러한 정적 메서드를 사용하여 하나를 얻을 수 있습니다:</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token function">getExecutionEnvironment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -354,7 +362,7 @@
 
 <span class="token function">createRemoteEnvironment</span><span class="token punctuation">(</span><span class="token class-name">String</span> host<span class="token punctuation">,</span> <span class="token keyword">int</span> port<span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> jarFiles<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>보통은 <code>getExecutionEnvironment()</code>만 사용하면 됩니다. 이것은 실행 컨텍스트에 따라 올바른 작업을 수행합니다: IDE 내에서 프로그램을 실행하거나 일반적인 Java 프로그램으로 실행하는 경우 로컬 환경이 생성되어 프로그램이 로컬 머신에서 실행됩니다. 프로그램에서 JAR 파일을 생성하고 <a href="">명령 줄</a>을 통해 호출하는 경우 Flink 클러스터 관리자가 주 메서드를 실행하고 <code>getExecutionEnvironment()</code>가 클러스터에서 프로그램을 실행하기 위한 실행 환경을 반환합니다.</p>
+<p>보통은 <code>getExecutionEnvironment()</code>만 사용하면 됩니다. 이것은 실행 컨텍스트에 따라 올바른 작업을 수행합니다: IDE 내에서 프로그램을 실행하거나 일반적인 Java 프로그램으로 실행하는 경우 로컬 환경이 생성되어 프로그램이 로컬 머신에서 실행됩니다. 프로그램에서 JAR 파일을 생성하고 <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/deployment/cli/">명령 줄</a>을 통해 호출하는 경우 Flink 클러스터 관리자가 주 메서드를 실행하고 <code>getExecutionEnvironment()</code>가 클러스터에서 프로그램을 실행하기 위한 실행 환경을 반환합니다.</p>
 <p>데이터 소스를 지정하기 위해 실행 환경에는 다양한 방법으로 파일에서 읽을 수 있는 여러 메서드가 있습니다: 줄 단위로 읽을 수도 있고, CSV 파일로 읽을 수도 있으며, 다른 제공된 소스를 사용할 수도 있습니다. 텍스트 파일을 줄의 시퀀스로만 읽으려면 다음을 사용할 수 있습니다:</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">final</span> <span class="token class-name">StreamExecutionEnvironment</span> env <span class="token operator">=</span> <span class="token class-name">StreamExecutionEnvironment</span><span class="token punctuation">.</span><span class="token function">getExecutionEnvironment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -386,7 +394,9 @@
 
 <p>프로그램 실행에 관한 마지막 부분은 Flink 작업이 언제 어떻게 실행되는지를 이해하는 데 중요합니다. 모든 Flink 프로그램은 게으르게 실행됩니다: 프로그램의 main 메서드가 실행될 때 데이터 로드 및 변환은 직접 발생하지 않습니다. 대신, 각 작업은 데이터 플로우 그래프에 추가되어 작성됩니다. 작업은 실행 환경에서 <code>execute()</code> 호출로 명시적으로 트리거될 때 실제로 실행됩니다. 프로그램이 로컬에서 실행되는지 아니면 클러스터에서 실행되는지는 실행 환경의 유형에 따라 달라집니다.</p>
 <p>게으른 평가를 통해 Flink가 전체적으로 계획된 하나의 복잡한 프로그램으로 실행할 수 있도록 합니다.</p>
-<h2 id="Example-Program"><a href="#Example-Program" class="headerlink" title="Example Program"></a>Example Program</h2><p>The following program is a complete, working example of streaming window word count application, that counts the words coming from a web socket in 5 second windows. You can copy &amp; paste the code to run it locally.</p>
+<h2 id="Example-Program"><a href="#Example-Program" class="headerlink" title="Example Program"></a>Example Program</h2><hr>
+
+<p>The following program is a complete, working example of streaming window word count application, that counts the words coming from a web socket in 5 second windows. You can copy &amp; paste the code to run it locally.</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>api<span class="token punctuation">.</span>common<span class="token punctuation">.</span>functions<span class="token punctuation">.</span></span><span class="token class-name">FlatMapFunction</span></span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>api<span class="token punctuation">.</span>java<span class="token punctuation">.</span>tuple<span class="token punctuation">.</span></span><span class="token class-name">Tuple2</span></span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>streaming<span class="token punctuation">.</span>api<span class="token punctuation">.</span>datastream<span class="token punctuation">.</span></span><span class="token class-name">DataStream</span></span><span class="token punctuation">;</span>
@@ -469,7 +479,9 @@
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nc</span> <span class="token parameter variable">-lk</span> <span class="token number">9999</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>Enter 키를 눌러 새로운 단어를 입력하세요. 이들은 워드 카운트 프로그램의 입력이 될 것입니다. 1보다 큰 카운트를 보고 싶다면, 5초 내에 동일한 단어를 반복해서 입력하세요 (당신의 타자 속도가 그렇게 빠르지 않다면 윈도우 크기를 5초보다 크게 늘리세요 ☺).</p>
-<h2 id="Data-Sources"><a href="#Data-Sources" class="headerlink" title="Data Sources"></a>Data Sources</h2><p>Sources are where your program reads its input from. You can attach a source to your program by using <code>StreamExecutionEnvironment.addSource(sourceFunction)</code>. Flink comes with a number of pre-implemented source functions, but you can always write your own custom sources by implementing the <code>SourceFunction</code> for non-parallel sources, or by implementing the <code>ParallelSourceFunction</code> interface or extending the <code>RichParallelSourceFunction</code> for parallel sources.</p>
+<h2 id="Data-Sources"><a href="#Data-Sources" class="headerlink" title="Data Sources"></a>Data Sources</h2><hr>
+
+<p>Sources are where your program reads its input from. You can attach a source to your program by using <code>StreamExecutionEnvironment.addSource(sourceFunction)</code>. Flink comes with a number of pre-implemented source functions, but you can always write your own custom sources by implementing the <code>SourceFunction</code> for non-parallel sources, or by implementing the <code>ParallelSourceFunction</code> interface or extending the <code>RichParallelSourceFunction</code> for parallel sources.</p>
 <p>There are several predefined stream sources accessible from the <code>StreamExecutionEnvironment</code>:</p>
 <p>File-based:</p>
 <ul>
@@ -548,9 +560,15 @@
 <ul>
 <li><code>addSource</code> - 새로운 소스 함수를 추가합니다. 예를 들어, Apache Kafka에서 읽으려면 <code>addSource(new FlinkKafkaConsumer&lt;&gt;(...))</code>를 사용할 수 있습니다. 자세한 내용은 <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/connectors/datastream/overview/">커넥터</a>를 참조하세요.</li>
 </ul>
-<h2 id="DataStream-Transformations"><a href="#DataStream-Transformations" class="headerlink" title="DataStream Transformations"></a>DataStream Transformations</h2><p>Please see <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/datastream/operators/overview/">operators</a> for an overview of the available stream transformations.</p>
+<h2 id="DataStream-Transformations"><a href="#DataStream-Transformations" class="headerlink" title="DataStream Transformations"></a>DataStream Transformations</h2><hr>
+
 <p>Please see <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/datastream/operators/overview/">operators</a> for an overview of the available stream transformations.</p>
-<h2 id="Data-Sinks"><a href="#Data-Sinks" class="headerlink" title="Data Sinks"></a>Data Sinks</h2><p>Data sinks consume DataStreams and forward them to files, sockets, external systems, or print them. Flink comes with a variety of built-in output formats that are encapsulated behind operations on the DataStreams:</p>
+<hr>
+
+<p>사용 가능한 스트림 변환 개요를 보려면 <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/datastream/operators/overview/">연산자</a>를 참조하세요.</p>
+<h2 id="Data-Sinks"><a href="#Data-Sinks" class="headerlink" title="Data Sinks"></a>Data Sinks</h2><hr>
+
+<p>Data sinks consume DataStreams and forward them to files, sockets, external systems, or print them. Flink comes with a variety of built-in output formats that are encapsulated behind operations on the DataStreams:</p>
 <ul>
 <li><p><code>writeAsText() / TextOutputFormat</code> - Writes elements line-wise as Strings. The Strings are obtained by calling the <em><strong>toString()</strong></em> method of each element.</p>
 </li>
@@ -586,7 +604,9 @@
 </ul>
 <p><code>write*()</code> 메서드는 주로 디버깅 목적으로 사용됩니다. 이들은 Flink의 체크포인팅에 참여하지 않으므로, 일반적으로 적어도 한 번의 의미론을 갖습니다. 대상 시스템으로의 데이터 플러싱은 OutputFormat의 구현에 따라 달라집니다. 이는 OutputFormat로 전송된 모든 요소가 대상 시스템에 즉시 표시되지 않을 수 있다는 것을 의미합니다. 또한, 실패한 경우 해당 레코드가 손실될 수 있습니다.</p>
 <p>스트림을 파일 시스템으로 안전하고 정확하게 한 번만 전달하려면 <code>FileSink</code>를 사용하세요. 또한, <code>.addSink(...)</code> 메서드를 통한 사용자 정의 구현은 정확히 한 번의 의미론을 위해 Flink의 체크포인팅에 참여할 수 있습니다.</p>
-<h2 id="Execution-Parameters"><a href="#Execution-Parameters" class="headerlink" title="Execution Parameters"></a>Execution Parameters</h2><p>The <code>StreamExecutionEnvironment</code> contains the <code>ExecutionConfig</code> which allows to set job specific configuration values for the runtime.</p>
+<h2 id="Execution-Parameters"><a href="#Execution-Parameters" class="headerlink" title="Execution Parameters"></a>Execution Parameters</h2><hr>
+
+<p>The <code>StreamExecutionEnvironment</code> contains the <code>ExecutionConfig</code> which allows to set job specific configuration values for the runtime.</p>
 <p>Please refer to <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/deployment/config/">execution configuration</a> for an explanation of most parameters. These parameters pertain specifically to the DataStream API:</p>
 <ul>
 <li><code>setAutoWatermarkInterval(long milliseconds)</code>: Set the interval for automatic watermark emission. You can get the current value with <code>long getAutoWatermarkInterval()</code></li>
@@ -598,9 +618,15 @@
 <ul>
 <li><code>setAutoWatermarkInterval(long milliseconds)</code>: 자동 워터마크 발생 간격을 설정합니다. 현재 값은 <code>long getAutoWatermarkInterval()</code>로 가져올 수 있습니다.</li>
 </ul>
-<h3 id="Fault-Tolerance"><a href="#Fault-Tolerance" class="headerlink" title="Fault Tolerance"></a>Fault Tolerance</h3><p><a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/datastream/fault-tolerance/checkpointing/">State &amp; Checkpointing</a> describes how to enable and configure Flink’s checkpointing mechanism.</p>
-<p><a href="">State &amp; Checkpointing</a>은 Flink의 체크포인팅 메커니즘을 활성화하고 구성하는 방법을 설명합니다.</p>
-<h3 id="Controlling-Latency"><a href="#Controlling-Latency" class="headerlink" title="Controlling Latency"></a>Controlling Latency</h3><p>By default, elements are not transferred on the network one-by-one (which would cause unnecessary network traffic) but are buffered. The size of the buffers (which are actually transferred between machines) can be set in the Flink config files. While this method is good for optimizing throughput, it can cause latency issues when the incoming stream is not fast enough. To control throughput and latency, you can use <code>env.setBufferTimeout(timeoutMillis)</code> on the execution environment (or on individual operators) to set a maximum wait time for the buffers to fill up. After this time, the buffers are sent automatically even if they are not full. The default value for this timeout is 100 ms.</p>
+<h3 id="Fault-Tolerance"><a href="#Fault-Tolerance" class="headerlink" title="Fault Tolerance"></a>Fault Tolerance</h3><hr>
+
+<p><a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/datastream/fault-tolerance/checkpointing/">State &amp; Checkpointing</a> describes how to enable and configure Flink’s checkpointing mechanism.</p>
+<hr>
+
+<p><a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/datastream/fault-tolerance/checkpointing/">State &amp; Checkpointing</a>은 Flink의 체크포인팅 메커니즘을 활성화하고 구성하는 방법을 설명합니다.</p>
+<h3 id="Controlling-Latency"><a href="#Controlling-Latency" class="headerlink" title="Controlling Latency"></a>Controlling Latency</h3><hr>
+
+<p>By default, elements are not transferred on the network one-by-one (which would cause unnecessary network traffic) but are buffered. The size of the buffers (which are actually transferred between machines) can be set in the Flink config files. While this method is good for optimizing throughput, it can cause latency issues when the incoming stream is not fast enough. To control throughput and latency, you can use <code>env.setBufferTimeout(timeoutMillis)</code> on the execution environment (or on individual operators) to set a maximum wait time for the buffers to fill up. After this time, the buffers are sent automatically even if they are not full. The default value for this timeout is 100 ms.</p>
 <p>Usage:</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">LocalStreamEnvironment</span> env <span class="token operator">=</span> <span class="token class-name">StreamExecutionEnvironment</span><span class="token punctuation">.</span><span class="token function">createLocalEnvironment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 env<span class="token punctuation">.</span><span class="token function">setBufferTimeout</span><span class="token punctuation">(</span>timeoutMillis<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -618,9 +644,18 @@ env<span class="token punctuation">.</span><span class="token function">setBuffe
 env<span class="token punctuation">.</span><span class="token function">generateSequence</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">MyMapper</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setBufferTimeout</span><span class="token punctuation">(</span>timeoutMillis<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>최대 처리량을 위해 <code>setBufferTimeout(-1)</code>로 설정하여 타임아웃을 제거하면 버퍼가 가득 찰 때만 플러시됩니다. 최소한의 지연을 위해 타임아웃을 0에 가까운 값으로 설정하십시오 (예: 5 또는 10 ms). 버퍼 타임아웃을 0으로 설정하는 것은 심각한 성능 저하를 유발할 수 있으므로 피해야 합니다.</p>
-<h2 id="Debugging"><a href="#Debugging" class="headerlink" title="Debugging"></a>Debugging</h2><p>Before running a streaming program in a distributed cluster, it is a good idea to make sure that the implemented algorithm works as desired. Hence, implementing data analysis programs is usually an incremental process of checking results, debugging, and improving.</p>
+<h2 id="Debugging"><a href="#Debugging" class="headerlink" title="Debugging"></a>Debugging</h2><hr>
+
+<p>Before running a streaming program in a distributed cluster, it is a good idea to make sure that the implemented algorithm works as desired. Hence, implementing data analysis programs is usually an incremental process of checking results, debugging, and improving.</p>
 <p>Flink provides features to significantly ease the development process of data analysis programs by supporting local debugging from within an IDE, injection of test data, and collection of result data. This section give some hints how to ease the development of Flink programs.</p>
-<h3 id="Local-Execution-Environment"><a href="#Local-Execution-Environment" class="headerlink" title="Local Execution Environment"></a>Local Execution Environment</h3><p>A <code>LocalStreamEnvironment</code> starts a Flink system within the same JVM process it was created in. If you start the LocalEnvironment from an IDE, you can set breakpoints in your code and easily debug your program.</p>
+<hr>
+
+
+<p>스트리밍 프로그램을 분산 클러스터에서 실행하기 전에 구현된 알고리즘이 원하는 대로 작동하는지 확인하는 것이 좋습니다. 따라서 데이터 분석 프로그램을 구현하는 것은 일반적으로 결과 확인, 디버깅 및 개선의 점진적인 과정입니다.</p>
+<p>Flink는 IDE 내부에서 로컬 디버깅을 지원하고 테스트 데이터의 주입 및 결과 데이터 수집을 통해 데이터 분석 프로그램의 개발 과정을 크게 편리하게 만드는 기능을 제공합니다. 이 섹션에서는 Flink 프로그램의 개발을 용이하게 하는 몇 가지 힌트를 제공합니다.</p>
+<h3 id="Local-Execution-Environment"><a href="#Local-Execution-Environment" class="headerlink" title="Local Execution Environment"></a>Local Execution Environment</h3><hr>
+
+<p>A <code>LocalStreamEnvironment</code> starts a Flink system within the same JVM process it was created in. If you start the LocalEnvironment from an IDE, you can set breakpoints in your code and easily debug your program.</p>
 <p>A LocalEnvironment is created and used as follows:</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">final</span> <span class="token class-name">StreamExecutionEnvironment</span> env <span class="token operator">=</span> <span class="token class-name">StreamExecutionEnvironment</span><span class="token punctuation">.</span><span class="token function">createLocalEnvironment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -640,7 +675,9 @@ env<span class="token punctuation">.</span><span class="token function">execute<
 
 env<span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="Collection-Data-Sources"><a href="#Collection-Data-Sources" class="headerlink" title="Collection Data Sources"></a>Collection Data Sources</h3><p>Flink provides special data sources which are backed by Java collections to ease testing. Once a program has been tested, the sources and sinks can be easily replaced by sources and sinks that read from &#x2F; write to external systems.</p>
+<h3 id="Collection-Data-Sources"><a href="#Collection-Data-Sources" class="headerlink" title="Collection Data Sources"></a>Collection Data Sources</h3><hr>
+
+<p>Flink provides special data sources which are backed by Java collections to ease testing. Once a program has been tested, the sources and sinks can be easily replaced by sources and sinks that read from &#x2F; write to external systems.</p>
 <p>Collection data sources can be used as follows:</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">final</span> <span class="token class-name">StreamExecutionEnvironment</span> env <span class="token operator">=</span> <span class="token class-name">StreamExecutionEnvironment</span><span class="token punctuation">.</span><span class="token function">createLocalEnvironment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -674,7 +711,9 @@ env<span class="token punctuation">.</span><span class="token function">execute<
 <span class="token class-name">DataStream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Long</span><span class="token punctuation">></span></span> myLongs <span class="token operator">=</span> env<span class="token punctuation">.</span><span class="token function">fromCollection</span><span class="token punctuation">(</span>longIt<span class="token punctuation">,</span> <span class="token class-name">Long<span class="token punctuation">.</span>Class</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><strong>참고</strong>: 현재 컬렉션 데이터 소스는 데이터 유형과 반복자가 <code>Serializable</code>을 구현해야 합니다. 또한, 컬렉션 데이터 소스는 병렬로 실행될 수 없습니다 (parallelism &#x3D; 1).</p>
-<h3 id="Iterator-Data-Sink"><a href="#Iterator-Data-Sink" class="headerlink" title="Iterator Data Sink"></a>Iterator Data Sink</h3><p>Flink also provides a sink to collect DataStream results for testing and debugging purposes. It can be used as follows:</p>
+<h3 id="Iterator-Data-Sink"><a href="#Iterator-Data-Sink" class="headerlink" title="Iterator Data Sink"></a>Iterator Data Sink</h3><hr>
+
+<p>Flink also provides a sink to collect DataStream results for testing and debugging purposes. It can be used as follows:</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">DataStream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Tuple2</span><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span><span class="token punctuation">></span></span> myResults <span class="token operator">=</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">;</span>
 <span class="token class-name">Iterator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Tuple2</span><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span><span class="token punctuation">></span></span> myOutput <span class="token operator">=</span> myResult<span class="token punctuation">.</span><span class="token function">collectAsync</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
@@ -683,10 +722,10 @@ env<span class="token punctuation">.</span><span class="token function">execute<
 <span class="token class-name">Iterator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Tuple2</span><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span><span class="token punctuation">></span></span> myOutput <span class="token operator">=</span> myResults<span class="token punctuation">.</span><span class="token function">collectAsync</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <h2 id="Where-to-go-next"><a href="#Where-to-go-next" class="headerlink" title="Where to go next?"></a>Where to go next?</h2><ul>
-<li><code>Operators</code>: Specification of available streaming operators.</li>
-<li><code>Event Time</code>: Introduction to Flink’s notion of time.</li>
-<li><code>State &amp; Fault Tolerance</code>: Explanation of how to develop stateful applications.</li>
-<li><code>Connectors</code>: Description of available input and output connectors</li>
+<li><a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/datastream/operators/overview/">Operators</a>: Specification of available streaming operators.</li>
+<li><a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/concepts/time/">Event Time</a>: Introduction to Flink’s notion of time.</li>
+<li><a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/datastream/fault-tolerance/state/">State &amp; Fault Tolerance</a>: Explanation of how to develop stateful applications.</li>
+<li><a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/connectors/datastream/overview/">Connectors</a>: Description of available input and output connectors</li>
 </ul>
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/datastream/overview">https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/datastream/overview</a></li>
