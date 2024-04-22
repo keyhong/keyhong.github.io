@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="YARN ServiceOverviewYarn Service framework provides first class support and APIs to host long running services natively ">
+    <meta name="keywords" content="[Kubernetes] Concepts - Overview - Objects In Kubernetes - Annotations, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="AnnotationsYou can use Kubernetes annotations to attach arbitrary non-identifying metadata to objects. Clients such as t">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Keyhong</title>
+    <title>[Kubernetes] Concepts - Overview - Objects In Kubernetes - Annotations | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -205,13 +205,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/kubernetes-logo.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        </h1>
+                        [Kubernetes] Concepts - Overview - Objects In Kubernetes - Annotations</h1>
                 </div>
             </div>
         </div>
@@ -245,6 +245,15 @@
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Kubernetes/" class="post-category">
+                                Kubernetes
+                            </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -259,67 +268,87 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="YARN-Service"><a href="#YARN-Service" class="headerlink" title="YARN Service"></a>YARN Service</h1><h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>Yarn Service framework provides first class support and APIs to host long running services natively in YARN. In a nutshell, it serves as a container orchestration platform for managing containerized services on YARN. It supports both docker container and traditional process based containers in YARN.</p>
-<p>The responsibility of this framework includes performing configuration resolutions and mounts, lifecycle management such as stop&#x2F;start&#x2F;delete the service, flexing service components up&#x2F;down, rolling upgrades services on YARN, monitoring services’ healthiness and readiness and more.</p>
-<p>The yarn-service framework primarily includes below components:</p>
+                <h1 id="Annotations"><a href="#Annotations" class="headerlink" title="Annotations"></a>Annotations</h1><p>You can use Kubernetes annotations to attach arbitrary non-identifying metadata to <a href="">objects</a>. Clients such as tools and libraries can retrieve this metadata.</p>
+<p>Kubernetes 어노테이션을 사용하여 객체에 임의의 식별되지 않는 메타데이터를 첨부할 수 있습니다. 도구 및 라이브러리와 같은 클라이언트는 이 메타데이터를 검색할 수 있습니다.</p>
+<h2 id="Attaching-metadata-to-objects"><a href="#Attaching-metadata-to-objects" class="headerlink" title="Attaching metadata to objects"></a>Attaching metadata to objects</h2><p>You can use either labels or annotations to attach metadata to Kubernetes objects. Labels can be used to select objects and to find collections of objects that satisfy certain conditions. In contrast, annotations are not used to identify and select objects. The metadata in an annotation can be small or large, structured or unstructured, and can include characters not permitted by labels. It is possible to use labels as well as annotations in the metadata of the same object.</p>
+<p>Kubernetes 객체에 메타데이터를 첨부하는 데 레이블이나 어노테이션을 사용할 수 있습니다. 레이블은 객체를 선택하고 특정 조건을 만족하는 객체 컬렉션을 찾는 데 사용될 수 있습니다. 반면 어노테이션은 객체를 식별하고 선택하는 데 사용되지 않습니다. 어노테이션의 메타데이터는 작거나 크며, 구조화되거나 구조화되지 않거나, 레이블에서 허용되지 않는 문자를 포함할 수 있습니다. 동일한 객체의 메타데이터에 레이블 및 어노테이션을 모두 사용할 수 있습니다.</p>
+<p>Annotations, like labels, are key&#x2F;value maps:</p>
+<p>어노테이션은 레이블과 마찬가지로 키&#x2F;값 맵입니다:</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token property">"metadata"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+  <span class="token property">"annotations"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">"key1"</span> <span class="token operator">:</span> <span class="token string">"value1"</span><span class="token punctuation">,</span>
+    <span class="token property">"key2"</span> <span class="token operator">:</span> <span class="token string">"value2"</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p><strong>Note</strong>: The keys and the values in the map must be strings. In other words, you cannot use numeric, boolean, list or other types for either the keys or the values.</p>
+</blockquote>
+<blockquote>
+<p><strong>참고</strong>: 맵 안의 키와 값은 문자열이어야 합니다. 다시 말해, 키나 값으로 숫자, 부울, 리스트 또는 다른 타입을 사용할 수 없습니다.</p>
+</blockquote>
+<p>Here are some examples of information that could be recorded in annotations:</p>
+<p>여기에 어노테이션에 기록될 수 있는 정보의 예시 몇 가지가 있습니다:</p>
 <ul>
-<li>A core framework (ApplicationMaster) running on YARN to serve as a container orchestrator, being responsible for all service lifecycle managements.</li>
-<li>A restful API-server for users to interact with YARN to deploy&#x2F;manage their services via a simple JSON spec.</li>
-<li>A DNS server backed by YARN service registry to enable discovering services on YARN by the standard DNS lookup.</li>
+<li><p>Fields managed by a declarative configuration layer. Attaching these fields as annotations distinguishes them from default values set by clients or servers, and from auto-generated fields and fields set by auto-sizing or auto-scaling systems.</p>
+</li>
+<li><p>Build, release, or image information like timestamps, release IDs, git branch, PR numbers, image hashes, and registry address.</p>
+</li>
+<li><p>Pointers to logging, monitoring, analytics, or audit repositories.</p>
+</li>
+<li><p>Client library or tool information that can be used for debugging purposes: for example, name, version, and build information.</p>
+</li>
+<li><p>User or tool&#x2F;system provenance information, such as URLs of related objects from other ecosystem components.</p>
+</li>
+<li><p>Lightweight rollout tool metadata: for example, config or checkpoints.</p>
+</li>
+<li><p>Phone or pager numbers of persons responsible, or directory entries that specify where that information can be found, such as a team web site.</p>
+</li>
+<li><p>Directives from the end-user to the implementations to modify behavior or engage non-standard features.</p>
+</li>
+<li><p>선언적 구성 계층에 의해 관리되는 필드. 이러한 필드를 어노테이션으로 첨부하면 클라이언트나 서버에서 설정한 기본 값과 자동 생성된 필드, 자동 크기 조정이나 자동 확장 시스템에 의해 설정된 필드와 구별됩니다.</p>
+</li>
+<li><p>타임스탬프, 릴리스 ID, Git 브랜치, PR 번호, 이미지 해시 및 레지스트리 주소와 같은 빌드, 릴리스 또는 이미지 정보.</p>
+</li>
+<li><p>로깅, 모니터링, 분석 또는 감사 저장소로의 포인터.</p>
+</li>
+<li><p>디버깅 용도로 사용될 수 있는 클라이언트 라이브러리 또는 도구 정보: 예를 들어 이름, 버전 및 빌드 정보.</p>
+</li>
+<li><p>사용자 또는 도구&#x2F;시스템 출처 정보. 다른 생태계 구성 요소의 관련 객체 URL과 같은 정보.</p>
+</li>
+<li><p>경량 롤아웃 도구 메타데이터: 예를 들어 구성 또는 체크포인트.</p>
+</li>
+<li><p>담당자의 전화번호 또는 페이저 번호, 또는 그 정보가 어디에서 찾을 수 있는지를 지정하는 디렉터리 항목, 예를 들어 팀 웹 사이트.</p>
+</li>
+<li><p>사용자가 구현에게 동작을 수정하거나 비표준 기능을 활성화하도록 지시하는 지시사항.</p>
+</li>
 </ul>
-<p>Yarn Service 프레임워크는 YARN에서 장기 실행되는 서비스를 네이티브로 호스팅하기 위한 우수한 지원과 API를 제공합니다. 간단히 말해, 이는 YARN에서 컨테이너화된 서비스를 관리하기 위한 컨테이너 오케스트레이션 플랫폼으로 작동합니다. 이는 YARN에서 도커 컨테이너 및 전통적인 프로세스 기반 컨테이너를 모두 지원합니다.</p>
-<p>이 프레임워크의 책임에는 구성 해결 및 마운트, 서비스의 중지&#x2F;시작&#x2F;삭제와 같은 라이프사이클 관리, 서비스 구성 요소의 확장&#x2F;축소, YARN에서 서비스 롤링 업그레이드, 서비스의 건강 상태 및 사용 가능 상태 모니터링 등이 포함됩니다.</p>
-<p>yarn-service 프레임워크는 주로 아래 구성 요소를 포함합니다:</p>
-<ul>
-<li>YARN에서 실행되는 핵심 프레임워크인 ApplicationMaster는 모든 서비스 라이프사이클 관리를 담당하는 컨테이너 오케스트레이터 역할을 합니다.</li>
-<li>사용자가 간단한 JSON 사양을 통해 서비스를 배포&#x2F;관리하기 위해 YARN과 상호 작용할 수 있는 RESTful API 서버가 있습니다.</li>
-<li>YARN 서비스 레지스트리에서 지원하는 DNS 서버를 통해 YARN에서 서비스를 검색할 수 있도록 표준 DNS 조회를 지원합니다.</li>
-</ul>
-<h2 id="Why-should-I-try-YARN-Service-framework"><a href="#Why-should-I-try-YARN-Service-framework" class="headerlink" title="Why should I try YARN Service framework?"></a>Why should I try YARN Service framework?</h2><p>YARN Service framework makes it easy to bring existing services onto YARN. It hides all the complex low-level details of application management and relieves users from forced into writing new code. Developers of new services do not have to worry about YARN internals and only need to focus on containerization of their service(s).</p>
-<p>Further, another huge win of this feature is that now you can enable both traditional batch processing jobs and long running services in a single platform! The benefits of combining these workloads are two-fold:</p>
-<ul>
-<li>Greatly simplify the cluster operations as you have only a single cluster to deal with.</li>
-<li>Making both batch jobs and services share a cluster can greatly improve resource utilization.</li>
-</ul>
-<p>YARN 서비스 프레임워크는 기존 서비스를 YARN으로 쉽게 이관할 수 있도록 합니다. 이는 응용 프로그램 관리의 복잡한 저수준 세부 사항을 숨기고 사용자가 새 코드를 작성하도록 강요되지 않도록 합니다. 새로운 서비스를 개발하는 개발자들은 YARN 내부에 대해 걱정할 필요가 없으며, 자신의 서비스를 컨테이너화하는 데만 집중하면 됩니다.</p>
-<p>또 다른 이 기능의 큰 이점은 이제 전통적인 배치 처리 작업과 장기 실행되는 서비스를 단일 플랫폼에서 모두 활성화할 수 있다는 것입니다! 이 작업량을 결합하는 장점은 두 가지입니다:</p>
-<ul>
-<li>클러스터 운영을 크게 간소화합니다. 한 개의 클러스터만 관리하면 되기 때문입니다.</li>
-<li>배치 작업과 서비스를 동일한 클러스터에서 공유함으로써 자원 활용도를 크게 향상시킬 수 있습니다.</li>
-</ul>
-<h2 id="How-do-I-get-started"><a href="#How-do-I-get-started" class="headerlink" title="How do I get started?"></a>How do I get started?</h2><p>This feature is in alpha state and so APIs, command lines are subject to change. We will continue to update the documents over time.</p>
-<p><a href="">QuickStart</a> shows a quick tutorial that walks you through simple steps to deploy a service on YARN.</p>
-<p>이 기능은 알파 상태에 있으므로 API, 명령행은 변경될 수 있습니다. 시간이 지남에 따라 문서를 계속 업데이트할 것입니다.</p>
-<p>QuickStart는 YARN에 서비스를 배포하는 간단한 단계를 안내하는 빠른 튜토리얼을 제공합니다.</p>
-<h2 id="How-do-I-get-my-hands-dirty"><a href="#How-do-I-get-my-hands-dirty" class="headerlink" title="How do I get my hands dirty?"></a>How do I get my hands dirty?</h2><ul>
-<li><p>Concepts: Describes the internals of the framework and some features in YARN core to support running services on YARN.</p>
-</li>
-<li><p>Service REST API: The API doc for deploying&#x2F;managing services on YARN.</p>
-</li>
-<li><p>Service Discovery: Describes the service discovery mechanism on YARN.</p>
-</li>
-<li><p>Registry DNS: Deep dives into the Registry DNS internals.</p>
-</li>
-<li><p>Examples: List some example service definitions (Yarnfile).</p>
-</li>
-<li><p>Configurations: Describes how to configure the custom services on YARN.</p>
-</li>
-<li><p>Service Upgrade: Describes how to upgrade a YARN service which is an experimental feature.</p>
-</li>
-<li><p>개념: 프레임워크 내부 및 YARN 코어의 일부 기능을 설명하여 YARN에서 서비스를 실행하는 데 필요한 것들에 대해 다룹니다.</p>
-</li>
-<li><p>서비스 REST API: YARN에서 서비스를 배포&#x2F;관리하기 위한 API 문서입니다.</p>
-</li>
-<li><p>서비스 검색: YARN의 서비스 검색 메커니즘에 대해 설명합니다.</p>
-</li>
-<li><p>Registry DNS: Registry DNS의 내부에 대해 깊이 파고들어 설명합니다.</p>
-</li>
-<li><p>예제: 일부 예제 서비스 정의 (Yarnfile)를 나열합니다.</p>
-</li>
-<li><p>구성: 사용자 정의 서비스를 YARN에 구성하는 방법에 대해 설명합니다.</p>
-</li>
-<li><p>서비스 업그레이드: 실험적인 기능인 YARN 서비스 업그레이드에 대해 설명합니다.</p>
-</li>
+<p>Instead of using annotations, you could store this type of information in an external database or directory, but that would make it much harder to produce shared client libraries and tools for deployment, management, introspection, and the like.</p>
+<p>어노테이션 대신에 이러한 유형의 정보를 외부 데이터베이스나 디렉터리에 저장할 수도 있지만, 그렇게 하면 배포, 관리, 내부 검사 등을 위한 공유 클라이언트 라이브러리와 도구를 생성하는 것이 훨씬 어려워집니다.</p>
+<h2 id="Syntax-and-character-set"><a href="#Syntax-and-character-set" class="headerlink" title="Syntax and character set"></a>Syntax and character set</h2><p>Annotations are key&#x2F;value pairs. Valid annotation keys have two segments: an optional prefix and name, separated by a slash (&#x2F;). The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (<code>[a-z0-9A-Z]</code>) with dashes (<code>-</code>), underscores (<code>_</code>), dots (<code>.</code>), and alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots (<code>.</code>), not longer than 253 characters in total, followed by a slash (<code>/</code>).</p>
+<p>If the prefix is omitted, the annotation Key is presumed to be private to the user. Automated system components (e.g. <code>kube-scheduler</code>, <code>kube-controller-manager</code>, <code>kube-apiserver</code>, <code>kubectl</code>, or other third-party automation) which add annotations to end-user objects must specify a prefix.</p>
+<p>The <code>kubernetes.io/</code> and <code>k8s.io/</code> prefixes are reserved for Kubernetes core components.</p>
+<p>For example, here’s a manifest for a Pod that has the annotation <code>imageregistry: https://hub.docker.com/</code> :</p>
+<p>어노테이션은 키&#x2F;값 쌍입니다. 유효한 어노테이션 키는 두 부분으로 구성됩니다: 선택적인 접두사와 이름으로 슬래시 (<code>/</code>)로 구분됩니다. 이름 세그먼트는 필수이며, 알파벳 문자 (<code>[a-z0-9A-Z]</code>)로 시작하고 끝나며, 문자 사이에는 대시 (<code>-</code>), 밑줄 (<code>_</code>), 점 (<code>.</code>), 및 알파벳 및 숫자를 사용할 수 있습니다. 접두사는 선택 사항입니다. 지정된 경우 접두사는 DNS 하위 도메인이어야 합니다: 점 (<code>.</code>)으로 구분된 일련의 DNS 레이블로 총 길이가 253자 이하이며, 슬래시 (<code>/</code>)로 끝납니다.</p>
+<p>접두사가 생략된 경우 어노테이션 키는 사용자에게 비공개로 간주됩니다. 자동화된 시스템 구성 요소(예: <code>kube-scheduler</code>, <code>kube-controller-manager</code>, <code>kube-apiserver</code>, <code>kubectl</code> 또는 기타 제3자 자동화)는 끝 사용자 객체에 어노테이션을 추가할 때 접두사를 지정해야 합니다.</p>
+<p><code>kubernetes.io/</code> 및 <code>k8s.io/</code> 접두사는 Kubernetes 핵심 구성 요소를 위해 예약되어 있습니다.</p>
+<p>예를 들어, <code>imageregistry: https://hub.docker.com/</code>를 가진 Pod의 매니페스트는 다음과 같습니다.</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Pod
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> annotations<span class="token punctuation">-</span>demo
+  <span class="token key atrule">annotations</span><span class="token punctuation">:</span>
+    <span class="token key atrule">imageregistry</span><span class="token punctuation">:</span> <span class="token string">"https://hub.docker.com/"</span>
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> nginx
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> nginx<span class="token punctuation">:</span>1.14.2
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">80</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="What’s-next"><a href="#What’s-next" class="headerlink" title="What’s next"></a>What’s next</h2><p>Learn more about Labels and Selectors.<br>Find Well-known labels, Annotations and Taints</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/">https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/</a></li>
 </ul>
 
                 
@@ -337,7 +366,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">Gyuwon Hong</a>
+                    <a href="/about" rel="external nofollow noreferrer">Keyhong</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -347,7 +376,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/04/14/Hadoop/docs/YARN/Overview/">http://example.com/2024/04/14/Hadoop/docs/YARN/Overview/</a>
+                    <a href="http://example.com/2024/04/14/Kubernetes/docs/Concpets/1_Overview/Object_In_Kubernetes/5_Annotations/">http://example.com/2024/04/14/Kubernetes/docs/Concpets/1_Overview/Object_In_Kubernetes/5_Annotations/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -360,7 +389,7 @@
                     use
                     <a href="cc_by_url" rel="external nofollow noreferrer" target="_blank">cc_by_name</a>
                     licensed
-                    <a href="/about" target="_blank">Gyuwon Hong</a>
+                    <a href="/about" target="_blank">Keyhong</a>
                     !
                 </span>
             </div> -->
@@ -454,7 +483,7 @@
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Sun Apr 14 2024 10:30:48 GMT+0900',
+    id: 'Sun Apr 14 2024 00:00:00 GMT+0900',
     owner: '',
     repo: '',
     oauth: {
@@ -489,13 +518,12 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/04/14/Hadoop/docs/General/Overview/">
+                <a href="/2024/04/14/Kubernetes/docs/Concpets/1_Overview/Object_In_Kubernetes/3_Labels%20and%20Selectors/">
                     <div class="card-image">
                         
+                        <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] Concepts - Overview - Objects In Kubernetes - Labels and Selectors">
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title diy-neon-red"></span>
+                        <span class="card-title diy-neon-red">[Kubernetes] Concepts - Overview - Objects In Kubernetes - Labels and Selectors</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -510,8 +538,12 @@ gitment.render('gitment-content');
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Gyuwon Hong
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -526,12 +558,12 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/03/23/Flink/Application%20Development/Table%20API%20&%20SQL/Concepts%20&%20Common%20API/">
+                <a href="/2024/04/14/Kubernetes/docs/Concpets/1_Overview/Object_In_Kubernetes/6_%20Field%20Selectors/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/flink-logo.png" class="responsive-img" alt="[Flink] Table API &amp; SQL - Concepts &amp; Common API">
+                        <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] Concepts - Overview - Objects In Kubernetes - Field Selectors">
                         
-                        <span class="card-title diy-neon-red">[Flink] Table API &amp; SQL - Concepts &amp; Common API</span>
+                        <span class="card-title diy-neon-red">[Kubernetes] Concepts - Overview - Objects In Kubernetes - Field Selectors</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -542,14 +574,14 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-23
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-04-14
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Flink/" class="post-category">
-                                    Flink
+                            <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
                                 </a>
                             
                             

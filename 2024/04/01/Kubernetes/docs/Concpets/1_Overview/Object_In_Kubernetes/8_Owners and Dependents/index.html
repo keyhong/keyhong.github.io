@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Objects In KubernetesThis page explains how Kubernetes objects are represented in the Kubernetes API, and how you can ex">
+    <meta name="keywords" content="[Kubernetes] Concepts - Overview - Objects In Kubernetes - Owners and Dependents, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="Owners and DependentsIn Kubernetes, some objects are owners of other objects. For example, a ReplicaSet is the owner of ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Keyhong</title>
+    <title>[Kubernetes] Concepts - Overview - Objects In Kubernetes - Owners and Dependents | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -205,13 +205,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/kubernetes-logo.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        </h1>
+                        [Kubernetes] Concepts - Overview - Objects In Kubernetes - Owners and Dependents</h1>
                 </div>
             </div>
         </div>
@@ -236,7 +236,7 @@
                         <div class="article-tag">
                             <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                                 <span class="chip bg-color">
-                                    2024-04-14</span>
+                                    2024-04-01</span>
                         </div>
                     
                     
@@ -244,6 +244,15 @@
 
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Kubernetes/" class="post-category">
+                                Kubernetes
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -259,107 +268,22 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Objects-In-Kubernetes"><a href="#Objects-In-Kubernetes" class="headerlink" title="Objects In Kubernetes"></a>Objects In Kubernetes</h2><p>This page explains how Kubernetes objects are represented in the Kubernetes API, and how you can express them in <code>.yaml</code> format.</p>
-<p>이 페이지는 Kubernetes 객체가 Kubernetes API에서 어떻게 표현되는지, 그리고 <code>.yaml</code> 형식으로 어떻게 표현할 수 있는지에 대해 설명합니다.</p>
-<h1 id="Understanding-Kubernetes-objects"><a href="#Understanding-Kubernetes-objects" class="headerlink" title="Understanding Kubernetes objects"></a>Understanding Kubernetes objects</h1><p>Kubernetes objects are persistent entities in the Kubernetes system. Kubernetes uses these entities to represent the state of your cluster. Specifically, they can describe:</p>
-<p>Kubernetes 객체는 Kubernetes 시스템의 지속적인 엔터티입니다. Kubernetes는 이러한 엔터티를 사용하여 클러스터의 상태를 나타냅니다. 구체적으로, 이들은 다음을 설명할 수 있습니다:</p>
-<ul>
-<li><p>What containerized applications are running (and on which nodes)</p>
-</li>
-<li><p>The resources available to those applications</p>
-</li>
-<li><p>The policies around how those applications behave, such as restart policies, upgrades, and fault-tolerance</p>
-</li>
-<li><p>어떤 컨테이너화된 애플리케이션이 실행 중인지(그리고 어떤 노드에서 실행 중인지)</p>
-</li>
-<li><p>해당 애플리케이션에 사용 가능한 리소스</p>
-</li>
-<li><p>애플리케이션의 동작에 대한 정책, 예를 들어 다시 시작 정책, 업그레이드 및 내결함성</p>
-</li>
+                <h1 id="Owners-and-Dependents"><a href="#Owners-and-Dependents" class="headerlink" title="Owners and Dependents"></a>Owners and Dependents</h1><p>In Kubernetes, some objects are owners of other objects. For example, a ReplicaSet is the owner of a set of Pods. These owned objects are dependents of their owner.</p>
+<p>Ownership is different from the labels and selectors mechanism that some resources also use. For example, consider a Service that creates EndpointSlice objects. The Service uses labels to allow the control plane to determine which EndpointSlice objects are used for that Service. In addition to the labels, each EndpointSlice that is managed on behalf of a Service has an owner reference. Owner references help different parts of Kubernetes avoid interfering with objects they don’t control.</p>
+<h2 id="Owner-references-in-object-specifications"><a href="#Owner-references-in-object-specifications" class="headerlink" title="Owner references in object specifications"></a>Owner references in object specifications</h2><p>Dependent objects have a metadata.ownerReferences field that references their owner object. A valid owner reference consists of the object name and a UID within the same namespace as the dependent object. Kubernetes sets the value of this field automatically for objects that are dependents of other objects like ReplicaSets, DaemonSets, Deployments, Jobs and CronJobs, and ReplicationControllers. You can also configure these relationships manually by changing the value of this field. However, you usually don’t need to and can allow Kubernetes to automatically manage the relationships.</p>
+<p>Dependent objects also have an ownerReferences.blockOwnerDeletion field that takes a boolean value and controls whether specific dependents can block garbage collection from deleting their owner object. Kubernetes automatically sets this field to true if a controller (for example, the Deployment controller) sets the value of the metadata.ownerReferences field. You can also set the value of the blockOwnerDeletion field manually to control which dependents block garbage collection.</p>
+<p>A Kubernetes admission controller controls user access to change this field for dependent resources, based on the delete permissions of the owner. This control prevents unauthorized users from delaying owner object deletion.</p>
+<blockquote>
+<p>Note:<br>Cross-namespace owner references are disallowed by design. Namespaced dependents can specify cluster-scoped or namespaced owners. A namespaced owner must exist in the same namespace as the dependent. If it does not, the owner reference is treated as absent, and the dependent is subject to deletion once all owners are verified absent.</p>
+</blockquote>
+<p>Cluster-scoped dependents can only specify cluster-scoped owners. In v1.20+, if a cluster-scoped dependent specifies a namespaced kind as an owner, it is treated as having an unresolvable owner reference, and is not able to be garbage collected.</p>
+<p>In v1.20+, if the garbage collector detects an invalid cross-namespace ownerReference, or a cluster-scoped dependent with an ownerReference referencing a namespaced kind, a warning Event with a reason of OwnerRefInvalidNamespace and an involvedObject of the invalid dependent is reported. You can check for that kind of Event by running kubectl get events -A –field-selector&#x3D;reason&#x3D;OwnerRefInvalidNamespace.</p>
+<h2 id="Ownership-and-finalizers"><a href="#Ownership-and-finalizers" class="headerlink" title="Ownership and finalizers"></a>Ownership and finalizers</h2><p>When you tell Kubernetes to delete a resource, the API server allows the managing controller to process any finalizer rules for the resource. Finalizers prevent accidental deletion of resources your cluster may still need to function correctly. For example, if you try to delete a PersistentVolume that is still in use by a Pod, the deletion does not happen immediately because the PersistentVolume has the kubernetes.io&#x2F;pv-protection finalizer on it. Instead, the volume remains in the Terminating status until Kubernetes clears the finalizer, which only happens after the PersistentVolume is no longer bound to a Pod.</p>
+<p>Kubernetes also adds finalizers to an owner resource when you use either foreground or orphan cascading deletion. In foreground deletion, it adds the foreground finalizer so that the controller must delete dependent resources that also have ownerReferences.blockOwnerDeletion&#x3D;true before it deletes the owner. If you specify an orphan deletion policy, Kubernetes adds the orphan finalizer so that the controller ignores dependent resources after it deletes the owner object.</p>
+<h2 id="What’s-next"><a href="#What’s-next" class="headerlink" title="What’s next"></a>What’s next</h2><p>Learn more about Kubernetes finalizers.<br>Learn about garbage collection.<br>Read the API reference for object metadata.</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/overview/working-with-objects/owners-dependents/">https://kubernetes.io/docs/concepts/overview/working-with-objects/owners-dependents/</a></li>
 </ul>
-<p>A Kubernetes object is a “record of intent”–once you create the object, the Kubernetes system will constantly work to ensure that object exists. By creating an object, you’re effectively telling the Kubernetes system what you want your cluster’s workload to look like; this is your cluster’s desired state.</p>
-<p>Kubernetes 객체는 “의도의 기록”입니다. 한 번 객체를 생성하면 Kubernetes 시스템은 해당 객체가 존재하는지 계속 확인합니다. 객체를 생성함으로써 실제로는 Kubernetes 시스템에 클러스터 작업 부하가 어떻게 보이길 원하는지 알려주는 것입니다. 이것이 클러스터의 원하는 상태입니다.</p>
-<p>To work with Kubernetes objects—whether to create, modify, or delete them—you’ll need to use the <a href="">Kubernetes API</a>. When you use the <code>kubectl</code> command-line interface, for example, the CLI makes the necessary Kubernetes API calls for you. You can also use the Kubernetes API directly in your own programs using one of the <a href="">Client Libraries</a>.</p>
-<p>Kubernetes 객체를 사용하려면(생성, 수정 또는 삭제) Kubernetes API를 사용해야 합니다. 예를 들어 <code>kubectl</code> 명령줄 인터페이스를 사용할 때 CLI는 필요한 Kubernetes API 호출을 대신 수행합니다. 또한 클라이언트 라이브러리 중 하나를 사용하여 직접 프로그램에서 Kubernetes API를 사용할 수도 있습니다.</p>
-<h1 id="Object-spec-and-status"><a href="#Object-spec-and-status" class="headerlink" title="Object spec and status"></a>Object spec and status</h1><p>Almost every Kubernetes object includes two nested object fields that govern the object’s configuration: the object <code>spec</code> and the object <code>status</code>. For objects that have a <code>spec</code>, you have to set this when you create the object, providing a description of the characteristics you want the resource to have: its desired state.</p>
-<p>거의 모든 Kubernetes 객체에는 객체의 구성을 관리하는 두 개의 중첩된 객체 필드가 포함되어 있습니다: 객체 <code>spec</code> 및 객체 <code>status</code>. <code>spec</code>을 가진 객체에 대해서는 객체를 생성할 때 이를 설정해야 하며, 리소스가 가져야 하는 특성에 대한 설명을 제공하여 원하는 상태를 나타냅니다.</p>
-<p>The <code>status</code> describes the current state of the object, supplied and updated by the Kubernetes system and its components. The Kubernetes control plane continually and actively manages every object’s actual state to match the desired state you supplied.</p>
-<p><code>status</code>는 Kubernetes 시스템 및 그 구성 요소에 의해 제공 및 업데이트되는 객체의 현재 상태를 설명합니다. Kubernetes 제어 플레인은 지속적으로 모든 객체의 실제 상태를 활발하게 관리하여 제공한 원하는 상태와 일치하도록 합니다.</p>
-<p>For example: in Kubernetes, a Deployment is an object that can represent an application running on your cluster. When you create the Deployment, you might set the Deployment <code>spec</code> to specify that you want three replicas of the application to be running. The Kubernetes system reads the Deployment spec and starts three instances of your desired application–updating the status to match your spec. If any of those instances should fail (a status change), the Kubernetes system responds to the difference between spec and status by making a correction–in this case, starting a replacement instance.</p>
-<p>예를 들어, Kubernetes에서 Deployment는 클러스터에서 실행되는 애플리케이션을 나타낼 수 있는 객체입니다. Deployment를 생성할 때, Deployment <code>spec</code>을 설정하여 해당 애플리케이션의 세 개의 복제본이 실행되도록 할 수 있습니다. Kubernetes 시스템은 Deployment spec을 읽고 원하는 애플리케이션의 세 개의 인스턴스를 시작하여 상태를 귀하의 spec과 일치하도록 업데이트합니다. 이러한 인스턴스 중 하나라도 실패하면(상태 변경), Kubernetes 시스템은 spec과 상태 간의 차이에 응답하여 교정을 수행합니다. 이 경우, 대체 인스턴스를 시작합니다.</p>
-<p>For more information on the object spec, status, and metadata, see the <a href="">Kubernetes API Conventions</a>.</p>
-<p>객체의 spec, status 및 metadata에 대한 자세한 정보는 Kubernetes API Conventions를 참조하십시오.</p>
-<h1 id="Describing-a-Kubernetes-object"><a href="#Describing-a-Kubernetes-object" class="headerlink" title="Describing a Kubernetes object"></a>Describing a Kubernetes object</h1><p>When you create an object in Kubernetes, you must provide the object spec that describes its desired state, as well as some basic information about the object (such as a name). When you use the Kubernetes API to create the object (either directly or via <code>kubectl</code>), that API request must include that information as JSON in the request body. Most often, you provide the information to <code>kubectl</code> in file known as a manifest. By convention, manifests are YAML (you could also use JSON format). Tools such as <code>kubectl</code> convert the information from a manifest into JSON or another supported serialization format when making the API request over HTTP.</p>
-<p>Kubernetes에서 객체를 생성할 때, 원하는 상태를 설명하는 객체 spec과 객체에 대한 몇 가지 기본 정보(예: 이름)를 제공해야 합니다. Kubernetes API를 사용하여 객체를 생성할 때(직접 또는 <code>kubectl</code>을 통해), 해당 API 요청은 요청 본문에서 JSON으로 이러한 정보를 포함해야 합니다. 대부분의 경우, <code>kubectl</code>에 정보를 제공하는 파일로서 manifest라고 하는 것이 일반적입니다. 관례적으로, manifest는 YAML로 작성됩니다(JSON 형식을 사용할 수도 있음). <code>kubectl</code>과 같은 도구는 HTTP를 통해 API 요청을 할 때 manifest에서 정보를 JSON 또는 다른 지원되는 직렬화 형식으로 변환합니다.</p>
-<p>Here’s an example manifest that shows the required fields and object spec for a Kubernetes Deployment:</p>
-<p>다음은 Kubernetes 배포(Deployment)의 필수 필드와 객체 spec을 보여주는 예제 manifest입니다.</p>
-<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>application/deployment.yaml</span></div><code class="language-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> apps/v1
-<span class="token key atrule">kind</span><span class="token punctuation">:</span> Deployment
-<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
-  <span class="token key atrule">name</span><span class="token punctuation">:</span> nginx<span class="token punctuation">-</span>deployment
-<span class="token key atrule">spec</span><span class="token punctuation">:</span>
-  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
-    <span class="token key atrule">matchLabels</span><span class="token punctuation">:</span>
-      <span class="token key atrule">app</span><span class="token punctuation">:</span> nginx
-  <span class="token key atrule">replicas</span><span class="token punctuation">:</span> <span class="token number">2</span> <span class="token comment"># tells deployment to run 2 pods matching the template</span>
-  <span class="token key atrule">template</span><span class="token punctuation">:</span>
-    <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
-      <span class="token key atrule">labels</span><span class="token punctuation">:</span>
-        <span class="token key atrule">app</span><span class="token punctuation">:</span> nginx
-    <span class="token key atrule">spec</span><span class="token punctuation">:</span>
-      <span class="token key atrule">containers</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> nginx
-        <span class="token key atrule">image</span><span class="token punctuation">:</span> nginx<span class="token punctuation">:</span>1.14.2
-        <span class="token key atrule">ports</span><span class="token punctuation">:</span>
-        <span class="token punctuation">-</span> <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">80</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>One way to create a Deployment using a manifest file like the one above is to use the <code>kubectl apply</code> command in the <code>kubectl</code> command-line interface, passing the <code>.yaml</code> file as an argument. Here’s an example:</p>
-<p>위와 같은 manifest 파일을 사용하여 배포(Deployment)를 생성하는 한 가지 방법은 <code>kubectl</code> 명령줄 인터페이스에서 <code>kubectl apply</code> 명령을 사용하여 <code>.yaml</code> 파일을 인자로 전달하는 것입니다. 다음은 예시입니다:</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl apply <span class="token parameter variable">-f</span> https://k8s.io/examples/application/deployment.yaml<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>The output is similar to this:</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">deployment.apps/nginx-deployment created<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h1 id="Required-fields"><a href="#Required-fields" class="headerlink" title="Required fields"></a>Required fields</h1><p>In the manifest (YAML or JSON file) for the Kubernetes object you want to create, you’ll need to set values for the following fields:</p>
-<p>생성하려는 Kubernetes 객체의 manifest(YAML 또는 JSON 파일)에서 다음 필드의 값을 설정해야 합니다:</p>
-<ul>
-<li><p><code>apiVersion</code> - Which version of the Kubernetes API you’re using to create this object</p>
-</li>
-<li><p><code>kind</code> - What kind of object you want to create</p>
-</li>
-<li><p><code>metadata</code> - Data that helps uniquely identify the object, including a name string, UID, and optional <code>namespace</code></p>
-</li>
-<li><p><code>spec</code> - What state you desire for the object</p>
-</li>
-<li><p><code>apiVersion</code> - 이 객체를 생성하는 데 사용하는 Kubernetes API의 버전</p>
-</li>
-<li><p><code>kind</code> - 생성하려는 객체의 종류</p>
-</li>
-<li><p><code>metadata</code> - 객체를 고유하게 식별하는 데 도움이 되는 데이터로, 이름 문자열, UID 및 선택적인 namespace를 포함합니다.</p>
-</li>
-<li><p><code>spec</code> - 객체에 대한 원하는 상태</p>
-</li>
-</ul>
-<p>The precise format of the object <code>spec</code> is different for every Kubernetes object, and contains nested fields specific to that object. The <a href="">Kubernetes API Reference</a> can help you find the spec format for all of the objects you can create using Kubernetes.</p>
-<p>각 Kubernetes 객체마다 객체 <code>spec</code>의 정확한 형식은 다르며 해당 객체에 특정한 중첩된 필드를 포함합니다. Kubernetes API 참조를 통해 Kubernetes를 사용하여 생성할 수 있는 모든 객체의 spec 형식을 찾을 수 있습니다.</p>
-<p>For example, see the <a href=""><code>spec</code> field</a> for the Pod API reference. For each Pod, the <code>.spec</code> field specifies the pod and its desired state (such as the container image name for each container within that pod). Another example of an object specification is the <a href=""><code>spec</code> field</a> for the StatefulSet API. For StatefulSet, the <code>.spec</code> field specifies the StatefulSet and its desired state. Within the <code>.spec</code> of a StatefulSet is a <a href="">template</a> for Pod objects. That template describes Pods that the StatefulSet controller will create in order to satisfy the StatefulSet specification. Different kinds of object can also have different <code>.status</code>; again, the API reference pages detail the structure of that <code>.status</code> field, and its content for each different type of object.</p>
-<p>예를 들어, Pod API 참조에서 <code>spec</code> 필드를 살펴보세요. 각 Pod에 대해 <code>.spec</code> 필드는 해당 Pod와 그 원하는 상태(예: 해당 Pod 내의 각 컨테이너에 대한 컨테이너 이미지 이름)를 지정합니다. 또 다른 예로는 StatefulSet API의 <code>spec</code> 필드가 있습니다. StatefulSet에 대해 <code>.spec</code> 필드는 StatefulSet 및 해당 원하는 상태를 지정합니다. StatefulSet의 <code>.spec</code> 내부에는 Pod 객체에 대한 템플릿이 포함되어 있습니다. 이 템플릿은 StatefulSet 컨트롤러가 StatefulSet 사양을 충족하기 위해 생성할 Pod를 설명합니다. 서로 다른 종류의 객체는 서로 다른 <code>.status</code>를 가질 수도 있습니다. 다시 말해, API 참조 페이지에서 각 다른 유형의 객체에 대한 <code>.status</code> 필드의 구조와 내용이 상세히 설명되어 있습니다.</p>
-<p>Note: See <a href="">Configuration Best Practices</a> for additional information on writing YAML configuration files.</p>
-<p>참고: YAML 구성 파일 작성에 대한 추가 정보는 구성 최상의 사례를 참조하십시오.</p>
-<h1 id="Server-side-field-validation"><a href="#Server-side-field-validation" class="headerlink" title="Server side field validation"></a>Server side field validation</h1><p>Starting with Kubernetes v1.25, the API server offers server side <a href="">field validation</a> that detects unrecognized or duplicate fields in an object. It provides all the functionality of <code>kubectl --validate</code> on the server side.</p>
-<p>Kubernetes v1.25부터 API 서버는 객체에서 인식되지 않거나 중복된 필드를 감지하는 서버 측 필드 유효성 검사를 제공합니다. 이는 서버 측에서 <code>kubectl --validate</code>의 모든 기능을 제공합니다.</p>
-<p>The <code>kubectl</code> tool uses the <code>--validate</code> flag to set the level of field validation. It accepts the values <code>ignore</code>, <code>warn</code>, and <code>strict</code> while also accepting the values <code>true</code> (equivalent to <code>strict</code>) and <code>false</code> (equivalent to <code>ignore</code>). The default validation setting for <code>kubectl</code> is <code>--validate=true</code>.</p>
-<p><code>kubectl</code> 도구는 필드 유효성 검사의 수준을 설정하기 위해 <code>--validate</code> 플래그를 사용합니다. 이 플래그는 <code>ignore</code>, <code>warn</code> 및 <code>strict</code> 값을 허용하며, <code>true</code> (<code>strict</code>와 동일) 및 <code>false</code> (<code>ignore</code>와 동일) 값을도 허용합니다. kubectl의 기본 검증 설정은 <code>--validate=true</code>입니다.</p>
-<h2 id="Strict"><a href="#Strict" class="headerlink" title="Strict"></a>Strict</h2><p>Strict field validation, errors on validation failure<br>Strict 필드 유효성 검사는 유효성 검사 실패 시 오류를 발생시킵니다.</p>
-<h2 id="Warn"><a href="#Warn" class="headerlink" title="Warn"></a>Warn</h2><p>Field validation is performed, but errors are exposed as warnings rather than failing the request<br>필드 유효성 검사가 수행되지만 오류는 요청을 실패시키는 대신 경고로 노출됩니다.</p>
-<h2 id="Ignore"><a href="#Ignore" class="headerlink" title="Ignore"></a>Ignore</h2><p>No server side field validation is performed<br>서버 측 필드 유효성 검사가 수행되지 않습니다.</p>
-<p>When <code>kubectl</code> cannot connect to an API server that supports field validation it will fall back to using client-side validation. Kubernetes 1.27 and later versions always offer field validation; older Kubernetes releases might not. If your cluster is older than v1.27, check the documentation for your version of Kubernetes.</p>
-<p><code>kubectl</code>이 필드 유효성 검사를 지원하는 API 서버에 연결할 수 없는 경우 클라이언트 측 유효성 검사를 사용하도록 되돌아갑니다. Kubernetes 1.27 이상의 버전은 항상 필드 유효성 검사를 제공합니다. 이전 버전의 Kubernetes는 제공하지 않을 수 있습니다. 클러스터가 v1.27보다 오래된 경우 해당 Kubernetes 버전의 문서를 확인하십시오.</p>
-<h1 id="What’s-next"><a href="#What’s-next" class="headerlink" title="What’s next"></a>What’s next</h1><p>If you’re new to Kubernetes, read more about the following:</p>
-<p>Pods which are the most important basic Kubernetes objects.<br>Deployment objects.<br>Controllers in Kubernetes.<br>kubectl and kubectl commands.<br>Kubernetes Object Management explains how to use kubectl to manage objects. You might need to install kubectl if you don’t already have it available.</p>
-<p>To learn about the Kubernetes API in general, visit:</p>
-<p>Kubernetes API overview<br>To learn about objects in Kubernetes in more depth, read other pages in this section:</p>
-<p>Kubernetes Object Management<br>Object Names and IDs<br>Labels and Selectors<br>Namespaces<br>Annotations<br>Field Selectors<br>Finalizers<br>Owners and Dependents<br>Recommended Labels</p>
 
                 
             </div>
@@ -376,7 +300,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">Gyuwon Hong</a>
+                    <a href="/about" rel="external nofollow noreferrer">Keyhong</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -386,7 +310,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/04/14/Kubernetes/docs/Concpets/1_Overview/1_Object_In_Kubernetes/">http://example.com/2024/04/14/Kubernetes/docs/Concpets/1_Overview/1_Object_In_Kubernetes/</a>
+                    <a href="http://example.com/2024/04/01/Kubernetes/docs/Concpets/1_Overview/Object_In_Kubernetes/8_Owners%20and%20Dependents/">http://example.com/2024/04/01/Kubernetes/docs/Concpets/1_Overview/Object_In_Kubernetes/8_Owners%20and%20Dependents/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -399,7 +323,7 @@
                     use
                     <a href="cc_by_url" rel="external nofollow noreferrer" target="_blank">cc_by_name</a>
                     licensed
-                    <a href="/about" target="_blank">Gyuwon Hong</a>
+                    <a href="/about" target="_blank">Keyhong</a>
                     !
                 </span>
             </div> -->
@@ -493,7 +417,7 @@
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Sun Apr 14 2024 10:31:04 GMT+0900',
+    id: 'Mon Apr 01 2024 00:00:00 GMT+0900',
     owner: '',
     repo: '',
     oauth: {
@@ -528,13 +452,12 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/04/14/Kubernetes/docs/Concpets/1_Overview/Object_In_Kubernetes/1_Kubernetes_Object_Management/">
+                <a href="/2024/04/01/Hadoop/docs/YARN/Overview/">
                     <div class="card-image">
                         
+                        <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="[Hadoop] YARN Service - Overview">
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title diy-neon-red"></span>
+                        <span class="card-title diy-neon-red">[Hadoop] YARN Service - Overview</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -545,12 +468,16 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-04-14
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-04-01
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Gyuwon Hong
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Hadoop/" class="post-category">
+                                    Hadoop
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -565,13 +492,12 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/04/14/Hadoop/docs/General/Single%20Node%20Setup/">
+                <a href="/2024/04/01/Kubernetes/docs/Concpets/1_Overview/Object_In_Kubernetes/7_%20Finalizers/">
                     <div class="card-image">
                         
+                        <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] Concepts - Overview - Objects In Kubernetes - Finalizers">
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title diy-neon-red"></span>
+                        <span class="card-title diy-neon-red">[Kubernetes] Concepts - Overview - Objects In Kubernetes - Finalizers</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -582,12 +508,16 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-04-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-04-01
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Gyuwon Hong
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
+                                </a>
+                            
                             
                         </span>
                     </div>

@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="">
+    <meta name="keywords" content="[Kubernetes] Concepts - Overview - Objects In Kubernetes - Finalizers, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="FinalizersFinalizers are namespaced keys that tell Kubernetes to wait until specific conditions are met before it fully ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Keyhong</title>
+    <title>[Kubernetes] Concepts - Overview - Objects In Kubernetes - Finalizers | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -205,13 +205,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/kubernetes-logo.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        </h1>
+                        [Kubernetes] Concepts - Overview - Objects In Kubernetes - Finalizers</h1>
                 </div>
             </div>
         </div>
@@ -236,7 +236,7 @@
                         <div class="article-tag">
                             <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                                 <span class="chip bg-color">
-                                    2024-04-14</span>
+                                    2024-04-01</span>
                         </div>
                     
                     
@@ -244,6 +244,15 @@
 
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Kubernetes/" class="post-category">
+                                Kubernetes
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -259,7 +268,48 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="Finalizers"><a href="#Finalizers" class="headerlink" title="Finalizers"></a>Finalizers</h1><p>Finalizers are namespaced keys that tell Kubernetes to wait until specific conditions are met before it fully deletes resources marked for deletion. Finalizers alert <a href="">controllers</a> to clean up resources the deleted object owned.</p>
+<p>When you tell Kubernetes to delete an object that has finalizers specified for it, the Kubernetes API marks the object for deletion by populating <code>.metadata.deletionTimestamp</code>, and returns a <code>202</code> status code (HTTP “Accepted”). The target object remains in a terminating state while the control plane, or other components, take the actions defined by the finalizers. After these actions are complete, the controller removes the relevant finalizers from the target object. When the <code>metadata.finalizers</code> field is empty, Kubernetes considers the deletion complete and deletes the object.</p>
+<p>You can use finalizers to control <a href="">garbage collection</a> of resources. For example, you can define a finalizer to clean up related resources or infrastructure before the controller deletes the target resource.</p>
+<p>You can use finalizers to control <a href="">garbage collection</a> of <a href="">objects</a> by alerting <a href="">controllers</a> to perform specific cleanup tasks before deleting the target resource.</p>
+<p>Finalizers don’t usually specify the code to execute. Instead, they are typically lists of keys on a specific resource similar to annotations. Kubernetes specifies some finalizers automatically, but you can also specify your own.</p>
+<p>파이널라이저는 삭제를 표시한 리소스가 완전히 삭제되기 전에 특정 조건이 충족될 때까지 Kubernetes가 기다리도록 지시하는 네임스페이스 키입니다. 파이널라이저는 삭제된 객체가 소유한 리소스를 정리할 수 있도록 컨트롤러에 알립니다.</p>
+<p>Kubernetes에게 파이널라이저가 지정된 객체를 삭제하라고 지시하면, Kubernetes API는 <code>.metadata.deletionTimestamp</code>를 채워서 해당 객체를 삭제 대기 상태로 표시하고 <code>202</code> 상태 코드(HTTP “수락됨”)를 반환합니다. 대상 객체는 컨트롤 플레인 또는 기타 구성 요소가 파이널라이저에서 정의한 작업을 수행하는 동안 종료 상태로 유지됩니다. 이러한 작업이 완료되면 컨트롤러는 대상 객체에서 관련 파이널라이저를 제거합니다. <code>metadata.finalizers</code> 필드가 비어 있을 때 Kubernetes는 삭제가 완료되었다고 간주하고 객체를 삭제합니다.</p>
+<p>파이널라이저를 사용하여 리소스의 가비지 수집을 제어할 수 있습니다. 예를 들어, 컨트롤러가 대상 리소스를 삭제하기 전에 관련된 리소스나 인프라를 정리하기 위한 파이널라이저를 정의할 수 있습니다.</p>
+<p>파이널라이저를 사용하여 대상 리소스를 삭제하기 전에 컨트롤러가 특정 정리 작업을 수행하도록 알림으로써, 객체의 가비지 수집을 제어할 수 있습니다.</p>
+<p>파이널라이저는 일반적으로 실행할 코드를 지정하지 않습니다. 대신, 일반적으로 주석과 유사한 특정 리소스의 키 목록입니다. 쿠버네티스는 일부 파이널라이저를 자동으로 지정하지만 직접 지정할 수도 있습니다.</p>
+<h2 id="How-finalizers-work"><a href="#How-finalizers-work" class="headerlink" title="How finalizers work"></a>How finalizers work</h2><p>When you create a resource using a manifest file, you can specify finalizers in the <code>metadata.finalizers</code> field. When you attempt to delete the resource, the API server handling the delete request notices the values in the <code>finalizers</code> field and does the following:</p>
+<ul>
+<li><p>Modifies the object to add a <code>metadata.deletionTimestamp</code> field with the time you started the deletion.</p>
+</li>
+<li><p>Prevents the object from being removed until all items are removed from its <code>metadata.finalizers</code> field</p>
+</li>
+<li><p>Returns a <code>202</code> status code (HTTP “Accepted”)</p>
+</li>
+</ul>
+<p>The controller managing that finalizer notices the update to the object setting the metadata.deletionTimestamp, indicating deletion of the object has been requested. The controller then attempts to satisfy the requirements of the finalizers specified for that resource. Each time a finalizer condition is satisfied, the controller removes that key from the resource’s finalizers field. When the finalizers field is emptied, an object with a deletionTimestamp field set is automatically deleted. You can also use finalizers to prevent deletion of unmanaged resources.</p>
+<p>A common example of a finalizer is kubernetes.io&#x2F;pv-protection, which prevents accidental deletion of PersistentVolume objects. When a PersistentVolume object is in use by a Pod, Kubernetes adds the pv-protection finalizer. If you try to delete the PersistentVolume, it enters a Terminating status, but the controller can’t delete it because the finalizer exists. When the Pod stops using the PersistentVolume, Kubernetes clears the pv-protection finalizer, and the controller deletes the volume.</p>
+<blockquote>
+<p>Note:</p>
+</blockquote>
+<ul>
+<li><p>When you DELETE an object, Kubernetes adds the deletion timestamp for that object and then immediately starts to restrict changes to the .metadata.finalizers field for the object that is now pending deletion. You can remove existing finalizers (deleting an entry from the finalizers list) but you cannot add a new finalizer. You also cannot modify the deletionTimestamp for an object once it is set.</p>
+</li>
+<li><p>After the deletion is requested, you can not resurrect this object. The only way is to delete it and make a new similar object.</p>
+</li>
+</ul>
+<h2 id="Owner-references-labels-and-finalizers"><a href="#Owner-references-labels-and-finalizers" class="headerlink" title="Owner references, labels, and finalizers"></a>Owner references, labels, and finalizers</h2><p>Like labels, owner references describe the relationships between objects in Kubernetes, but are used for a different purpose. When a controller manages objects like Pods, it uses labels to track changes to groups of related objects. For example, when a Job creates one or more Pods, the Job controller applies labels to those pods and tracks changes to any Pods in the cluster with the same label.</p>
+<p>The Job controller also adds owner references to those Pods, pointing at the Job that created the Pods. If you delete the Job while these Pods are running, Kubernetes uses the owner references (not labels) to determine which Pods in the cluster need cleanup.</p>
+<p>Kubernetes also processes finalizers when it identifies owner references on a resource targeted for deletion.</p>
+<p>In some situations, finalizers can block the deletion of dependent objects, which can cause the targeted owner object to remain for longer than expected without being fully deleted. In these situations, you should check finalizers and owner references on the target owner and dependent objects to troubleshoot the cause.</p>
+<blockquote>
+<p>Note: In cases where objects are stuck in a deleting state, avoid manually removing finalizers to allow deletion to continue. Finalizers are usually added to resources for a reason, so forcefully removing them can lead to issues in your cluster. This should only be done when the purpose of the finalizer is understood and is accomplished in another way (for example, manually cleaning up some dependent object).</p>
+</blockquote>
+<h2 id="What’s-next"><a href="#What’s-next" class="headerlink" title="What’s next"></a>What’s next</h2><p>Read Using Finalizers to Control Deletion on the Kubernetes blog.</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/overview/working-with-objects/finalizers/">https://kubernetes.io/docs/concepts/overview/working-with-objects/finalizers/</a></li>
+</ul>
+
                 
             </div>
             <hr/>
@@ -275,7 +325,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">Gyuwon Hong</a>
+                    <a href="/about" rel="external nofollow noreferrer">Keyhong</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -285,7 +335,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/04/14/Hadoop/docs/General/Overview/">http://example.com/2024/04/14/Hadoop/docs/General/Overview/</a>
+                    <a href="http://example.com/2024/04/01/Kubernetes/docs/Concpets/1_Overview/Object_In_Kubernetes/7_%20Finalizers/">http://example.com/2024/04/01/Kubernetes/docs/Concpets/1_Overview/Object_In_Kubernetes/7_%20Finalizers/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -298,7 +348,7 @@
                     use
                     <a href="cc_by_url" rel="external nofollow noreferrer" target="_blank">cc_by_name</a>
                     licensed
-                    <a href="/about" target="_blank">Gyuwon Hong</a>
+                    <a href="/about" target="_blank">Keyhong</a>
                     !
                 </span>
             </div> -->
@@ -392,7 +442,7 @@
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Sun Apr 14 2024 10:30:48 GMT+0900',
+    id: 'Mon Apr 01 2024 00:00:00 GMT+0900',
     owner: '',
     repo: '',
     oauth: {
@@ -427,13 +477,12 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/04/14/Hadoop/docs/General/Single%20Node%20Setup/">
+                <a href="/2024/04/01/Kubernetes/docs/Concpets/1_Overview/Object_In_Kubernetes/8_Owners%20and%20Dependents/">
                     <div class="card-image">
                         
+                        <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] Concepts - Overview - Objects In Kubernetes - Owners and Dependents">
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title diy-neon-red"></span>
+                        <span class="card-title diy-neon-red">[Kubernetes] Concepts - Overview - Objects In Kubernetes - Owners and Dependents</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -444,12 +493,16 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-04-14
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-04-01
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Gyuwon Hong
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -464,13 +517,12 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/04/14/Hadoop/docs/YARN/Overview/">
+                <a href="/2024/03/23/Flink/Application%20Development/Table%20API%20&%20SQL/Concepts%20&%20Common%20API/">
                     <div class="card-image">
                         
+                        <img src="/images/logos/flink-logo.png" class="responsive-img" alt="[Flink] Table API &amp; SQL - Concepts &amp; Common API">
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title diy-neon-red"></span>
+                        <span class="card-title diy-neon-red">[Flink] Table API &amp; SQL - Concepts &amp; Common API</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -481,12 +533,16 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-04-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-23
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Gyuwon Hong
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Flink/" class="post-category">
+                                    Flink
+                                </a>
+                            
                             
                         </span>
                     </div>

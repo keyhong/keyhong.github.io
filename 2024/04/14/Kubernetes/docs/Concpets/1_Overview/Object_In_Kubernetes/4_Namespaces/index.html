@@ -4,8 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="NamespacesIn Kubernetes, namespaces provide a mechanism for isolating groups of resources within a single cluster. Names">
+    <meta name="keywords" content="[Kubernetes] Concepts - Overview - Objects In Kubernetes - Namespaces, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="Namespaces
+
+In Kubernetes, namespaces provide a mechanism for isolating groups of resources within a single cluster. Nam">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +19,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Keyhong</title>
+    <title>[Kubernetes] Concepts - Overview - Objects In Kubernetes - Namespaces | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -205,13 +207,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/kubernetes-logo.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        </h1>
+                        [Kubernetes] Concepts - Overview - Objects In Kubernetes - Namespaces</h1>
                 </div>
             </div>
         </div>
@@ -245,6 +247,15 @@
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Kubernetes/" class="post-category">
+                                Kubernetes
+                            </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -259,15 +270,23 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Namespaces"><a href="#Namespaces" class="headerlink" title="Namespaces"></a>Namespaces</h1><p>In Kubernetes, <em>namespaces</em> provide a mechanism for isolating groups of resources within a single cluster. Names of resources need to be unique within a namespace, but not across namespaces. Namespace-based scoping is applicable only for namespaced <a href="">objects</a> <em>(e.g. Deployments, Services, etc.)</em> and not for cluster-wide objects <em>(e.g. StorageClass, Nodes, PersistentVolumes, etc.)</em>.</p>
-<p>Kubernetes에서 네임스페이스는 단일 클러스터 내에서 리소스 그룹을 격리하는 메커니즘을 제공합니다. 리소스의 이름은 네임스페이스 내에서 고유해야 하지만 다른 네임스페이스 간에는 고유할 필요가 없습니다. 네임스페이스 기반의 범위 지정은 네임스페이스별 객체 (예: 배포, 서비스 등)에만 적용되며 클러스터 전역 객체 (예: StorageClass, 노드, 영구 볼륨 등)에는 적용되지 않습니다.</p>
-<h2 id="When-to-Use-Multiple-Namespaces"><a href="#When-to-Use-Multiple-Namespaces" class="headerlink" title="When to Use Multiple Namespaces"></a>When to Use Multiple Namespaces</h2><p>Namespaces are intended for use in environments with many users spread across multiple teams, or projects. For clusters with a few to tens of users, you should not need to create or think about namespaces at all. Start using namespaces when you need the features they provide.</p>
+                <h1 id="Namespaces"><a href="#Namespaces" class="headerlink" title="Namespaces"></a>Namespaces</h1><hr>
+
+<p>In Kubernetes, <em>namespaces</em> provide a mechanism for isolating groups of resources within a single cluster. Names of resources need to be unique within a namespace, but not across namespaces. Namespace-based scoping is applicable only for namespaced <a href="">objects</a> <em>(e.g. Deployments, Services, etc.)</em> and not for cluster-wide objects <em>(e.g. StorageClass, Nodes, PersistentVolumes, etc.)</em>.</p>
+<hr>
+
+<p>Kubernetes에서 네임스페이스는 단일 클러스터 내에서 리소스 그룹을 격리하는 메커니즘을 제공합니다. 리소스의 이름은 네임스페이스 내에서 고유해야 하지만 다른 네임스페이스 간에는 고유할 필요가 없습니다. 네임스페이스 기반의 범위 지정은 네임스페이스별 객체 <em>(예: Deployments, Services 등)</em> 에만 적용되며 클러스터 전역 객체 <em>(예: StorageClass, Nodes, PersistentVolumes 등)</em> 에는 적용되지 않습니다.</p>
+<h2 id="When-to-Use-Multiple-Namespaces"><a href="#When-to-Use-Multiple-Namespaces" class="headerlink" title="When to Use Multiple Namespaces"></a>When to Use Multiple Namespaces</h2><hr>
+
+<p>Namespaces are intended for use in environments with many users spread across multiple teams, or projects. For clusters with a few to tens of users, you should not need to create or think about namespaces at all. Start using namespaces when you need the features they provide.</p>
 <p>Namespaces provide a scope for names. Names of resources need to be unique within a namespace, but not across namespaces. Namespaces cannot be nested inside one another and each Kubernetes resource can only be in one namespace.</p>
 <p>Namespaces are a way to divide cluster resources between multiple users (via <a href="">resource quota</a>).</p>
 <p>It is not necessary to use multiple namespaces to separate slightly different resources, such as different versions of the same software: use <a href="">labels</a> to distinguish resources within the same namespace.</p>
 <blockquote>
 <p>Note: For a production cluster, consider not using the default namespace. Instead, make other namespaces and use those.</p>
 </blockquote>
+<hr>
+
 <p>네임스페이스는 여러 사용자가 여러 팀 또는 프로젝트에 걸쳐 분산되어 있는 환경에서 사용하기 위해 고안되었습니다. 사용자 수가 몇 명에서 몇 십 명 정도인 클러스터의 경우, 전혀 네임스페이스를 만들거나 고려할 필요가 없습니다. 네임스페이스가 제공하는 기능이 필요할 때부터 네임스페이스를 사용하기 시작하십시오.</p>
 <p>네임스페이스는 이름의 범위를 제공합니다. 리소스의 이름은 네임스페이스 내에서 고유해야 하지만 다른 네임스페이스 간에는 고유할 필요가 없습니다. 네임스페이스는 서로 중첩될 수 없으며 각 Kubernetes 리소스는 하나의 네임스페이스에만 속할 수 있습니다.</p>
 <p>네임스페이스는 클러스터 리소스를 여러 사용자 사이에 나누는 방법입니다 (리소스 할당량을 통해).</p>
@@ -275,29 +294,57 @@
 <blockquote>
 <p>참고: 프로덕션 클러스터에서는 기본 네임스페이스를 사용하지 않는 것을 고려하십시오. 대신 다른 네임스페이스를 만들고 그것들을 사용하십시오.</p>
 </blockquote>
-<h2 id="Initial-namespaces"><a href="#Initial-namespaces" class="headerlink" title="Initial namespaces"></a>Initial namespaces</h2><p>Kubernetes starts with four initial namespaces:</p>
+<h2 id="Initial-namespaces"><a href="#Initial-namespaces" class="headerlink" title="Initial namespaces"></a>Initial namespaces</h2><hr>
+
+<p>Kubernetes starts with four initial namespaces:</p>
+<ul>
+<li><p><strong>default</strong><br>Kubernetes includes this namespace so that you can start using your new cluster without first creating a namespace.</p>
+</li>
+<li><p><strong>kube-node-lease</strong><br>This namespace holds <a href="">Lease</a> objects associated with each node. Node leases allow the kubelet to send <a href="">heartbeats</a> so that the control plane can detect node failure.</p>
+</li>
+<li><p><strong>kube-public</strong><br>This namespace is readable by <em>all</em> clients (including those not authenticated). This namespace is mostly reserved for cluster usage, in case that some resources should be visible and readable publicly throughout the whole cluster. The public aspect of this namespace is only a convention, not a requirement.</p>
+</li>
+<li><p><strong>kube-system</strong><br>The namespace for objects created by the Kubernetes system.</p>
+</li>
+</ul>
+<hr>
+
 <p>Kubernetes는 네 개의 초기 네임스페이스로 시작됩니다:</p>
-<p><strong>default</strong></p>
-<p>Kubernetes includes this namespace so that you can start using your new cluster without first creating a namespace.</p>
-<p>Kubernetes에는 네임스페이스를 먼저 생성하지 않고 새 클러스터를 사용할 수 있도록 해당 네임스페이스가 포함되어 있습니다.</p>
-<p><strong>kube-node-lease</strong></p>
-<p>This namespace holds <a href="">Lease</a> objects associated with each node. Node leases allow the kubelet to send <a href="">heartbeats</a> so that the control plane can detect node failure.</p>
-<p>이 네임스페이스는 각 노드와 관련된 Lease 객체를 보유합니다. 노드 임대는 kubelet이 심박동을 보내어 제어 평면이 노드 장애를 감지할 수 있도록 합니다.</p>
-<p><strong>kube-public</strong></p>
-<p>This namespace is readable by <em>all</em> clients (including those not authenticated). This namespace is mostly reserved for cluster usage, in case that some resources should be visible and readable publicly throughout the whole cluster. The public aspect of this namespace is only a convention, not a requirement.</p>
-<p>이 네임스페이스는 <em>모든</em> 클라이언트 (인증되지 않은 클라이언트 포함)가 읽을 수 있습니다. 이 네임스페이스는 대부분 클러스터 사용을 위해 예약되어 있으며, 클러스터 전체에서 일부 리소스가 공개적으로 볼 수 있고 읽을 수 있어야 할 경우에 사용됩니다. 이 네임스페이스의 공개적인 측면은 요구 사항이 아닌 관례에 불과합니다.</p>
-<p><strong>kube-system</strong></p>
-<p>The namespace for objects created by the Kubernetes system.</p>
-<p>Kubernetes 시스템에 의해 생성된 객체의 네임스페이스입니다.</p>
-<h2 id="Working-with-Namespaces"><a href="#Working-with-Namespaces" class="headerlink" title="Working with Namespaces"></a>Working with Namespaces</h2><p>Creation and deletion of namespaces are described in the Admin Guide documentation for namespaces.</p>
-<p>네임스페이스의 생성 및 삭제에 대한 정보는 관리자 가이드 문서의 네임스페이스 부분에 설명되어 있습니다.</p>
+<ul>
+<li><p><strong>default</strong><br>Kubernetes에는 네임스페이스를 먼저 생성하지 않고 새 클러스터를 사용할 수 있도록 해당 네임스페이스가 포함되어 있습니다.</p>
+</li>
+<li><p><strong>kube-node-lease</strong><br>이 네임스페이스는 각 노드와 관련된 Lease 객체를 보유합니다. 노드 임대는 kubelet이 심박동을 보내어 제어 평면이 노드 장애를 감지할 수 있도록 합니다.</p>
+</li>
+<li><p><strong>kube-public</strong><br>이 네임스페이스는 <em>모든</em> 클라이언트 (인증되지 않은 클라이언트 포함)가 읽을 수 있습니다. 이 네임스페이스는 대부분 클러스터 사용을 위해 예약되어 있으며, 클러스터 전체에서 일부 리소스가 공개적으로 볼 수 있고 읽을 수 있어야 할 경우에 사용됩니다. 이 네임스페이스의 공개적인 측면은 요구 사항이 아닌 관례에 불과합니다.</p>
+</li>
+<li><p><strong>kube-public</strong><br>Kubernetes 시스템에 의해 생성된 객체의 네임스페이스입니다.</p>
+</li>
+</ul>
+<h2 id="Working-with-Namespaces"><a href="#Working-with-Namespaces" class="headerlink" title="Working with Namespaces"></a>Working with Namespaces</h2><hr>
+
+<p>Creation and deletion of namespaces are described in the Admin Guide documentation for namespaces.</p>
 <blockquote>
 <p><strong>Note</strong>: Avoid creating namespaces with the prefix <code>kube-</code>, since it is reserved for Kubernetes system namespaces.</p>
 </blockquote>
+<hr>
+
+<p>네임스페이스의 생성 및 삭제에 대한 정보는 관리자 가이드 문서의 네임스페이스 부분에 설명되어 있습니다.</p>
 <blockquote>
-<p><strong>참고</strong>: kube- 접두사가 있는 네임스페이스는 Kubernetes 시스템 네임스페이스에 예약되어 있으므로 생성을 피하십시오.</p>
+<p><strong>참고</strong>: <code>kube-</code> 접두사가 있는 네임스페이스는 Kubernetes 시스템 네임스페이스에 예약되어 있으므로 생성을 피하십시오.</p>
 </blockquote>
-<h3 id="Viewing-namespaces"><a href="#Viewing-namespaces" class="headerlink" title="Viewing namespaces"></a>Viewing namespaces</h3><p>You can list the current namespaces in a cluster using:</p>
+<h3 id="Viewing-namespaces"><a href="#Viewing-namespaces" class="headerlink" title="Viewing namespaces"></a>Viewing namespaces</h3><hr>
+
+<p>You can list the current namespaces in a cluster using:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl get namespace<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">NAME              STATUS   AGE
+default           Active   1d
+kube-node-lease   Active   1d
+kube-public       Active   1d
+kube-system       Active   1d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+
 <p>클러스터의 현재 네임스페이스 목록은 다음과 같이 나열할 수 있습니다:</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl get namespace<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
@@ -307,33 +354,63 @@ kube-node-lease   Active   1d
 kube-public       Active   1d
 kube-system       Active   1d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="Setting-the-namespace-for-a-request"><a href="#Setting-the-namespace-for-a-request" class="headerlink" title="Setting the namespace for a request"></a>Setting the namespace for a request</h3><p>To set the namespace for a current request, use the <code>--namespace</code> flag.</p>
-<p>현재 요청에 대한 네임스페이스를 설정하려면 –namespace 플래그를 사용하십시오.</p>
+<h3 id="Setting-the-namespace-for-a-request"><a href="#Setting-the-namespace-for-a-request" class="headerlink" title="Setting the namespace for a request"></a>Setting the namespace for a request</h3><hr>
+
+<p>To set the namespace for a current request, use the <code>--namespace</code> flag.</p>
 <p>For example:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl run nginx <span class="token parameter variable">--image</span><span class="token operator">=</span>nginx <span class="token parameter variable">--namespace</span><span class="token operator">=</span><span class="token operator">&lt;</span>insert-namespace-name-here<span class="token operator">></span>
+kubectl get pods <span class="token parameter variable">--namespace</span><span class="token operator">=</span><span class="token operator">&lt;</span>insert-namespace-name-here<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<hr>
+
+<p>현재 요청에 대한 네임스페이스를 설정하려면 –namespace 플래그를 사용하십시오.</p>
 <p>예를 들어:</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl run nginx <span class="token parameter variable">--image</span><span class="token operator">=</span>nginx <span class="token parameter variable">--namespace</span><span class="token operator">=</span><span class="token operator">&lt;</span>insert-namespace-name-here<span class="token operator">></span>
 kubectl get pods <span class="token parameter variable">--namespace</span><span class="token operator">=</span><span class="token operator">&lt;</span>insert-namespace-name-here<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h3 id="Setting-the-namespace-preference"><a href="#Setting-the-namespace-preference" class="headerlink" title="Setting the namespace preference"></a>Setting the namespace preference</h3><p>You can permanently save the namespace for all subsequent kubectl commands in that context.</p>
+<h3 id="Setting-the-namespace-preference"><a href="#Setting-the-namespace-preference" class="headerlink" title="Setting the namespace preference"></a>Setting the namespace preference</h3><hr>
+
+<p>You can permanently save the namespace for all subsequent kubectl commands in that context.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl config set-context <span class="token parameter variable">--current</span> <span class="token parameter variable">--namespace</span><span class="token operator">=</span><span class="token operator">&lt;</span>insert-namespace-name-here<span class="token operator">></span>
+<span class="token comment"># Validate it</span>
+kubectl config view <span class="token parameter variable">--minify</span> <span class="token operator">|</span> <span class="token function">grep</span> namespace:<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+
 <p>해당 컨텍스트의 모든 이후 kubectl 명령에 대해 네임스페이스를 영구적으로 저장할 수 있습니다.</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl config set-context <span class="token parameter variable">--current</span> <span class="token parameter variable">--namespace</span><span class="token operator">=</span><span class="token operator">&lt;</span>insert-namespace-name-here<span class="token operator">></span>
 <span class="token comment"># Validate it</span>
 kubectl config view <span class="token parameter variable">--minify</span> <span class="token operator">|</span> <span class="token function">grep</span> namespace:<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="Namespaces-and-DNS"><a href="#Namespaces-and-DNS" class="headerlink" title="Namespaces and DNS"></a>Namespaces and DNS</h2><p>When you create a <a href="">Service</a>, it creates a corresponding <a href="">DNS entry</a>. This entry is of the form <code>&lt;service-name&gt;.&lt;namespace-name&gt;.svc.cluster.local</code>, which means that if a container only uses <code>&lt;service-name&gt;</code>, it will resolve to the service which is local to a namespace. This is useful for using the same configuration across multiple namespaces such as Development, Staging and Production. If you want to reach across namespaces, you need to use the fully qualified domain name (FQDN).</p>
-<p>서비스를 생성하면 해당 서비스에 대응하는 DNS 항목이 생성됩니다. 이 항목은 <code>&lt;서비스-이름&gt;.&lt;네임스페이스-이름&gt;.svc.cluster.local</code> 형식입니다. 따라서 컨테이너가 <code>&lt;서비스-이름&gt;</code>만 사용하는 경우 해당 서비스가 네임스페이스 내에 있는 서비스로 해석됩니다. 이는 개발, 스테이징 및 프로덕션과 같은 여러 네임스페이스에서 동일한 구성을 사용할 때 유용합니다. 네임스페이스를 통해 네임스페이스를 통해 접근하려면 완전히 정규화된 도메인 이름(FQDN)을 사용해야 합니다.</p>
+
+<h2 id="Namespaces-and-DNS"><a href="#Namespaces-and-DNS" class="headerlink" title="Namespaces and DNS"></a>Namespaces and DNS</h2><hr>
+
+<p>When you create a <a href="">Service</a>, it creates a corresponding <a href="">DNS entry</a>. This entry is of the form <code>&lt;service-name&gt;.&lt;namespace-name&gt;.svc.cluster.local</code>, which means that if a container only uses <code>&lt;service-name&gt;</code>, it will resolve to the service which is local to a namespace. This is useful for using the same configuration across multiple namespaces such as Development, Staging and Production. If you want to reach across namespaces, you need to use the fully qualified domain name (FQDN).</p>
 <p>As a result, all namespace names must be valid <a href="">RFC 1123 DNS labels</a>.</p>
-<p>결과적으로 모든 네임스페이스 이름은 유효한 <code>RFC 1123 DNS 라벨</code>이어야 합니다.</p>
 <blockquote>
 <p><strong>Warning</strong>:<br>By creating namespaces with the same name as <a href="">public top-level domains</a>, Services in these namespaces can have short DNS names that overlap with public DNS records. Workloads from any namespace performing a DNS lookup without a <a href="">trailing dot</a> will be redirected to those services, taking precedence over public DNS.</p>
 </blockquote>
 <p>To mitigate this, limit privileges for creating namespaces to trusted users. If required, you could additionally configure third-party security controls, such as <a href="">admission webhooks</a>, to block creating any namespace with the name of <a href="">public TLDs</a>.</p>
+<hr>
+
+<p><a href="">서비스</a>를 생성하면 해당 서비스에 대응하는 <a href="">DNS 항목</a>이 생성됩니다. 이 항목은 <code>&lt;서비스-이름&gt;.&lt;네임스페이스-이름&gt;.svc.cluster.local</code> 형식입니다. 따라서 컨테이너가 <code>&lt;서비스-이름&gt;</code>만 사용하는 경우 해당 서비스가 네임스페이스 내에 있는 서비스로 해석됩니다. 이는 개발, 스테이징 및 프로덕션과 같은 여러 네임스페이스에서 동일한 구성을 사용할 때 유용합니다. 네임스페이스를 통해 네임스페이스를 통해 접근하려면 완전히 정규화된 도메인 이름(FQDN)을 사용해야 합니다.</p>
+<p>결과적으로 모든 네임스페이스 이름은 유효한 <a href="">RFC 1123 DNS 라벨</a>이어야 합니다.</p>
 <blockquote>
 <p><strong>경고</strong>:<br>공개 최상위 도메인과 동일한 이름의 네임스페이스를 만들면 해당 네임스페이스의 서비스가 공개 DNS 레코드와 겹치는 짧은 DNS 이름을 가질 수 있습니다. 점을 붙이지 않고 DNS 조회를 수행하는 모든 네임스페이스의 워크로드는 해당 서비스로 리디렉션되어 공개 DNS보다 우선합니다.</p>
 </blockquote>
 <p>이를 완화하기 위해 네임스페이스 생성 권한을 신뢰할 수 있는 사용자로 제한하세요. 필요한 경우 서드파티 보안 제어(예: 등록 웹훅)를 구성하여 공개 최상위 도메인의 이름을 가진 네임스페이스 생성을 차단할 수도 있습니다.</p>
-<h2 id="Not-all-objects-are-in-a-namespace"><a href="#Not-all-objects-are-in-a-namespace" class="headerlink" title="Not all objects are in a namespace"></a>Not all objects are in a namespace</h2><p>Most Kubernetes resources (e.g. pods, services, replication controllers, and others) are in some namespaces. However namespace resources are not themselves in a namespace. And low-level resources, such as [nodes] and [persistentVolumes], are not in any namespace.</p>
+<h2 id="Not-all-objects-are-in-a-namespace"><a href="#Not-all-objects-are-in-a-namespace" class="headerlink" title="Not all objects are in a namespace"></a>Not all objects are in a namespace</h2><hr>
+
+<p>Most Kubernetes resources (e.g. pods, services, replication controllers, and others) are in some namespaces. However namespace resources are not themselves in a namespace. And low-level resources, such as [nodes] and [persistentVolumes], are not in any namespace.</p>
 <p>To see which Kubernetes resources are and aren’t in a namespace:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># In a namespace</span>
+kubectl api-resources <span class="token parameter variable">--namespaced</span><span class="token operator">=</span>true
+
+<span class="token comment"># Not in a namespace</span>
+kubectl api-resources <span class="token parameter variable">--namespaced</span><span class="token operator">=</span>false<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+
 <p>대부분의 Kubernetes 리소스(예: 파드, 서비스, 복제 컨트롤러 등)는 특정 네임스페이스에 속합니다. 그러나 네임스페이스 리소스 자체는 네임스페이스에 속하지 않습니다. 그리고 노드와 지속적인 볼륨과 같은 저수준 리소스는 어떤 네임스페이스에도 속하지 않습니다.</p>
 <p>어떤 Kubernetes 리소스가 어떤 네임스페이스에 속하는지, 그리고 어떤 것이 네임스페이스에 속하지 않는지 확인하려면 다음을 참고하십시오:</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># In a namespace</span>
@@ -344,8 +421,14 @@ kubectl api-resources <span class="token parameter variable">--namespaced</span>
 
 <h2 id="Automatic-labelling"><a href="#Automatic-labelling" class="headerlink" title="Automatic labelling"></a>Automatic labelling</h2><p><strong>FEATURE STATE</strong>: <code>Kubernetes 1.22 [stable]</code></p>
 <p>The Kubernetes control plane sets an immutable label <code>kubernetes.io/metadata.name</code> on all namespaces. The value of the label is the namespace name.</p>
+<hr>
+
+<p><strong>FEATURE STATE</strong>: <code>Kubernetes 1.22 [stable]</code></p>
 <p>Kubernetes 제어 플레인은 모든 네임스페이스에 불변의 레이블 <code>kubernetes.io/metadata.name</code>을 설정합니다. 이 레이블의 값은 네임스페이스 이름입니다.</p>
 <h2 id="What’s-next"><a href="#What’s-next" class="headerlink" title="What’s next"></a>What’s next</h2><p>Learn more about creating a new namespace.<br>Learn more about deleting a namespace.</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/</a></li>
+</ul>
 
                 
             </div>
@@ -362,7 +445,7 @@ kubectl api-resources <span class="token parameter variable">--namespaced</span>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">Gyuwon Hong</a>
+                    <a href="/about" rel="external nofollow noreferrer">Keyhong</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -385,7 +468,7 @@ kubectl api-resources <span class="token parameter variable">--namespaced</span>
                     use
                     <a href="cc_by_url" rel="external nofollow noreferrer" target="_blank">cc_by_name</a>
                     licensed
-                    <a href="/about" target="_blank">Gyuwon Hong</a>
+                    <a href="/about" target="_blank">Keyhong</a>
                     !
                 </span>
             </div> -->
@@ -479,7 +562,7 @@ kubectl api-resources <span class="token parameter variable">--namespaced</span>
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Sun Apr 14 2024 10:31:04 GMT+0900',
+    id: 'Sun Apr 14 2024 00:00:00 GMT+0900',
     owner: '',
     repo: '',
     oauth: {
@@ -514,13 +597,12 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/04/14/Kubernetes/docs/Concpets/1_Overview/Object_In_Kubernetes/8_Owners%20and%20Dependents/">
+                <a href="/2024/04/14/Kubernetes/docs/Concpets/1_Overview/Object_In_Kubernetes/6_%20Field%20Selectors/">
                     <div class="card-image">
                         
+                        <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] Concepts - Overview - Objects In Kubernetes - Field Selectors">
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title diy-neon-red"></span>
+                        <span class="card-title diy-neon-red">[Kubernetes] Concepts - Overview - Objects In Kubernetes - Field Selectors</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -535,8 +617,12 @@ gitment.render('gitment-content');
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Gyuwon Hong
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -551,13 +637,12 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/04/14/Kubernetes/docs/Concpets/1_Overview/Object_In_Kubernetes/1_Kubernetes_Object_Management/">
+                <a href="/2024/04/14/Kubernetes/docs/Concpets/1_Overview/Object_In_Kubernetes/9_Recommended%20Labels/">
                     <div class="card-image">
                         
+                        <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] Concepts - Overview - Objects In Kubernetes - Recommended Labels">
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title diy-neon-red"></span>
+                        <span class="card-title diy-neon-red">[Kubernetes] Concepts - Overview - Objects In Kubernetes - Recommended Labels</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -572,8 +657,12 @@ gitment.render('gitment-content');
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Gyuwon Hong
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
+                                </a>
+                            
                             
                         </span>
                     </div>
