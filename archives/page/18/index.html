@@ -394,21 +394,26 @@
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/07/01/Kafka/kafka-server-propery-options/">
+                        <a href="/2023/07/01/Kafka/kafka-cleanup-policy/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Kafka Server Propery Options">
+                                <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Cleanup Policy">
                                 
-                                <span class="card-title">[Kafka] Kafka Server Propery Options</span>
+                                <span class="card-title">[Kafka] Cleanup Policy</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    클러스터의 브로커를 구분하기 위한 id# 클러스터 내 브로커마다 id는 다 달라야 합니다.
-broker.id&#x3D;[N]
+                                    세그먼트(Segment)
+토픽의 데이터를 저장하는 명시적인 파일 시스템 단위
 
-카프카 브로커 통신을 위해 열어둘 인터페이스 HOST, Port, 프로토콜 설정# 브로커
+
+세그먼트는 파티션마다 별개 생성
+
+세그먼트의 파일 이름은 오프셋 중 가장 작은 값
+
+“segment.bytes” 옵션으로 1개의 세그먼
                                 
                             </div>
                             <div class="publish-info">
@@ -449,26 +454,21 @@ broker.id&#x3D;[N]
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/07/01/Kafka/kafka-cleanup-policy/">
+                        <a href="/2023/07/01/Kafka/kafka-server-propery-options/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Cleanup Policy">
+                                <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="[Kafka] Kafka Server Propery Options">
                                 
-                                <span class="card-title">[Kafka] Cleanup Policy</span>
+                                <span class="card-title">[Kafka] Kafka Server Propery Options</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    세그먼트(Segment)
-토픽의 데이터를 저장하는 명시적인 파일 시스템 단위
+                                    클러스터의 브로커를 구분하기 위한 id# 클러스터 내 브로커마다 id는 다 달라야 합니다.
+broker.id&#x3D;[N]
 
-
-세그먼트는 파티션마다 별개 생성
-
-세그먼트의 파일 이름은 오프셋 중 가장 작은 값
-
-“segment.bytes” 옵션으로 1개의 세그먼
+카프카 브로커 통신을 위해 열어둘 인터페이스 HOST, Port, 프로토콜 설정# 브로커
                                 
                             </div>
                             <div class="publish-info">
@@ -797,18 +797,21 @@ python에서 pendulum 모듈의 dat
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/06/24/Python/sqlalchemy_delete/">
+                        <a href="/2023/06/24/PySpark/rdd/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] sqlalchemy delete">
+                                <img src="/images/logos/pyspark-logo.png" class="responsive-img" alt="[PySpark] pyspark.RDD">
                                 
-                                <span class="card-title">[Python] sqlalchemy delete</span>
+                                <span class="card-title">[PySpark] pyspark.RDD</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Problemspark.sql API로 적재하던 해당 날짜의 데이터를 지울 일이 생겼다. 모듈은 Airlfow의 스케줄링에 의해 배치로 돌아가는 상황인데, 실패시 retry를 수행하기 때문에 사실상 다시 재실행하면 
+                                    RDD(Resilient Distributed Dataset)
+스파크 프로그래밍에서 사용되는 가장 기본적인 데이터 객체
+
+한글로 해석하면 복원 분산 데이터 집합이다. Spark에서 사용되는 가장 기본적인 데이터 객체
                                 
                             </div>
                             <div class="publish-info">
@@ -819,8 +822,8 @@ python에서 pendulum 모듈의 dat
                                     
                                     <i class="fas fa-bookmark fa-fw icon-category"></i>
                                     
-                                    <a href="/categories/Python/" class="post-category">
-                                    Python
+                                    <a href="/categories/PySpark/" class="post-category">
+                                    PySpark
                                     </a>
                                     
                                     
@@ -849,21 +852,18 @@ python에서 pendulum 모듈의 dat
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/06/24/PySpark/rdd/">
+                        <a href="/2023/06/24/Python/sqlalchemy_delete/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/pyspark-logo.png" class="responsive-img" alt="[PySpark] pyspark.RDD">
+                                <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] sqlalchemy delete">
                                 
-                                <span class="card-title">[PySpark] pyspark.RDD</span>
+                                <span class="card-title">[Python] sqlalchemy delete</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    RDD(Resilient Distributed Dataset)
-스파크 프로그래밍에서 사용되는 가장 기본적인 데이터 객체
-
-한글로 해석하면 복원 분산 데이터 집합이다. Spark에서 사용되는 가장 기본적인 데이터 객체
+                                    Problemspark.sql API로 적재하던 해당 날짜의 데이터를 지울 일이 생겼다. 모듈은 Airlfow의 스케줄링에 의해 배치로 돌아가는 상황인데, 실패시 retry를 수행하기 때문에 사실상 다시 재실행하면 
                                 
                             </div>
                             <div class="publish-info">
@@ -874,8 +874,8 @@ python에서 pendulum 모듈의 dat
                                     
                                     <i class="fas fa-bookmark fa-fw icon-category"></i>
                                     
-                                    <a href="/categories/PySpark/" class="post-category">
-                                    PySpark
+                                    <a href="/categories/Python/" class="post-category">
+                                    Python
                                     </a>
                                     
                                     

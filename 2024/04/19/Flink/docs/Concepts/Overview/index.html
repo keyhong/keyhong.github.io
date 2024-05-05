@@ -5,9 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="[Flink] Concepts - Overview, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Concepts
-
-The Hands-on Training explains the basic concepts of stateful and timely stream processing that underlie Flink">
+    <meta name="description" content="ConceptsHands-on Training은 Flink의 API에 기초를 둔 상태 및 적시 스트림 처리의 기본 개념을 설명하고, 이러한 메커니즘이 어떻게 응용 프로그램에서 사용되는지 예시를 제공합니다. 상태 기반">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -270,38 +268,8 @@ The Hands-on Training explains the basic concepts of stateful and timely stream 
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts"></a>Concepts</h1><hr>
-
-<p>The <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/learn-flink/overview/">Hands-on Training</a> explains the basic concepts of stateful and timely stream processing that underlie Flink’s APIs, and provides examples of how these mechanisms are used in applications. Stateful stream processing is introduced in the context of <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/learn-flink/etl/#stateful-transformations">Data Pipelines &amp; ETL</a> and is further developed in the section on <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/learn-flink/fault_tolerance/">Fault Tolerance</a>. Timely stream processing is introduced in the section on <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/learn-flink/streaming_analytics/">Streaming Analytics</a>. <br><br>This <em><strong>Concepts in Depth</strong></em> section provides a deeper understanding of how Flink’s architecture and runtime implement these concepts.</p>
-<hr>
- 
-<p><a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/learn-flink/overview/">핸즈온 트레이닝</a>은 Flink의 API에 기초를 둔 상태 및 적시 스트림 처리의 기본 개념을 설명하고, 이러한 메커니즘이 어떻게 응용 프로그램에서 사용되는지 예시를 제공합니다. 상태 기반 스트림 처리는 <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/learn-flink/etl/#stateful-transformations">데이터 파이프라인 및 ETL</a>의 맥락에서 소개되며, <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/learn-flink/fault_tolerance/">장애 내성</a>에 관한 섹션에서 더 발전됩니다. 적시 스트림 처리는 <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/learn-flink/streaming_analytics/">스트리밍 분석</a> 섹션에서 소개됩니다. <br><br>이 <em><strong>심층 개념</strong></em> 섹션은 Flink의 아키텍처와 런타임이 이러한 개념을 어떻게 구현하는지에 대한 심층적인 이해를 제공합니다. </p>
-<h2 id="Flink’s-APIs"><a href="#Flink’s-APIs" class="headerlink" title="Flink’s APIs"></a>Flink’s APIs</h2><hr>
-
-<p>Flink offers different levels of abstraction for developing streaming&#x2F;batch applications.</p>
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128684&authkey=%21ANJi3cBhEIfnTFI&width=1064&height=443" width="1064" height="443" />
-
-<ul>
-<li>The lowest level abstraction simply offers <strong>stateful and timely stream processing</strong>. It is embedded into the <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/datastream/overview/">DataStream API</a> via the <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/datastream/operators/process_function/">Process Function</a>. It allows users to freely process events from one or more streams, and provides consistent, fault tolerant <em><strong>state</strong></em>. In addition, users can register event time and processing time callbacks, allowing programs to realize sophisticated computations.</li>
-</ul>
-<br>
-
-<ul>
-<li>In practice, many applications do not need the low-level abstractions described above, and can instead program against the <strong>Core APIs</strong>: the <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/datastream/overview/">DataStream API</a> (bounded&#x2F;unbounded streams). These fluent APIs offer the common building blocks for data processing, like various forms of user-specified transformations, joins, aggregations, windows, state, etc. Data types processed in these APIs are represented as classes in the respective programming languages. <br><br>The low level <em><strong>Process Function</strong></em> integrates with the <em><strong>DataStream API</strong></em>, making it possible to use the lower-level abstraction on an as-needed basis. The <em><strong>DataSet API</strong></em> offers additional primitives on bounded data sets, like loops&#x2F;iterations.</li>
-</ul>
-<br>
-
-<ul>
-<li>The <strong>Table API</strong> is a declarative DSL centered around <em><strong>tables</strong></em>, which may be dynamically changing tables (when representing streams). The <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/table/overview/">Table API</a> follows the (extended) relational model: Tables have a schema attached (similar to tables in relational databases) and the API offers comparable operations, such as select, project, join, group-by, aggregate, etc. Table API programs declaratively define <em><strong>what logical operation should be done</strong></em> rather than specifying exactly <em><strong>how the code for the operation looks</strong></em>. Though the Table API is extensible by various types of user-defined functions, it is less expressive than the <em><strong>Core APIs</strong></em>, and more concise to use (less code to write). In addition, Table API programs also go through an optimizer that applies optimization rules before execution. <br><br>One can seamlessly convert between tables and <em><strong>DataStream&#x2F;DataSet</strong></em>, allowing programs to mix the <em><strong>Table API</strong></em> with the <em><strong>DataStream</strong></em> and <em><strong>DataSet</strong></em> APIs.</li>
-</ul>
-<br>
-
-<ul>
-<li>The highest level abstraction offered by Flink is <strong>SQL</strong>. This abstraction is similar to the <em><strong>Table API</strong></em> both in semantics and expressiveness, but represents programs as SQL query expressions. The <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/table/overview/#sql">SQL</a> abstraction closely interacts with the Table API, and SQL queries can be executed over tables defined in the <em><strong>Table API</strong></em>.</li>
-</ul>
-<hr>
-
-<p>플링크는 스트리밍&#x2F;배치 애플리케이션을 개발하기 위한 다양한 추상화 수준을 제공합니다.</p>
+                <h1 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts"></a>Concepts</h1><p><a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/learn-flink/overview/">Hands-on Training</a>은 Flink의 API에 기초를 둔 상태 및 적시 스트림 처리의 기본 개념을 설명하고, 이러한 메커니즘이 어떻게 응용 프로그램에서 사용되는지 예시를 제공합니다. 상태 기반 스트림 처리는 <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/learn-flink/etl/#stateful-transformations">Data Pipelines &amp; ETL</a>의 맥락에서 소개되며, <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/learn-flink/fault_tolerance/">Fault Tolerance</a>에 관한 섹션에서 더 발전됩니다. 적시 스트림 처리는 <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/learn-flink/streaming_analytics/">Streaming Analytics</a> 섹션에서 소개됩니다. <br><br>이 <em><strong>심층 개념</strong></em> 섹션은 Flink의 아키텍처와 런타임이 이러한 개념을 어떻게 구현하는지에 대한 심층적인 이해를 제공합니다. </p>
+<h2 id="Flink’s-APIs"><a href="#Flink’s-APIs" class="headerlink" title="Flink’s APIs"></a>Flink’s APIs</h2><p>플링크는 스트리밍&#x2F;배치 애플리케이션을 개발하기 위한 다양한 추상화 수준을 제공합니다.</p>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128684&authkey=%21ANJi3cBhEIfnTFI&width=1064&height=443" width="1064" height="443" />
 
 <ul>
@@ -310,7 +278,7 @@ The Hands-on Training explains the basic concepts of stateful and timely stream 
 <br>
 
 <ul>
-<li>실제로 많은 애플리케이션은 위에서 설명한 저수준의 추상화가 필요하지 않으며, 대신 <strong>Core API에</strong> 대해 프로그래밍할 수 있습니다: DataStream API(유계&#x2F;무계 스트림). 이 유창한 API들은 다양한 형태의 사용자 지정 변환, 조인, 집계, 윈도우, 상태 등과 같은 데이터 처리를 위한 공통 빌딩 블록을 제공합니다. 이러한 API에서 처리되는 데이터 유형은 각각의 프로그래밍 언어에서 클래스로 표현됩니다. <br><br>저수준 <em><strong>Process Function</strong></em>은 <em><strong>DataStream API</strong></em>와 통합되어 있어 필요에 따라 낮은 수준의 추상화를 사용할 수 있게 합니다. <em><strong>DataSet API</strong></em>는 반복&#x2F;루프와 같이 유계 데이터 집합에 대한 추가 기본 요소를 제공합니다.</li>
+<li>실제로 많은 애플리케이션은 위에서 설명한 저수준의 추상화가 필요하지 않으며, 대신 <strong>Core API에</strong> 대해 프로그래밍할 수 있습니다: <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/datastream/overview/">DataStream API</a> (유계&#x2F;무계 스트림). 이 유창한 API들은 다양한 형태의 사용자 지정 변환, 조인, 집계, 윈도우, 상태 등과 같은 데이터 처리를 위한 공통 빌딩 블록을 제공합니다. 이러한 API에서 처리되는 데이터 유형은 각각의 프로그래밍 언어에서 클래스로 표현됩니다. <br><br>저수준 <em><strong>Process Function</strong></em>은 <em><strong>DataStream API</strong></em>와 통합되어 있어 필요에 따라 낮은 수준의 추상화를 사용할 수 있게 합니다. <em><strong>DataSet API</strong></em>는 반복&#x2F;루프와 같이 유계 데이터 집합에 대한 추가 기본 요소를 제공합니다.</li>
 </ul>
 <br>
 
@@ -533,12 +501,12 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/04/19/Flink/docs/Learn_Flink/Data_Pipelines_and_ETL/">
+                <a href="/2024/04/19/Flink/docs/Learn_Flink/Intro_to_the_DataStream_API/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/flink-logo.png" class="responsive-img" alt="[Flink] Learn_Flink - Data_Pipelines_and_ETL">
+                        <img src="/images/logos/flink-logo.png" class="responsive-img" alt="[Flink] Learn_Flink - Intro_to_the_DataStream_API">
                         
-                        <span class="card-title diy-neon-red">[Flink] Learn_Flink - Data_Pipelines_and_ETL</span>
+                        <span class="card-title diy-neon-red">[Flink] Learn_Flink - Intro_to_the_DataStream_API</span>
                     </div>
                 </a>
                 <div class="card-content article-content">

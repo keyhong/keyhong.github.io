@@ -364,48 +364,7 @@
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nc</span> <span class="token parameter variable">-lk</span> <span class="token number">9999</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>Enter 키를 눌러 새로운 단어를 입력하세요. 이들은 워드 카운트 프로그램의 입력이 될 것입니다. 1보다 큰 카운트를 보고 싶다면, 5초 내에 동일한 단어를 반복해서 입력하세요 (당신의 타자 속도가 그렇게 빠르지 않다면 윈도우 크기를 5초보다 크게 늘리세요 ☺).</p>
-<h2 id="Data-Sources"><a href="#Data-Sources" class="headerlink" title="Data Sources"></a>Data Sources</h2><p>File-based:</p>
-<ul>
-<li><p><code>readTextFile(path)</code> - Reads text files, i.e. files that respect the <code>TextInputFormat</code> specification, line-by-line and returns them as Strings.</p>
-</li>
-<li><p><code>readFile(fileInputFormat, path)</code> - Reads (once) files as dictated by the specified file input format.</p>
-</li>
-<li><p><code>readFile(fileInputFormat, path, watchType, interval, pathFilter, typeInfo)</code> - This is the method called internally by the two previous ones. It reads files in the <code>path</code> based on the given <code>fileInputFormat</code>. Depending on the provided <code>watchType</code>, this source may periodically monitor (every <code>interval</code> ms) the path for new data (<code>FileProcessingMode.PROCESS_CONTINUOUSLY</code>), or process once the data currently in the path and exit (<code>FileProcessingMode.PROCESS_ONCE</code>). Using the <code>pathFilter</code>, the user can further exclude files from being processed.</p>
-</li>
-</ul>
-<p><em><strong>IMPLEMENTATION:</strong></em></p>
-<p>Under the hood, Flink splits the file reading process into two sub-tasks, namely <em><strong>directory monitoring and data reading</strong></em>. Each of these sub-tasks is implemented by a separate entity. Monitoring is implemented by a single, <strong>non-parallel</strong> (parallelism &#x3D; 1) task, while reading is performed by multiple tasks running in parallel. The parallelism of the latter is equal to the job parallelism. The role of the single monitoring task is to scan the directory (periodically or only once depending on the <code>watchType</code>), find the files to be processed, divide them in splits, and assign these splits to the downstream readers. The readers are the ones who will read the actual data. Each split is read by only one reader, while a reader can read multiple splits, one-by-one.</p>
-<p><em><strong>IMPORTANT NOTES:</strong></em></p>
-<ol>
-<li><p>If the <code>watchType</code> is set to <code>FileProcessingMode.PROCESS_CONTINUOUSLY</code>, when a file is modified, its contents are re-processed entirely. This can break the “exactly-once” semantics, as appending data at the end of a file will lead to <strong>all</strong> its contents being re-processed.</p>
-</li>
-<li><p>If the <code>watchType</code> is set to <code>FileProcessingMode.PROCESS_ONCE</code>, the source scans the path <strong>once</strong> and exits, without waiting for the readers to finish reading the file contents. Of course the readers will continue reading until all file contents are read. Closing the source leads to no more checkpoints after that point. This may lead to slower recovery after a node failure, as the job will resume reading from the last checkpoint.</p>
-</li>
-</ol>
-<p>Socket-based:</p>
-<ul>
-<li><code>socketTextStream</code> - Reads from a socket. Elements can be separated by a delimiter.</li>
-</ul>
-<p>Collection-based:</p>
-<ul>
-<li><p><code>fromCollection(Collection)</code> - Creates a data stream from the Java Java.util.Collection. All elements in the collection must be of the same type.</p>
-</li>
-<li><p><code>fromCollection(Iterator, Class)</code> - Creates a data stream from an iterator. The class specifies the data type of the elements returned by the iterator.</p>
-</li>
-<li><p><code>fromElements(T ...)</code> - Creates a data stream from the given sequence of objects. All objects must be of the same type.</p>
-</li>
-<li><p><code>fromParallelCollection(SplittableIterator, Class)</code> - Creates a data stream from an iterator, in parallel. The class specifies the data type of the elements returned by the iterator.</p>
-</li>
-<li><p><code>fromSequence(from, to)</code> - Generates the sequence of numbers in the given interval, in parallel.</p>
-</li>
-</ul>
-<p>Custom:</p>
-<ul>
-<li><code>addSource</code> - Attach a new source function. For example, to read from Apache Kafka you can use <code>addSource(new FlinkKafkaConsumer&lt;&gt;(...))</code>. See <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/connectors/datastream/overview/">connectors</a> for more details.</li>
-</ul>
-<hr>
-
-<p>소스는 프로그램이 입력을 읽는 곳입니다. <code>StreamExecutionEnvironment.addSource(sourceFunction)</code>을 사용하여 소스를 프로그램에 연결할 수 있습니다. Flink에는 여러 사전 구현된 소스 함수가 제공되지만, 비 병렬 소스의 경우 <code>SourceFunction</code>을 구현하거나 병렬 소스의 경우 <code>ParallelSourceFunction</code> 인터페이스를 구현하거나 <code>RichParallelSourceFunction</code>을 확장하여 사용자 정의 소스를 작성할 수 있습니다.</p>
+<h2 id="Data-Sources"><a href="#Data-Sources" class="headerlink" title="Data Sources"></a>Data Sources</h2><p>소스는 프로그램이 입력을 읽는 곳입니다. <code>StreamExecutionEnvironment.addSource(sourceFunction)</code>을 사용하여 소스를 프로그램에 연결할 수 있습니다. Flink에는 여러 사전 구현된 소스 함수가 제공되지만, 비 병렬 소스의 경우 <code>SourceFunction</code>을 구현하거나 병렬 소스의 경우 <code>ParallelSourceFunction</code> 인터페이스를 구현하거나 <code>RichParallelSourceFunction</code>을 확장하여 사용자 정의 소스를 작성할 수 있습니다.</p>
 <p><code>StreamExecutionEnvironment에서</code> 액세스할 수 있는 여러 사전 정의된 스트림 소스가 있습니다:</p>
 <br>
 
@@ -415,22 +374,25 @@
 </li>
 <li><p><code>readFile(fileInputFormat, path)</code> - 지정된 파일 입력 형식에 따라 파일을 (한 번) 읽어들입니다.</p>
 </li>
-<li><p><code>readFile(fileInputFormat, path, watchType, interval, pathFilter, typeInfo)</code> - 이는 이전 두 메서드에서 내부적으로 호출되는 메서드입니다. 지정된 <code>fileInputFormat</code>을 기반으로 경로의 파일을 읽어옵니다. 제공된 <code>watchType</code>에 따라 이 소스는 새 데이터를 위해 경로를 주기적으로 모니터링할 수 있습니다(<code>FileProcessingMode.PROCESS_CONTINUOUSLY</code>) (주기마다 <code>interval</code> ms), 또는 현재 경로에 있는 데이터를 처리하고 종료할 수 있습니다(<code>FileProcessingMode.PROCESS_ONCE</code>). <code>pathFilter</code>를 사용하여 사용자는 처리되지 않도록 파일을 추가로 제외시킬 수 있습니다. <br><br><em><strong>IMPLEMENTATION:</strong></em> <br></p>
+<li><p><code>readFile(fileInputFormat, path, watchType, interval, pathFilter, typeInfo)</code> - 이는 이전 두 메서드에서 내부적으로 호출되는 메서드입니다. 지정된 <code>fileInputFormat</code>을 기반으로 경로의 파일을 읽어옵니다. 제공된 <code>watchType</code>에 따라 이 소스는 새 데이터를 위해 경로를 주기적으로 모니터링할 수 있습니다(<code>FileProcessingMode.PROCESS_CONTINUOUSLY</code>) (주기마다 <code>interval</code> ms), 또는 현재 경로에 있는 데이터를 처리하고 종료할 수 있습니다(<code>FileProcessingMode.PROCESS_ONCE</code>). <code>pathFilter</code>를 사용하여 사용자는 처리되지 않도록 파일을 추가로 제외시킬 수 있습니다. <br></p>
 </li>
 </ul>
+<p><em><strong>IMPLEMENTATION:</strong></em></p>
+<p>Flink은 파일 읽기 프로세스를 <em><strong>directory monitoring and data reading</strong></em> 두 개의 하위 작업으로 분할합니다. 각 하위 작업은 별도의 엔티티에 의해 구현됩니다. 모니터링은 단일 <em><strong>non-parallel</strong></em> (parallelism &#x3D; 1) 작업에 의해 구현되며, 읽기는 병렬로 실행되는 여러 작업에 의해 수행됩니다. 후자의 병렬성은 작업 병렬성과 동일합니다. 단일 모니터링 작업의 역할은 디렉터리를 스캔하고 처리할 파일을 찾아서 이를 분할하고 이러한 분할을 하류 리더에게 할당하는 것입니다. 리더는 실제 데이터를 읽는 역할을 합니다. 각 분할은 하나의 리더에 의해 읽히지만, 리더는 하나씩 여러 분할을 읽을 수 있습니다.</p>
+<p><em><strong>IMPORTANT NOTES:</strong></em> <br></p>
 <ol>
 <li>만약 <code>watchType</code>이 <code>FileProcessingMode.PROCESS_CONTINUOUSLY</code>로 설정되어 있다면, 파일이 수정될 때마다 그 내용이 완전히 다시 처리됩니다. 이는 파일 끝에 데이터를 추가하면 해당 파일의 <strong>모든</strong> 내용이 다시 처리되어 “정확히 한 번”의 의미론을 깨뜨릴 수 있습니다. <br></li>
 <li>만약 <code>watchType이</code> <code>FileProcessingMode.PROCESS_ONCE</code>로 설정되어 있다면, 소스는 <strong>한 번</strong> 경로를 스캔하고 종료하며, 리더가 파일 내용을 모두 읽을 때까지 기다리지 않습니다. 물론 리더는 모든 파일 내용을 읽을 때까지 계속 읽습니다. 소스를 닫으면 해당 시점 이후에 더 이상 체크포인트가 생성되지 않습니다. 이는 노드 장애 발생 후 느린 복구로 이어질 수 있으며, 작업은 마지막 체크포인트부터 읽기를 재개합니다.</li>
 </ol>
 <br>
 
-<p>소켓 기반:</p>
+<p>Socket-based:</p>
 <ul>
 <li><code>socketTextStream</code> - 소켓에서 읽습니다. 요소는 구분 기호로 분리될 수 있습니다.</li>
 </ul>
 <br>
 
-<p>컬렉션 기반:</p>
+<p>Collection-based:</p>
 <ul>
 <li><p><code>fromCollection(Collection)</code> - Java.util.Collection에서 데이터 스트림을 생성합니다. 컬렉션의 모든 요소는 동일한 유형이어야 합니다.</p>
 </li>
@@ -445,7 +407,7 @@
 </ul>
 <br>
 
-<p>사용자 정의:</p>
+<p>Custom:</p>
 <ul>
 <li><code>addSource</code> - 새로운 소스 함수를 추가합니다. 예를 들어, Apache Kafka에서 읽으려면 <code>addSource(new FlinkKafkaConsumer&lt;&gt;(...))</code>를 사용할 수 있습니다. 자세한 내용은 <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/connectors/datastream/overview/">connectors</a>를 참조하세요.</li>
 </ul>
@@ -476,7 +438,7 @@
 <h3 id="Controlling-Latency"><a href="#Controlling-Latency" class="headerlink" title="Controlling Latency"></a>Controlling Latency</h3><p>기본적으로 요소들은 한 번에 하나씩 네트워크로 전송되지 않습니다 (이는 불필요한 네트워크 트래픽을 유발할 수 있음). 대신, 요소들은 버퍼링됩니다. 실제로 기계간에 전송되는 버퍼의 크기는 Flink 구성 파일에서 설정할 수 있습니다. 이 방법은 처리량을 최적화하는 데 좋지만, 들어오는 스트림이 충분히 빠르지 않은 경우 지연 문제를 유발할 수 있습니다. 처리량과 지연 시간을 제어하려면 실행 환경(env)에 <code>env.setBufferTimeout(timeoutMillis)</code>를 사용하여 버퍼가 가득 찰 때까지 기다리는 최대 대기 시간을 설정할 수 있습니다 (또는 개별 연산자에 설정할 수 있습니다). 이 시간이 지나면 버퍼가 가득 차지 않아도 자동으로 버퍼가 전송됩니다. 이 타임아웃의 기본 값은 100 ms입니다.</p>
 <br>
 
-<p>사용법:</p>
+<p>Usage:</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">LocalStreamEnvironment</span> env <span class="token operator">=</span> <span class="token class-name">StreamExecutionEnvironment</span><span class="token punctuation">.</span><span class="token function">createLocalEnvironment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 env<span class="token punctuation">.</span><span class="token function">setBufferTimeout</span><span class="token punctuation">(</span>timeoutMillis<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
