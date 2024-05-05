@@ -341,25 +341,21 @@
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/Python-Algorithm/greedy-algorithm/">
+                        <a href="/2024/01/01/PySpark/spark-streaming-shutdown/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/algorithm-logo.png" class="responsive-img" alt="[Algorithm] Greedy Algorithm">
+                                <img src="/images/logos/pyspark-logo.png" class="responsive-img" alt="[PySpark] Spark Streaming Gracefully Shutdown">
                                 
-                                <span class="card-title">[Algorithm] Greedy Algorithm</span>
+                                <span class="card-title">[PySpark] Spark Streaming Gracefully Shutdown</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    탐욕법(Greedy Algorithm)
-매 순간 마다 최선의 경우만 골라가는 방법
+                                    sparkStreamContext.stop()
+코드 상에서 sparkStreamContext.stop()를 call 하는 것은 그만
 
-다른 경우를 고려하지 않는다. 나중은 생각하지 않는다
-
-모든 경우를 다 보지 않으니 완전탐색보다 빠르다
-
-어떤 경우가 최선인지 찾는
+방법 1 : spark.streaming.stopGracefullyOnShutdo
                                 
                             </div>
                             <div class="publish-info">
@@ -370,8 +366,8 @@
                                     
                                     <i class="fas fa-bookmark fa-fw icon-category"></i>
                                     
-                                    <a href="/categories/Algorithm/" class="post-category">
-                                    Algorithm
+                                    <a href="/categories/PySpark/" class="post-category">
+                                    PySpark
                                     </a>
                                     
                                     
@@ -455,19 +451,22 @@ List, Tuple, Dict에 대한 Python Built-in 확장 자료 구조(모듈)
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/SQL/physics-modeling/">
+                        <a href="/2024/01/01/SQL/inline-view/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/sql-logo.png" class="responsive-img" alt="[SQL] Physics Modeling">
+                                <img src="/images/logos/sql-logo.png" class="responsive-img" alt="[SQL] Inline View">
                                 
-                                <span class="card-title">[SQL] Physics Modeling</span>
+                                <span class="card-title">[SQL] Inline View</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    인덱스(Index)index range scan, index full scan &#x3D;&gt; single block I&#x2F;O~ &#x3D;&gt; multi block I&#x2F;O
-Index Rang
+                                    인라인뷰(Inline View)
+서브쿼리가 FROM 절 안에서 사용되는 경우, 해당 서브쿼리를 ‘인라인뷰’라고 말함
+
+래터럴 인라인뷰(Lateral Inline View)
+인라인뷰 안에서 밖의 메인쿼리 테이블과의 조
                                 
                             </div>
                             <div class="publish-info">
@@ -508,22 +507,19 @@ Index Rang
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/SQL/inline-view/">
+                        <a href="/2024/01/01/SQL/physics-modeling/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/sql-logo.png" class="responsive-img" alt="[SQL] Inline View">
+                                <img src="/images/logos/sql-logo.png" class="responsive-img" alt="[SQL] Physics Modeling">
                                 
-                                <span class="card-title">[SQL] Inline View</span>
+                                <span class="card-title">[SQL] Physics Modeling</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    인라인뷰(Inline View)
-서브쿼리가 FROM 절 안에서 사용되는 경우, 해당 서브쿼리를 ‘인라인뷰’라고 말함
-
-래터럴 인라인뷰(Lateral Inline View)
-인라인뷰 안에서 밖의 메인쿼리 테이블과의 조
+                                    인덱스(Index)index range scan, index full scan &#x3D;&gt; single block I&#x2F;O~ &#x3D;&gt; multi block I&#x2F;O
+Index Rang
                                 
                             </div>
                             <div class="publish-info">
@@ -844,21 +840,25 @@ Django Form (서버측)클라이언트로부터 전달받은 값에 대한 유�
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/12/28/Django/model-fields/">
+                        <a href="/2023/12/28/Django/mediafiles%20copy/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/django-logo.png" class="responsive-img" alt="[Django] Django 모델 필드">
+                                <img src="/images/logos/django-logo.png" class="responsive-img" alt="[Django] Static &amp; Media 파일">
                                 
-                                <span class="card-title">[Django] Django 모델 필드</span>
+                                <span class="card-title">[Django] Static &amp; Media 파일</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    기본 지원되는 모델필드 타입 (1)
-Primary Key: AutoField, BigAutoField
-문자열: CharField, TextField, SlugField
-날짜&#x2F;시간: DateField, Tim
+                                    Static &amp; Media 파일Static 파일
+개발 리소스로서의 정적인 파일 (js, css, image 등)
+
+
+앱 &#x2F; 프로젝트 단위로 저장&#x2F;서빙
+
+Media 파일
+FileField &#
                                 
                             </div>
                             <div class="publish-info">
