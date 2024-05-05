@@ -124,9 +124,9 @@ code {
     padding: 1.5px 5px;
     top: 13px !important;
     font-family: 'GmarketSansTTFMedium', Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace;
-    font-size: 0.91rem;
-    color: yellow;
-    background-color: #000;
+    font-size: 1.05rem;
+    font-weight: bold;
+    color: red;
     border-radius: 2px;
 }
 
