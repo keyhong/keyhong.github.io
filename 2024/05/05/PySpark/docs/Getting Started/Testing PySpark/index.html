@@ -338,6 +338,18 @@ assertSchemaEqual<span class="token punctuation">(</span>s1<span class="token pu
 <h2 id="Option-2-Using-Unit-Test"><a href="#Option-2-Using-Unit-Test" class="headerlink" title="Option 2: Using Unit Test"></a>Option 2: Using Unit Test</h2><p>더 복잡한 테스트 시나리오의 경우, 테스트 프레임워크를 사용하는 것이 좋습니다.</p>
 <p>가장 인기 있는 테스트 프레임워크 옵션 중 하나는 단위 테스트입니다. 내장된 Python <code>unittest</code> 라이브러리를 사용하여 PySpark 테스트를 작성하는 방법을 알아보겠습니다. <code>unittest</code> 라이브러리에 대한 자세한 정보는 여기를 참조하세요: <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/unittest.html">https://docs.python.org/3/library/unittest.html</a>.</p>
 <p>먼저 Spark 세션이 필요합니다. <code>unittest</code> 패키지에서 제공하는 <code>@classmethod</code> 데코레이터를 사용하여 Spark 세션을 설정하고 해제할 수 있습니다.</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> unittest
+
+<span class="token keyword">class</span> <span class="token class-name">PySparkTestCase</span><span class="token punctuation">(</span>unittest<span class="token punctuation">.</span>TestCase<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token decorator annotation punctuation">@classmethod</span>
+    <span class="token keyword">def</span> <span class="token function">setUpClass</span><span class="token punctuation">(</span>cls<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        cls<span class="token punctuation">.</span>spark <span class="token operator">=</span> SparkSession<span class="token punctuation">.</span>builder<span class="token punctuation">.</span>appName<span class="token punctuation">(</span><span class="token string">"Testing PySpark Example."</span><span class="token punctuation">)</span><span class="token punctuation">.</span>getOrCreate<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token decorator annotation punctuation">@classmethod</span>
+    <span class="token keyword">def</span> <span class="token function">tearDownClass</span><span class="token punctuation">(</span>cls<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        cls<span class="token punctuation">.</span>spark<span class="token punctuation">.</span>stop<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>이제 unittest 클래스를 작성해 봅시다.</p>
 <h2 id="Option-3-Using-Pytest"><a href="#Option-3-Using-Pytest" class="headerlink" title="Option 3: Using Pytest"></a>Option 3: Using Pytest</h2><h1 id="Putting-It-All-Together-¶"><a href="#Putting-It-All-Together-¶" class="headerlink" title="Putting It All Together!¶"></a>Putting It All Together!¶</h1>
                 
             </div>
