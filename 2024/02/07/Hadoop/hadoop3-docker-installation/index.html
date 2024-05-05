@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[Hadoop] Hadoop3 HA Docker-Compose 구축기, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="시작그간 인터넷에 무수히 많은 hadoop 설치 글을 보았습니다. 그 동안 hadoop을 클러스터 모드로 설치하는 과정이 복잡해서 조금 미뤄온 감이 있었습니다, 그래서 이번에 docker-compose도 익숙해졌겠다">
+    <meta name="keywords" content="[Hadoop] Hadoop3 Journal HA Docker-Compose 구축, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="시작 배경그간 인터넷에 무수히 많은 hadoop cluster를 구축하는 글을 보았습니다. 그 동안 hadoop을 cluster mode로 구축하는 것을 미뤄오다 이번에 docker로 hadoop3 jouranl H">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[Hadoop] Hadoop3 HA Docker-Compose 구축기 | Keyhong</title>
+    <title>[Hadoop] Hadoop3 Journal HA Docker-Compose 구축 | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -211,7 +211,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [Hadoop] Hadoop3 HA Docker-Compose 구축기</h1>
+                        [Hadoop] Hadoop3 Journal HA Docker-Compose 구축</h1>
                 </div>
             </div>
         </div>
@@ -268,10 +268,8 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="시작"><a href="#시작" class="headerlink" title="시작"></a>시작</h2><p>그간 인터넷에 무수히 많은 hadoop 설치 글을 보았습니다. 그 동안 hadoop을 클러스터 모드로 설치하는 과정이 복잡해서 조금 미뤄온 감이 있었습니다, 그래서 이번에 docker-compose도 익숙해졌겠다, hadoop 3 버전을 저도 설치해보려고 시도하였고 그 설치 과정을 적어봅니다. </p>
-<h2 id="구축-결과"><a href="#구축-결과" class="headerlink" title="구축 결과"></a>구축 결과</h2><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110230&authkey=%21AIAZpNCoMXi-8_w&width=955&height=228" width="955" height="228" alt="hadoop HA cluster server process (mysql server 제외)"/>
-
-<h2 id="설치-프로그램"><a href="#설치-프로그램" class="headerlink" title="설치 프로그램"></a>설치 프로그램</h2><h3 id="네트워크-구성"><a href="#네트워크-구성" class="headerlink" title="네트워크 구성"></a>네트워크 구성</h3><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>docker-compose.yaml</span></div><code class="language-yaml"><span class="token comment"># 172.28.1.0: Network IP, 172.28.1.255: Broadcast IP</span>
+                <h2 id="시작-배경"><a href="#시작-배경" class="headerlink" title="시작 배경"></a>시작 배경</h2><p>그간 인터넷에 무수히 많은 hadoop cluster를 구축하는 글을 보았습니다. 그 동안 hadoop을 cluster mode로 구축하는 것을 미뤄오다 이번에 docker로 hadoop3 jouranl HA cluster를 구축해보았습니다. 그 설치 과정을 이 글에 적어 보았습니다. </p>
+<h2 id="설치-구성"><a href="#설치-구성" class="headerlink" title="설치 구성"></a>설치 구성</h2><h3 id="Network"><a href="#Network" class="headerlink" title="Network"></a>Network</h3><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>docker-compose.yaml</span></div><code class="language-yaml"><span class="token comment"># 172.28.1.0: Network IP, 172.28.1.255: Broadcast IP</span>
 <span class="token comment"># CIDR가 172.28.0.0/16이기 때문에 172.28.*.1 ~ 172.28.*.254 까지 사용 가능합니다(*는 일치)  </span>
 <span class="token key atrule">networks</span><span class="token punctuation">:</span>
   <span class="token key atrule">hadoop-cluster-net</span><span class="token punctuation">:</span>
@@ -280,7 +278,7 @@
       <span class="token key atrule">config</span><span class="token punctuation">:</span>
         <span class="token punctuation">-</span> <span class="token key atrule">subnet</span><span class="token punctuation">:</span> 172.28.1.0/16<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="서버-구성"><a href="#서버-구성" class="headerlink" title="서버 구성"></a>서버 구성</h3><table>
+<h3 id="Cluster-Server"><a href="#Cluster-Server" class="headerlink" title="Cluster Server"></a>Cluster Server</h3><table>
 <thead>
 <tr>
 <th>서버 구성</th>
@@ -314,43 +312,30 @@
 <td></td>
 </tr>
 </tbody></table>
-<h3 id="프로세스-종속성-문제"><a href="#프로세스-종속성-문제" class="headerlink" title="프로세스 종속성 문제"></a>프로세스 종속성 문제</h3><p>docker-compose를 쓰기 때문에 저는 전체 프로그램의 자동화를 목표하였습니다. 하지만 해당 과정에서 한 가지 문제가 있었습니다. 일반적인 hadoop이라면 프로세스를 띄우면서 컨테이너별 하나의 명령어만 치면 되지만, <code>hadoop HA(High Available)을 구축하려면 컨테이너별로 프로세스를 띄우는 순서가 있다</code>는 점입니다.</p>
-<p>예를 들어,</p>
-<p><strong>[master] zookeeper zkfc format &gt; [slave-1] journalnode 실행 &gt; [master] namenode 실행</strong></p>
-<p>처럼 <code>한번 entrypoint를 실행한 컨테이너에 다시 접속해서 또 명령어를 쳐야 되는 문제</code>가 있었습니다.</p>
-<p>저는 이런 문제를 해결하기 위해 master-sever, slave-server-1, slave-server-2가 <code>공통적으로 사용하는 hadoop-base 이미지에서 ssh-keygen을 실행해 모든 컨테이너가 ssh 원격 접속을 허용</code>하게 하였습니다. 그리고 <code>컨테이너 종속성을 고려해 master-sever, slave-server-1가 올라온 후 slave-server-2에서 ssh를 통해 다른 서버의 명령어를 실행</code>하도록 문제를 해결했습니다.</p>
-<pre class="line-numbers language-docker" data-language="docker"><div class="caption"><span>Dockerfile (base-hadoop)</span></div><code class="language-docker"><span class="token instruction"><span class="token keyword">RUN</span> ssh-keygen -t rsa -P <span class="token string">''</span> -f ~/.ssh/id_rsa <span class="token operator">\</span>
-    &amp;&amp; cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys <span class="token operator">\</span>
-    &amp;&amp; chmod 0600 ~/.ssh/authorized_keys <span class="token operator">\</span>
-    &amp;&amp; echo <span class="token string">'StrictHostKeyChecking no'</span> >> /etc/ssh/ssh_config</span>
-
-<span class="token instruction"><span class="token keyword">RUN</span> printenv | grep -v <span class="token string">'PWD'</span> | sort > ~/env_vars <span class="token operator">\</span>
-    &amp;&amp; sed -i <span class="token string">'s/^/export /'</span> ~/env_vars</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="기본-이미지"><a href="#기본-이미지" class="headerlink" title="기본 이미지"></a>기본 이미지</h3><table>
+<h3 id="Docker-Image"><a href="#Docker-Image" class="headerlink" title="Docker Image"></a>Docker Image</h3><table>
 <thead>
 <tr>
-<th>이미지</th>
-<th>버전</th>
-<th>설명</th>
+<th>Image</th>
+<th>Version</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody><tr>
 <td>mysql</td>
 <td>8.0.36-bullseye</td>
-<td>Metastore</td>
+<td>Hive Metastore</td>
 </tr>
 <tr>
 <td>ubuntu</td>
 <td>22.04</td>
-<td>base-hadoop 시작 이미지</td>
+<td>base-hadoop</td>
 </tr>
 </tbody></table>
-<h3 id="base-hadoop-설치-프로그램"><a href="#base-hadoop-설치-프로그램" class="headerlink" title="base-hadoop 설치 프로그램"></a>base-hadoop 설치 프로그램</h3><table>
+<h3 id="base-hadoop-Install-Program"><a href="#base-hadoop-Install-Program" class="headerlink" title="base-hadoop Install Program"></a>base-hadoop Install Program</h3><table>
 <thead>
 <tr>
-<th>이미지</th>
-<th>버전</th>
+<th>Image</th>
+<th>Version</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -378,10 +363,24 @@
 <td>3.4.2</td>
 </tr>
 </tbody></table>
-<p>… (추가중)</p>
+<h2 id="Docker로-구축-시-문제"><a href="#Docker로-구축-시-문제" class="headerlink" title="Docker로 구축 시 문제"></a>Docker로 구축 시 문제</h2><p>docker-compose를 쓰기 때문에 저는 전체 프로그램의 자동화를 목표하였습니다. 하지만 해당 과정에서 한 가지 문제가 있었습니다. 일반적인 hadoop이라면 프로세스를 띄우면서 컨테이너별 하나의 명령어만 치면 되지만, <em><strong>hadoop HA(High Available)을 구축하려면 컨테이너별로 프로세스를 띄우는 순서가 있다</strong></em>는 점입니다.</p>
+<p>예를 들어,</p>
+<p><strong>[master] zookeeper zkfc format &gt; [slave-1] journalnode 실행 &gt; [master] namenode 실행</strong></p>
+<p>처럼 <em><strong>한번 entrypoint를 실행한 컨테이너에 다시 접속해서 또 명령어를 쳐야 되는 문제</strong></em>가 있었습니다.</p>
+<p>저는 이런 문제를 해결하기 위해 master-sever, slave-server-1, slave-server-2가 <em><strong>공통적으로 사용하는 hadoop-base 이미지에서 ssh-keygen을 실행해 모든 컨테이너가 ssh 원격 접속을 허용</strong></em>하게 하였습니다. 그리고 <em><strong>컨테이너 종속성을 고려해 master-sever, slave-server-1가 올라온 후 slave-server-2에서 ssh를 통해 다른 서버의 명령어를 실행</strong></em>하도록 문제를 해결했습니다.</p>
+<pre class="line-numbers language-docker" data-language="docker"><div class="caption"><span>Dockerfile (base-hadoop)</span></div><code class="language-docker"><span class="token instruction"><span class="token keyword">RUN</span> ssh-keygen -t rsa -P <span class="token string">''</span> -f ~/.ssh/id_rsa <span class="token operator">\</span>
+    &amp;&amp; cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys <span class="token operator">\</span>
+    &amp;&amp; chmod 0600 ~/.ssh/authorized_keys <span class="token operator">\</span>
+    &amp;&amp; echo <span class="token string">'StrictHostKeyChecking no'</span> >> /etc/ssh/ssh_config</span>
+
+<span class="token instruction"><span class="token keyword">RUN</span> printenv | grep -v <span class="token string">'PWD'</span> | sort > ~/env_vars <span class="token operator">\</span>
+    &amp;&amp; sed -i <span class="token string">'s/^/export /'</span> ~/env_vars</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://github.com/keyhong/hadoop-side-project">https://github.com/keyhong/hadoop-side-project</a></li>
 </ul>
+<h2 id="구축-결과"><a href="#구축-결과" class="headerlink" title="구축 결과"></a>구축 결과</h2><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110230&authkey=%21AIAZpNCoMXi-8_w&width=955&height=228" width="955" height="228" alt="hadoop HA cluster server process (mysql server 제외)"/>
+
 
                 
             </div>
