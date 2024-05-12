@@ -1,6 +1,9 @@
 $(function () {
+
+    document.body.classList.add('DarkMode');
+
     /**
-     * 添加文章卡片hover效果.
+     * Adding hover effect to the article cards.
      */
     let articleCardHover = function () {
         let animateClass = 'animated pulse';
@@ -12,10 +15,10 @@ $(function () {
     };
     articleCardHover();
 
-    /*菜单切换*/
+    /* Menu toggle */
     $('.sidenav').sidenav();
 
-    /* 修复文章卡片 div 的宽度. */
+    /* Fixing the width of the article card div. */
     let fixPostCardWidth = function (srcId, targetId) {
         let srcDiv = $('#' + srcId);
         if (srcDiv.length === 0) {
@@ -36,14 +39,14 @@ $(function () {
     };
 
     /**
-     * 修复footer部分的位置，使得在内容比较少时，footer也会在底部.
+     * Adjusting the position of the footer so that it remains at the bottom even when there is minimal content.
      */
     let fixFooterPosition = function () {
         $('.content').css('min-height', window.innerHeight - 165);
     };
 
     /**
-     * 修复样式.
+     * Fixing the style.
      */
     let fixStyles = function () {
         fixPostCardWidth('navContainer');
@@ -52,12 +55,12 @@ $(function () {
     };
     fixStyles();
 
-    /*调整屏幕宽度时重新设置文章列的宽度，修复小间距问题*/
+    /* Adjusting the width of the article columns when resizing the screen to fix minor spacing issues */
     $(window).resize(function () {
         fixStyles();
     });
 
-    /*初始化瀑布流布局*/
+    /* Initializing the waterfall layout */
     $('#articles').masonry({
         itemSelector: '.article'
     });
@@ -68,16 +71,16 @@ $(function () {
         delay: 100
     });
 
-    /*文章内容详情的一些初始化特性*/
+    /* Initialization features for the article content details */
     let articleInit = function () {
         $('#articleContent a').attr('target', '_blank');
 
         $('#articleContent img').each(function () {
             let imgPath = $(this).attr('src');
             $(this).wrap('<div class="img-item" data-src="' + imgPath + '" data-sub-html=".caption"></div>');
-            // 图片添加阴影
+            // Adding shadows to the images
             $(this).addClass("img-shadow img-margin");
-            // 图片添加字幕
+            // Adding captions to the images
             let alt = $(this).attr('alt');
             let title = $(this).attr('title');
             let captionText = "";
@@ -118,19 +121,19 @@ $(function () {
 
     $('.modal').modal();
 
-    /*回到顶部*/
+    /*Scroll to Top*/
     $('#backTop').click(function () {
         $('body,html').animate({scrollTop: 0}, 400);
         return false;
     });
 
-    /*监听滚动条位置*/
+    /*Listen to Scrollbar Position*/
     let $nav = $('#headNav');
     let $backTop = $('.top-scroll');
-    // 当页面处于文章中部的时候刷新页面，因为此时无滚动，所以需要判断位置,给导航加上绿色。
+    // When refreshing the page while it's in the middle of an article, since there's no scrolling at that moment, the position needs to be checked to add green color to the navigation.
     showOrHideNavBg($(window).scrollTop());
     $(window).scroll(function () {
-        /* 回到顶部按钮根据滚动条的位置的显示和隐藏.*/
+        /* The 'back to top' button appears and disappears based on the position of the scrollbar..*/
         let scroll = $(window).scrollTop();
         showOrHideNavBg(scroll);
     });
@@ -169,13 +172,6 @@ $(function () {
 
     // tooltipped.
     $('.tooltipped').tooltip();
-});
 
-//黑夜模式判断
-if (localStorage.getItem('isDark') === '1') {
-    document.body.classList.add('DarkMode');
-    $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')
-} else {
-    document.body.classList.remove('DarkMode');
-    $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')
-}
+    
+});

@@ -1,14 +1,14 @@
-/*夜间适配*/
+/* Night Mode Adaptation */
 .night .tip {
     filter: brightness(0.7);
 }
 
-/* snote夜间模式 */
+/* snote Night Mode */
 .night .tip{
     color: #4c4948;
 }
 
-/* 背景颜色变灰色 */
+/* Change Background Color to Gray */
 .dark tbody,
 body.DarkMode #artDetail .post-info .post-date,
 body.DarkMode #info_user_pool .moments_chart,
@@ -64,13 +64,13 @@ body.DarkMode p,
 body.DarkMode pre,
 body.DarkMode .markmap-container svg g div,
 body.DarkMode .read .bg-cover .description {
-    color: rgba(255, 255, 255, 0.6); /*.85为透明度，可依据需求修改*/
+    color: rgba(255, 255, 255); /*Opacity set to .85, adjustable as needed*/
 }
 body.DarkMode .fArticleTitle, body.DarkMode .fArticleAuthor, body.DarkMode .fArticleUpdate {
-    color: rgba(255, 255, 255, 0.6) !important;
+    color: rgba(255, 255, 255) !important;
 }
 body.DarkMode .v[data-class="v"] .vinput, .v[data-class="v"] .veditor, .v[data-class="v"] p, .v[data-class="v"] pre code, .v[data-class="v"] .status-bar {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255);
 }
 body.DarkMode blockquote {
     background-color: #666 !important;
@@ -96,7 +96,6 @@ body.DarkMode .mobile-menu-list a i {
 }
 body.DarkMode .bg-color {
     background-image:linear-gradient(to right, #3b3b3b 0, rgb(59 59 59) 100%);
-    opacity:.8
 }
 body.DarkMode .progress-bar {
     background: linear-gradient(to right, #bf7030 0%, #dfc60d 100%);
@@ -105,7 +104,7 @@ body.DarkMode span.bg-color {
     background-image:linear-gradient(to right, #282c34 0, rgba(52,50,50,0.7) 100%)
 }
 
-/* 背景颜色变黑色 */
+/* Change Background Color to Black */
 /* body.DarkMode #rewardModal .modal-content, */
 body.DarkMode #reward .reward-link,
 body.DarkMode #rewardModal .fa-times,
@@ -215,13 +214,13 @@ body.DarkMode .aplayer .aplayer-body {
     filter: invert(.8);
 }
 
-/*图片滤镜*/
+/* Image Filters */
 body.DarkMode img,
 body.DarkMode strong,
 body.DarkMode .douban-card-img {
     filter: brightness(0.7);
 }
-/*统计图表暗色样式*/
+/* Dark Style for Statistical Charts */
 body.DarkMode #categories-chart,
 body.DarkMode #category-radar,
 body.DarkMode #post-calendar,
@@ -271,8 +270,8 @@ body.DarkMode header .brand-logo .logo-img {
 .DarkMode .wrapper, .DarkMode hr, 
 .DarkMode img, 
 .DarkMode li:before {
-    -webkit-filter: brightness(0.8) !important;
-    filter: brightness(0.8) !important;
+    -webkit-filter: brightness(1) !important;
+    filter: brightness(1) !important;
 }
 body.DarkMode .toc-widget .toc-list-item {
     color:#000
@@ -280,12 +279,12 @@ body.DarkMode .toc-widget .toc-list-item {
 body.DarkMode .toc-title {
     color:#666 !important
 }
-/*toc目录滤镜*/
+/* toc Directory Filter */
 body.DarkMode .skillbar .skill-bar-percent {
     color: #000;
 }
 
-/*一些细节背景*/
+/* Some Details Background */
 body.DarkMode .block-with-text:after,
 body.DarkMode .card,
 body.DarkMode .collapsible-header,
@@ -297,7 +296,7 @@ body.DarkMode thead {
 body.DarkMode #fMessageBoard, body.DarkMode .fArticleMessage, body.DarkMode #fcircleMoreBtn, .DarkMode #switchspring {
     background-color:#fbfbfb50 !important;
 }
-/*about页面细节*/
+/* About Page Details */
 body.DarkMode .profile .author .title {
     color: #faebd7;
 }
@@ -305,12 +304,12 @@ body.DarkMode .my-projects .info .info-title a {
     color: tomato;
 }
 
-/*外挂标签*/
+/* Plug-in Tags */
 .swbk .label {
     color: currentColor;
 }
 
-/*给暗黑模式下的.test添加字体颜色变红样式*/
+/* Apply Red Font Color Style to .test in Dark Mode */
 body.DarkMode .test {
     color: red;
 }
@@ -336,7 +335,7 @@ body.DarkMode #waline textarea {
     color: #b8abab;
     white-space: pre-line
 }
-/* 黑夜模式动画 */
+/* Dark Mode Animation */
 .Cuteen_DarkSky,
 .Cuteen_DarkSky:before {
     content: '';
@@ -354,7 +353,6 @@ body.DarkMode #waline textarea {
 
 .Cuteen_DarkSky:before {
     transition: 2s ease all;
-    opacity: 0;
     background: linear-gradient(#4c3f6d, #6c62bb, #93b1ed);
 }
 

@@ -116,16 +116,11 @@
     
   </li>
   
-  <li>
-    <!-- <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+  <!-- <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
-    </a> -->
-  </li>
-  <li>
-    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
-      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
     </a>
-  </li>
+  </li> -->
 </ul>
 
 
@@ -328,20 +323,20 @@
                 </a>
                 
                 
-                <a href="/categories/Hadoop/" title="Hadoop: 13">
+                <a href="/categories/Kafka/" title="Kafka: 5">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F8C471;">Hadoop
-                        <span class="tag-length">13</span>
+                            style="background-color: #F8C471;">Kafka
+                        <span class="tag-length">5</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/Kafka/" title="Kafka: 5">
+                <a href="/categories/Hadoop/" title="Hadoop: 13">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F9E79F;">Kafka
-                        <span class="tag-length">5</span>
+                            style="background-color: #F9E79F;">Hadoop
+                        <span class="tag-length">13</span>
                     </span>
                 </a>
                 
@@ -436,20 +431,20 @@
                 </a>
                 
                 
-                <a href="/categories/Toy/" title="Toy: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #D7BDE2;">Toy
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/PySpark/" title="PySpark: 17">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             style="background-color: #D7BDE2;">PySpark
                         <span class="tag-length">17</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Toy/" title="Toy: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #D7BDE2;">Toy
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -523,7 +518,7 @@
                     color: '#3C4858'
                 }
             },
-            indicator: [{"name":"AWS","max":20},{"name":"Airflow","max":20},{"name":"DBT","max":20},{"name":"Data Architecture","max":20},{"name":"Django","max":20},{"name":"Docker","max":20},{"name":"Trouble Shooting","max":20},{"name":"Flink","max":20},{"name":"Git","max":20},{"name":"Hive","max":20},{"name":"Hadoop","max":20},{"name":"Kafka","max":20},{"name":"Kubernetes","max":20},{"name":"Life","max":20},{"name":"Linux","max":20},{"name":"MLOps","max":20},{"name":"NestJS","max":20},{"name":"Python","max":20},{"name":"Algorithm","max":20},{"name":"Redis","max":20},{"name":"SQL","max":20},{"name":"Postgresql","max":20},{"name":"Toy","max":20},{"name":"PySpark","max":20},{"name":"Trino","max":20},{"name":"MongoDB","max":20},{"name":"Spark","max":20}],
+            indicator: [{"name":"AWS","max":20},{"name":"Airflow","max":20},{"name":"DBT","max":20},{"name":"Data Architecture","max":20},{"name":"Django","max":20},{"name":"Docker","max":20},{"name":"Trouble Shooting","max":20},{"name":"Flink","max":20},{"name":"Git","max":20},{"name":"Hive","max":20},{"name":"Kafka","max":20},{"name":"Hadoop","max":20},{"name":"Kubernetes","max":20},{"name":"Life","max":20},{"name":"Linux","max":20},{"name":"MLOps","max":20},{"name":"NestJS","max":20},{"name":"Python","max":20},{"name":"Algorithm","max":20},{"name":"Redis","max":20},{"name":"SQL","max":20},{"name":"Postgresql","max":20},{"name":"PySpark","max":20},{"name":"Toy","max":20},{"name":"Trino","max":20},{"name":"MongoDB","max":20},{"name":"Spark","max":20}],
             nameGap: 5,
             center: ['50%','55%'],
             radius: '66%'
@@ -534,7 +529,7 @@
             itemStyle: {normal: {areaStyle: {type: 'default'}}},
             data : [
                 {
-                    value : [11,11,1,6,10,6,1,18,3,16,13,5,17,1,8,1,3,19,4,2,7,1,1,17,3,2,3],
+                    value : [11,11,1,6,10,6,1,18,3,16,5,13,17,1,8,1,3,19,4,2,7,1,17,1,3,2,3],
                     name : 'Number of Categories'
                 }
             ]
@@ -567,19 +562,7 @@
             
             
             
-                
             
-            
-                <span id="busuanzi_container_site_pv">
-                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;Total visits:&nbsp;
-                    <span id="busuanzi_value_site_pv" class="white-color"></span>
-            </span>
-            
-            
-                <span id="busuanzi_container_site_uv">
-                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;Total visitors:&nbsp;
-                    <span id="busuanzi_value_site_uv" class="white-color"></span>
-            </span>
             
             <br>
 
@@ -588,7 +571,7 @@
             <br>
             
         </div>
-        <div class="col s12 m4 l4 social-link social-statis">
+        <div class="col s12 m4 l4 social-link ">
     <a href="https://github.com/keyhong" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
         <i class="fab fa-github"></i>
     </a>
@@ -722,31 +705,7 @@ $(function () {
 });
 </script>
 
-    <!-- 白天和黑夜主题 -->
-<div class="stars-con">
-    <div id="stars"></div>
-    <div id="stars2"></div>
-    <div id="stars3"></div>  
-</div>
-
-<script>
-    function switchNightMode() {
-        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
-        setTimeout(function () {
-            $('body').hasClass('DarkMode') 
-            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
-            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
-            
-            setTimeout(function () {
-            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
-                $(this).remove()
-            })
-            }, 2e3)
-        })
-    }
-</script>
-
-    <!-- 回到顶部按钮 -->
+    <!-- Back to Top Button -->
 <div id="backTop" class="top-scroll">
     <a class="btn-floating btn-large waves-effect waves-light" href="#!">
         <i class="fas fa-arrow-up"></i>
@@ -794,8 +753,6 @@ $(function () {
 </script>
 
     
-    
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
     
 
     

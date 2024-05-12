@@ -121,16 +121,11 @@ $ conda install -c conda-">
     
   </li>
   
-  <li>
-    <!-- <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+  <!-- <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
-    </a> -->
-  </li>
-  <li>
-    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
-      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
     </a>
-  </li>
+  </li> -->
 </ul>
 
 
@@ -207,8 +202,6 @@ $ conda install -c conda-">
 </header>
 
     
-
-
 
 <div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/python-logo.png')">
     <div class="container" style="right: 0px;left: 0px;">
@@ -444,36 +437,6 @@ Cuda compilation tools, release <span class="token number">10.1</span>, V10.1.24
 
     
 
-    
-        <link rel="stylesheet" href="/libs/gitment/gitment-default.css">
-<link rel="stylesheet" href="/css/gitment.css">
-
-<div class="gitment-card card" data-aos="fade-up">
-    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
-        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
-        <span>댓글</span>
-    </div>
-    <div id="gitment-content" class="card-content"></div>
-</div>
-
-<script src="/libs/gitment/gitment.js"></script>
-<script>
-var gitment = new Gitment({
-    id: 'Mon Jan 01 2024 00:00:00 GMT+0900',
-    owner: '',
-    repo: '',
-    oauth: {
-        client_id: '',
-        client_secret: ''
-    }
-});
-
-gitment.render('gitment-content');
-</script>
-
-    
-
-    
 
     
 
@@ -494,12 +457,12 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/01/Python/conda-env/">
+                <a href="/2024/01/01/Python/first-class-function/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Conda Env">
+                        <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Firts Class Function">
                         
-                        <span class="card-title diy-neon-red">[Python] Conda Env</span>
+                        <span class="card-title diy-neon-red">[Python] Firts Class Function</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -705,19 +668,7 @@ gitment.render('gitment-content');
             
             
             
-                
             
-            
-                <span id="busuanzi_container_site_pv">
-                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;Total visits:&nbsp;
-                    <span id="busuanzi_value_site_pv" class="white-color"></span>
-            </span>
-            
-            
-                <span id="busuanzi_container_site_uv">
-                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;Total visitors:&nbsp;
-                    <span id="busuanzi_value_site_uv" class="white-color"></span>
-            </span>
             
             <br>
 
@@ -726,7 +677,7 @@ gitment.render('gitment-content');
             <br>
             
         </div>
-        <div class="col s12 m4 l4 social-link social-statis">
+        <div class="col s12 m4 l4 social-link ">
     <a href="https://github.com/keyhong" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
         <i class="fab fa-github"></i>
     </a>
@@ -860,31 +811,7 @@ $(function () {
 });
 </script>
 
-    <!-- 白天和黑夜主题 -->
-<div class="stars-con">
-    <div id="stars"></div>
-    <div id="stars2"></div>
-    <div id="stars3"></div>  
-</div>
-
-<script>
-    function switchNightMode() {
-        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
-        setTimeout(function () {
-            $('body').hasClass('DarkMode') 
-            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
-            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
-            
-            setTimeout(function () {
-            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
-                $(this).remove()
-            })
-            }, 2e3)
-        })
-    }
-</script>
-
-    <!-- 回到顶部按钮 -->
+    <!-- Back to Top Button -->
 <div id="backTop" class="top-scroll">
     <a class="btn-floating btn-large waves-effect waves-light" href="#!">
         <i class="fas fa-arrow-up"></i>
@@ -932,8 +859,6 @@ $(function () {
 </script>
 
     
-    
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
     
 
     
