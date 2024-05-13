@@ -241,9 +241,6 @@ mark {
     margin-bottom: 0;
 }
 
-.bg-color {
-    background-image: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
-}
 
 .text-color {
     color: #0f9d58 !important;
@@ -281,8 +278,8 @@ nav {
 }
 
 header .nav-transparent {
-    background-color: transparent !important;
-    background-image: none;
+    /* background-color: transparent !important; */
+    background-image: linear-gradient(to right, #3b3b3b 0, rgb(59 59 59));
     box-shadow: none;
 }
 
@@ -957,12 +954,17 @@ article .article-tags .chip {
     margin-bottom: -45px;
 }
 
+#artDetail .article-tag {
+    color: #428bca;
+}
+
 #artDetail .article-tag .chip {
     font-size: 1rem;
     font-weight: 400;
     height: 25px;
     line-height: 24px;
     color: #fff;
+    background-image: linear-gradient(to right, #282c34 0, rgba(52, 50, 50, 0.7) 100%);
     border-radius: 15px;
     margin-right: 5px;
     margin-bottom: 2px;
@@ -1947,7 +1949,9 @@ p.search-result-summary {
 
 /*二级菜单*/
 
-.nav-menu {}
+.nav-menu {
+    margin: 0px;
+}
 
 .nav-menu li .sub-nav {
     position: absolute;
@@ -2281,4 +2285,8 @@ body.DarkMode .theme-btn:hover {
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
     color: #d9534f;
+}
+
+.chip .bg-color {
+    background-image: linear-gradient(to right, #282c34 0, rgba(52, 50, 50, 0.7) 100%);
 }
