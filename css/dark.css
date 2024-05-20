@@ -86,6 +86,7 @@ body.DarkMode th td li {
 }
 body.DarkMode .prev-next .article-badge {
     background-color: rgba(255, 255, 255, 0.6);
+    color:#34495e !important
 }
 body.DarkMode header .side-nav .menu-list a {
     color: rgba(255, 255, 255, 0.6) !important;
@@ -166,8 +167,12 @@ body.DarkMode .card-content h6 > code,
 body.DarkMode .card-content a > code,
 body.DarkMode .card-content td > code,
 body.DarkMode .card-content li > code {
-    color: rgba(255, 255, 255, 0.6);
-    background-color: #666666;
+    /* color: rgba(109, 11, 11, 0.6); */
+    color: rgba(230, 225, 87, 0.9);
+    font-family: 'consolas';
+    /* background-color: #fff; */
+    border-radius: 10px;
+    
 }
 
 body.DarkMode p[style] .img-item {
@@ -179,8 +184,10 @@ body.DarkMode .card-content mark {
     background-color: #2d2d2d;
 }
 body.DarkMode table th {
-    background-color: #666666!important;
-    color: rgb(49 190 126);
+    background-color: rgba(19, 215, 29, 0.3)!important;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: small;
+    text-align: center;
 }
 .DarkMode .btn-floating, .DarkMode #floating-toc-btn .btn-floating, .DarkMode .btn-floating, .DarkMode #switchspring {
     background-color:rgba(255, 255, 255, 0.6);

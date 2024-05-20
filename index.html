@@ -261,10 +261,10 @@
                                 "If you&#39;re satisfied, you stop growing.",
                             
                         ],
-                        startDelay: 300,
-                        typeSpeed: 100,
+                        startDelay: 0,
+                        typeSpeed: 0,
                         loop: false,
-                        backSpeed: 50,
+                        backSpeed: 0,
                         showCursor: false
                     });
                 </script>
@@ -365,22 +365,6 @@
 
 
 
-
-
-
-    <style>
-        #index-video { z-index: -1; position: absolute; top: 0; left: 0; height: 100vh; width: 100%; object-fit: cover;}
-        @media only screen and (max-width: 760px) { #index-video { display: none;}}
-        @media only screen and (min-width: 760px) { .bg-cover { background-image: none!important;}}
-    </style>
-    <!-- <video id="index-video" autoplay loop muted> -->
-    <video id="index-video" autoplay muted>
-    
-        <source src="/media/journey.mp4">
-    
-    </video>
-    
-
 <main class="content">
 
     
@@ -392,13 +376,18 @@
                         <div class="dream">
     
     <div class="title center-align">
-        <i class="far fa-lightbulb"></i>&nbsp;&nbsp;keyhong의 개인 학습 블로그
+        <i class="far fa-lightbulb"></i>&nbsp;&nbsp;Keyhong&#39;s open-source translation blog
     </div>
     
     <div class="row">
         <div class="col l8 offset-l2 m10 offset-m1 s10 offset-s1 center-align text" style="white-space: pre-line;">
-            안녕하세요! 저의 개인학습 블로그입니다.
-강의를 통해 학습하거나, 오픈소스 도큐먼트를 번역하면서 꾸준히 공부를 하고 있습니다.
+            안녕하세요! 제 오픈소스 번역 블로그에 오신 것을 환영합니다.
+
+늦은 IT 바람에도 배우는 것이 재미있었고, 언제나 더 성장할 방법을 고민했습니다.
+
+한 번이라도 오픈소스 도큐먼트를 제대로 읽어보기로 결심했고, 번역하며 엔지니어들이 문제를 해결하는 관점과 사고 배우고 있습니다.
+
+여기서 얻은 지식을 현업에서 활용하여 일상의 문제를 해결하고 있으며, 큰 도움이 되어 틈틈이 오픈소스 번역을 취미로 삼고 있습니다.
 
         </div>
     </div>
@@ -432,22 +421,21 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/05/17/DBT/Reference/Project%20Configs/config-version/">
+                    <a href="/2024/05/17/DBT/Reference/Project%20Configs/clean-targets/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] config-version">
+                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] clean-targets">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[DBT] config-version</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[DBT] clean-targets</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                config-versiondbt v1.5부터는 config-version: 태그가 선택 사항입니다.
-dbt_project.ymlconfig-version: 2
+                                clean-targetsdbt_project.ymlclean-targets: [directorypath]
 
-Definitiondbt_project.yml을 v2 
+Definition선택적으로 dbt clean command로 제거할 사용자 지정 디렉터리 목록을 지정할 수
                             
                         </div> -->
                         <div class="publish-info">
@@ -475,21 +463,22 @@ Definitiondbt_project.yml을 v2
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/05/17/DBT/Reference/Project%20Configs/clean-targets/">
+                    <a href="/2024/05/17/DBT/Reference/Project%20Configs/config-version/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] clean-targets">
+                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] config-version">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[DBT] clean-targets</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[DBT] config-version</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                clean-targetsdbt_project.ymlclean-targets: [directorypath]
+                                config-versiondbt v1.5부터는 config-version: 태그가 선택 사항입니다.
+dbt_project.ymlconfig-version: 2
 
-Definition선택적으로 dbt clean command로 제거할 사용자 지정 디렉터리 목록을 지정할 수
+Definitiondbt_project.yml을 v2 
                             
                         </div> -->
                         <div class="publish-info">
@@ -560,49 +549,6 @@ Definition선택적으로 dbt clean command로 제거할 사용자 지정 디렉
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/05/17/DBT/Reference/Project%20Configs/seed-paths/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] seed-paths">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[DBT] seed-paths</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                seed-pathsdbt_project.ymlseed-paths: [directorypath]
-
-Definition선택적으로 seed 파일이 위치한 사용자 정의 디렉터리 목록을 지정할 수 있습니다.
-Default기본
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-05-17
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/DBT/" class="post-category">
-                                    DBT
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
                     <a href="/2024/05/17/DBT/Reference/Project%20Configs/docs-paths/">
                         <div class="card-image">
                             
@@ -646,27 +592,27 @@ Defau
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/05/16/DBT/Reference/Project%20Configs/asset-paths/">
+                    <a href="/2024/05/17/DBT/Reference/Project%20Configs/seed-paths/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] asset-paths">
+                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] seed-paths">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[DBT] asset-paths</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[DBT] seed-paths</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                asset-pathsdbt_project.ymlasset-paths: [directorypath]
+                                seed-pathsdbt_project.ymlseed-paths: [directorypath]
 
-Definitionanalyses이 위치한 디렉토리의 사용자 정의 목록을 지정하세요.
-docs generate 명령
+Definition선택적으로 seed 파일이 위치한 사용자 정의 디렉터리 목록을 지정할 수 있습니다.
+Default기본
                             
                         </div> -->
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-05-16
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-05-17
                             </span>
                             <span class="publish-author">
                                 
@@ -705,6 +651,49 @@ docs generate 명령
 
 Definitionanalyses이 위치한 디렉토리의 사용자 지정 목록을 지정합니다.
 Default이 설
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-05-16
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/DBT/" class="post-category">
+                                    DBT
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/05/16/DBT/Reference/Project%20Configs/asset-paths/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] asset-paths">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[DBT] asset-paths</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                asset-pathsdbt_project.ymlasset-paths: [directorypath]
+
+Definitionanalyses이 위치한 디렉토리의 사용자 정의 목록을 지정하세요.
+docs generate 명령
                             
                         </div> -->
                         <div class="publish-info">
@@ -772,19 +761,19 @@ Default이 설
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/05/15/DBT/Reference/Project%20Configs/dbt_project.yml/">
+                    <a href="/2024/05/15/DBT/Docs/Get%20started%20with%20dbt/dbt%20Quickstarts/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] Ddbt_project.yml">
+                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] dbt Quickstarts">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[DBT] Ddbt_project.yml</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[DBT] dbt Quickstarts</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                dbt_project.yml모든 dbt project에는 dbt_project.yml 파일이 필요합니다. 이 파일은 dbt가 디렉토리를 dbt 프로젝트로 인식하는 방법입니다. 또한 dbt가 프로젝트를 운영하는 방법을
+                                dbt Quickstartsdbt 여정을 시작하려면, dbt Cloud 또는 dbt Core를 variety of data platforms과 함께 설정하는 데 도움을 주는 단계별 가이드가 포함된 퀵스타트 중 하나를
                             
                         </div> -->
                         <div class="publish-info">
@@ -812,20 +801,19 @@ Default이 설
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/05/15/DBT/Reference/About%20References/About%20References/">
+                    <a href="/2024/05/15/DBT/Docs/Supported%20data%20platforms/Community%20adapters/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] About References">
+                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] Community adapters">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[DBT] About References</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[DBT] Community adapters</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                About References참조 섹션에는 dbt 개발을 위한 참조 자료가 포함되어 있습니다. 이는 dbt Cloud와 dbt Core를 포함합니다.
-dbt 프로젝트 또는 어댑터에 더 많은 구성을 추가하는 방법, 추
+                                Community adapters커뮤니티 어댑터는 dbt 커뮤니티 회원들에 의해 기여되고 유지보수되는 어댑터 플러그인입니다. dbt 커뮤니티에서 adapter plugins contributions를 환영하며 장려합
                             
                         </div> -->
                         <div class="publish-info">

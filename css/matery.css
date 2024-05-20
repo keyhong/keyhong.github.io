@@ -1034,6 +1034,7 @@ article .article-tags .chip {
 
 #artDetail .article-card-content {
     padding: 0 15px 20px 18px;
+    font-family: 'NanumGothic';
 }
 
 @media only screen and (max-width: 601px) {
@@ -1095,9 +1096,13 @@ article .article-tags .chip {
 #articleContent a {
     padding: 0 2px;
     color: #42b983;
-    font-weight: 500;
-    text-decoration: underline;
+    font-weight: bold;
+    /* font-weight: 500; */
     word-wrap: break-word;
+}
+
+#articleContent a:hover {
+    color: #05b364;
 }
 
 #articleContent .img-item {
@@ -1172,6 +1177,7 @@ thead {
     min-width: 80px;
     border: 1px solid #dfe2e5;
     padding: 6px 6px;
+    font-size: small;
 }
 
 #articleContent [type="checkbox"]:not(:checked),

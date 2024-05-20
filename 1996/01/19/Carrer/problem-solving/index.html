@@ -1,0 +1,888 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[PRJ] 기술을 통해 자동화된 데이터 품질 검사 시스템 구축하기, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="데이터 품질을 지키는 힘데이터를 다루는 각 직업은 우선적인 가치관이 다릅니다. 예를 들어, DA는 안정적인 데이터 플랫폼 구축을 고민하고, 모델러는 비즈니스 분석과 테이블 간 관계 표현을 고민합니다. 이 외에도 데이">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>[PRJ] 기술을 통해 자동화된 데이터 품질 검사 시스템 구축하기 | Keyhong</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span diy-happy-monkey">Keyhong</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <!-- <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li> -->
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Keyhong</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title diy-neon-red">
+                        [PRJ] 기술을 통해 자동화된 데이터 품질 검사 시스템 구축하기</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                        <div class="article-tag">
+                            <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                                <span class="chip bg-color">
+                                    1996-01-19</span>
+                        </div>
+                    
+                    
+
+
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="데이터-품질을-지키는-힘"><a href="#데이터-품질을-지키는-힘" class="headerlink" title="데이터 품질을 지키는 힘"></a>데이터 품질을 지키는 힘</h1><p>데이터를 다루는 각 직업은 우선적인 가치관이 다릅니다. 예를 들어, DA는 안정적인 데이터 플랫폼 구축을 고민하고, 모델러는 비즈니스 분석과 테이블 간 관계 표현을 고민합니다. 이 외에도 데이터 사이언티스트, 데이터 엔지니어, 머신러닝 엔지니어 등 다양한 직업이 있습니다. 데이터 품질을 유지하는 관점에서 이들의 생각을 모두 존중하지만, 때때로 품질에 대한 관심이 후순위로 밀려나는 경우가 있어 고민이 많습니다. 저 역시 이런 문제를 겪었고, 이를 기술적으로 어떻게 해결할 수 있을지 고민해 보았습니다.</p>
+<h2 id="1-정리되지-않은-SQL과-SQL정리하는-데-소요되는-많은-시간"><a href="#1-정리되지-않은-SQL과-SQL정리하는-데-소요되는-많은-시간" class="headerlink" title="1. 정리되지 않은 SQL과 SQL정리하는 데 소요되는 많은 시간"></a>1. 정리되지 않은 SQL과 SQL정리하는 데 소요되는 많은 시간</h2><p>“규원님 BI 차트가 안나오는 데, 혹시 에어플로우 확인해줄 수 있어요?”</p>
+<p>“음.. 프로시저는 정상적으로 호출됬는 데, 왜 안 나오지? 쿼리를 봐야겠어요!”</p>
+<p>“(5분 후) 혹시.. 이 쿼리 짜신 분 있을까요??”</p>
+<p>정돈되지 않은 쿼리와 복잡한 연속 서브쿼리는 데이터 다운타임을 길게 만드는 문제가 있습니다. DA에게 SQL 포맷을 맞춰달라고 부탁하기도 어렵고, 포맷 기준에 대한 토론이 자주 벌어지곤 합니다.</p>
+<p>그럼에도 불구하고, 팀 내부 혹은 전사적으로 최소한의 쿼리 규칙을 만들어 지키는 것은 데이터 조직의 성숙도를 높이는 데 중요한 역할을 합니다. 하지만 그 방법을 구체화하는 것은 별개의 문제입니다.</p>
+<p>모델러보다 훨씬 앞서 이 문제를 접한 사람들은 개발자들입니다. 개발자들은 린팅과 포매터 같은 정적 분석 도구를 통해 이 문제를 극복했고, 코드 품질을 높이는 데 큰 기여를 했습니다. SQL에서도 유사한 도구가 존재하지만, 많은 사람들이 이를 활용하지 못하고 있습니다. 이 글에서는 그 도구들을 소개하고자 합니다.</p>
+<h1 id="SQLFluff"><a href="#SQLFluff" class="headerlink" title="SQLFluff"></a>SQLFluff</h1><blockquote>
+<p>SQLFluff is a dialect-flexible and configurable SQL linter.<br> <em><strong>“SQLFluff는 방언에 유연하고 구성 가능한 SQL 린터입니다.”</strong></em></p>
+</blockquote>
+<p>여기서 <code>방언(dialect)</code>이란 특정 데이터베이스 시스템에 맞춘 SQL의 변형을 의미합니다. 예를 들어, MySQL, PostgreSQL, Oracle SQL 등 각각의 DBMS는 표준 SQL에서 약간씩 다르게 동작하는 부분이 있다. 이런 다양한 DBMS의 쿼리를 특정 포맷에 맞게 바꿔줄 수 있는 기능이다. 직접 보면 이해가 빠르다.</p>
+<p>&lt;이미지&gt;</p>
+<p>그럼 어떻게 활용할 수 있을까? 환경을 구성하는 것 자체는 쉽다. 다만 조금 더 어떤 포맷으로 다듬을 것인가에 대한 <code>.sqlfluff</code> 파일과 vscode와 연계해서 쓸 수 있도록 자동화된 환경구성을 제공하는 것이 사용자 입장에서도 편하다. 그런 기본 환경을 github를 통해 배포했다.</p>
+<h1 id="2-품질을-검사하는-방법"><a href="#2-품질을-검사하는-방법" class="headerlink" title="2. 품질을 검사하는 방법"></a>2. 품질을 검사하는 방법</h1><p>품질을 유지하려는 사람들에게 가장 큰 고민은 아마도 실수를 줄이는 것일 것입니다. 어떤 경험 많은 사람이라도 인간이기에 실수를 범할 수 있습니다. 이를 줄이기 위해서는 자동화된 검증 시스템을 구축해야 하며, 이를 통해 빠른 문제 발견과 보완이 가능해져야 합니다.</p>
+<p>그러나 문제는 어떤 도구를 사용하여 강력한 시너지를 만들 수 있는가입니다. 데이터를 다루는 과정에서 가장 크게 느끼는 것은 다양성입니다. 데이터의 형식, 쿼리 엔진, DBMS는 고정되어 있지 않고 계속 발전하고 있습니다. 품질은 표준을 준수하는 것이 중요합니다. 그러나 표준을 준수하는 행위는 변화에도 영향을 받지 않습니다.</p>
+<p>저는 전 회사에서 20년 차 경력의 DBA이신 전 팀장님의 말씀을 듣고 배웠습니다. “DBA마다 다르지만, 나는 ANSI 쿼리를 사용해. 다른 DBMS에서도 재사용할 수 있거든.”</p>
+<p>표준은 어디에서든 범용적으로 활용 가능하다고 생각합니다. 그리고 표준은 많은 사람들 사이에서 가장 많은 채택을 받은 것입니다. 이는 문제가 발생해도 계속해서 유지보수되는 것입니다. 그래서 범용적인 도구로 사람이 아닌 시스템에 의한 자동화된 품질 검사기를 만들어보고자 합니다.</p>
+<h1 id="DBT-Aiflow-Trino"><a href="#DBT-Aiflow-Trino" class="headerlink" title="DBT + Aiflow + Trino"></a>DBT + Aiflow + Trino</h1><h1 id="Data-Quality"><a href="#Data-Quality" class="headerlink" title="Data Quality"></a>Data Quality</h1><blockquote>
+<p>“Data quality is defined by how well a given dataset meets a user’s needs. Data quality is an important criteria for ensuring that data-driven decisions are made as accurately as possible”</p>
+</blockquote>
+<h1 id="Data-Quality-Management"><a href="#Data-Quality-Management" class="headerlink" title="Data Quality Management"></a>Data Quality Management</h1><blockquote>
+<p>“Set of practices that aim at improving and maintaining a high quality of information within the organization”</p>
+</blockquote>
+<h2 id="Pillars-of-Data-Quality-Management"><a href="#Pillars-of-Data-Quality-Management" class="headerlink" title="Pillars of Data Quality Management"></a>Pillars of Data Quality Management</h2><p>** ROI : Return On Investment </p>
+<ol>
+<li><p>People</p>
+</li>
+<li><p>Data Profiling </p>
+</li>
+<li><p>Defining Data Quality</p>
+</li>
+<li><p>Data reporting</p>
+</li>
+<li><p>Data Repair</p>
+</li>
+</ol>
+<h2 id="Data-Quality-Dimensions"><a href="#Data-Quality-Dimensions" class="headerlink" title="Data Quality Dimensions"></a>Data Quality Dimensions</h2><table>
+<thead>
+<tr>
+<th>차원(Dimension)</th>
+<th>정의</th>
+<th>방법</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>🔥 정확성(Accuracy)</td>
+<td>데이터는 “현실”을 정확하게 나타낸다.</td>
+<td>데이터 교차 검증, 정기 데이터 검사</td>
+</tr>
+<tr>
+<td>🔥 일관성(Consistency)</td>
+<td>데이터 값은 다른 데이터 셋의 값들과 충돌하지 않는다.</td>
+<td>데이터 표준화, 데이터 정리 자동화, 오류 보고</td>
+</tr>
+<tr>
+<td>🔥 완전성(Completeness)</td>
+<td>특정 용도에 필요한 모든 데이터가 존재하며 사용할 수 있다.</td>
+<td>누락된 데이터, NULL 값 분석, 레코드 카운팅</td>
+</tr>
+<tr>
+<td>유효성(Validity)</td>
+<td>데이터는 예상된 포맷, 타입 및 범위에 맞춘다.</td>
+<td>데이터 유형 확인, 범위 확인, 패턴 일치</td>
+</tr>
+<tr>
+<td>적시성(Timeliness)</td>
+<td>데이터는 예상되고 필요할 때 이용 가능하다.</td>
+<td>타임스탬프 분석, 실시간 모니터링</td>
+</tr>
+<tr>
+<td>유일성(Uniqueness)</td>
+<td>데이터는 데이터 셋에서 한 번만 나타난다.</td>
+<td>중복 없음 확인</td>
+</tr>
+</tbody></table>
+<p>🔥정확성, 🔥일관성, 🔥완전성을 갖추면 데이터 무결성(Data Integrity)을 갖췄다고 한다.</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Keyhong</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/1996/01/19/Carrer/problem-solving/">http://example.com/1996/01/19/Carrer/problem-solving/</a>
+                </span>
+            </div>
+            <!-- <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        reprint:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    use
+                    <a href="cc_by_url" rel="external nofollow noreferrer" target="_blank">cc_by_name</a>
+                    licensed
+                    <a href="/about" target="_blank">Keyhong</a>
+                    !
+                </span>
+            </div> -->
+        
+    </div>
+
+    <!-- <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script> -->
+
+
+
+            <div class="tag_share" style="display: block;">
+                <!-- <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                        </div>
+                    
+                </div> -->
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <!-- <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a> -->
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2023/04/03/Kubernetes/docs/Concpets/1_Overview/1_Object_In_Kubernetes/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] Concepts - Overview - Objects In Kubernetes - Object Names and IDs ">
+                        
+                        <span class="card-title diy-neon-red">[Kubernetes] Concepts - Overview - Objects In Kubernetes - Object Names and IDs </span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-04-03
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/AWS/" class="post-category">
+                                    AWS
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/1996/01/19/Carrer/soss/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="[PRJ] 데이터 허브 센터 및 도시행정 서비스 고도화 기술 개발">
+                        
+                        <span class="card-title diy-neon-red">[PRJ] 데이터 허브 센터 및 도시행정 서비스 고도화 기술 개발</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>1996-01-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Keyhong
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;목차</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2024</span>
+            
+            <a href="/about" target="_blank">Gyuwon Hong</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+            
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+    <a href="https://github.com/keyhong" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:wnhong96@gmail.com" class="tooltipped" target="_blank" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- Back to Top Button -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
