@@ -73,7 +73,6 @@ body.DarkMode .v[data-class="v"] .vinput, .v[data-class="v"] .veditor, .v[data-c
     color: rgba(255, 255, 255);
 }
 body.DarkMode blockquote {
-    background-color: #666 !important;
     border-left: 5px solid #42b983 !important;
     color: rgba(255, 255, 255, 0.6);
 }
