@@ -611,14 +611,14 @@ You can comment out everything if you don't want it, or change it to a color you
 }
 
 .dream {
-    margin-top: 20px;
-    margin-bottom: 40px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .dream .title,
 .music-player .title,
 .video-player .title {
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     font-size: 2rem;
     font-weight: 700;
 }
@@ -664,7 +664,7 @@ You can comment out everything if you don't want it, or change it to a color you
 /*中等屏幕下(平板类)的样式*/
 @media only screen and (min-width: 600px) and (max-width: 992px) {
     .index-card .card .card-content {
-        padding: 20px 20px;
+        padding: 5px 5px;
     }
 }
 
