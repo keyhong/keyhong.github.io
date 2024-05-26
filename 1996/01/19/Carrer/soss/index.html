@@ -198,7 +198,7 @@
 
     
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/life-logo.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -350,13 +350,7 @@
 <td>99,999,999,999,999</td>
 </tr>
 </tbody></table>
-<h3 id="테이블명-컬럼명-표준화"><a href="#테이블명-컬럼명-표준화" class="headerlink" title="테이블명 &amp; 컬럼명 표준화"></a>테이블명 &amp; 컬럼명 표준화</h3><blockquote>
-<p>표준용어 사전을 참고하여 테이블명과 컬럼명을 표준화했습니다. 그러나 이에 대해 아쉬움보다는 더 빠른 개발을 위한 보완점이 필요하다고 생각합니다. <br><br>저희 팀은 DataLake 아키텍처의 유연한 데이터 포맷과 상용 클라우드 솔루션의 Hive 버전 문제를 고려하여 VARCHAR 타입 대신 STRING 타입을 사용했습니다. 이러한 결정은 단일 팀이 아닌 전사 차원에서 데이터 품질을 향상시키고 표준을 관리하기 위한 통합 플랫폼의 필요성을 더욱 강조합니다. <br><br>또한, 표준용어를 엑셀로 찾는 과정은 느리고 실수를 야기할 수 있습니다. 최근에는 Datahub와 같은 Open Source Metadata Platform을 활용하여 이러한 문제를 보완할 수 있을 것으로 기대하고 있습니다.</p>
-</blockquote>
-<ul>
-<li>예시 테이블 2개를 Datahub에 등록하여 검색하는 과정</li>
-</ul>
-<table>
+<h3 id="테이블명-컬럼명-표준화"><a href="#테이블명-컬럼명-표준화" class="headerlink" title="테이블명 &amp; 컬럼명 표준화"></a>테이블명 &amp; 컬럼명 표준화</h3><table>
 <thead>
 <tr>
 <th>주제영역</th>
@@ -376,7 +370,6 @@
 <th>순번</th>
 <th>컬럼명</th>
 <th>컬럼한글명</th>
-<th>컬럼영문명</th>
 <th>데이터 타입</th>
 </tr>
 </thead>
@@ -384,28 +377,24 @@
 <td>1</td>
 <td>STDR_DE</td>
 <td>기준_일자</td>
-<td>STDR_DE</td>
 <td>STRING</td>
 </tr>
 <tr>
 <td>2</td>
 <td>STDR_TM</td>
 <td>기준시간</td>
-<td>STDR_TM</td>
 <td>STRING</td>
 </tr>
 <tr>
 <td>3</td>
 <td>GU_CD</td>
 <td>행정동_코드</td>
-<td>ADMD_CD</td>
 <td>STRING</td>
 </tr>
 <tr>
 <td>4</td>
 <td>SAFE_IDEX</td>
 <td>안전_지수</td>
-<td>SAFE_IDEX</td>
 <td>DECIMAL(5, 2)</td>
 </tr>
 </tbody></table>
@@ -431,7 +420,6 @@
 <th>순번</th>
 <th>컬럼명</th>
 <th>컬럼한글명</th>
-<th>컬럼영문명</th>
 <th>데이터 타입</th>
 </tr>
 </thead>
@@ -440,13 +428,11 @@
 <td>그리드ID</td>
 <td>GRID_ID</td>
 <td></td>
-<td></td>
 </tr>
 <tr>
 <td>2</td>
 <td>행번호</td>
 <td>ROW_NO</td>
-<td></td>
 <td></td>
 </tr>
 <tr>
@@ -454,13 +440,11 @@
 <td>열번호</td>
 <td>CLM_NO</td>
 <td></td>
-<td></td>
 </tr>
 <tr>
 <td>4</td>
 <td>행정동코드</td>
 <td>ADMD_CD</td>
-<td></td>
 <td></td>
 </tr>
 <tr>
@@ -468,13 +452,11 @@
 <td>법정동코드</td>
 <td>LGLD_CD</td>
 <td></td>
-<td></td>
 </tr>
 <tr>
 <td>6</td>
 <td>영역좌표</td>
 <td>COORD</td>
-<td></td>
 <td></td>
 </tr>
 <tr>
@@ -482,13 +464,11 @@
 <td>중심X좌표</td>
 <td>X_COORD</td>
 <td></td>
-<td></td>
 </tr>
 <tr>
 <td>8</td>
 <td>중심Y좌표</td>
 <td>Y_COORD</td>
-<td></td>
 <td></td>
 </tr>
 <tr>
@@ -496,13 +476,11 @@
 <td>최소X좌표</td>
 <td>MIN_X_COORD</td>
 <td></td>
-<td></td>
 </tr>
 <tr>
 <td>10</td>
 <td>최소Y좌표</td>
 <td>MIN_Y_COORD</td>
-<td></td>
 <td></td>
 </tr>
 <tr>
@@ -510,13 +488,11 @@
 <td>최대X좌표</td>
 <td>MAX_X_COORD</td>
 <td></td>
-<td></td>
 </tr>
 <tr>
 <td>12</td>
 <td>최대Y좌표</td>
 <td>MAX_Y_COORD</td>
-<td></td>
 <td></td>
 </tr>
 <tr>
@@ -524,13 +500,11 @@
 <td>중심경도</td>
 <td>CNTR_LON</td>
 <td></td>
-<td></td>
 </tr>
 <tr>
 <td>14</td>
 <td>중심위도</td>
 <td>CNTR_LAT</td>
-<td></td>
 <td></td>
 </tr>
 <tr>
@@ -538,13 +512,11 @@
 <td>최소경도</td>
 <td>MIN_LON</td>
 <td></td>
-<td></td>
 </tr>
 <tr>
 <td>16</td>
 <td>최소위도</td>
 <td>MIN_LAT</td>
-<td></td>
 <td></td>
 </tr>
 <tr>
@@ -552,20 +524,17 @@
 <td>최대경도</td>
 <td>MAX_LON</td>
 <td></td>
-<td></td>
 </tr>
 <tr>
 <td>18</td>
 <td>최대위도</td>
 <td>MAX_LAT</td>
 <td></td>
-<td></td>
 </tr>
 <tr>
 <td>19</td>
 <td>CCTV대수</td>
 <td>CCTV_CO</td>
-<td></td>
 <td></td>
 </tr>
 </tbody></table>
@@ -723,13 +692,12 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/1996/01/19/Carrer/problem-solving/">
+                <a href="/1996/01/19/Carrer/side-project/">
                     <div class="card-image">
                         
+                        <img src="/images/logos/life-logo.jpg" class="responsive-img" alt="[Toy] Dimension Modeling + Hadoop + Hive + Kudu + Trino + DBT">
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="[PRJ] 기술을 통해 자동화된 데이터 품질 검사 시스템 구축하기">
-                        
-                        <span class="card-title diy-neon-red">[PRJ] 기술을 통해 자동화된 데이터 품질 검사 시스템 구축하기</span>
+                        <span class="card-title diy-neon-red">[Toy] Dimension Modeling + Hadoop + Hive + Kudu + Trino + DBT</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -763,8 +731,7 @@
                 <a href="/1996/01/19/Carrer/soss/">
                     <div class="card-image">
                         
-                        
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="[PRJ] 데이터 허브 센터 및 도시행정 서비스 고도화 기술 개발">
+                        <img src="/images/logos/life-logo.jpg" class="responsive-img" alt="[PRJ] 데이터 허브 센터 및 도시행정 서비스 고도화 기술 개발">
                         
                         <span class="card-title">[PRJ] 데이터 허브 센터 및 도시행정 서비스 고도화 기술 개발</span>
                     </div>

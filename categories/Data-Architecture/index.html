@@ -287,19 +287,10 @@
                 </a>
                 
                 
-                <a href="/categories/Git/" title="Git: 3">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #82E0AA;">Git
-                        <span class="tag-length">3</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/Trouble-Shooting/" title="Trouble Shooting: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D7BDE2;">Trouble Shooting
+                            style="background-color: #82E0AA;">Trouble Shooting
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -308,8 +299,17 @@
                 <a href="/categories/Flink/" title="Flink: 18">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #A3E4D7;">Flink
+                            style="background-color: #D7BDE2;">Flink
                         <span class="tag-length">18</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Git/" title="Git: 3">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #A3E4D7;">Git
+                        <span class="tag-length">3</span>
                     </span>
                 </a>
                 
@@ -341,10 +341,10 @@
                 </a>
                 
                 
-                <a href="/categories/Life/" title="Life: 1">
+                <a href="/categories/MLOps/" title="MLOps: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #85C1E9;">Life
+                            style="background-color: #D7BDE2;">MLOps
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -377,11 +377,11 @@
                 </a>
                 
                 
-                <a href="/categories/MLOps/" title="MLOps: 1">
+                <a href="/categories/Python/" title="Python: 19">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D7BDE2;">MLOps
-                        <span class="tag-length">1</span>
+                            style="background-color: #F5EEF8;">Python
+                        <span class="tag-length">19</span>
                     </span>
                 </a>
                 
@@ -391,15 +391,6 @@
                              chip-default "
                             style="background-color: #D7BDE2;">Algorithm
                         <span class="tag-length">4</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/Python/" title="Python: 19">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F5EEF8;">Python
-                        <span class="tag-length">19</span>
                     </span>
                 </a>
                 
@@ -426,15 +417,6 @@
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             style="background-color: #85C1E9;">Postgresql
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/Toy/" title="Toy: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #D7BDE2;">Toy
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -491,9 +473,7 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                🙊 글을 쓰는 이유
-
-혹시 이런 복잡한 도면을 본 적 있나요? 😱 저는 DB 회사에 다녔지만 항상 이 모델링 도면이 무섭더라구요. ‘이런 걸 어떻게 만들었을까.. 대단하다.’ 라는 생각도 많이 들었는 데 바로 오
+                                시작하기 전에 Fact와 Dimension 먼저!모델링을 이해하려면 먼저 테이블 간의 관계가 있다는 걸 봐야해요. 그런데 테이블을 딱 하나만 만들어서 모든 컬럼을 넣으면 한 눈에 볼텐데 왜 테이블을 분할하고 관계를 
                             
                         </div>
                         <div class="publish-info">
@@ -630,18 +610,21 @@
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/06/Data-Architecture/data-warehouse/">
+                    <a href="/2024/01/06/Data-Architecture/data-vault-2.0/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="[Data Architecture] Data Warehouse">
+                            <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="[Data Architecture] Data Vault 2.0">
                             
-                            <span class="card-title diy-neon-red">[Data Architecture] Data Warehouse</span>
+                            <span class="card-title diy-neon-red">[Data Architecture] Data Vault 2.0</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Data Warehouse, 왜 필요한 걸까요?
+                                Hub, Link, Satellite
+HUB: Unique list of business keys
+
+LINK: Unique list of (n to n) relationships between business key
                             
                         </div>
                         <div class="publish-info">
@@ -667,21 +650,18 @@
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/06/Data-Architecture/data-vault-2.0/">
+                    <a href="/2024/01/06/Data-Architecture/data-warehouse/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="[Data Architecture] Data Vault 2.0">
+                            <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="[Data Architecture] Data Warehouse">
                             
-                            <span class="card-title diy-neon-red">[Data Architecture] Data Vault 2.0</span>
+                            <span class="card-title diy-neon-red">[Data Architecture] Data Warehouse</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Hub, Link, Satellite
-HUB: Unique list of business keys
-
-LINK: Unique list of (n to n) relationships between business key
+                                Data Warehouse, 왜 필요한 걸까요?
                             
                         </div>
                         <div class="publish-info">

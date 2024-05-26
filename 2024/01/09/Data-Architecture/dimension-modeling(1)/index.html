@@ -5,9 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="[Data Architecture] Dimension Modeling(1), Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="🙊 글을 쓰는 이유
-
-혹시 이런 복잡한 도면을 본 적 있나요? 😱 저는 DB 회사에 다녔지만 항상 이 모델링 도면이 무섭더라구요. ‘이런 걸 어떻게 만들었을까.. 대단하다.’ 라는 생각도 많이 들었는 데 바로 오">
+    <meta name="description" content="시작하기 전에 Fact와 Dimension 먼저!모델링을 이해하려면 먼저 테이블 간의 관계가 있다는 걸 봐야해요. 그런데 테이블을 딱 하나만 만들어서 모든 컬럼을 넣으면 한 눈에 볼텐데 왜 테이블을 분할하고 관계를 ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -263,10 +261,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="🙊-글을-쓰는-이유"><a href="#🙊-글을-쓰는-이유" class="headerlink" title="🙊 글을 쓰는 이유"></a>🙊 글을 쓰는 이유</h2><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110062&authkey=%21ACL6LzIIzZS3IYo&width=562&height=298" width="562" height="298" />
-
-<p>혹시 이런 복잡한 도면을 본 적 있나요? 😱 저는 DB 회사에 다녔지만 항상 이 모델링 도면이 무섭더라구요. ‘이런 걸 어떻게 만들었을까.. 대단하다.’ 라는 생각도 많이 들었는 데 바로 오늘 소개할 <code>Dimension Modeling</code>의 결과물이랍니다. 오늘은 많은 분들이 가려웠을 것 같은 부분을 제가 이해한 지식을 통해 최대한 쉽게 설명하려고 노력해 볼게요! 🔥🔥</p>
-<h2 id="시작하기-전에-Fact와-Dimension-먼저"><a href="#시작하기-전에-Fact와-Dimension-먼저" class="headerlink" title="시작하기 전에 Fact와 Dimension 먼저!"></a>시작하기 전에 Fact와 Dimension 먼저!</h2><p>모델링을 이해하려면 먼저 테이블 간의 관계가 있다는 걸 봐야해요. 그런데 테이블을 딱 하나만 만들어서 모든 컬럼을 넣으면 한 눈에 볼텐데 왜 테이블을 분할하고 관계를 만들었을까요?</p>
+                <h2 id="시작하기-전에-Fact와-Dimension-먼저"><a href="#시작하기-전에-Fact와-Dimension-먼저" class="headerlink" title="시작하기 전에 Fact와 Dimension 먼저!"></a>시작하기 전에 Fact와 Dimension 먼저!</h2><p>모델링을 이해하려면 먼저 테이블 간의 관계가 있다는 걸 봐야해요. 그런데 테이블을 딱 하나만 만들어서 모든 컬럼을 넣으면 한 눈에 볼텐데 왜 테이블을 분할하고 관계를 만들었을까요?</p>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110064&authkey=%21ACMIE05DdRpUzIs&width=1070&height=165" width="1070" height="165" alt="row 포맷의 데이터"/>
 
 <ul>

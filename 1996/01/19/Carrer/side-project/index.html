@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[면접] Toss Analytics Engineer, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Toss Analytics Engineer 서류 과제 통과나는 2024 Data Analytics Engineer 대규모 사전 과제를 봤고 SQL과 모델링을 구현하여 통과하였다. 그간 강의로 배워왔던 첫 모델링을 실">
+    <meta name="keywords" content="[Toy] Dimension Modeling + Hadoop + Hive + Kudu + Trino + DBT, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="Toy Projectplay ground는 Hadoop + Hive + Kudu + Trino가 연결된 docker-compose.yaml 입니다. Hadoop을 올릴 떄 처음 메타스토어를 초기화하는 작업을 하는 과">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[면접] Toss Analytics Engineer | Keyhong</title>
+    <title>[Toy] Dimension Modeling + Hadoop + Hive + Kudu + Trino + DBT | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -204,7 +204,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [면접] Toss Analytics Engineer</h1>
+                        [Toy] Dimension Modeling + Hadoop + Hive + Kudu + Trino + DBT</h1>
                 </div>
             </div>
         </div>
@@ -229,7 +229,7 @@
                         <div class="article-tag">
                             <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                                 <span class="chip bg-color">
-                                    2024-02-19</span>
+                                    1996-01-19</span>
                         </div>
                     
                     
@@ -237,15 +237,6 @@
 
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/Life/" class="post-category">
-                                Life
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -261,24 +252,150 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Toss-Analytics-Engineer-서류-과제-통과"><a href="#Toss-Analytics-Engineer-서류-과제-통과" class="headerlink" title="Toss Analytics Engineer 서류 과제 통과"></a>Toss Analytics Engineer 서류 과제 통과</h2><p>나는 2024 Data Analytics Engineer 대규모 사전 과제를 봤고 SQL과 모델링을 구현하여 통과하였다. 그간 강의로 배워왔던 첫 모델링을 실험하는 과정이었는 데, 해당 사전 과제를 수행하며 스스로 해결하려는 과정에서 많이 배웠던 것 같다. 난이도는 중간? 환경을 구축해서 테스트 데이터를 넣을 수 있는 사람이라면 그렇게 힘들지는 않을 것 같다.</p>
-<p>다만, 모델링에 있어 비즈니스에 대한 이해가 있으면 유리하고 모델링 경험이 있으면 더욱 좋다. 나는 해당 과정을 차원 모델링으로 풀어냈고 각 팩트 테이블, 디멘션 테이블에 대한 이력 관리 방법을 서술하여 풀어냈다.</p>
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110269&authkey=%21AHfRONEYwMEjzsk&width=626&height=346" width="626" height="346" />
+                <h2 id="Toy-Project"><a href="#Toy-Project" class="headerlink" title="Toy Project"></a>Toy Project</h2><p>play ground는 Hadoop + Hive + Kudu + Trino가 연결된 docker-compose.yaml 입니다. Hadoop을 올릴 떄 처음 메타스토어를 초기화하는 작업을 하는 과정 모두 Dockerfile에 만들어 넣었습니다. 사용하신다면, 컨테이너가 올라간 이후 DBeaver 같은 툴로 Trino(localhost:8080)에 연결해서 바로 kudu와 hive를 사용할 수 있습니다 😊</p>
+<h2 id="Dimensional-Modeling"><a href="#Dimensional-Modeling" class="headerlink" title="Dimensional Modeling"></a>Dimensional Modeling</h2><p>이번에 ERD를 직접 그려 보았습니다. 도구는 <a target="_blank" rel="noopener" href="https://app.diagrams.net/">draw.io</a> 입니다. 바탕색과 테이블 색을 설정할 수 있고, 엔티티 간의 관계를 쉽게 그릴 수 있는 도구입니다. 저는 Fact와 Dimension으로 차원 모델링을 했고, 이력 테이블에 대해서는 SCD 4 (SCD2 + Historical Table)로 풀어보았습니다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128741&authkey=%21APSWgN65zYK_m0k&width=1412&height=1370" width="1412" height="1370" alt="Dimension Modeling ERD"/>
 
-<h2 id="면접-준비와-깨달은-착오"><a href="#면접-준비와-깨달은-착오" class="headerlink" title="면접 준비와 깨달은 착오"></a>면접 준비와 깨달은 착오</h2><p>면접을 준비하면서 나는 Analytics Engineer라는 직무에 대해 알아보고, 어떤 툴을 쓰는 지 정리를 했다. 우선, <code>이 직무가 DE(Data Engineer)와 DA(Data Analysis)의 사이의 연결고리를 하는 직무</code>이다 보니 경영학 전공에 3년 동안 프로그래밍 기본기를 다져온 나에게 조금은 유리하지 않을까 생각했다.</p>
-<p><code>나는 엔지니어적인 역량을 중심으로 내가 가지고 있는 비즈니스적인 관점을 녹여내려고 자료를 준비했다.</code> 하지만 막상 면접에 들어가서 마지막에 면접관 분들의 생각과 그 분들께서 과거에 어떤 업무를 수행하셨는 지 들어보니 내가 준비를 잘못했다는 생각이 들었다. <code>면접관 분들께서는 분석(DA/DS)에서 이쪽으로 넘어오신 분들이라 비즈니스 중심에서 엔지니어링이 부가된 느낌</code>이었다. 어쩌면 DE 보다는 DA와 더 많이 의사소통이 필요한 직무였고, 따라서 비즈니스 측면의 데이터 관리, 모델링, SQL 중심에서 추가적으로 엔지니어 역량이 조금 더해졌다는 느낌이 늘었다.</p>
-<p>그래서.. 과제 이후 추가로 구현한 Hadoop, Hive, Kudu, Trino, DBT에 대한 환경 구축 코드와 구상한 아키텍처에 대한 피피티를 일주일 동안 40장 정도 만들었는 데 면접에서 단 5장도 보여주지 못했다. 면접관 분들께서도 플랫폼적인 부분까지는 이해를 못하시는 것 같았다. (또륵.. 마치 분석가에게 파티셔닝과 버켓팅을 설명하려는 느낌..)</p>
-<h2 id="어려웠던-질문"><a href="#어려웠던-질문" class="headerlink" title="어려웠던 질문"></a>어려웠던 질문</h2><p><code>면접에서 모델의 변동에 대한 질문을 많이 주셨는 데, 단기간에 질문 하기가 어려웠다.</code> 나는 모델링에 있어서 엔지니어적인 생각을 많이 반영하는 편인데, 빠르게 모델링해야 하는 속도적인 측면에서는 즉각적인 생각이 나오지 않았다. 예를 들면, 모델의 테이블 간의 관계를 고려해 JOIN을 할 때 더 최적을 위한 파티셔닝, 버켓팅이나 어떻게 데이터를 변동하거나 지우고 모델을 확장할 지에 대한 요소들은 단기간에 반영할 수 없었다.</p>
-<p>분명 내가 가지고 있는 그런 엔지니어 관점을 그 분들은 이해할 수는 없었을 것이다. 마찬가지로 나도 그 분들이 가지고 있는 비즈니스에 대한 역량을 다 가지기에는 많이 부족했다. <code>경력이 쌓인 여러 명의 DBA를 보면서 비즈니스 모델 관점에서 문제를 풀어내시는 분들과 반대로, 모델에 플랫폼을 접목해서 기술적으로 해결하시는 2부류를 보았다.</code></p>
-<p><code>어느 것이 정답이다라고 단정 지을 수 없다. 두 가지 모두 중요하고, 빅데이터에서 모델링은 두 측면 모두를 신경써야 DA들에게 더 빠른 쿼리 성능과 더 좋은 분석 환경을 제공할 수 있다.</code> 다만, 내가 면접을 봤던 AE 분들이 DE보다는 DA&#x2F;DS와 조금 더 가까운 성향을 가지셨다면 그에 맞게 준비할 걸 그랬다.</p>
-<h2 id="모델링에-대한-질문과-신중함에-대해서"><a href="#모델링에-대한-질문과-신중함에-대해서" class="headerlink" title="모델링에 대한 질문과 신중함에 대해서"></a>모델링에 대한 질문과 신중함에 대해서</h2><p>면접을 보면서 좋았던 질문도 많았고, 그리고 이런 부분은 면접에서 바로 답하기에는 조심스러운 질문도 많이 있었다. <code>나는 데이터 모델링을 하는 역할이 결코 가벼운 자리가 아니라고 생각하는 편이다.</code> 30년 이상의 모델러 분의 경험담과 내가 직접 웹을 배우며 데이터 모델이 프로그램에 어떻게 연결되는 지 경험을 하고 나서는 절대 순간적인 판단으로 모델링을 해서는 안된다는 걸 알게 되었다.</p>
-<p><code>모델러는 하나의 요소를 바꾸면, 프로그래머는 그에 대한 추가적인 보수와 테스트 코드를 다시 짜야한다. 그렇기 때문에 모델러는 항상 신중해야 하며 성능과 비즈니스 모두를 계속 고민하며 신중한 답을 내야 한다고 생각한다.</code></p>
-<p>모든 면접에서 다 그런 지는 모르겠다. 그런데 모델에 대해 순간적인 수정이 일어났을 때 어떻게 모델링을 해야할지에 대한 질문이 정말 좋은 질문인가에 대해서는 고민할 필요가 있다. 만약 거기서 면접관 분들이 만족할 만한 정답을 낸다하더라도 그게 정말 검증된 모델이었을까..</p>
-<p>지극히 개인적인 생각이지만 모델링과 SQL은 절대 단거리 육상이 아니라고 생각한다. 지금 SQL을 어떻게 짜야하는 지 보다도 시간이 좀 더 들어도 재사용성이 높고 정확하며 검증된 쿼리를 짜는 방법에 대한 질문이 더 좋다고 생각한다.</p>
-<h2 id="다시-되돌아-보는-좋은-질문에-대해서"><a href="#다시-되돌아-보는-좋은-질문에-대해서" class="headerlink" title="다시 되돌아 보는 좋은 질문에 대해서"></a>다시 되돌아 보는 좋은 질문에 대해서</h2><p>2년 카뱅에서도 실무진 면접 때 질문 하나를 들었다. <code>파이썬의 dict를 아냐는 질문</code>이었다. 나는 그냥 dict에 대해 일반적인 답변을 했지만, <code>그 질문은 사실 해시(Hash)라는 요소를 아냐는 질문</code>이었다. 빅데이터에서 해시는 데이터를 수평 분할하는 기준이 되어 조인시에 해시맵 조인을 통해 성능을 높이는 데 큰 역할을 한다.</p>
-<p><code>이 질문은 나의 기본기에 대해 정말 많이 되돌아 보게 했다.</code> 어떤 문제에 대해 풀어나가는 방식에 있어 한계를 뚫냐 못 뚫냐는 결국 기본기에 대한 이해도가 결정한다. 그 질문 이후에 플랫폼에 대한 생각이 바뀌고 이해하는 능력이 많이 늘었다. 나의 기본기를 다시 잡는 시작점이었다. 여전히 기본기는 어렵고, 배워나가야 할 부분이 많지만 분명 플랫폼에 대해 이해하는 방식이 “그냥 그렇게 만들어져 그렇구나”가 아닌 “이래서 이런 요소를 사용했구나”라고 변하게 되었다.</p>
-<h2 id="후기"><a href="#후기" class="headerlink" title="후기"></a>후기</h2><p>여러모로 부족한 점도 많았고, AE라는 직군을 수행하시는 분들이 어떤 분들이까 하는 궁금점도 많이 풀렸다. <code>Analysis와 Engineer 사이 어느 쪽에 더 경험이 있는 지가 어떤 피칭을 하고, 어떤 관점을 가진 면접관을 만나게 하는 지</code>는 분명히 복불복이다. 정답은 없다. 그저 어떤 결과라도 수긍하고 다시 나아갈 뿐이다.</p>
-<p><code>부족하면 더 배우면 되고, 메꾸면 된다. 아마, 다시 AE를 지원한다면 조금 더 DA의 관점을 더 공부하고 준비할 것 같다. 언젠가 꽃 피는 그 날까지 항상 포기하지 않는 사람이 되자!</code></p>
+
+<h2 id="Source-Code"><a href="#Source-Code" class="headerlink" title="Source Code"></a>Source Code</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/keyhong/trino-playground">https://github.com/keyhong/trino-playground</a></li>
+</ul>
+<h2 id="The-Target-Architecture"><a href="#The-Target-Architecture" class="headerlink" title="The Target Architecture"></a>The Target Architecture</h2><p>전체 프로세스를 도커로 올리려는 시도를 하였습니다. 제 단일 노트북에서 구동되는 환경을 만들기 위해 replica를 조정하고 yarn, mapreduce 프로세스는 띄우지 않았습니다. hive, kudu, trion, dbt를 위한 playground를 최대한 가볍게 만들어 보았습니다. 짧은 시간으로 CI&#x2F;CD 까지는 하지 못했지만 Hadoop, Hive, Kudu, Trion, DBT는 사용가능합니다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110290&authkey=%21ANLiqU1wrXocfIc&width=1024" width="1024" height="auto" />
+
+
+<h2 id="Pipeline-Component"><a href="#Pipeline-Component" class="headerlink" title="Pipeline Component"></a>Pipeline Component</h2><table>
+<thead>
+<tr>
+<th>Pipeline Component</th>
+<th>Version</th>
+<th>Description</th>
+<th>Port</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://www.mysql.com/">MySQL</a></td>
+<td>8.36+</td>
+<td>Relational Database</td>
+<td>3306</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://hadoop.apache.org/">Hadoop</a></td>
+<td>3.3.6+</td>
+<td>Distributed Storage</td>
+<td>namenode: 9870, datanode: 9864</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://trino.io/">Trino</a></td>
+<td>438+</td>
+<td>Distributed Query Engine</td>
+<td>8080</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://hive.apache.org/">Hive</a></td>
+<td>3.1.3</td>
+<td>DFS Query Solution</td>
+<td>hiveserver2(thrift): 10002</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://kudu.apache.org/">Kudu</a></td>
+<td>2.3+</td>
+<td>Columnar Distributed Database</td>
+<td>master: 7051, tserver: 7050</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://airflow.apache.org/">Airflow</a></td>
+<td>2.7+</td>
+<td>Scheduler</td>
+<td>8888</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.getdbt.com/">DBT</a></td>
+<td>1.7.1</td>
+<td>Analytics Framework</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<h3 id="Comment"><a href="#Comment" class="headerlink" title="Comment"></a>Comment</h3><ul>
+<li><p>Hadoop과 Kudu의 replica를 1으로 설정</p>
+</li>
+<li><p>ELT 프로세스를 하나만 사용하기 때문에 yarn은 올리지 않았습니다.</p>
+</li>
+<li><p>쿼리엔진으로 trino를 사용하기 때문에 mapreduce는 올리지 않았습니다.</p>
+</li>
+<li><p>hiveserver2는 올려도 되고, 안올려도 상관없습니다. 저는 초기에 10000번 포트로 접속해서 작업을 했습니다.</p>
+</li>
+<li><p>trino는 JDK 버전호환 (21이상)을 위해 eclipse-temurin 이미지를 사용하였습니다.</p>
+</li>
+<li><p>dbt-trino는 로컬에서 trino(8080)으로 연결하여 사용하였습니다.</p>
+</li>
+</ul>
+<h2 id="Getting-Started-with-Makefile"><a href="#Getting-Started-with-Makefile" class="headerlink" title="Getting Started with Makefile"></a>Getting Started with Makefile</h2><p>make가 설치되어있다면, 순서대로 이미지 먼저 빌드합니다. 아파치 프로그램을 다운받는 CDN 사이트를 변경했지만, 그래도 시간이 조금은 걸리는 편입니다.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 1-1. If you want to specify the required profile and bring up containers using the CLI</span>
+$ <span class="token assign-left variable">COMPOSE_PROFILES</span><span class="token operator">=</span>trino,kudu,hive,dbt,airflow <span class="token function">docker-compose</span> <span class="token parameter variable">-f</span> docker-compose.yml up <span class="token parameter variable">--build</span> <span class="token parameter variable">-d</span> --remove-orphans
+
+<span class="token comment"># 1-2. If you want to bring up all containers at once</span>
+$ <span class="token function">make</span> up
+
+<span class="token comment"># 2-1. If you want to stop running containers</span>
+$ <span class="token function">make</span> down
+
+<span class="token comment"># 2-2. If you want to remove running containers while deleting Docker images, volumes, and networks resources.</span>
+$ <span class="token function">make</span> delete.all<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="The-reason-for-choosing-Kudu"><a href="#The-reason-for-choosing-Kudu" class="headerlink" title="The reason for choosing Kudu"></a>The reason for choosing Kudu</h2><p>빅데이터 환경에서 데이터 모델링을 그려보다 보니, <code>Dimension 테이블에서 변경이 발생한다면 어떻게 해결할까</code>라는 고민이 들었습니다. Data Lake에서는 Schema-on-read이기 때문에 언제든지 특정 컬림이 추가되어 들어올 수가 있습니다. 이럴 때 <code>Hive만으로 테이블에 새로운 컬럼을 추가하려면 데이터를 지우고 테이블을 다시 만든 후 insert를 해야하기 때문에 테이블의 확장성에 있어 어려움이 많았습니다.</code> 이에 <code>Dimension 테이블을 Kudu에 저장해 향후에도 확장성을 높이려는 시도</code>를 하였습니다.</p>
+<p>Kudu는 Columnar storage로, ACID가 가능한 분산 스토리지 입니다. Replica를 설정하여 데이터의 durability를 보장할 수 있습니다. 또한 Hadoop 환경이 아니어도 구축가능합니다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110288&authkey=%21ANOYaAw5KekVAaA&width=660" width="660" height="auto" alt="kudu architecture"/>
+
+<p>kudu에서 master는 카탈로그를 저장하는 역할을 하고, tablet 서버는 실제 데이터를 저장합니다. Hadoop의 master-slave와 비슷한 구조를 갖고 있습니다. 테이블을 trino로 생성하는 쿼리를 보시면 여러가지 특징을 알 수 있습니다.</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- 1-2. 고객 테이블 생성</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token keyword">IF</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span> KUDU<span class="token punctuation">.</span>DW<span class="token punctuation">.</span>DIM_CUSTOMER_INFO <span class="token punctuation">(</span>
+    CUSTOMER_ID                       <span class="token keyword">INT</span>         <span class="token keyword">WITH</span> <span class="token punctuation">(</span>primary_key<span class="token operator">=</span><span class="token boolean">true</span><span class="token punctuation">)</span>
+    <span class="token comment">-- 컬럼 일부 생략</span>
+  <span class="token punctuation">,</span> EFFECTIVE_DATE                    <span class="token keyword">DATE</span>        
+  <span class="token punctuation">,</span> END_DATE                          <span class="token keyword">DATE</span>        
+  <span class="token punctuation">,</span> DW_LOAD_DT                        <span class="token keyword">TIMESTAMP</span>   
+<span class="token punctuation">)</span>
+<span class="token keyword">WITH</span> <span class="token punctuation">(</span>
+  partition_by_hash_columns <span class="token operator">=</span> ARRAY<span class="token punctuation">[</span><span class="token string">'CUSTOMER_ID'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  partition_by_hash_buckets <span class="token operator">=</span> <span class="token number">5</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><p>PK를 지정 할 수 있습니다.</p>
+</li>
+<li><p>PK로 사용되는 컬럼 중 일부를 반드시 partition_by_hash_columns으로 설정해야 한다. </p>
+</li>
+<li><p>partition_by_hash_buckets은 최소 2 이상이어야 합니다.</p>
+</li>
+<li><p>Secondary 인덱스나 foreign keys는 지원이 되지 않습니다.</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://kudu.apache.org/docs/known_issues.html#_other_usage_limitations">Other usage limitations</a></p>
+</li>
+</ul>
+<p>단, <code>Kudu는 저장소 역할만 하는 플랫폼이기에 쿼리를 처리를 할 수 있는 엔진이 필요</code>한 데 흔히 impala를 함께 결합하지만, <code>저는 hive와 kudu를 하나의 세션에서 같이 사용하는 게 편리하다고 생각되어 trino를 사용</code>하였습니다.</p>
+<h2 id="ELT-Tool-Selection-dbt-trino"><a href="#ELT-Tool-Selection-dbt-trino" class="headerlink" title="ELT Tool Selection: dbt-trino"></a>ELT Tool Selection: dbt-trino</h2><h3 id="The-Reason-for-Choosing-Trino-Over-Impala"><a href="#The-Reason-for-Choosing-Trino-Over-Impala" class="headerlink" title="The Reason for Choosing Trino Over Impala"></a>The Reason for Choosing Trino Over Impala</h3><p><code>Transform 도구로 DBT Core를 사용하려고 시도</code>했습니다.</p>
+<p>여러 adapter 중 하나를 선택할 수 있었는 데, dbt가 아직은 성장하는 플랫폼이라 trino에서 제공하는 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/supported-data-platforms">검증된 어댑터(Verified adapters)</a>를 사용하는 것이 좋다고 생각했습니다. 그래서 impala가 아닌 spark와 trino 중 고민을 했습니다.</p>
+<h3 id="dbt-trino-vs-dbt-spark"><a href="#dbt-trino-vs-dbt-spark" class="headerlink" title="dbt-trino vs. dbt-spark"></a>dbt-trino vs. dbt-spark</h3><p>spark는 사용자도 많고 충분히 성장한 플랫폼이지만, 제가 생각하는 <code>spark의 장점은 스파크에서 제공하는 함수로 복잡한 프로세싱을 IDE와 결합하여 처리하는 프로그램밍 방식인 데, sql만으로는 그 장점이 줄어든다고 생각</code>했습니다. 또한, learning curve가 다소 있는 플랫폼이라는 점도 고려했습니다.</p>
+<p><code>trino는 hive의 한계인 이종 시스템에 대한 연합 쿼리를 가능하게 하는 분산처리 엔진</code>입니다. <code>확장성이 높고, ANSI SQL 문법을 지향</code>합니다. 그래서 빠른 학습이 가능하다는 장점이 있다고 생각했습니다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110289&authkey=%21AOD15AKtu8t3vLQ&width=577&height=326" width="577" height="326" alt="연합 쿼리가 가능한 trino"/>
+
+<h2 id="The-Synergy-between-dbt-and-Trino"><a href="#The-Synergy-between-dbt-and-Trino" class="headerlink" title="The Synergy between dbt and Trino"></a>The Synergy between dbt and Trino</h2><p>dbt는 파이썬으로 구성된 오픈소스 transform 툴입니다. 쿼리를 CTE(Common Table Expression) 문법으로 구상하기 때문에 서브쿼리가 덜하다는 장점이 있습니다. 하지만 <code>dbt를 통해 짠 쿼리가 파이썬의 모델이라는 객체를 통해 변환되고, 변환된 쿼리는 시각적으로 확인하기 어려운 단점</code>이 있습니다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110292&authkey=%21AD6AC4r6UN9ipGs&width=1024" width="1024" height="auto" alt="dbt에서 파싱된 쿼리를 trino 웹에서 확인"/>
+
+<p>이에 대해 <code>trino는 웹에서 실행된 쿼리 구문을 볼 수 있습니다. dbt로 etl를 실행했을 때, 실패한다면 파싱이 제대로 안되었는 지 혹은 구문이 잘못되었는 지 웹을 통해 쿼리를 직접 확인할 수 있는 장점</code>이 있습니다. 저는 이를 통해 쿼리에 대한 트러블 슈팅을 보다 편하게 할 수 있었습니다.</p>
+<h2 id="Data-Integrity-Tests-Offered-by-dbt"><a href="#Data-Integrity-Tests-Offered-by-dbt" class="headerlink" title="Data Integrity Tests Offered by dbt"></a>Data Integrity Tests Offered by dbt</h2><p>dbt를 써보며 느꼈던 큰 장점은 파이썬이라는 프로그래밍이 접목되어 있어, 유틸리티를 편하게 쓸 수 있었다는 점이었습니다. 보시다시피 <code>dbt에서는 무결성을 위한 테스트를 할 수 있도록 지원</code>하는 데, 따로 쿼리를 짤 필요 없이 yaml 파일을 통해 쉽게 테스트를 할 수 있었습니다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110293&authkey=%21AGIJAM2MJq7vvzI&width=1024" width="1024" height="auto" alt="dbt test"/>
+
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/build/data-tests#generic-data-tests">generic-data-tests</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/build/data-tests#singular-data-tests">singular-data-tests</a></p>
+</li>
+</ul>
+<p><code>물론, 테스트의 결과를 알려줄 뿐 실패시 에러가 아닌 에러구문의 정상 표준 출력</code>하기 때문에 json으로 로그를 남기고 파싱하거나 하는 방법을 추가로 구현해야 할 것 같다는 생각은 들었습니다. 이는 dbt를 조금 더 숙지하면 다른 방법으로 풀어낼 수 있을 것 같습니다.</p>
 
                 
             </div>
@@ -305,7 +422,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/02/19/Life/toss-analytics-engineering/">http://example.com/2024/02/19/Life/toss-analytics-engineering/</a>
+                    <a href="http://example.com/1996/01/19/Carrer/side-project/">http://example.com/1996/01/19/Carrer/side-project/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -417,12 +534,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/02/19/Airflow/airflow-config/">
+                <a href="/1996/01/19/Carrer/problem-solving/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="[Airflow] airflow.cfg 풀어보기">
                         
-                        <span class="card-title diy-neon-red">[Airflow] airflow.cfg 풀어보기</span>
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="[PRJ] 기술을 통해 자동화된 데이터 품질 검사 시스템 구축하기">
+                        
+                        <span class="card-title diy-neon-red">[PRJ] 기술을 통해 자동화된 데이터 품질 검사 시스템 구축하기</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -433,16 +551,12 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-02-19
+                            <i class="far fa-clock fa-fw icon-date"></i>1996-01-19
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Airflow/" class="post-category">
-                                    Airflow
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Keyhong
                             
                         </span>
                     </div>
@@ -457,12 +571,12 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/02/19/Spark/dataframe-skew-optimization/">
+                <a href="/1996/01/19/Carrer/soss/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/pyspark-logo.png" class="responsive-img" alt="[Spark] DataFrame Skewness Optimization">
+                        <img src="/images/logos/life-logo.jpg" class="responsive-img" alt="[PRJ] 데이터 허브 센터 및 도시행정 서비스 고도화 기술 개발">
                         
-                        <span class="card-title diy-neon-red">[Spark] DataFrame Skewness Optimization</span>
+                        <span class="card-title diy-neon-red">[PRJ] 데이터 허브 센터 및 도시행정 서비스 고도화 기술 개발</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -473,16 +587,12 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-19
+                                <i class="far fa-clock fa-fw icon-date"></i>1996-01-19
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Spark/" class="post-category">
-                                    Spark
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Keyhong
                             
                         </span>
                     </div>
