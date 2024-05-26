@@ -350,7 +350,11 @@
 <td>99,999,999,999,999</td>
 </tr>
 </tbody></table>
-<h3 id="테이블명-컬럼명-표준화"><a href="#테이블명-컬럼명-표준화" class="headerlink" title="테이블명 &amp; 컬럼명 표준화"></a>테이블명 &amp; 컬럼명 표준화</h3><table>
+<h3 id="테이블명-컬럼명-표준화"><a href="#테이블명-컬럼명-표준화" class="headerlink" title="테이블명 &amp; 컬럼명 표준화"></a>테이블명 &amp; 컬럼명 표준화</h3><blockquote>
+<p>당시 제공받은 팀장님께 제공받은 표준용어사전으로 의해 기존 있는 용어는 그대로 사용하고 신규 용어는 단어를 조합하여 만드는 과정을 수행했습니다. 시간이 좀 많이 지났지만 이음동의어, 동음이의어, 명사형 단어 사용, 축약단어 사용불가, 영문명의 허용길이, 고유명사, 도메인 그룹, 표준코드 생성규칙 등 많은 배움을 주셨습니다. 그 당시 가이드 자료가 남아있어, 한번은 다시 정리를 하려고 합니다.  </p>
+</blockquote>
+<p>** 2개 테이블에 대한 표준화 예시</p>
+<table>
 <thead>
 <tr>
 <th>주제영역</th>
@@ -376,7 +380,7 @@
 <tbody><tr>
 <td>1</td>
 <td>STDR_DE</td>
-<td>기준_일자</td>
+<td>기준일자</td>
 <td>STRING</td>
 </tr>
 <tr>
@@ -388,13 +392,13 @@
 <tr>
 <td>3</td>
 <td>GU_CD</td>
-<td>행정동_코드</td>
+<td>행정동코드</td>
 <td>STRING</td>
 </tr>
 <tr>
 <td>4</td>
 <td>SAFE_IDEX</td>
-<td>안전_지수</td>
+<td>안전지수</td>
 <td>DECIMAL(5, 2)</td>
 </tr>
 </tbody></table>
@@ -425,120 +429,123 @@
 </thead>
 <tbody><tr>
 <td>1</td>
-<td>그리드ID</td>
 <td>GRID_ID</td>
-<td></td>
+<td>그리드ID</td>
+<td>STRING</td>
 </tr>
 <tr>
 <td>2</td>
-<td>행번호</td>
 <td>ROW_NO</td>
-<td></td>
+<td>행번호</td>
+<td>STRING</td>
 </tr>
 <tr>
 <td>3</td>
-<td>열번호</td>
 <td>CLM_NO</td>
-<td></td>
+<td>열번호</td>
+<td>STRING</td>
 </tr>
 <tr>
 <td>4</td>
-<td>행정동코드</td>
 <td>ADMD_CD</td>
-<td></td>
+<td>행정동코드</td>
+<td>STRING</td>
 </tr>
 <tr>
 <td>5</td>
-<td>법정동코드</td>
 <td>LGLD_CD</td>
-<td></td>
+<td>법정동코드</td>
+<td>STRING</td>
 </tr>
 <tr>
 <td>6</td>
+<td>AREA_COORD</td>
 <td>영역좌표</td>
-<td>COORD</td>
-<td></td>
+<td>STRING</td>
 </tr>
 <tr>
 <td>7</td>
+<td>CNTR_X_COORD</td>
 <td>중심X좌표</td>
-<td>X_COORD</td>
-<td></td>
+<td>DECIMAL(18, 8)</td>
 </tr>
 <tr>
 <td>8</td>
+<td>CNTR_Y_COORD</td>
 <td>중심Y좌표</td>
-<td>Y_COORD</td>
-<td></td>
+<td>DECIMAL(18, 8)</td>
 </tr>
 <tr>
 <td>9</td>
-<td>최소X좌표</td>
 <td>MIN_X_COORD</td>
-<td></td>
+<td>최소X좌표</td>
+<td>DECIMAL(18, 8)</td>
 </tr>
 <tr>
 <td>10</td>
-<td>최소Y좌표</td>
 <td>MIN_Y_COORD</td>
-<td></td>
+<td>최소Y좌표</td>
+<td>DECIMAL(18, 8)</td>
 </tr>
 <tr>
 <td>11</td>
-<td>최대X좌표</td>
 <td>MAX_X_COORD</td>
-<td></td>
+<td>최대X좌표</td>
+<td>DECIMAL(18, 8)</td>
 </tr>
 <tr>
 <td>12</td>
-<td>최대Y좌표</td>
 <td>MAX_Y_COORD</td>
-<td></td>
+<td>최대Y좌표</td>
+<td>DECIMAL(18, 8)</td>
 </tr>
 <tr>
 <td>13</td>
-<td>중심경도</td>
 <td>CNTR_LON</td>
-<td></td>
+<td>중심경도</td>
+<td>DECIMAL(13, 10)</td>
 </tr>
 <tr>
 <td>14</td>
-<td>중심위도</td>
 <td>CNTR_LAT</td>
-<td></td>
+<td>중심위도</td>
+<td>DECIMAL(12, 10)</td>
 </tr>
 <tr>
 <td>15</td>
-<td>최소경도</td>
 <td>MIN_LON</td>
-<td></td>
+<td>최소경도</td>
+<td>DECIMAL(13, 10)</td>
 </tr>
 <tr>
 <td>16</td>
-<td>최소위도</td>
 <td>MIN_LAT</td>
-<td></td>
+<td>최소위도</td>
+<td>DECIMAL(12, 10)</td>
 </tr>
 <tr>
 <td>17</td>
-<td>최대경도</td>
 <td>MAX_LON</td>
-<td></td>
+<td>최대경도</td>
+<td>DECIMAL(13, 10)</td>
 </tr>
 <tr>
 <td>18</td>
-<td>최대위도</td>
 <td>MAX_LAT</td>
-<td></td>
+<td>최대위도</td>
+<td>DECIMAL(12, 10)</td>
 </tr>
 <tr>
 <td>19</td>
-<td>CCTV대수</td>
 <td>CCTV_CO</td>
-<td></td>
+<td>CCTV대수</td>
+<td>BIGINT</td>
 </tr>
 </tbody></table>
-<h2 id="데이터-모델링"><a href="#데이터-모델링" class="headerlink" title="데이터 모델링"></a>데이터 모델링</h2><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128739&authkey=%21AJ75IwKX3RiA7Nw&width=1345&height=724" width="1345" height="724" />
+<h2 id="데이터-모델링"><a href="#데이터-모델링" class="headerlink" title="데이터 모델링"></a>데이터 모델링</h2><blockquote>
+<p>서비스 마트 ERD 입니다. 각 서비스 당 하나의 엔티티로 구성되어 있습니다. 지도 상에 매핑하는 시각화 BI를 연계한 서비스이다 보니, 가장 메인이 되는 기준정보가 핵심이 되는 데이터였습니다. 엔티티들의 관계는 그리드ID, 행정동 코드, 구코드 컬럼으로 1:N 관계가 있습니다. 그리드 ID를 기반으로 한 테이블 정보에서 행정동&#x2F;구 단위의 안전지수&#x2F;CCTV효율지수(지표) 집계를 통해 만들었기 때문입니다. <br><br> 추가적으로 팀장님의 말씀를 듣고 서비스를 위해 만들었던 코드성 데이터는 별도의 공통코드 테이블에 모아서 관리를 했었는 데, 코드성를 어떻게 관리를 해야하는 지 배울 수 있었습니다.</p>
+</blockquote>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128739&authkey=%21AJ75IwKX3RiA7Nw&width=1345&height=724" width="1345" height="724" />
 
 
 <h2 id="ML-서비스-개발-및-고도화"><a href="#ML-서비스-개발-및-고도화" class="headerlink" title="ML 서비스 개발 및 고도화"></a>ML 서비스 개발 및 고도화</h2><h3 id="지역-안전-분석-서비스"><a href="#지역-안전-분석-서비스" class="headerlink" title="지역 안전 분석 서비스"></a>지역 안전 분석 서비스</h3><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128731&authkey=%21AEQUvzOVvrityG8&width=1024" width="1024" height="auto" />
