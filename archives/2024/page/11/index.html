@@ -336,30 +336,26 @@
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/Hive/hive-concept/">
+                        <a href="/2024/01/01/Hive/hive-config/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] Concept">
+                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] Config">
                                 
-                                <span class="card-title">[Hive] Concept</span>
+                                <span class="card-title">[Hive] Config</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Hive
-하둡 기반의 데이터 웨어하우징 프레임워크
+                                    hive-site.xml
+Hive 환경 설정을 위한 XML 설정 파일
 
 
-페이스북에서 개발
+Hive의 conf 디렉토리에 위치
 
-자바 프로그래밍은 부족하지만 강력한 SQL 기술을 가진 분석가를 위해 개발
+사용자가 Hive를 실행할 때마다 필요한 속성을 설정
 
-복잡한 머신러닝 알고리즘을 구현하기에는 적합하지 않음
-
-
-
-MyS
+hive-default.xml.template을 
                                 
                             </div>
                             <div class="publish-info">
@@ -400,26 +396,25 @@ MyS
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/Hive/hive-config/">
+                        <a href="/2024/01/01/Hive/hive-architecture/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] Config">
+                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] Architecture">
                                 
-                                <span class="card-title">[Hive] Config</span>
+                                <span class="card-title">[Hive] Architecture</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    hive-site.xml
-Hive 환경 설정을 위한 XML 설정 파일
+                                    Hive ArchitectureMajor components
+UI
 
 
-Hive의 conf 디렉토리에 위치
+사용자가 쿼리 및 기타 작업을 시스템에 제출하기 위한 사용자 인터페이스
 
-사용자가 Hive를 실행할 때마다 필요한 속성을 설정
 
-hive-default.xml.template을 
+Hive Web UI, 커맨드라인 (HD Insight는 Window 
                                 
                             </div>
                             <div class="publish-info">
@@ -627,26 +622,28 @@ $ ls [-option]
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/Linux/mount-networker/">
+                        <a href="/2024/01/01/Linux/root-directory/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/linux-logo.png" class="responsive-img" alt="[Linux] Hardware Command">
+                                <img src="/images/logos/linux-logo.png" class="responsive-img" alt="[Linux] root 디렉터리 구조">
                                 
-                                <span class="card-title">[Linux] Hardware Command</span>
+                                <span class="card-title">[Linux] root 디렉터리 구조</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Hardwarecpu info$ cat /etc/proc/cpuinfo
+                                    Linux Root Directory&#x2F;
+모든 디렉터리의 최상위 디렉터리
 
-memory usage info$ free
+&#x2F;root
+시스템 관리자 root의 사용자 홈 디렉터리
 
-mount
-물리적인 장치를 특정 위치(디렉토리)에 연결시켜주는 과정
+&#x2F;boot
+부트 이미지 저장 디렉터리
 
-$ mount
-    -f 
+&#x2F;bin
+
                                 
                             </div>
                             <div class="publish-info">
@@ -687,28 +684,26 @@ $ mount
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/Linux/root-directory/">
+                        <a href="/2024/01/01/Linux/mount-networker/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/linux-logo.png" class="responsive-img" alt="[Linux] root 디렉터리 구조">
+                                <img src="/images/logos/linux-logo.png" class="responsive-img" alt="[Linux] Hardware Command">
                                 
-                                <span class="card-title">[Linux] root 디렉터리 구조</span>
+                                <span class="card-title">[Linux] Hardware Command</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Linux Root Directory&#x2F;
-모든 디렉터리의 최상위 디렉터리
+                                    Hardwarecpu info$ cat /etc/proc/cpuinfo
 
-&#x2F;root
-시스템 관리자 root의 사용자 홈 디렉터리
+memory usage info$ free
 
-&#x2F;boot
-부트 이미지 저장 디렉터리
+mount
+물리적인 장치를 특정 위치(디렉토리)에 연결시켜주는 과정
 
-&#x2F;bin
-
+$ mount
+    -f 
                                 
                             </div>
                             <div class="publish-info">
@@ -867,21 +862,25 @@ Ubuntu는 짝수년도 4월에 LTS 버전이 출시됩니다. 꼭 latest 버전�
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/Python/first-class-function/">
+                        <a href="/2024/01/01/Python-Algorithm/graph/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Firts Class Function">
+                                <img src="/images/logos/algorithm-logo.png" class="responsive-img" alt="[Algorithm] Graph">
                                 
-                                <span class="card-title">[Python] Firts Class Function</span>
+                                <span class="card-title">[Algorithm] Graph</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    일급함수 (Firts-Class Function)
-프로그래밍 언어가 함수를 일급 객체(first-class citizen)로 취급하는 것
+                                    그래프(Graph)
+지도, 내비게이션, SNS&#x2F;메신저, VCS(Version Control System)
 
-적용이 되는 언어는 Python 이외에도 JavaScript 또한 일급함수가
+Vertex(&#x3D;node)와 Edge 구성 
+
+종류
+
+무방향 그래프: 방향이 없음(서로 다른
                                 
                             </div>
                             <div class="publish-info">
@@ -892,8 +891,8 @@ Ubuntu는 짝수년도 4월에 LTS 버전이 출시됩니다. 꼭 latest 버전�
                                     
                                     <i class="fas fa-bookmark fa-fw icon-category"></i>
                                     
-                                    <a href="/categories/Python/" class="post-category">
-                                    Python
+                                    <a href="/categories/Algorithm/" class="post-category">
+                                    Algorithm
                                     </a>
                                     
                                     
