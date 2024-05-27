@@ -442,19 +442,21 @@ ALTER TABLE
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/12/14/Hive/conditional-functions/">
+                        <a href="/2023/12/14/Hive/date-mathematics-functions/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] Conditional Functions">
+                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] Date &amp; Mathematics Functions">
                                 
-                                <span class="card-title">[Hive] Conditional Functions</span>
+                                <span class="card-title">[Hive] Date &amp; Mathematics Functions</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Conditional Functions☆ IF (boolean testCondition, T valueTrue, T valueFalseOrNull)
-조건식을 만족하면 valueTrue를, 만족하지 않으면 valueF
+                                    Date FunctionsUNIX_TIMESTAMP (string date)
+타임스탬프 인수를 UNIX 시간대(‘1970-01-01 00:00:00’)에서 몇 초나 지났는 지 epoch를 정수로 반환한다.
+
+SELE
                                 
                             </div>
                             <div class="publish-info">
@@ -495,21 +497,19 @@ ALTER TABLE
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/12/14/Hive/date-mathematics-functions/">
+                        <a href="/2023/12/14/Hive/conditional-functions/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] Date &amp; Mathematics Functions">
+                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] Conditional Functions">
                                 
-                                <span class="card-title">[Hive] Date &amp; Mathematics Functions</span>
+                                <span class="card-title">[Hive] Conditional Functions</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Date FunctionsUNIX_TIMESTAMP (string date)
-타임스탬프 인수를 UNIX 시간대(‘1970-01-01 00:00:00’)에서 몇 초나 지났는 지 epoch를 정수로 반환한다.
-
-SELE
+                                    Conditional Functions☆ IF (boolean testCondition, T valueTrue, T valueFalseOrNull)
+조건식을 만족하면 valueTrue를, 만족하지 않으면 valueF
                                 
                             </div>
                             <div class="publish-info">
@@ -607,23 +607,22 @@ Hive에서 제공하는 특수기능으로 A의 하위 문자열이 B와 일치�
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/12/14/Hive/partitioning/">
+                        <a href="/2023/12/14/Hive/string-functions/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] Partitioning">
+                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] String Functions">
                                 
-                                <span class="card-title">[Hive] Partitioning</span>
+                                <span class="card-title">[Hive] String Functions</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Partitioning
-분할 키를 기반으로 테이블의 데이터를 여러 부분으로 구성하는 방법
+                                    ☆ CONCAT
+두 문자열을 결합하여 반환한다.
 
-Partitioning의 두 종류는 정적 파티셔닝과 동적 파티셔닝이 있다.
-
-Static Partitioning (정적 파티
+-- Syntax: CONCAT (string|binary A, string|binary B...)
+SELECT CONCAT(col1, '-', col3) FROM 
                                 
                             </div>
                             <div class="publish-info">
@@ -664,22 +663,23 @@ Static Partitioning (정적 파티
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/12/14/Hive/string-functions/">
+                        <a href="/2023/12/14/Hive/partitioning/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] String Functions">
+                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] Partitioning">
                                 
-                                <span class="card-title">[Hive] String Functions</span>
+                                <span class="card-title">[Hive] Partitioning</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    ☆ CONCAT
-두 문자열을 결합하여 반환한다.
+                                    Partitioning
+분할 키를 기반으로 테이블의 데이터를 여러 부분으로 구성하는 방법
 
--- Syntax: CONCAT (string|binary A, string|binary B...)
-SELECT CONCAT(col1, '-', col3) FROM 
+Partitioning의 두 종류는 정적 파티셔닝과 동적 파티셔닝이 있다.
+
+Static Partitioning (정적 파티
                                 
                             </div>
                             <div class="publish-info">

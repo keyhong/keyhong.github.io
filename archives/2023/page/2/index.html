@@ -558,25 +558,24 @@ Redis를 사용하는 이유
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/12/19/Kubernetes/vm_installation/">
+                        <a href="/2023/12/19/Kubernetes/readiness-liveness-probe/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] ubuntu installation">
+                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] Readiness Probe &amp; Liveness Probe">
                                 
-                                <span class="card-title">[Kubernetes] ubuntu installation</span>
+                                <span class="card-title">[Kubernetes] Readiness Probe &amp; Liveness Probe</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    ubuntuos 버전 확인$ uname -a 
-
-$ ping &lt;>
-
-/etc/hosts 설정$ cat /etc/hosts
-
-127.0.0.1        localhost
-127.0.1.1        k8s-
+                                    Readiness ProbePending - ContainerCreating - Running
+PodScheduled
+Initialized
+ContainersReady
+Ready
+apiVersion: v1
+kind:
                                 
                             </div>
                             <div class="publish-info">
@@ -617,24 +616,25 @@ $ ping &lt;>
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/12/19/Kubernetes/readiness-liveness-probe/">
+                        <a href="/2023/12/19/Kubernetes/vm_installation/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] Readiness Probe &amp; Liveness Probe">
+                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] ubuntu installation">
                                 
-                                <span class="card-title">[Kubernetes] Readiness Probe &amp; Liveness Probe</span>
+                                <span class="card-title">[Kubernetes] ubuntu installation</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Readiness ProbePending - ContainerCreating - Running
-PodScheduled
-Initialized
-ContainersReady
-Ready
-apiVersion: v1
-kind:
+                                    ubuntuos 버전 확인$ uname -a 
+
+$ ping &lt;>
+
+/etc/hosts 설정$ cat /etc/hosts
+
+127.0.0.1        localhost
+127.0.1.1        k8s-
                                 
                             </div>
                             <div class="publish-info">
@@ -791,20 +791,18 @@ Us
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/12/16/Hive/hive-explode/">
+                        <a href="/2023/12/16/Hive/hive-ddl/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] Explode &amp; Lateral View">
+                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] DDL">
                                 
-                                <span class="card-title">[Hive] Explode &amp; Lateral View</span>
+                                <span class="card-title">[Hive] DDL</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Explode()컬럼의 값에 있는 배열의 모든 요소를 별도의 행으로 생성한다. 데이터가 많으면 행이 무수히 많아져 크기가 급속도로 커지므로 사용시에 항상 Out Of Memory 에러에 주의가 필요하다.
-
--- 기본
+                                    테이블 생성그 전에 알아둬야 할 상식!처음에 테이블을 CREATE EXTERNAL TABLE로 만들게 되면, 해당 테이블은 다시 INTERNAL로 만들 수 없습니다. INTERNAL로 만든 후, TBLPROPERTI
                                 
                             </div>
                             <div class="publish-info">
@@ -845,18 +843,20 @@ Us
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/12/16/Hive/hive-ddl/">
+                        <a href="/2023/12/16/Hive/hive-explode/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] DDL">
+                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] Explode &amp; Lateral View">
                                 
-                                <span class="card-title">[Hive] DDL</span>
+                                <span class="card-title">[Hive] Explode &amp; Lateral View</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    테이블 생성그 전에 알아둬야 할 상식!처음에 테이블을 CREATE EXTERNAL TABLE로 만들게 되면, 해당 테이블은 다시 INTERNAL로 만들 수 없습니다. INTERNAL로 만든 후, TBLPROPERTI
+                                    Explode()컬럼의 값에 있는 배열의 모든 요소를 별도의 행으로 생성한다. 데이터가 많으면 행이 무수히 많아져 크기가 급속도로 커지므로 사용시에 항상 Out Of Memory 에러에 주의가 필요하다.
+
+-- 기본
                                 
                             </div>
                             <div class="publish-info">
