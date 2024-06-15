@@ -4,16 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[YARN] YARN 구조 파악하기, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="YARN (Yet Another Resource Negotiator)
-하둡의 클러스터 자원 관리 시스템
-
-
-Hadoop 2.X 부터 도입되었다.
-
-MapReduce 성능을 높이기 위한 시스템이다.
-
-다른 분산 컴퓨팅">
+    <meta name="keywords" content=".dbtignore, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content=".dbtignoredbt project의 루트에 .dbtignore 파일을 생성하여 dbt가 entirely 무시해야 하는 파일을 지정할 수 있습니다. 이 파일은 .gitignore file, using the sa">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -25,7 +17,7 @@ MapReduce 성능을 높이기 위한 시스템이다.
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[YARN] YARN 구조 파악하기 | Keyhong</title>
+    <title>.dbtignore | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -206,13 +198,13 @@ MapReduce 성능을 높이기 위한 시스템이다.
 
     
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/hadoop-logo.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/dbt-logo.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [YARN] YARN 구조 파악하기</h1>
+                        .dbtignore</h1>
                 </div>
             </div>
         </div>
@@ -237,7 +229,7 @@ MapReduce 성능을 높이기 위한 시스템이다.
                         <div class="article-tag">
                             <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                                 <span class="chip bg-color">
-                                    2023-11-26</span>
+                                    2024-01-01</span>
                         </div>
                     
                     
@@ -249,8 +241,8 @@ MapReduce 성능을 높이기 위한 시스템이다.
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Hadoop/" class="post-category">
-                                Hadoop
+                            <a href="/categories/DBT/" class="post-category">
+                                DBT
                             </a>
                         
                     </div>
@@ -269,54 +261,22 @@ MapReduce 성능을 높이기 위한 시스템이다.
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="YARN-Yet-Another-Resource-Negotiator"><a href="#YARN-Yet-Another-Resource-Negotiator" class="headerlink" title="YARN (Yet Another Resource Negotiator)"></a>YARN (Yet Another Resource Negotiator)</h2><blockquote>
-<p>하둡의 클러스터 자원 관리 시스템</p>
-</blockquote>
-<ul>
-<li><p>Hadoop 2.X 부터 도입되었다.</p>
-</li>
-<li><p>MapReduce 성능을 높이기 위한 시스템이다.</p>
-</li>
-<li><p>다른 분산 컴퓨팅 도구(예를 들면 spark)도 지원을 한다.</p>
-</li>
-<li><p>사용자는 YARN이 내장된 분산 컴퓨팅 프레임워크에서 고수준 API를 작성하면 된다. 사용자가 자원 관리의 자세한 내용은 알 수 없다.</p>
-</li>
-</ul>
-<h2 id="전체적인-구조"><a href="#전체적인-구조" class="headerlink" title="전체적인 구조"></a>전체적인 구조</h2><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219897&authkey=%21ADalW-GQwqqtlbw&width=1280&height=720" width="1280" height="720" alt="YARN 애플리케이션 계층 구조"/>
+                <h1 id="dbtignore"><a href="#dbtignore" class="headerlink" title=".dbtignore"></a>.dbtignore</h1><p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/build/projects">dbt project</a>의 루트에 <code>.dbtignore</code> 파일을 생성하여 dbt가 <strong>entirely</strong> 무시해야 하는 파일을 지정할 수 있습니다. 이 파일은 <a target="_blank" rel="noopener" href="https://git-scm.com/docs/gitignore"><code>.gitignore</code> file, using the same syntax</a>하여 작동합니다. 패턴과 일치하는 파일 및 하위 디렉토리는 dbt에 의해 읽히거나, 해석되거나, 다른 방식으로 감지되지 않습니다—마치 존재하지 않는 것처럼.</p>
+<p>Examples</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>.dbtignore</span></div><code class="language-yaml"><span class="token comment"># .dbtignore</span>
 
-<h4 id="클러스터-저장-계층"><a href="#클러스터-저장-계층" class="headerlink" title="클러스터 저장 계층"></a>클러스터 저장 계층</h4><p>HDFS와 HBase</p>
-<h4 id="클러스터-계산-계층"><a href="#클러스터-계산-계층" class="headerlink" title="클러스터 계산 계층"></a>클러스터 계산 계층</h4><p>YARN</p>
-<h4 id="애플리케이션-계층"><a href="#애플리케이션-계층" class="headerlink" title="애플리케이션 계층"></a>애플리케이션 계층</h4><p>MapReduce, Spark, Pig, Hive 등과 같은 분산 컴퓨팅 프레임워크. 사용자는 AM을 통해서 이용할 뿐 YARN에 직접적으로 접근하지 않는다.</p>
-<h2 id="YARN-애플리케이션-수행-해부"><a href="#YARN-애플리케이션-수행-해부" class="headerlink" title="YARN 애플리케이션 수행 해부"></a>YARN 애플리케이션 수행 해부</h2><p>YARN은 리소스 매니저와 노드 매니저 등 두 가지 유형의 장기 실행 데몬 프로세스를 통해 핵심 서비스를 제공한다. YARN 자체는 client-master 프로세스 간에 서로 통신 기능을 지원하지 않는다. 상태 변경 전달과 결과 전송은 하둡 RPC와 같은 원격 호출 방식을 이용한다.</p>
-<h4 id="리소스-매니저-RM-Resource-Manager"><a href="#리소스-매니저-RM-Resource-Manager" class="headerlink" title="리소스 매니저 (RM, Resource Manager)"></a>리소스 매니저 (RM, Resource Manager)</h4><p>클러스터 전체 자원의 사용량을 관리한다.</p>
-<h4 id="노드-매니저-NM-Node-Manager"><a href="#노드-매니저-NM-Node-Manager" class="headerlink" title="노드 매니저 (NM, Node Manager)"></a>노드 매니저 (NM, Node Manager)</h4><ul>
-<li><p>클러스터의 모든 머신 머신에서 실행한다.</p>
-</li>
-<li><p>컨테이너를 구동하고 모니터링하는 역학을 수행한다.</p>
-</li>
-<li><p>특정 애플리케이션의 프로세스(task)를 컨테이너에서 실행시킨다.</p>
-</li>
-</ul>
-<h4 id="컨테이너"><a href="#컨테이너" class="headerlink" title="컨테이너"></a>컨테이너</h4><ul>
-<li><p>CPU, 메모리 등의 사용 한도를 가진 자원</p>
-</li>
-<li><p>YARN의 설정 방법에 따라 다르나, 일반적으로 Unix 프로세스나 리눅스의 cgroup을 이용한다.</p>
-</li>
-</ul>
-<h2 id="YARN-애플리케이션-구동-방식"><a href="#YARN-애플리케이션-구동-방식" class="headerlink" title="YARN 애플리케이션 구동 방식"></a>YARN 애플리케이션 구동 방식</h2><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219896&authkey=%21APH1PxFL3ipNCLc&width=1280&height=720" width="1280" height="720" alt="YARN 애플리케이션 구동 방식 순서"/>
+<span class="token comment"># ignore individual .py files</span>
+not<span class="token punctuation">-</span>a<span class="token punctuation">-</span>dbt<span class="token punctuation">-</span>model.py
+another<span class="token punctuation">-</span>non<span class="token punctuation">-</span>dbt<span class="token punctuation">-</span>model.py
 
-<h4 id="1-클라이언트가-YARN에서-애플리케이션-구동을-위해-RM에게-접속"><a href="#1-클라이언트가-YARN에서-애플리케이션-구동을-위해-RM에게-접속" class="headerlink" title="1. 클라이언트가 YARN에서 애플리케이션 구동을 위해 RM에게 접속"></a>1. 클라이언트가 YARN에서 애플리케이션 구동을 위해 RM에게 접속</h4><p>Application Maste 프로세스 (이하 AM) 구동 요청.</p>
-<h4 id="2-RM은-컨테이너에서-AM을-시작할-수-있는-노드-매니저-하나-탐색"><a href="#2-RM은-컨테이너에서-AM을-시작할-수-있는-노드-매니저-하나-탐색" class="headerlink" title="2. RM은 컨테이너에서 AM을 시작할 수 있는 노드 매니저 하나 탐색"></a>2. RM은 컨테이너에서 AM을 시작할 수 있는 노드 매니저 하나 탐색</h4><ul>
-<li><p>클러스터 외부나 클라이언트의 JVM에서 해당 클라이언트의 애플리케이션 마스터를 구동하는 것도 가능하다. (비관리 애플리케이션 마스터로, 예를 들면 스파크 클러스터의 deploy mode 중 client mode 실행)</p>
-</li>
-<li><p>AM 프로세스가 딱 한번 실행될지는 애플리케이션에 따라 상이하다.</p>
-</li>
-</ul>
-<h4 id="3-AM이-단순한-계산을-단일-컨테이너에서-수행-후-아래-두-가지-행동-중-하나를-수행"><a href="#3-AM이-단순한-계산을-단일-컨테이너에서-수행-후-아래-두-가지-행동-중-하나를-수행" class="headerlink" title="3. AM이 단순한 계산을 단일 컨테이너에서 수행 후 아래 두 가지 행동 중 하나를 수행"></a>3. AM이 단순한 계산을 단일 컨테이너에서 수행 후 아래 두 가지 행동 중 하나를 수행</h4><ul>
-<li><p>클라이언트에게 결과를 반환 후 종료</p>
-</li>
-<li><p>리소스 매니저에 더 많은 컨테이너를 요청 후 분산 처리 수를 증대</p>
-</li>
+<span class="token comment"># ignore all .py files</span>
+<span class="token important">**.py</span>
+
+<span class="token comment"># ignore all .py files with "codegen" in the filename</span>
+<span class="token important">*codegen*.py</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/dbtignore">https://docs.getdbt.com/reference/dbtignore</a></li>
 </ul>
 
                 
@@ -344,7 +304,7 @@ MapReduce 성능을 높이기 위한 시스템이다.
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2023/11/26/Hadoop/YARN/yarn-structure/">http://example.com/2023/11/26/Hadoop/YARN/yarn-structure/</a>
+                    <a href="http://example.com/2024/01/01/DBT/Reference/Project%20Configs/dbtignore/">http://example.com/2024/01/01/DBT/Reference/Project%20Configs/dbtignore/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -456,12 +416,12 @@ MapReduce 성능을 높이기 위한 시스템이다.
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2023/11/26/Hive/hiveql-dml/">
+                <a href="/2024/01/01/DBT/Reference/Project%20Configs/dbt_project.yml/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/hive-logo.png" class="responsive-img" alt="[Hive] DML">
+                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="dbt_project.yml">
                         
-                        <span class="card-title diy-neon-red">[Hive] DML</span>
+                        <span class="card-title diy-neon-red">dbt_project.yml</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -472,14 +432,14 @@ MapReduce 성능을 높이기 위한 시스템이다.
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-11-26
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Hive/" class="post-category">
-                                    Hive
+                            <a href="/categories/DBT/" class="post-category">
+                                    DBT
                                 </a>
                             
                             
@@ -496,12 +456,12 @@ MapReduce 성능을 높이기 위한 시스템이다.
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/11/24/Hadoop/HDFS/hdfs-basic-concept/">
+                <a href="/2024/01/01/DBT/Reference/Project%20Configs/dispatch%20(config)/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="[HDFS] HDFS Basic Concept">
+                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="dispatch (config)">
                         
-                        <span class="card-title diy-neon-red">[HDFS] HDFS Basic Concept</span>
+                        <span class="card-title diy-neon-red">dispatch (config)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -512,14 +472,14 @@ MapReduce 성능을 높이기 위한 시스템이다.
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-24
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Hadoop/" class="post-category">
-                                    Hadoop
+                            <a href="/categories/DBT/" class="post-category">
+                                    DBT
                                 </a>
                             
                             
