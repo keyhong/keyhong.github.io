@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[DBT] Community adapters, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Community adapters커뮤니티 어댑터는 dbt 커뮤니티 회원들에 의해 기여되고 유지보수되는 어댑터 플러그인입니다. dbt 커뮤니티에서 adapter plugins contributions를 환영하며 장려합">
+    <meta name="keywords" content="[DBT] How to connect to adapters, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="How to connect to adapters어댑터는 dbt의 필수 구성 요소입니다. 가장 기본적인 수준에서는 dbt가 다양한 지원 데이터 플랫폼에 연결하는 방법입니다. 보다 높은 수준에서 어댑터는 분석 엔지니어에">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[DBT] Community adapters | Keyhong</title>
+    <title>[DBT] How to connect to adapters | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -204,7 +204,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [DBT] Community adapters</h1>
+                        [DBT] How to connect to adapters</h1>
                 </div>
             </div>
         </div>
@@ -229,7 +229,7 @@
                         <div class="article-tag">
                             <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                                 <span class="chip bg-color">
-                                    2024-05-15</span>
+                                    2024-01-01</span>
                         </div>
                     
                     
@@ -261,63 +261,28 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Community-adapters"><a href="#Community-adapters" class="headerlink" title="Community adapters"></a>Community adapters</h1><p>커뮤니티 어댑터는 dbt 커뮤니티 회원들에 의해 기여되고 유지보수되는 어댑터 플러그인입니다. dbt 커뮤니티에서 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/contribute-core-adapters#contribute-to-a-pre-existing-adapter">adapter plugins contributions</a>를 환영하며 장려합니다. 이러한 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/connect-adapters#maintainers">community maintainers</a>은 자원봉사자로서 시간과 노력을 기부하는 용감한 자원봉사자입니다. 그러므로 친절하게 대하고 이해하며 가능한 곳에서 도와주세요!</p>
+                <h1 id="How-to-connect-to-adapters"><a href="#How-to-connect-to-adapters" class="headerlink" title="How to connect to adapters"></a>How to connect to adapters</h1><p>어댑터는 dbt의 필수 구성 요소입니다. 가장 기본적인 수준에서는 dbt가 다양한 지원 데이터 플랫폼에 연결하는 방법입니다. 보다 높은 수준에서 어댑터는 분석 엔지니어에게 보다 이동 가능한 기술을 제공하고 분석 프로젝트의 구조화 방식을 표준화하기 위해 노력합니다. 새로운 직장으로 이동할 때 다른 데이터 플랫폼을 사용하는 경우 새로운 언어나 SQL 변형을 배워야 했던 시절은 지나갔습니다. 이것이 dbt의 어댑터의 힘입니다 - 자세한 내용은 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/guides/adapter-creation?step=1">Build, test, document, and promote adapters</a> 가이드를 참조하세요.</p>
+<p>이 섹션에서는 dbt를 어댑터에 연결하는 다양한 방법과 유지 관리자가 무엇인지에 대해 더 자세히 설명합니다.</p>
+<h2 id="Set-up-in-dbt-Cloud"><a href="#Set-up-in-dbt-Cloud" class="headerlink" title="Set up in dbt Cloud"></a>Set up in dbt Cloud</h2><p>dbt를 배포하는 가장 빠르고 신뢰할 수 있는 방법을 알아보세요. dbt Cloud는 조직 전체에 걸쳐 dbt Core를 실행하는 호스팅 아키텍처로, dbt Cloud UI에서 직접 다양한 [trusted] 데이터 플랫폼 제공업체와 원활하게 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/cloud/about-cloud-setup">connect</a> 할 수 있습니다.</p>
+<h2 id="Install-with-dbt-Core"><a href="#Install-with-dbt-Core" class="headerlink" title="Install with dbt Core"></a>Install with dbt Core</h2><p>명령줄을 사용하여 로컬에 오픈 소스 도구인 dbt Core를 설치하세요. dbt는 각각 전용 어댑터 플러그인을 사용하여 여러 다른 데이터 플랫폼과 통신합니다. dbt Core를 설치할 때 특정 데이터베이스에 대한 어댑터도 설치해야 하며, <a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/core/about-core-setup">connect to dbt Core</a>,하고 <code>profiles.yml</code> 파일을 설정해야 합니다.</p>
+<p>일부 예외를 제외하고는(1), 모든 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/supported-data-platforms">adapters</a>를 PyPI에서 <code>python -m pip install adapter-name</code>을 사용하여 설치할 수 있습니다. 예를 들어, Snowflake를 설치하려면 <code>python -m pip install dbt-snowflake</code> 명령을 사용하세요. 설치에는 <code>dbt-core</code>와 필요한 모든 종속 항목이 포함되며, 다른 종속 항목뿐만 아니라 다른 어댑터 플러그인도 포함될 수 있습니다. <a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/core/installation-overview">installing dbt</a>에 대해 자세히 알아보세요.</p>
+<hr>
+
+<p>(1) <code>pip</code>를 사용하여 설치할 때 PyPI 패키지 이름을 사용하세요.</p>
 <table>
 <thead>
 <tr>
-<th>Data platforms (click to view setup guide)</th>
-<th></th>
-<th></th>
+<th>Adapter repo name</th>
+<th>PyPI package name</th>
 </tr>
 </thead>
 <tbody><tr>
-<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/core/connect-data-platform/clickhouse-setup">Clickhouse</a></td>
-<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/core/connect-data-platform/databend-setup">Databend Cloud</a></td>
-<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/core/connect-data-platform/doris-setup">Doris &amp; SelectDB</a></td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/core/connect-data-platform/duckdb-setup">DuckDB</a></td>
-<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/core/connect-data-platform/exasol-setup">Exasol Analytics</a></td>
-<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/core/connect-data-platform/extrica-setup">Extrica</a></td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/core/connect-data-platform/fal-setup">fal - Python models</a></td>
-<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/core/connect-data-platform/firebolt-setup">Firebolt</a></td>
-<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/core/connect-data-platform/greenplum-setup">Greenplum</a></td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/core/connect-data-platform/hive-setup">Hive</a></td>
-<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/core/connect-data-platform/ibmdb2-setup">IBM DB2</a></td>
-<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/core/connect-data-platform/impala-setup">Impala</a></td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/core/connect-data-platform/infer-setup">Infer</a></td>
-<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/core/connect-data-platform/iomete-setup">iomete</a></td>
-<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/core/connect-data-platform/mindsdb-setup">MindsDB</a></td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/core/connect-data-platform/mysql-setup">MySQL</a></td>
-<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/core/connect-data-platform/risingwave-setup">RisingWave</a></td>
-<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/core/connect-data-platform/rockset-setup">Rockset</a></td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/core/connect-data-platform/singlestore-setup">SingleStore</a></td>
-<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/core/connect-data-platform/mssql-setup">SQL Server &amp; Azure SQL</a></td>
-<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/core/connect-data-platform/sqlite-setup">SQLite</a></td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/core/connect-data-platform/starrocks-setup">Starrocks</a></td>
-<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/core/connect-data-platform/tidb-setup">TiDB</a></td>
-<td><a target="_blank" rel="noopener" href="https://dbt-timescaledb.debruyn.dev/">TimescaleDB</a></td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/core/connect-data-platform/upsolver-setup">Upsolver</a></td>
-<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/core/connect-data-platform/vertica-setup">Vertica</a></td>
-<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/core/connect-data-platform/yellowbrick-setup">Yellowbrick</a></td>
+<td><code>dbt-layer</code></td>
+<td><code>dbt-layer-bigquery</code></td>
 </tr>
 </tbody></table>
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/community-adapters">https://docs.getdbt.com/docs/community-adapters</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/connect-adapters">https://docs.getdbt.com/docs/connect-adapters</a></li>
 </ul>
 
                 
@@ -345,7 +310,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/05/15/DBT/Docs/Supported%20data%20platforms/Community%20adapters/">http://example.com/2024/05/15/DBT/Docs/Supported%20data%20platforms/Community%20adapters/</a>
+                    <a href="http://example.com/2024/01/01/DBT/Docs/Supported%20data%20platforms/How%20to%20connect%20to%20adapters/">http://example.com/2024/01/01/DBT/Docs/Supported%20data%20platforms/How%20to%20connect%20to%20adapters/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -457,12 +422,12 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/05/16/DBT/Docs/Build%20dbt%20projects/Build%20your%20DAG/Analyses/">
+                <a href="/2024/01/01/DBT/Docs/Supported%20data%20platforms/Community%20adapters/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] Analyses">
+                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] Community adapters">
                         
-                        <span class="card-title diy-neon-red">[DBT] Analyses</span>
+                        <span class="card-title diy-neon-red">[DBT] Community adapters</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -473,7 +438,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-05-16
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
                         </span>
                         <span class="publish-author">
                             
@@ -497,12 +462,12 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/05/15/DBT/Docs/Supported%20data%20platforms/How%20to%20connect%20to%20adapters/">
+                <a href="/2024/01/01/DBT/Docs/Supported%20data%20platforms/Supported%20data%20platforms/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] How to connect to adapters">
+                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] Supported data platforms">
                         
-                        <span class="card-title diy-neon-red">[DBT] How to connect to adapters</span>
+                        <span class="card-title diy-neon-red">[DBT] Supported data platforms</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -513,7 +478,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-05-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
                             </span>
                         <span class="publish-author">
                             

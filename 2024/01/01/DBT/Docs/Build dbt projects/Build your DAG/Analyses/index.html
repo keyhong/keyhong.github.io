@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[DBT] How to connect to adapters, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="How to connect to adapters어댑터는 dbt의 필수 구성 요소입니다. 가장 기본적인 수준에서는 dbt가 다양한 지원 데이터 플랫폼에 연결하는 방법입니다. 보다 높은 수준에서 어댑터는 분석 엔지니어에">
+    <meta name="keywords" content="[DBT] Analyses, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="AnalysesOverviewdbt의 models 개념은 데이터 팀이 데이터 변환에 대해 버전 관리를 하고 협업을 쉽게 할 수 있게 해줍니다. 하지만 때로는 특정 SQL 문이 dbt 모델의 틀에 맞지 않을 때가 있습">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[DBT] How to connect to adapters | Keyhong</title>
+    <title>[DBT] Analyses | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -204,7 +204,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [DBT] How to connect to adapters</h1>
+                        [DBT] Analyses</h1>
                 </div>
             </div>
         </div>
@@ -229,7 +229,7 @@
                         <div class="article-tag">
                             <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                                 <span class="chip bg-color">
-                                    2024-05-15</span>
+                                    2024-01-01</span>
                         </div>
                     
                     
@@ -261,28 +261,39 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="How-to-connect-to-adapters"><a href="#How-to-connect-to-adapters" class="headerlink" title="How to connect to adapters"></a>How to connect to adapters</h1><p>어댑터는 dbt의 필수 구성 요소입니다. 가장 기본적인 수준에서는 dbt가 다양한 지원 데이터 플랫폼에 연결하는 방법입니다. 보다 높은 수준에서 어댑터는 분석 엔지니어에게 보다 이동 가능한 기술을 제공하고 분석 프로젝트의 구조화 방식을 표준화하기 위해 노력합니다. 새로운 직장으로 이동할 때 다른 데이터 플랫폼을 사용하는 경우 새로운 언어나 SQL 변형을 배워야 했던 시절은 지나갔습니다. 이것이 dbt의 어댑터의 힘입니다 - 자세한 내용은 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/guides/adapter-creation?step=1">Build, test, document, and promote adapters</a> 가이드를 참조하세요.</p>
-<p>이 섹션에서는 dbt를 어댑터에 연결하는 다양한 방법과 유지 관리자가 무엇인지에 대해 더 자세히 설명합니다.</p>
-<h2 id="Set-up-in-dbt-Cloud"><a href="#Set-up-in-dbt-Cloud" class="headerlink" title="Set up in dbt Cloud"></a>Set up in dbt Cloud</h2><p>dbt를 배포하는 가장 빠르고 신뢰할 수 있는 방법을 알아보세요. dbt Cloud는 조직 전체에 걸쳐 dbt Core를 실행하는 호스팅 아키텍처로, dbt Cloud UI에서 직접 다양한 [trusted] 데이터 플랫폼 제공업체와 원활하게 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/cloud/about-cloud-setup">connect</a> 할 수 있습니다.</p>
-<h2 id="Install-with-dbt-Core"><a href="#Install-with-dbt-Core" class="headerlink" title="Install with dbt Core"></a>Install with dbt Core</h2><p>명령줄을 사용하여 로컬에 오픈 소스 도구인 dbt Core를 설치하세요. dbt는 각각 전용 어댑터 플러그인을 사용하여 여러 다른 데이터 플랫폼과 통신합니다. dbt Core를 설치할 때 특정 데이터베이스에 대한 어댑터도 설치해야 하며, <a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/core/about-core-setup">connect to dbt Core</a>,하고 <code>profiles.yml</code> 파일을 설정해야 합니다.</p>
-<p>일부 예외를 제외하고는(1), 모든 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/supported-data-platforms">adapters</a>를 PyPI에서 <code>python -m pip install adapter-name</code>을 사용하여 설치할 수 있습니다. 예를 들어, Snowflake를 설치하려면 <code>python -m pip install dbt-snowflake</code> 명령을 사용하세요. 설치에는 <code>dbt-core</code>와 필요한 모든 종속 항목이 포함되며, 다른 종속 항목뿐만 아니라 다른 어댑터 플러그인도 포함될 수 있습니다. <a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/core/installation-overview">installing dbt</a>에 대해 자세히 알아보세요.</p>
-<hr>
+                <h1 id="Analyses"><a href="#Analyses" class="headerlink" title="Analyses"></a>Analyses</h1><h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>dbt의 <code>models</code> 개념은 데이터 팀이 데이터 변환에 대해 버전 관리를 하고 협업을 쉽게 할 수 있게 해줍니다. 하지만 때로는 특정 SQL 문이 dbt 모델의 틀에 맞지 않을 때가 있습니다. 이러한 더 “분석적인” SQL 파일은 dbt의 <code>analysis</code> 기능을 사용하여 dbt 프로젝트 내에서 버전 관리할 수 있습니다.</p>
+<p>dbt 프로젝트의 <code>analyses/</code> 디렉토리에서 발견된 모든 <code>.sql</code> 파일은 컴파일되지만 실행되지는 않습니다. 이는 분석가들이 <code>&#123;&#123; ref(...) &#125;&#125;</code>와 같은 dbt 기능을 사용하여 환경에 구애받지 않고 모델을 선택할 수 있음을 의미합니다.</p>
+<p>실제로, 분석 파일은 다음과 같이 보일 수 있습니다 (<a target="_blank" rel="noopener" href="https://github.com/dbt-labs/quickbooks">open source Quickbooks models</a>을 통해):</p>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>analyses/running_total_by_account.sql</span></div><code class="language-sql"><span class="token comment">-- analyses/running_total_by_account.sql</span>
 
-<p>(1) <code>pip</code>를 사용하여 설치할 때 PyPI 패키지 이름을 사용하세요.</p>
-<table>
-<thead>
-<tr>
-<th>Adapter repo name</th>
-<th>PyPI package name</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>dbt-layer</code></td>
-<td><code>dbt-layer-bigquery</code></td>
-</tr>
-</tbody></table>
+<span class="token keyword">with</span> journal_entries <span class="token keyword">as</span> <span class="token punctuation">(</span>
+
+  <span class="token keyword">select</span> <span class="token operator">*</span>
+  <span class="token keyword">from</span> &#123;&#123; ref<span class="token punctuation">(</span><span class="token string">'quickbooks_adjusted_journal_entries'</span><span class="token punctuation">)</span> &#125;&#125;
+
+<span class="token punctuation">)</span><span class="token punctuation">,</span> accounts <span class="token keyword">as</span> <span class="token punctuation">(</span>
+
+  <span class="token keyword">select</span> <span class="token operator">*</span>
+  <span class="token keyword">from</span> &#123;&#123; ref<span class="token punctuation">(</span><span class="token string">'quickbooks_accounts_transformed'</span><span class="token punctuation">)</span> &#125;&#125;
+
+<span class="token punctuation">)</span>
+
+<span class="token keyword">select</span>
+  txn_date<span class="token punctuation">,</span>
+  account_id<span class="token punctuation">,</span>
+  adjusted_amount<span class="token punctuation">,</span>
+  description<span class="token punctuation">,</span>
+  account_name<span class="token punctuation">,</span>
+  <span class="token function">sum</span><span class="token punctuation">(</span>adjusted_amount<span class="token punctuation">)</span> <span class="token keyword">over</span> <span class="token punctuation">(</span><span class="token keyword">partition</span> <span class="token keyword">by</span> account_id <span class="token keyword">order</span> <span class="token keyword">by</span> id <span class="token keyword">rows</span> <span class="token keyword">unbounded</span> <span class="token keyword">preceding</span><span class="token punctuation">)</span>
+<span class="token keyword">from</span> journal_entries
+<span class="token keyword">order</span> <span class="token keyword">by</span> account_id<span class="token punctuation">,</span> id<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>이 분석을 실행 가능한 SQL로 컴파일하려면, 다음을 실행하세요:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">dbt compile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>그런 다음, <code>target/compiled/&#123;project name&#125;/analyses/running_total_by_account.sql</code>에서 컴파일된 SQL 파일을 찾으세요. 이 SQL은 예를 들어 데이터 시각화 도구에 붙여넣을 수 있습니다. 이것이 <code>analysis</code> 파일이지 <code>model</code>이 아니기 때문에, <code>running_total_by_account</code> 관계는 데이터베이스에 물리적으로 생성되지 않습니다.</p>
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/connect-adapters">https://docs.getdbt.com/docs/connect-adapters</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/build/analyses">https://docs.getdbt.com/docs/build/analyses</a></li>
 </ul>
 
                 
@@ -310,7 +321,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/05/15/DBT/Docs/Supported%20data%20platforms/How%20to%20connect%20to%20adapters/">http://example.com/2024/05/15/DBT/Docs/Supported%20data%20platforms/How%20to%20connect%20to%20adapters/</a>
+                    <a href="http://example.com/2024/01/01/DBT/Docs/Build%20dbt%20projects/Build%20your%20DAG/Analyses/">http://example.com/2024/01/01/DBT/Docs/Build%20dbt%20projects/Build%20your%20DAG/Analyses/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -422,12 +433,12 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/05/15/DBT/Docs/Supported%20data%20platforms/Community%20adapters/">
+                <a href="/2024/01/01/DBT/Docs/Supported%20data%20platforms/Trusted%20adapters/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] Community adapters">
+                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] Supported data platforms">
                         
-                        <span class="card-title diy-neon-red">[DBT] Community adapters</span>
+                        <span class="card-title diy-neon-red">[DBT] Supported data platforms</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -438,7 +449,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-05-15
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
                         </span>
                         <span class="publish-author">
                             
@@ -462,12 +473,12 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/05/15/DBT/Docs/Supported%20data%20platforms/Supported%20data%20platforms/">
+                <a href="/2023/12/29/Django/admin/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] Supported data platforms">
+                        <img src="/images/logos/django-logo.png" class="responsive-img" alt="[Django] admin">
                         
-                        <span class="card-title diy-neon-red">[DBT] Supported data platforms</span>
+                        <span class="card-title diy-neon-red">[Django] admin</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -478,14 +489,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-05-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-29
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/DBT/" class="post-category">
-                                    DBT
+                            <a href="/categories/Django/" class="post-category">
+                                    Django
                                 </a>
                             
                             
