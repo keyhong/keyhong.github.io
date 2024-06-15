@@ -4,11 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[DBT] analysis-paths, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="analysis-pathsdbt_project.ymlanalysis-paths: [directorypath]
+    <meta name="keywords" content="seed-paths, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="seed-pathsdbt_project.ymlseed-paths: [directorypath]
 
-Definitionanalyses이 위치한 디렉토리의 사용자 지정 목록을 지정합니다.
-Default이 설">
+Definition선택적으로 seed 파일이 위치한 사용자 정의 디렉터리 목록을 지정할 수 있습니다.
+Default기본">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +20,7 @@ Default이 설">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[DBT] analysis-paths | Keyhong</title>
+    <title>seed-paths | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -207,7 +207,7 @@ Default이 설">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [DBT] analysis-paths</h1>
+                        seed-paths</h1>
                 </div>
             </div>
         </div>
@@ -232,7 +232,7 @@ Default이 설">
                         <div class="article-tag">
                             <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                                 <span class="chip bg-color">
-                                    2024-05-16</span>
+                                    2024-01-01</span>
                         </div>
                     
                     
@@ -264,18 +264,21 @@ Default이 설">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="analysis-paths"><a href="#analysis-paths" class="headerlink" title="analysis-paths"></a>analysis-paths</h1><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">analysis-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>directorypath<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h1 id="seed-paths"><a href="#seed-paths" class="headerlink" title="seed-paths"></a>seed-paths</h1><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">seed-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>directorypath<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/build/analyses">analyses</a>이 위치한 디렉토리의 사용자 지정 목록을 지정합니다.</p>
-<h2 id="Default"><a href="#Default" class="headerlink" title="Default"></a>Default</h2><p>이 설정을 지정하지 않으면, dbt는 <code>.sql</code> 파일을 분석으로 컴파일하지 않습니다.</p>
-<p>그러나, <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/commands/init"><code>dbt init</code> command</a>는 이 값을 <code>analyses</code>로 채웁니다 (<a target="_blank" rel="noopener" href="https://github.com/dbt-labs/dbt-starter-project/blob/HEAD/dbt_project.yml#L15">source</a>)</p>
-<h2 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h2><h3 id="Use-a-subdirectory-named-analyses"><a href="#Use-a-subdirectory-named-analyses" class="headerlink" title="Use a subdirectory named analyses"></a>Use a subdirectory named <code>analyses</code></h3><p>이 값은 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/commands/init"><code>dbt init</code> command</a>에 의해 채워집니다.</p>
-<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">analysis-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"analyses"</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p>선택적으로 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/build/seeds">seed</a> 파일이 위치한 사용자 정의 디렉터리 목록을 지정할 수 있습니다.</p>
+<h2 id="Default"><a href="#Default" class="headerlink" title="Default"></a>Default</h2><p>기본적으로 dbt는 씨드 파일이 <code>seeds</code> 디렉터리에 위치한다고 예상합니다. 즉, <code>seed-paths: [&quot;seeds&quot;]</code>입니다.</p>
+<h2 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h2><h3 id="Use-a-subdirectory-named-custom-seeds-instead-of-seeds"><a href="#Use-a-subdirectory-named-custom-seeds-instead-of-seeds" class="headerlink" title="Use a subdirectory named custom_seeds instead of seeds"></a>Use a subdirectory named <code>custom_seeds</code> instead of <code>seeds</code></h3><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">seed-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"custom_seeds"</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="Use-a-subdirectory-named-custom-analyses"><a href="#Use-a-subdirectory-named-custom-analyses" class="headerlink" title="Use a subdirectory named custom_analyses"></a>Use a subdirectory named <code>custom_analyses</code></h3><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">analysis-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"custom_analyses"</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="Co-locate-your-models-and-seeds-in-the-models-director"><a href="#Co-locate-your-models-and-seeds-in-the-models-director" class="headerlink" title="Co-locate your models and seeds in the models director"></a>Co-locate your models and seeds in the <code>models</code> director</h3><p>Note: 이는 dbt가 씨드(<code>.csv</code> 파일)와 모델(<code>.sql</code> 파일)을 위한 서로 다른 파일 유형을 찾기 때문에 작동합니다.</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">seed-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"models"</span><span class="token punctuation">]</span>
+<span class="token key atrule">model-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"models"</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="Split-your-seeds-across-two-directories"><a href="#Split-your-seeds-across-two-directories" class="headerlink" title="Split your seeds across two directories"></a>Split your seeds across two directories</h3><p>Note: 비슷한 효과를 얻기 위해 대신 <code>seeds/</code> 디렉터리 내에 두 개의 하위 디렉터리를 사용하는 것을 권장합니다.</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">seed-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"seeds"</span><span class="token punctuation">,</span> <span class="token string">"custom_seeds"</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/analysis-paths">https://docs.getdbt.com/reference/project-configs/analysis-paths</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/seed-paths">https://docs.getdbt.com/reference/project-configs/seed-paths</a></li>
 </ul>
 
                 
@@ -303,7 +306,7 @@ Default이 설">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/05/16/DBT/Reference/Project%20Configs/analysis-paths/">http://example.com/2024/05/16/DBT/Reference/Project%20Configs/analysis-paths/</a>
+                    <a href="http://example.com/2024/01/01/DBT/Reference/Project%20Configs/seed-paths/">http://example.com/2024/01/01/DBT/Reference/Project%20Configs/seed-paths/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -415,12 +418,12 @@ Default이 설">
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/05/17/DBT/Reference/Project%20Configs/seed-paths/">
+                <a href="/2024/01/01/DBT/Reference/Project%20Configs/docs-paths/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] seed-paths">
+                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="docs-paths">
                         
-                        <span class="card-title diy-neon-red">[DBT] seed-paths</span>
+                        <span class="card-title diy-neon-red">docs-paths</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -431,7 +434,7 @@ Default이 설">
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-05-17
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
                         </span>
                         <span class="publish-author">
                             
@@ -455,12 +458,12 @@ Default이 설">
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/05/16/DBT/Reference/Project%20Configs/asset-paths/">
+                <a href="/2024/01/01/DBT/Docs/Build%20dbt%20projects/Build%20your%20DAG/Analyses/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] asset-paths">
+                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="Analyses">
                         
-                        <span class="card-title diy-neon-red">[DBT] asset-paths</span>
+                        <span class="card-title diy-neon-red">Analyses</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -471,7 +474,7 @@ Default이 설">
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-05-16
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
                             </span>
                         <span class="publish-author">
                             

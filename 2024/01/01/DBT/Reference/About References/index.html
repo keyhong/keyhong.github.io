@@ -4,8 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[DBT] Ddbt_project.yml, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="dbt_project.yml모든 dbt project에는 dbt_project.yml 파일이 필요합니다. 이 파일은 dbt가 디렉토리를 dbt 프로젝트로 인식하는 방법입니다. 또한 dbt가 프로젝트를 운영하는 방법을">
+    <meta name="keywords" content="About References, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="About References참조 섹션에는 dbt 개발을 위한 참조 자료가 포함되어 있습니다. 이는 dbt Cloud와 dbt Core를 포함합니다.
+dbt 프로젝트 또는 어댑터에 더 많은 구성을 추가하는 방법, 추">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[DBT] Ddbt_project.yml | Keyhong</title>
+    <title>About References | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -204,7 +205,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [DBT] Ddbt_project.yml</h1>
+                        About References</h1>
                 </div>
             </div>
         </div>
@@ -229,7 +230,7 @@
                         <div class="article-tag">
                             <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                                 <span class="chip bg-color">
-                                    2024-05-15</span>
+                                    2024-01-01</span>
                         </div>
                     
                     
@@ -261,84 +262,51 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="dbt-project-yml"><a href="#dbt-project-yml" class="headerlink" title="dbt_project.yml"></a>dbt_project.yml</h1><p>모든 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/build/projects">dbt project</a>에는 <code>dbt_project.yml</code> 파일이 필요합니다. 이 파일은 dbt가 디렉토리를 dbt 프로젝트로 인식하는 방법입니다. 또한 dbt가 프로젝트를 운영하는 방법을 알려주는 중요한 정보를 포함하고 있습니다.</p>
-<p>dbt는 몇 군데에서 <a target="_blank" rel="noopener" href="https://yaml.org/">YAML</a>을 사용합니다. YAML이 처음이라면 배열, 사전 및 문자열이 어떻게 표현되는지 학습하는 것이 좋습니다.</p>
-<p>기본적으로 dbt는 현재 작업 디렉토리와 해당 상위 디렉토리에서 <code>dbt_project.yml</code>을 찾지만, <code>--project-dir</code> 플래그나 <code>DBT_PROJECT_DIR</code> 환경 변수를 사용하여 다른 디렉토리를 설정할 수 있습니다.</p>
-<p>dbt v1.5 이상에서는 <code>dbt_project.yml</code> 파일의 <code>dbt-cloud</code> config 아래에 <code>project-id</code>를 사용하여 <code>dbt Cloud</code> 프로젝트 ID를 지정할 수 있습니다. 프로젝트 ID를 확인하려면 dbt Cloud 프로젝트 URL을 확인하세요. 예: <code>https://cloud.getdbt.com/11/projects/123456</code>에서 프로젝트 ID는 <code>123456</code>입니다.</p>
-<p>참고할 점은 <code>dbt_project.yml</code> 파일에서 config가 아닌 경우(예: <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/macro-properties">macros</a>), “property”을 설정할 수 없습니다. 이는 모든 종류의 리소스에 적용됩니다. 자세한 내용은 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/configs-and-properties">Configs and properties</a>를 참조하세요.</p>
-<p>다음 예는 <code>dbt_project.yml</code> 파일에서 사용 가능한 모든 구성 목록입니다:</p>
-<pre class="line-numbers language-Markdown" data-language="Markdown"><code class="language-Markdown">[name](&#x2F;reference&#x2F;project-configs&#x2F;name): string
+                <h1 id="About-References"><a href="#About-References" class="headerlink" title="About References"></a>About References</h1><p>참조 섹션에는 dbt 개발을 위한 참조 자료가 포함되어 있습니다. 이는 dbt Cloud와 dbt Core를 포함합니다.</p>
+<p>dbt 프로젝트 또는 어댑터에 더 많은 구성을 추가하는 방법, 추가 기능을 위해 속성을 사용하는 방법, dbt 명령을 참조하는 방법, 강력한 Jinja 함수를 사용하여 dbt 프로젝트를 간소화하는 방법 및 dbt 아티팩트를 사용하는 방법에 대해 배우세요.</p>
+<br>
 
-[config-version](&#x2F;reference&#x2F;project-configs&#x2F;config-version): 2
-[version](&#x2F;reference&#x2F;project-configs&#x2F;version): version
-
-[profile](&#x2F;reference&#x2F;project-configs&#x2F;profile): profilename
-
-[model-paths](&#x2F;reference&#x2F;project-configs&#x2F;model-paths): [directorypath]
-[seed-paths](&#x2F;reference&#x2F;project-configs&#x2F;seed-paths): [directorypath]
-[test-paths](&#x2F;reference&#x2F;project-configs&#x2F;test-paths): [directorypath]
-[analysis-paths](&#x2F;reference&#x2F;project-configs&#x2F;analysis-paths): [directorypath]
-[macro-paths](&#x2F;reference&#x2F;project-configs&#x2F;macro-paths): [directorypath]
-[snapshot-paths](&#x2F;reference&#x2F;project-configs&#x2F;snapshot-paths): [directorypath]
-[docs-paths](&#x2F;reference&#x2F;project-configs&#x2F;docs-paths): [directorypath]
-[asset-paths](&#x2F;reference&#x2F;project-configs&#x2F;asset-paths): [directorypath]
-
-[packages-install-path](&#x2F;reference&#x2F;project-configs&#x2F;packages-install-path): directorypath
-
-[clean-targets](&#x2F;reference&#x2F;project-configs&#x2F;clean-targets): [directorypath]
-
-[query-comment](&#x2F;reference&#x2F;project-configs&#x2F;query-comment): string
-
-[require-dbt-version](&#x2F;reference&#x2F;project-configs&#x2F;require-dbt-version): version-range | [version-range]
-
-[flags](&#x2F;reference&#x2F;global-configs&#x2F;project-flags):
-  [&lt;global-configs&gt;](&#x2F;reference&#x2F;global-configs&#x2F;project-flags)
-
-[dbt-cloud](&#x2F;docs&#x2F;cloud&#x2F;cloud-cli-installation):
-  [project-id](&#x2F;docs&#x2F;cloud&#x2F;configure-cloud-cli#configure-the-dbt-cloud-cli): project_id # Required
-  [defer-env-id](&#x2F;docs&#x2F;cloud&#x2F;about-cloud-develop-defer#defer-in-dbt-cloud-cli): environment_id # Optional
-
-[quoting](&#x2F;reference&#x2F;project-configs&#x2F;quoting):
-  database: true | false
-  schema: true | false
-  identifier: true | false
-
-metrics:
-  &lt;metric-configs&gt;
-
-models:
-  [&lt;model-configs&gt;](&#x2F;reference&#x2F;model-configs)
-
-seeds:
-  [&lt;seed-configs&gt;](&#x2F;reference&#x2F;seed-configs)
-
-semantic-models:
-  &lt;semantic-model-configs&gt;
-
-snapshots:
-  [&lt;snapshot-configs&gt;](&#x2F;reference&#x2F;snapshot-configs)
-
-sources:
-  [&lt;source-configs&gt;](source-configs)
-  
-tests:
-  [&lt;test-configs&gt;](&#x2F;reference&#x2F;data-test-configs)
-
-vars:
-  [&lt;variables&gt;](&#x2F;docs&#x2F;build&#x2F;project-variables)
-
-[on-run-start](&#x2F;reference&#x2F;project-configs&#x2F;on-run-start-on-run-end): sql-statement | [sql-statement]
-[on-run-end](&#x2F;reference&#x2F;project-configs&#x2F;on-run-start-on-run-end): sql-statement | [sql-statement]
-
-[dispatch](&#x2F;reference&#x2F;project-configs&#x2F;dispatch-config):
-  - macro_namespace: packagename
-    search_order: [packagename]
-
-[restrict-access](&#x2F;docs&#x2F;collaborate&#x2F;govern&#x2F;model-access): true | false<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/dbt_project.yml">https://docs.getdbt.com/reference/dbt_project.yml</a></li>
+<p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/dbt_project.yml">Project configurations</a></p>
+<ul>
+<li>성능을 최적화하기 위해 dbt 프로젝트를 사용자 정의하고 구성하세요.</li>
 </ul>
+<p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/resource-configs/postgres-configs">Platform-specific configurations</a></p>
+<ul>
+<li>dbt Cloud 및 dbt Core에서 플랫폼별 구성을 사용하여 성능을 최적화하는 방법을 배우세요.</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/configs-and-properties">Resource configurations and properties</a></p>
+<ul>
+<li>프로젝트 리소스에 추가 기능을 제공하는 속성 및 구성을 알아보세요.</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/dbt-commands">dbt Commands</a></p>
+<ul>
+<li>dbt에서 지원하는 명령과 관련 플래그를 개요로 제공합니다.</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/dbt-jinja-functions">dbt Jinja functions</a></p>
+<ul>
+<li>dbt 프로젝트 작업 시 유용한 추가 함수 및 변수를 제공하는 Jinja 컨텍스트에 대해 알아보세요.</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/artifacts/dbt-artifacts">dbt Artifacts</a></p>
+<ul>
+<li>dbt에서 생성된 아티팩트에 대한 정보 및 사용 방법에 대해 설명합니다.</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/database-permissions/snowflake-permissions">Snowflake permissions artifacts</a></p>
+<ul>
+<li>예제 Snowflake 데이터베이스 역할 권한을 제공합니다.</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/database-permissions/databricks-permissions">Databricks permissions artifacts</a></p>
+<ul>
+<li>예제 Databricks 데이터베이스 역할 권한을 제공합니다.</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/database-permissions/redshift-permissions">Redshift permissions artifacts</a></p>
+<ul>
+<li>예제 Redshift 데이터베이스 역할 권한을 제공합니다.</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/database-permissions/postgres-permissions">Postgres permissions artifacts</a></p>
+<ul>
+<li>예제 Postgres 데이터베이스 역할 권한을 제공합니다.</li>
+</ul>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/references-overview">https://docs.getdbt.com/reference/references-overview</a></p>
 
                 
             </div>
@@ -365,7 +333,7 @@ vars:
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/05/15/DBT/Reference/Project%20Configs/dbt_project.yml/">http://example.com/2024/05/15/DBT/Reference/Project%20Configs/dbt_project.yml/</a>
+                    <a href="http://example.com/2024/01/01/DBT/Reference/About%20References/">http://example.com/2024/01/01/DBT/Reference/About%20References/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -477,12 +445,12 @@ vars:
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/05/15/DBT/Reference/About%20References/About%20References/">
+                <a href="/2024/01/01/DBT/Docs/What%20is%20dbt/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] About References">
+                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="What is dbt?">
                         
-                        <span class="card-title diy-neon-red">[DBT] About References</span>
+                        <span class="card-title diy-neon-red">What is dbt?</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -493,7 +461,7 @@ vars:
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-05-15
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
                         </span>
                         <span class="publish-author">
                             
@@ -517,12 +485,12 @@ vars:
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/05/06/Spark/docs/Programming%20Guides/RDD%20Programming%20Guide/">
+                <a href="/2024/01/01/Hadoop/HDFS/hdfs-federation/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/pyspark-logo.png" class="responsive-img" alt="[Spark] Programming Guides - RDD Programming Guide">
+                        <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="[HDFS] Federation">
                         
-                        <span class="card-title diy-neon-red">[Spark] Programming Guides - RDD Programming Guide</span>
+                        <span class="card-title diy-neon-red">[HDFS] Federation</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -533,14 +501,14 @@ vars:
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-05-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Spark/" class="post-category">
-                                    Spark
+                            <a href="/categories/Hadoop/" class="post-category">
+                                    Hadoop
                                 </a>
                             
                             

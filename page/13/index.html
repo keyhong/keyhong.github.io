@@ -229,19 +229,19 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/DBT/Docs/Supported%20data%20platforms/How%20to%20connect%20to%20adapters/">
+                    <a href="/2024/01/01/DBT/Reference/Project%20Configs/dbt_project.yml/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="How to connect to adapters">
+                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="dbt_project.yml">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">How to connect to adapters</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">dbt_project.yml</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                How to connect to adapters어댑터는 dbt의 필수 구성 요소입니다. 가장 기본적인 수준에서는 dbt가 다양한 지원 데이터 플랫폼에 연결하는 방법입니다. 보다 높은 수준에서 어댑터는 분석 엔지니어에
+                                dbt_project.yml모든 dbt project에는 dbt_project.yml 파일이 필요합니다. 이 파일은 dbt가 디렉토리를 dbt 프로젝트로 인식하는 방법입니다. 또한 dbt가 프로젝트를 운영하는 방법을
                             
                         </div> -->
                         <div class="publish-info">
@@ -269,19 +269,22 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/DBT/Docs/Supported%20data%20platforms/Supported%20data%20platforms/">
+                    <a href="/2024/01/01/DBT/Reference/Project%20Configs/dispatch%20(config)/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="Supported data platforms">
+                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="dispatch (config)">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Supported data platforms</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">dispatch (config)</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Supported data platformsdbt는 데이터베이스, 데이터 웨어하우스, 데이터 레이크 또는 쿼리 엔진에 연결하여 SQL을 실행합니다. 이러한 SQL을 사용하는 플랫폼들을 data platforms이라고
+                                dispatch (config)dispatch:
+  - macro_namespace: packagename
+    search_order: [packagename]
+  - macro_namespace: package
                             
                         </div> -->
                         <div class="publish-info">
@@ -309,19 +312,65 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/DBT/Docs/Supported%20data%20platforms/Trusted%20adapters/">
+                    <a href="/2024/01/01/DBT/Reference/Project%20Configs/docs-paths/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="Supported data platforms">
+                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="docs-paths">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Supported data platforms</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">docs-paths</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Trusted adapters신뢰할 수 있는 어댑터는 Trusted Adapter 프로그램에 참여하며, 해당 프로그램의 요구 사항을 준수하기로 약속합니다. 이들은 dbt Labs, 파트너 및 커뮤니티 회원에 의해 유
+                                docs-pathsdbt_project.ymldocs-paths: [directorypath]
+
+Definition선택적으로 docs blocks이 위치한 사용자 정의 디렉터리 목록을 지정할 수 있습니다.
+Defau
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/DBT/" class="post-category">
+                                    DBT
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/01/01/DBT/Reference/Project%20Configs/seed-paths/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="seed-paths">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">seed-paths</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                seed-pathsdbt_project.ymlseed-paths: [directorypath]
+
+Definition선택적으로 seed 파일이 위치한 사용자 정의 디렉터리 목록을 지정할 수 있습니다.
+Default기본
                             
                         </div> -->
                         <div class="publish-info">
@@ -469,47 +518,6 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/28/Django/html-form/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/django-logo.png" class="responsive-img" alt="[Django] HTML Form">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Django] HTML Form</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                언제 쓰나요?HTML Form (클라이언트 측)클라이언트에서 사용자에게 입력폼을 제공하고, 이를 서버로 전송코자 할 때
-Django Form (서버측)클라이언트로부터 전달받은 값에 대한 유효성 검사를 수행하고, 이를
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-28
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Django/" class="post-category">
-                                    Django
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
                     <a href="/2023/12/28/Django/mediafiles%20copy/">
                         <div class="card-image">
                             
@@ -557,22 +565,20 @@ FileField &#
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/28/Django/model-fields/">
+                    <a href="/2023/12/28/Django/html-form/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/django-logo.png" class="responsive-img" alt="[Django] Django 모델 필드">
+                            <img src="/images/logos/django-logo.png" class="responsive-img" alt="[Django] HTML Form">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Django] Django 모델 필드</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Django] HTML Form</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                기본 지원되는 모델필드 타입 (1)
-Primary Key: AutoField, BigAutoField
-문자열: CharField, TextField, SlugField
-날짜&#x2F;시간: DateField, Tim
+                                언제 쓰나요?HTML Form (클라이언트 측)클라이언트에서 사용자에게 입력폼을 제공하고, 이를 서버로 전송코자 할 때
+Django Form (서버측)클라이언트로부터 전달받은 값에 대한 유효성 검사를 수행하고, 이를
                             
                         </div> -->
                         <div class="publish-info">
@@ -600,23 +606,22 @@ Primary Key: AutoField, BigAutoField
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/28/Django/model-orm/">
+                    <a href="/2023/12/28/Django/model-fields/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/django-logo.png" class="responsive-img" alt="[Django] Django 모델 (ORM)">
+                            <img src="/images/logos/django-logo.png" class="responsive-img" alt="[Django] Django 모델 필드">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Django] Django 모델 (ORM)</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Django] Django 모델 필드</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                애플리케이션의 다양한 데이터 저장 방법데이터베이스 : DBMS, NoSQL 등 
-파일 : 로컬, 외부 정적 스토리지
-캐시서버 : memcached, redis 등
- 
-데이터베이스와 SQL데이터베이스의 종류RDBMS 
+                                기본 지원되는 모델필드 타입 (1)
+Primary Key: AutoField, BigAutoField
+문자열: CharField, TextField, SlugField
+날짜&#x2F;시간: DateField, Tim
                             
                         </div> -->
                         <div class="publish-info">

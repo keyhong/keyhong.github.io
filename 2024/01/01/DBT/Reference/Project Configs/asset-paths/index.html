@@ -4,11 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[DBT] docs-paths, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="docs-pathsdbt_project.ymldocs-paths: [directorypath]
+    <meta name="keywords" content="asset-paths, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="asset-pathsdbt_project.ymlasset-paths: [directorypath]
 
-Definition선택적으로 docs blocks이 위치한 사용자 정의 디렉터리 목록을 지정할 수 있습니다.
-Defau">
+Definitionanalyses이 위치한 디렉토리의 사용자 정의 목록을 지정하세요.
+docs generate 명령">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +20,7 @@ Defau">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[DBT] docs-paths | Keyhong</title>
+    <title>asset-paths | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -207,7 +207,7 @@ Defau">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [DBT] docs-paths</h1>
+                        asset-paths</h1>
                 </div>
             </div>
         </div>
@@ -232,7 +232,7 @@ Defau">
                         <div class="article-tag">
                             <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                                 <span class="chip bg-color">
-                                    2024-05-17</span>
+                                    2024-01-01</span>
                         </div>
                     
                     
@@ -264,16 +264,17 @@ Defau">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="docs-paths"><a href="#docs-paths" class="headerlink" title="docs-paths"></a>docs-paths</h1><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">docs-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>directorypath<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h1 id="asset-paths"><a href="#asset-paths" class="headerlink" title="asset-paths"></a>asset-paths</h1><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">asset-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>directorypath<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p>선택적으로 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/collaborate/documentation#docs-blocks">docs blocks</a>이 위치한 사용자 정의 디렉터리 목록을 지정할 수 있습니다.</p>
-<h2 id="Default"><a href="#Default" class="headerlink" title="Default"></a>Default</h2><p>기본적으로 dbt는 문서 블록을 찾기 위해 모든 리소스 경로 (즉, <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/model-paths">model-paths</a>, <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/seed-paths">seed-paths</a>, <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/analysis-paths">analysis-paths</a>, <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/macro-paths">macro-paths</a> 및 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/snapshot-paths">snapshot-paths</a>의 결합된 목록)를 검색합니다. 이 옵션이 구성되면 dbt는 문서 블록을 찾기 위해 지정된 디렉터리만 검색합니다.</p>
-<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><p>문서 블록에는 <code>docs</code>라는 하위 디렉터리를 사용합니다.</p>
-<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">docs-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"docs"</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/build/analyses">analyses</a>이 위치한 디렉토리의 사용자 정의 목록을 지정하세요.</p>
+<p><code>docs generate</code> 명령어의 일부로 <code>target</code> 디렉토리에 복사할 사용자 정의 디렉토리 목록을 선택적으로 지정할 수 있습니다. 이것은 프로젝트 문서에서 귀하의 저장소 내 이미지를 렌더링하는 데 유용합니다.</p>
+<h2 id="Default"><a href="#Default" class="headerlink" title="Default"></a>Default</h2><p>기본적으로 dbt는 docs generate의 일환으로 추가 파일을 복사하지 않습니다. 즉, <code>asset-paths: []</code>입니다.</p>
+<h2 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h2><h2 id="Compile-files-in-the-assets-subdirectory-as-part-of-docs-generate"><a href="#Compile-files-in-the-assets-subdirectory-as-part-of-docs-generate" class="headerlink" title="Compile files in the assets subdirectory as part of docs generate"></a>Compile files in the <code>assets</code> subdirectory as part of <code>docs generate</code></h2><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">asset-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"assets"</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><strong>Note</strong>: 일반적으로 우리는 dbt의 기본 동작을 선호하여 이 구성을 생략합니다.</p>
+<p>이 디렉토리에 포함된 모든 파일은 <code>dbt docs generate</code>의 일환으로 <code>target/</code> 디렉토리로 복사됩니다. 이로써 프로젝트 문서에서 이미지로 접근할 수 있게 됩니다.</p>
+<p>이미지를 설명에 포함하는 방법에 대한 자세한 내용은 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/resource-properties/description#include-an-image-from-your-repo-in-your-descriptions">here</a>에서 전체 글을 확인하세요.</p>
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/docs-paths">https://docs.getdbt.com/reference/project-configs/docs-paths</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/asset-paths">https://docs.getdbt.com/reference/project-configs/asset-paths</a></li>
 </ul>
 
                 
@@ -301,7 +302,7 @@ Defau">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/05/17/DBT/Reference/Project%20Configs/docs-paths/">http://example.com/2024/05/17/DBT/Reference/Project%20Configs/docs-paths/</a>
+                    <a href="http://example.com/2024/01/01/DBT/Reference/Project%20Configs/asset-paths/">http://example.com/2024/01/01/DBT/Reference/Project%20Configs/asset-paths/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -413,12 +414,12 @@ Defau">
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/05/17/DBT/Reference/Project%20Configs/dispatch%20(config)/">
+                <a href="/2024/01/01/DBT/Reference/Project%20Configs/analysis-paths/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] dispatch (config)">
+                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="analysis-paths">
                         
-                        <span class="card-title diy-neon-red">[DBT] dispatch (config)</span>
+                        <span class="card-title diy-neon-red">analysis-paths</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -429,7 +430,7 @@ Defau">
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-05-17
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
                         </span>
                         <span class="publish-author">
                             
@@ -453,12 +454,12 @@ Defau">
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/05/17/DBT/Reference/Project%20Configs/seed-paths/">
+                <a href="/2024/01/01/DBT/Reference/Project%20Configs/clean-targets/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] seed-paths">
+                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="clean-targets">
                         
-                        <span class="card-title diy-neon-red">[DBT] seed-paths</span>
+                        <span class="card-title diy-neon-red">clean-targets</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -469,7 +470,7 @@ Defau">
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-05-17
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
                             </span>
                         <span class="publish-author">
                             

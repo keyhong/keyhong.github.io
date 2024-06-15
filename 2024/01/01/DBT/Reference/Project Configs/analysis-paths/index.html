@@ -4,9 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[DBT] About References, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="About References참조 섹션에는 dbt 개발을 위한 참조 자료가 포함되어 있습니다. 이는 dbt Cloud와 dbt Core를 포함합니다.
-dbt 프로젝트 또는 어댑터에 더 많은 구성을 추가하는 방법, 추">
+    <meta name="keywords" content="analysis-paths, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="analysis-pathsdbt_project.ymlanalysis-paths: [directorypath]
+
+Definitionanalyses이 위치한 디렉토리의 사용자 지정 목록을 지정합니다.
+Default이 설">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +20,7 @@ dbt 프로젝트 또는 어댑터에 더 많은 구성을 추가하는 방법, �
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[DBT] About References | Keyhong</title>
+    <title>analysis-paths | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -205,7 +207,7 @@ dbt 프로젝트 또는 어댑터에 더 많은 구성을 추가하는 방법, �
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [DBT] About References</h1>
+                        analysis-paths</h1>
                 </div>
             </div>
         </div>
@@ -230,7 +232,7 @@ dbt 프로젝트 또는 어댑터에 더 많은 구성을 추가하는 방법, �
                         <div class="article-tag">
                             <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                                 <span class="chip bg-color">
-                                    2024-05-15</span>
+                                    2024-01-01</span>
                         </div>
                     
                     
@@ -262,51 +264,19 @@ dbt 프로젝트 또는 어댑터에 더 많은 구성을 추가하는 방법, �
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="About-References"><a href="#About-References" class="headerlink" title="About References"></a>About References</h1><p>참조 섹션에는 dbt 개발을 위한 참조 자료가 포함되어 있습니다. 이는 dbt Cloud와 dbt Core를 포함합니다.</p>
-<p>dbt 프로젝트 또는 어댑터에 더 많은 구성을 추가하는 방법, 추가 기능을 위해 속성을 사용하는 방법, dbt 명령을 참조하는 방법, 강력한 Jinja 함수를 사용하여 dbt 프로젝트를 간소화하는 방법 및 dbt 아티팩트를 사용하는 방법에 대해 배우세요.</p>
-<br>
+                <h1 id="analysis-paths"><a href="#analysis-paths" class="headerlink" title="analysis-paths"></a>analysis-paths</h1><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">analysis-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>directorypath<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/dbt_project.yml">Project configurations</a></p>
-<ul>
-<li>성능을 최적화하기 위해 dbt 프로젝트를 사용자 정의하고 구성하세요.</li>
+<h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/build/analyses">analyses</a>이 위치한 디렉토리의 사용자 지정 목록을 지정합니다.</p>
+<h2 id="Default"><a href="#Default" class="headerlink" title="Default"></a>Default</h2><p>이 설정을 지정하지 않으면, dbt는 <code>.sql</code> 파일을 분석으로 컴파일하지 않습니다.</p>
+<p>그러나, <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/commands/init"><code>dbt init</code> command</a>는 이 값을 <code>analyses</code>로 채웁니다 (<a target="_blank" rel="noopener" href="https://github.com/dbt-labs/dbt-starter-project/blob/HEAD/dbt_project.yml#L15">source</a>)</p>
+<h2 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h2><h3 id="Use-a-subdirectory-named-analyses"><a href="#Use-a-subdirectory-named-analyses" class="headerlink" title="Use a subdirectory named analyses"></a>Use a subdirectory named <code>analyses</code></h3><p>이 값은 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/commands/init"><code>dbt init</code> command</a>에 의해 채워집니다.</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">analysis-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"analyses"</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="Use-a-subdirectory-named-custom-analyses"><a href="#Use-a-subdirectory-named-custom-analyses" class="headerlink" title="Use a subdirectory named custom_analyses"></a>Use a subdirectory named <code>custom_analyses</code></h3><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">analysis-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"custom_analyses"</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/analysis-paths">https://docs.getdbt.com/reference/project-configs/analysis-paths</a></li>
 </ul>
-<p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/resource-configs/postgres-configs">Platform-specific configurations</a></p>
-<ul>
-<li>dbt Cloud 및 dbt Core에서 플랫폼별 구성을 사용하여 성능을 최적화하는 방법을 배우세요.</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/configs-and-properties">Resource configurations and properties</a></p>
-<ul>
-<li>프로젝트 리소스에 추가 기능을 제공하는 속성 및 구성을 알아보세요.</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/dbt-commands">dbt Commands</a></p>
-<ul>
-<li>dbt에서 지원하는 명령과 관련 플래그를 개요로 제공합니다.</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/dbt-jinja-functions">dbt Jinja functions</a></p>
-<ul>
-<li>dbt 프로젝트 작업 시 유용한 추가 함수 및 변수를 제공하는 Jinja 컨텍스트에 대해 알아보세요.</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/artifacts/dbt-artifacts">dbt Artifacts</a></p>
-<ul>
-<li>dbt에서 생성된 아티팩트에 대한 정보 및 사용 방법에 대해 설명합니다.</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/database-permissions/snowflake-permissions">Snowflake permissions artifacts</a></p>
-<ul>
-<li>예제 Snowflake 데이터베이스 역할 권한을 제공합니다.</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/database-permissions/databricks-permissions">Databricks permissions artifacts</a></p>
-<ul>
-<li>예제 Databricks 데이터베이스 역할 권한을 제공합니다.</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/database-permissions/redshift-permissions">Redshift permissions artifacts</a></p>
-<ul>
-<li>예제 Redshift 데이터베이스 역할 권한을 제공합니다.</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/database-permissions/postgres-permissions">Postgres permissions artifacts</a></p>
-<ul>
-<li>예제 Postgres 데이터베이스 역할 권한을 제공합니다.</li>
-</ul>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/references-overview">https://docs.getdbt.com/reference/references-overview</a></p>
 
                 
             </div>
@@ -333,7 +303,7 @@ dbt 프로젝트 또는 어댑터에 더 많은 구성을 추가하는 방법, �
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/05/15/DBT/Reference/About%20References/About%20References/">http://example.com/2024/05/15/DBT/Reference/About%20References/About%20References/</a>
+                    <a href="http://example.com/2024/01/01/DBT/Reference/Project%20Configs/analysis-paths/">http://example.com/2024/01/01/DBT/Reference/Project%20Configs/analysis-paths/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -445,12 +415,12 @@ dbt 프로젝트 또는 어댑터에 더 많은 구성을 추가하는 방법, �
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/05/16/DBT/Reference/Project%20Configs/asset-paths/">
+                <a href="/2024/01/01/DBT/Docs/Supported%20data%20platforms/Trusted%20adapters/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] asset-paths">
+                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="Supported data platforms">
                         
-                        <span class="card-title diy-neon-red">[DBT] asset-paths</span>
+                        <span class="card-title diy-neon-red">Supported data platforms</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -461,7 +431,7 @@ dbt 프로젝트 또는 어댑터에 더 많은 구성을 추가하는 방법, �
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-05-16
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
                         </span>
                         <span class="publish-author">
                             
@@ -485,12 +455,12 @@ dbt 프로젝트 또는 어댑터에 더 많은 구성을 추가하는 방법, �
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/05/15/DBT/Reference/Project%20Configs/dbt_project.yml/">
+                <a href="/2024/01/01/DBT/Reference/Project%20Configs/asset-paths/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] Ddbt_project.yml">
+                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="asset-paths">
                         
-                        <span class="card-title diy-neon-red">[DBT] Ddbt_project.yml</span>
+                        <span class="card-title diy-neon-red">asset-paths</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -501,7 +471,7 @@ dbt 프로젝트 또는 어댑터에 더 많은 구성을 추가하는 방법, �
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-05-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
                             </span>
                         <span class="publish-author">
                             

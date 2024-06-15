@@ -4,11 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[DBT] asset-paths, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="asset-pathsdbt_project.ymlasset-paths: [directorypath]
+    <meta name="keywords" content="clean-targets, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="clean-targetsdbt_project.ymlclean-targets: [directorypath]
 
-Definitionanalyses이 위치한 디렉토리의 사용자 정의 목록을 지정하세요.
-docs generate 명령">
+Definition선택적으로 dbt clean command로 제거할 사용자 지정 디렉터리 목록을 지정할 수">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +19,7 @@ docs generate 명령">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[DBT] asset-paths | Keyhong</title>
+    <title>clean-targets | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -207,7 +206,7 @@ docs generate 명령">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [DBT] asset-paths</h1>
+                        clean-targets</h1>
                 </div>
             </div>
         </div>
@@ -232,7 +231,7 @@ docs generate 명령">
                         <div class="article-tag">
                             <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                                 <span class="chip bg-color">
-                                    2024-05-16</span>
+                                    2024-01-01</span>
                         </div>
                     
                     
@@ -264,17 +263,22 @@ docs generate 명령">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="asset-paths"><a href="#asset-paths" class="headerlink" title="asset-paths"></a>asset-paths</h1><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">asset-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>directorypath<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h1 id="clean-targets"><a href="#clean-targets" class="headerlink" title="clean-targets"></a>clean-targets</h1><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">clean-targets</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>directorypath<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/build/analyses">analyses</a>이 위치한 디렉토리의 사용자 정의 목록을 지정하세요.</p>
-<p><code>docs generate</code> 명령어의 일부로 <code>target</code> 디렉토리에 복사할 사용자 정의 디렉토리 목록을 선택적으로 지정할 수 있습니다. 이것은 프로젝트 문서에서 귀하의 저장소 내 이미지를 렌더링하는 데 유용합니다.</p>
-<h2 id="Default"><a href="#Default" class="headerlink" title="Default"></a>Default</h2><p>기본적으로 dbt는 docs generate의 일환으로 추가 파일을 복사하지 않습니다. 즉, <code>asset-paths: []</code>입니다.</p>
-<h2 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h2><h2 id="Compile-files-in-the-assets-subdirectory-as-part-of-docs-generate"><a href="#Compile-files-in-the-assets-subdirectory-as-part-of-docs-generate" class="headerlink" title="Compile files in the assets subdirectory as part of docs generate"></a>Compile files in the <code>assets</code> subdirectory as part of <code>docs generate</code></h2><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">asset-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"assets"</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p>선택적으로 <code>dbt clean</code> <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/commands/clean">command</a>로 제거할 사용자 지정 디렉터리 목록을 지정할 수 있습니다. 따라서 이 목록에는 아티팩트(예: 컴파일된 파일, 로그, 설치된 패키지)를 포함하는 디렉터리만 포함해야 합니다.</p>
+<h2 id="Default"><a href="#Default" class="headerlink" title="Default"></a>Default</h2><p>이 configuration이 <code>dbt_project.yml</code> 파일에 포함되지 않은 경우, <code>clean</code> 명령어는 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/global-configs/json-artifacts">target-path</a>의 파일을 제거할 것입니다.</p>
+<h2 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h2><h3 id="Remove-packages-and-compiled-files-as-part-of-dbt-clean-preferred"><a href="#Remove-packages-and-compiled-files-as-part-of-dbt-clean-preferred" class="headerlink" title="Remove packages and compiled files as part of dbt clean (preferred)"></a>Remove packages and compiled files as part of dbt clean (preferred)</h3><p>패키지와 컴파일된 파일을 모두 제거하려면, <code>clean-targets</code> 구성에 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/packages-install-path">packages-install-path</a> 구성의 값을 포함하십시오.</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">clean-targets</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> target
+    <span class="token punctuation">-</span> dbt_packages<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<p>이 디렉토리에 포함된 모든 파일은 <code>dbt docs generate</code>의 일환으로 <code>target/</code> 디렉토리로 복사됩니다. 이로써 프로젝트 문서에서 이미지로 접근할 수 있게 됩니다.</p>
-<p>이미지를 설명에 포함하는 방법에 대한 자세한 내용은 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/resource-properties/description#include-an-image-from-your-repo-in-your-descriptions">here</a>에서 전체 글을 확인하세요.</p>
+<p>이제, <code>dbt clean</code>을 실행하십시오.</p>
+<p><code>target</code> 및 <code>dbt_packages</code> 디렉터리가 모두 제거됩니다.</p>
+<p>Note: 이것은 <code>init</code> 명령으로 생성된 dbt <a target="_blank" rel="noopener" href="https://github.com/dbt-labs/dbt-starter-project/blob/HEAD/dbt_project.yml">starter project</a>의 구성입니다.</p>
+<h2 id="Remove-logs-when-running-dbt-clean"><a href="#Remove-logs-when-running-dbt-clean" class="headerlink" title="Remove logs when running dbt clean"></a>Remove <code>logs</code> when running <code>dbt clean</code></h2><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">clean-targets</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>target<span class="token punctuation">,</span> dbt_packages<span class="token punctuation">,</span> logs<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/asset-paths">https://docs.getdbt.com/reference/project-configs/asset-paths</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/clean-targets">https://docs.getdbt.com/reference/project-configs/clean-targets</a></li>
 </ul>
 
                 
@@ -302,7 +306,7 @@ docs generate 명령">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/05/16/DBT/Reference/Project%20Configs/asset-paths/">http://example.com/2024/05/16/DBT/Reference/Project%20Configs/asset-paths/</a>
+                    <a href="http://example.com/2024/01/01/DBT/Reference/Project%20Configs/clean-targets/">http://example.com/2024/01/01/DBT/Reference/Project%20Configs/clean-targets/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -414,12 +418,12 @@ docs generate 명령">
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/05/16/DBT/Reference/Project%20Configs/analysis-paths/">
+                <a href="/2024/01/01/DBT/Reference/Project%20Configs/asset-paths/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] analysis-paths">
+                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="asset-paths">
                         
-                        <span class="card-title diy-neon-red">[DBT] analysis-paths</span>
+                        <span class="card-title diy-neon-red">asset-paths</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -430,7 +434,7 @@ docs generate 명령">
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-05-16
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
                         </span>
                         <span class="publish-author">
                             
@@ -454,12 +458,12 @@ docs generate 명령">
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/05/15/DBT/Reference/About%20References/About%20References/">
+                <a href="/2024/01/01/DBT/Reference/Project%20Configs/config-version/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] About References">
+                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="config-version">
                         
-                        <span class="card-title diy-neon-red">[DBT] About References</span>
+                        <span class="card-title diy-neon-red">config-version</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -470,7 +474,7 @@ docs generate 명령">
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-05-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
                             </span>
                         <span class="publish-author">
                             

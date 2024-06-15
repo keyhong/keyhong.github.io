@@ -4,11 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[DBT] dispatch (config), Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="dispatch (config)dispatch:
-  - macro_namespace: packagename
-    search_order: [packagename]
-  - macro_namespace: package">
+    <meta name="keywords" content="DBT Reference Index, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="About ReferencesProject configsPlatform-specific configsResource configs and propertiesCommandsJinja Referencedbt Artifa">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[DBT] dispatch (config) | Keyhong</title>
+    <title>DBT Reference Index | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -207,7 +204,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [DBT] dispatch (config)</h1>
+                        DBT Reference Index</h1>
                 </div>
             </div>
         </div>
@@ -232,7 +229,7 @@
                         <div class="article-tag">
                             <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                                 <span class="chip bg-color">
-                                    2024-05-17</span>
+                                    2024-06-15</span>
                         </div>
                     
                     
@@ -264,28 +261,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="dispatch-config"><a href="#dispatch-config" class="headerlink" title="dispatch (config)"></a>dispatch (config)</h1><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">dispatch</span><span class="token punctuation">:</span>
-  <span class="token punctuation">-</span> <span class="token key atrule">macro_namespace</span><span class="token punctuation">:</span> packagename
-    <span class="token key atrule">search_order</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>packagename<span class="token punctuation">]</span>
-  <span class="token punctuation">-</span> <span class="token key atrule">macro_namespace</span><span class="token punctuation">:</span> packagename
-    <span class="token key atrule">search_order</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>packagename<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p>일부 네임스페이스에서 매크로의 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/dbt-jinja-functions/dispatch">dispatch</a> 검색 위치를 선택적으로 재정의할 수 있습니다. 지정되지 않으면 기본적으로 <code>dispatch</code>는 <em><strong>first</strong></em> 루트 프로젝트에서 검색한 다음 <code>macro_namespace</code>으로 명명된 패키지에서 구현을 찾습니다.</p>
-<h2 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h2><p>저는 <code>dbt_utils</code> 패키지를 <code>spark_utils</code> 호환 패키지로 “shim”하고 싶습니다.</p>
-<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">dispatch</span><span class="token punctuation">:</span>
-  <span class="token punctuation">-</span> <span class="token key atrule">macro_namespace</span><span class="token punctuation">:</span> dbt_utils
-    <span class="token key atrule">search_order</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'spark_utils'</span><span class="token punctuation">,</span> <span class="token string">'dbt_utils'</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<p><code>dbt_utils</code> 패키지의 일부 매크로를 루트 프로젝트(<code>&#39;my_root_project&#39;</code>)에서 다시 구현했으며, 내 버전이 우선되기를 원합니다. 그렇지 않으면 <code>dbt_utils</code>의 버전으로 되돌아갑니다.</p>
-<p><em><strong>Note: 이것은 기본 동작입니다. 필요에 따라 검색 순서를 명시적으로 표현할 수 있습니다.</strong></em></p>
-<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">dispatch</span><span class="token punctuation">:</span>
-  <span class="token punctuation">-</span> <span class="token key atrule">macro_namespace</span><span class="token punctuation">:</span> dbt_utils
-    <span class="token key atrule">search_order</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'my_root_project'</span><span class="token punctuation">,</span> <span class="token string">'dbt_utils'</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/dispatch-config">https://docs.getdbt.com/reference/project-configs/dispatch-config</a></li>
-</ul>
-
+                <h2 id="About-References"><a href="#About-References" class="headerlink" title="About References"></a><a href="">About References</a></h2><h2 id="Project-configs"><a href="#Project-configs" class="headerlink" title="Project configs"></a><a href="">Project configs</a></h2><h2 id="Platform-specific-configs"><a href="#Platform-specific-configs" class="headerlink" title="Platform-specific configs"></a><a href="">Platform-specific configs</a></h2><h2 id="Resource-configs-and-properties"><a href="#Resource-configs-and-properties" class="headerlink" title="Resource configs and properties"></a><a href="">Resource configs and properties</a></h2><h2 id="Commands"><a href="#Commands" class="headerlink" title="Commands"></a><a href="">Commands</a></h2><h2 id="Jinja-Reference"><a href="#Jinja-Reference" class="headerlink" title="Jinja Reference"></a><a href="">Jinja Reference</a></h2><h2 id="dbt-Artifacts"><a href="#dbt-Artifacts" class="headerlink" title="dbt Artifacts"></a><a href="">dbt Artifacts</a></h2><h2 id="Database-Permissions"><a href="#Database-Permissions" class="headerlink" title="Database Permissions"></a><a href="">Database Permissions</a></h2>
                 
             </div>
             <hr/>
@@ -311,7 +287,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/05/17/DBT/Reference/Project%20Configs/dispatch%20(config)/">http://example.com/2024/05/17/DBT/Reference/Project%20Configs/dispatch%20(config)/</a>
+                    <a href="http://example.com/2024/06/15/DBT/Reference/DBT%20Reference%20Index/">http://example.com/2024/06/15/DBT/Reference/DBT%20Reference%20Index/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -419,16 +395,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2024/05/17/DBT/Reference/Project%20Configs/config-version/">
+                <a href="/2024/06/15/DBT/Reference/DBT%20Reference%20Index/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] config-version">
+                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="DBT Reference Index">
                         
-                        <span class="card-title diy-neon-red">[DBT] config-version</span>
+                        <span class="card-title diy-neon-yellow">DBT Reference Index</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -438,9 +415,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-05-17
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-06-15
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -453,6 +430,7 @@
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -463,12 +441,12 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/05/17/DBT/Reference/Project%20Configs/docs-paths/">
+                <a href="/2024/06/15/DBT/Docs/DBT%20Docs%20Index/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] docs-paths">
+                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="DBT Docs Index">
                         
-                        <span class="card-title diy-neon-red">[DBT] docs-paths</span>
+                        <span class="card-title diy-neon-red">DBT Docs Index</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -479,7 +457,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-05-17
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-06-15
                             </span>
                         <span class="publish-author">
                             

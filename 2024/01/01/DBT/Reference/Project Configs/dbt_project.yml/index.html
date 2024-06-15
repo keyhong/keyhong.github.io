@@ -4,10 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[DBT] clean-targets, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="clean-targetsdbt_project.ymlclean-targets: [directorypath]
-
-Definition선택적으로 dbt clean command로 제거할 사용자 지정 디렉터리 목록을 지정할 수">
+    <meta name="keywords" content="dbt_project.yml, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="dbt_project.yml모든 dbt project에는 dbt_project.yml 파일이 필요합니다. 이 파일은 dbt가 디렉토리를 dbt 프로젝트로 인식하는 방법입니다. 또한 dbt가 프로젝트를 운영하는 방법을">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +17,7 @@ Definition선택적으로 dbt clean command로 제거할 사용자 지정 디렉
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[DBT] clean-targets | Keyhong</title>
+    <title>dbt_project.yml | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -206,7 +204,7 @@ Definition선택적으로 dbt clean command로 제거할 사용자 지정 디렉
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [DBT] clean-targets</h1>
+                        dbt_project.yml</h1>
                 </div>
             </div>
         </div>
@@ -231,7 +229,7 @@ Definition선택적으로 dbt clean command로 제거할 사용자 지정 디렉
                         <div class="article-tag">
                             <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                                 <span class="chip bg-color">
-                                    2024-05-17</span>
+                                    2024-01-01</span>
                         </div>
                     
                     
@@ -263,22 +261,83 @@ Definition선택적으로 dbt clean command로 제거할 사용자 지정 디렉
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="clean-targets"><a href="#clean-targets" class="headerlink" title="clean-targets"></a>clean-targets</h1><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">clean-targets</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>directorypath<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h1 id="dbt-project-yml"><a href="#dbt-project-yml" class="headerlink" title="dbt_project.yml"></a>dbt_project.yml</h1><p>모든 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/build/projects">dbt project</a>에는 <code>dbt_project.yml</code> 파일이 필요합니다. 이 파일은 dbt가 디렉토리를 dbt 프로젝트로 인식하는 방법입니다. 또한 dbt가 프로젝트를 운영하는 방법을 알려주는 중요한 정보를 포함하고 있습니다.</p>
+<p>dbt는 몇 군데에서 <a target="_blank" rel="noopener" href="https://yaml.org/">YAML</a>을 사용합니다. YAML이 처음이라면 배열, 사전 및 문자열이 어떻게 표현되는지 학습하는 것이 좋습니다.</p>
+<p>기본적으로 dbt는 현재 작업 디렉토리와 해당 상위 디렉토리에서 <code>dbt_project.yml</code>을 찾지만, <code>--project-dir</code> 플래그나 <code>DBT_PROJECT_DIR</code> 환경 변수를 사용하여 다른 디렉토리를 설정할 수 있습니다.</p>
+<p>dbt v1.5 이상에서는 <code>dbt_project.yml</code> 파일의 <code>dbt-cloud</code> config 아래에 <code>project-id</code>를 사용하여 <code>dbt Cloud</code> 프로젝트 ID를 지정할 수 있습니다. 프로젝트 ID를 확인하려면 dbt Cloud 프로젝트 URL을 확인하세요. 예: <code>https://cloud.getdbt.com/11/projects/123456</code>에서 프로젝트 ID는 <code>123456</code>입니다.</p>
+<p>참고할 점은 <code>dbt_project.yml</code> 파일에서 config가 아닌 경우(예: <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/macro-properties">macros</a>), “property”을 설정할 수 없습니다. 이는 모든 종류의 리소스에 적용됩니다. 자세한 내용은 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/configs-and-properties">Configs and properties</a>를 참조하세요.</p>
+<p>다음 예는 <code>dbt_project.yml</code> 파일에서 사용 가능한 모든 구성 목록입니다:</p>
+<pre class="line-numbers language-Markdown" data-language="Markdown"><code class="language-Markdown">[name](&#x2F;reference&#x2F;project-configs&#x2F;name): string
 
-<h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p>선택적으로 <code>dbt clean</code> <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/commands/clean">command</a>로 제거할 사용자 지정 디렉터리 목록을 지정할 수 있습니다. 따라서 이 목록에는 아티팩트(예: 컴파일된 파일, 로그, 설치된 패키지)를 포함하는 디렉터리만 포함해야 합니다.</p>
-<h2 id="Default"><a href="#Default" class="headerlink" title="Default"></a>Default</h2><p>이 configuration이 <code>dbt_project.yml</code> 파일에 포함되지 않은 경우, <code>clean</code> 명령어는 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/global-configs/json-artifacts">target-path</a>의 파일을 제거할 것입니다.</p>
-<h2 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h2><h3 id="Remove-packages-and-compiled-files-as-part-of-dbt-clean-preferred"><a href="#Remove-packages-and-compiled-files-as-part-of-dbt-clean-preferred" class="headerlink" title="Remove packages and compiled files as part of dbt clean (preferred)"></a>Remove packages and compiled files as part of dbt clean (preferred)</h3><p>패키지와 컴파일된 파일을 모두 제거하려면, <code>clean-targets</code> 구성에 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/packages-install-path">packages-install-path</a> 구성의 값을 포함하십시오.</p>
-<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">clean-targets</span><span class="token punctuation">:</span>
-    <span class="token punctuation">-</span> target
-    <span class="token punctuation">-</span> dbt_packages<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+[config-version](&#x2F;reference&#x2F;project-configs&#x2F;config-version): 2
+[version](&#x2F;reference&#x2F;project-configs&#x2F;version): version
 
-<p>이제, <code>dbt clean</code>을 실행하십시오.</p>
-<p><code>target</code> 및 <code>dbt_packages</code> 디렉터리가 모두 제거됩니다.</p>
-<p>Note: 이것은 <code>init</code> 명령으로 생성된 dbt <a target="_blank" rel="noopener" href="https://github.com/dbt-labs/dbt-starter-project/blob/HEAD/dbt_project.yml">starter project</a>의 구성입니다.</p>
-<h2 id="Remove-logs-when-running-dbt-clean"><a href="#Remove-logs-when-running-dbt-clean" class="headerlink" title="Remove logs when running dbt clean"></a>Remove <code>logs</code> when running <code>dbt clean</code></h2><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">clean-targets</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>target<span class="token punctuation">,</span> dbt_packages<span class="token punctuation">,</span> logs<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+[profile](&#x2F;reference&#x2F;project-configs&#x2F;profile): profilename
+
+[model-paths](&#x2F;reference&#x2F;project-configs&#x2F;model-paths): [directorypath]
+[seed-paths](&#x2F;reference&#x2F;project-configs&#x2F;seed-paths): [directorypath]
+[test-paths](&#x2F;reference&#x2F;project-configs&#x2F;test-paths): [directorypath]
+[analysis-paths](&#x2F;reference&#x2F;project-configs&#x2F;analysis-paths): [directorypath]
+[macro-paths](&#x2F;reference&#x2F;project-configs&#x2F;macro-paths): [directorypath]
+[snapshot-paths](&#x2F;reference&#x2F;project-configs&#x2F;snapshot-paths): [directorypath]
+[docs-paths](&#x2F;reference&#x2F;project-configs&#x2F;docs-paths): [directorypath]
+[asset-paths](&#x2F;reference&#x2F;project-configs&#x2F;asset-paths): [directorypath]
+
+[packages-install-path](&#x2F;reference&#x2F;project-configs&#x2F;packages-install-path): directorypath
+
+[clean-targets](&#x2F;reference&#x2F;project-configs&#x2F;clean-targets): [directorypath]
+
+[query-comment](&#x2F;reference&#x2F;project-configs&#x2F;query-comment): string
+
+[require-dbt-version](&#x2F;reference&#x2F;project-configs&#x2F;require-dbt-version): version-range | [version-range]
+
+[flags](&#x2F;reference&#x2F;global-configs&#x2F;project-flags):
+  [&lt;global-configs&gt;](&#x2F;reference&#x2F;global-configs&#x2F;project-flags)
+
+[dbt-cloud](&#x2F;docs&#x2F;cloud&#x2F;cloud-cli-installation):
+  [project-id](&#x2F;docs&#x2F;cloud&#x2F;configure-cloud-cli#configure-the-dbt-cloud-cli): project_id # Required
+  [defer-env-id](&#x2F;docs&#x2F;cloud&#x2F;about-cloud-develop-defer#defer-in-dbt-cloud-cli): environment_id # Optional
+
+[quoting](&#x2F;reference&#x2F;project-configs&#x2F;quoting):
+  database: true | false
+  schema: true | false
+  identifier: true | false
+
+metrics:
+  &lt;metric-configs&gt;
+
+models:
+  [&lt;model-configs&gt;](&#x2F;reference&#x2F;model-configs)
+
+seeds:
+  [&lt;seed-configs&gt;](&#x2F;reference&#x2F;seed-configs)
+
+semantic-models:
+  &lt;semantic-model-configs&gt;
+
+snapshots:
+  [&lt;snapshot-configs&gt;](&#x2F;reference&#x2F;snapshot-configs)
+
+sources:
+  [&lt;source-configs&gt;](source-configs)
+  
+tests:
+  [&lt;test-configs&gt;](&#x2F;reference&#x2F;data-test-configs)
+
+vars:
+  [&lt;variables&gt;](&#x2F;docs&#x2F;build&#x2F;project-variables)
+
+[on-run-start](&#x2F;reference&#x2F;project-configs&#x2F;on-run-start-on-run-end): sql-statement | [sql-statement]
+[on-run-end](&#x2F;reference&#x2F;project-configs&#x2F;on-run-start-on-run-end): sql-statement | [sql-statement]
+
+[dispatch](&#x2F;reference&#x2F;project-configs&#x2F;dispatch-config):
+  - macro_namespace: packagename
+    search_order: [packagename]
+
+[restrict-access](&#x2F;docs&#x2F;collaborate&#x2F;govern&#x2F;model-access): true | false<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/clean-targets">https://docs.getdbt.com/reference/project-configs/clean-targets</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/dbt_project.yml">https://docs.getdbt.com/reference/dbt_project.yml</a></li>
 </ul>
 
                 
@@ -306,7 +365,7 @@ Definition선택적으로 dbt clean command로 제거할 사용자 지정 디렉
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/05/17/DBT/Reference/Project%20Configs/clean-targets/">http://example.com/2024/05/17/DBT/Reference/Project%20Configs/clean-targets/</a>
+                    <a href="http://example.com/2024/01/01/DBT/Reference/Project%20Configs/dbt_project.yml/">http://example.com/2024/01/01/DBT/Reference/Project%20Configs/dbt_project.yml/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -418,12 +477,12 @@ Definition선택적으로 dbt clean command로 제거할 사용자 지정 디렉
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/06/15/DBT/Docs/dbt-index/">
+                <a href="/2024/01/01/DBT/Reference/Project%20Configs/config-version/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="DBT Index">
+                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="config-version">
                         
-                        <span class="card-title diy-neon-red">DBT Index</span>
+                        <span class="card-title diy-neon-red">config-version</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -434,7 +493,7 @@ Definition선택적으로 dbt clean command로 제거할 사용자 지정 디렉
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-06-15
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
                         </span>
                         <span class="publish-author">
                             
@@ -458,12 +517,12 @@ Definition선택적으로 dbt clean command로 제거할 사용자 지정 디렉
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/05/17/DBT/Reference/Project%20Configs/config-version/">
+                <a href="/2024/01/01/DBT/Reference/Project%20Configs/dispatch%20(config)/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="[DBT] config-version">
+                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="dispatch (config)">
                         
-                        <span class="card-title diy-neon-red">[DBT] config-version</span>
+                        <span class="card-title diy-neon-red">dispatch (config)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -474,7 +533,7 @@ Definition선택적으로 dbt clean command로 제거할 사용자 지정 디렉
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-05-17
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
                             </span>
                         <span class="publish-author">
                             
