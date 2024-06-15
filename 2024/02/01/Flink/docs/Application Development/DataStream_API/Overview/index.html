@@ -1,0 +1,1041 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Overview, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="Flink DataStream API Programming GuideDataStream 프로그램은 데이터 스트림에서의 변환을 구현하는 일반적인 프로그램입니다(예: 필터링, 상태 업데이트, 윈도우 정의, 집계). 데이">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Overview | Keyhong</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span diy-happy-monkey">Keyhong</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <!-- <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li> -->
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Keyhong</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/flink-logo.png')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title diy-neon-red">
+                        Overview</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                        <div class="article-tag">
+                            <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                                <span class="chip bg-color">
+                                    2024-02-01</span>
+                        </div>
+                    
+                    
+
+
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Flink/" class="post-category">
+                                Flink
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="Flink-DataStream-API-Programming-Guide"><a href="#Flink-DataStream-API-Programming-Guide" class="headerlink" title="Flink DataStream API Programming Guide"></a>Flink DataStream API Programming Guide</h1><p>DataStream 프로그램은 데이터 스트림에서의 변환을 구현하는 일반적인 프로그램입니다(예: 필터링, 상태 업데이트, 윈도우 정의, 집계). 데이터 스트림은 처음에 다양한 소스(예: 메시지 큐, 소켓 스트림, 파일)에서 생성됩니다. 결과는 시스템에서 반환되며, 예를 들어 데이터를 파일에 쓰거나 표준 출력(예: 명령 줄 터미널)으로 전송할 수 있습니다. Flink 프로그램은 독립형으로 실행되거나 다른 프로그램에 포함되어 실행될 수 있습니다. 실행은 로컬 JVM에서 또는 여러 대의 머신으로 구성된 클러스터에서 발생할 수 있습니다.</p>
+<p>Flink DataStream 프로그램을 만들기 위해선 <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/datastream/overview/#anatomy-of-a-flink-program">Flink 프로그램의 구조</a>부터 시작하고 점진적으로 <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/datastream/operators/overview/">스트림 변환</a>을 추가하는 것을 권장합니다. 남은 섹션들은 추가 작업 및 고급 기능에 대한 참조로 작용합니다.</p>
+<h2 id="What-is-a-DataStream"><a href="#What-is-a-DataStream" class="headerlink" title="What is a DataStream?"></a>What is a DataStream?</h2><p>DataStream API는 Flink 프로그램에서 데이터 컬렉션을 나타내는 특별한 <code>DataStream</code> 클래스에서 이름을 따옵니다. 이들은 중복을 포함할 수 있는 변경 불가능한 데이터 컬렉션으로 생각할 수 있습니다. 이 데이터는 유한하거나 무한할 수 있으며, 이를 처리하는 데 사용되는 API는 동일합니다.</p>
+<p><code>DataStream</code>은 사용 방법에서 일반적인 Java <code>Collection</code>과 유사하지만 일부 중요한 차이가 있습니다. 이들은 변경 불가능하며, 생성된 후에는 요소를 추가하거나 제거할 수 없습니다. 내부 요소를 단순히 검사할 수 없고, 오직 <code>DataStream</code> API 작업(변환으로도 불림)을 사용하여 작업할 수 있습니다.</p>
+<p>Flink 프로그램에서 소스를 추가하여 초기 <code>DataStream</code>을 생성할 수 있습니다. 그런 다음 <code>map</code>, <code>filter</code> 등의 API 메서드를 사용하여 이를 기반으로 새로운 스트림을 유도하고 결합할 수 있습니다.</p>
+<h2 id="Anatomy-of-a-Flink-Program"><a href="#Anatomy-of-a-Flink-Program" class="headerlink" title="Anatomy of a Flink Program"></a>Anatomy of a Flink Program</h2><p>Flink 프로그램은 DataStreams를 변환하는 일반적인 프로그램과 같은 모습을 갖습니다. 각 프로그램은 동일한 기본 부분으로 구성됩니다:</p>
+<ol>
+<li><code>execution environment</code> 획득</li>
+<li>초기 데이터를 로드&#x2F;생성</li>
+<li>데이터에 대한 transformations 지정</li>
+<li>계산 결과를 어디에 놓을지 지정</li>
+<li>프로그램 실행 트리거</li>
+</ol>
+<blockquote>
+<p>모든 Flink Scala API는 더 이상 사용되지 않으며, 향후 Flink 버전에서 제거될 예정입니다. 여전히 Scala로 응용 프로그램을 작성할 수 있지만, DataStream 및&#x2F;또는 Table API의 Java 버전으로 전환해야 합니다. <br><br><a target="_blank" rel="noopener" href="https://cwiki.apache.org/confluence/display/FLINK/FLIP-265+Deprecate+and+remove+Scala+API+support">FLIP-265 Deprecate and remove Scala API support</a>를 참조하세요.</p>
+</blockquote>
+<p>이제 각 단계에 대한 개요를 제공하겠습니다. 자세한 내용은 해당 섹션을 참조하세요. Java DataStream API의 모든 핵심 클래스는 <a target="_blank" rel="noopener" href="https://github.com/apache/flink/tree/release-1.19/flink-streaming-java/src/main/java/org/apache/flink/streaming/api">org.apache.flink.streaming.api</a>에서 찾을 수 있습니다.</p>
+<p><code>StreamExecutionEnvironment</code>는 모든 Flink 프로그램의 기초입니다. <code>StreamExecutionEnvironment</code>에서 이러한 정적 메서드를 사용하여 하나를 얻을 수 있습니다:</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token function">getExecutionEnvironment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">createLocalEnvironment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">createRemoteEnvironment</span><span class="token punctuation">(</span><span class="token class-name">String</span> host<span class="token punctuation">,</span> <span class="token keyword">int</span> port<span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> jarFiles<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>보통은 <code>getExecutionEnvironment()</code>만 사용하면 됩니다. 이것은 실행 컨텍스트에 따라 올바른 작업을 수행합니다: IDE 내에서 프로그램을 실행하거나 일반적인 Java 프로그램으로 실행하는 경우 로컬 환경이 생성되어 프로그램이 로컬 머신에서 실행됩니다. 프로그램에서 JAR 파일을 생성하고 <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/deployment/cli/">command line</a>을 통해 호출하는 경우 Flink 클러스터 관리자가 주 메서드를 실행하고 <code>getExecutionEnvironment()</code>가 클러스터에서 프로그램을 실행하기 위한 실행 환경을 반환합니다.</p>
+<p>데이터 소스를 지정하기 위해 실행 환경에는 다양한 방법으로 파일에서 읽을 수 있는 여러 메서드가 있습니다: 줄 단위로 읽을 수도 있고, CSV 파일로 읽을 수도 있으며, 다른 제공된 소스를 사용할 수도 있습니다. 텍스트 파일을 줄의 시퀀스로만 읽으려면 다음을 사용할 수 있습니다:</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">final</span> <span class="token class-name">StreamExecutionEnvironment</span> env <span class="token operator">=</span> <span class="token class-name">StreamExecutionEnvironment</span><span class="token punctuation">.</span><span class="token function">getExecutionEnvironment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token class-name">DataStream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> text <span class="token operator">=</span> env<span class="token punctuation">.</span><span class="token function">readTextFile</span><span class="token punctuation">(</span><span class="token string">"file:///path/to/file"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>이렇게 하면 새로운 파생 DataStream을 생성하기 위해 변환을 적용할 수 있는 DataStream이 생성됩니다.</p>
+<p>변환은 DataStream에 변환 함수를 호출하여 적용합니다. 예를 들어, map 변환은 다음과 같습니다:</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">DataStream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> input <span class="token operator">=</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">;</span>
+
+<span class="token class-name">DataStream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> parsed <span class="token operator">=</span> input<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">MapFunction</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Integer</span> <span class="token function">map</span><span class="token punctuation">(</span><span class="token class-name">String</span> value<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">parseInt</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>이렇게 하면 원래 컬렉션의 각 문자열을 정수로 변환하여 새로운 DataStream이 생성됩니다.</p>
+<p>최종 결과를 포함하는 DataStream이 있으면 외부 시스템에 쓸 수 있도록 싱크를 생성할 수 있습니다. 여기에는 싱크를 생성하는 몇 가지 예시 메서드가 있습니다:</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token function">writeAsText</span><span class="token punctuation">(</span><span class="token class-name">String</span> path<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>프로그램을 완전히 지정한 후에는 <code>StreamExecutionEnvironment</code>에서 <code>execute()</code>를 호출하여 <strong>프로그램 실행을 트리거</strong>해야 합니다. <code>ExecutionEnvironment</code>의 유형에 따라 실행이 로컬 머신에서 트리거되거나 클러스터에서 프로그램 실행이 제출됩니다.</p>
+<p><code>execute()</code> 메서드는 작업이 완료될 때까지 기다리고 그런 다음 실행 시간과 어큐뮬레이터 결과를 포함하는 <code>JobExecutionResult</code>를 반환합니다.</p>
+<p>작업이 완료될 때까지 기다리지 않으려면 <code>StreamExecutionEnvironment</code>에서 <code>executeAsync()</code>를 호출하여 비동기 작업 실행을 트리거할 수 있습니다. 이는 방금 제출한 작업과 통신할 수 있는 <code>JobClient</code>를 반환합니다. 예를 들어, <code>executeAsync()</code>를 사용하여 <code>execute()</code>의 의미론을 구현하는 방법은 다음과 같습니다.</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">final</span> <span class="token class-name">JobClient</span> <span class="token operator">=</span> env<span class="token punctuation">.</span><span class="token function">executeAsync</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">final</span> <span class="token class-name">JobExecutionResult</span> jobExecutionResult <span class="token operator">=</span> jobClient<span class="token punctuation">.</span><span class="token function">getJobExecutionResult</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>프로그램 실행에 관한 마지막 부분은 Flink 작업이 언제 어떻게 실행되는지를 이해하는 데 중요합니다. 모든 Flink 프로그램은 게으르게 실행됩니다: 프로그램의 main 메서드가 실행될 때 데이터 로드 및 변환은 직접 발생하지 않습니다. 대신, 각 작업은 데이터 플로우 그래프에 추가되어 작성됩니다. 작업은 실행 환경에서 <code>execute()</code> 호출로 명시적으로 트리거될 때 실제로 실행됩니다. 프로그램이 로컬에서 실행되는지 아니면 클러스터에서 실행되는지는 실행 환경의 유형에 따라 달라집니다.</p>
+<p>게으른 평가를 통해 Flink가 전체적으로 계획된 하나의 복잡한 프로그램으로 실행할 수 있도록 합니다.</p>
+<h2 id="Example-Program"><a href="#Example-Program" class="headerlink" title="Example Program"></a>Example Program</h2><p>다음 프로그램은 5초 윈도우에서 웹 소켓으로부터 들어오는 단어를 세는 스트리밍 윈도우 워드 카운트 응용 프로그램의 완전한 작동 예제입니다. 코드를 복사하여 로컬에서 실행할 수 있습니다.</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>api<span class="token punctuation">.</span>common<span class="token punctuation">.</span>functions<span class="token punctuation">.</span></span><span class="token class-name">FlatMapFunction</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>api<span class="token punctuation">.</span>java<span class="token punctuation">.</span>tuple<span class="token punctuation">.</span></span><span class="token class-name">Tuple2</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>streaming<span class="token punctuation">.</span>api<span class="token punctuation">.</span>datastream<span class="token punctuation">.</span></span><span class="token class-name">DataStream</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>streaming<span class="token punctuation">.</span>api<span class="token punctuation">.</span>environment<span class="token punctuation">.</span></span><span class="token class-name">StreamExecutionEnvironment</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>streaming<span class="token punctuation">.</span>api<span class="token punctuation">.</span>windowing<span class="token punctuation">.</span>time<span class="token punctuation">.</span></span><span class="token class-name">Time</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Collector</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">WindowWordCount</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+
+        <span class="token class-name">StreamExecutionEnvironment</span> env <span class="token operator">=</span> <span class="token class-name">StreamExecutionEnvironment</span><span class="token punctuation">.</span><span class="token function">getExecutionEnvironment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">DataStream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Tuple2</span><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span><span class="token punctuation">></span></span> dataStream <span class="token operator">=</span> env
+                <span class="token punctuation">.</span><span class="token function">socketTextStream</span><span class="token punctuation">(</span><span class="token string">"localhost"</span><span class="token punctuation">,</span> <span class="token number">9999</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">flatMap</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Splitter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">keyBy</span><span class="token punctuation">(</span>value <span class="token operator">-></span> value<span class="token punctuation">.</span>f0<span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">window</span><span class="token punctuation">(</span><span class="token class-name">TumblingProcessingTimeWindows</span><span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token class-name">Time</span><span class="token punctuation">.</span><span class="token function">seconds</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        dataStream<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        env<span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token string">"Window WordCount"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Splitter</span> <span class="token keyword">implements</span> <span class="token class-name">FlatMapFunction</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Tuple2</span><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span><span class="token punctuation">></span></span> <span class="token punctuation">&#123;</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">flatMap</span><span class="token punctuation">(</span><span class="token class-name">String</span> sentence<span class="token punctuation">,</span> <span class="token class-name">Collector</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Tuple2</span><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span><span class="token punctuation">></span></span> out<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">String</span> word<span class="token operator">:</span> sentence<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                out<span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Tuple2</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span></span><span class="token punctuation">(</span>word<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>예제 프로그램을 실행하려면 먼저 터미널에서 netcat을 사용하여 입력 스트림을 시작하세요.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nc</span> <span class="token parameter variable">-lk</span> <span class="token number">9999</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>Enter 키를 눌러 새로운 단어를 입력하세요. 이들은 워드 카운트 프로그램의 입력이 될 것입니다. 1보다 큰 카운트를 보고 싶다면, 5초 내에 동일한 단어를 반복해서 입력하세요 (당신의 타자 속도가 그렇게 빠르지 않다면 윈도우 크기를 5초보다 크게 늘리세요 ☺).</p>
+<h2 id="Data-Sources"><a href="#Data-Sources" class="headerlink" title="Data Sources"></a>Data Sources</h2><p>소스는 프로그램이 입력을 읽는 곳입니다. <code>StreamExecutionEnvironment.addSource(sourceFunction)</code>을 사용하여 소스를 프로그램에 연결할 수 있습니다. Flink에는 여러 사전 구현된 소스 함수가 제공되지만, 비 병렬 소스의 경우 <code>SourceFunction</code>을 구현하거나 병렬 소스의 경우 <code>ParallelSourceFunction</code> 인터페이스를 구현하거나 <code>RichParallelSourceFunction</code>을 확장하여 사용자 정의 소스를 작성할 수 있습니다.</p>
+<p><code>StreamExecutionEnvironment에서</code> 액세스할 수 있는 여러 사전 정의된 스트림 소스가 있습니다:</p>
+<br>
+
+<p>파일 기반:</p>
+<ul>
+<li><p><code>readTextFile(path)</code> - <code>TextInputFormat</code> 사양을 준수하는 텍스트 파일을 줄 단위로 읽어들이고 문자열로 반환합니다.</p>
+</li>
+<li><p><code>readFile(fileInputFormat, path)</code> - 지정된 파일 입력 형식에 따라 파일을 (한 번) 읽어들입니다.</p>
+</li>
+<li><p><code>readFile(fileInputFormat, path, watchType, interval, pathFilter, typeInfo)</code> - 이는 이전 두 메서드에서 내부적으로 호출되는 메서드입니다. 지정된 <code>fileInputFormat</code>을 기반으로 경로의 파일을 읽어옵니다. 제공된 <code>watchType</code>에 따라 이 소스는 새 데이터를 위해 경로를 주기적으로 모니터링할 수 있습니다(<code>FileProcessingMode.PROCESS_CONTINUOUSLY</code>) (주기마다 <code>interval</code> ms), 또는 현재 경로에 있는 데이터를 처리하고 종료할 수 있습니다(<code>FileProcessingMode.PROCESS_ONCE</code>). <code>pathFilter</code>를 사용하여 사용자는 처리되지 않도록 파일을 추가로 제외시킬 수 있습니다. <br></p>
+</li>
+</ul>
+<p><em><strong>IMPLEMENTATION:</strong></em></p>
+<p>Flink은 파일 읽기 프로세스를 <em><strong>directory monitoring and data reading</strong></em> 두 개의 하위 작업으로 분할합니다. 각 하위 작업은 별도의 엔티티에 의해 구현됩니다. 모니터링은 단일 <em><strong>non-parallel</strong></em> (parallelism &#x3D; 1) 작업에 의해 구현되며, 읽기는 병렬로 실행되는 여러 작업에 의해 수행됩니다. 후자의 병렬성은 작업 병렬성과 동일합니다. 단일 모니터링 작업의 역할은 디렉터리를 스캔하고 처리할 파일을 찾아서 이를 분할하고 이러한 분할을 하류 리더에게 할당하는 것입니다. 리더는 실제 데이터를 읽는 역할을 합니다. 각 분할은 하나의 리더에 의해 읽히지만, 리더는 하나씩 여러 분할을 읽을 수 있습니다.</p>
+<p><em><strong>IMPORTANT NOTES:</strong></em> <br></p>
+<ol>
+<li>만약 <code>watchType</code>이 <code>FileProcessingMode.PROCESS_CONTINUOUSLY</code>로 설정되어 있다면, 파일이 수정될 때마다 그 내용이 완전히 다시 처리됩니다. 이는 파일 끝에 데이터를 추가하면 해당 파일의 <strong>모든</strong> 내용이 다시 처리되어 “정확히 한 번”의 의미론을 깨뜨릴 수 있습니다. <br></li>
+<li>만약 <code>watchType이</code> <code>FileProcessingMode.PROCESS_ONCE</code>로 설정되어 있다면, 소스는 <strong>한 번</strong> 경로를 스캔하고 종료하며, 리더가 파일 내용을 모두 읽을 때까지 기다리지 않습니다. 물론 리더는 모든 파일 내용을 읽을 때까지 계속 읽습니다. 소스를 닫으면 해당 시점 이후에 더 이상 체크포인트가 생성되지 않습니다. 이는 노드 장애 발생 후 느린 복구로 이어질 수 있으며, 작업은 마지막 체크포인트부터 읽기를 재개합니다.</li>
+</ol>
+<br>
+
+<p>Socket-based:</p>
+<ul>
+<li><code>socketTextStream</code> - 소켓에서 읽습니다. 요소는 구분 기호로 분리될 수 있습니다.</li>
+</ul>
+<br>
+
+<p>Collection-based:</p>
+<ul>
+<li><p><code>fromCollection(Collection)</code> - Java.util.Collection에서 데이터 스트림을 생성합니다. 컬렉션의 모든 요소는 동일한 유형이어야 합니다.</p>
+</li>
+<li><p><code>fromCollection(Iterator, Class)</code> - 반복자에서 데이터 스트림을 생성합니다. 클래스는 반복자에 의해 반환되는 요소의 데이터 유형을 지정합니다.</p>
+</li>
+<li><p><code>fromElements(T ...)</code> - 주어진 객체의 시퀀스에서 데이터 스트림을 생성합니다. 모든 객체는 동일한 유형이어야 합니다.</p>
+</li>
+<li><p><code>fromParallelCollection(SplittableIterator, Class)</code> - 병렬로 반복자에서 데이터 스트림을 생성합니다. 클래스는 반복자에 의해 반환되는 요소의 데이터 유형을 지정합니다.</p>
+</li>
+<li><p><code>fromSequence(from, to)</code> - 주어진 범위 내에서 수의 시퀀스를 병렬로 생성합니다.</p>
+</li>
+</ul>
+<br>
+
+<p>Custom:</p>
+<ul>
+<li><code>addSource</code> - 새로운 소스 함수를 추가합니다. 예를 들어, Apache Kafka에서 읽으려면 <code>addSource(new FlinkKafkaConsumer&lt;&gt;(...))</code>를 사용할 수 있습니다. 자세한 내용은 <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/connectors/datastream/overview/">connectors</a>를 참조하세요.</li>
+</ul>
+<h2 id="DataStream-Transformations"><a href="#DataStream-Transformations" class="headerlink" title="DataStream Transformations"></a>DataStream Transformations</h2><p>사용 가능한 스트림 변환 개요를 보려면 <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/datastream/operators/overview/">operators</a>를 참조하세요.</p>
+<h2 id="Data-Sinks"><a href="#Data-Sinks" class="headerlink" title="Data Sinks"></a>Data Sinks</h2><p>데이터 싱크는 DataStream을 소비하고 파일, 소켓, 외부 시스템 또는 출력으로 전달합니다. Flink는 DataStream에 대한 작업을 통해 캡슐화된 다양한 내장 출력 형식을 제공합니다.</p>
+<ul>
+<li><p><code>writeAsText() / TextOutputFormat</code> - 요소를 문자열로 줄 단위로 작성합니다. 각 요소의 <em><strong>toString()</strong></em> 메서드를 호출하여 문자열을 얻습니다.</p>
+</li>
+<li><p><code>writeAsCsv(...) / CsvOutputFormat</code> - 튜플을 쉼표로 구분된 값 파일로 작성합니다. 행 및 필드 구분 기호는 구성 가능합니다. 각 필드의 값은 객체의 <em><strong>toString()</strong></em> 메서드에서 가져옵니다.</p>
+</li>
+<li><p><code>print() / printToErr()</code> - 각 요소의 <em><strong>toString()</strong></em> 값을 표준 출력 &#x2F; 표준 오류 스트림에 인쇄합니다. 선택적으로 출력에 앞에 추가되는 접두사(msg)를 제공할 수 있습니다. 이는 print 호출 간의 구분에 도움이 될 수 있습니다. 병렬성이 1보다 크면 출력에 출력을 생성한 작업의 식별자도 추가됩니다.</p>
+</li>
+<li><p><code>writeUsingOutputFormat() / FileOutputFormat</code> - 사용자 정의 파일 출력을 위한 메서드 및 기본 클래스입니다. 사용자 정의 객체를 바이트로 변환하는 기능을 지원합니다.</p>
+</li>
+<li><p><code>writeToSocket</code> - <code>SerializationSchema</code>에 따라 요소를 소켓에 작성합니다.</p>
+</li>
+<li><p><code>addSink</code> - 사용자 정의 싱크 함수를 호출합니다. Flink는 싱크 함수로 구현된 다른 시스템(예: Apache Kafka)과의 커넥터를 번들로 제공합니다.</p>
+</li>
+</ul>
+<p><code>write*()</code> 메서드는 주로 디버깅 목적으로 사용됩니다. 이들은 Flink의 체크포인팅에 참여하지 않으므로, 일반적으로 적어도 한 번의 의미론을 갖습니다. 대상 시스템으로의 데이터 플러싱은 OutputFormat의 구현에 따라 달라집니다. 이는 OutputFormat로 전송된 모든 요소가 대상 시스템에 즉시 표시되지 않을 수 있다는 것을 의미합니다. 또한, 실패한 경우 해당 레코드가 손실될 수 있습니다.</p>
+<p>스트림을 파일 시스템으로 안전하고 정확하게 한 번만 전달하려면 <code>FileSink</code>를 사용하세요. 또한, <code>.addSink(...)</code> 메서드를 통한 사용자 정의 구현은 정확히 한 번의 의미론을 위해 Flink의 체크포인팅에 참여할 수 있습니다.</p>
+<h2 id="Execution-Parameters"><a href="#Execution-Parameters" class="headerlink" title="Execution Parameters"></a>Execution Parameters</h2><p><code>StreamExecutionEnvironment</code>에는 런타임을 위한 작업별 구성 값을 설정할 수 있는 <code>ExecutionConfig</code>가 포함되어 있습니다.</p>
+<p>대부분의 매개변수에 대한 설명은 <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/deployment/config/">execution configuration</a>을 참조하세요. 이러한 매개변수는 특히 DataStream API와 관련이 있습니다:</p>
+<ul>
+<li><code>setAutoWatermarkInterval(long milliseconds)</code>: 자동 워터마크 발생 간격을 설정합니다. 현재 값은 <code>long getAutoWatermarkInterval()</code>로 가져올 수 있습니다.</li>
+</ul>
+<h3 id="Fault-Tolerance"><a href="#Fault-Tolerance" class="headerlink" title="Fault Tolerance"></a>Fault Tolerance</h3><p><a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/datastream/fault-tolerance/checkpointing/">State &amp; Checkpointing</a>은 Flink의 체크포인팅 메커니즘을 활성화하고 구성하는 방법을 설명합니다.</p>
+<h3 id="Controlling-Latency"><a href="#Controlling-Latency" class="headerlink" title="Controlling Latency"></a>Controlling Latency</h3><p>기본적으로 요소들은 한 번에 하나씩 네트워크로 전송되지 않습니다 (이는 불필요한 네트워크 트래픽을 유발할 수 있음). 대신, 요소들은 버퍼링됩니다. 실제로 기계간에 전송되는 버퍼의 크기는 Flink 구성 파일에서 설정할 수 있습니다. 이 방법은 처리량을 최적화하는 데 좋지만, 들어오는 스트림이 충분히 빠르지 않은 경우 지연 문제를 유발할 수 있습니다. 처리량과 지연 시간을 제어하려면 실행 환경(env)에 <code>env.setBufferTimeout(timeoutMillis)</code>를 사용하여 버퍼가 가득 찰 때까지 기다리는 최대 대기 시간을 설정할 수 있습니다 (또는 개별 연산자에 설정할 수 있습니다). 이 시간이 지나면 버퍼가 가득 차지 않아도 자동으로 버퍼가 전송됩니다. 이 타임아웃의 기본 값은 100 ms입니다.</p>
+<br>
+
+<p>Usage:</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">LocalStreamEnvironment</span> env <span class="token operator">=</span> <span class="token class-name">StreamExecutionEnvironment</span><span class="token punctuation">.</span><span class="token function">createLocalEnvironment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+env<span class="token punctuation">.</span><span class="token function">setBufferTimeout</span><span class="token punctuation">(</span>timeoutMillis<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+env<span class="token punctuation">.</span><span class="token function">generateSequence</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">MyMapper</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setBufferTimeout</span><span class="token punctuation">(</span>timeoutMillis<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>최대 처리량을 위해 <code>setBufferTimeout(-1)</code>로 설정하여 타임아웃을 제거하면 버퍼가 가득 찰 때만 플러시됩니다. 최소한의 지연을 위해 타임아웃을 0에 가까운 값으로 설정하십시오 (예: 5 또는 10 ms). 버퍼 타임아웃을 0으로 설정하는 것은 심각한 성능 저하를 유발할 수 있으므로 피해야 합니다.</p>
+<h2 id="Debugging"><a href="#Debugging" class="headerlink" title="Debugging"></a>Debugging</h2><p>스트리밍 프로그램을 분산 클러스터에서 실행하기 전에 구현된 알고리즘이 원하는 대로 작동하는지 확인하는 것이 좋습니다. 따라서 데이터 분석 프로그램을 구현하는 것은 일반적으로 결과 확인, 디버깅 및 개선의 점진적인 과정입니다.</p>
+<p>Flink는 IDE 내부에서 로컬 디버깅을 지원하고 테스트 데이터의 주입 및 결과 데이터 수집을 통해 데이터 분석 프로그램의 개발 과정을 크게 편리하게 만드는 기능을 제공합니다. 이 섹션에서는 Flink 프로그램의 개발을 용이하게 하는 몇 가지 힌트를 제공합니다.</p>
+<h3 id="Local-Execution-Environment"><a href="#Local-Execution-Environment" class="headerlink" title="Local Execution Environment"></a>Local Execution Environment</h3><p><code>LocalStreamEnvironment</code>는 생성된 JVM 프로세스 내에서 Flink 시스템을 시작합니다. IDE에서 LocalEnvironment를 시작하면 코드에 중단점을 설정하고 프로그램을 쉽게 디버그할 수 있습니다.</p>
+<p>LocalEnvironment는 다음과 같이 생성 및 사용됩니다:</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">final</span> <span class="token class-name">StreamExecutionEnvironment</span> env <span class="token operator">=</span> <span class="token class-name">StreamExecutionEnvironment</span><span class="token punctuation">.</span><span class="token function">createLocalEnvironment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token class-name">DataStream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> lines <span class="token operator">=</span> env<span class="token punctuation">.</span><span class="token function">addSource</span><span class="token punctuation">(</span><span class="token comment">/* some source */</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// build your program</span>
+
+env<span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Collection-Data-Sources"><a href="#Collection-Data-Sources" class="headerlink" title="Collection Data Sources"></a>Collection Data Sources</h3><p>Flink은 테스트를 쉽게하기 위해 Java 컬렉션을 기반으로하는 특수 데이터 소스를 제공합니다. 프로그램이 테스트 된 후에는 소스와 싱크를 외부 시스템에서 읽거나 쓰는 소스와 싱크로 쉽게 대체할 수 있습니다.</p>
+<p>컬렉션 데이터 소스는 다음과 같이 사용할 수 있습니다:</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">final</span> <span class="token class-name">StreamExecutionEnvironment</span> env <span class="token operator">=</span> <span class="token class-name">StreamExecutionEnvironment</span><span class="token punctuation">.</span><span class="token function">createLocalEnvironment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Create a DataStream from a list of elements</span>
+<span class="token class-name">DataStream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> myInts <span class="token operator">=</span> env<span class="token punctuation">.</span><span class="token function">fromElements</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Create a DataStream from any Java Collection</span>
+<span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Tuple2</span><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span><span class="token punctuation">></span></span> data <span class="token operator">=</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token class-name">DataStream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Tuple2</span><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span><span class="token punctuation">></span></span> myTuples <span class="token operator">=</span> env<span class="token punctuation">.</span><span class="token function">fromCollection</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Create a DataStream from an Iterator</span>
+<span class="token class-name">Iterator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Long</span><span class="token punctuation">></span></span> longIt <span class="token operator">=</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">;</span>
+<span class="token class-name">DataStream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Long</span><span class="token punctuation">></span></span> myLongs <span class="token operator">=</span> env<span class="token punctuation">.</span><span class="token function">fromCollection</span><span class="token punctuation">(</span>longIt<span class="token punctuation">,</span> <span class="token class-name">Long<span class="token punctuation">.</span>Class</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>참고</strong>: 현재 컬렉션 데이터 소스는 데이터 유형과 반복자가 <code>Serializable</code>을 구현해야 합니다. 또한, 컬렉션 데이터 소스는 병렬로 실행될 수 없습니다 (parallelism &#x3D; 1).</p>
+<h3 id="Iterator-Data-Sink"><a href="#Iterator-Data-Sink" class="headerlink" title="Iterator Data Sink"></a>Iterator Data Sink</h3><p>Flink는 테스트 및 디버깅 목적으로 DataStream 결과를 수집하는 싱크를 제공합니다. 다음과 같이 사용할 수 있습니다:</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">DataStream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Tuple2</span><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span><span class="token punctuation">></span></span> myResults <span class="token operator">=</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">;</span>
+<span class="token class-name">Iterator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Tuple2</span><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span><span class="token punctuation">></span></span> myOutput <span class="token operator">=</span> myResults<span class="token punctuation">.</span><span class="token function">collectAsync</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="Where-to-go-next"><a href="#Where-to-go-next" class="headerlink" title="Where to go next?"></a>Where to go next?</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/datastream/operators/overview/">Operators</a>: Specification of available streaming operators.</li>
+<li><a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/concepts/time/">Event Time</a>: Introduction to Flink’s notion of time.</li>
+<li><a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/datastream/fault-tolerance/state/">State &amp; Fault Tolerance</a>: Explanation of how to develop stateful applications.</li>
+<li><a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/connectors/datastream/overview/">Connectors</a>: Description of available input and output connectors</li>
+</ul>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/datastream/overview">https://nightlies.apache.org/flink/flink-docs-release-1.19/docs/dev/datastream/overview</a></li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Keyhong</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2024/02/01/Flink/docs/Application%20Development/DataStream_API/Overview/">http://example.com/2024/02/01/Flink/docs/Application%20Development/DataStream_API/Overview/</a>
+                </span>
+            </div>
+            <!-- <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        reprint:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    use
+                    <a href="cc_by_url" rel="external nofollow noreferrer" target="_blank">cc_by_name</a>
+                    licensed
+                    <a href="/about" target="_blank">Keyhong</a>
+                    !
+                </span>
+            </div> -->
+        
+    </div>
+
+    <!-- <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script> -->
+
+
+
+            <div class="tag_share" style="display: block;">
+                <!-- <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                        </div>
+                    
+                </div> -->
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <!-- <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a> -->
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2024/02/01/Flink/docs/Learn%20Flink/Overview/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/flink-logo.png" class="responsive-img" alt="Overview">
+                        
+                        <span class="card-title diy-neon-red">Overview</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-02-01
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Flink/" class="post-category">
+                                    Flink
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/02/01/Flink/docs/Connectors/DataStream_Connectors/Kafka/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/flink-logo.png" class="responsive-img" alt="Kafka">
+                        
+                        <span class="card-title diy-neon-red">Kafka</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Flink/" class="post-category">
+                                    Flink
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;목차</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2024</span>
+            
+            <a href="/about" target="_blank">Gyuwon Hong</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+            
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+    <a href="https://github.com/keyhong" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:wnhong96@gmail.com" class="tooltipped" target="_blank" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- Back to Top Button -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
