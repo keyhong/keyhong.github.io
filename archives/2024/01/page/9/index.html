@@ -314,21 +314,21 @@
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/DBT/Reference/Project%20Configs/docs-paths/">
+                        <a href="/2024/01/01/DBT/Reference/Project%20Configs/config-version/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="docs-paths">
+                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="config-version">
                                 
-                                <span class="card-title">docs-paths</span>
+                                <span class="card-title">config-version</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    docs-pathsdbt_project.ymldocs-paths: [directorypath]
+                                    config-versiondbt v1.5부터는 config-version: 태그가 선택 사항입니다.
+dbt_project.ymlconfig-version: 2
 
-Definition선택적으로 docs blocks이 위치한 사용자 정의 디렉터리 목록을 지정할 수 있습니다.
-Defau
+Definitiondbt_project.yml을 v2 
                                 
                             </div>
                             <div class="publish-info">
@@ -369,20 +369,21 @@ Defau
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/DBT/Reference/Project%20Configs/macro-paths/">
+                        <a href="/2024/01/01/DBT/Reference/Project%20Configs/dispatch%20(config)/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="macro-paths">
+                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="dispatch (config)">
                                 
-                                <span class="card-title">macro-paths</span>
+                                <span class="card-title">dispatch (config)</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    macro-pathsdbt_project.ymlmacro-paths: [directorypath]
-
-Definition선택적으로 매크로가 위치한 디렉토리의 사용자 지정 목록을 지정할 수 있습니다. 모델과 매크로를 같
+                                    dispatch (config)dispatch:
+  - macro_namespace: packagename
+    search_order: [packagename]
+  - macro_namespace: package
                                 
                             </div>
                             <div class="publish-info">
@@ -479,20 +480,21 @@ DefinitionRe
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/DBT/Reference/Project%20Configs/packages-install-path/">
+                        <a href="/2024/01/01/DBT/Reference/Project%20Configs/seed-paths/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="packages-install-path">
+                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="seed-paths">
                                 
-                                <span class="card-title">packages-install-path</span>
+                                <span class="card-title">seed-paths</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    packages-install-pathdbt_project.ymlpackages-install-path: directorypath
+                                    seed-pathsdbt_project.ymlseed-paths: [directorypath]
 
-Definition선택적으로 dbt deps 명령을 실행할 때 패키지가 설치되는 사
+Definition선택적으로 seed 파일이 위치한 사용자 정의 디렉터리 목록을 지정할 수 있습니다.
+Default기본
                                 
                             </div>
                             <div class="publish-info">
@@ -533,21 +535,20 @@ Definition선택적으로 dbt deps 명령을 실행할 때 패키지가 설치�
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/DBT/Reference/Project%20Configs/seed-paths/">
+                        <a href="/2024/01/01/DBT/Reference/Project%20Configs/packages-install-path/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="seed-paths">
+                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="packages-install-path">
                                 
-                                <span class="card-title">seed-paths</span>
+                                <span class="card-title">packages-install-path</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    seed-pathsdbt_project.ymlseed-paths: [directorypath]
+                                    packages-install-pathdbt_project.ymlpackages-install-path: directorypath
 
-Definition선택적으로 seed 파일이 위치한 사용자 정의 디렉터리 목록을 지정할 수 있습니다.
-Default기본
+Definition선택적으로 dbt deps 명령을 실행할 때 패키지가 설치되는 사
                                 
                             </div>
                             <div class="publish-info">

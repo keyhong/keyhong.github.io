@@ -314,72 +314,18 @@
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/DBT/Reference/Project%20Configs/dbt_project.yml/">
+                        <a href="/2024/01/01/DBT/Docs/Supported%20data%20platforms/Trusted%20adapters/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="dbt_project.yml">
+                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="Supported data platforms">
                                 
-                                <span class="card-title">dbt_project.yml</span>
+                                <span class="card-title">Supported data platforms</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    dbt_project.yml모든 dbt project에는 dbt_project.yml 파일이 필요합니다. 이 파일은 dbt가 디렉토리를 dbt 프로젝트로 인식하는 방법입니다. 또한 dbt가 프로젝트를 운영하는 방법을
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                    
-                                    <a href="/categories/DBT/" class="post-category">
-                                    DBT
-                                    </a>
-                                    
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                    </div>
-                </div>
-            </article>
-        </div>
-        
-        <div class="cd-timeline-block">
-
-            
-            
-
-            
-            
-
-            
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>01</span>
-            </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
-                        <a href="/2024/01/01/DBT/Reference/Project%20Configs/clean-targets/">
-                            <div class="card-image">
-                                
-                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="clean-targets">
-                                
-                                <span class="card-title">clean-targets</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    clean-targetsdbt_project.ymlclean-targets: [directorypath]
-
-Definition선택적으로 dbt clean command로 제거할 사용자 지정 디렉터리 목록을 지정할 수
+                                    Trusted adapters신뢰할 수 있는 어댑터는 Trusted Adapter 프로그램에 참여하며, 해당 프로그램의 요구 사항을 준수하기로 약속합니다. 이들은 dbt Labs, 파트너 및 커뮤니티 회원에 의해 유
                                 
                             </div>
                             <div class="publish-info">
@@ -432,61 +378,6 @@ Definition선택적으로 dbt clean command로 제거할 사용자 지정 디렉
                             <div class="summary block-with-text">
                                 
                                     .dbtignoredbt project의 루트에 .dbtignore 파일을 생성하여 dbt가 entirely 무시해야 하는 파일을 지정할 수 있습니다. 이 파일은 .gitignore file, using the sa
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                    
-                                    <a href="/categories/DBT/" class="post-category">
-                                    DBT
-                                    </a>
-                                    
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                    </div>
-                </div>
-            </article>
-        </div>
-        
-        <div class="cd-timeline-block">
-
-            
-            
-
-            
-            
-
-            
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>01</span>
-            </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
-                        <a href="/2024/01/01/DBT/Reference/Project%20Configs/dispatch%20(config)/">
-                            <div class="card-image">
-                                
-                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="dispatch (config)">
-                                
-                                <span class="card-title">dispatch (config)</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    dispatch (config)dispatch:
-  - macro_namespace: packagename
-    search_order: [packagename]
-  - macro_namespace: package
                                 
                             </div>
                             <div class="publish-info">
@@ -636,6 +527,116 @@ Definition선택적으로 매크로가 위치한 디렉토리의 사용자 지�
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
+                        <a href="/2024/01/01/DBT/Reference/Project%20Configs/config-version/">
+                            <div class="card-image">
+                                
+                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="config-version">
+                                
+                                <span class="card-title">config-version</span>
+                            </div>
+                        </a>
+                        <div class="card-content article-content">
+                            <div class="summary block-with-text">
+                                
+                                    config-versiondbt v1.5부터는 config-version: 태그가 선택 사항입니다.
+dbt_project.ymlconfig-version: 2
+
+Definitiondbt_project.yml을 v2 
+                                
+                            </div>
+                            <div class="publish-info">
+                                <span class="publish-date">
+                                    <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                                </span>
+                                <span class="publish-author">
+                                    
+                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                    
+                                    <a href="/categories/DBT/" class="post-category">
+                                    DBT
+                                    </a>
+                                    
+                                    
+                                </span>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="cd-timeline-block">
+
+            
+            
+
+            
+            
+
+            
+            <div class="cd-timeline-img day" data-aos="zoom-in-up">
+                <span>01</span>
+            </div>
+            <article class="cd-timeline-content" data-aos="fade-up">
+                <div class="article col s12 m6">
+                    <div class="card">
+                        <a href="/2024/01/01/DBT/Reference/Project%20Configs/dispatch%20(config)/">
+                            <div class="card-image">
+                                
+                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="dispatch (config)">
+                                
+                                <span class="card-title">dispatch (config)</span>
+                            </div>
+                        </a>
+                        <div class="card-content article-content">
+                            <div class="summary block-with-text">
+                                
+                                    dispatch (config)dispatch:
+  - macro_namespace: packagename
+    search_order: [packagename]
+  - macro_namespace: package
+                                
+                            </div>
+                            <div class="publish-info">
+                                <span class="publish-date">
+                                    <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                                </span>
+                                <span class="publish-author">
+                                    
+                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                    
+                                    <a href="/categories/DBT/" class="post-category">
+                                    DBT
+                                    </a>
+                                    
+                                    
+                                </span>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="cd-timeline-block">
+
+            
+            
+
+            
+            
+
+            
+            <div class="cd-timeline-img day" data-aos="zoom-in-up">
+                <span>01</span>
+            </div>
+            <article class="cd-timeline-content" data-aos="fade-up">
+                <div class="article col s12 m6">
+                    <div class="card">
                         <a href="/2024/01/01/DBT/Reference/Project%20Configs/name/">
                             <div class="card-image">
                                 
@@ -692,20 +693,21 @@ DefinitionRe
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/DBT/Reference/Project%20Configs/packages-install-path/">
+                        <a href="/2024/01/01/DBT/Reference/Project%20Configs/seed-paths/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="packages-install-path">
+                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="seed-paths">
                                 
-                                <span class="card-title">packages-install-path</span>
+                                <span class="card-title">seed-paths</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    packages-install-pathdbt_project.ymlpackages-install-path: directorypath
+                                    seed-pathsdbt_project.ymlseed-paths: [directorypath]
 
-Definition선택적으로 dbt deps 명령을 실행할 때 패키지가 설치되는 사
+Definition선택적으로 seed 파일이 위치한 사용자 정의 디렉터리 목록을 지정할 수 있습니다.
+Default기본
                                 
                             </div>
                             <div class="publish-info">
@@ -746,21 +748,20 @@ Definition선택적으로 dbt deps 명령을 실행할 때 패키지가 설치�
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/DBT/Reference/Project%20Configs/seed-paths/">
+                        <a href="/2024/01/01/DBT/Reference/Project%20Configs/packages-install-path/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="seed-paths">
+                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="packages-install-path">
                                 
-                                <span class="card-title">seed-paths</span>
+                                <span class="card-title">packages-install-path</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    seed-pathsdbt_project.ymlseed-paths: [directorypath]
+                                    packages-install-pathdbt_project.ymlpackages-install-path: directorypath
 
-Definition선택적으로 seed 파일이 위치한 사용자 정의 디렉터리 목록을 지정할 수 있습니다.
-Default기본
+Definition선택적으로 dbt deps 명령을 실행할 때 패키지가 설치되는 사
                                 
                             </div>
                             <div class="publish-info">
