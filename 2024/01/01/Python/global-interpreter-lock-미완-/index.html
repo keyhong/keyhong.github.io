@@ -4,13 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="DBT Docs Index, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="What is dbt?Get started with dbt
-dbt Quickstarts
+    <meta name="keywords" content="[Python] Global Interpreter Lock, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="GIL (Global Interpreter Lock)
+파이썬 인터프리터가 한 스레드만 하나의 바이트코드를 실행 시킬 수 있도록 해주는 Lock
 
-Supported data platforms
-Supported data platforms
-How to connect to ad">
+하나의 스레드에 모든 자원을 허락하고 그 후에는 Lock을 걸어 다른 ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -22,7 +20,7 @@ How to connect to ad">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>DBT Docs Index | Keyhong</title>
+    <title>[Python] Global Interpreter Lock | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -203,13 +201,13 @@ How to connect to ad">
 
     
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/dbt-logo.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/python-logo.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        DBT Docs Index</h1>
+                        [Python] Global Interpreter Lock</h1>
                 </div>
             </div>
         </div>
@@ -234,7 +232,7 @@ How to connect to ad">
                         <div class="article-tag">
                             <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                                 <span class="chip bg-color">
-                                    2024-06-15</span>
+                                    2024-01-01</span>
                         </div>
                     
                     
@@ -246,8 +244,8 @@ How to connect to ad">
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/DBT/" class="post-category">
-                                DBT
+                            <a href="/categories/Python/" class="post-category">
+                                Python
                             </a>
                         
                     </div>
@@ -266,259 +264,30 @@ How to connect to ad">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="What-is-dbt"><a href="#What-is-dbt" class="headerlink" title="What is dbt?"></a><a target="_blank" rel="noopener" href="https://keyhong.github.io/2024/01/01/DBT/Docs/What%20is%20dbt/">What is dbt?</a></h2><h2 id="Get-started-with-dbt"><a href="#Get-started-with-dbt" class="headerlink" title="Get started with dbt"></a>Get started with dbt</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://keyhong.github.io/2024/01/01/DBT/Docs/Get%20started%20with%20dbt/dbt%20Quickstarts/">dbt Quickstarts</a></li>
-</ul>
-<h2 id="Supported-data-platforms"><a href="#Supported-data-platforms" class="headerlink" title="Supported data platforms"></a>Supported data platforms</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://keyhong.github.io/2024/01/01/DBT/Docs/Supported%20data%20platforms/Supported%20data%20platforms/">Supported data platforms</a></li>
-<li><a target="_blank" rel="noopener" href="https://keyhong.github.io/2024/01/01/DBT/Docs/Supported%20data%20platforms/How%20to%20connect%20to%20adapters/">How to connect to adapters</a></li>
-<li><a href="">Trusted adapters</a></li>
-<li><a target="_blank" rel="noopener" href="https://keyhong.github.io/2024/01/01/DBT/Docs/Supported%20data%20platforms/Community%20adapters/">Community adapters</a></li>
-<li><a href="">Contribute to adapters</a></li>
-</ul>
-<h2 id="About-dbt-Cloud"><a href="#About-dbt-Cloud" class="headerlink" title="About dbt Cloud"></a>About dbt Cloud</h2><ul>
-<li><a href="">dbt Cloud features</a></li>
-<li><a href="">dbt Cloud Architecture</a></li>
-<li><a href="">Tenancy</a>   </li>
-<li><a href="">Access, Regions, &amp; IP addresses</a></li>
-<li><a href="">Supported browsers</a></li>
-</ul>
-<h2 id="Set-up-dbt"><a href="#Set-up-dbt" class="headerlink" title="Set up dbt"></a>Set up dbt</h2><ul>
-<li><p><a href="">About dbt setup</a></p>
+                <h2 id="GIL-Global-Interpreter-Lock"><a href="#GIL-Global-Interpreter-Lock" class="headerlink" title="GIL (Global Interpreter Lock)"></a>GIL (Global Interpreter Lock)</h2><ul>
+<li><p>파이썬 인터프리터가 한 스레드만 하나의 바이트코드를 실행 시킬 수 있도록 해주는 Lock</p>
 </li>
-<li><p><a href="">About environments</a></p>
+<li><p>하나의 스레드에 모든 자원을 허락하고 그 후에는 Lock을 걸어 다른 스레드는 실행할 수 없게 막는 것</p>
 </li>
-<li><p><a href="">dbt Cloud</a></p>
+<li><p>GIL 사용이유 : <code>가비지컬렉터(garbage collector)</code> 와 <code>참조 횟수 계산(Reference Counting)</code> 을 통해 할당된 메모리 관리</p>
+</li>
+</ul>
+<h2 id="경쟁상태-Race-Condition"><a href="#경쟁상태-Race-Condition" class="headerlink" title="경쟁상태(Race Condition)"></a>경쟁상태(Race Condition)</h2><blockquote>
+<p>하나의 값에 여러 쓰레드가 동시에 접근함으로써 값이 올바르게 잃히거나 쓰일 수 있는 상태</p>
+</blockquote>
 <ul>
-<li><p><a href="">About dbt Cloud setup</a></p>
-</li>
-<li><p><a href="">dbt Cloud environments</a></p>
-</li>
-<li><p>Connect data platform</p>
+<li>멀티 쓰레딩 환경에서 여러개의 쓰레드가 어떤 공유 자원에 접근 가능 (Thread-safe 하지 않은 상태)</li>
+</ul>
+<h4 id="해결방벙"><a href="#해결방벙" class="headerlink" title="해결방벙"></a>해결방벙</h4><ul>
+<li>뮤텍스(Mutex)</li>
+</ul>
+<blockquote>
+<p>공유 자원에 접근하기 위해 가지고 있어야하는 일종의 열쇠(lock, unlock)를 통해 접근할 수 있는 스레드를 제한하고, 차례대로 처리하는 방법</p>
+</blockquote>
 <ul>
-<li><a href="">About data platform connections</a></li>
-<li><a href="">Connect Azure Synapse Analytics</a></li>
-<li><a href="">Connect Microsoft Fabric</a></li>
-<li><a href="">Connect Starburst or Trino</a></li>
-<li><a href="">Connect Snowflake</a></li>
-<li><a href="">Connect BigQuery</a></li>
-<li><a href="">Connect Databricks</a></li>
-<li><a href="">Connect Redshift, PostgreSQL, and AlloyDB</a></li>
-<li><a href="">Connect Apache Spark</a></li>
+<li>세마포어(Semaphore)</li>
 </ul>
-</li>
-<li><p>Manage access</p>
-<ul>
-<li><p><a href="">About user access in dbt Cloud</a></p>
-</li>
-<li><p><a href="">Invite users to dbt Cloud</a></p>
-</li>
-<li><p>User permissions and licenses</p>
-<ul>
-<li><a href="">Users and licenses</a></li>
-<li><a href="">Self-service permissions</a></li>
-<li><a href="">Enterprise permissions</a></li>
-</ul>
-</li>
-<li><p>Single sign-on and Oauth</p>
-<ul>
-<li><a href="">Single sign-on (SSO) Overview</a></li>
-<li><a href="">Migrating to Auth0 for SSO</a></li>
-<li><a href="">Set up SSO with SAML 2.0</a></li>
-<li><a href="">Set up SSO with Okta</a></li>
-<li><a href="">Set up SSO with Google Workspace</a></li>
-<li><a href="">Set up SSO with Microsoft Entra ID</a></li>
-<li><a href="">Set up Snowflake OAuth</a></li>
-<li><a href="">Set up Databricks OAuth</a></li>
-<li><a href="">Set up BigQuery OAuth</a></li>
-</ul>
-</li>
-<li><p>Audit log</p>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p><a href="">Configure Git</a></p>
-<ul>
-<li>Git configuration in dbt Cloud</li>
-<li>Import a project by git URL</li>
-<li>Connect to GitHub</li>
-<li>Connect to GitLab</li>
-</ul>
-<ul>
-<li><a href="">Azure DevOps</a><ul>
-<li>Connect to Azure DevOps</li>
-<li>Set up Azure DevOps</li>
-<li>Authenticate with Azure DevOps</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><a href="">Secure your tenant</a></p>
-<ul>
-<li>Secure your tenant</li>
-<li>IP restrictions</li>
-<li>About PrivateLink</li>
-<li>PrivateLink for Snowflake</li>
-<li>PrivateLink for Databricks</li>
-<li>PrivateLink for Redshift</li>
-<li>PrivateLink for Postgres</li>
-<li>PrivateLink for VCS</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>Billing</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p><a href="">dbt Core</a></p>
-<ul>
-<li>About dbt Core setup</li>
-<li>dbt Core environments</li>
-</ul>
-<ul>
-<li><p><a href="">Install dbt Core</a></p>
-<ul>
-<li>About dbt Core and installation</li>
-<li>Install with pip</li>
-<li>Install with Docker</li>
-<li>Install from source</li>
-</ul>
-</li>
-<li><p><a href="">Connect data platform</a></p>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>Run your dbt projects</li>
-<li>Use threads</li>
-</ul>
-<h2 id="Develop-with-dbt-Cloud"><a href="#Develop-with-dbt-Cloud" class="headerlink" title="Develop with dbt Cloud"></a>Develop with dbt Cloud</h2><ul>
-<li>About developing in dbt</li>
-<li>Using defer in dbt Cloud</li>
-</ul>
-<ul>
-<li><p><a href="">dbt Cloud CLI</a></p>
-<ul>
-<li>Installation</li>
-<li>Configuration and usage</li>
-</ul>
-</li>
-<li><p><a href="">dbt Cloud IDE</a></p>
-</li>
-</ul>
-<ul>
-<li>About the IDE</li>
-<li>Keyboard shortcuts</li>
-<li>User interface</li>
-<li>Lint and format</li>
-</ul>
-<ul>
-<li><a href="">dbt Assist</a><ul>
-<li>About dbt Assist</li>
-<li>Enable dbt Assist</li>
-<li>Use dbt Assist</li>
-<li>dbt Assist privacy</li>
-</ul>
-</li>
-</ul>
-<h2 id="Build-dbt-projects"><a href="#Build-dbt-projects" class="headerlink" title="Build dbt projects"></a>Build dbt projects</h2><ul>
-<li><p><a href="">About dbt projects</a></p>
-</li>
-<li><p><a href="">dbt tips and tricks</a></p>
-</li>
-<li><p>Build your DAG</p>
-<ul>
-<li>Models<ul>
-<li><a href="">About dbt models</a></li>
-<li><a href="">SQL models</a></li>
-<li><a href="">Python models</a></li>
-</ul>
-</li>
-<li>Tests<ul>
-<li><a href="">Data tests</a></li>
-<li><a href="">Unit tests</a></li>
-</ul>
-</li>
-<li><a href="">Documentation</a></li>
-<li><a href="">Snapshots</a></li>
-<li><a href="">Seeds</a></li>
-<li><a href="">Jinja and macros</a></li>
-<li><a href="">Sources</a></li>
-<li><a href="">Exposures</a></li>
-<li><a href="">Groups</a></li>
-<li><a target="_blank" rel="noopener" href="https://keyhong.github.io/2024/01/01/DBT/Docs/Build%20dbt%20projects/Build%20your%20DAG/Analyses/">Analyses</a></li>
-</ul>
-</li>
-<li><p>Build your metrics</p>
-<ul>
-<li><a href="">Build your metrics</a></li>
-<li><a href="">Quickstart with the dbt Cloud Semantic Layer</a></li>
-<li>About MetricFlow<ul>
-<li><a href="">About MetricFlow</a></li>
-<li><a href="">Joins</a></li>
-<li><a href="">Validations</a></li>
-<li><a href="">MetricFlow time spine</a></li>
-<li><a href="">MetricFlow commands</a></li>
-</ul>
-</li>
-<li>Semantic models<ul>
-<li><a href="">Semantic models</a></li>
-<li><a href="">Dimensions</a></li>
-<li><a href="">Entities</a></li>
-<li><a href="">Measures</a></li>
-</ul>
-</li>
-<li>Metrics<ul>
-<li><a href="">Creating metrics</a></li>
-<li><a href="">Conversion</a></li>
-<li><a href="">Cumulative</a></li>
-<li><a href="">Derived</a></li>
-<li><a href="">Ratio</a></li>
-<li><a href="">Simple</a></li>
-</ul>
-</li>
-<li><a href="">Saved queries</a></li>
-<li>Advanced data modeling<ul>
-<li><a href="">Fill null values for metrics</a></li>
-<li><a href="">Metrics as dimensions</a></li>
-</ul>
-</li>
-<li>Enhance your models<ul>
-<li><a href="">Enhance your models</a></li>
-<li><a href="">Materializations</a></li>
-<li>Incremental models<ul>
-<li><a href="">About incremental models</a></li>
-<li><a href="">Configure incremental models</a></li>
-<li><a href="">About incremental strategy</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Enhance your code<ul>
-<li><a href="">Enhance your code</a></li>
-<li><a href="">Project variables</a></li>
-<li><a href="">Environment variables</a></li>
-<li><a href="">Packages</a></li>
-<li><a href="">Hooks and operations</a></li>
-</ul>
-</li>
-<li>Organize your outputs<ul>
-<li><a href="">Organize your outputs</a></li>
-<li><a href="">Custom schemas</a></li>
-<li><a href="">Custom databases</a></li>
-<li><a href="">Custom aliases</a></li>
-<li><a href="">Custom target names</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="Organize-your-outputs"><a href="#Organize-your-outputs" class="headerlink" title="Organize your outputs"></a>Organize your outputs</h2><h2 id="About-dbt-projects"><a href="#About-dbt-projects" class="headerlink" title="About dbt projects"></a>About dbt projects</h2>
+
                 
             </div>
             <hr/>
@@ -544,7 +313,7 @@ How to connect to ad">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/06/15/DBT/Docs/DBT%20Docs%20Index/">http://example.com/2024/06/15/DBT/Docs/DBT%20Docs%20Index/</a>
+                    <a href="http://example.com/2024/01/01/Python/global-interpreter-lock-%E1%84%86%E1%85%B5%E1%84%8B%E1%85%AA%E1%86%AB-/">http://example.com/2024/01/01/Python/global-interpreter-lock-%E1%84%86%E1%85%B5%E1%84%8B%E1%85%AA%E1%86%AB-/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -656,12 +425,12 @@ How to connect to ad">
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/06/15/DBT/Reference/DBT%20Reference%20Index/">
+                <a href="/2024/01/01/Python-Algorithm/brute-force/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="DBT Reference Index">
+                        <img src="/images/logos/algorithm-logo.png" class="responsive-img" alt="[Algorithm] Brute Force">
                         
-                        <span class="card-title diy-neon-red">DBT Reference Index</span>
+                        <span class="card-title diy-neon-red">[Algorithm] Brute Force</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -672,14 +441,14 @@ How to connect to ad">
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-06-15
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/DBT/" class="post-category">
-                                    DBT
+                            <a href="/categories/Algorithm/" class="post-category">
+                                    Algorithm
                                 </a>
                             
                             
@@ -696,12 +465,12 @@ How to connect to ad">
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/05/06/Spark/docs/Programming%20Guides/RDD%20Programming%20Guide/">
+                <a href="/2024/01/01/Python-Data-Structure/array/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/pyspark-logo.png" class="responsive-img" alt="[Spark] Programming Guides - RDD Programming Guide">
+                        <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Array">
                         
-                        <span class="card-title diy-neon-red">[Spark] Programming Guides - RDD Programming Guide</span>
+                        <span class="card-title diy-neon-red">[Python] Array</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -712,14 +481,14 @@ How to connect to ad">
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-05-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Spark/" class="post-category">
-                                    Spark
+                            <a href="/categories/Python/" class="post-category">
+                                    Python
                                 </a>
                             
                             

@@ -229,19 +229,19 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/DBT/Docs/Get%20started%20with%20dbt/dbt%20Quickstarts/">
+                    <a href="/2024/01/01/DBT/Reference/Project%20Configs/dbtignore/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="dbt Quickstarts">
+                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt=".dbtignore">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">dbt Quickstarts</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">.dbtignore</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                dbt Quickstartsdbt 여정을 시작하려면, dbt Cloud 또는 dbt Core를 variety of data platforms과 함께 설정하는 데 도움을 주는 단계별 가이드가 포함된 퀵스타트 중 하나를
+                                .dbtignoredbt project의 루트에 .dbtignore 파일을 생성하여 dbt가 entirely 무시해야 하는 파일을 지정할 수 있습니다. 이 파일은 .gitignore file, using the sa
                             
                         </div> -->
                         <div class="publish-info">
@@ -269,63 +269,22 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/DBT/Reference/Project%20Configs/macro-paths/">
+                    <a href="/2024/01/01/DBT/Reference/Project%20Configs/dispatch%20(config)/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="macro-paths">
+                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="dispatch (config)">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">macro-paths</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">dispatch (config)</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                macro-pathsdbt_project.ymlmacro-paths: [directorypath]
-
-Definition선택적으로 매크로가 위치한 디렉토리의 사용자 지정 목록을 지정할 수 있습니다. 모델과 매크로를 같
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/DBT/" class="post-category">
-                                    DBT
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/01/01/DBT/Reference/Project%20Configs/packages-install-path/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="packages-install-path">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">packages-install-path</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                packages-install-pathdbt_project.ymlpackages-install-path: directorypath
-
-Definition선택적으로 dbt deps 명령을 실행할 때 패키지가 설치되는 사
+                                dispatch (config)dispatch:
+  - macro_namespace: packagename
+    search_order: [packagename]
+  - macro_namespace: package
                             
                         </div> -->
                         <div class="publish-info">
@@ -370,6 +329,48 @@ Definition선택적으로 dbt deps 명령을 실행할 때 패키지가 설치�
 Required configuration
 dbt 프로젝트의 이름은 문자, 숫자 및 밑줄만 포함해야 하며, 숫자로 시작할 수 없습니다.
 DefinitionRe
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/DBT/" class="post-category">
+                                    DBT
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/01/01/DBT/Reference/Project%20Configs/packages-install-path/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="packages-install-path">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">packages-install-path</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                packages-install-pathdbt_project.ymlpackages-install-path: directorypath
+
+Definition선택적으로 dbt deps 명령을 실행할 때 패키지가 설치되는 사
                             
                         </div> -->
                         <div class="publish-info">
@@ -520,7 +521,7 @@ Default기본
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/DBT/Docs/Supported%20data%20platforms/Supported%20data%20platforms/">
+                    <a href="/2024/01/01/DBT/Docs/Supported%20data%20platforms/Trusted%20adapters/">
                         <div class="card-image">
                             
                             <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="Supported data platforms">
@@ -532,7 +533,7 @@ Default기본
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Supported data platformsdbt는 데이터베이스, 데이터 웨어하우스, 데이터 레이크 또는 쿼리 엔진에 연결하여 SQL을 실행합니다. 이러한 SQL을 사용하는 플랫폼들을 data platforms이라고
+                                Trusted adapters신뢰할 수 있는 어댑터는 Trusted Adapter 프로그램에 참여하며, 해당 프로그램의 요구 사항을 준수하기로 약속합니다. 이들은 dbt Labs, 파트너 및 커뮤니티 회원에 의해 유
                             
                         </div> -->
                         <div class="publish-info">
@@ -560,7 +561,7 @@ Default기본
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/DBT/Docs/Supported%20data%20platforms/Trusted%20adapters/">
+                    <a href="/2024/01/01/DBT/Docs/Supported%20data%20platforms/Supported%20data%20platforms/">
                         <div class="card-image">
                             
                             <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="Supported data platforms">
@@ -572,7 +573,7 @@ Default기본
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Trusted adapters신뢰할 수 있는 어댑터는 Trusted Adapter 프로그램에 참여하며, 해당 프로그램의 요구 사항을 준수하기로 약속합니다. 이들은 dbt Labs, 파트너 및 커뮤니티 회원에 의해 유
+                                Supported data platformsdbt는 데이터베이스, 데이터 웨어하우스, 데이터 레이크 또는 쿼리 엔진에 연결하여 SQL을 실행합니다. 이러한 SQL을 사용하는 플랫폼들을 data platforms이라고
                             
                         </div> -->
                         <div class="publish-info">

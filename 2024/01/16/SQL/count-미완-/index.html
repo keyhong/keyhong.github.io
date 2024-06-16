@@ -4,15 +4,20 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="DBT Reference Index, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="About ReferencesProject configs
-dbt_project.yml
-.dbtignore
-analysis-paths
-asset-paths
-clean-targets
-config-version
-seed-">
+    <meta name="keywords" content="[SQL] basic, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="SELECT
+데이터베이스에서 데이터를 조회하기 위해 사용되는 기본적인 명령문
+
+-- Syntax
+SELECT
+column_name
+FROM table_nam
+
+
+SELECT
+first_name,
+last_name
+F">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -24,7 +29,7 @@ seed-">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>DBT Reference Index | Keyhong</title>
+    <title>[SQL] basic | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -205,13 +210,13 @@ seed-">
 
     
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/dbt-logo.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/sql-logo.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        DBT Reference Index</h1>
+                        [SQL] basic</h1>
                 </div>
             </div>
         </div>
@@ -236,7 +241,7 @@ seed-">
                         <div class="article-tag">
                             <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                                 <span class="chip bg-color">
-                                    2024-06-15</span>
+                                    2024-01-16</span>
                         </div>
                     
                     
@@ -248,8 +253,8 @@ seed-">
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/DBT/" class="post-category">
-                                DBT
+                            <a href="/categories/SQL/" class="post-category">
+                                SQL
                             </a>
                         
                     </div>
@@ -268,30 +273,178 @@ seed-">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="About-References"><a href="#About-References" class="headerlink" title="About References"></a><a target="_blank" rel="noopener" href="https://keyhong.github.io/2024/01/01/DBT/Reference/About%20References/">About References</a></h2><h2 id="Project-configs"><a href="#Project-configs" class="headerlink" title="Project configs"></a>Project configs</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://keyhong.github.io/2024/01/01/DBT/Reference/Project%20Configs/dbt_project.yml/">dbt_project.yml</a></li>
-<li><a target="_blank" rel="noopener" href="https://keyhong.github.io/2024/01/01/DBT/Reference/Project%20Configs/dbtignore/">.dbtignore</a></li>
-<li><a target="_blank" rel="noopener" href="https://keyhong.github.io/2024/01/01/DBT/Reference/Project%20Configs/analysis-paths/">analysis-paths</a></li>
-<li><a target="_blank" rel="noopener" href="https://keyhong.github.io/2024/01/01/DBT/Reference/Project%20Configs/asset-paths/">asset-paths</a></li>
-<li><a target="_blank" rel="noopener" href="https://keyhong.github.io/2024/01/01/DBT/Reference/Project%20Configs/clean-targets/">clean-targets</a></li>
-<li><a target="_blank" rel="noopener" href="https://keyhong.github.io/2024/01/01/DBT/Reference/Project%20Configs/config-version/">config-version</a></li>
-<li><a target="_blank" rel="noopener" href="https://keyhong.github.io/2024/01/01/DBT/Reference/Project%20Configs/seed-paths/">seed-paths</a></li>
-<li><a target="_blank" rel="noopener" href="https://keyhong.github.io/2024/01/01/DBT/Reference/Project%20Configs/dispatch%20(config)/">dispatch (config)</a></li>
-<li><a target="_blank" rel="noopener" href="https://keyhong.github.io/2024/01/01/DBT/Reference/Project%20Configs/docs-paths/">docs-paths</a></li>
-<li><a target="_blank" rel="noopener" href="https://keyhong.github.io/2024/01/01/DBT/Reference/Project%20Configs/macro-paths/">macro-paths</a></li>
-<li><a target="_blank" rel="noopener" href="https://keyhong.github.io/2024/01/01/DBT/Reference/Project%20Configs/packages-install-path/">packages-install-path</a></li>
-<li><a target="_blank" rel="noopener" href="https://keyhong.github.io/2024/01/01/DBT/Reference/Project%20Configs/name/">name</a></li>
-<li><a href="">on-run-start &amp; on-run-end</a></li>
-<li><a href="">profile</a></li>
-<li><a href="">query-comment</a></li>
-<li><a href="">quoting</a></li>
-<li><a href="">require-dbt-version</a></li>
-<li><a href="">snapshot-paths</a></li>
-<li><a href="">model-paths</a></li>
-<li><a href="">test-paths</a></li>
-<li><a href="">version</a></li>
-</ul>
-<h2 id="Platform-specific-configs"><a href="#Platform-specific-configs" class="headerlink" title="Platform-specific configs"></a>Platform-specific configs</h2><h2 id="Resource-configs-and-properties"><a href="#Resource-configs-and-properties" class="headerlink" title="Resource configs and properties"></a>Resource configs and properties</h2><h2 id="Commands"><a href="#Commands" class="headerlink" title="Commands"></a>Commands</h2><h2 id="Jinja-Reference"><a href="#Jinja-Reference" class="headerlink" title="Jinja Reference"></a>Jinja Reference</h2><h2 id="dbt-Artifacts"><a href="#dbt-Artifacts" class="headerlink" title="dbt Artifacts"></a>dbt Artifacts</h2><h2 id="Database-Permissions"><a href="#Database-Permissions" class="headerlink" title="Database Permissions"></a>Database Permissions</h2>
+                <h2 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h2><blockquote>
+<p>데이터베이스에서 데이터를 조회하기 위해 사용되는 기본적인 명령문</p>
+</blockquote>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
+<span class="token keyword">SELECT</span>
+column_name
+<span class="token keyword">FROM</span> table_nam
+
+
+<span class="token keyword">SELECT</span>
+first_name<span class="token punctuation">,</span>
+last_name
+<span class="token keyword">FROM</span> actor
+<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span>
+<span class="token operator">*</span>
+<span class="token keyword">FROM</span> actor
+<span class="token punctuation">;</span>
+
+<span class="token comment">-- 1. Formatting doesn't matter!</span>
+<span class="token keyword">SELECT</span>
+first_name<span class="token punctuation">,</span>
+last_name
+<span class="token keyword">FROM</span> actor
+<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span> first_name<span class="token punctuation">,</span> last_name
+<span class="token keyword">FROM</span> actor
+<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span>
+first_name<span class="token punctuation">,</span>
+last_name<span class="token punctuation">,</span>
+email
+<span class="token keyword">FROM</span> customer
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="DISTINCT"><a href="#DISTINCT" class="headerlink" title="DISTINCT"></a>DISTINCT</h2><blockquote>
+<p>쿼리 결과에서 중복된 값을 제거하여 고유한 값만을 반환하는 데 사용</p>
+</blockquote>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
+<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span>
+column_name
+<span class="token keyword">FROM</span> table_nam
+<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span>
+first_name
+<span class="token keyword">FROM</span> actor
+<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span>
+first_name
+<span class="token keyword">FROM</span> actor
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> first_name
+l
+<span class="token punctuation">;</span>
+
+<span class="token comment">-- 두 컬럼에 대해 DISTINCT</span>
+<span class="token comment">-- Note! : Distinct in terms of all selected columns!</span>
+<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span>
+first_name<span class="token punctuation">,</span>
+last_name
+<span class="token keyword">FROM</span> actor
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> first_name
+<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span>
+amount
+<span class="token keyword">FROM</span> payment
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> amount <span class="token keyword">DESC</span><span class="token punctuation">;</span>
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="ORDER-BY"><a href="#ORDER-BY" class="headerlink" title="ORDER BY"></a>ORDER BY</h2><blockquote>
+<p>쿼리 결과를 특정 열을 기준으로 정렬할 때 사용</p>
+</blockquote>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
+<span class="token keyword">SELECT</span> 
+column_name1<span class="token punctuation">,</span>
+column_name2
+<span class="token keyword">FROM</span> table_name
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> column_name1
+
+<span class="token comment">-- ASC를 default이나 명시적으로 표시하면 가독성이 높아집니다.</span>
+<span class="token keyword">SELECT</span> 
+column_name1<span class="token punctuation">,</span>
+column_name2
+<span class="token keyword">FROM</span> table_name
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> column_name1 <span class="token keyword">ASC</span>
+
+<span class="token keyword">SELECT</span> 
+column_name1<span class="token punctuation">,</span>
+column_name2
+<span class="token keyword">FROM</span> table_name
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> column_name1 <span class="token keyword">DESC</span>
+
+<span class="token keyword">SELECT</span> 
+first_name<span class="token punctuation">,</span>
+last_name
+<span class="token keyword">FROM</span> actor
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> first_name <span class="token keyword">DESC</span><span class="token punctuation">,</span> last_name <span class="token keyword">ASC</span>
+
+<span class="token keyword">SELECT</span>
+first_name<span class="token punctuation">,</span>
+last_name<span class="token punctuation">,</span>
+email
+<span class="token keyword">FROM</span> customer
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> last_name <span class="token keyword">DESC</span><span class="token punctuation">,</span> first_name <span class="token keyword">DESC</span><span class="token punctuation">;</span>
+
+<span class="token comment">-- ORDER BY를 컬럼 순서의 숫자로 쓰면 가독성이 낮아 비권장합니다. </span>
+<span class="token keyword">SELECT</span>
+first_name<span class="token punctuation">,</span>
+last_name<span class="token punctuation">,</span>
+email
+<span class="token keyword">FROM</span> customer
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> <span class="token number">2</span> <span class="token keyword">DESC</span><span class="token punctuation">,</span> <span class="token number">1</span> <span class="token keyword">DESC</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="COUNT"><a href="#COUNT" class="headerlink" title="COUNT()"></a>COUNT()</h2><blockquote>
+<p>특정 열의 레코드 수를 계산하는 데 사용</p>
+</blockquote>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
+<span class="token comment">-- more common than below </span>
+<span class="token keyword">SELECT</span>
+<span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> table_name
+
+<span class="token comment">-- another case</span>
+<span class="token comment">-- Note: COUNT()를 할 때 Null은 카운트 되지 않습니다!</span>
+<span class="token keyword">SELECT</span>
+<span class="token function">COUNT</span><span class="token punctuation">(</span>column_name<span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> table_name
+
+<span class="token keyword">SELECT</span>
+<span class="token function">COUNT</span><span class="token punctuation">(</span>first_name<span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> actor<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span>
+<span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> first_name<span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> actor<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> first_name<span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> customer<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="LIMIT"><a href="#LIMIT" class="headerlink" title="LIMIT"></a>LIMIT</h2><blockquote>
+<p>쿼리 결과에서 반환되는 행의 수를 제한하는 데 사용</p>
+</blockquote>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
+<span class="token keyword">SELECT</span>
+column_name1<span class="token punctuation">,</span>
+column_name2<span class="token punctuation">,</span>
+<span class="token keyword">FROM</span> table_name
+<span class="token keyword">LIMIT</span> n
+
+<span class="token keyword">SELECT</span>
+first_name
+<span class="token keyword">FROM</span> actor
+<span class="token keyword">LIMIT</span> <span class="token number">4</span>
+
+<span class="token keyword">SELECT</span>
+first_name
+<span class="token keyword">FROM</span> actor
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> first_name <span class="token keyword">ASC</span>
+<span class="token keyword">LIMIT</span> <span class="token number">4</span>
+
+<span class="token keyword">SELECT</span> <span class="token operator">*</span>
+<span class="token keyword">FROM</span> rental
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> rental_date <span class="token keyword">DESC</span>
+<span class="token keyword">LIMIT</span> <span class="token number">10</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
                 
             </div>
             <hr/>
@@ -317,7 +470,7 @@ seed-">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/06/15/DBT/Reference/DBT%20Reference%20Index/">http://example.com/2024/06/15/DBT/Reference/DBT%20Reference%20Index/</a>
+                    <a href="http://example.com/2024/01/16/SQL/count-%E1%84%86%E1%85%B5%E1%84%8B%E1%85%AA%E1%86%AB-/">http://example.com/2024/01/16/SQL/count-%E1%84%86%E1%85%B5%E1%84%8B%E1%85%AA%E1%86%AB-/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -429,12 +582,12 @@ seed-">
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/06/15/Flink/docs/Flink%20Docs%20Index/">
+                <a href="/2024/01/18/Kubernetes/configmap/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/flink-logo.png" class="responsive-img" alt="Flink Docs Index">
+                        <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] 환경변수를 ConfigMap에 저장하는 방법">
                         
-                        <span class="card-title diy-neon-red">Flink Docs Index</span>
+                        <span class="card-title diy-neon-red">[Kubernetes] 환경변수를 ConfigMap에 저장하는 방법</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -445,14 +598,14 @@ seed-">
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-06-15
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-18
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/DBT/" class="post-category">
-                                    DBT
+                            <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
                                 </a>
                             
                             
@@ -469,12 +622,12 @@ seed-">
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/06/15/DBT/Docs/DBT%20Docs%20Index/">
+                <a href="/2024/01/15/Linux/stream/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="DBT Docs Index">
+                        <img src="/images/logos/linux-logo.png" class="responsive-img" alt="[Linux] Stream &amp; Redirection">
                         
-                        <span class="card-title diy-neon-red">DBT Docs Index</span>
+                        <span class="card-title diy-neon-red">[Linux] Stream &amp; Redirection</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -485,14 +638,14 @@ seed-">
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-06-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-15
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/DBT/" class="post-category">
-                                    DBT
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
                                 </a>
                             
                             
