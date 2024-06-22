@@ -1,0 +1,983 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="query-comment, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="query-commentdbt_project.ymlquery-comment: string
+
+query-comment 구성은 다음과 같이 딕셔너리 입력도 허용합니다:
+dbt_project.ymlmodels:
+  my_">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>query-comment | Keyhong</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span diy-happy-monkey">Keyhong</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <!-- <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li> -->
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Keyhong</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/dbt-logo.png')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title diy-neon-red">
+                        query-comment</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                        <div class="article-tag">
+                            <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                                <span class="chip bg-color">
+                                    2024-01-01</span>
+                        </div>
+                    
+                    
+
+
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/DBT/" class="post-category">
+                                DBT
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="query-comment"><a href="#query-comment" class="headerlink" title="query-comment"></a>query-comment</h1><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">query-comment</span><span class="token punctuation">:</span> string<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><code>query-comment</code> 구성은 다음과 같이 딕셔너리 입력도 허용합니다:</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">models</span><span class="token punctuation">:</span>
+  <span class="token key atrule">my_dbt_project</span><span class="token punctuation">:</span>
+    <span class="token key atrule">+materialized</span><span class="token punctuation">:</span> table
+
+<span class="token key atrule">query-comment</span><span class="token punctuation">:</span>
+  <span class="token key atrule">comment</span><span class="token punctuation">:</span> string
+  <span class="token key atrule">append</span><span class="token punctuation">:</span> true <span class="token punctuation">|</span> false
+  <span class="token key atrule">job-label</span><span class="token punctuation">:</span> true <span class="token punctuation">|</span> false  <span class="token comment"># BigQuery only</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p>dbt가 데이터베이스에 대해 실행하는 각 쿼리에 주석으로 삽입할 문자열입니다. 이 주석은 모델 및 테스트와 같은 특정 dbt 리소스에 SQL 문을 할당하는 데 사용될 수 있습니다.</p>
+<p><code>query-comment</code> 구성은 문자열을 반환하는 매크로를 호출할 수도 있습니다.</p>
+<p>기본적으로 dbt는 실행하는 리소스의 정보를 포함하는 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/terms/json">JSON</a> 주석을 쿼리 맨 위에 삽입합니다. 이 정보에는 dbt 버전, 프로필 및 타겟 이름, 그리고 노드 ID 등이 포함됩니다. 예를 들어:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">/* <span class="token punctuation">&#123;</span><span class="token string">"app"</span><span class="token builtin class-name">:</span> <span class="token string">"dbt"</span>, <span class="token string">"dbt_version"</span><span class="token builtin class-name">:</span> <span class="token string">"0.15.0rc2"</span>, <span class="token string">"profile_name"</span><span class="token builtin class-name">:</span> <span class="token string">"debug"</span>,
+    <span class="token string">"target_name"</span><span class="token builtin class-name">:</span> <span class="token string">"dev"</span>, <span class="token string">"node_id"</span><span class="token builtin class-name">:</span> <span class="token string">"model.dbt2.my_model"</span><span class="token punctuation">&#125;</span> */
+
+create view analytics.analytics.orders as <span class="token punctuation">(</span>
+    <span class="token keyword">select</span> <span class="token punctuation">..</span>.
+  <span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Using-the-dictionary-syntax"><a href="#Using-the-dictionary-syntax" class="headerlink" title="Using the dictionary syntax"></a>Using the dictionary syntax</h2><p>딕셔너리 구문은 두 개의 키를 포함합니다:</p>
+<ul>
+<li><code>comment</code>(선택 사항, 기본값은 위의 설명 참조): 쿼리에 주석으로 삽입될 문자열입니다.</li>
+<li><code>append</code>(선택 사항, 기본값&#x3D;<code>false</code>): 주석을 쿼리의 맨 아래에 추가할지 여부를 지정합니다. 기본적으로 주석은 쿼리의 맨 위에 추가됩니다 (<code>append: false</code>).</li>
+</ul>
+<p>이 구문은 Snowflake와 같은 데이터베이스에서 유용합니다. Snowflake는 보통 <a target="_blank" rel="noopener" href="https://docs.snowflake.com/release-notes/about#queries-leading-comments-removed-during-execution">remove leading SQL comments</a> 때문에 이 구성을 사용하여 주석을 원하는 위치에 삽입할 수 있습니다.</p>
+<h2 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h2><h3 id="Prepend-a-static-comment"><a href="#Prepend-a-static-comment" class="headerlink" title="Prepend a static comment"></a>Prepend a static comment</h3><p>이 설정은 dbt가 실행하는 모든 SQL 쿼리의 맨 위에 주석으로 <code>/* executed by dbt */</code>를 추가합니다. append: false로 설정되어 있으므로 주석은 쿼리의 맨 위에 삽입됩니다.</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">models</span><span class="token punctuation">:</span>
+  <span class="token key atrule">my_dbt_project</span><span class="token punctuation">:</span>
+    <span class="token key atrule">+materialized</span><span class="token punctuation">:</span> table
+
+<span class="token key atrule">query-comment</span><span class="token punctuation">:</span>
+  <span class="token key atrule">comment</span><span class="token punctuation">:</span> string
+  <span class="token key atrule">append</span><span class="token punctuation">:</span> true <span class="token punctuation">|</span> false
+  <span class="token key atrule">job-label</span><span class="token punctuation">:</span> true <span class="token punctuation">|</span> false  <span class="token comment"># BigQuery only</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="Example-output"><a href="#Example-output" class="headerlink" title="Example output:"></a>Example output:</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">/* executed by dbt */
+
+<span class="token keyword">select</span> <span class="token punctuation">..</span>.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Disable-query-comments"><a href="#Disable-query-comments" class="headerlink" title="Disable query comments"></a>Disable query comments</h3><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml">query<span class="token punctuation">-</span>comment<span class="token punctuation">:</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>Or:</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">query-comment</span><span class="token punctuation">:</span> <span class="token null important">null</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="Prepend-a-dynamic-comment"><a href="#Prepend-a-dynamic-comment" class="headerlink" title="Prepend a dynamic comment"></a>Prepend a dynamic comment</h3><p>다음 예제는 활성화된 dbt 타겟에서 구성된 <code>user</code>에 따라 달라지는 주석을 삽입하는 방법을 보여줍니다.</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">query-comment</span><span class="token punctuation">:</span> <span class="token string">"run by &#123;&#123; target.user &#125;&#125; in dbt"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="Example-output-1"><a href="#Example-output-1" class="headerlink" title="Example output:"></a>Example output:</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">/* run by drew <span class="token keyword">in</span> dbt */
+
+<span class="token keyword">select</span> <span class="token punctuation">..</span>.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Append-the-default-comment"><a href="#Append-the-default-comment" class="headerlink" title="Append the default comment"></a>Append the default comment</h3><p>다음 예제는 딕셔너리 구문을 사용하여 기본 주석을 추가(선행하지 않음)하는 방법을 보여줍니다.</p>
+<p><code>comment:</code> 필드가 생략되어 기본값이 추가될 수 있도록 합니다.</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">query-comment</span><span class="token punctuation">:</span>
+  <span class="token key atrule">append</span><span class="token punctuation">:</span> <span class="token boolean important">True</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h4 id="Example-output-2"><a href="#Example-output-2" class="headerlink" title="Example output:"></a>Example output:</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">select</span> <span class="token punctuation">..</span>.
+/* <span class="token punctuation">&#123;</span><span class="token string">"app"</span><span class="token builtin class-name">:</span> <span class="token string">"dbt"</span>, <span class="token string">"dbt_version"</span><span class="token builtin class-name">:</span> <span class="token string">"0.16.<span class="token variable"><span class="token variable">`</span>0rc2<span class="token variable">`</span></span>"</span>, <span class="token string">"profile_name"</span><span class="token builtin class-name">:</span> <span class="token string">"debug"</span>, <span class="token string">"target_name"</span><span class="token builtin class-name">:</span> <span class="token string">"dev"</span>, <span class="token string">"node_id"</span><span class="token builtin class-name">:</span> <span class="token string">"model.dbt2.my_model"</span><span class="token punctuation">&#125;</span> */
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="BigQuery-include-query-comment-items-as-job-labels"><a href="#BigQuery-include-query-comment-items-as-job-labels" class="headerlink" title="BigQuery: include query comment items as job labels"></a>BigQuery: include query comment items as job labels</h3><p>만약 <code>query-comment.job-label</code>이 true로 설정되면, dbt는 실행하는 쿼리에 대해 query comment 항목들(만약 딕셔너리로 지정된 경우) 또는 comment 문자열을 job label로 포함시킵니다. 이 레이블들은 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/query-comment#bigquery-include-query-comment-items-as-job-labels">BigQuery-specific config</a>에서 지정된 레이블들에 추가하여 포함됩니다.</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">query-comment</span><span class="token punctuation">:</span>
+  <span class="token key atrule">job-label</span><span class="token punctuation">:</span> <span class="token boolean important">True</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="Append-a-custom-comment"><a href="#Append-a-custom-comment" class="headerlink" title="Append a custom comment"></a>Append a custom comment</h3><p>다음 예제는 활성 dbt 타겟에서 구성된 <code>user</code>에 따라 달라지는 주석을 추가하는 데 딕셔너리 구문을 사용합니다.</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">query-comment</span><span class="token punctuation">:</span>
+  <span class="token key atrule">comment</span><span class="token punctuation">:</span> <span class="token string">"run by &#123;&#123; target.user &#125;&#125; in dbt"</span>
+  <span class="token key atrule">append</span><span class="token punctuation">:</span> <span class="token boolean important">True</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="Example-output-3"><a href="#Example-output-3" class="headerlink" title="Example output:"></a>Example output:</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">select</span> <span class="token punctuation">..</span>.
+/* run by drew <span class="token keyword">in</span> dbt */
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Intermediate-Use-a-macro-to-generate-a-comment"><a href="#Intermediate-Use-a-macro-to-generate-a-comment" class="headerlink" title="Intermediate: Use a macro to generate a comment"></a>Intermediate: Use a macro to generate a comment</h3><p><code>query-comment</code> 구성은 dbt 프로젝트 내의 매크로를 참조할 수 있습니다. 단순히 <code>macros</code> 디렉터리에 원하는 이름의 매크로(<code>query_comment</code>이 좋은 시작점입니다!)를 생성하면 됩니다.</p>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>macros/query_comment.sql</span></div><code class="language-sql">&#123;<span class="token operator">%</span> macro query_comment<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">%</span>&#125;
+
+  dbt &#123;&#123; dbt_version &#125;&#125;: running &#123;&#123; node<span class="token punctuation">.</span>unique_id &#125;&#125; <span class="token keyword">for</span> target &#123;&#123; target<span class="token punctuation">.</span>name &#125;&#125;
+
+&#123;<span class="token operator">%</span> endmacro <span class="token operator">%</span>&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>그런 다음 <code>dbt_project.yml</code> 파일에서 해당 매크로를 호출하면 됩니다. YAML 파서가 <code>&#123;</code>를 딕셔너리의 시작으로 해석하지 않도록 매크로를 따옴표로 묶어야 합니다.</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">query-comment</span><span class="token punctuation">:</span> <span class="token string">"&#123;&#123; query_comment() &#125;&#125;"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="Advanced-Use-a-macro-to-generate-a-comment"><a href="#Advanced-Use-a-macro-to-generate-a-comment" class="headerlink" title="Advanced: Use a macro to generate a comment"></a>Advanced: Use a macro to generate a comment</h3><p>다음 예제는 JSON 쿼리 주석을 보여줍니다. 이를 통해 dbt 프로젝트의 성능 특성을 이해할 수 있습니다.</p>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>macros/query_comment.sql</span></div><code class="language-sql">&#123;<span class="token operator">%</span> macro query_comment<span class="token punctuation">(</span>node<span class="token punctuation">)</span> <span class="token operator">%</span>&#125;
+    &#123;<span class="token operator">%</span><span class="token operator">-</span> <span class="token keyword">set</span> comment_dict <span class="token operator">=</span> &#123;&#125; <span class="token operator">-</span><span class="token operator">%</span>&#125;
+    &#123;<span class="token operator">%</span><span class="token operator">-</span> <span class="token keyword">do</span> comment_dict<span class="token punctuation">.</span><span class="token keyword">update</span><span class="token punctuation">(</span>
+        app<span class="token operator">=</span><span class="token string">'dbt'</span><span class="token punctuation">,</span>
+        dbt_version<span class="token operator">=</span>dbt_version<span class="token punctuation">,</span>
+        profile_name<span class="token operator">=</span>target<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'profile_name'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        target_name<span class="token operator">=</span>target<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'target_name'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">%</span>&#125;
+    &#123;<span class="token operator">%</span><span class="token operator">-</span> <span class="token keyword">if</span> node <span class="token operator">is</span> <span class="token operator">not</span> none <span class="token operator">-</span><span class="token operator">%</span>&#125;
+      &#123;<span class="token operator">%</span><span class="token operator">-</span> <span class="token keyword">do</span> comment_dict<span class="token punctuation">.</span><span class="token keyword">update</span><span class="token punctuation">(</span>
+        <span class="token keyword">file</span><span class="token operator">=</span>node<span class="token punctuation">.</span>original_file_path<span class="token punctuation">,</span>
+        node_id<span class="token operator">=</span>node<span class="token punctuation">.</span>unique_id<span class="token punctuation">,</span>
+        node_name<span class="token operator">=</span>node<span class="token punctuation">.</span>name<span class="token punctuation">,</span>
+        resource_type<span class="token operator">=</span>node<span class="token punctuation">.</span>resource_type<span class="token punctuation">,</span>
+        package_name<span class="token operator">=</span>node<span class="token punctuation">.</span>package_name<span class="token punctuation">,</span>
+        relation<span class="token operator">=</span>&#123;
+            <span class="token string">"database"</span>: node<span class="token punctuation">.</span><span class="token keyword">database</span><span class="token punctuation">,</span>
+            <span class="token string">"schema"</span>: node<span class="token punctuation">.</span><span class="token keyword">schema</span><span class="token punctuation">,</span>
+            <span class="token string">"identifier"</span>: node<span class="token punctuation">.</span>identifier
+        &#125;
+      <span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">%</span>&#125;
+    &#123;<span class="token operator">%</span> <span class="token keyword">else</span> <span class="token operator">%</span>&#125;
+      &#123;<span class="token operator">%</span><span class="token operator">-</span> <span class="token keyword">do</span> comment_dict<span class="token punctuation">.</span><span class="token keyword">update</span><span class="token punctuation">(</span>node_id<span class="token operator">=</span><span class="token string">'internal'</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">%</span>&#125;
+    &#123;<span class="token operator">%</span><span class="token operator">-</span> endif <span class="token operator">-</span><span class="token operator">%</span>&#125;
+    &#123;<span class="token operator">%</span> <span class="token keyword">do</span> <span class="token keyword">return</span><span class="token punctuation">(</span>tojson<span class="token punctuation">(</span>comment_dict<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">%</span>&#125;
+&#123;<span class="token operator">%</span> endmacro <span class="token operator">%</span>&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>위와 같이 이 매크로를 호출하세요:</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">query-comment</span><span class="token punctuation">:</span> <span class="token string">"&#123;&#123; query_comment(node) &#125;&#125;"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="Compilation-context"><a href="#Compilation-context" class="headerlink" title="Compilation context"></a>Compilation context</h2><p>쿼리 주석을 생성할 때 사용할 수 있는 다음 컨텍스트 변수들이 있습니다:</p>
+<table>
+<thead>
+<tr>
+<th>Context Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>dbt_version</td>
+<td>사용 중인 dbt의 버전입니다. 릴리즈 버전 관련 자세한 내용은 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/commands/version#versioning">Versioning</a> 문서를 참조하세요.</td>
+</tr>
+<tr>
+<td>env_var</td>
+<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/dbt-jinja-functions/env_var">env_var</a>를 참조하세요.</td>
+</tr>
+<tr>
+<td>modules</td>
+<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/dbt-jinja-functions/modules">modules</a>를 참조하세요.</td>
+</tr>
+<tr>
+<td>run_started_at</td>
+<td>dbt 호출이 시작된 시점</td>
+</tr>
+<tr>
+<td>invocation_id</td>
+<td>dbt 호출의 고유 ID</td>
+</tr>
+<tr>
+<td>fromjson</td>
+<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/dbt-jinja-functions/fromjson">fromjson</a>를 참조하세요.</td>
+</tr>
+<tr>
+<td>tojson</td>
+<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/dbt-jinja-functions/tojson">tojson</a>를 참조하세요.</td>
+</tr>
+<tr>
+<td>log</td>
+<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/dbt-jinja-functions/log">log</a>를 참조하세요.</td>
+</tr>
+<tr>
+<td>var</td>
+<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/dbt-jinja-functions/var">var</a>를 참조하세요.</td>
+</tr>
+<tr>
+<td>target</td>
+<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/dbt-jinja-functions/target">target</a>를 참조하세요.</td>
+</tr>
+<tr>
+<td>connection_name</td>
+<td>연결의 내부 이름을 나타내는 문자열입니다. 이 문자열은 dbt에 의해 생성됩니다.</td>
+</tr>
+<tr>
+<td>node</td>
+<td>파싱된 노드 객체의 사전 표현입니다. <code>node.unique_id</code>, <code>node.database</code>, <code>node.schema</code> 등을 사용할 수 있습니다.</td>
+</tr>
+</tbody></table>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/query-comment">https://docs.getdbt.com/reference/project-configs/query-comment</a></li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Keyhong</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2024/01/01/DBT/Reference/Project%20Configs/query-comment/">http://example.com/2024/01/01/DBT/Reference/Project%20Configs/query-comment/</a>
+                </span>
+            </div>
+            <!-- <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        reprint:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    use
+                    <a href="cc_by_url" rel="external nofollow noreferrer" target="_blank">cc_by_name</a>
+                    licensed
+                    <a href="/about" target="_blank">Keyhong</a>
+                    !
+                </span>
+            </div> -->
+        
+    </div>
+
+    <!-- <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script> -->
+
+
+
+            <div class="tag_share" style="display: block;">
+                <!-- <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                        </div>
+                    
+                </div> -->
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <!-- <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a> -->
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2024/01/01/DBT/Reference/Project%20Configs/packages-install-path/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="packages-install-path">
+                        
+                        <span class="card-title diy-neon-red">packages-install-path</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/DBT/" class="post-category">
+                                    DBT
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/01/01/DBT/Reference/Project%20Configs/profile/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="profile">
+                        
+                        <span class="card-title diy-neon-red">profile</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/DBT/" class="post-category">
+                                    DBT
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;목차</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2024</span>
+            
+            <a href="/about" target="_blank">Gyuwon Hong</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+            
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+    <a href="https://github.com/keyhong" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:wnhong96@gmail.com" class="tooltipped" target="_blank" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- Back to Top Button -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
