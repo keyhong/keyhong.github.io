@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="[Hadoop] General - Hadoop: Setting up a Single Node Cluster., Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Hadoop: Setting up a Single Node Cluster.PurposeThis document describes how to set up and configure a single-node Hadoop">
+    <meta name="description" content="Hadoop: Setting up a Single Node Cluster.Purpose이 문서는 Hadoop MapReduce 및 Hadoop 분산 파일 시스템 (HDFS)을 사용하여 간단한 작업을 신속하게 수행할 ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -239,45 +239,27 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Hadoop-Setting-up-a-Single-Node-Cluster"><a href="#Hadoop-Setting-up-a-Single-Node-Cluster" class="headerlink" title="Hadoop: Setting up a Single Node Cluster."></a>Hadoop: Setting up a Single Node Cluster.</h1><h2 id="Purpose"><a href="#Purpose" class="headerlink" title="Purpose"></a>Purpose</h2><p>This document describes how to set up and configure a single-node Hadoop installation so that you can quickly perform simple operations using Hadoop MapReduce and the Hadoop Distributed File System (HDFS).</p>
-<p><em>Important</em>: all production Hadoop clusters use Kerberos to authenticate callers and secure access to HDFS data as well as restriction access to computation services (YARN etc.).</p>
-<p>These instructions do not cover integration with any Kerberos services, -everyone bringing up a production cluster should include connecting to their organisation’s Kerberos infrastructure as a key part of the deployment.</p>
-<p>See <a target="_blank" rel="noopener" href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SecureMode.html">Security</a> for details on how to secure a cluster.</p>
-<p>이 문서는 Hadoop MapReduce 및 Hadoop 분산 파일 시스템 (HDFS)을 사용하여 간단한 작업을 신속하게 수행할 수 있도록 단일 노드 Hadoop 설치를 설정하고 구성하는 방법에 대해 설명합니다.</p>
+                <h1 id="Hadoop-Setting-up-a-Single-Node-Cluster"><a href="#Hadoop-Setting-up-a-Single-Node-Cluster" class="headerlink" title="Hadoop: Setting up a Single Node Cluster."></a>Hadoop: Setting up a Single Node Cluster.</h1><h2 id="Purpose"><a href="#Purpose" class="headerlink" title="Purpose"></a>Purpose</h2><p>이 문서는 Hadoop MapReduce 및 Hadoop 분산 파일 시스템 (HDFS)을 사용하여 간단한 작업을 신속하게 수행할 수 있도록 단일 노드 Hadoop 설치를 설정하고 구성하는 방법에 대해 설명합니다.</p>
 <p><em>중요</em>: 모든 프로덕션 Hadoop 클러스터는 HDFS 데이터에 대한 호출자 인증 및 접근 보안을 위해 Kerberos를 사용하며, 계산 서비스 (YARN 등)에 대한 접근을 제한합니다.</p>
 <p>이 지침은 어떤 Kerberos 서비스와의 통합을 다루지 않습니다. 프로덕션 클러스터를 구축하는 모든 사용자는 배포의 중요한 부분으로 자신의 조직의 Kerberos 인프라에 연결해야 합니다.</p>
-<p>보안 섹션에서 클러스터를 보호하는 방법에 대한 자세한 내용을 확인하십시오.</p>
+<p><a target="_blank" rel="noopener" href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SecureMode.html">Security</a> 섹션에서 클러스터를 보호하는 방법에 대한 자세한 내용을 확인하십시오.</p>
 <h2 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h2><h3 id="Supported-Platforms"><a href="#Supported-Platforms" class="headerlink" title="Supported Platforms"></a>Supported Platforms</h3><ul>
-<li><p>GNU&#x2F;Linux is supported as a development and production platform. Hadoop has been demonstrated on GNU&#x2F;Linux clusters with 2000 nodes.</p>
-</li>
-<li><p>GNU&#x2F;Linux는 개발 및 프로덕션 플랫폼으로 지원됩니다. Hadoop은 2000개 노드를 갖는 GNU&#x2F;Linux 클러스터에서도 시연되었습니다.</p>
-</li>
+<li>GNU&#x2F;Linux는 개발 및 프로덕션 플랫폼으로 지원됩니다. Hadoop은 2000개 노드를 갖는 GNU&#x2F;Linux 클러스터에서도 시연되었습니다.</li>
 </ul>
-<h3 id="Required-Software"><a href="#Required-Software" class="headerlink" title="Required Software"></a>Required Software</h3><p>Required software for Linux include:</p>
+<h3 id="Required-Software"><a href="#Required-Software" class="headerlink" title="Required Software"></a>Required Software</h3><p>Linux용 필수 소프트웨어는 다음과 같습니다:</p>
 <ol>
-<li><p>Java™ must be installed. Recommended Java versions are described at <a href="">HadoopJavaVersions</a>.</p>
-</li>
-<li><p>ssh must be installed and sshd must be running to use the Hadoop scripts that manage remote Hadoop daemons if the optional start and stop scripts are to be used. Additionally, it is recommmended that pdsh also be installed for better ssh resource management.</p>
-</li>
-</ol>
-<p>Linux용 필수 소프트웨어는 다음과 같습니다:</p>
-<ol>
-<li><p>Java™가 설치되어 있어야 합니다. 권장되는 Java 버전은 HadoopJavaVersions에서 설명되어 있습니다.</p>
+<li><p>Java™가 설치되어 있어야 합니다. 권장되는 Java 버전은 <a href="">HadoopJavaVersions</a>에서 설명되어 있습니다.</p>
 </li>
 <li><p>Hadoop 데몬을 관리하는 Hadoop 스크립트를 사용하려면 ssh가 설치되어 있어야 하며, 선택적으로 시작 및 중지 스크립트를 사용하려면 sshd가 실행되어야 합니다. 더 나은 ssh 자원 관리를 위해 pdsh도 설치하는 것이 권장됩니다.</p>
 </li>
 </ol>
-<h3 id="Installing-Software"><a href="#Installing-Software" class="headerlink" title="Installing Software"></a>Installing Software</h3><p>If your cluster doesn’t have the requisite software you will need to install it.</p>
-<p>For example on Ubuntu Linux:</p>
-<p>만약 클러스터에 필요한 소프트웨어가 없다면 설치해야 합니다.</p>
+<h3 id="Installing-Software"><a href="#Installing-Software" class="headerlink" title="Installing Software"></a>Installing Software</h3><p>만약 클러스터에 필요한 소프트웨어가 없다면 설치해야 합니다.</p>
 <p>예를 들어 Ubuntu Linux에서는 다음과 같이 설치할 수 있습니다:</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> <span class="token function">ssh</span>
 $ <span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> pdsh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h2 id="Download"><a href="#Download" class="headerlink" title="Download"></a>Download</h2><p>To get a Hadoop distribution, download a recent stable release from one of the <a href="">Apache Download Mirrors</a>.</p>
-<p>Hadoop 배포본을 얻으려면 Apache Download Mirrors 중 하나에서 최신 안정 버전을 다운로드하세요.</p>
-<h2 id="Prepare-to-Start-the-Hadoop-Cluster"><a href="#Prepare-to-Start-the-Hadoop-Cluster" class="headerlink" title="Prepare to Start the Hadoop Cluster"></a>Prepare to Start the Hadoop Cluster</h2><p>Unpack the downloaded Hadoop distribution. In the distribution, edit the file etc&#x2F;hadoop&#x2F;hadoop-env.sh to define some parameters as follows:</p>
-<p>다운로드한 Hadoop 배포본을 해제하세요. 배포본에서 파일 etc&#x2F;hadoop&#x2F;hadoop-env.sh을 편집하여 다음과 같이 일부 매개변수를 정의하세요:</p>
+<h2 id="Download"><a href="#Download" class="headerlink" title="Download"></a>Download</h2><p>Hadoop 배포본을 얻으려면 <a href="">Apache Download Mirrors</a> 중 하나에서 최신 안정 버전을 다운로드하세요.</p>
+<h2 id="Prepare-to-Start-the-Hadoop-Cluster"><a href="#Prepare-to-Start-the-Hadoop-Cluster" class="headerlink" title="Prepare to Start the Hadoop Cluster"></a>Prepare to Start the Hadoop Cluster</h2><p>다운로드한 Hadoop 배포본을 해제하세요. 배포본에서 파일 etc&#x2F;hadoop&#x2F;hadoop-env.sh을 편집하여 다음과 같이 일부 매개변수를 정의하세요:</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># set to the root of your Java installation</span>
 <span class="token builtin class-name">export</span> <span class="token assign-left variable">JAVA_HOME</span><span class="token operator">=</span>/usr/java/latest<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
@@ -285,8 +267,6 @@ $ <span class="token function">sudo</span> <span class="token function">apt-get<
 <p>다음 명령어를 시도해보세요:</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ bin/hadoop<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>This will display the usage documentation for the hadoop script.</p>
-<p>Now you are ready to start your Hadoop cluster in one of the three supported modes:</p>
 <p>이렇게 하면 hadoop 스크립트의 사용 설명서가 표시됩니다.</p>
 <p>이제 세 가지 지원되는 모드 중 하나로 Hadoop 클러스터를 시작할 준비가 되었습니다:</p>
 <ul>
@@ -294,17 +274,14 @@ $ <span class="token function">sudo</span> <span class="token function">apt-get<
 <li><a target="_blank" rel="noopener" href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCluster.html#Pseudo-Distributed_Operation">Pseudo-Distributed Mode</a></li>
 <li><a target="_blank" rel="noopener" href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCluster.html#Fully-Distributed_Operation">Fully-Distributed Mode</a></li>
 </ul>
-<h2 id="Standalone-Operation"><a href="#Standalone-Operation" class="headerlink" title="Standalone Operation"></a>Standalone Operation</h2><p>By default, Hadoop is configured to run in a non-distributed mode, as a single Java process. This is useful for debugging.</p>
-<p>The following example copies the unpacked conf directory to use as input and then finds and displays every match of the given regular expression. Output is written to the given output director</p>
-<p>기본적으로 Hadoop은 비분산 모드로 구성되어 있어 단일 Java 프로세스로 실행됩니다. 이것은 디버깅에 유용합니다.</p>
+<h2 id="Standalone-Operation"><a href="#Standalone-Operation" class="headerlink" title="Standalone Operation"></a>Standalone Operation</h2><p>기본적으로 Hadoop은 비분산 모드로 구성되어 있어 단일 Java 프로세스로 실행됩니다. 이것은 디버깅에 유용합니다.</p>
 <p>다음 예제는 풀린 conf 디렉토리를 입력으로 사용하고 지정된 정규 표현식에 대한 모든 일치 항목을 찾아서 표시합니다. 출력은 지정된 출력 디렉토리에 작성됩니다.</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">mkdir</span> input
 $ <span class="token function">cp</span> etc/hadoop/*.xml input
 $ bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.6.jar <span class="token function">grep</span> input output <span class="token string">'dfs[a-z.]+'</span>
 $ <span class="token function">cat</span> output/*<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="Pseudo-Distributed-Operation"><a href="#Pseudo-Distributed-Operation" class="headerlink" title="Pseudo-Distributed Operation"></a>Pseudo-Distributed Operation</h2><p>Hadoop can also be run on a single-node in a pseudo-distributed mode where each Hadoop daemon runs in a separate Java process.</p>
-<p>Hadoop은 각각의 Hadoop 데몬이 별도의 Java 프로세스에서 실행되는 가상 분산 모드에서도 단일 노드에서 실행할 수 있습니다.</p>
+<h2 id="Pseudo-Distributed-Operation"><a href="#Pseudo-Distributed-Operation" class="headerlink" title="Pseudo-Distributed Operation"></a>Pseudo-Distributed Operation</h2><p>Hadoop은 각각의 Hadoop 데몬이 별도의 Java 프로세스에서 실행되는 가상 분산 모드에서도 단일 노드에서 실행할 수 있습니다.</p>
 <h3 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h3><p>Use the following:</p>
 <p>다음을 사용하세요:</p>
 <pre class="line-numbers language-markup" data-language="markup"><div class="caption"><span>etc/hadoop/core-site.xml</span></div><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">></span></span>
@@ -321,99 +298,67 @@ $ <span class="token function">cat</span> output/*<span aria-hidden="true" class
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="Setup-passphraseless-ssh"><a href="#Setup-passphraseless-ssh" class="headerlink" title="Setup passphraseless ssh"></a>Setup passphraseless ssh</h4><p>Now check that you can ssh to the localhost without a passphrase:</p>
-<p>이제 암호구문 없이 localhost로 SSH 접속할 수 있는지 확인하세요.</p>
+<h4 id="Setup-passphraseless-ssh"><a href="#Setup-passphraseless-ssh" class="headerlink" title="Setup passphraseless ssh"></a>Setup passphraseless ssh</h4><p>이제 암호구문 없이 localhost로 SSH 접속할 수 있는지 확인하세요:</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> localhost<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>If you cannot ssh to localhost without a passphrase, execute the following commands:</p>
 <p>만약 암호구문 없이 localhost로 SSH 접속할 수 없다면, 다음 명령을 실행하세요:</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ ssh-keygen <span class="token parameter variable">-t</span> rsa <span class="token parameter variable">-P</span> <span class="token string">''</span> <span class="token parameter variable">-f</span> ~/.ssh/id_rsa
 $ <span class="token function">cat</span> ~/.ssh/id_rsa.pub <span class="token operator">>></span> ~/.ssh/authorized_keys
 $ <span class="token function">chmod</span> 0600 ~/.ssh/authorized_keys<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="Execution"><a href="#Execution" class="headerlink" title="Execution"></a>Execution</h4><p>The following instructions are to run a MapReduce job locally. If you want to execute a job on YARN, see <a target="_blank" rel="noopener" href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCluster.html#YARN_on_a_Single_Node">YARN on Single Node</a>.</p>
-<p>다음 지침은 로컬에서 MapReduce 작업을 실행하는 방법입니다. 만약 YARN에서 작업을 실행하려면 “단일 노드에서 YARN”을 참조하십시오.</p>
+<h4 id="Execution"><a href="#Execution" class="headerlink" title="Execution"></a>Execution</h4><p>다음 지침은 로컬에서 MapReduce 작업을 실행하는 방법입니다. 만약 YARN에서 작업을 실행하려면 <a target="_blank" rel="noopener" href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCluster.html#YARN_on_a_Single_Node">YARN on Single Node</a>을 참조하십시오.</p>
 <ol>
-<li><p>Format the filesystem:</p>
-</li>
-<li><p>파일 시스템을 포맷하세요:</p>
-</li>
+<li>파일 시스템을 포맷하세요:</li>
 </ol>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ bin/hdfs namenode <span class="token parameter variable">-format</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ol start="2">
-<li><p>Start NameNode daemon and DataNode daemon:</p>
-</li>
-<li><p>NameNode 데몬과 DataNode 데몬을 시작하세요:</p>
-</li>
+<li>NameNode 데몬과 DataNode 데몬을 시작하세요:</li>
 </ol>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ sbin/start-dfs.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>The hadoop daemon log output is written to the $HADOOP_LOG_DIR directory (defaults to $HADOOP_HOME&#x2F;logs).</p>
 <p>Hadoop 데몬 로그 출력은 $HADOOP_LOG_DIR 디렉터리에 작성됩니다 ($HADOOP_HOME&#x2F;logs로 기본 설정됨).</p>
 <ol start="3">
-<li><p>Browse the web interface for the NameNode; by default it is available at:</p>
-</li>
 <li><p>NameNode의 웹 인터페이스를 둘러보세요. 기본적으로 다음 위치에서 사용할 수 있습니다:</p>
 <ul>
 <li>NameNode - <a target="_blank" rel="noopener" href="http://localhost:9870/">http://localhost:9870/</a></li>
 </ul>
 </li>
-<li><p>Make the HDFS directories required to execute MapReduce jobs:</p>
-</li>
-<li><p>MapReduce 작업을 실행하는 데 필요한 HDFS 디렉터리를 생성하세요.</p>
+<li><p>MapReduce 작업을 실행하는 데 필요한 HDFS 디렉터리를 생성하세요:</p>
 </li>
 </ol>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ bin/hdfs dfs <span class="token parameter variable">-mkdir</span> <span class="token parameter variable">-p</span> /user/<span class="token operator">&lt;</span>username<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ol start="5">
-<li><p>Copy the input files into the distributed filesystem:</p>
-</li>
-<li><p>분산 파일 시스템으로 입력 파일을 복사하세요:</p>
-</li>
+<li>분산 파일 시스템으로 입력 파일을 복사하세요:</li>
 </ol>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ bin/hdfs dfs <span class="token parameter variable">-mkdir</span> input
 $ bin/hdfs dfs <span class="token parameter variable">-put</span> etc/hadoop/*.xml input<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <ol start="6">
-<li><p>Run some of the examples provided:</p>
-</li>
-<li><p>제공된 예제 중 일부를 실행하세요.</p>
-</li>
+<li>제공된 예제 중 일부를 실행하세요:</li>
 </ol>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.6.jar <span class="token function">grep</span> input output <span class="token string">'dfs[a-z.]+'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ol start="7">
-<li><p>Examine the output files: Copy the output files from the distributed filesystem to the local filesystem and examine them:</p>
-</li>
-<li><p>출력 파일을 확인하세요: 분산 파일 시스템에서 출력 파일을 로컬 파일 시스템으로 복사하고 확인하세요:</p>
-</li>
+<li>출력 파일을 확인하세요: 분산 파일 시스템에서 출력 파일을 로컬 파일 시스템으로 복사하고 확인하세요:</li>
 </ol>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ bin/hdfs dfs <span class="token parameter variable">-get</span> output output
 $ <span class="token function">cat</span> output/*<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<p>or</p>
-<p>View the output files on the distributed filesystem:</p>
+<p>또는</p>
 <p>분산 파일 시스템에서 출력 파일을 확인하세요:</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ bin/hdfs dfs <span class="token parameter variable">-cat</span> output/*<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ol start="8">
-<li><p>When you’re done, stop the daemons with:</p>
-</li>
-<li><p>작업을 마쳤으면 다음 명령으로 데몬을 중지하세요:</p>
-</li>
+<li>작업을 마쳤으면 다음 명령으로 데몬을 중지하세요:</li>
 </ol>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ sbin/stop-dfs.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h4 id="YARN-on-a-Single-Node"><a href="#YARN-on-a-Single-Node" class="headerlink" title="YARN on a Single Node"></a>YARN on a Single Node</h4><p>You can run a MapReduce job on YARN in a pseudo-distributed mode by setting a few parameters and running ResourceManager daemon and NodeManager daemon in addition.</p>
-<p>The following instructions assume that 1. ~ 4. steps of <a target="_blank" rel="noopener" href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCluster.html#Execution">the above instructions</a> are already executed.</p>
-<p>일부 매개변수를 설정하고 ResourceManager 데몬 및 NodeManager 데몬을 추가로 실행하여 가상 분산 모드에서 YARN에서 MapReduce 작업을 실행할 수 있습니다.</p>
-<p>다음 지침은 이미 위의 지침의 1. ~ 4. 단계가 실행되었다고 가정합니다.</p>
+<h4 id="YARN-on-a-Single-Node"><a href="#YARN-on-a-Single-Node" class="headerlink" title="YARN on a Single Node"></a>YARN on a Single Node</h4><p>일부 매개변수를 설정하고 ResourceManager 데몬 및 NodeManager 데몬을 추가로 실행하여 가상 분산 모드에서 YARN에서 MapReduce 작업을 실행할 수 있습니다.</p>
+<p>다음 지침은 이미 <a target="_blank" rel="noopener" href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCluster.html#Execution">the above instructions</a>의 1. ~ 4. 단계가 실행되었다고 가정합니다.</p>
 <ol>
-<li><p>Configure parameters as follows:</p>
-</li>
-<li><p>다음과 같이 매개변수를 구성하세요:</p>
-</li>
+<li>다음과 같이 매개변수를 구성하세요:</li>
 </ol>
 <pre class="line-numbers language-markup" data-language="markup"><div class="caption"><span>etc/hadoop/mapred-site.xml</span></div><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
@@ -438,35 +383,24 @@ $ <span class="token function">cat</span> output/*<span aria-hidden="true" class
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ol start="2">
-<li><p>Start ResourceManager daemon and NodeManager daemon:</p>
-</li>
-<li><p>ResourceManager 데몬과 NodeManager 데몬을 시작하세요:</p>
-</li>
+<li>ResourceManager 데몬과 NodeManager 데몬을 시작하세요:</li>
 </ol>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ sbin/start-yarn.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ol start="3">
-<li><p>Browse the web interface for the ResourceManager; by default it is available at:</p>
-</li>
 <li><p>ResourceManager의 웹 인터페이스를 둘러보세요. 기본적으로 다음 위치에서 사용할 수 있습니다:</p>
 <ul>
 <li>ResourceManager - <a target="_blank" rel="noopener" href="http://localhost:8088/">http://localhost:8088/</a></li>
 </ul>
 </li>
-<li><p>Run a MapReduce job.</p>
-</li>
 <li><p>MapReduce 작업을 실행하세요.</p>
-</li>
-<li><p>When you’re done, stop the daemons with:</p>
 </li>
 <li><p>작업을 마쳤으면 다음 명령으로 데몬을 중지하세요:</p>
 </li>
 </ol>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ sbin/stop-yarn.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-
-<h2 id="Fully-Distributed-Operation"><a href="#Fully-Distributed-Operation" class="headerlink" title="Fully-Distributed Operation"></a>Fully-Distributed Operation</h2><p>For information on setting up fully-distributed, non-trivial clusters see <a target="_blank" rel="noopener" href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/ClusterSetup.html">Cluster Setup</a>.</p>
-<p>완전 분산, 비단순 클러스터를 설정하는 정보는 “클러스터 설정”을 참조하세요.</p>
+<h2 id="Fully-Distributed-Operation"><a href="#Fully-Distributed-Operation" class="headerlink" title="Fully-Distributed Operation"></a>Fully-Distributed Operation</h2><p>완전 분산, 비단순 클러스터를 설정하는 정보는 <a target="_blank" rel="noopener" href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/ClusterSetup.html">Cluster Setup</a>을 참조하세요.</p>
 
                 
             </div>
@@ -605,12 +539,12 @@ $ <span class="token function">cat</span> output/*<span aria-hidden="true" class
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/04/14/Kubernetes/docs/Concpets/1_Overview/Object_In_Kubernetes/9_Recommended%20Labels/">
+                <a href="/2024/06/16/DBT/Docs/DBT%20Docs%20Index/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="[Kubernetes] Concepts - Overview - Objects In Kubernetes - Recommended Labels">
+                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="DBT Docs Index">
                         
-                        <span class="card-title diy-neon-red">[Kubernetes] Concepts - Overview - Objects In Kubernetes - Recommended Labels</span>
+                        <span class="card-title diy-neon-red">DBT Docs Index</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -621,14 +555,14 @@ $ <span class="token function">cat</span> output/*<span aria-hidden="true" class
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-04-14
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-06-16
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Kubernetes/" class="post-category">
-                                    Kubernetes
+                            <a href="/categories/DBT/" class="post-category">
+                                    DBT
                                 </a>
                             
                             

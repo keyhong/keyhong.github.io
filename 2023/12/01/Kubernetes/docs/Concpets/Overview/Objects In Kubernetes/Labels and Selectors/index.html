@@ -1,0 +1,990 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Labels and Selectors, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="Labels and SelectorsLabels은 Pod와 같은 objects에 첨부되는 키&amp;#x2F;값 쌍입니다. 레이블은 사용자에게 의미 있고 관련 있는 객체의 식별 속성을 지정하는 데 사용됩니다. 그러나 레이블">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Labels and Selectors | Keyhong</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span diy-happy-monkey">Keyhong</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <!-- <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li> -->
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Keyhong</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/kubernetes-logo.png')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title diy-neon-red">
+                        Labels and Selectors</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                        <div class="article-tag">
+                            <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                                <span class="chip bg-color">
+                                    2023-12-01</span>
+                        </div>
+                    
+                    
+
+
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Kubernetes/" class="post-category">
+                                Kubernetes
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="Labels-and-Selectors"><a href="#Labels-and-Selectors" class="headerlink" title="Labels and Selectors"></a>Labels and Selectors</h1><p><strong>Labels</strong>은 Pod와 같은 <a href="">objects</a>에 첨부되는 키&#x2F;값 쌍입니다. 레이블은 사용자에게 의미 있고 관련 있는 객체의 식별 속성을 지정하는 데 사용됩니다. 그러나 레이블은 핵심 시스템에 직접 의미를 함축하지는 않습니다. 레이블은 객체의 하위 집합을 조직화하고 선택하는 데 사용할 수 있습니다. 레이블은 생성 시 객체에 첨부되며 이후 언제든지 추가하거나 수정할 수 있습니다. 각 객체는 정의된 키&#x2F;값 레이블 세트를 가질 수 있습니다. 주어진 객체에 대해 각 키는 고유해야 합니다.</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">"metadata"</span><span class="token punctuation">:</span> <span class="token punctuation">&#123;</span>
+  <span class="token key atrule">"labels"</span><span class="token punctuation">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token key atrule">"key1"</span> <span class="token punctuation">:</span> <span class="token string">"value1"</span><span class="token punctuation">,</span>
+    <span class="token key atrule">"key2"</span> <span class="token punctuation">:</span> <span class="token string">"value2"</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>레이블은 효율적인 쿼리 및 감시를 가능하게 하며 UI 및 CLI에서 사용하기에 이상적입니다. 식별에 필요하지 않은 정보는 <a href="">annotations</a>을 사용하여 기록해야 합니다.</p>
+<h2 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h2><p>레이블을 사용하면 사용자는 시스템 객체에 자체 조직 구조를 느슨하게 결합된 방식으로 매핑할 수 있습니다. 이를 통해 클라이언트가 이러한 매핑을 저장할 필요 없이 조직 구조를 객체에 적용할 수 있습니다.</p>
+<p>서비스 배포 및 일괄 처리 파이프라인은 종종 다차원 개체입니다(예: 여러 파티션 또는 배포, 여러 릴리스 트랙, 여러 계층, 각 계층당 여러 마이크로 서비스). 관리는 종종 교차 작업이 필요하며, 이는 엄격한 계층적 표현의 캡슐화를 깨뜨립니다. 특히 인프라에 의해 결정된 엄격한 계층 구조가 아닌 사용자에 의해 결정된 구조입니다.</p>
+<p>Example labels:</p>
+<ul>
+<li><code>&quot;release&quot; : &quot;stable&quot;</code>, <code>&quot;release&quot; : &quot;canary&quot;</code></li>
+<li><code>&quot;environment&quot; : &quot;dev&quot;</code>, <code>&quot;environment&quot; : &quot;qa&quot;</code>, <code>&quot;environment&quot; : &quot;production&quot;</code></li>
+<li><code>&quot;tier&quot; : &quot;frontend&quot;</code>, <code>&quot;tier&quot; : &quot;backend&quot;</code>, <code>&quot;tier&quot; : &quot;cache&quot;</code></li>
+<li><code>&quot;partition&quot; : &quot;customerA&quot;</code>, <code>&quot;partition&quot; : &quot;customerB&quot;</code></li>
+<li><code>&quot;track&quot; : &quot;daily&quot;</code>, <code>&quot;track&quot; : &quot;weekly&quot;</code></li>
+</ul>
+<p>These are examples of <a href="">commonly used labels</a>; you are free to develop your own conventions. Keep in mind that label Key must be unique for a given object.</p>
+<h2 id="Syntax-and-character-set"><a href="#Syntax-and-character-set" class="headerlink" title="Syntax and character set"></a>Syntax and character set</h2><p>레이블은 키&#x2F;값 쌍입니다. 유효한 레이블 키는 두 세그먼트로 구성됩니다: 슬래쉬(<code>/</code>)로 구분되는 선택적인 접두사와 이름 세그먼트가 있습니다. 이름 세그먼트는 필수이며 63자 이하이어야 합니다. 알파벳 문자([a-z0-9A-Z])로 시작하고 끝나야 하며, 중간에는 대시(<code>-</code>), 밑줄(<code>_</code>), 점(<code>.</code>) 및 알파벳 숫자만 허용됩니다. 접두사는 선택 사항입니다. 지정된 경우 접두사는 DNS 하위 도메인이어야 하며, 총 253자를 넘지 않는 점(<code>.</code>)으로 구분된 DNS 레이블 시리즈로 구성되어야 합니다. 그 후에는 슬래시(<code>/</code>)가 이어져야 합니다.</p>
+<p>접두사가 생략된 경우 레이블 키는 사용자 개인용으로 간주됩니다. 자동화된 시스템 구성 요소(예: <code>kube-scheduler</code>, <code>kube-controller-manager</code>, <code>kube-apiserver</code>, <code>kubectl</code> 또는 기타 서드파티 자동화 도구)는 사용자 객체에 레이블을 추가하는 경우 접두사를 지정해야 합니다.</p>
+<p><code>kubernetes.io/</code> 및 <code>k8s.io/</code> 접두사는 Kubernetes 핵심 구성 요소를 위해 예약되어 있습니다.</p>
+<p>유효한 레이블 값:</p>
+<ul>
+<li>63자 이하이어야 합니다(비어 있을 수 있음),</li>
+<li>비어 있지 않은 경우, 알파벳 문자([a-z0-9A-Z])로 시작하고 끝나야 합니다.</li>
+<li>대시(-), 밑줄(_), 점(.), 및 알파벳 숫자만 포함할 수 있습니다.</li>
+</ul>
+<p>예를 들어, 두 개의 레이블을 가진 Pod의 매니페스트입니다. <code>environment: production</code> 및 <code>app: nginx</code>:</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Pod
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> label<span class="token punctuation">-</span>demo
+  <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span> production
+    <span class="token key atrule">app</span><span class="token punctuation">:</span> nginx
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> nginx
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> nginx<span class="token punctuation">:</span>1.14.2
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">80</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Label-selectors"><a href="#Label-selectors" class="headerlink" title="Label selectors"></a>Label selectors</h2><p><a href="">names and UIDs</a>와 달리, 레이블은 고유성을 제공하지 않습니다. 일반적으로 많은 객체가 동일한 레이블을 가질 것으로 예상됩니다.</p>
+<p>레이블 셀렉터를 통해 클라이언트&#x2F;사용자는 객체 집합을 식별할 수 있습니다. 레이블 셀렉터는 Kubernetes에서의 핵심 그룹화 기본 요소입니다.</p>
+<p>현재 API는 두 가지 유형의 셀렉터를 지원합니다: <em>동등성 기반 및 집합 기반</em> 셀렉터입니다. 레이블 셀렉터는 쉼표로 구분된 여러 요구 사항으로 구성될 수 있습니다. 여러 요구 사항의 경우 모두 충족되어야 하므로 쉼표 구분자는 논리 AND (<code>&amp;&amp;</code>) 연산자로 작동합니다.</p>
+<p>빈 선택기 또는 지정되지 않은 선택기의 의미는 맥락에 따라 다르며, 선택기를 사용하는 API 유형은 이러한 선택기의 유효성과 의미를 문서화해야 합니다.</p>
+<blockquote>
+<p><strong>Note</strong>: ReplicaSets와 같은 일부 API 유형의 경우 네임스페이스 내에서 두 인스턴스의 레이블 셀렉터가 겹치면 컨트롤러가 충돌하는 지시로 인식할 수 있고 레플리카의 수를 결정하는 데 실패할 수 있습니다.</p>
+</blockquote>
+<blockquote>
+<p><strong>Caution</strong>: 동등성 기반 및 집합 기반 조건 모두 논리 OR (<code>||</code>) 연산자가 없습니다. 필터 문이 적절하게 구성되었는지 확인하십시오.</p>
+</blockquote>
+<h3 id="Equality-based-requirement"><a href="#Equality-based-requirement" class="headerlink" title="Equality-based requirement"></a><em>Equality-based</em> requirement</h3><p><em><strong>Equality- or inequality-based</strong></em> 요구 사항을 사용하면 레이블 키 및 값으로 필터링할 수 있습니다. 일치하는 객체는 지정된 모든 레이블 제약 조건을 충족해야 하지만 추가 레이블을 가질 수도 있습니다. <code>=</code>, <code>==</code>, <code>!=</code> 세 가지 종류의 연산자가 허용됩니다. 첫 두 연산자는 동등성을 나타내며 (동의어입니다), 마지막 연산자는 부등식을 나타냅니다. 예를 들어:</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml">environment = production
+tier <span class="token tag">!=</span> frontend<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>전자는 키가 <code>environment</code>이고 값이 <code>production</code>인 모든 리소스를 선택합니다. 후자는 키가 <code>tier</code>이고 값이 <code>frontend</code>와 다른 모든 리소스를 선택하며, <code>tier</code> 키가 없는 모든 리소스도 선택합니다. 쉼표 연산자를 사용하여 <code>frontend</code>를 제외한 <code>production</code>에서의 리소스를 필터링할 수 있습니다: <code>environment=production,tier!=frontend</code></p>
+<p>동등성 기반 레이블 요구 사항의 하나의 사용 시나리오는 Pod가 노드 선택 기준을 지정하는 것입니다. 예를 들어, 아래의 샘플 Pod는 “<code>accelerator=nvidia-tesla-p100</code>“ 레이블을 가진 노드를 선택합니다.</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Pod
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> cuda<span class="token punctuation">-</span>test
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> cuda<span class="token punctuation">-</span>test
+      <span class="token key atrule">image</span><span class="token punctuation">:</span> <span class="token string">"registry.k8s.io/cuda-vector-add:v0.1"</span>
+      <span class="token key atrule">resources</span><span class="token punctuation">:</span>
+        <span class="token key atrule">limits</span><span class="token punctuation">:</span>
+          <span class="token key atrule">nvidia.com/gpu</span><span class="token punctuation">:</span> <span class="token number">1</span>
+  <span class="token key atrule">nodeSelector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">accelerator</span><span class="token punctuation">:</span> nvidia<span class="token punctuation">-</span>tesla<span class="token punctuation">-</span>p100<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Set-based-requirement"><a href="#Set-based-requirement" class="headerlink" title="Set-based requirement"></a><em>Set-based</em> requirement</h3><p><em><code>Set-based</code></em> 레이블 요구 사항은 값 집합에 따라 키를 필터링할 수 있습니다. 세 가지 종류의 연산자가 지원됩니다: <code>in</code>, <code>notin</code> 및 <code>exists</code> (키 식별자만). 예를 들어:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">environment <span class="token keyword">in</span> <span class="token punctuation">(</span>production, qa<span class="token punctuation">)</span>
+tier notin <span class="token punctuation">(</span>frontend, backend<span class="token punctuation">)</span>
+partition
+<span class="token operator">!</span>partition<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>첫 번째 예제는 키가 <code>environment</code>이고 값이 <code>production</code> 또는 <code>qa</code>인 모든 리소스를 선택합니다.</li>
+<li>두 번째 예제는 키가 <code>tier</code>이고 값이 <code>frontend</code>와 <code>backend</code>가 아닌 모든 리소스와 <code>tier</code> 키가 없는 모든 리소스를 선택합니다.</li>
+<li>세 번째 예제는 키가 <code>partition</code>인 레이블을 포함한 모든 리소스를 선택합니다. 값을 확인하지 않습니다.</li>
+<li>네 번째 예제는 키가 <code>partition</code>인 레이블이 없는 모든 리소스를 선택합니다. 값을 확인하지 않습니다.</li>
+</ul>
+<p>비슷하게, 쉼표 구분자는 AND 연산자로 작동합니다. 따라서 <code>partition</code> 키를 가진 리소스(값에 관계없이)와 <code>environment</code>이 <code>qa</code>가 아닌 리소스를 필터링하려면 <code>partition,environment notin (qa)</code>를 사용할 수 있습니다. <em><strong>set-based</strong></em> 레이블 셀렉터는 <code>environment=production</code>이 <code>environment in (production)</code>과 동일하며, <code>!=</code> 및 <code>notin</code>에 대해서도 비슷하게 동작합니다.</p>
+<p><em><strong>set-based</strong></em> 요구 사항은 동등성 기반 요구 사항과 혼합하여 사용할 수 있습니다. 예를 들어: <code>partition in (customerA, customerB),environment!=qa</code>.</p>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h3 id="LIST-and-WATCH-filtering"><a href="#LIST-and-WATCH-filtering" class="headerlink" title="LIST and WATCH filtering"></a>LIST and WATCH filtering</h3><p>LIST 및 WATCH 작업은 쿼리 매개변수를 사용하여 반환되는 객체 세트를 필터링하기 위해 레이블 셀렉터를 지정할 수 있습니다. 여러 요구 사항이 허용됩니다 (여기에서 URL 쿼리 문자열로 표시됩니다):</p>
+<ul>
+<li><em><strong>equality-based</strong></em> 요구 사항: <code>?labelSelector=environment%3Dproduction,tier%3Dfrontend</code></li>
+<li><em><strong>set-based</strong></em> 요구 사항: <code>?labelSelector=environment+in+%28production%2Cqa%29%2Ctier+in+%28frontend%29</code></li>
+</ul>
+<p>두 가지 레이블 셀렉터 스타일은 REST 클라이언트를 통해 리소스를 나열하거나 감시하는 데 사용할 수 있습니다. 예를 들어, <code>kubectl</code>을 사용하여 <code>apiserver</code>를 대상으로하고 <em><strong>equality-based</strong></em> 셀렉터를 사용할 수 있습니다:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl get pods <span class="token parameter variable">-l</span> <span class="token assign-left variable">environment</span><span class="token operator">=</span>production,tier<span class="token operator">=</span>frontend<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>또는 <em><strong>set-based</strong></em> 요구 사항을 사용할 수 있습니다:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl get pods <span class="token parameter variable">-l</span> <span class="token string">'environment in (production),tier in (frontend)'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>이미 언급한 대로 <em><strong>set-based</strong></em> 요구 사항은 더 표현력이 높습니다. 예를 들어, 값에 대한 <em>OR</em> 연산자를 구현할 수 있습니다:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl get pods <span class="token parameter variable">-l</span> <span class="token string">'environment in (production, qa)'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>또는 <em><strong>notin</strong></em> 연산자를 사용하여 부정적인 일치를 제한할 수 있습니다:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl get pods <span class="token parameter variable">-l</span> <span class="token string">'environment,environment notin (frontend)'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="Set-references-in-API-objects"><a href="#Set-references-in-API-objects" class="headerlink" title="Set references in API objects"></a>Set references in API objects</h3><p>일부 Kubernetes 객체인 <a href="">services</a>와 <a href="">replicationcontrollers</a>는 <a href="">pods</a>와 같은 다른 리소스 세트를 지정하기 위해 레이블 셀렉터를 사용합니다.</p>
+<h4 id="Service-and-ReplicationController"><a href="#Service-and-ReplicationController" class="headerlink" title="Service and ReplicationController"></a>Service and ReplicationController</h4><p><code>service</code>가 대상으로 하는 파드 집합은 레이블 셀렉터로 정의됩니다. 마찬가지로, <code>replicationcontroller</code>가 관리해야 하는 파드 집합도 레이블 셀렉터로 정의됩니다.</p>
+<p>두 객체의 레이블 셀렉터는 맵을 사용하여 <code>json</code> 또는 <code>yaml</code> 파일에 정의되며, 동등성 기반 요구 사항 셀렉터만 지원됩니다:</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token property">"selector"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">"component"</span> <span class="token operator">:</span> <span class="token string">"redis"</span><span class="token punctuation">,</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>or</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">selector</span><span class="token punctuation">:</span>
+  <span class="token key atrule">component</span><span class="token punctuation">:</span> redis<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>이 셀렉터(각각 <code>json</code> 또는 <code>yaml</code> 형식으로)는 <code>component=redis</code> 또는 <code>component in (redis)</code>와 동등합니다.</p>
+<h4 id="Resources-that-support-set-based-requirements"><a href="#Resources-that-support-set-based-requirements" class="headerlink" title="Resources that support set-based requirements"></a>Resources that support set-based requirements</h4><p><code>Job</code>, <code>Deployment</code>, <code>ReplicaSet</code>, 및 <code>DaemonSet</code>과 같은 최신 리소스는 <em><strong>set-based</strong></em> 요구 사항도 지원합니다.</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">selector</span><span class="token punctuation">:</span>
+  <span class="token key atrule">matchLabels</span><span class="token punctuation">:</span>
+    <span class="token key atrule">component</span><span class="token punctuation">:</span> redis
+  <span class="token key atrule">matchExpressions</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token punctuation">&#123;</span> <span class="token key atrule">key</span><span class="token punctuation">:</span> tier<span class="token punctuation">,</span> <span class="token key atrule">operator</span><span class="token punctuation">:</span> In<span class="token punctuation">,</span> <span class="token key atrule">values</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>cache<span class="token punctuation">]</span> <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">-</span> <span class="token punctuation">&#123;</span> <span class="token key atrule">key</span><span class="token punctuation">:</span> environment<span class="token punctuation">,</span> <span class="token key atrule">operator</span><span class="token punctuation">:</span> NotIn<span class="token punctuation">,</span> <span class="token key atrule">values</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>dev<span class="token punctuation">]</span> <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>matchLabels</code>는 <code>&#123;key, value&#125;</code> 쌍의 맵입니다. <code>matchLabels</code> 맵의 단일 <code>&#123;key, value&#125;</code>는 <code>matchExpressions</code>의 요소와 동등합니다. 이때 <code>matchExpressions</code>의 <code>key</code> 필드는 “key”이고, <code>operator</code>는 “In”이며, <code>values</code> 배열은 “value”만 포함합니다. <code>matchExpressions</code>는 팟 셀렉터 요구 사항의 목록입니다. 유효한 연산자는 In, NotIn, Exists 및 DoesNotExist가 포함됩니다. In 및 NotIn의 경우 값 세트는 비어있으면 안 됩니다. <code>matchLabels</code> 및 <code>matchExpressions</code>에서 모든 요구 사항이 AND로 결합됩니다. 즉, 모두 충족되어야 합니다.</p>
+<h4 id="Selecting-sets-of-nodes"><a href="#Selecting-sets-of-nodes" class="headerlink" title="Selecting sets of nodes"></a>Selecting sets of nodes</h4><p>레이블을 기준으로 선택하는 하나의 사용 사례는 파드가 스케줄링될 노드 집합을 제한하는 것입니다. 자세한 내용은 <a href="">node selection</a>에 관한 문서를 참조하십시오.</p>
+<h2 id="Using-labels-effectively"><a href="#Using-labels-effectively" class="headerlink" title="Using labels effectively"></a>Using labels effectively</h2><p>모든 리소스에 단일 레이블을 적용할 수 있지만, 이것이 항상 최선의 방법은 아닙니다. 서로 다른 리소스 집합을 구별하기 위해 여러 레이블을 사용해야 하는 많은 시나리오가 있습니다.</p>
+<p>예를 들어, 서로 다른 애플리케이션은 <code>app</code> 레이블에 대해 서로 다른 값을 사용할 수 있지만, <a href="">guestbook example</a>와 같은 멀티 티어 애플리케이션은 각 티어를 구별할 필요가 있습니다. 프론트엔드는 다음과 같은 레이블을 가질 수 있습니다:</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">labels</span><span class="token punctuation">:</span>
+  <span class="token key atrule">app</span><span class="token punctuation">:</span> guestbook
+  <span class="token key atrule">tier</span><span class="token punctuation">:</span> frontend<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>Redis 마스터와 레플리카는 서로 다른 <code>tier</code> 레이블을 가지며, 추가적으로 <code>role</code> 레이블을 가질 수도 있습니다:</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">labels</span><span class="token punctuation">:</span>
+  <span class="token key atrule">app</span><span class="token punctuation">:</span> guestbook
+  <span class="token key atrule">tier</span><span class="token punctuation">:</span> backend
+  <span class="token key atrule">role</span><span class="token punctuation">:</span> master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>and</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">labels</span><span class="token punctuation">:</span>
+  <span class="token key atrule">app</span><span class="token punctuation">:</span> guestbook
+  <span class="token key atrule">tier</span><span class="token punctuation">:</span> backend
+  <span class="token key atrule">role</span><span class="token punctuation">:</span> replica<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>레이블을 사용하면 레이블에 의해 지정된 모든 차원에 따라 리소스를 세분화하고 분석할 수 있습니다:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl apply <span class="token parameter variable">-f</span> examples/guestbook/all-in-one/guestbook-all-in-one.yaml
+kubectl get pods <span class="token parameter variable">-Lapp</span> <span class="token parameter variable">-Ltier</span> <span class="token parameter variable">-Lrole</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">NAME                           READY  STATUS    RESTARTS   AGE   APP         TIER       ROLE
+guestbook-fe-4nlpb             <span class="token number">1</span>/1    Running   <span class="token number">0</span>          1m    guestbook   frontend   <span class="token operator">&lt;</span>none<span class="token operator">></span>
+guestbook-fe-ght6d             <span class="token number">1</span>/1    Running   <span class="token number">0</span>          1m    guestbook   frontend   <span class="token operator">&lt;</span>none<span class="token operator">></span>
+guestbook-fe-jpy62             <span class="token number">1</span>/1    Running   <span class="token number">0</span>          1m    guestbook   frontend   <span class="token operator">&lt;</span>none<span class="token operator">></span>
+guestbook-redis-master-5pg3b   <span class="token number">1</span>/1    Running   <span class="token number">0</span>          1m    guestbook   backend    master
+guestbook-redis-replica-2q2yf  <span class="token number">1</span>/1    Running   <span class="token number">0</span>          1m    guestbook   backend    replica
+guestbook-redis-replica-qgazl  <span class="token number">1</span>/1    Running   <span class="token number">0</span>          1m    guestbook   backend    replica
+my-nginx-divi2                 <span class="token number">1</span>/1    Running   <span class="token number">0</span>          29m   nginx       <span class="token operator">&lt;</span>none<span class="token operator">></span>     <span class="token operator">&lt;</span>none<span class="token operator">></span>
+my-nginx-o0ef1                 <span class="token number">1</span>/1    Running   <span class="token number">0</span>          29m   nginx       <span class="token operator">&lt;</span>none<span class="token operator">></span>     <span class="token operator">&lt;</span>none<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl get pods <span class="token parameter variable">-lapp</span><span class="token operator">=</span>guestbook,role<span class="token operator">=</span>replica
+```<span class="token variable"><span class="token variable">`</span>
+
+<span class="token variable">`</span></span>``bash
+NAME                           READY  STATUS   RESTARTS  AGE
+guestbook-redis-replica-2q2yf  <span class="token number">1</span>/1    Running  <span class="token number">0</span>         3m
+guestbook-redis-replica-qgazl  <span class="token number">1</span>/1    Running  <span class="token number">0</span>         3m<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="Updating-labels"><a href="#Updating-labels" class="headerlink" title="Updating labels"></a>Updating labels</h2><p>새 리소스를 만들기 전에 기존 파드 및 기타 리소스의 레이블을 다시 지정할 수도 있습니다. 이를 위해 <code>kubectl label</code>을 사용할 수 있습니다. 예를 들어, 모든 NGINX 파드를 frontend 티어로 레이블링하려면 다음을 실행하십시오:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl label pods <span class="token parameter variable">-l</span> <span class="token assign-left variable">app</span><span class="token operator">=</span>nginx <span class="token assign-left variable">tier</span><span class="token operator">=</span>fe<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pod/my-nginx-2035384211-j5fhi labeled
+pod/my-nginx-2035384211-u2c7e labeled
+pod/my-nginx-2035384211-u3t6x labeled<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>먼저 “app&#x3D;nginx” 레이블을 가진 모든 파드를 필터링한 다음 이를 “tier&#x3D;fe”로 레이블합니다. 레이블이 지정된 파드를 확인하려면 다음을 실행하십시오:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl get pods <span class="token parameter variable">-l</span> <span class="token assign-left variable">app</span><span class="token operator">=</span>nginx <span class="token parameter variable">-L</span> tier<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">NAME                        READY     STATUS    RESTARTS   AGE       TIER
+my-nginx-2035384211-j5fhi   <span class="token number">1</span>/1       Running   <span class="token number">0</span>          23m       fe
+my-nginx-2035384211-u2c7e   <span class="token number">1</span>/1       Running   <span class="token number">0</span>          23m       fe
+my-nginx-2035384211-u3t6x   <span class="token number">1</span>/1       Running   <span class="token number">0</span>          23m       fe<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>이는 “app&#x3D;nginx” 레이블이 지정된 모든 파드를 출력하며, 추가로 파드의 티어 레이블 열을 포함합니다 (<code>-L</code> 또는 <code>--label-columns</code>로 지정됨).</p>
+<p>자세한 내용은 <a href="">kubectl label</a>을 참조하십시오.</p>
+<h2 id="What’s-next"><a href="#What’s-next" class="headerlink" title="What’s next"></a>What’s next</h2><p>Learn how to add a label to a node<br>Find Well-known labels, Annotations and Taints<br>See Recommended labels<br>Enforce Pod Security Standards with Namespace Labels<br>Read a blog on Writing a Controller for Pod Labels</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/">https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/</a></li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Keyhong</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2023/12/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Labels%20and%20Selectors/">http://example.com/2023/12/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Labels%20and%20Selectors/</a>
+                </span>
+            </div>
+            <!-- <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        reprint:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    use
+                    <a href="cc_by_url" rel="external nofollow noreferrer" target="_blank">cc_by_name</a>
+                    licensed
+                    <a href="/about" target="_blank">Keyhong</a>
+                    !
+                </span>
+            </div> -->
+        
+    </div>
+
+    <!-- <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script> -->
+
+
+
+            <div class="tag_share" style="display: block;">
+                <!-- <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                        </div>
+                    
+                </div> -->
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <!-- <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a> -->
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2023/12/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Kubernetes_Object_Management/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Kubernetes Object Management">
+                        
+                        <span class="card-title diy-neon-red">Kubernetes Object Management</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-12-01
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/12/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Namespaces/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Namespaces">
+                        
+                        <span class="card-title diy-neon-red">Namespaces</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;목차</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2024</span>
+            
+            <a href="/about" target="_blank">Gyuwon Hong</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+            
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+    <a href="https://github.com/keyhong" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:wnhong96@gmail.com" class="tooltipped" target="_blank" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- Back to Top Button -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
