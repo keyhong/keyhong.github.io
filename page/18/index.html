@@ -207,19 +207,45 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Kubernetes/docs/Concpets/Overview/Object_In_Kubernetes/">
+                    <a href="/2023/12/01/Spark/dataframe-skew-optimization/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Object Names and IDs">
+                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="[Spark] DataFrame Skewness Optimization">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Object Names and IDs</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Spark] DataFrame Skewness Optimization</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Objects In KubernetesThis page explains how Kubernetes objects are represented in the Kubernetes API, and how you can ex
+                                Skew 데이터 생성하기
+table1
+
+
+
+
+OrderID
+Qty
+Sales
+Discount (yes&#x3D;1, no&#x3D;0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Skew 데이터 불러오기
+import numpy 
                             
                         </div> -->
                         <div class="publish-info">
@@ -230,8 +256,8 @@
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/AWS/" class="post-category">
-                                    AWS
+                                <a href="/categories/Spark/" class="post-category">
+                                    Spark
                                 </a>
                                 
                                 
@@ -247,20 +273,22 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Annotations/">
+                    <a href="/2023/12/01/Spark/dataframe/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Annotations">
+                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="[Spark] pyspark.sql.DataFrame">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Annotations</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Spark] pyspark.sql.DataFrame</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                AnnotationsKubernetes 어노테이션을 사용하여 objects에 임의의 식별되지 않는 메타데이터를 첨부할 수 있습니다. 도구 및 라이브러리와 같은 클라이언트는 이 메타데이터를 검색할 수 있습니다.
-Att
+                                RDD vs DataFrame
+RDD는 정보를 가진 행이나, 정보가 어떤 유형(type)인지 구체적 명시가 불가능하다.
+DataFrame이 Spark에서 하는 일은 RDD를 DataFrame 객체로 확장하는 것
+Da
                             
                         </div> -->
                         <div class="publish-info">
@@ -271,8 +299,8 @@ Att
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Kubernetes/" class="post-category">
-                                    Kubernetes
+                                <a href="/categories/Spark/" class="post-category">
+                                    Spark
                                 </a>
                                 
                                 
@@ -288,21 +316,24 @@ Att
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Field%20Selectors/">
+                    <a href="/2023/12/01/Spark/dataset/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Field Selectors">
+                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="[Spark] DataSet">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Field Selectors</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Spark] DataSet</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Field SelectorsField selectors를 사용하면 하나 이상의 리소스 필드 값에 따라 Kubernetes objects를 선택할 수 있습니다. 다음은 필드 셀렉터 쿼리의 예시입니다:
+                                
+Spark 2.0에서 ‘DataFrame’과 상반된 ‘DataSet’ 도입
 
-metadata
+파이썬에서는 둘의 경계가 모호. Python에서는 모든 것이 동적으로 입력되기 때문
+
+‘DataFrame’은 행 객체의 ‘DataSet’
                             
                         </div> -->
                         <div class="publish-info">
@@ -313,8 +344,8 @@ metadata
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Kubernetes/" class="post-category">
-                                    Kubernetes
+                                <a href="/categories/Spark/" class="post-category">
+                                    Spark
                                 </a>
                                 
                                 
@@ -330,19 +361,19 @@ metadata
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Finalizers/">
+                    <a href="/2023/12/01/Spark/pyspark-jvm-py4j/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Finalizers">
+                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="[Spark] JVM py4j">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Finalizers</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Spark] JVM py4j</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Finalizers파이널라이저는 삭제를 표시한 리소스가 완전히 삭제되기 전에 특정 조건이 충족될 때까지 Kubernetes가 기다리도록 지시하는 네임스페이스 키입니다. 파이널라이저는 삭제된 객체가 소유한 리소스를 정
+                                Question 1. PySpark 코드는 JVM 또는 Python 하위 프로세스에서 실행됩니까?PySpark에서 Python 및 JVM 코드는 별도의 OS 프로세스에 있습니다.PySpark는 Python과 JVM 
                             
                         </div> -->
                         <div class="publish-info">
@@ -353,8 +384,8 @@ metadata
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Kubernetes/" class="post-category">
-                                    Kubernetes
+                                <a href="/categories/Spark/" class="post-category">
+                                    Spark
                                 </a>
                                 
                                 
@@ -370,19 +401,19 @@ metadata
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Kubernetes_Object_Management/">
+                    <a href="/2023/12/01/Spark/directory-structure/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Kubernetes Object Management">
+                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="[Spark] Directory Structure">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Kubernetes Object Management</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Spark] Directory Structure</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Kubernetes Object Managementkubectl 명령줄 도구는 Kubernetes 객체를 생성하고 관리하는 여러 가지 방법을 지원합니다. 이 문서는 다른 접근 방식에 대한 개요를 제공합니다. Kube
+                                설치 디렉토리($SPARK_HOME) 경로의 스파크 내부 구조스파크 설치시 압축을 푼 내부 폴더 구조를 정리하였다. 책이 나온 지 좀 되서 지금의 스파크 최선 버전인 3.4.1의 내부 구조가 살짝 상이한 부분은 있으
                             
                         </div> -->
                         <div class="publish-info">
@@ -393,8 +424,8 @@ metadata
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Kubernetes/" class="post-category">
-                                    Kubernetes
+                                <a href="/categories/Spark/" class="post-category">
+                                    Spark
                                 </a>
                                 
                                 
@@ -410,19 +441,19 @@ metadata
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Labels%20and%20Selectors/">
+                    <a href="/2023/12/01/Spark/jdbc-parallel-sourcing/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Labels and Selectors">
+                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="[Spark] JDBC Parallel Sourcing">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Labels and Selectors</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Spark] JDBC Parallel Sourcing</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Labels and SelectorsLabels은 Pod와 같은 objects에 첨부되는 키&#x2F;값 쌍입니다. 레이블은 사용자에게 의미 있고 관련 있는 객체의 식별 속성을 지정하는 데 사용됩니다. 그러나 레이블
+                                Hadoop Sourcing Vs. RDB Sourcing하둡에서 스파크를 사용한다면, 하둡 클러스터에 블록 단위로 분산된 데이터를 소유하고 있는 데이터 노드와 직접적인 통신을 통해 데이터를 소싱한다. 하지만, 상황
                             
                         </div> -->
                         <div class="publish-info">
@@ -433,8 +464,8 @@ metadata
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Kubernetes/" class="post-category">
-                                    Kubernetes
+                                <a href="/categories/Spark/" class="post-category">
+                                    Spark
                                 </a>
                                 
                                 
@@ -450,21 +481,19 @@ metadata
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Namespaces/">
+                    <a href="/2023/12/01/Spark/rdd-skew-optimization/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Namespaces">
+                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="[Spark] RDD Skewness Optimization">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Namespaces</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Spark] RDD Skewness Optimization</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Namespaces
-
-In Kubernetes, namespaces provide a mechanism for isolating groups of resources within a single cluster. Nam
+                                Optimizing Skewness스파크에서 skewness(왜도, 비대칭도)를 해결하는 것은 스파크 튜닝의 중요한 요소이다. 왜 skewness를 해결해야 하는 지는 스파크가 분산 처리 프레임워크라는 것을 생각한다
                             
                         </div> -->
                         <div class="publish-info">
@@ -475,8 +504,8 @@ In Kubernetes, namespaces provide a mechanism for isolating groups of resources 
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Kubernetes/" class="post-category">
-                                    Kubernetes
+                                <a href="/categories/Spark/" class="post-category">
+                                    Spark
                                 </a>
                                 
                                 
@@ -492,21 +521,22 @@ In Kubernetes, namespaces provide a mechanism for isolating groups of resources 
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Object%20Names%20and%20IDs/">
+                    <a href="/2023/12/01/Spark/rdd/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Object Names and IDs">
+                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="[Spark] pyspark.RDD">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Object Names and IDs</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Spark] pyspark.RDD</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Object Names and IDs
+                                RDD(Resilient Distributed Dataset)
+스파크 프로그래밍에서 사용되는 가장 기본적인 데이터 객체
 
-Each object in your cluster has a Name that is unique for that type of resource. Every Kubernetes 
+한글로 해석하면 복원 분산 데이터 집합이다. Spark에서 사용되는 가장 기본적인 데이터 객체
                             
                         </div> -->
                         <div class="publish-info">
@@ -517,8 +547,8 @@ Each object in your cluster has a Name that is unique for that type of resource.
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Kubernetes/" class="post-category">
-                                    Kubernetes
+                                <a href="/categories/Spark/" class="post-category">
+                                    Spark
                                 </a>
                                 
                                 
@@ -534,20 +564,23 @@ Each object in your cluster has a Name that is unique for that type of resource.
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Owners%20and%20Dependents/">
+                    <a href="/2023/12/01/Spark/sourcing/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Owners and Dependents">
+                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="[Spark] Data Sourcing">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Owners and Dependents</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Spark] Data Sourcing</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Owners and DependentsKubernetes에서 일부 객체는 다른 객체의 소유자입니다. 예를 들어, ReplicaSet은 일련의 Pod의 소유자입니다. 이러한 소유된 객체는 소유자의 종속 객체입니다.
-소
+                                지원하는 파일 시스템
+하나 이상의 파일로부터 RDD 를 생성하기 위해 스파크 메서드는 여러 파일 시스템을 지원
+
+
+구조화 되지 않은 Text 파일, 반구조화된 Json 파일, 구조화된 CSV 파일 등 다양한 형식 지
                             
                         </div> -->
                         <div class="publish-info">
@@ -558,8 +591,8 @@ Each object in your cluster has a Name that is unique for that type of resource.
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Kubernetes/" class="post-category">
-                                    Kubernetes
+                                <a href="/categories/Spark/" class="post-category">
+                                    Spark
                                 </a>
                                 
                                 
@@ -575,19 +608,23 @@ Each object in your cluster has a Name that is unique for that type of resource.
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Recommended%20Labels/">
+                    <a href="/2023/12/01/Spark/spark-installation/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Recommended Labels">
+                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Installation">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Recommended Labels</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Installation</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Recommended LabelsYou can visualize and manage Kubernetes objects with more tools than kubectl and the dashboard. A comm
+                                Ubuntu에서 단일 노드(Single Node) 스파크 배포
+패키지 색인 파일(패키지 저장소가 제공하는 패키지에 대한 정보 파일) 업데이트
+
+# Debian 계열 리눅스(Ubuntu)
+$ sudo apt-get u
                             
                         </div> -->
                         <div class="publish-info">
@@ -598,8 +635,8 @@ Each object in your cluster has a Name that is unique for that type of resource.
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Kubernetes/" class="post-category">
-                                    Kubernetes
+                                <a href="/categories/Spark/" class="post-category">
+                                    Spark
                                 </a>
                                 
                                 
