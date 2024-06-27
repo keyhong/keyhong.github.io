@@ -1,0 +1,915 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Concept, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="Flink
+아파치 플링크는 무한 및 유한 데이터 스트림에 대한 stateful한 연산을 위한 프레임워크 및 분산 처리 엔진
+
+
+데이터 스트리밍 프레임워크
+
+어원 : 독일어로 빠르고 영리함
+
+스트리밍 이벤트별로 작업
+">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Concept | Keyhong</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span diy-happy-monkey">Keyhong</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <!-- <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li> -->
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Keyhong</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/flink-logo.png')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title diy-neon-red">
+                        Concept</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                        <div class="article-tag">
+                            <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                                <span class="chip bg-color">
+                                    2024-02-01</span>
+                        </div>
+                    
+                    
+
+
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Flink/" class="post-category">
+                                Flink
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="Flink"><a href="#Flink" class="headerlink" title="Flink"></a>Flink</h2><blockquote>
+<p>아파치 플링크는 무한 및 유한 데이터 스트림에 대한 stateful한 연산을 위한 프레임워크 및 분산 처리 엔진</p>
+</blockquote>
+<ul>
+<li><p>데이터 스트리밍 프레임워크</p>
+</li>
+<li><p>어원 : 독일어로 빠르고 영리함</p>
+</li>
+<li><p>스트리밍 이벤트별로 작업</p>
+</li>
+</ul>
+<h4 id="스트리밍-프레임워크-비교-vs-Storm-Spark-Streaming"><a href="#스트리밍-프레임워크-비교-vs-Storm-Spark-Streaming" class="headerlink" title="스트리밍 프레임워크 비교 (vs Storm, Spark Streaming)"></a>스트리밍 프레임워크 비교 (vs Storm, Spark Streaming)</h4><ul>
+<li><p>Storm 과 굉장히 비슷 (처리량 관점에서 Storm 보다 빠름, Storm 보다 Flink 가 훨씬 나은 성능을 지님)</p>
+</li>
+<li><p>동일한 작업을 할 때도 하드웨어 요구 사항이 더 낮음</p>
+</li>
+<li><p>Storm Core API 처럼 이벤트별 실시간 스트리밍을 제공</p>
+</li>
+<li><p>Storm 의 고수준 API Trident 를 사용하면 Spark Streaming 의 Dstream 처럼 micro-batch 를 사용가능</p>
+<ul>
+<li>스파크 스트리밍도 새로운 구조화 스트리밍 API인 Structured Streaming 을 개발하며 비슷한 방향으로 나아가는 중</li>
+</ul>
+</li>
+<li><p>Flink 는 Triden나 Structured Streaming 같은 고수준 API 를 제공하지만 그 와중에도 실시간 스트리밍 가능</p>
+</li>
+</ul>
+<h4 id="스트리밍-프레임워크-비교-vs-Spark-Streaming"><a href="#스트리밍-프레임워크-비교-vs-Spark-Streaming" class="headerlink" title="스트리밍 프레임워크 비교 (vs Spark Streaming)"></a>스트리밍 프레임워크 비교 (vs Spark Streaming)</h4><ul>
+<li><p>Spark Streaming 굉장히 유사하지만, micro-batch를 사용하는 Dstream 과 달리 Flink는 이벤트별 스트리밍 처리</p>
+</li>
+<li><p>Spark 와 유사하게 YARN이나 Mesos 위에서 동작하는 것 처럼 독립적인 클러스터에서 실행 가능</p>
+</li>
+<li><p>Spark 처럼 스스로의 생태계를 갖고 있음</p>
+<ul>
+<li><p>기계 학습 라이브러리나 SQL 쿼리 라이브러리 등을 사용 가능</p>
+</li>
+<li><p>spark MLLib &gt; Flink Machine Learning</p>
+</li>
+</ul>
+</li>
+<li><p>Spark Streaming 과 유사하게 Flink 도 Scala 지원을 잘 해줌 </p>
+</li>
+<li><p>Spark 와 유사하게 독립적인 클러스터에서 실행 가능</p>
+</li>
+<li><p>Storm, Spark 와 셋 중 가장 어린 기술</p>
+</li>
+</ul>
+<p>vs. Storm</p>
+<p>Storm과 굉장히 비슷하다. (Storm Core API 처럼 이벤트별 실시간 스트리밍을 제공한다)<br>처리량 관점에서 Storm 보다 빠르다. (Storm보다 Flink가 훨씬 나은 성능을 지님)<br>동일한 작업을 할 때도 하드웨어 요구 사항이 더 낮다.</p>
+<p>vs. Spark Streaming</p>
+<p>공통점</p>
+<p>Spark Streaming도 구조화 스트리밍 API인 Structured Streaming을 개발하며 비슷한 방향으로 나아가는 중<br>Strom의 Triden나 Spark Streaming의 Structured Streaming 같은 고수준 API를 제공하면서도 실시간 스트리밍 도 가능<br>Spark처럼 스스로의 생태계를 갖고 있다.</p>
+<p>기계 학습 라이브러리나 SQL 쿼리 라이브러리 등을 사용 가능 하다. (spark MLLib &gt; Flink Machine Learning)<br>Spark Streaming과 유사하게 Scala 지원을 잘 해줌</p>
+<p>YARN이나 Mesos 위에서 동작하는 것 처럼 독립적인 클러스터에서 실행 가능하다.<br>독립적인 클러스터를 구축하여 실행 가능하다.</p>
+<p>차이점</p>
+<p>micro-batch를 사용하는 Spark Streaming의 Dstream과 달리, Flink는 이벤트별 스트리밍 처리</p>
+<p>** Storm도  Trident를 사용하면 Spark Streaming의 Dstream 처럼 micro-batch를 사용가능</p>
+<h4 id="높은-확장성"><a href="#높은-확장성" class="headerlink" title="높은 확장성"></a>높은 확장성</h4><ul>
+<li><p>아주 영리한 분산 전략 -&gt; 대규모로 배치해서 사용한다면 1,000개의 노드까지 확장 가능</p>
+</li>
+<li><p>Captial One이나 Alibaba 같은 대기업이 Flink의 변형을 사용</p>
+</li>
+</ul>
+<p>플링크는 범용 하드웨어의 수평적 확장이 가능하다. 처리량을 늘려야 할 때 클러스터의 노드를 증설해 분산처리 할 수 있다. 이러한 장점으로 많은 세계적 기업들이 사용하고 있다. 심지어, Captial One이나 Alibaba 같은 기업은 Flink 를 변형해서 사용하고 있다고 한다.</p>
+<h4 id="강력한-내고장성"><a href="#강력한-내고장성" class="headerlink" title="강력한 내고장성"></a>강력한 내고장성</h4><ul>
+<li><p>‘state  snapshots’을 사용하여 실패가 발생하더라도 한번의 처리를 보장</p>
+</li>
+<li><p>예를 들어 금융 거래 등을 다룰 때는 굉장히 중요 (서버가 다운되었다고 주식 거래를 두번하면 안됨)</p>
+</li>
+</ul>
+<p>state snapshots을 사용하여 실패가 발생하더라도 한번의 처리를 보장한다. 특히나 금융 거래 등을 다룰 때 굉장히 중요하다. 예를 들어, 서버가 다운 되었다고 주식 거래 데이터를 두번 처리하면 큰 문제가 발생한다. 플링크는 Exactly-Once Processing을 보장한다.</p>
+<h4 id="이벤트-시간-기준-처리"><a href="#이벤트-시간-기준-처리" class="headerlink" title="이벤트 시간 기준 처리"></a>이벤트 시간 기준 처리</h4><ul>
+<li><p>데이터를 받은 순간이 아닌 이벤트 시간을 기준으로 데이터 처리 가능</p>
+<ul>
+<li><p>금융 거래 등에서 굉장히 중요한 요소</p>
+</li>
+<li><p>때때로 이상한 실패 모드를 가진 사용자들이 데이터를 전송하거나 주식을 거래할 때 몇 시간 혹은 며칠을 딜레이 생길수도 있음</p>
+</li>
+<li><p>뒤틀린 순서로 클러스터에 도달하더라도 다른 이벤트 사이에서 올바른 순서로 적용되어야 함</p>
+</li>
+<li><p>게다가 아주 유연한 윈도우 시스템을 가지고 있어서 시간에 따라 들어오는 데이터를 윈도잉하고 분석 가능</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Flink-Architecture"><a href="#Flink-Architecture" class="headerlink" title="Flink Architecture"></a>Flink Architecture</h2><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219894&authkey=%21AOCfFjs8YKtsgdo&width=660" width="660" height="auto" />
+
+<h2 id="Connectors"><a href="#Connectors" class="headerlink" title="Connectors"></a>Connectors</h2><ul>
+<li><p>HDFS</p>
+</li>
+<li><p>Cassandra</p>
+</li>
+<li><p>Kafka</p>
+</li>
+<li><p>Other : Elastic Search, Apache NiFi, Redis, RabbitMQ</p>
+</li>
+</ul>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><p><a target="_blank" rel="noopener" href="https://flink.apache.org/powered-by/">https://flink.apache.org/powered-by/</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://flink.apache.org/2018/02/28/an-overview-of-end-to-end-exactly-once-processing-in-apache-flink-with-apache-kafka-too/">https://flink.apache.org/2018/02/28/an-overview-of-end-to-end-exactly-once-processing-in-apache-flink-with-apache-kafka-too/</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://flink.apache.org/what-is-flink/flink-architecture/">https://flink.apache.org/what-is-flink/flink-architecture/</a></p>
+</li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Keyhong</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2024/02/01/Flink/flink-concept/">http://example.com/2024/02/01/Flink/flink-concept/</a>
+                </span>
+            </div>
+            <!-- <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        reprint:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    use
+                    <a href="cc_by_url" rel="external nofollow noreferrer" target="_blank">cc_by_name</a>
+                    licensed
+                    <a href="/about" target="_blank">Keyhong</a>
+                    !
+                </span>
+            </div> -->
+        
+    </div>
+
+    <!-- <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script> -->
+
+
+
+            <div class="tag_share" style="display: block;">
+                <!-- <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                        </div>
+                    
+                </div> -->
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <!-- <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a> -->
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2024/02/01/Flink/flink-architecture/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/flink-logo.png" class="responsive-img" alt="Architecture">
+                        
+                        <span class="card-title diy-neon-red">Architecture</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-02-01
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Flink/" class="post-category">
+                                    Flink
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/02/01/Flink/flink-installation/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/flink-logo.png" class="responsive-img" alt="Installation">
+                        
+                        <span class="card-title diy-neon-red">Installation</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Flink/" class="post-category">
+                                    Flink
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;목차</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2024</span>
+            
+            <a href="/about" target="_blank">Gyuwon Hong</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+            
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+    <a href="https://github.com/keyhong" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:wnhong96@gmail.com" class="tooltipped" target="_blank" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- Back to Top Button -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

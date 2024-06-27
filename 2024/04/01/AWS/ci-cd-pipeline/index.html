@@ -1,0 +1,1016 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="EC2 CI/CI Pipeline, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="CI &amp;#x2F; CD
+애플리케이션 개발 단계를 자동화하고 짧은 주기로 고객에게 제공하는 개발 방법
+
+
+자주 빌드, 자주 배포하여 유저에게 빠르게 배포
+
+CI (Continuous Integration)
+개발자들이 ">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>EC2 CI/CI Pipeline | Keyhong</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span diy-happy-monkey">Keyhong</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <!-- <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li> -->
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Keyhong</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/aws-logo.png')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title diy-neon-red">
+                        EC2 CI/CI Pipeline</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                        <div class="article-tag">
+                            <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                                <span class="chip bg-color">
+                                    2024-04-01</span>
+                        </div>
+                    
+                    
+
+
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/AWS/" class="post-category">
+                                AWS
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="CI-CD"><a href="#CI-CD" class="headerlink" title="CI &#x2F; CD"></a>CI &#x2F; CD</h2><blockquote>
+<p>애플리케이션 개발 단계를 자동화하고 짧은 주기로 고객에게 제공하는 개발 방법</p>
+</blockquote>
+<ul>
+<li>자주 빌드, 자주 배포하여 유저에게 빠르게 배포</li>
+</ul>
+<h2 id="CI-Continuous-Integration"><a href="#CI-Continuous-Integration" class="headerlink" title="CI (Continuous Integration)"></a>CI (Continuous Integration)</h2><ul>
+<li><p>개발자들이 코드 레포지터리로 푸시하는 방식</p>
+</li>
+<li><p>코드가 푸쉬되면 테스트와 빌드서버가 코드를 체크</p>
+</li>
+<li><p>개발자들은 테스트와 체크에 대해 성공&#x2F;실패 피드백</p>
+</li>
+<li><p>버그를 빠르게 발견하고 고칠 수 있음</p>
+</li>
+<li><p>지속적 테스트, 배포를 통해 코드를 빠르게 전달</p>
+</li>
+<li><p>Tools : GitHub, Bitbucket, CodeCommit</p>
+</li>
+</ul>
+<h2 id="CD-Continuous-Delivery-or-Deployment"><a href="#CD-Continuous-Delivery-or-Deployment" class="headerlink" title="CD (Continuous Delivery or Deployment)"></a>CD (Continuous Delivery or Deployment)</h2><ul>
+<li><p>필요할 때 소프트웨어가 안전하고 빠르게 배포되도록 함</p>
+</li>
+<li><p>Tools : CodeDeploy, Jenkins CD, Spinnaker</p>
+</li>
+<li><p>Continuous Delivery vs Continuous Deployment</p>
+<ul>
+<li>Continuous Delivery : 승인단계를 거친 후 자동으로 배포</li>
+<li>Continuous Deployment : 배포 전체 자동화</li>
+</ul>
+</li>
+</ul>
+<h2 id="Technology-Stack-for-CICD"><a href="#Technology-Stack-for-CICD" class="headerlink" title="Technology Stack for CICD"></a>Technology Stack for CICD</h2><blockquote>
+<p>Code &gt; Build &gt; Test &gt; Deploy &gt; Provision</p>
+</blockquote>
+<ul>
+<li><p>Code</p>
+<ul>
+<li>AWS CodeCommit</li>
+<li>GitHub or 3rd code repository</li>
+</ul>
+</li>
+<li><p>Build, Test</p>
+<ul>
+<li>AWS CodeBuild</li>
+<li>Jenkins CI or 3rd party CI servers</li>
+</ul>
+</li>
+<li><p>Deploy, Provision</p>
+<ul>
+<li>AWS Elastic Beanstalk</li>
+</ul>
+</li>
+<li><p>Deploy</p>
+<ul>
+<li>AWS CodeDeploy</li>
+</ul>
+</li>
+<li><p>Provision</p>
+<ul>
+<li>User Managed EC2 Instance Fleet (CloudFormation)</li>
+</ul>
+</li>
+<li><p>Orchestrate</p>
+<ul>
+<li>AWS CodePipeline</li>
+</ul>
+</li>
+</ul>
+<h4 id="AWS-CI-CI-Pipeline"><a href="#AWS-CI-CI-Pipeline" class="headerlink" title="AWS CI&#x2F;CI Pipeline"></a>AWS CI&#x2F;CI Pipeline</h4><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219876&authkey=%21AKvrf1XatoHm_4c&width=660" width="660" height="auto" />
+
+<h2 id="AWS-Code-Service"><a href="#AWS-Code-Service" class="headerlink" title="AWS Code Service"></a>AWS Code Service</h2><p>AWS의 소스관리, 빌드, 테스트, 배포, 관리 등을 위한 서비스</p>
+<ul>
+<li>자동화된 CI&#x2F;CD 파이프라인 구축</li>
+</ul>
+<h4 id="1-AWS-CodeCommit"><a href="#1-AWS-CodeCommit" class="headerlink" title="1. AWS CodeCommit"></a>1. AWS CodeCommit</h4><blockquote>
+<p>프라이빗 Git Repository를 호스팅하는 안전하고 확장성이 뛰어난 소스제어 서비스</p>
+</blockquote>
+<ul>
+<li>AWS 버전의 Github</li>
+<li>IAM Credential을 통해 접근(기존의 HTTP, SSH 프로토콜도 지원)</li>
+<li>AWS의 다양한 서비스와 연동</li>
+<li>이벤트 버스를 통한 이벤트 기반 로직 처리 가능</li>
+</ul>
+<h4 id="2-AWS-CodeBuild"><a href="#2-AWS-CodeBuild" class="headerlink" title="2. AWS CodeBuild"></a>2. AWS CodeBuild</h4><blockquote>
+<p>소스코드 컴파일 단계부터 테스트 실행 후 소프트웨어 패키지를 개발하여 배포하는 단계까지 마칠 수 있는 완전 관리형 지속적 통합 서비스</p>
+</blockquote>
+<ul>
+<li>CI&#x2F;CD 중 CI(Continuous Integration)를 담당</li>
+<li>별도의 프로비전 불필요</li>
+<li>간단하게 빌드 세팅이 된 서버 하나를 빌려서 사용하는 개념</li>
+</ul>
+<h4 id="3-AWS-CodeDeploy"><a href="#3-AWS-CodeDeploy" class="headerlink" title="3. AWS CodeDeploy"></a>3. AWS CodeDeploy</h4><blockquote>
+<p>EC2, Fargate, Lambda 및 온프레미스 서버와 같은 다양한 컴퓨팅 서비스에 대한 소프트웨어 배포를 자동화하는 완전 관리형 배포 서비스</p>
+</blockquote>
+<ul>
+<li>CI&#x2F;CD 중 CD(Continuous Delivery or Deploy)를 담당</li>
+<li>빌드&#x2F;테스트된 제품을 배포해주는 서비스</li>
+<li>다양한 배포 모드(In-Place, Blue&#x2F;Green) 등 지원</li>
+<li>배포 실패 시 자동으로 롤백 지원</li>
+<li>배포 상태를 모니터링 가능</li>
+</ul>
+<h4 id="4-AWS-CodePipeline"><a href="#4-AWS-CodePipeline" class="headerlink" title="4. AWS CodePipeline"></a>4. AWS CodePipeline</h4><blockquote>
+<p>빠르고 안정적인 애플리케이션 및 인프라 업데이트를 위해 release pipeline을 자동화하는 데 도움이 되는 완전 관리형 지속적 전달 서비스</p>
+</blockquote>
+<ul>
+<li>전체 프로세스 오케스트레이션</li>
+<li>Serverless</li>
+<li>이벤트 기반 운영 가능</li>
+<li>다양한 AWS 서비스 연동 가능</li>
+<li>다양한 외부 서비스 연동 가능 (Jenkins 등)</li>
+</ul>
+<h4 id="5-AWS-CodeStar"><a href="#5-AWS-CodeStar" class="headerlink" title="5. AWS CodeStar"></a>5. AWS CodeStar</h4><blockquote>
+<p>AWS에서 애플리케이션을 신속하게 개발, 빌드 및 배포 가능. AWS CodeStar는 통합된 사용자 인터페이스를 제공하여 한 곳에서 소프트웨어 개발 활동을 손쉽게 관리 가능</p>
+</blockquote>
+<ul>
+<li>Code Services의 모든 서비스를 통합하여 프로젝트 생성</li>
+<li>여러 템플릿에서 프로젝트에 맞는 템플릿 생성 가능</li>
+<li>IAM으로 권한 관리 가능</li>
+</ul>
+<h4 id="아티팩트"><a href="#아티팩트" class="headerlink" title="아티팩트"></a>아티팩트</h4><blockquote>
+<p>다음 스테이지로 전달할 CodeBuild에서 작업을 수행한 결과물</p>
+</blockquote>
+<ul>
+<li>빌드된 애플리케이션</li>
+<li>테스트 결과 내용</li>
+</ul>
+<p>다음 스테이지로 아티팩트를 전달</p>
+<h4 id="BuildSpec-yml"><a href="#BuildSpec-yml" class="headerlink" title="BuildSpec.yml"></a>BuildSpec.yml</h4><blockquote>
+<p>CodeBuild에서 수행할 내용을 정의한 문서 (yml 형식)</p>
+</blockquote>
+<ul>
+<li>정의 가능한 내용</li>
+</ul>
+<ol>
+<li>빌드환경(node.js, Python 등) 환경변수</li>
+<li>스테이지별 명령어</li>
+</ol>
+<ul>
+<li>install, pre_build, build, post_build</li>
+</ul>
+<ol start="3">
+<li>아티팩트 설정</li>
+</ol>
+<ul>
+<li>path 및 구성 방법</li>
+</ul>
+<ol start="4">
+<li>기타(cache, proxy 등)</li>
+</ol>
+<h4 id="appSpec-yml"><a href="#appSpec-yml" class="headerlink" title="appSpec.yml"></a>appSpec.yml</h4><blockquote>
+<p>CodeDeploy에서 수행할 내용을 정의한 문서 (yml 형식)</p>
+</blockquote>
+<ul>
+<li>정의 가능한 내용</li>
+</ul>
+<ol>
+<li>배포 방법</li>
+</ol>
+<ul>
+<li>각 스테이지 별 수행 내용 정의</li>
+</ul>
+<h2 id="배경"><a href="#배경" class="headerlink" title="배경"></a>배경</h2><blockquote>
+<p>버전 컨트롤(Version Contro)은 시간에 따라 코드에 일어나는 다양한 변화를 이해하는 기능</p>
+</blockquote>
+<ul>
+<li><p>커밋&#x2F;롤백 가능</p>
+</li>
+<li><p>git repository는 자신의 레포지터리 뿐 아니라 다른 사람의 레포지터리에도 살 수 있음</p>
+</li>
+<li><p>다른 개발자들과 협업, 코드를 백업, 코드 보기, 언제든 롤백 가능</p>
+</li>
+</ul>
+<h2 id="CodeCommit"><a href="#CodeCommit" class="headerlink" title="CodeCommit"></a>CodeCommit</h2><blockquote>
+<p>AWS 계정에 대한 개인 Git 레포지터리</p>
+</blockquote>
+<ul>
+<li><p>private Git repositories</p>
+</li>
+<li><p>No size limit on repositories (scale seamlessly)</p>
+</li>
+<li><p>Fully managed, high available</p>
+</li>
+<li><p>Code only in AWS Cloud account &#x3D;&gt; increased security and compliance</p>
+</li>
+<li><p>Secure(encrypted, access control, etc..)</p>
+</li>
+<li><p>Integrated with Jenkins &#x2F; CodeBuild &#x2F; other CI tools</p>
+</li>
+</ul>
+<h2 id="Git-Command"><a href="#Git-Command" class="headerlink" title="Git Command"></a>Git Command</h2><ul>
+<li>HTTP 주소로 원격 레포지토리에 연결하기</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> clone <span class="token operator">&lt;</span>원격 레포지터리 주소<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>브랜치를 만들고 이동하기</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> checkoub <span class="token parameter variable">-b</span> <span class="token operator">&lt;</span>branch<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>만든 브랜치를 master 브랜치로 푸쉬하기</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> push --set-upstream origin <span class="token operator">&lt;</span>branch<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Keyhong</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2024/04/01/AWS/ci-cd-pipeline/">http://example.com/2024/04/01/AWS/ci-cd-pipeline/</a>
+                </span>
+            </div>
+            <!-- <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        reprint:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    use
+                    <a href="cc_by_url" rel="external nofollow noreferrer" target="_blank">cc_by_name</a>
+                    licensed
+                    <a href="/about" target="_blank">Keyhong</a>
+                    !
+                </span>
+            </div> -->
+        
+    </div>
+
+    <!-- <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script> -->
+
+
+
+            <div class="tag_share" style="display: block;">
+                <!-- <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                        </div>
+                    
+                </div> -->
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <!-- <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a> -->
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2024/04/01/AWS/Amazon%20S3/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/aws-logo.png" class="responsive-img" alt="Amazon S3">
+                        
+                        <span class="card-title diy-neon-red">Amazon S3</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-04-01
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/AWS/" class="post-category">
+                                    AWS
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/04/01/AWS/ebs-efs/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/aws-logo.png" class="responsive-img" alt="EBS &amp; EFS">
+                        
+                        <span class="card-title diy-neon-red">EBS &amp; EFS</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-04-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/AWS/" class="post-category">
+                                    AWS
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;목차</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2024</span>
+            
+            <a href="/about" target="_blank">Gyuwon Hong</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+            
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+    <a href="https://github.com/keyhong" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:wnhong96@gmail.com" class="tooltipped" target="_blank" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- Back to Top Button -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

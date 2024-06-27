@@ -1,0 +1,1138 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Templates reference, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="Templates referenceAirflow에서는 템플릿에서 변수, 매크로 및 필터를 사용할 수 있습니다. (이는 Jinja Templating 섹션에서 확인할 수 있습니다.)
+다음은 Airflow에서 기본적으로">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Templates reference | Keyhong</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span diy-happy-monkey">Keyhong</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <!-- <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li> -->
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Keyhong</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/airflow-logo.png')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title diy-neon-red">
+                        Templates reference</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                        <div class="article-tag">
+                            <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                                <span class="chip bg-color">
+                                    2023-08-01</span>
+                        </div>
+                    
+                    
+
+
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Airflow/" class="post-category">
+                                Airflow
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="Templates-reference"><a href="#Templates-reference" class="headerlink" title="Templates reference"></a>Templates reference</h1><p>Airflow에서는 템플릿에서 변수, 매크로 및 필터를 사용할 수 있습니다. (이는 <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/operators.html#concepts-jinja-templating">Jinja Templating</a> 섹션에서 확인할 수 있습니다.)</p>
+<p>다음은 Airflow에서 기본적으로 제공됩니다. 추가적인 사용자 정의 매크로는 <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/authoring-and-scheduling/plugins.html">Plugins</a>을 통해 전역적으로 추가하거나 <code>DAG.user_defined_macros</code> 인자를 통해 DAG 수준에서 추가할 수 있습니다.</p>
+<h2 id="Variables"><a href="#Variables" class="headerlink" title="Variables"></a>Variables</h2><p>Airflow 엔진은 기본적으로 모든 템플릿에서 접근 가능한 몇 가지 기본 변수를 전달합니다.</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&#123;&#123; data_interval_start &#125;&#125;</code></td>
+<td><a target="_blank" rel="noopener" href="https://pendulum.eustace.io/docs/#introduction">pendulum.DateTime</a></td>
+<td>Start of the data interval. <br> Added in version 2.2.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; data_interval_end &#125;&#125;</code></td>
+<td><a target="_blank" rel="noopener" href="https://pendulum.eustace.io/docs/#introduction">pendulum.DateTime</a></td>
+<td>End of the data interval. <br> Added in version 2.2.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; ds &#125;&#125;</code></td>
+<td>str</td>
+<td>The DAG run’s logical date as <code>YYYY-MM-DD</code>.<br>Same as <code>&#123;&#123; dag_run.logical_date | ds &#125;&#125;</code>.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; ds_nodash &#125;&#125;</code></td>
+<td>str</td>
+<td>Same as <code>&#123;&#123; dag_run.logical_date | ds_nodash &#125;&#125;</code>.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; ts &#125;&#125;</code></td>
+<td>str</td>
+<td>Same as <code>&#123;&#123; dag_run.logical_date | ts &#125;&#125;</code>.<br>Example: <code>2018-01-01T00:00:00+00:00.</code></td>
+</tr>
+<tr>
+<td><code>&#123;&#123; ts_nodash_with_tz &#125;&#125;</code></td>
+<td>str</td>
+<td>Same as <code>&#123;&#123; dag_run.logical_date | ts_nodash_with_tz &#125;&#125;</code>.<br>Example: <code>20180101T000000+0000</code>.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; ts_nodash &#125;&#125;</code></td>
+<td>str</td>
+<td>Same as <code>&#123;&#123; dag_run.logical_date | ts_nodash &#125;&#125;</code>.<br>Example: <code>20180101T000000</code>.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; prev_data_interval_start_success &#125;&#125;</code></td>
+<td><a target="_blank" rel="noopener" href="https://pendulum.eustace.io/docs/#introduction">pendulum.DateTime</a> | <code>None</code></td>
+<td>Start of the data interval of the prior successful <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/models/dagrun/index.html#airflow.models.dagrun.DagRun">DagRun</a>. <br/><br/> Added in version 2.2.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; prev_data_interval_end_success &#125;&#125;</code></td>
+<td><a target="_blank" rel="noopener" href="https://pendulum.eustace.io/docs/#introduction">pendulum.DateTime</a> | <code>None</code></td>
+<td>End of the data interval of the prior successful <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/models/dagrun/index.html#airflow.models.dagrun.DagRun">DagRun</a>. <br/><br/> Added in version 2.2.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; prev_start_date_success &#125;&#125;</code></td>
+<td><a target="_blank" rel="noopener" href="https://pendulum.eustace.io/docs/#introduction">pendulum.DateTime</a> | <code>None</code></td>
+<td>Start date from prior successful <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/models/dagrun/index.html#airflow.models.dagrun.DagRun">DagRun</a> (if available).</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; dag &#125;&#125;</code></td>
+<td>DAG</td>
+<td>The currently running <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/models/dag/index.html#airflow.models.dag.DAG">DAG</a>. You can read more about DAGs in <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/dags.html">DAGs</a>.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; task &#125;&#125;</code></td>
+<td>BaseOperator</td>
+<td>The currently running <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/models/baseoperator/index.html#airflow.models.baseoperator.BaseOperator">BaseOperator</a>. You can read more about Tasks in <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/operators.html">Operators</a></td>
+</tr>
+<tr>
+<td><code>&#123;&#123; macros &#125;&#125;</code></td>
+<td></td>
+<td>A reference to the macros package. See <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/templates-ref.html#macros">Macros</a> below.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; task_instance &#125;&#125;</code></td>
+<td>TaskInstance</td>
+<td>The currently running <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/models/taskinstance/index.html#airflow.models.taskinstance.TaskInstance">TaskInstance</a>.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; ti &#125;&#125;</code></td>
+<td>TaskInstance</td>
+<td>Same as <code>&#123;&#123; task_instance &#125;&#125;</code>.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; params &#125;&#125;</code></td>
+<td>dict[str, Any]</td>
+<td>The user-defined params. This can be overridden by the mapping passed to <code>trigger_dag -c</code> if <code>dag_run_conf_overrides_params</code> is enabled in <code>airflow.cfg</code>.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; var.value &#125;&#125;</code></td>
+<td></td>
+<td>Airflow variables. See <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/templates-ref.html#airflow-variables-in-templates">Airflow Variables in Templates</a> below.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; var.json &#125;&#125;</code></td>
+<td></td>
+<td>Airflow variables. See <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/templates-ref.html#airflow-variables-in-templates">Airflow Variables in Templates</a> below.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; conn &#125;&#125;</code></td>
+<td></td>
+<td>Airflow connections. See <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/templates-ref.html#airflow-connections-in-templates">Airflow Connections in Templates</a> below.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; task_instance_key_str &#125;&#125;</code></td>
+<td>str</td>
+<td>A unique, human-readable key to the task instance. The format is <code>&#123;dag_id&#125;__&#123;task_id&#125;__&#123;ds_nodash&#125;</code>.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; conf &#125;&#125;</code></td>
+<td>AirflowConfigParser</td>
+<td>he full configuration object representing the content of your <code>airflow.cfg</code>. See <strong>airflow.configuration.conf</strong>.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; run_id &#125;&#125;</code></td>
+<td>str</td>
+<td>The currently running <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/models/dagrun/index.html#airflow.models.dagrun.DagRun">DagRun</a> run ID.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; dag_run &#125;&#125;</code></td>
+<td>DagRun</td>
+<td>The currently running <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/models/dagrun/index.html#airflow.models.dagrun.DagRun">DagRun</a>.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; test_mode &#125;&#125;</code></td>
+<td>bool</td>
+<td>Whether the task instance was run by the <code>airflow test</code> CLI.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; expanded_ti_count &#125;&#125;</code></td>
+<td>int | <code>None</code></td>
+<td>Number of task instances that a mapped task was expanded into. If the current task is not mapped, this should be <code>None</code>. Added in version 2.5.</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; triggering_dataset_events &#125;&#125;</code></td>
+<td>dict[str, list[DatasetEvent]]</td>
+<td>If in a Dataset Scheduled DAG, a map of Dataset URI to a list of triggering <strong>DatasetEvent</strong>(there may be more than one, if there are multiple Datasets with different frequencies). <br/><br/> Read more here <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/authoring-and-scheduling/datasets.html">Datasets</a>. <br/><br/> Added in version 2.4.</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>DAG 실행의 logical date와 그로부터 파생된 값인 <code>ds</code>와 <code>ts</code>는 DAG 내에서 고유한 것으로 간주<strong>해서는 안됩니다</strong>. 대신 <code>run_id</code>를 사용하세요.</p>
+</blockquote>
+<h2 id="Accessing-Airflow-context-variables-from-TaskFlow-tasks"><a href="#Accessing-Airflow-context-variables-from-TaskFlow-tasks" class="headerlink" title="Accessing Airflow context variables from TaskFlow tasks"></a>Accessing Airflow context variables from TaskFlow tasks</h2><p><code>@task</code>로 데코레이트된 작업은 인수로 전달된 Jinja 템플릿을 렌더링하는 것을 지원하지 않지만, 위에 나열된 모든 변수들은 작업에서 직접 액세스할 수 있습니다. 다음 코드 블록은 작업에서 <code>task_instance</code> 객체에 접근하는 예시입니다:</p>
+<hr>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>models<span class="token punctuation">.</span>taskinstance <span class="token keyword">import</span> TaskInstance
+<span class="token keyword">from</span> airflow<span class="token punctuation">.</span>models<span class="token punctuation">.</span>dagrun <span class="token keyword">import</span> DagRun
+
+
+<span class="token decorator annotation punctuation">@task</span>
+<span class="token keyword">def</span> <span class="token function">print_ti_info</span><span class="token punctuation">(</span>task_instance<span class="token punctuation">:</span> TaskInstance <span class="token operator">|</span> <span class="token boolean">None</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span> dag_run<span class="token punctuation">:</span> DagRun <span class="token operator">|</span> <span class="token boolean">None</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Run ID: </span><span class="token interpolation"><span class="token punctuation">&#123;</span>task_instance<span class="token punctuation">.</span>run_id<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>  <span class="token comment"># Run ID: scheduled__2023-08-09T00:00:00+00:00</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Duration: </span><span class="token interpolation"><span class="token punctuation">&#123;</span>task_instance<span class="token punctuation">.</span>duration<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>  <span class="token comment"># Duration: 0.972019</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"DAG Run queued at: </span><span class="token interpolation"><span class="token punctuation">&#123;</span>dag_run<span class="token punctuation">.</span>queued_at<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>  <span class="token comment"># 2023-08-10 00:00:01+02:20</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Deprecated-variables"><a href="#Deprecated-variables" class="headerlink" title="Deprecated variables"></a>Deprecated variables</h2><p>다음 변수들은 사용이 중단되었습니다. 역 호환성을 유지하기 위해 남겨졌지만, 기존 코드를 다른 변수들을 사용하도록 변환하는 것이 좋습니다.</p>
+<table>
+<thead>
+<tr>
+<th>Deprecated Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&#123;&#123; execution_date &#125;&#125;</code></td>
+<td>the execution date (logical date), same as <code>logical_date</code></td>
+</tr>
+<tr>
+<td><code>&#123;&#123; next_execution_date &#125;&#125;</code></td>
+<td>the logical date of the next scheduled run (if applicable); you may be able to use <code>data_interval_end</code> instead</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; next_ds &#125;&#125;</code></td>
+<td>the next execution date as <code>YYYY-MM-DD</code> if exists, else <code>None</code></td>
+</tr>
+<tr>
+<td><code>&#123;&#123; next_ds_nodash &#125;&#125;</code></td>
+<td>the next execution date as <code>YYYYMMDD</code> if exists, else None</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; prev_execution_date &#125;&#125;</code></td>
+<td>the logical date of the previous scheduled run (if applicable)</td>
+</tr>
+<tr>
+<td><code>&#123;&#123; prev_ds &#125;&#125;</code></td>
+<td>the previous execution date as <code>YYYY-MM-DD</code> if exists, else <code>None</code></td>
+</tr>
+<tr>
+<td><code>&#123;&#123; prev_ds_nodash &#125;&#125;</code></td>
+<td>the previous execution date as <code>YYYYMMDD</code> if exists, else <code>None</code></td>
+</tr>
+<tr>
+<td><code>&#123;&#123; yesterday_ds &#125;&#125;</code></td>
+<td>the day before the execution date as <code>YYYY-MM-DD</code></td>
+</tr>
+<tr>
+<td><code>&#123;&#123; yesterday_ds_nodash &#125;&#125;</code></td>
+<td>the day before the execution date as <code>YYYYMMDD</code></td>
+</tr>
+<tr>
+<td><code>&#123;&#123; tomorrow_ds &#125;&#125;</code></td>
+<td>the day after the execution date as <code>YYYY-MM-DD</code></td>
+</tr>
+<tr>
+<td><code>&#123;&#123; tomorrow_ds_nodash &#125;&#125;</code></td>
+<td>the day after the execution date as <code>YYYYMMDD</code></td>
+</tr>
+<tr>
+<td><code>&#123;&#123; prev_execution_date_success &#125;&#125;</code></td>
+<td>execution date from prior successful DAG run; you may be able to use <code>prev_data_interval_start_success``instead if the timetable/schedule you use for the DAG defines ``data_interval_start</code> compatible with the legacy <code>execution_date</code>.</td>
+</tr>
+</tbody></table>
+<p>객체의 속성 및 메서드에는 간단한 점 표기법(dot notation)을 사용하여 액세스할 수 있습니다. 다음은 가능한 몇 가지 예시입니다: <code>&#123;&#123; task.owner &#125;&#125;</code>, <code>&#123;&#123; task.task_id &#125;&#125;</code>, <code>&#123;&#123; ti.hostname &#125;&#125;</code> 등등. 더 많은 정보를 원하시면 모델 문서를 참조하십시오.</p>
+<h2 id="Airflow-Variables-in-Templates"><a href="#Airflow-Variables-in-Templates" class="headerlink" title="Airflow Variables in Templates"></a>Airflow Variables in Templates</h2><p><code>var</code> 템플릿 변수를 사용하면 Airflow 변수에 액세스할 수 있습니다. 이를 일반 텍스트 또는 JSON으로 액세스할 수 있습니다. JSON을 사용하는 경우 딕셔너리와 같은 중첩된 구조를 탐색할 수도 있습니다. 예를 들어, <code>&#123;&#123; var.json.my_dict_var.key1 &#125;&#125;</code>와 같이 사용할 수 있습니다.</p>
+<p>필요한 경우 변수 키에 점이 포함되어 있는 경우 문자열로 변수를 가져올 수도 있습니다. 예를 들어, <code>&#123;&#123; var.value.get('my.var', 'fallback') &#125;&#125;</code> 또는 <code>&#123;&#123; var.json.get('my.dict.var', &#123;'key1': 'val1'&#125;) &#125;&#125;</code>와 같이 사용할 수 있습니다. 변수가 존재하지 않는 경우 기본값을 제공할 수 있습니다.</p>
+<h2 id="Airflow-Connections-in-Templates"><a href="#Airflow-Connections-in-Templates" class="headerlink" title="Airflow Connections in Templates"></a>Airflow Connections in Templates</h2><p>비슷하게, Airflow 연결 데이터는 <code>conn</code> 템플릿 변수를 통해 액세스할 수 있습니다. 예를 들어, 템플릿에서 <code>&#123;&#123; conn.my_conn_id.login &#125;&#125;</code>, <code>&#123;&#123; conn.my_conn_id.password &#125;&#125;</code> 등과 같은 표현식을 사용할 수 있습니다.</p>
+<p><code>var</code>와 마찬가지로 연결을 문자열로 가져오거나 기본값을 제공할 수 있습니다. 예를 들어, <code>&#123;&#123; conn.get('my_conn_id_'+index).host &#125;&#125;</code>와 같이 사용하거나 기본값을 제공할 수 있습니다. (예: <code>&#123;&#123; conn.get('my_conn_id', &#123;"host": "host1", "login": "user1"&#125;).host &#125;&#125;</code>).</p>
+<p>또한, 연결의 <code>extras</code> 필드는 <code>extra_dejson</code> 필드를 사용하여 Python 사전으로 가져올 수 있습니다. 예를 들어, <code>conn.my_aws_conn_id.extra_dejson.region_name</code>은 <code>extras</code>에서 <code>region_name</code>을 가져올 것입니다. 이렇게 함으로써 <code>extras</code>에 대한 기본값을 제공할 수 있습니다 (예: <code>&#123;&#123; conn.my_aws_conn_id.extra_dejson.get('region_name', 'Europe (Frankfurt)') &#125;&#125;</code>).</p>
+<h2 id="Filters"><a href="#Filters" class="headerlink" title="Filters"></a>Filters</h2><p>Airflow에서는 값의 형식을 지정하는 데 사용할 수 있는 Jinja 필터를 정의합니다.</p>
+<p>예를 들어, <code>&#123;&#123; logical_date | ds &#125;&#125;</code>를 사용하면 logical_date를 <code>YYYY-MM-DD</code> 형식으로 출력합니다.</p>
+<table>
+<thead>
+<tr>
+<th>Filter</th>
+<th>Operates on</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ds</code></td>
+<td>datetime</td>
+<td>Format the datetime as <code>YYYY-MM-DD</code></td>
+</tr>
+<tr>
+<td><code>ds_nodash</code></td>
+<td>datetime</td>
+<td>Format the datetime as <code>YYYYMMDD</code></td>
+</tr>
+<tr>
+<td><code>ts</code></td>
+<td>datetime</td>
+<td>Same as <code>.isoformat()</code>, Example: <code>2018-01-01T00:00:00+00:00</code></td>
+</tr>
+<tr>
+<td><code>ts_nodash</code></td>
+<td>datetime</td>
+<td>Same as <code>ts</code> filter without <code>-</code>, <code>:</code> or TimeZone info. Example: <code>20180101T000000</code></td>
+</tr>
+<tr>
+<td><code>ts_nodash_with_tz</code></td>
+<td>datetime</td>
+<td>As <code>ts</code> filter without - or :. Example <code>20180101T000000+0000</code></td>
+</tr>
+</tbody></table>
+<h2 id="Macros"><a href="#Macros" class="headerlink" title="Macros"></a>Macros</h2><p>매크로는 템플릿에 객체를 노출하는 방법이며, 템플릿에서 <code>macros</code> 네임스페이스 아래에 있습니다.</p>
+<p>일반적으로 사용되는 몇 가지 라이브러리와 메서드가 제공됩니다.</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>macros.datetime</code></td>
+<td>The standard lib’s <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/datetime.html#datetime.datetime">datetime.datetime</a></td>
+</tr>
+<tr>
+<td><code>macros.timedelta</code></td>
+<td>The standard lib’s <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/datetime.html#datetime.timedelta">datetime.timedelta</a></td>
+</tr>
+<tr>
+<td><code>macros.dateutil</code></td>
+<td>A reference to the <code>dateutil</code> package</td>
+</tr>
+<tr>
+<td><code>macros.time</code></td>
+<td>The standard lib’s <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/time.html#module-time">time</a></td>
+</tr>
+<tr>
+<td><code>macros.uuid</code></td>
+<td>The standard lib’s <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/uuid.html#module-uuid">uuid</a></td>
+</tr>
+<tr>
+<td><code>macros.random</code></td>
+<td>The standard lib’s <strong>random.random</strong></td>
+</tr>
+</tbody></table>
+<p>일부 Airflow 전용 매크로가 정의되어 있습니다:</p>
+<blockquote>
+<p>airflow.macros.datetime_diff_for_humans(dt, since&#x3D;None)<a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_modules/airflow/macros.html#datetime_diff_for_humans">[source]</a> <hr><br>Return a human-readable&#x2F;approximate difference between datetimes. <br><br>When only one datetime is provided, the comparison will be based on now. <hr><br>두 날짜 사이의 인간이 읽기 쉬운&#x2F;대략적인 차이를 반환합니다. <br><br>하나의 datetime만 제공된 경우 비교는 현재 시간을 기준으로 합니다.</p>
+<blockquote>
+<p>Parameters <hr></p>
+<ul>
+<li><strong>dt</strong> (Any) – The datetime to display the diff for</li>
+<li><strong>since</strong> (DateTime | None) – When to display the date from. If <code>None</code> then the diff is between <code>dt</code> and now.</li>
+</ul>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>airflow.macros.ds_add(ds, days)<a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_modules/airflow/macros.html#ds_add">[source]</a> <hr><br>Add or subtract days from a YYYY-MM-DD. <br><br>날짜(YYYY-MM-DD)에 일을 더하거나 빼려면 다음과 같이 합니다:</p>
+<blockquote>
+<p>Parameters <hr></p>
+<ul>
+<li><strong>ds</strong> (<a target="_blank" rel="noopener" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>) – anchor date in <code>YYYY-MM-DD</code> format to add to</li>
+<li><strong>days</strong> (<a target="_blank" rel="noopener" href="https://docs.python.org/3/library/functions.html#int">int</a>) – number of days to add to the ds, you can use negative values</li>
+</ul>
+</blockquote>
+</blockquote>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> ds_add<span class="token punctuation">(</span><span class="token string">"2015-01-01"</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>
+<span class="token string">'2015-01-06'</span>
+<span class="token operator">>></span><span class="token operator">></span> ds_add<span class="token punctuation">(</span><span class="token string">"2015-01-06"</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">)</span>
+<span class="token string">'2015-01-01'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>airflow.macros.ds_format(ds, input_format, output_format)<a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_modules/airflow/macros.html#ds_format">[source]</a> <hr><br>Output datetime string in a given format. <hr><br>주어진 형식에 따라 datetime 문자열을 출력합니다.</p>
+<blockquote>
+<p>Parameters <hr></p>
+<ul>
+<li><strong>ds</strong> (<a target="_blank" rel="noopener" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>) – input string which contains a date</li>
+<li><strong>input_format</strong> (<a target="_blank" rel="noopener" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>) – input string format. E.g. %Y-%m-%d</li>
+<li><strong>output_format</strong> (<a target="_blank" rel="noopener" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>) – output string format E.g. %Y-%m-%d</li>
+</ul>
+</blockquote>
+</blockquote>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> ds_format<span class="token punctuation">(</span><span class="token string">"2015-01-01"</span><span class="token punctuation">,</span> <span class="token string">"%Y-%m-%d"</span><span class="token punctuation">,</span> <span class="token string">"%m-%d-%y"</span><span class="token punctuation">)</span>
+<span class="token string">'01-01-15'</span>
+<span class="token operator">>></span><span class="token operator">></span> ds_format<span class="token punctuation">(</span><span class="token string">"1/5/2015"</span><span class="token punctuation">,</span> <span class="token string">"%m/%d/%Y"</span><span class="token punctuation">,</span> <span class="token string">"%Y-%m-%d"</span><span class="token punctuation">)</span>
+<span class="token string">'2015-01-05'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>airflow.macros.random()→ x in the interval [0, 1].</p>
+</blockquote>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/templates-ref.html#">https://airflow.apache.org/docs/apache-airflow/stable/templates-ref.html#</a></li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Keyhong</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2023/08/01/Airflow/docs/REFERENCES/Templates/">http://example.com/2023/08/01/Airflow/docs/REFERENCES/Templates/</a>
+                </span>
+            </div>
+            <!-- <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        reprint:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    use
+                    <a href="cc_by_url" rel="external nofollow noreferrer" target="_blank">cc_by_name</a>
+                    licensed
+                    <a href="/about" target="_blank">Keyhong</a>
+                    !
+                </span>
+            </div> -->
+        
+    </div>
+
+    <!-- <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script> -->
+
+
+
+            <div class="tag_share" style="display: block;">
+                <!-- <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                        </div>
+                    
+                </div> -->
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <!-- <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a> -->
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2023/08/01/Airflow/docs/REFERENCES/Stable%20REST%20API/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="Stable REST API">
+                        
+                        <span class="card-title diy-neon-red">Stable REST API</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-08-01
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Keyhong
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/06/24/Python/sqlalchemy_delete/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] sqlalchemy delete">
+                        
+                        <span class="card-title diy-neon-red">[Python] sqlalchemy delete</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-24
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Python/" class="post-category">
+                                    Python
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;목차</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2024</span>
+            
+            <a href="/about" target="_blank">Gyuwon Hong</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+            
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+    <a href="https://github.com/keyhong" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:wnhong96@gmail.com" class="tooltipped" target="_blank" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- Back to Top Button -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

@@ -1,0 +1,1035 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Concept, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="Hive
+하둡 기반의 데이터 웨어하우징 프레임워크
+
+
+페이스북에서 개발
+
+자바 프로그래밍은 부족하지만 강력한 SQL 기술을 가진 분석가를 위해 개발
+
+복잡한 머신러닝 알고리즘을 구현하기에는 적합하지 않음
+
+
+
+MyS">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Concept | Keyhong</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span diy-happy-monkey">Keyhong</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <!-- <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li> -->
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Keyhong</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/hive-logo.png')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title diy-neon-red">
+                        Concept</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                        <div class="article-tag">
+                            <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                                <span class="chip bg-color">
+                                    2023-11-01</span>
+                        </div>
+                    
+                    
+
+
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Hive/" class="post-category">
+                                Hive
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="Hive"><a href="#Hive" class="headerlink" title="Hive"></a>Hive</h2><blockquote>
+<p>하둡 기반의 데이터 웨어하우징 프레임워크</p>
+</blockquote>
+<ul>
+<li><p>페이스북에서 개발</p>
+</li>
+<li><p>자바 프로그래밍은 부족하지만 강력한 SQL 기술을 가진 분석가를 위해 개발</p>
+</li>
+<li><p>복잡한 머신러닝 알고리즘을 구현하기에는 적합하지 않음</p>
+</li>
+</ul>
+<blockquote>
+<p>MySQL에 사용하는 것처럼 HDFS 클러스터 전체에 걸쳐 저장된 데이터에 표준 SQL 쿼리를 실행</p>
+</blockquote>
+<ul>
+<li><p>SQL을 MapReduce나 TEZ 명령어로 번역하여 작동, 이 둘은 YARN 클러스터 관리자 위에서 실행</p>
+</li>
+<li><p>HVIE는 SQL 쿼리를 매퍼와 맵리듀스로 분해. 클러스터 전체에 걸쳐 어떻게 실행할지 알아냄</p>
+</li>
+<li><p>사용자 관점에서는 데이터 웨어하우스를 사용하는 것처럼 SQL 데이터베이스에 쿼리하는 것과 동일</p>
+</li>
+<li><p>이미 SQL에 익숙하고 데이터베이스나 데이터 웨어하우스에 경험이 있다면 아주 강력한 도구</p>
+</li>
+</ul>
+<h2 id="Why-Hive"><a href="#Why-Hive" class="headerlink" title="Why Hive?"></a>Why Hive?</h2><ul>
+<li><p>SQL 문법과 친숙 (HiveQL). SQL의 변형이고 MySQL 구문과 굉장히 비슷</p>
+<ul>
+<li>자바에서 MapReduce 를 작성하는 것보다 훨씬 쉬움</li>
+</ul>
+</li>
+<li><p>상호적인 성격을 띄고 있어, 대화형 명령 프롬프트를 사용</p>
+</li>
+<li><p>확장과 축소가 가능</p>
+<ul>
+<li><p>단일 호스트에 제한되는 전통적 데이터베이스와 달리 컴퓨터 클러스터 전체에 분배된 데이터 사용</p>
+</li>
+<li><p>대용량 데이터 세트에 쿼리를 실행하거나 데이터 웨어하우스 유형의 애플리케이션에 유용한 도구</p>
+</li>
+</ul>
+</li>
+<li><p>OLAP(Online Analytics Processing)를 위한 것</p>
+<ul>
+<li><p>단일 데이터베이스 인스턴스에서보다 훨씬 큰 데이터 처리 가능</p>
+</li>
+<li><p>즉각적인 대답은 아니지만, 상식적인 시간 내 결과 획득</p>
+</li>
+</ul>
+</li>
+<li><p>높은 확장성</p>
+<ul>
+<li><p>사용자 정의 함수에 플러그인해 고유의 매퍼 생성 가능</p>
+</li>
+<li><p>Thrift 서버를 활용해 외부에서도 사용자가 Hive와 소통 가능</p>
+</li>
+<li><p>JDBC나 ODBC 드라이버를 사용해 Hive가 다른 데이터베이스와 똑같아 보이도록 함</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Why-not-Hive"><a href="#Why-not-Hive" class="headerlink" title="Why not Hive?"></a>Why not Hive?</h2><ul>
+<li><p>OLTP(Online Transaction Processing)가 아닌 OLATP를 위한 것</p>
+<ul>
+<li><p>고 처리량 저 대기 시간을 원한다면 좋은 선택이 아님</p>
+</li>
+<li><p>SQL 명령어를 MapReduce로 번역을 해야 하기 때문에 시간이 소모</p>
+</li>
+<li><p>Hive에 동시에 많은 요청을 하면 안되며, 몇 분안에 결과가 나오지 않음</p>
+</li>
+<li><p>대용량 데이터 세트를 다룰 때 다른 대안보다 훨씬 효율적인 처리가 가능</p>
+</li>
+<li><p>다른 데서는 불가능한 쿼리 사용 가능</p>
+</li>
+</ul>
+</li>
+<li><p>비정규화 데이터를 사용</p>
+<ul>
+<li><p>내부적으로는 진짜 관계형 데이터베이스가 아님</p>
+</li>
+<li><p>단순한 텍스트 파일</p>
+</li>
+<li><p>연결된 별도의 테이블이나 키 등을 갖고 있지 않음</p>
+</li>
+<li><p>관계형 데이터베이스에 익숙하다면 그 특성에 의지하지 말 것</p>
+</li>
+</ul>
+</li>
+<li><p>SQL도 한계가 존재</p>
+<ul>
+<li><p>복잡한 쿼리를 해야 한다면 Pig나 Spark 가 좀 더 적합</p>
+</li>
+<li><p>VIEW를 통해 연계해서는 사용가능</p>
+</li>
+</ul>
+</li>
+<li><p>진짜 데이터베이스가 아님 (내부적으로는 MapReduce이기 때문에 데이터가 실제로 처리되지 않음)</p>
+<ul>
+<li><p>업데이트나, 삽입, 삭제 등을 해도 기록되지 않음 (애초에 내부적으로는 실제 데이터베이스가 없기 때문)</p>
+</li>
+<li><p>단지 매퍼와 리듀서를 통과하는 거대한 텍스트 파일만 존재</p>
+</li>
+</ul>
+</li>
+<li><p>HiveQL은 SQL의 변형</p>
+<ul>
+<li><p>MySQL과 문법적으로 대동소이</p>
+</li>
+<li><p>Hive에 특화된 부분이 존재 : View</p>
+</li>
+<li><p>어떤 쿼리의 결과를 View에 저장하고, 그 View를 다음 쿼리의 테이블로 유용하게 사용</p>
+</li>
+<li><p>복잡한 쿼리를 개별 쿼리로 분할해 해당 View를 발전시키며 층층이 쌓아 구축 가능</p>
+</li>
+</ul>
+</li>
+<li><p>데이터베이스의 구체화 화면(materialized view)과는 약간 다름</p>
+<ul>
+<li><p>데이터베이스의 구체화 화면은 실제로 데이터를 저장</p>
+</li>
+<li><p>Hive의 View는 논리 구조(데이터를 실제로 저장하지는 않음)</p>
+</li>
+</ul>
+</li>
+<li><p>HiveQL은 데이터를 구조화하고 파티션을 나누어 저장하는 여러가지 옵션이 있어 데이터를 다양한 곳에서 사용 가능</p>
+</li>
+</ul>
+<h2 id="하이브-쉘"><a href="#하이브-쉘" class="headerlink" title="하이브 쉘"></a>하이브 쉘</h2><blockquote>
+<p>하이브쉘은 HiveQL 명령어로 하이브와 상호작용하는 하이브의 기본 도구</p>
+</blockquote>
+<ul>
+<li><p>HiveQL은 SQL과 유사한 하이브의 질의 언어</p>
+</li>
+<li><p>HiveQL은 MySQL에 큰 영향을 받아 MySQL에 익숙한 사용자라면 하이브가 친숙</p>
+</li>
+</ul>
+<h2 id="Hive의-주요-네-가지-구성요소"><a href="#Hive의-주요-네-가지-구성요소" class="headerlink" title="Hive의 주요 네 가지 구성요소"></a>Hive의 주요 네 가지 구성요소</h2><h4 id="HiveCLI"><a href="#HiveCLI" class="headerlink" title="HiveCLI"></a>HiveCLI</h4><blockquote>
+<p>Hive CLI는 Input Command를 받아들이고 파싱</p>
+</blockquote>
+<ul>
+<li><p>adhoc 쿼리 (상황에 맞춰 동적으로 생성하여 사용하는 쿼리)를 수행하는 일반적인 방법</p>
+</li>
+<li><p>Metastore 대한 연결을 포함하여 Hive Client 또는 드라이버 애플리케이션이 로컬 시스템에 배포될 때 사용</p>
+</li>
+<li><p>Beeline 은 경량 CLI</p>
+<ul>
+<li><p>HiveServer2 라는 여러 Client를 위한 대규모 다중 세션 드라이버 응용 프로그램에 사용</p>
+</li>
+<li><p>Beeline 은 시각화 도구 등 외부 Client에서 사용할 수 있는 JDBC 인터페이스를 제공</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Hive-Driver-Application"><a href="#Hive-Driver-Application" class="headerlink" title="Hive Driver Application"></a>Hive Driver Application</h4><blockquote>
+<p>HiveQL parsing, 쿼리 실행 계획, 쿼리 작업을 Hadoop에 제출, 쿼리 실행 진행률 모니터링 작업 수행</p>
+</blockquote>
+<p>Hive Object</p>
+<blockquote>
+<p>Hive는 HDFS 의 Hive Object에 대한 Table 형식 추상화를 구현하여, 디렉토리와 파일 자체 모델의 Table로 표시</p>
+</blockquote>
+<ul>
+<li><p>관계형 DB에서와 마찬가지로 Table에서는 DDL 을 사용하여 생성된 지정 데이터 유형으로 미리 정의된 열이 존재</p>
+</li>
+<li><p>HDFS의 데이터는 다른 DB관리 시스템과 마찬가지로 DML 을 통해 액세스 가능</p>
+</li>
+<li><p>Hive Object는 Database와 Table로 구성</p>
+</li>
+<li><p>Hive Database : 조직, 권한 부여 및 네임스페이스 관리에 사용</p>
+</li>
+<li><p>Hive Table : Hive Database에 존재 </p>
+</li>
+<li><p>RDBMS 와 Hive의 가장 큰 차이 : HDFS는 변경할 수 없는 파일 시스템으로 append만 가능, 업데이트는 지원되지 않음 (하둡 3에서는 가능)</p>
+</li>
+</ul>
+<h4 id="Hive-Metastore"><a href="#Hive-Metastore" class="headerlink" title="Hive Metastore"></a>Hive Metastore</h4><blockquote>
+<p>Hive 메타데이터 중앙 저장소</p>
+</blockquote>
+<ul>
+<li><p>기본 Database는 내장 Derby DB</p>
+</li>
+<li><p>MySQL 또는 PostgreSQL 과 같은 다른 DBMS를 로컬 DB 또는 원격 DB 설정 가능</p>
+</li>
+<li><p>대부분 경우 개발자와 다른 사람들이 Object 정의를 공유할 수 있도록 하는 공유 DB (Except) Input&#x2F;Output Format 및 SerDes</p>
+</li>
+<li><p>Hive는 InputFormat 및 SerDe를 사용하여 Input 파일을 읽고 처리를 위해 레코드를 추출하는 방법을 결정</p>
+</li>
+</ul>
+<h2 id="Partitioning-및-Bucketing"><a href="#Partitioning-및-Bucketing" class="headerlink" title="Partitioning 및 Bucketing"></a>Partitioning 및 Bucketing</h2><blockquote>
+<p>쿼리 성능을 향상시키는 Hive 쿼리 최적화 기술</p>
+</blockquote>
+<ul>
+<li>테이블에 더 많은 구조를 제공하고 더 나은 샘플링을 생성</li>
+</ul>
+<h4 id="Partitioning"><a href="#Partitioning" class="headerlink" title="Partitioning"></a>Partitioning</h4><blockquote>
+<p>데이터는 특정 조건을 충족하는 하위 디렉토리인 파티션으로 나눔</p>
+</blockquote>
+<ul>
+<li><p>일반적으로 Table의 Where 절에서 사용되는 하나 이상의 조건을 기반으로 데이터를 하위 디렉토리로 나눔</p>
+</li>
+<li><p>각 파티션에 대한 하위 디렉토리를 생성</p>
+</li>
+</ul>
+<h4 id="Bucketing"><a href="#Bucketing" class="headerlink" title="Bucketing"></a>Bucketing</h4><blockquote>
+<p>파티션 또는 Table에서 각 버킷에 대한 별도의 데이터 파일을 생성</p>
+</blockquote>
+<ul>
+<li><p>ID 필드와 같이 대부분 고유한 값이 있는 경우 바람직</p>
+</li>
+<li><p>각 버킷에 전체 데이터 세트의 알려진 임의 비율이 포함되므로 무작위 샘플링에 유용</p>
+</li>
+</ul>
+<h2 id="HiveQL"><a href="#HiveQL" class="headerlink" title="HiveQL"></a>HiveQL</h2><ol>
+<li><p>HiveQL 은 일반적으로 대소문자를 구분하지 않음 (문자열 비교는 제외)</p>
+</li>
+<li><p>탭 키를 사용하면 하이브가 제공하는 예약어와 함수를 자동 완성 가능</p>
+</li>
+<li><p>처음 설치하고 ‘SHOW TABLES;’ 명령어를 입력하면 사용자 머신에 메타스토어 데이터베이스를 생성 (수 초 소모)</p>
+</li>
+<li><p>데이터베이스 사용자가 hive 명령어를 실행한 위치에 <code>metastore_db</code> 디렉토리를 만들어 필요한 파일 저장</p>
+</li>
+<li><p>명령행에 직접 쿼리를 입력하여 실행하는 경우 (hive -e <query>) 끝에 세미콜론을 붙이지 않아도 됨</p>
+</li>
+</ol>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Keyhong</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2023/11/01/Hive/hive-concept/">http://example.com/2023/11/01/Hive/hive-concept/</a>
+                </span>
+            </div>
+            <!-- <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        reprint:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    use
+                    <a href="cc_by_url" rel="external nofollow noreferrer" target="_blank">cc_by_name</a>
+                    licensed
+                    <a href="/about" target="_blank">Keyhong</a>
+                    !
+                </span>
+            </div> -->
+        
+    </div>
+
+    <!-- <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script> -->
+
+
+
+            <div class="tag_share" style="display: block;">
+                <!-- <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                        </div>
+                    
+                </div> -->
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <!-- <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a> -->
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2023/11/01/Hive/hive-ddl/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/hive-logo.png" class="responsive-img" alt="DDL">
+                        
+                        <span class="card-title diy-neon-red">DDL</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-11-01
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Hive/" class="post-category">
+                                    Hive
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/11/01/Hive/hive-explode/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/hive-logo.png" class="responsive-img" alt="Explode &amp; Lateral View">
+                        
+                        <span class="card-title diy-neon-red">Explode &amp; Lateral View</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Hive/" class="post-category">
+                                    Hive
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;목차</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2024</span>
+            
+            <a href="/about" target="_blank">Gyuwon Hong</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+            
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+    <a href="https://github.com/keyhong" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:wnhong96@gmail.com" class="tooltipped" target="_blank" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- Back to Top Button -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

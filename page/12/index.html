@@ -207,22 +207,21 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/DBT/Reference/Project%20Configs/analysis-paths/">
+                    <a href="/2024/01/01/DBT/Reference/Project%20Configs/packages-install-path/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="analysis-paths">
+                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="packages-install-path">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">analysis-paths</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">packages-install-path</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                analysis-pathsdbt_project.ymlanalysis-paths: [directorypath]
+                                packages-install-pathdbt_project.ymlpackages-install-path: directorypath
 
-Definitionanalyses이 위치한 디렉토리의 사용자 지정 목록을 지정합니다.
-Default이 설
+Definition선택적으로 dbt deps 명령을 실행할 때 패키지가 설치되는 사
                             
                         </div> -->
                         <div class="publish-info">
@@ -250,22 +249,23 @@ Default이 설
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/DBT/Reference/Project%20Configs/asset-paths/">
+                    <a href="/2024/01/01/DBT/Reference/Project%20Configs/profile/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="asset-paths">
+                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="profile">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">asset-paths</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">profile</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                asset-pathsdbt_project.ymlasset-paths: [directorypath]
+                                profiledbt_project.ymlprofile: string
 
-Definitionanalyses이 위치한 디렉토리의 사용자 정의 목록을 지정하세요.
-docs generate 명령
+Definitiondbt 프로젝트가 data warehouse에 연결하는 데 사용할 프로필.
+
+dbt Cloud에서 개발 중인 경우: 이 구성은 
                             
                         </div> -->
                         <div class="publish-info">
@@ -293,21 +293,23 @@ docs generate 명령
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/DBT/Reference/Project%20Configs/clean-targets/">
+                    <a href="/2024/01/01/DBT/Reference/Project%20Configs/query-comment/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="clean-targets">
+                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="query-comment">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">clean-targets</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">query-comment</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                clean-targetsdbt_project.ymlclean-targets: [directorypath]
+                                query-commentdbt_project.ymlquery-comment: string
 
-Definition선택적으로 dbt clean command로 제거할 사용자 지정 디렉터리 목록을 지정할 수
+query-comment 구성은 다음과 같이 딕셔너리 입력도 허용합니다:
+dbt_project.ymlmodels:
+  my_
                             
                         </div> -->
                         <div class="publish-info">
@@ -335,22 +337,22 @@ Definition선택적으로 dbt clean command로 제거할 사용자 지정 디렉
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/DBT/Reference/Project%20Configs/config-version/">
+                    <a href="/2024/01/01/DBT/Reference/Project%20Configs/quoting/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="config-version">
+                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="quoting">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">config-version</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">quoting</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                config-versiondbt v1.5부터는 config-version: 태그가 선택 사항입니다.
-dbt_project.ymlconfig-version: 2
-
-Definitiondbt_project.yml을 v2 
+                                Configuring quoting in projectsdbt_project.ymlquoting:
+  database: true | false
+  schema: true | false
+  identifier: tru
                             
                         </div> -->
                         <div class="publish-info">
@@ -378,19 +380,21 @@ Definitiondbt_project.yml을 v2
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/DBT/Reference/Project%20Configs/dbt_project.yml/">
+                    <a href="/2024/01/01/DBT/Reference/Project%20Configs/require-dbt-version/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="dbt_project.yml">
+                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="require-dbt-version">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">dbt_project.yml</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">require-dbt-version</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                dbt_project.yml모든 dbt project에는 dbt_project.yml 파일이 필요합니다. 이 파일은 dbt가 디렉토리를 dbt 프로젝트로 인식하는 방법입니다. 또한 dbt가 프로젝트를 운영하는 방법을
+                                Configuring quoting in projectsdbt_project.ymlrequire-dbt-version: version-range | [version-range]
+
+Definitionrequire-db
                             
                         </div> -->
                         <div class="publish-info">
@@ -418,19 +422,22 @@ Definitiondbt_project.yml을 v2
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/DBT/Reference/Project%20Configs/dbtignore/">
+                    <a href="/2024/01/01/DBT/Reference/Project%20Configs/seed-paths/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt=".dbtignore">
+                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="seed-paths">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">.dbtignore</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">seed-paths</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                .dbtignoredbt project의 루트에 .dbtignore 파일을 생성하여 dbt가 완전히 무시해야 하는 파일을 지정할 수 있습니다. 이 파일은 .gitignore file과 동일한 문법을 사용하여 작동합니
+                                seed-pathsdbt_project.ymlseed-paths: [directorypath]
+
+Definition선택적으로 seed 파일이 위치한 사용자 정의 디렉터리 목록을 지정할 수 있습니다.
+Default기본
                             
                         </div> -->
                         <div class="publish-info">
@@ -458,22 +465,22 @@ Definitiondbt_project.yml을 v2
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/DBT/Reference/Project%20Configs/dispatch%20(config)/">
+                    <a href="/2024/01/01/DBT/Reference/Project%20Configs/test-paths/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="dispatch (config)">
+                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="test-paths">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">dispatch (config)</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">test-paths</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                dispatch (config)dispatch:
-  - macro_namespace: packagename
-    search_order: [packagename]
-  - macro_namespace: package
+                                test-pathsdbt_project.ymltest-paths: [directorypath]
+
+Definitionsingular tests가 위치하는 사용자 정의 디렉터리 목록을 선택적으로 지정할 수 있습니다.
+D
                             
                         </div> -->
                         <div class="publish-info">
@@ -501,22 +508,21 @@ Definitiondbt_project.yml을 v2
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/DBT/Reference/Project%20Configs/docs-paths/">
+                    <a href="/2024/01/01/DBT/Reference/Project%20Configs/snapshot-paths/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="docs-paths">
+                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="snapshot-paths">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">docs-paths</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">snapshot-paths</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                docs-pathsdbt_project.ymldocs-paths: [directorypath]
+                                snapshot-pathsdbt_project.ymlsnapshot-paths: [directorypath]
 
-Definition선택적으로 docs blocks이 위치한 사용자 정의 디렉터리 목록을 지정할 수 있습니다.
-Defau
+Definitionsnapshots이 위치하는 사용자 정의 디렉터리 목록을 선택적으로 지정할 수 있습니다
                             
                         </div> -->
                         <div class="publish-info">
@@ -544,23 +550,20 @@ Defau
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/DBT/Reference/Project%20Configs/name/">
+                    <a href="/2024/01/01/DBT/Reference/Project%20Configs/version/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="name">
+                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="version">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">name</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">version</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                namedbt_project.ymlname: string
-
-Required configuration
-dbt 프로젝트의 이름은 문자, 숫자 및 밑줄만 포함해야 하며, 숫자로 시작할 수 없습니다.
-DefinitionRe
+                                versiondbt 프로젝트에는 두 가지 다른 유형의 version 태그가 있습니다. 이 필드의 의미는 위치에 따라 다릅니다.
+dbt_project.yml versionsdbt_project 파일의 버전 태그는 db
                             
                         </div> -->
                         <div class="publish-info">
@@ -588,21 +591,19 @@ DefinitionRe
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/01/01/DBT/Reference/Project%20Configs/model-paths/">
+                    <a href="/2024/01/01/DBT/Docs/Build%20dbt%20projects/Build%20your%20DAG/Analyses/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="model-paths">
+                            <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="Analyses">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">model-paths</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Analyses</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                model-pathsdbt_project.ymlmodel-paths: [directorypath]
-
-Definitionmodels과 sources가 위치하는 사용자 정의 디렉터리 목록을 선택적으로 지정할 수 있습니다
+                                AnalysesOverviewdbt의 models 개념은 데이터 팀이 데이터 변환에 대해 버전 관리를 하고 협업을 쉽게 할 수 있게 해줍니다. 하지만 때로는 특정 SQL 문이 dbt 모델의 틀에 맞지 않을 때가 있습
                             
                         </div> -->
                         <div class="publish-info">
@@ -644,7 +645,7 @@ Definitionmodels과 sources가 위치하는 사용자 정의 디렉터리 목록
             
         </div>
         <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">12 / 23</div>
+            <div class="center-align b-text-gray">12 / 24</div>
         </div>
         <div class="col s6 m4 l4">
             

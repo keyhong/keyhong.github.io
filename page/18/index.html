@@ -207,57 +207,31 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Spark/dataframe-skew-optimization/">
+                    <a href="/2023/11/01/Hive/hive-ddl/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="[Spark] DataFrame Skewness Optimization">
+                            <img src="/images/logos/hive-logo.png" class="responsive-img" alt="DDL">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Spark] DataFrame Skewness Optimization</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">DDL</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Skew 데이터 생성하기
-table1
-
-
-
-
-OrderID
-Qty
-Sales
-Discount (yes&#x3D;1, no&#x3D;0)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Skew 데이터 불러오기
-import numpy 
+                                테이블 생성그 전에 알아둬야 할 상식!처음에 테이블을 CREATE EXTERNAL TABLE로 만들게 되면, 해당 테이블은 다시 INTERNAL로 만들 수 없습니다. INTERNAL로 만든 후, TBLPROPERTI
                             
                         </div> -->
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-01
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Spark/" class="post-category">
-                                    Spark
+                                <a href="/categories/Hive/" class="post-category">
+                                    Hive
                                 </a>
                                 
                                 
@@ -273,34 +247,43 @@ import numpy
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Spark/dataframe/">
+                    <a href="/2023/11/01/Hive/hive-concept/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="[Spark] pyspark.sql.DataFrame">
+                            <img src="/images/logos/hive-logo.png" class="responsive-img" alt="Concept">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Spark] pyspark.sql.DataFrame</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Concept</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                RDD vs DataFrame
-RDD는 정보를 가진 행이나, 정보가 어떤 유형(type)인지 구체적 명시가 불가능하다.
-DataFrame이 Spark에서 하는 일은 RDD를 DataFrame 객체로 확장하는 것
-Da
+                                Hive
+하둡 기반의 데이터 웨어하우징 프레임워크
+
+
+페이스북에서 개발
+
+자바 프로그래밍은 부족하지만 강력한 SQL 기술을 가진 분석가를 위해 개발
+
+복잡한 머신러닝 알고리즘을 구현하기에는 적합하지 않음
+
+
+
+MyS
                             
                         </div> -->
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-01
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Spark/" class="post-category">
-                                    Spark
+                                <a href="/categories/Hive/" class="post-category">
+                                    Hive
                                 </a>
                                 
                                 
@@ -316,36 +299,33 @@ Da
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Spark/dataset/">
+                    <a href="/2023/11/01/Hive/hive-explode/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="[Spark] DataSet">
+                            <img src="/images/logos/hive-logo.png" class="responsive-img" alt="Explode &amp; Lateral View">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Spark] DataSet</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Explode &amp; Lateral View</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                
-Spark 2.0에서 ‘DataFrame’과 상반된 ‘DataSet’ 도입
+                                Explode()컬럼의 값에 있는 배열의 모든 요소를 별도의 행으로 생성한다. 데이터가 많으면 행이 무수히 많아져 크기가 급속도로 커지므로 사용시에 항상 Out Of Memory 에러에 주의가 필요하다.
 
-파이썬에서는 둘의 경계가 모호. Python에서는 모든 것이 동적으로 입력되기 때문
-
-‘DataFrame’은 행 객체의 ‘DataSet’
+-- 기본
                             
                         </div> -->
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-01
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Spark/" class="post-category">
-                                    Spark
+                                <a href="/categories/Hive/" class="post-category">
+                                    Hive
                                 </a>
                                 
                                 
@@ -361,31 +341,39 @@ Spark 2.0에서 ‘DataFrame’과 상반된 ‘DataSet’ 도입
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Spark/pyspark-jvm-py4j/">
+                    <a href="/2023/11/01/Hive/hive-config/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="[Spark] JVM py4j">
+                            <img src="/images/logos/hive-logo.png" class="responsive-img" alt="Config">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Spark] JVM py4j</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Config</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Question 1. PySpark 코드는 JVM 또는 Python 하위 프로세스에서 실행됩니까?PySpark에서 Python 및 JVM 코드는 별도의 OS 프로세스에 있습니다.PySpark는 Python과 JVM 
+                                hive-site.xml
+Hive 환경 설정을 위한 XML 설정 파일
+
+
+Hive의 conf 디렉토리에 위치
+
+사용자가 Hive를 실행할 때마다 필요한 속성을 설정
+
+hive-default.xml.template을 
                             
                         </div> -->
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-01
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Spark/" class="post-category">
-                                    Spark
+                                <a href="/categories/Hive/" class="post-category">
+                                    Hive
                                 </a>
                                 
                                 
@@ -401,217 +389,10 @@ Spark 2.0에서 ‘DataFrame’과 상반된 ‘DataSet’ 도입
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Spark/directory-structure/">
+                    <a href="/2023/11/01/Hive/hive-installation/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="[Spark] Directory Structure">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Spark] Directory Structure</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                설치 디렉토리($SPARK_HOME) 경로의 스파크 내부 구조스파크 설치시 압축을 푼 내부 폴더 구조를 정리하였다. 책이 나온 지 좀 되서 지금의 스파크 최선 버전인 3.4.1의 내부 구조가 살짝 상이한 부분은 있으
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Spark/" class="post-category">
-                                    Spark
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2023/12/01/Spark/jdbc-parallel-sourcing/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="[Spark] JDBC Parallel Sourcing">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Spark] JDBC Parallel Sourcing</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                Hadoop Sourcing Vs. RDB Sourcing하둡에서 스파크를 사용한다면, 하둡 클러스터에 블록 단위로 분산된 데이터를 소유하고 있는 데이터 노드와 직접적인 통신을 통해 데이터를 소싱한다. 하지만, 상황
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Spark/" class="post-category">
-                                    Spark
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2023/12/01/Spark/rdd-skew-optimization/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="[Spark] RDD Skewness Optimization">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Spark] RDD Skewness Optimization</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                Optimizing Skewness스파크에서 skewness(왜도, 비대칭도)를 해결하는 것은 스파크 튜닝의 중요한 요소이다. 왜 skewness를 해결해야 하는 지는 스파크가 분산 처리 프레임워크라는 것을 생각한다
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Spark/" class="post-category">
-                                    Spark
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2023/12/01/Spark/rdd/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="[Spark] pyspark.RDD">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Spark] pyspark.RDD</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                RDD(Resilient Distributed Dataset)
-스파크 프로그래밍에서 사용되는 가장 기본적인 데이터 객체
-
-한글로 해석하면 복원 분산 데이터 집합이다. Spark에서 사용되는 가장 기본적인 데이터 객체
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Spark/" class="post-category">
-                                    Spark
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2023/12/01/Spark/sourcing/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="[Spark] Data Sourcing">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Spark] Data Sourcing</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                지원하는 파일 시스템
-하나 이상의 파일로부터 RDD 를 생성하기 위해 스파크 메서드는 여러 파일 시스템을 지원
-
-
-구조화 되지 않은 Text 파일, 반구조화된 Json 파일, 구조화된 CSV 파일 등 다양한 형식 지
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Spark/" class="post-category">
-                                    Spark
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2023/12/01/Spark/spark-installation/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Installation">
+                            <img src="/images/logos/hive-logo.png" class="responsive-img" alt="Installation">
                             
                             <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Installation</span>
                         </div>
@@ -620,23 +401,240 @@ Spark 2.0에서 ‘DataFrame’과 상반된 ‘DataSet’ 도입
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Ubuntu에서 단일 노드(Single Node) 스파크 배포
-패키지 색인 파일(패키지 저장소가 제공하는 패키지에 대한 정보 파일) 업데이트
+                                Hive 설치하기
+하이브는 사용자의 워크스테이션에서 실행, 작성된 SQL 쿼리는 일련의 맵리듀스 잡으로 변환되어 하둡클러스터에서 구동
 
-# Debian 계열 리눅스(Ubuntu)
-$ sudo apt-get u
+HDFS에 저장된 데이터(directory&#x2F;file)에 구조(Schem
                             
                         </div> -->
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-01
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Spark/" class="post-category">
-                                    Spark
+                                <a href="/categories/Hive/" class="post-category">
+                                    Hive
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/11/01/Hive/hive-no-drop-offline/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/hive-logo.png" class="responsive-img" alt="NO_DROP과 OFFLINE으로 Table 보호하기">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">NO_DROP과 OFFLINE으로 Table 보호하기</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                NO_DROP특정 테이블이나 파티션이 실수로 삭제되는 것을 방지한다. 프로젝트에서 어떠한 경우에도 삭제해서 안 되는 경우에 사용을 하면 좋다.
+테이블에 NO_DROP 활성화하기-- Syntax
+ALTER TABLE 
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Hive/" class="post-category">
+                                    Hive
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/11/01/Hive/hive-rlike/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/hive-logo.png" class="responsive-img" alt="RLIKE">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">RLIKE</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                RLIKE
+Right Like의 약어이다.
+
+Hive에서 제공하는 특수기능으로 A의 하위 문자열이 B와 일치하면 true로 평가하여 필요 데이터만 추출할 수 있다.
+
+정규표현식과 함께 사용하면 유용하다. 탐색할 문자
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Hive/" class="post-category">
+                                    Hive
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/11/01/Hive/hiveql-dml/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/hive-logo.png" class="responsive-img" alt="DML">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">DML</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                DML테이블 목록 보기SHOW TABLES;
+
+파티션 정보 보기SHOW PARTITIONS &lt;테이블>;
+
+테이블 통계 정보 보기ANALYZE TABLE &lt;테이블> PARTITION (&lt;파티션 컬럼> 
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Hive/" class="post-category">
+                                    Hive
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/11/01/Hive/hive-sorting/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/hive-logo.png" class="responsive-img" alt="Sorting">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Sorting</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                Hive에서 정렬을 수행하는 4개의 절
+ORDER BY
+SORT BY
+DISTRIBUTED BY
+CLUSTER BY
+
+(1) ORDER BY
+데이터 전체 정렬에 사용된다. 데이터의 전체 순서를 보장하며, 이를 위해 
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Hive/" class="post-category">
+                                    Hive
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/11/01/Hive/rank-functions/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/hive-logo.png" class="responsive-img" alt="RANK(), DENSE_RANK(), ROW_NUMBER()">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">RANK(), DENSE_RANK(), ROW_NUMBER()</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                HiveQL에서도 ANSI SQL과 마찬가지로 RANK(), DENSE_RANK(), ROW_NUMBER()의 순위 함수를 제공합니다. 순위 함수는 PARTITION BY ORDERB BY의 Window 함수와 함께
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Hive/" class="post-category">
+                                    Hive
                                 </a>
                                 
                                 
@@ -666,7 +664,7 @@ $ sudo apt-get u
             
         </div>
         <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">18 / 23</div>
+            <div class="center-align b-text-gray">18 / 24</div>
         </div>
         <div class="col s6 m4 l4">
             

@@ -1,0 +1,927 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Amazon S3, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="Amazon S3 (Simple Storage Service)도입
+AWS의 메인 빌딩 블록 중 하나이다.
+무한히 확장가능한 스토리지로 광고한다.
+많은 웹 사이트가 Amazon S3를 백본으로 사용한다.
+많은 AWS ">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Amazon S3 | Keyhong</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span diy-happy-monkey">Keyhong</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <!-- <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li> -->
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Keyhong</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/aws-logo.png')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title diy-neon-red">
+                        Amazon S3</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                        <div class="article-tag">
+                            <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                                <span class="chip bg-color">
+                                    2024-04-01</span>
+                        </div>
+                    
+                    
+
+
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/AWS/" class="post-category">
+                                AWS
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="Amazon-S3-Simple-Storage-Service"><a href="#Amazon-S3-Simple-Storage-Service" class="headerlink" title="Amazon S3 (Simple Storage Service)"></a>Amazon S3 (Simple Storage Service)</h2><h4 id="도입"><a href="#도입" class="headerlink" title="도입"></a>도입</h4><ul>
+<li>AWS의 메인 빌딩 블록 중 하나이다.</li>
+<li>무한히 확장가능한 스토리지로 광고한다.</li>
+<li>많은 웹 사이트가 Amazon S3를 백본으로 사용한다.</li>
+<li>많은 AWS 서비스가 통합을 위해 S3를 사용한다.</li>
+</ul>
+<h4 id="Use-case"><a href="#Use-case" class="headerlink" title="Use case"></a>Use case</h4><ul>
+<li>백업과 스토리지</li>
+<li>재해 복구 목적</li>
+<li>보관용 (Archive)</li>
+<li>하이브리드 클라우드 스토리지용</li>
+<li>미디어 호스팅</li>
+<li>데이터 레이크(Dake Lake) &amp; 빅데이터 분석용</li>
+<li>소프트웨어 업데이트용</li>
+<li>정적 웹 사이트</li>
+</ul>
+<h4 id="Bucket"><a href="#Bucket" class="headerlink" title="Bucket"></a>Bucket</h4><ul>
+<li>Amazon S3는 “object”(파일)를 “bucket”(디렉터리)에 저장한다.</li>
+<li>버켓은 전세계(AWS에 있는 모든 계정과 모든 지역)적으로 유니크한 이름을 소유해야 한다.</li>
+<li>버켓은 특정 AWS 지역(Region) 수준에서 정의된다.</li>
+<li>글로벌 서비스처럼 보이지만, 실제로 한 지역에서 생성된다.</li>
+<li>Naming Convention이 있다.<br>– No uppercase, No underscore<br>– 3-63 characters long<br>– Not an IP<br>– Must start with lowercase letter or number<br>– Must Not start with the prefix “xn–”<br>– Must Not end with the suffix “-s3alias”</li>
+</ul>
+<h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><ul>
+<li><p>Object(파일)은 Key를 가진다.</p>
+</li>
+<li><p>Key는 파일의 전체 경로(Full Path)이다.<br>– s3:&#x2F;&#x2F;my-bucket&#x2F;my_file.txt<br>– s3:&#x2F;&#x2F;my-bucket&#x2F;my_folder1&#x2F;another_folder&#x2F;my_file.txt</p>
+</li>
+<li><p>Key는 prefix + object name 으로 구성되어 있다.<br>– s3:&#x2F;&#x2F;my-bucket&#x2F;my_folder1&#x2F;another_folder&#x2F;my_file.txt</p>
+</li>
+<li><p>Amazon S3 버켓에는 “디렉터리”라는 개념은 없다. 웹 UI에는 디렉터리처럼 보이지만 실제로는 모든 게 Key일 뿐이다.</p>
+</li>
+<li><p>Key는 슬래쉬(‘&#x2F;‘)를 포함하고 있는 아주 긴 이름이다.</p>
+</li>
+<li><p>Object 값들은 body의 content이다.<br>– 최대 Object 사이즈는 5TB(5,000GB)이다.<br>– 업로드할 파일이 5GB보다 크다면, “multi-part upload”를 해야한다. 예를 들어, 5TB를 적재한다면 적어도 1,000개의 부분으로 적재해야 한다.<br>– Obejct는 메타 데이터를 가질 수 있다. (시스템 또는 사용자에 의해 key&#x2F;value pari의 text list로 설정된다.)<br>– Tags (Unicode key&#x2F;value pair - 최대 10개까지) - 보안이나 수명주기에 유용하다.<br>– versioning을 활성화하면 Version ID를 가지게 되어 Object의 버전 관리를 할 수 있다.</p>
+</li>
+</ul>
+<h2 id="Amazon-S3-실습-Bucket-생성하기"><a href="#Amazon-S3-실습-Bucket-생성하기" class="headerlink" title="Amazon S3 실습 : Bucket 생성하기"></a>Amazon S3 실습 : Bucket 생성하기</h2><h4 id="①-Bucket-이름을-작성한다"><a href="#①-Bucket-이름을-작성한다" class="headerlink" title="① Bucket 이름을 작성한다."></a>① Bucket 이름을 작성한다.</h4><p>Bucket 이름은 global에서 유니크한 이름이어야 한다. 또한 네이밍 컨벤션이 있으므로 확인하고 이름을 만든다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110184&authkey=%21ACbEAJkBSmsnAhM&width=751&height=424" width="751" height="424" />
+
+<h4 id="②-퍼블릭-액세스-설정"><a href="#②-퍼블릭-액세스-설정" class="headerlink" title="② 퍼블릭 액세스 설정"></a>② 퍼블릭 액세스 설정</h4><p>버켓 Policy나 IAM 이외의 또 다른 보안 설정이다. 처음 버켓 만드는 연습 단계라 변경 없이 통과하였다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110194&authkey=%21AJh2dShqHKw6xlU&width=731&height=432" width="731" height="432" />
+
+<h4 id="③-Bucket-버전-관리-설정"><a href="#③-Bucket-버전-관리-설정" class="headerlink" title="③ Bucket 버전 관리 설정"></a>③ Bucket 버전 관리 설정</h4><p>활성화하면 버켓에 올라간 모든 파일에 대해서 버전 관리를 해주는 기능이다. 역시나 일단은 통과한다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110193&authkey=%21AJbn1_oknlxiDAI&width=732&height=214" width="732" height="214" />
+
+<h4 id="④-기본-암호화-설정"><a href="#④-기본-암호화-설정" class="headerlink" title="④ 기본 암호화 설정"></a>④ 기본 암호화 설정</h4><p>버켓에 데이터를 넣을 때 서버 측에서 암호화 할 것인지, KMS를 이용할 것인지, DSSE-KMS(KMS 보다 더 강력한 보안)을 사용할 것인지 설정 할 수 있다. 기본 옵션을 사용하자. </p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110195&authkey=%21AD-N_UO5j5Vr88g&width=730&height=342" width="730" height="342" />
+
+<h4 id="⑤-Bucket-생성-후-데이터-업로드-하기"><a href="#⑤-Bucket-생성-후-데이터-업로드-하기" class="headerlink" title="⑤ Bucket 생성 후 데이터 업로드 하기"></a>⑤ Bucket 생성 후 데이터 업로드 하기</h4><p>만든 버켓으로 접속한다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110196&authkey=%21AMfCXqMU6JxwDHA&width=751&height=118" width="751" height="118" />
+
+<p>업로드 버튼을 눌러준다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110198&authkey=%21ALQEpqBL24Nx7L4&width=743&height=198" width="743" height="198" />
+
+<p>파일을 추가한다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110197&authkey=%21AL-8QxHGXq99aUo&width=744&height=272" width="744" height="272" />
+
+<p>업로드 대상을 확인하고 업로드를 누른다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110199&authkey=%21AHkgCFx8rCWd71I&width=752&height=334" width="752" height="334" />
+
+<p>올라간 coffee.jpg 파일을 AWS 콘솔에서 열기를 통해서 확인할 수 있다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110200&authkey=%21AL_XKF1skZJ2UvA&width=748&height=331" width="748" height="331" />
+
+<p>접속하면 URL을 타고 들어가는 데, 보다시피 접속에 대한 정보가 암호화 되어 있음을 알 수 있다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110200&authkey=%21AL_XKF1skZJ2UvA&width=748&height=331" width="748" height="331" />
+
+<h4 id="⑥-객체-URL로-Bucket-안의-파일-확인하기"><a href="#⑥-객체-URL로-Bucket-안의-파일-확인하기" class="headerlink" title="⑥  객체 URL로 Bucket 안의 파일 확인하기"></a>⑥  객체 URL로 Bucket 안의 파일 확인하기</h4><p>콘솔의 [ 열기 ] 버튼이 아닌 주어진 객체 URL로 접속해보자.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110185&authkey=%21AN6p6oggmdbQb2w&width=750&height=332" width="750" height="332" />
+
+<p>접속이 되지 않는다. URL의 차이도 있지만, 접속이 되지 않는 이유는 Bucket Policy 설정을 아직은 하지 않았기 때문이다. 외부 URL로 누구나 접속하게 하려면 내가 만든 Bucket에 대한 공개적인 접근을 허용해야 한다. 이에 대한 설정은 S3 보안 설정을 해야 한다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110187&authkey=%21APJQcVc98_NQjRo&width=754&height=163" width="754" height="163" />
+
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110188&authkey=%21AB8LK8Sthf8IXWs&width=756&height=200" width="756" height="200" />
+
+<h4 id="⑦-폴더-만들기"><a href="#⑦-폴더-만들기" class="headerlink" title="⑦ 폴더 만들기"></a>⑦ 폴더 만들기</h4><p>콘솔에서 폴더를 만들 수 있다. 실제로는 파일 위치 경로인 Full Path의 Key 부분이다. 그래도 폴더라는 개념으로 받아들이면 사용자 입장에서는 조금 더 이해가 쉬운 것 같다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110189&authkey=%21AAAdVR3l136mpls&width=749&height=610" width="749" height="610" />
+
+<p>만들어진 폴더를 확인한다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110190&authkey=%21AGXuudSo0W8riNQ&width=750&height=185" width="750" height="185" />
+
+
+<h4 id="⑧-파일이나-폴더-삭제하기"><a href="#⑧-파일이나-폴더-삭제하기" class="headerlink" title="⑧ 파일이나 폴더 삭제하기"></a>⑧ 파일이나 폴더 삭제하기</h4><p>파일이나 폴더를 삭제할 수 있다. 아래는 폴더를 지우는 모습인 데, 폴더를 지우면 그 하위에 있는 모든 폴더와 파일이 함께 삭제된다. </p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110191&authkey=%21AJ2uIFaL9S0Vw4Y&width=752&height=138" width="752" height="138" />
+
+<p>객체를 삭제할 때는 “영구 삭제” 를 입력 받아야만 삭제 할 수 있다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110192&authkey=%21AGPAxiTrFQ_tsrc&width=751&height=607" width="751" height="607" />
+
+
+
+<h2 id="Amazon-S3-보안"><a href="#Amazon-S3-보안" class="headerlink" title="Amazon S3 보안"></a>Amazon S3 보안</h2><h4 id="①-User-Based"><a href="#①-User-Based" class="headerlink" title="① User-Based"></a>① User-Based</h4><blockquote>
+<p>IAM Policies : 특정 IAM 사용자에게 허용되는 API를 호출하는 방법</p>
+</blockquote>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110206&authkey=%21AKS4LKaPh2ZjuYM&width=749&height=251" width="749" height="251" alt="IAM permission을 통한 S3 접근 제어"/>
+
+<h4 id="②-Resource-Based"><a href="#②-Resource-Based" class="headerlink" title="② Resource-Based"></a>② Resource-Based</h4><blockquote>
+<p>☆ Bucket Policies : S3 콘솔에서 할당할 수 있는 버켓 전체에 대한 규칙 (다른 계정의 사용자에게도 허용 가능). 가장 일반적으로 사용하는 방법이다.</p>
+</blockquote>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110207&authkey=%21ADH4gx71Zz0Wu7A&width=753&height=254" width="753" height="254" alt="S3 Bucket Policy를 통한 S3 접근 제어"/>
+
+<ul>
+<li><p>Object Access Control List (ACL) : 더 정밀한 보안 제공, 비활성화 가능</p>
+</li>
+<li><p>Bucket Access Control List(ACL) : 덜 일반적인 방법도 비활성화 가능</p>
+</li>
+</ul>
+<h4 id="Note-어떤-상황에서-IAM-원칙이-S3-Object에-접근할-수-있을-까"><a href="#Note-어떤-상황에서-IAM-원칙이-S3-Object에-접근할-수-있을-까" class="headerlink" title="Note: 어떤 상황에서 IAM 원칙이 S3 Object에 접근할 수 있을 까?"></a>Note: 어떤 상황에서 IAM 원칙이 S3 Object에 접근할 수 있을 까?</h4><p>① IAM 권한이 허용되거나 리소스 정책에서 허용하는 경우<br>② 명시적인 DENY(거부)가 없는 경우<br>① AND ②</p>
+<h4 id="③-Encryption"><a href="#③-Encryption" class="headerlink" title="③ Encryption"></a>③ Encryption</h4><blockquote>
+<p>암호화 키를 이용해서 S3 안의 Object를 암호화하는 방법</p>
+</blockquote>
+<h2 id="S3-Bucket-policies"><a href="#S3-Bucket-policies" class="headerlink" title="S3 Bucket policies"></a>S3 Bucket policies</h2><h4 id="JSON-base-policies"><a href="#JSON-base-policies" class="headerlink" title="JSON base policies"></a>JSON base policies</h4><ul>
+<li>Resources : bucket과 object</li>
+<li>Effect : Allow&#x2F;Deny</li>
+<li>Action : Allow or Deny 대상이 되는 API 설정</li>
+<li>Principal : 정책을 적용할 대상이 되는 account or user</li>
+</ul>
+<h4 id="S3-Bucket-Policy를-사용하는-경우"><a href="#S3-Bucket-Policy를-사용하는-경우" class="headerlink" title="S3 Bucket Policy를 사용하는 경우"></a>S3 Bucket Policy를 사용하는 경우</h4><ul>
+<li>버켓에 대한 공개 접근 권한을 부여하는 경우</li>
+<li>업로드시 Object를 강제로 암호화하려는 경우</li>
+<li>다른 계정에도 공개 접근 권한을 부여하는 경우</li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Keyhong</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2024/04/01/AWS/Amazon%20S3/">http://example.com/2024/04/01/AWS/Amazon%20S3/</a>
+                </span>
+            </div>
+            <!-- <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        reprint:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    use
+                    <a href="cc_by_url" rel="external nofollow noreferrer" target="_blank">cc_by_name</a>
+                    licensed
+                    <a href="/about" target="_blank">Keyhong</a>
+                    !
+                </span>
+            </div> -->
+        
+    </div>
+
+    <!-- <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script> -->
+
+
+
+            <div class="tag_share" style="display: block;">
+                <!-- <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                        </div>
+                    
+                </div> -->
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <!-- <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a> -->
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2024/04/01/AWS/aws/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/aws-logo.png" class="responsive-img" alt="AWS">
+                        
+                        <span class="card-title diy-neon-red">AWS</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-04-01
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/AWS/" class="post-category">
+                                    AWS
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/04/01/AWS/ci-cd-pipeline/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/aws-logo.png" class="responsive-img" alt="EC2 CI/CI Pipeline">
+                        
+                        <span class="card-title diy-neon-red">EC2 CI/CI Pipeline</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-04-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/AWS/" class="post-category">
+                                    AWS
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;목차</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2024</span>
+            
+            <a href="/about" target="_blank">Gyuwon Hong</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+            
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+    <a href="https://github.com/keyhong" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:wnhong96@gmail.com" class="tooltipped" target="_blank" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- Back to Top Button -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
