@@ -207,45 +207,19 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Spark/dataframe-skew-optimization/">
+                    <a href="/2023/12/01/Spark/JDBC%20Parallel%20Sourcing/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="DataFrame Skewness Optimization">
+                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="JDBC Parallel Sourcing">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">DataFrame Skewness Optimization</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">JDBC Parallel Sourcing</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Skew 데이터 생성하기
-table1
-
-
-
-
-OrderID
-Qty
-Sales
-Discount (yes&#x3D;1, no&#x3D;0)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Skew 데이터 불러오기
-import numpy 
+                                Hadoop Sourcing Vs. RDB Sourcing하둡에서 스파크를 사용한다면, 하둡 클러스터에 블록 단위로 분산된 데이터를 소유하고 있는 데이터 노드와 직접적인 통신을 통해 데이터를 소싱한다. 하지만, 상황
                             
                         </div> -->
                         <div class="publish-info">
@@ -401,86 +375,6 @@ Spark 2.0에서 ‘DataFrame’과 상반된 ‘DataSet’ 도입
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Spark/pyspark-jvm-py4j/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="JVM py4j">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">JVM py4j</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                Question 1. PySpark 코드는 JVM 또는 Python 하위 프로세스에서 실행됩니까?PySpark에서 Python 및 JVM 코드는 별도의 OS 프로세스에 있습니다.PySpark는 Python과 JVM 
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Spark/" class="post-category">
-                                    Spark
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2023/12/01/Spark/rdd-skew-optimization/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="RDD Skewness Optimization">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">RDD Skewness Optimization</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                Optimizing Skewness스파크에서 skewness(왜도, 비대칭도)를 해결하는 것은 스파크 튜닝의 중요한 요소이다. 왜 skewness를 해결해야 하는 지는 스파크가 분산 처리 프레임워크라는 것을 생각한다
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Spark/" class="post-category">
-                                    Spark
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
                     <a href="/2023/12/01/Spark/rdd/">
                         <div class="card-image">
                             
@@ -568,6 +462,86 @@ Spark 2.0에서 ‘DataFrame’과 상반된 ‘DataSet’ 도입
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/2023/12/01/Spark/pyspark-jvm-py4j/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="JVM py4j">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">JVM py4j</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                Question 1. PySpark 코드는 JVM 또는 Python 하위 프로세스에서 실행됩니까?PySpark에서 Python 및 JVM 코드는 별도의 OS 프로세스에 있습니다.PySpark는 Python과 JVM 
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Spark/" class="post-category">
+                                    Spark
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/12/01/Spark/rdd-skew-optimization/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="RDD Skewness Optimization">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">RDD Skewness Optimization</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                Optimizing Skewness스파크에서 skewness(왜도, 비대칭도)를 해결하는 것은 스파크 튜닝의 중요한 요소이다. 왜 skewness를 해결해야 하는 지는 스파크가 분산 처리 프레임워크라는 것을 생각한다
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Spark/" class="post-category">
+                                    Spark
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
                     <a href="/2023/12/01/Spark/spark-installation/">
                         <div class="card-image">
                             
@@ -612,22 +586,19 @@ $ sudo apt-get u
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Spark/spark-streaming-shutdown/">
+                    <a href="/2023/12/01/Spark/spark-submit/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Spark Streaming Gracefully Shutdown">
+                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="spark-submit으로 job 제출하기">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Spark Streaming Gracefully Shutdown</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">spark-submit으로 job 제출하기</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                sparkStreamContext.stop()
-코드 상에서 sparkStreamContext.stop()를 call 하는 것은 그만
-
-방법 1 : spark.streaming.stopGracefullyOnShutdo
+                                basic실제 클러스터에는 spark-submit을 이용하여 스파크 프로그램을 실행시킨다. spark-submit은 spark를 설치하면 bin 폴더($SPARK_HOME&#x2F;bin) 안에 있다. spark-s
                             
                         </div> -->
                         <div class="publish-info">

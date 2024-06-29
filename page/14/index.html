@@ -385,19 +385,19 @@ ModuleGroups together c
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Spark/JDBC%20Parallel%20Sourcing/">
+                    <a href="/2023/12/01/Spark/caching/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="JDBC Parallel Sourcing">
+                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Caching">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">JDBC Parallel Sourcing</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Caching</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Hadoop Sourcing Vs. RDB Sourcing하둡에서 스파크를 사용한다면, 하둡 클러스터에 블록 단위로 분산된 데이터를 소유하고 있는 데이터 노드와 직접적인 통신을 통해 데이터를 소싱한다. 하지만, 상황
+                                Caching의 필요성스파크는 RDD는 action을 call 하기 전까지 여러 narrow&#x2F;wide transformation로 구성된 stage를 연이어 쌓은 계보(Lineage)를 가진다. 이 Line
                             
                         </div> -->
                         <div class="publish-info">
@@ -441,46 +441,6 @@ ModuleGroups together c
 Apache Spark의 중요한 컴포넌트
 
 구조적 쿼리인 SQL 또는 DataFrame&#x2F;Dataset API의 DAG 로직을 최적화하여 프로그램 런타
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Spark/" class="post-category">
-                                    Spark
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2023/12/01/Spark/caching/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Caching">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Caching</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                Caching의 필요성스파크는 RDD는 action을 call 하기 전까지 여러 narrow&#x2F;wide transformation로 구성된 stage를 연이어 쌓은 계보(Lineage)를 가진다. 이 Line
                             
                         </div> -->
                         <div class="publish-info">
@@ -612,6 +572,72 @@ GZIP, ZIP(&#x3D;DEFLATE, 압축 방법을 사용해 생성된 모든 압축 아�
 
 
 변환 작업을 최적화 
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Spark/" class="post-category">
+                                    Spark
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/12/01/Spark/dataframe-skew-optimization/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="DataFrame Skewness Optimization">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">DataFrame Skewness Optimization</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                Skew 데이터 생성하기
+table1
+
+
+
+
+OrderID
+Qty
+Sales
+Discount (yes&#x3D;1, no&#x3D;0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Skew 데이터 불러오기
+import numpy 
                             
                         </div> -->
                         <div class="publish-info">
