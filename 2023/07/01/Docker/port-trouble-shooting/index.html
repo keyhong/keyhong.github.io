@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[Docker] docker mysql , Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="MySQL 연결 보완[Error] public key retrieval is not allowed원인 : Dbeaver Client 프로그램 사용하여 접속시 나오는 에러. mysql 8.X 버전 이후 발생.&amp;#x3D">
+    <meta name="keywords" content="Docker container port trouble shooting, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="꺼진 불과 켜진 포트도 다시 보자..">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[Docker] docker mysql  | Keyhong</title>
+    <title>Docker container port trouble shooting | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -182,7 +182,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [Docker] docker mysql </h1>
+                        Docker container port trouble shooting</h1>
                 </div>
             </div>
         </div>
@@ -207,7 +207,7 @@
                         <div class="article-tag">
                             <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                                 <span class="chip bg-color">
-                                    2024-01-01</span>
+                                    2023-07-01</span>
                         </div>
                     
                     
@@ -219,8 +219,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Docker/" class="post-category">
-                                Docker
+                            <a href="/categories/Trouble-Shooting/" class="post-category">
+                                Trouble Shooting
                             </a>
                         
                     </div>
@@ -239,26 +239,62 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="MySQL-연결-보완"><a href="#MySQL-연결-보완" class="headerlink" title="MySQL 연결 보완"></a>MySQL 연결 보완</h2><p>[Error] public key retrieval is not allowed<br>원인 : Dbeaver Client 프로그램 사용하여 접속시 나오는 에러. mysql 8.X 버전 이후 발생.<br>&#x3D;&gt; allowPublicKeyRetrieval</p>
-<p>[Error] utf8mb3 -&gt; 3byte로 구현<br>utf-8은 원래 4byte</p>
-<p>MySQL 5.5.3(2010년 3월) 이후 4byte인 utfmb4 추가</p>
-<p>mysql에서 status로 확인.</p>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">db</span><span class="token punctuation">:</span>
-  <span class="token key atrule">image</span><span class="token punctuation">:</span> mysql
-  <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">-</span><span class="token punctuation">-</span>default<span class="token punctuation">-</span>authentication<span class="token punctuation">-</span>plugin=mysql_native_password <span class="token punctuation">-</span><span class="token punctuation">-</span>character<span class="token punctuation">-</span>set<span class="token punctuation">-</span>server=utf8 <span class="token punctuation">-</span><span class="token punctuation">-</span>collation<span class="token punctuation">-</span>server=utf8_general_ci
-  <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
-  environment<span class="token punctuation">:</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <h2 id="문제-정리"><a href="#문제-정리" class="headerlink" title="문제 정리"></a>문제 정리</h2><h4 id="문제-상황"><a href="#문제-상황" class="headerlink" title="문제 상황"></a>문제 상황</h4><blockquote>
+<p>docker-compose.yml으로 postgres를 5432포트로 올리려는 도중 갑자기 안되는 문제 발생하였다. 컨테이너 정상 구동을 먼저 확인하였고, <code>docker exec -it &lt;postgres container&gt; bash</code>로 접속 후, <code>env</code>의 환경변수와 <code>pgsql</code>로 데이터베이스 생성 및 내부 커넥션 연결을 확인하였다.</p>
+</blockquote>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>docker-compose.yml</span></div><code class="language-yaml"><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">"3.8"</span>
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">postgres</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> postgres<span class="token punctuation">:</span>14<span class="token punctuation">-</span>bullseye
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> postgres
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">"5432:5432"</span>    
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span> 
+      <span class="token key atrule">POSTGRES_USER</span><span class="token punctuation">:</span> my_user
+      <span class="token key atrule">POSTGRES_PASSWORD</span><span class="token punctuation">:</span> my_password
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>DB 생성 초기에 사용자나 스키마를 추가 하는 경우에는<br>–mount type&#x3D;bind,<br>src&#x3D;&#x2F;path-on-host-machine&#x2F;scripts&#x2F;,<br>dst&#x3D;&#x2F;docker-entrypoint-initdb.d&#x2F;  추가한다. </p>
-<p>&#x2F;path-on-host-machine&#x2F;scripts 안에는 실행되는 sql 이나 sh 파일이 있어야 동작한다. 동작순서는 알파벳 순서이다.</p>
-<p>[Error] the input device is not a TTY.  If you are using mintty, try prefixing the command with ‘winpty’<br>원인 : git bash에서 터미널 설정을 mintty로 한 경우 발생<br>winpty [커맨드]로 실행</p>
-<p>[Error] dbeaver에서 한글이 적용안될 때<br>–skip-character-set-client-handshake 를 추가<br>client 쪽의 문자셋 무시하고 (내 컴퓨터는 window) 서버쪽 문자셋 사용<br>status로 확인</p>
-<p>[Error] (1227, ‘Access denied; you need (at least one of) the FILE privilege(s) for this operation’)</p>
-<p>[Erro] (1205, ‘Lock wait timeout exceeded; try restarting transaction’_<br>&#x3D;&gt; show variables like ‘%timeout’<br>interactive_timeout               | 28800<br> wait_timeout                      | 28800</p>
-<p>interactive_timeout : : 활동중인 커넥션이 닫히기 전까지 서버가 대기하는 시간</p>
-<p>[Error] 자동으로 autocommit이 된다.<br>SELECT @@AUTOCOMMIT;</p>
-<p>select count(*) from information_schema.processlist where command&#x3D;’Sleep’;<br>show variables like ‘wait_timeout’;<br>show variables like ‘interactive_timeout’;</p>
-<p>set global interactive_timeout&#x3D;30;<br>set global wait_timeout&#x3D;30;<br>SET wait_timeout &#x3D; 10;<br>set interactive_timeout&#x3D;30;</p>
+<h4 id="구축-환경"><a href="#구축-환경" class="headerlink" title="구축 환경"></a>구축 환경</h4><blockquote>
+<p>Host: <code>Windows 11</code><br>Docker Image: <code>postgres:14-bullseye</code><br>Port Forwarding : <code>5432:5432</code></p>
+</blockquote>
+<h4 id="에러-코드"><a href="#에러-코드" class="headerlink" title="에러 코드"></a>에러 코드</h4><p>데이터베이스를 원격으로 붙일 때 <a target="_blank" rel="noopener" href="https://dbeaver.io/">dbeaver</a>를 사용하고 있었다. 커넥션 정보를 정확히 넣고 커넥션을 시도하자 아래와 같은 문제가 발생했다. 이상하게 dbeaver는 한글판이었고 인코딩도 UTF-8로 되어있고 한글이 나와야 하는 데, 정확한 에러 로그를 찾기 어려웠다.</p>
+<pre class="line-numbers language-text" data-language="text"><div class="caption"><span>deaver 출력문</span></div><code class="language-text">error: ����� "my_user"�� password ������ �����߽��ϴ�<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="문제-해결"><a href="#문제-해결" class="headerlink" title="문제 해결"></a>문제 해결</h2><blockquote>
+<p>도커 컨테이너로 포트 포워딩을 하는 데, 내 host에서 5432 포트가 정상적으로 동작하는 지 다시 확인했다. <strong>포트가 겹칠 수 있다</strong>는 것을 발견하고 나의 로컬에서 포트가 겹치는 하나의 task를 kill 해주었어요.</p>
+</blockquote>
+<h3 id="문제-해결-순서"><a href="#문제-해결-순서" class="headerlink" title="문제 해결 순서"></a>문제 해결 순서</h3><h4 id="1-관리자-권한으로-powershell-열기"><a href="#1-관리자-권한으로-powershell-열기" class="headerlink" title="1. 관리자 권한으로 powershell 열기"></a>1. 관리자 권한으로 powershell 열기</h4><p>우선 <a target="_blank" rel="noopener" href="https://wikidocs.net/206686">powershell에 관리자 권한으로 접속</a> 한다.</p>
+<p>관리자 권한으로 shell을 여는 이유는 특정 프로세스는 소유자가 있기 때문이다. <strong>일부 커맨드(예를 들면 리눅스의 kill)를 사용할 때 소유자가 아닌 다른 계정은 권한의 제한</strong> 받는다. 또한 system과 관련된 중요한 명령어를 사용할 수 있는 제한된 계정이기도 하다. 때문에 잘못해서 system 데몬 process를 죽이지 않도록 항상 사용에 유의해야 한다. 😱</p>
+<h4 id="2-netstat-명령어로-사용중인-포트-보기"><a href="#2-netstat-명령어로-사용중인-포트-보기" class="headerlink" title="2. netstat 명령어로 사용중인 포트 보기"></a>2. netstat 명령어로 사용중인 포트 보기</h4><p>윈도우에서도 리눅스와 같이 netstat 명령어를 사용할 수 있다.(리눅스는 net-tools 패키지를 깔아야 사용 가능하다.) <strong>nestat은 network status라고 해서 현재 네트워크 정보와 LISTENING 중인 포트를 볼 수 있다.</strong> </p>
+<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token comment"># 프로토콜, 호스트:포트, 상태를 볼 때</span>
+netstat <span class="token operator">-</span>ab
+
+<span class="token comment"># 프로토콜의 PID를 확인할 때</span>
+netstat <span class="token operator">-</span>aon<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ko-kr/windows-server/administration/windows-commands/netstat">nestat 명령어에 옵션</a>을 사용하면 여러 방식으로 볼 수 있다. <code>netstat -ab</code>와 <code>netstat -aon</code> 처럼 따로 결과를 볼 수도 있고, <code>nestat -abon</code> 처럼 연결해서 한 번에 볼 수도 있다. 스트림 출력이 길어지면 보기 힘드니까 취향에 맞게 쓰면 된다!</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110082&authkey=%21ANl1GP6vIRv7U80&width=555&height=348" width="555" height="348" alt="netstat -ab"/>
+
+<p>두 이미지를 보면 <strong>제가 사용하려는 5432 포트를 두 개의 프로세스가 LISTENING</strong> 하고 있다. <code>svchost.exe</code>는 기존 host pc에서 띄워진 프로세스이고, <code>postgres</code>는 제가 도커에서 올린 컨테이너이다. <code>svchost.exe</code>가 <code>postgres</code> 전에 먼저 포트를 점유하고 있어서 뒤에 뛰운 <code>postgres</code>에 연결이 안됬던 것이다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110081&authkey=%21ADwdItTREpcjZJo&width=825&height=206" width="825" height="206" alt="netstat -aon"/>
+
+<p><strong>svchost.exe를 kill</strong>하기 위해 우선 도커 컨테이너를 내렸다. 그리고 <code>svchost.exe</code>의 “<strong>PID 7736</strong>“을 확인했다. 이 PID는 운영체제에 의해 관리되는 ID라 매번 달라질 수 있다.  </p>
+<h4 id="3-taskkill-명령어로-프로세스-kill-하기"><a href="#3-taskkill-명령어로-프로세스-kill-하기" class="headerlink" title="3. taskkill 명령어로 프로세스 kill 하기"></a>3. taskkill 명령어로 프로세스 kill 하기</h4><p>리눅스에 <code>kill</code>이 있다면 윈도우에는 <code>taskkill</code>이 있다. 리눅스의 kill에는 SIGNAL을 줬는 데, 윈도우 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/taskkill">taskkill</a>에는 Parameters를 넘기면 된다.</p>
+<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token comment"># taskkill</span>
+taskkill <span class="token operator">/</span>pid &lt;task pid>
+
+<span class="token comment"># Specifies that processes be forcefully ended.</span>
+taskkill <span class="token operator">/</span>pid &lt;task pid> <span class="token operator">-</span>f<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110086&authkey=%21AC80ubLNSRj0nbg&width=618&height=67" width="618" height="67" alt="taskkill /pid <task pid>"/>
+
+<p>taskkill이 안되면 f옵션을 주셔야 해요!</p>
+<p><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110085&authkey=!ANdXjXnmp0A7q44" width="517" height="40" alt="taskkill /pid <task pid> -f"></src></p>
+<h4 id="4-다시-접속-확인하기"><a href="#4-다시-접속-확인하기" class="headerlink" title="4. 다시 접속 확인하기"></a>4. 다시 접속 확인하기</h4><p>다시 컨테이너를 올리고 deaver로 접속을 붙여보면 아래처럼 정상 확인을 할 수 있다. 그럼 다시 dbeaver를 통해 postgres 컨테이너에 정상으로 접속할 수 있음을 확인 할 수 있다. 😭</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110088&authkey=%21AGMAM0Yba-2Eotk&width=568&height=303" width="568" height="303" alt="deaver 접속 확인"/>
+
+<h2 id="🙊-글-마무리"><a href="#🙊-글-마무리" class="headerlink" title="🙊 글 마무리"></a>🙊 글 마무리</h2><p>어려운 지식도 많이 공부하고, 많은 트러블 슈팅도 해봤지만 항상 기본기가 중요하다는 말이 맞는 것 같다. 문제가 생겼을 때 어떤 요소를 점검해야하나 체킹 리스트를 만들고 점진적으로 확인했어야 했는 데 그러지 못했음에 아쉬움이 남는다. 사소하지만 역시 기본기 문제에 잡혀 해결하는 과정을 많이 돌아온 감이 있다.</p>
+<p>가끔씩 스스로의 글을 다시 돌아보면서 항상 기본기를 잊지 않도록 분발해야겠다.</p>
 
                 
             </div>
@@ -285,7 +321,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/01/01/Docker/docker-mysql-connection/">http://example.com/2024/01/01/Docker/docker-mysql-connection/</a>
+                    <a href="http://example.com/2023/07/01/Docker/port-trouble-shooting/">http://example.com/2023/07/01/Docker/port-trouble-shooting/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -397,12 +433,12 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/01/Docker/docker-image/">
+                <a href="/2023/07/01/Docker/docker-mysql-connection/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/docker-logo.png" class="responsive-img" alt="[Docker] Image">
+                        <img src="/images/logos/docker-logo.png" class="responsive-img" alt="docker mysql">
                         
-                        <span class="card-title diy-neon-red">[Docker] Image</span>
+                        <span class="card-title diy-neon-red">docker mysql</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -413,7 +449,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-07-01
                         </span>
                         <span class="publish-author">
                             
@@ -437,12 +473,12 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/01/Git/git-basic-command/">
+                <a href="/2023/06/24/Python/sqlalchemy_delete/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/git-logo.png" class="responsive-img" alt="[Git] Basic Command">
+                        <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] sqlalchemy delete">
                         
-                        <span class="card-title diy-neon-red">[Git] Basic Command</span>
+                        <span class="card-title diy-neon-red">[Python] sqlalchemy delete</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -453,14 +489,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-24
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Git/" class="post-category">
-                                    Git
+                            <a href="/categories/Python/" class="post-category">
+                                    Python
                                 </a>
                             
                             

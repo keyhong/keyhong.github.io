@@ -4,18 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[Docker] Container Command, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="
-docker-compose.yaml 실행
-
-$ docker-compose up -d
-
-$ docker-compose up -d -t [시간(초)]
+    <meta name="keywords" content="Container, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="컨테이너란?
+애플리케이션과 애플리케이션을 실행할 컴퓨터(IP 주소, 컴퓨터 이름, 디스크 드라이브)를 담은 가상 환경&amp;#96;&amp;#96;
 
 
-도커 실행하기
-
-$ docker exec -it &amp;lt;cont">
+컨테이너는 개별 호스트명, IP주소, 디스크 드라이브를 갖음
+모든 컨테이너는">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -27,7 +22,7 @@ $ docker exec -it &amp;lt;cont">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[Docker] Container Command | Keyhong</title>
+    <title>Container | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -192,7 +187,7 @@ $ docker exec -it &amp;lt;cont">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [Docker] Container Command</h1>
+                        Container</h1>
                 </div>
             </div>
         </div>
@@ -217,7 +212,7 @@ $ docker exec -it &amp;lt;cont">
                         <div class="article-tag">
                             <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                                 <span class="chip bg-color">
-                                    2024-01-01</span>
+                                    2023-07-01</span>
                         </div>
                     
                     
@@ -249,87 +244,80 @@ $ docker exec -it &amp;lt;cont">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <ol>
-<li>docker-compose.yaml 실행</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker-compose</span> up <span class="token parameter variable">-d</span>
-
-$ <span class="token function">docker-compose</span> up <span class="token parameter variable">-d</span> <span class="token parameter variable">-t</span> <span class="token punctuation">[</span>시간<span class="token punctuation">(</span>초<span class="token punctuation">)</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<ol start="2">
-<li>도커 실행하기</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> <span class="token operator">&lt;</span>container name<span class="token operator">></span> <span class="token function">bash</span>
-   - i <span class="token builtin class-name">:</span> interactive <span class="token punctuation">(</span>입출력 stdin, stdout 사용<span class="token punctuation">)</span>
-   - t <span class="token builtin class-name">:</span> terminal <span class="token punctuation">(</span>터미널<span class="token punctuation">)</span>
-
-<span class="token comment"># MySQL</span>
-$ <span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> <span class="token operator">&lt;</span>container name<span class="token operator">></span> /bin/bash
-
-<span class="token comment"># Python</span>
-<span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> <span class="token operator">&lt;</span>container name<span class="token operator">></span> /bin/bash<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<ol start="4">
-<li>MySQL 접속</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ mysql <span class="token parameter variable">-u</span> root <span class="token parameter variable">-p</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token keyword">user</span><span class="token punctuation">,</span> host <span class="token keyword">FROM</span> mysql<span class="token punctuation">.</span><span class="token keyword">user</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h4 id="실행중인-도커"><a href="#실행중인-도커" class="headerlink" title="실행중인 도커?"></a>실행중인 도커?</h4><p>– 죽은 도커 컨테이너 실행하기</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> container run <span class="token parameter variable">-it</span> python:3.7.13 /bin/bash
-$ <span class="token function">docker</span> container run <span class="token parameter variable">-it</span> python:mysql:8.0.29 /bin/bash<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> pull centos
-$ <span class="token function">docker</span> run <span class="token parameter variable">--name</span> centos-test <span class="token parameter variable">--hostname</span> centos-test <span class="token parameter variable">-it</span> <span class="token parameter variable">-d</span> centos
+                <h2 id="컨테이너란"><a href="#컨테이너란" class="headerlink" title="컨테이너란?"></a>컨테이너란?</h2><blockquote>
+<p>애플리케이션과 애플리케이션을 실행할 컴퓨터(IP 주소, 컴퓨터 이름, 디스크 드라이브)를 담은 가상 환경&#96;&#96;</p>
+</blockquote>
+<ul>
+<li>컨테이너는 개별 호스트명, IP주소, 디스크 드라이브를 갖음</li>
+<li>모든 컨테이너는 호스트 컴퓨터의 운영체제, CPU, 메모리를 공유</li>
+<li>격리(isolation)와 밀집(density)의 모순되어 보이는 두 건을 동시에 만족<ul>
+<li>격리 : 런타임 버전의 차이, 호환되지 않는 라이브러리, 한 애플리케이션의 과다 리소스 사용 때문에 서로 독립된 환경에서 실행</li>
+<li>밀집 : 컴퓨터에 CPU와 메모리가 허용하는 한 되도록 많은 수의 애플리케이션을 실행</li>
+</ul>
+</li>
+</ul>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219889&authkey=%21AL93oF8oDVdAWiY&width=785&height=419" width="785" height="419" />
 
 
-$ <span class="token function">docker</span> images <span class="token parameter variable">-a</span>
-$ <span class="token function">docker</span> <span class="token function">ps</span>
+<h2 id="컨테이너의-상태"><a href="#컨테이너의-상태" class="headerlink" title="컨테이너의 상태"></a>컨테이너의 상태</h2><ul>
+<li><p>컨테이너 내부의 애플리케이션이 실행 중이어야 컨테이너 상태도 실행 중 (종료시 Existed)</p>
+</li>
+<li><p>컨테이너가 종료돼도 컨테이너는 사라지지 않음 (다시 실행, 로그 확인, 파일 시스템에 내외부로 파일 복사 가능)</p>
+<ul>
+<li>컨테이너의 CPU 자원이나 메모리는 사용하지 않음</li>
+<li>파일시스템이 남아있어 디스크 공간은 점유</li>
+</ul>
+</li>
+</ul>
+<h2 id="Docker-Container-Command"><a href="#Docker-Container-Command" class="headerlink" title="Docker Container Command"></a>Docker Container Command</h2><ul>
+<li>컨테이너 실행</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> container run <span class="token operator">&lt;</span>이미지<span class="token operator">></span>
+    -d, <span class="token parameter variable">--detach</span>  <span class="token builtin class-name">:</span> 컨테이너를 백그라운드에서 실행, 컨테이너 ID 출력
+    -p, <span class="token parameter variable">--publish</span> <span class="token builtin class-name">:</span> 컨테이너의 포트를 호스트 컴퓨터에 공개
+    -n, <span class="token parameter variable">--name</span>    <span class="token builtin class-name">:</span> 컨테이너 ID 뿐 아니라, 사용자가 명명한 컨테이너의 이름으로 컨테이너 실행
+    <span class="token parameter variable">--env</span>         <span class="token builtin class-name">:</span> 도커 이미지의 환경변수 설정값을 컨테이너에서 새롭게 설정 <span class="token punctuation">(</span>도커의 환경변수는 HOST OS의 환경변수와 별개<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<span class="token comment"># docker mysql image 만들기</span>
-$ <span class="token function">docker</span> search mysql
-$ <span class="token function">docker</span> pull mysql:8.0.29
+<ul>
+<li>컨테이너 실행 후 터미널 연결</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> container run <span class="token parameter variable">--interactive</span> <span class="token parameter variable">--tty</span> <span class="token operator">&lt;</span>이미지<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<span class="token comment"># docker python image 만들기</span>
-$ <span class="token function">docker</span> search python
-$ <span class="token function">docker</span> pull python:3.7.13
+<ul>
+<li>컨테이너 리스트 보기</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> container <span class="token function">ls</span>
+    -a, <span class="token parameter variable">-all</span>    <span class="token builtin class-name">:</span> 모든 컨테이너 보기
+    -q, <span class="token parameter variable">--quiet</span> <span class="token builtin class-name">:</span> 컨테이너 ID만 표시<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
+<ul>
+<li>대상 컨테이너에서 실행중인 프로세스 보기</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> container <span class="token function">top</span> <span class="token operator">&lt;</span>컨테이너 ID의 일부<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-$ <span class="token function">docker</span> run <span class="token parameter variable">--name</span> hgw_kakao_test <span class="token parameter variable">-p</span> <span class="token number">13306</span>:3306 <span class="token parameter variable">-d</span>  <span class="token parameter variable">-e</span> <span class="token assign-left variable">MYSQL_ROOT_PASSWORD</span><span class="token operator">=</span>password  <span class="token parameter variable">-v</span> /Users/jmlim/datadir:/var/lib/mysql mysql:8.0.17
+<ul>
+<li>대상 컨테이너에서 수집된 모든 로그 보기</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> container logs <span class="token operator">&lt;</span>컨테이너 ID의 일부<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<span class="token comment"># docker run -it -name &lt;image> </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>대상 컨테이너의 상세한 정보 보기</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> container inspect <span class="token function">ls</span> <span class="token operator">&lt;</span>컨테이너의 ID의 일부<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>– 도커 컨테이너가 실행 중일때 접근</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> attach <span class="token operator">&lt;</span>container ID<span class="token operator">></span> 
-$ <span class="token function">docker</span> attach db762f62f2f9<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>실행중인 컨테이너의 상태(CPU, 메모리, 네트워크, 디스크 사용량)</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> container stats <span class="token operator">&lt;</span>컨테이너의 ID의 일부<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<ul>
+<li>컨테이너 삭제</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> container <span class="token function">rm</span> <span class="token operator">&lt;</span>컨테이너 ID 또는 컨테이너명<span class="token operator">></span>
+    -f, <span class="token parameter variable">--force</span> <span class="token builtin class-name">:</span> 실행중인 컨테이너도 강제 삭제
 
-
-<p>– 도커 컨테이너가 실행 중일때 접근</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> <span class="token operator">&lt;</span>container ID<span class="token operator">></span> /bin/bash
-
-<span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> kakao-python /bin/bash -- python
-<span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> 07fa0958f67f /bin/bash -- mysql
-
-<span class="token function">docker</span> start 818912199a7b /bin/bash
-<span class="token function">docker</span> container start 2e026569498a /bin/bash <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h1 id="위치는-python-tmp에-있다"><a href="#위치는-python-tmp에-있다" class="headerlink" title="위치는 python-tmp에 있다"></a>위치는 python-tmp에 있다</h1><p>docker start kakao-python<br>docker attach project-python-1<br>docker container run -it –restart unless-stopped –name “kakao-python” python:3.7.13 &#x2F;bin&#x2F;bash</p>
-<p>– mysql mysql CLI 접속가이드</p>
-<p>– 계정 로그인 (mysql -u [사용자계정] -p)<br>mysql -u [ID] -p</p>
-<p>– 현존하는 데이터베이스 목록 보기<br>show tables;</p>
-<p>set names utf8mb4 ;</p>
-<p>set names latin1;</p>
-<p>show variables like ‘c%’</p>
-<p>docker-compose up -d &#x2F;&#x2F; 컨테이너 생성<br>docker exec -it CONTAINER_ID &#x2F;bin&#x2F;bash &#x2F;&#x2F; mysql 컨테이너 내부 접속<br>mysql -u root -p &#x2F;&#x2F; 접속</p>
-<p>ALTER USER ‘[ID]‘@’%’ IDENTIFIED WITH mysql_native_password BY [‘ID’];<br>ALTER USER ‘root‘@’%’ IDENTIFIED WITH mysql_native_password by ‘ROOT’;<br>FLUSH PRIVILEGES;</p>
-<p>select host, user from user;</p>
-<p>** <a target="_blank" rel="noopener" href="https://xorms0707.tistory.com/91">https://xorms0707.tistory.com/91</a><br>mysql&gt; use mysql;<br>mysql&gt; select host, user, password from mysql.user;</p>
-<p>select host, user from mysql.user;</p>
-<p>set innodb_lock_wait_timeout&#x3D; 28800;</p>
-<p>–tty : TeleTYpewriter (컨테이너에 접속된 상태)<br>–iteractive (터미널 세션을 통해 컨테이너를 조작) </p>
-
+<span class="token comment"># 활용 : 모든 컨테이너 삭제</span>
+$ <span class="token function">docker</span> container <span class="token function">rm</span> <span class="token parameter variable">-f</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">docker</span> container <span class="token function">ls</span> <span class="token parameter variable">-aq</span><span class="token variable">)</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -355,7 +343,7 @@ $ <span class="token function">docker</span> attach db762f62f2f9<span aria-hidde
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/01/01/Docker/docker-command-%E1%84%86%E1%85%B5%E1%84%8B%E1%85%AA%E1%86%AB-/">http://example.com/2024/01/01/Docker/docker-command-%E1%84%86%E1%85%B5%E1%84%8B%E1%85%AA%E1%86%AB-/</a>
+                    <a href="http://example.com/2023/07/01/Docker/docker-container-concept/">http://example.com/2023/07/01/Docker/docker-container-concept/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -467,12 +455,12 @@ $ <span class="token function">docker</span> attach db762f62f2f9<span aria-hidde
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/01/Docker/docker-container-concept/">
+                <a href="/2023/07/01/Docker/docker-concept/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/docker-logo.png" class="responsive-img" alt="[Docker] Container">
+                        <img src="/images/logos/docker-logo.png" class="responsive-img" alt="Concept">
                         
-                        <span class="card-title diy-neon-red">[Docker] Container</span>
+                        <span class="card-title diy-neon-red">Concept</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -483,7 +471,7 @@ $ <span class="token function">docker</span> attach db762f62f2f9<span aria-hidde
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-07-01
                         </span>
                         <span class="publish-author">
                             
@@ -507,12 +495,12 @@ $ <span class="token function">docker</span> attach db762f62f2f9<span aria-hidde
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/01/Git/git-history-command/">
+                <a href="/2023/07/01/Docker/docker-dockerfile/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/git-logo.png" class="responsive-img" alt="[Git] GitHub에 보안 파일 커밋 이력 지우기">
+                        <img src="/images/logos/docker-logo.png" class="responsive-img" alt="[Docker] Dockerfile">
                         
-                        <span class="card-title diy-neon-red">[Git] GitHub에 보안 파일 커밋 이력 지우기</span>
+                        <span class="card-title diy-neon-red">[Docker] Dockerfile</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -523,14 +511,14 @@ $ <span class="token function">docker</span> attach db762f62f2f9<span aria-hidde
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-01
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Git/" class="post-category">
-                                    Git
+                            <a href="/categories/Docker/" class="post-category">
+                                    Docker
                                 </a>
                             
                             

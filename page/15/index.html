@@ -207,19 +207,19 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Spark/JDBC%20Parallel%20Sourcing/">
+                    <a href="/2023/12/01/Spark/rdd-skew-optimization/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="JDBC Parallel Sourcing">
+                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="RDD Skewness Optimization">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">JDBC Parallel Sourcing</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">RDD Skewness Optimization</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Hadoop Sourcing Vs. RDB Sourcing하둡에서 스파크를 사용한다면, 하둡 클러스터에 블록 단위로 분산된 데이터를 소유하고 있는 데이터 노드와 직접적인 통신을 통해 데이터를 소싱한다. 하지만, 상황
+                                Optimizing Skewness스파크에서 skewness(왜도, 비대칭도)를 해결하는 것은 스파크 튜닝의 중요한 요소이다. 왜 skewness를 해결해야 하는 지는 스파크가 분산 처리 프레임워크라는 것을 생각한다
                             
                         </div> -->
                         <div class="publish-info">
@@ -247,22 +247,22 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Spark/dataframe/">
+                    <a href="/2023/12/01/Spark/catalyst-optimizer/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="pyspark.sql.DataFrame">
+                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Catalyst Optimizer">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">pyspark.sql.DataFrame</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Catalyst Optimizer</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                RDD vs DataFrame
-RDD는 정보를 가진 행이나, 정보가 어떤 유형(type)인지 구체적 명시가 불가능하다.
-DataFrame이 Spark에서 하는 일은 RDD를 DataFrame 객체로 확장하는 것
-Da
+                                카탈리스트 옵티마이저 (Catalyst Optimzer)
+Apache Spark의 중요한 컴포넌트
+
+구조적 쿼리인 SQL 또는 DataFrame&#x2F;Dataset API의 DAG 로직을 최적화하여 프로그램 런타
                             
                         </div> -->
                         <div class="publish-info">
@@ -290,12 +290,12 @@ Da
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Spark/dataset/">
+                    <a href="/2023/12/01/Spark/data-locality/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="DataSet">
+                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Data Locality">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">DataSet</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Data Locality</span>
                         </div>
                     </a>
 
@@ -303,94 +303,10 @@ Da
                         <!-- <div class="summary block-with-text">
                             
                                 
-Spark 2.0에서 ‘DataFrame’과 상반된 ‘DataSet’ 도입
+스파크는 기본적으로 가까운 노드에서 RDD로 데이터를 읽으려고 한다. 정확히 표현하면, 데이터의 이동을 하는 것이 아닌 데이터가 있는 노드로 이동해 해당 노드에서 프로세스를 뛰우려고 한다.
 
-파이썬에서는 둘의 경계가 모호. Python에서는 모든 것이 동적으로 입력되기 때문
 
-‘DataFrame’은 행 객체의 ‘DataSet’
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Spark/" class="post-category">
-                                    Spark
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2023/12/01/Spark/directory-structure/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Directory Structure">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Directory Structure</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                설치 디렉토리($SPARK_HOME) 경로의 스파크 내부 구조스파크 설치시 압축을 푼 내부 폴더 구조를 정리하였다. 책이 나온 지 좀 되서 지금의 스파크 최선 버전인 3.4.1의 내부 구조가 살짝 상이한 부분은 있으
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Spark/" class="post-category">
-                                    Spark
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2023/12/01/Spark/rdd/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="pyspark.RDD">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">pyspark.RDD</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                RDD(Resilient Distributed Dataset)
-스파크 프로그래밍에서 사용되는 가장 기본적인 데이터 객체
-
-한글로 해석하면 복원 분산 데이터 집합이다. Spark에서 사용되는 가장 기본적인 데이터 객체
+변환 작업을 최적화 
                             
                         </div> -->
                         <div class="publish-info">
@@ -462,19 +378,102 @@ Spark 2.0에서 ‘DataFrame’과 상반된 ‘DataSet’ 도입
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Spark/pyspark-jvm-py4j/">
+                    <a href="/2023/12/01/Spark/docs/Spark%20Docs%20Index/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="JVM py4j">
+                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Spark Docs Index">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">JVM py4j</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Spark Docs Index</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Question 1. PySpark 코드는 JVM 또는 Python 하위 프로세스에서 실행됩니까?PySpark에서 Python 및 JVM 코드는 별도의 OS 프로세스에 있습니다.PySpark는 Python과 JVM 
+                                OverviewProgramming Guides
+Quick Start
+
+RDD Programming Guide
+
+Spark SQL, DataFrames and Datasets Guide
+
+Structured Stre
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Keyhong
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/12/01/Kubernetes/docs/Concpets/Overview/Object_In_Kubernetes/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Object Names and IDs">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Object Names and IDs</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                Objects In KubernetesThis page explains how Kubernetes objects are represented in the Kubernetes API, and how you can ex
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/AWS/" class="post-category">
+                                    AWS
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/12/01/Spark/docs/Programming%20Guides/Spark%20SQL,%20DataFrames%20and%20Datasets%20Guide/Getting%20Started/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Getting Started">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Getting Started</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                Starting Point: SparkSession모든 Spark 기능의 진입점은 SparkSession 클래스입니다. 기본적인 SparkSession을 생성하려면 SparkSession.builder()를 사용하십
                             
                         </div> -->
                         <div class="publish-info">
@@ -502,19 +501,19 @@ Spark 2.0에서 ‘DataFrame’과 상반된 ‘DataSet’ 도입
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Spark/rdd-skew-optimization/">
+                    <a href="/2023/12/01/Spark/docs/Programming%20Guides/RDD%20Programming%20Guide/RDD%20Programming%20Guide/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="RDD Skewness Optimization">
+                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="RDD Programming Guide">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">RDD Skewness Optimization</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">RDD Programming Guide</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Optimizing Skewness스파크에서 skewness(왜도, 비대칭도)를 해결하는 것은 스파크 튜닝의 중요한 요소이다. 왜 skewness를 해결해야 하는 지는 스파크가 분산 처리 프레임워크라는 것을 생각한다
+                                Overview고수준에서 모든 Spark 애플리케이션은 사용자의 main 함수를 실행하고 클러스터에서 다양한 parallel operations을 수행하는 드라이버 프로그램으로 구성됩니다. Spark가 제공하는 주요
                             
                         </div> -->
                         <div class="publish-info">
@@ -542,23 +541,20 @@ Spark 2.0에서 ‘DataFrame’과 상반된 ‘DataSet’ 도입
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Spark/spark-installation/">
+                    <a href="/2023/12/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Annotations/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Installation">
+                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Annotations">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Installation</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Annotations</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Ubuntu에서 단일 노드(Single Node) 스파크 배포
-패키지 색인 파일(패키지 저장소가 제공하는 패키지에 대한 정보 파일) 업데이트
-
-# Debian 계열 리눅스(Ubuntu)
-$ sudo apt-get u
+                                AnnotationsKubernetes 어노테이션을 사용하여 objects에 임의의 식별되지 않는 메타데이터를 첨부할 수 있습니다. 도구 및 라이브러리와 같은 클라이언트는 이 메타데이터를 검색할 수 있습니다.
+Att
                             
                         </div> -->
                         <div class="publish-info">
@@ -569,8 +565,8 @@ $ sudo apt-get u
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Spark/" class="post-category">
-                                    Spark
+                                <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
                                 </a>
                                 
                                 
@@ -586,19 +582,21 @@ $ sudo apt-get u
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Spark/spark-submit/">
+                    <a href="/2023/12/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Field%20Selectors/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="spark-submit으로 job 제출하기">
+                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Field Selectors">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">spark-submit으로 job 제출하기</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Field Selectors</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                basic실제 클러스터에는 spark-submit을 이용하여 스파크 프로그램을 실행시킨다. spark-submit은 spark를 설치하면 bin 폴더($SPARK_HOME&#x2F;bin) 안에 있다. spark-s
+                                Field SelectorsField selectors를 사용하면 하나 이상의 리소스 필드 값에 따라 Kubernetes objects를 선택할 수 있습니다. 다음은 필드 셀렉터 쿼리의 예시입니다:
+
+metadata
                             
                         </div> -->
                         <div class="publish-info">
@@ -609,8 +607,8 @@ $ sudo apt-get u
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Spark/" class="post-category">
-                                    Spark
+                                <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
                                 </a>
                                 
                                 

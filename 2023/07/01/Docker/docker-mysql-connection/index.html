@@ -4,13 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[Docker] Container, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="컨테이너란?
-애플리케이션과 애플리케이션을 실행할 컴퓨터(IP 주소, 컴퓨터 이름, 디스크 드라이브)를 담은 가상 환경&amp;#96;&amp;#96;
-
-
-컨테이너는 개별 호스트명, IP주소, 디스크 드라이브를 갖음
-모든 컨테이너는">
+    <meta name="keywords" content="docker mysql, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="MySQL 연결 보완[Error] public key retrieval is not allowed원인 : Dbeaver Client 프로그램 사용하여 접속시 나오는 에러. mysql 8.X 버전 이후 발생.&amp;#x3D">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -22,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[Docker] Container | Keyhong</title>
+    <title>docker mysql | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -187,7 +182,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [Docker] Container</h1>
+                        docker mysql</h1>
                 </div>
             </div>
         </div>
@@ -212,7 +207,7 @@
                         <div class="article-tag">
                             <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                                 <span class="chip bg-color">
-                                    2024-01-01</span>
+                                    2023-07-01</span>
                         </div>
                     
                     
@@ -244,80 +239,27 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="컨테이너란"><a href="#컨테이너란" class="headerlink" title="컨테이너란?"></a>컨테이너란?</h2><blockquote>
-<p>애플리케이션과 애플리케이션을 실행할 컴퓨터(IP 주소, 컴퓨터 이름, 디스크 드라이브)를 담은 가상 환경&#96;&#96;</p>
-</blockquote>
-<ul>
-<li>컨테이너는 개별 호스트명, IP주소, 디스크 드라이브를 갖음</li>
-<li>모든 컨테이너는 호스트 컴퓨터의 운영체제, CPU, 메모리를 공유</li>
-<li>격리(isolation)와 밀집(density)의 모순되어 보이는 두 건을 동시에 만족<ul>
-<li>격리 : 런타임 버전의 차이, 호환되지 않는 라이브러리, 한 애플리케이션의 과다 리소스 사용 때문에 서로 독립된 환경에서 실행</li>
-<li>밀집 : 컴퓨터에 CPU와 메모리가 허용하는 한 되도록 많은 수의 애플리케이션을 실행</li>
-</ul>
-</li>
-</ul>
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219889&authkey=%21AL93oF8oDVdAWiY&width=785&height=419" width="785" height="419" />
+                <h2 id="MySQL-연결-보완"><a href="#MySQL-연결-보완" class="headerlink" title="MySQL 연결 보완"></a>MySQL 연결 보완</h2><p>[Error] public key retrieval is not allowed<br>원인 : Dbeaver Client 프로그램 사용하여 접속시 나오는 에러. mysql 8.X 버전 이후 발생.<br>&#x3D;&gt; allowPublicKeyRetrieval</p>
+<p>[Error] utf8mb3 -&gt; 3byte로 구현<br>utf-8은 원래 4byte</p>
+<p>MySQL 5.5.3(2010년 3월) 이후 4byte인 utfmb4 추가</p>
+<p>mysql에서 status로 확인.</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">db</span><span class="token punctuation">:</span>
+  <span class="token key atrule">image</span><span class="token punctuation">:</span> mysql
+  <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">-</span><span class="token punctuation">-</span>default<span class="token punctuation">-</span>authentication<span class="token punctuation">-</span>plugin=mysql_native_password <span class="token punctuation">-</span><span class="token punctuation">-</span>character<span class="token punctuation">-</span>set<span class="token punctuation">-</span>server=utf8 <span class="token punctuation">-</span><span class="token punctuation">-</span>collation<span class="token punctuation">-</span>server=utf8_general_ci
+  <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+  environment<span class="token punctuation">:</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>DB 생성 초기에 사용자나 스키마를 추가 하는 경우에는<br>–mount type&#x3D;bind,<br>src&#x3D;&#x2F;path-on-host-machine&#x2F;scripts&#x2F;,<br>dst&#x3D;&#x2F;docker-entrypoint-initdb.d&#x2F;  추가한다. </p>
+<p>&#x2F;path-on-host-machine&#x2F;scripts 안에는 실행되는 sql 이나 sh 파일이 있어야 동작한다. 동작순서는 알파벳 순서이다.</p>
+<p>[Error] the input device is not a TTY.  If you are using mintty, try prefixing the command with ‘winpty’<br>원인 : git bash에서 터미널 설정을 mintty로 한 경우 발생<br>winpty [커맨드]로 실행</p>
+<p>[Error] dbeaver에서 한글이 적용안될 때<br>–skip-character-set-client-handshake 를 추가<br>client 쪽의 문자셋 무시하고 (내 컴퓨터는 window) 서버쪽 문자셋 사용<br>status로 확인</p>
+<p>[Error] (1227, ‘Access denied; you need (at least one of) the FILE privilege(s) for this operation’)</p>
+<p>[Erro] (1205, ‘Lock wait timeout exceeded; try restarting transaction’_<br>&#x3D;&gt; show variables like ‘%timeout’<br>interactive_timeout               | 28800<br> wait_timeout                      | 28800</p>
+<p>interactive_timeout : : 활동중인 커넥션이 닫히기 전까지 서버가 대기하는 시간</p>
+<p>[Error] 자동으로 autocommit이 된다.<br>SELECT @@AUTOCOMMIT;</p>
+<p>select count(*) from information_schema.processlist where command&#x3D;’Sleep’;<br>show variables like ‘wait_timeout’;<br>show variables like ‘interactive_timeout’;</p>
+<p>set global interactive_timeout&#x3D;30;<br>set global wait_timeout&#x3D;30;<br>SET wait_timeout &#x3D; 10;<br>set interactive_timeout&#x3D;30;</p>
 
-<h2 id="컨테이너의-상태"><a href="#컨테이너의-상태" class="headerlink" title="컨테이너의 상태"></a>컨테이너의 상태</h2><ul>
-<li><p>컨테이너 내부의 애플리케이션이 실행 중이어야 컨테이너 상태도 실행 중 (종료시 Existed)</p>
-</li>
-<li><p>컨테이너가 종료돼도 컨테이너는 사라지지 않음 (다시 실행, 로그 확인, 파일 시스템에 내외부로 파일 복사 가능)</p>
-<ul>
-<li>컨테이너의 CPU 자원이나 메모리는 사용하지 않음</li>
-<li>파일시스템이 남아있어 디스크 공간은 점유</li>
-</ul>
-</li>
-</ul>
-<h2 id="Docker-Container-Command"><a href="#Docker-Container-Command" class="headerlink" title="Docker Container Command"></a>Docker Container Command</h2><ul>
-<li>컨테이너 실행</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> container run <span class="token operator">&lt;</span>이미지<span class="token operator">></span>
-    -d, <span class="token parameter variable">--detach</span>  <span class="token builtin class-name">:</span> 컨테이너를 백그라운드에서 실행, 컨테이너 ID 출력
-    -p, <span class="token parameter variable">--publish</span> <span class="token builtin class-name">:</span> 컨테이너의 포트를 호스트 컴퓨터에 공개
-    -n, <span class="token parameter variable">--name</span>    <span class="token builtin class-name">:</span> 컨테이너 ID 뿐 아니라, 사용자가 명명한 컨테이너의 이름으로 컨테이너 실행
-    <span class="token parameter variable">--env</span>         <span class="token builtin class-name">:</span> 도커 이미지의 환경변수 설정값을 컨테이너에서 새롭게 설정 <span class="token punctuation">(</span>도커의 환경변수는 HOST OS의 환경변수와 별개<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<ul>
-<li>컨테이너 실행 후 터미널 연결</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> container run <span class="token parameter variable">--interactive</span> <span class="token parameter variable">--tty</span> <span class="token operator">&lt;</span>이미지<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<ul>
-<li>컨테이너 리스트 보기</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> container <span class="token function">ls</span>
-    -a, <span class="token parameter variable">-all</span>    <span class="token builtin class-name">:</span> 모든 컨테이너 보기
-    -q, <span class="token parameter variable">--quiet</span> <span class="token builtin class-name">:</span> 컨테이너 ID만 표시<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<ul>
-<li>대상 컨테이너에서 실행중인 프로세스 보기</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> container <span class="token function">top</span> <span class="token operator">&lt;</span>컨테이너 ID의 일부<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<ul>
-<li>대상 컨테이너에서 수집된 모든 로그 보기</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> container logs <span class="token operator">&lt;</span>컨테이너 ID의 일부<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<ul>
-<li>대상 컨테이너의 상세한 정보 보기</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> container inspect <span class="token function">ls</span> <span class="token operator">&lt;</span>컨테이너의 ID의 일부<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<ul>
-<li>실행중인 컨테이너의 상태(CPU, 메모리, 네트워크, 디스크 사용량)</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> container stats <span class="token operator">&lt;</span>컨테이너의 ID의 일부<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<ul>
-<li>컨테이너 삭제</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> container <span class="token function">rm</span> <span class="token operator">&lt;</span>컨테이너 ID 또는 컨테이너명<span class="token operator">></span>
-    -f, <span class="token parameter variable">--force</span> <span class="token builtin class-name">:</span> 실행중인 컨테이너도 강제 삭제
-
-<span class="token comment"># 활용 : 모든 컨테이너 삭제</span>
-$ <span class="token function">docker</span> container <span class="token function">rm</span> <span class="token parameter variable">-f</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">docker</span> container <span class="token function">ls</span> <span class="token parameter variable">-aq</span><span class="token variable">)</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -343,7 +285,7 @@ $ <span class="token function">docker</span> container <span class="token functi
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/01/01/Docker/docker-container-concept/">http://example.com/2024/01/01/Docker/docker-container-concept/</a>
+                    <a href="http://example.com/2023/07/01/Docker/docker-mysql-connection/">http://example.com/2023/07/01/Docker/docker-mysql-connection/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -455,30 +397,30 @@ $ <span class="token function">docker</span> container <span class="token functi
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/06/Data-Architecture/slowly-changing-dimension/">
+                <a href="/2023/07/01/Docker/docker-image/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="[Data Architecture] Slowly Changing Dimensions">
+                        <img src="/images/logos/docker-logo.png" class="responsive-img" alt="Image">
                         
-                        <span class="card-title diy-neon-red">[Data Architecture] Slowly Changing Dimensions</span>
+                        <span class="card-title diy-neon-red">Image</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Data Warehouse, 왜 필요한 걸까요?
+                            
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-06
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-07-01
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Data-Architecture/" class="post-category">
-                                    Data Architecture
+                            <a href="/categories/Docker/" class="post-category">
+                                    Docker
                                 </a>
                             
                             
@@ -495,30 +437,30 @@ $ <span class="token function">docker</span> container <span class="token functi
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/01/Docker/docker-command-%E1%84%86%E1%85%B5%E1%84%8B%E1%85%AA%E1%86%AB-/">
+                <a href="/2023/07/01/Docker/port-trouble-shooting/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/docker-logo.png" class="responsive-img" alt="[Docker] Container Command">
+                        <img src="/images/logos/docker-logo.png" class="responsive-img" alt="Docker container port trouble shooting">
                         
-                        <span class="card-title diy-neon-red">[Docker] Container Command</span>
+                        <span class="card-title diy-neon-red">Docker container port trouble shooting</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            꺼진 불과 켜진 포트도 다시 보자..
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-01
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Docker/" class="post-category">
-                                    Docker
+                            <a href="/categories/Trouble-Shooting/" class="post-category">
+                                    Trouble Shooting
                                 </a>
                             
                             

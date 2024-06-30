@@ -4,8 +4,15 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[Trouble Shooting] 도커 컨테이너 포트 트러블 슈팅, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="꺼진 불과 켜진 포트도 다시 보자..">
+    <meta name="keywords" content="Container Command, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="
+docker-compose.yaml 실행
+
+# daemon으로 도커 컴포즈 올리기
+$ docker-compose up -d
+
+# 특정 compose yaml 파일을 지정해서 올리기
+$ docker compose -">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +24,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[Trouble Shooting] 도커 컨테이너 포트 트러블 슈팅 | Keyhong</title>
+    <title>Container Command | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -182,7 +189,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [Trouble Shooting] 도커 컨테이너 포트 트러블 슈팅</h1>
+                        Container Command</h1>
                 </div>
             </div>
         </div>
@@ -207,7 +214,7 @@
                         <div class="article-tag">
                             <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                                 <span class="chip bg-color">
-                                    2024-01-12</span>
+                                    2023-07-01</span>
                         </div>
                     
                     
@@ -219,8 +226,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Trouble-Shooting/" class="post-category">
-                                Trouble Shooting
+                            <a href="/categories/Docker/" class="post-category">
+                                Docker
                             </a>
                         
                     </div>
@@ -239,64 +246,112 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="🙊-글을-쓰는-이유"><a href="#🙊-글을-쓰는-이유" class="headerlink" title="🙊 글을 쓰는 이유"></a>🙊 글을 쓰는 이유</h2><p>안녕하세요! 오늘 쿠버네티스 국비 교육에서 과제를 수행하면서 해결한 문제를 공유하려고 해요. 저는 docker는 이제 익숙해졌다고 생각되던 쯤에, 제가 원래 db를 컨테이너로 올리던 방법이 갑자기 안되는 상황이 생겼습니다.ㅠㅠ</p>
-<p>해당 트러블 슈팅에 대해 찾아봐도 아무리 안나오는 거 있죠.. 결국 해결하긴 했지만 저와 비슷한 문제를 겪으실 분이 있을 것 같습니다. 결론적으로 해결 방법을 말하자면, 다른 프로세스가 먼저 특정 포트를 점유하고 있어서 제가 띄우려는 컨테이너의 포트가 안 됬던 거에요. linux에서 가볍게 커맨드로 확인 할 수 있는 걸 host 컴퓨터인 window에서는 불편하다는 이유로 결국 기본을 잊고 있었군요. 반성합니다.. 포스팅 시작할게요 :)</p>
-<h2 id="문제-정리"><a href="#문제-정리" class="headerlink" title="문제 정리"></a>문제 정리</h2><h4 id="문제-상황"><a href="#문제-상황" class="headerlink" title="문제 상황"></a>문제 상황</h4><blockquote>
-<p>docker-compose.yml으로 postgres를 5432포트로 올리려는 도중 갑자기 안되는 문제 발생. 컨테이너 정상 구동 확인 및 <code>docker exec -it &lt;postgres container&gt; bash</code>로 접속 후, <code>env</code>의 환경변수와 <code>pgsql</code>로 데이터베이스 생성 및 내부 커넥션 연결은 확인</p>
-</blockquote>
-<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>docker-compose.yml</span></div><code class="language-yaml"><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">"3.8"</span>
-<span class="token key atrule">services</span><span class="token punctuation">:</span>
-  <span class="token key atrule">postgres</span><span class="token punctuation">:</span>
-    <span class="token key atrule">image</span><span class="token punctuation">:</span> postgres<span class="token punctuation">:</span>14<span class="token punctuation">-</span>bullseye
-    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> postgres
-    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> <span class="token string">"5432:5432"</span>    
-    <span class="token key atrule">environment</span><span class="token punctuation">:</span> 
-      <span class="token key atrule">POSTGRES_USER</span><span class="token punctuation">:</span> my_user
-      <span class="token key atrule">POSTGRES_PASSWORD</span><span class="token punctuation">:</span> my_password
-    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <ol>
+<li>docker-compose.yaml 실행</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># daemon으로 도커 컴포즈 올리기</span>
+$ <span class="token function">docker-compose</span> up <span class="token parameter variable">-d</span>
 
-<h4 id="구축-환경"><a href="#구축-환경" class="headerlink" title="구축 환경"></a>구축 환경</h4><blockquote>
-<p>Host: <code>Windows 11</code><br>Docker Image: <code>postgres:14-bullseye</code><br>Port Forwarding : <code>5432:5432</code></p>
-</blockquote>
-<h4 id="에러-코드"><a href="#에러-코드" class="headerlink" title="에러 코드"></a>에러 코드</h4><p>저는 데이터베이스를 remote로 붙일 때 <a target="_blank" rel="noopener" href="https://dbeaver.io/">dbeaver</a>를 사용해요. 연결정보를 정확히 넣고 커넥션 시도를 하자 아래와 같은 문제가 생겼어요. 이상하게 dbeaver는 한글판이었고 인코딩도 UTF-8로 되어있고 한글이 나와야 하는 데, 정확한 에러 로그를 찾기 어려웠어요.</p>
-<pre class="line-numbers language-text" data-language="text"><div class="caption"><span>deaver 출력문</span></div><code class="language-text">error: ����� "my_user"�� password ������ �����߽��ϴ�<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<span class="token comment"># 특정 compose yaml 파일을 지정해서 올리기</span>
+$ <span class="token function">docker</span> compose <span class="token parameter variable">-f</span> <span class="token operator">&lt;</span>docker-compose-example.yaml<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="문제-해결"><a href="#문제-해결" class="headerlink" title="문제 해결"></a>문제 해결</h2><blockquote>
-<p>도커 컨테이너로 포트 포워딩을 하는 데, 내 host에서 5432 포트가 정상적으로 동작하는 지 다시 확인했어요. <strong>포트가 겹칠 수 있다</strong>는 것을 발견하고 하나의 task를 kill 해주었어요.</p>
-</blockquote>
-<h3 id="문제-해결-순서"><a href="#문제-해결-순서" class="headerlink" title="문제 해결 순서"></a>문제 해결 순서</h3><h4 id="1-관리자-권한으로-powershell-열기"><a href="#1-관리자-권한으로-powershell-열기" class="headerlink" title="1. 관리자 권한으로 powershell 열기"></a>1. 관리자 권한으로 powershell 열기</h4><p>우선 <a target="_blank" rel="noopener" href="https://wikidocs.net/206686">powershell에 관리자 권한으로 접속</a> 합니다.</p>
-<p>관리자 권한으로 shell을 여는 이유는 특정 프로세스는 소유자가 있기 때문이에요. <strong>일부 커맨드(예를 들면 리눅스의 kill)를 사용할 때 소유자가 아닌 다른 계정은 권한의 제한</strong> 받아요. 또한 system과 관련된 중요한 명령어를 사용할 수 있는 제한된 계정이기도 합니다. 때문에 잘못해서 system 데몬 process를 죽이지 않도록 항상 사용에 유의해야 해요. 😱</p>
-<h4 id="2-netstat-명령어로-사용중인-포트-보기"><a href="#2-netstat-명령어로-사용중인-포트-보기" class="headerlink" title="2. netstat 명령어로 사용중인 포트 보기"></a>2. netstat 명령어로 사용중인 포트 보기</h4><p>윈도우에서도 리눅스와 같이 netstat 명령어를 사용할 수 있었어요.(리눅스는 net-tools 패키지를 깔아야 사용 가능합니다.) <strong>nestat은 network status라고 해서 현재 네트워크 정보와 LISTENING 중인 포트를 볼 수 있어요.</strong> </p>
-<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token comment"># 프로토콜, 호스트:포트, 상태를 볼 때</span>
-netstat <span class="token operator">-</span>ab
+<ol start="2">
+<li>도커 이미지 다운로드 및 실행하기</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 도커 image 빌드와 container 실행을 한번에 하기</span>
+<span class="token comment"># --tty : TeleTYpewriter (컨테이너에 접속된 상태)</span>
+<span class="token comment"># --iteractive (터미널 세션을 통해 컨테이너를 조작)</span>
+$ <span class="token function">docker</span> container run <span class="token parameter variable">-it</span> python:3.7.13 /bin/bash
+$ <span class="token function">docker</span> container run <span class="token parameter variable">-it</span> python:mysql:8.0.29 /bin/bash<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<span class="token comment"># 프로토콜의 PID를 확인할 때</span>
-netstat <span class="token operator">-</span>aon<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># dockerhub에서 이미지 다운로드</span>
+$ <span class="token function">docker</span> pull centos
 
-<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ko-kr/windows-server/administration/windows-commands/netstat">nestat 명령어에 옵션</a>을 사용하면 여러 방식으로 볼 수 있어요. 제가 사용했던 것처럼 <code>netstat -ab</code>와 <code>netstat -aon</code> 처럼 따로 결과를 볼 수도 있고, <code>nestat -abon</code> 처럼 연결해서 한 번에 볼 수도 있어요. 스트림 출력이 길어지면 보기 힘드니까 취향에 맞게 쓰면 되요!</p>
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110082&authkey=%21ANl1GP6vIRv7U80&width=555&height=348" width="555" height="348" alt="netstat -ab"/>
+<span class="token comment"># 도커 컨테이너의 hostname을 등록해서 올리기</span>
+$ <span class="token function">docker</span> run <span class="token parameter variable">--name</span> centos-test <span class="token parameter variable">--hostname</span> centos-test centos
 
-<p>두 이미지를 보면 <strong>제가 사용하려는 5432 포트를 두 개의 프로세스가 LISTENING</strong> 하고 있어요. svchost.exe는 저도 모르게 host pc에서 띄워진 프로세스이고, postgres는 제가 도커에서 올린 컨테이너에요. svchost.exe가 먼저 포트를 점유하고 있어서 뒤에 뛰운 postgres가 붙질 못했어요.</p>
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110081&authkey=%21ADwdItTREpcjZJo&width=825&height=206" width="825" height="206" alt="netstat -aon"/>
+<span class="token comment"># 로컬에 설치된 모든 도커 이미지 조회</span>
+$ <span class="token function">docker</span> images <span class="token parameter variable">-a</span>
 
-<p><strong>svchost.exe를 kill</strong>하기 위해 우선 도커 컨테이너를 내렸어요. 그리고 svchost.exe의 “<strong>PID 7736</strong>“을 확인했어요. 이 PID는 운영체제에 의해 관리되는 ID라 매번 달라질 수 있어요.  </p>
-<h4 id="3-taskkill-명령어로-프로세스-kill-하기"><a href="#3-taskkill-명령어로-프로세스-kill-하기" class="headerlink" title="3. taskkill 명령어로 프로세스 kill 하기"></a>3. taskkill 명령어로 프로세스 kill 하기</h4><p>리눅스에 <code>kill</code>이 있다면 윈도우에는 <code>taskkill</code>이 있어요. 리눅스의 kill에는 SIGNAL을 줬는 데, 윈도우 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/taskkill">taskkill</a>에는 Parameters를 넘겨요.</p>
-<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token comment"># taskkill</span>
-taskkill <span class="token operator">/</span>pid &lt;task pid>
+<span class="token comment"># 실행중인 도커 컨테이너 확인</span>
+$ <span class="token function">docker</span> <span class="token function">ps</span>
 
-<span class="token comment"># Specifies that processes be forcefully ended.</span>
-taskkill <span class="token operator">/</span>pid &lt;task pid> <span class="token operator">-</span>f<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment"># 실행중인 도커 컨테이너와 중지중인 도커 컨테이너 모두 보기</span>
+$ <span class="token function">docker</span> <span class="token function">ps</span> <span class="token parameter variable">-a</span>
 
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110086&authkey=%21AC80ubLNSRj0nbg&width=618&height=67" width="618" height="67" alt="taskkill /pid <task pid>"/>
+<span class="token comment"># dockerhub에서 image 검색하기</span>
+$ <span class="token function">docker</span> search mysql
 
-<p>taskkill이 안되면 f옵션을 주셔야 해요!</p>
-<p><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110085&authkey=!ANdXjXnmp0A7q44" width="517" height="40" alt="taskkill /pid <task pid> -f"></src></p>
-<h4 id="4-다시-접속-확인하기"><a href="#4-다시-접속-확인하기" class="headerlink" title="4. 다시 접속 확인하기"></a>4. 다시 접속 확인하기</h4><p>다시 컨테이너를 올리고 deaver로 접속을 붙여보면 아래처럼 정상 확인을 할 수 있어요. 제 postgres 컨테이너가 다시 정상으로 돌아왔군요. 😭</p>
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110088&authkey=%21AGMAM0Yba-2Eotk&width=568&height=303" width="568" height="303" alt="deaver 접속 확인"/>
+NAME                                    DESCRIPTION                                      STARS     OFFICIAL
+mysql                                   MySQL is a widely used, open-source relation…   <span class="token number">15195</span>     <span class="token punctuation">[</span>OK<span class="token punctuation">]</span>
+mariadb                                 MariaDB Server is a high performing <span class="token function">open</span> sou…   <span class="token number">5783</span>      <span class="token punctuation">[</span>OK<span class="token punctuation">]</span>
+percona                                 Percona Server is a fork of the MySQL relati…   <span class="token number">629</span>       <span class="token punctuation">[</span>OK<span class="token punctuation">]</span>
+phpmyadmin                              phpMyAdmin - A web interface <span class="token keyword">for</span> MySQL and M…   <span class="token number">1001</span>      <span class="token punctuation">[</span>OK<span class="token punctuation">]</span>
+circleci/mysql                          MySQL is a widely used, open-source relation…   <span class="token number">30</span>
+bitnami/mysql                           Bitnami container image <span class="token keyword">for</span> MySQL                <span class="token number">111</span>
+cimg/mysql                                                                               <span class="token number">3</span>
+bitnami/mysqld-exporter                 Bitnami container image <span class="token keyword">for</span> MySQL Server Exp…   <span class="token number">7</span>
+ubuntu/mysql                            MySQL <span class="token function">open</span> <span class="token builtin class-name">source</span> fast, stable, multi-thread…   <span class="token number">64</span>
+bitnamicharts/mysql                                                                      <span class="token number">0</span>
+rapidfort/mysql                         RapidFort optimized, hardened image <span class="token keyword">for</span> MySQL    <span class="token number">25</span>
+google/mysql                            MySQL server <span class="token keyword">for</span> Google Compute Engine           <span class="token number">25</span>
+elestio/mysql                           Mysql, verified and packaged by Elestio          <span class="token number">0</span>
+airbyte/source-mysql                                                                     <span class="token number">0</span>
+airbyte/normalization-mysql                                                              <span class="token number">0</span>
+rapidfort/mysql8-ib                     RapidFort optimized, hardened image <span class="token keyword">for</span> MySQ…   <span class="token number">9</span>
+newrelic/k8s-nri-mysql                  New Relic Infrastructure MySQL Integration <span class="token punctuation">(</span>…   <span class="token number">0</span>
+rapidfort/mysql-official                RapidFort optimized, hardened image <span class="token keyword">for</span> MySQ…   <span class="token number">9</span>
+hashicorp/mysql-portworx-demo                                                            <span class="token number">0</span>
+airbyte/destination-mysql                                                                <span class="token number">0</span>
+bitnami/percona-mysql                   Bitnami container image <span class="token keyword">for</span> Percona MySQL        <span class="token number">0</span>
+percona/percona-server-mysql-operator                                                    <span class="token number">0</span>
+newrelic/mysql-plugin                   New Relic Plugin <span class="token keyword">for</span> monitoring MySQL databa…   <span class="token number">1</span>
+linuxserver/mysql                       A Mysql container, brought to you by LinuxSe…   <span class="token number">41</span>
+airbyte/source-mysql-strict-encrypt                                                      <span class="token number">0</span>
 
-<h2 id="🙊-글-마무리"><a href="#🙊-글-마무리" class="headerlink" title="🙊 글 마무리"></a>🙊 글 마무리</h2><p>어려운 지식도 많이 공부하고, 많은 트러블 슈팅도 해봤지만 항상 기본기가 중요하다는 말이 맞는 것 같아요. 문제가 생겼을 때 어떤 요소를 점검해야하나 체킹 리스트를 만들고 점진적으로 확인했어야 했는 데 그러지 못했습니다. ㅠㅠ 때문에 기본기 문제에 잡혀 4시간을 돌아왔어요.</p>
-<p>가끔씩 제 글을 다시 돌아보면서 항상 기본기를 잊지 않도록 분발하겠습니다! 그럼 다음 포스팅 때 봬요!</p>
+
+<span class="token comment"># 외부에서 접속할 포트(포트포워딩)을 지정해서 올리기</span>
+$ <span class="token function">docker</span> run  <span class="token parameter variable">-p</span> <span class="token number">13306</span>:3306 mysql
+
+<span class="token comment"># 컨테이너 이름을 지정해서 올리기</span>
+$ <span class="token function">docker</span> run <span class="token parameter variable">--name</span> container_name_alias mysql
+
+<span class="token comment"># 컨테이너 내부 환경변수를 설정하여 올리기</span>
+$ <span class="token function">docker</span> run <span class="token parameter variable">-e</span> <span class="token assign-left variable">MYSQL_ROOT_PASSWORD</span><span class="token operator">=</span>password mysql
+
+<span class="token comment"># 로컬 디렉터리 경로와 컨테이너 내부 디렉터리 경로를 볼륨마운트해서 올리기</span>
+$ <span class="token function">docker</span> run <span class="token parameter variable">-v</span> /Users/jmlim/datadir:/var/lib/mysql mysql
+
+<span class="token comment"># restart 옵션을 주면서 컨테이너 실행하기</span>
+<span class="token comment"># https://docs.docker.com/config/containers/start-containers-automatically/#use-a-restart-policy</span>
+$ <span class="token function">docker</span> run <span class="token parameter variable">--restart</span> unless-stopped mysql<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="3">
+<li>실행중인 도커 컨테이너에 새 프롬프트로 접근하기</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 실행중인 docker container에 bash 쉘 프롬프트로 접근하기</span>
+$ <span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> <span class="token operator">&lt;</span>container name<span class="token operator">></span> <span class="token function">bash</span>
+   - i <span class="token builtin class-name">:</span> interactive <span class="token punctuation">(</span>입출력 stdin, stdout 사용<span class="token punctuation">)</span>
+   - t <span class="token builtin class-name">:</span> terminal <span class="token punctuation">(</span>터미널<span class="token punctuation">)</span>
+
+<span class="token comment"># Example 1: MySQL</span>
+$ <span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> <span class="token operator">&lt;</span>container name<span class="token operator">></span> /bin/bash
+
+<span class="token comment"># Example 2: Python</span>
+$ <span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> <span class="token operator">&lt;</span>container name<span class="token operator">></span> /bin/bash<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="4">
+<li>실행중인 도커 컨테이너의 기존 프로세스 프롬프트에 접근하기</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 실행중인 도커 컨테이너의 기존 프로세스 프롬프트에 접근하기</span>
+$ <span class="token function">docker</span> attach <span class="token operator">&lt;</span>container ID<span class="token operator">></span> 
+$ <span class="token function">docker</span> attach db762f62f2f9<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<ol start="5">
+<li>중지중인 도커 컨테이너 재실행하기</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 중지중인 도커 컨테이너 재실행 </span>
+$ <span class="token function">docker</span> start <span class="token operator">&lt;</span>container name 또는 ID<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -323,7 +378,7 @@ taskkill <span class="token operator">/</span>pid &lt;task pid> <span class="tok
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/01/12/Docker/port-trouble-shooting/">http://example.com/2024/01/12/Docker/port-trouble-shooting/</a>
+                    <a href="http://example.com/2023/07/01/Docker/docker-command/">http://example.com/2023/07/01/Docker/docker-command/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -435,12 +490,12 @@ taskkill <span class="token operator">/</span>pid &lt;task pid> <span class="tok
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/15/Linux/stream/">
+                <a href="/2023/08/01/Airflow/docs/CONTENT/Overview/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/linux-logo.png" class="responsive-img" alt="Stream &amp; Redirection">
+                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="Overview">
                         
-                        <span class="card-title diy-neon-red">Stream &amp; Redirection</span>
+                        <span class="card-title diy-neon-red">Overview</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -451,14 +506,14 @@ taskkill <span class="token operator">/</span>pid &lt;task pid> <span class="tok
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-15
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-08-01
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
+                            <a href="/categories/Airflow/" class="post-category">
+                                    Airflow
                                 </a>
                             
                             
@@ -475,12 +530,12 @@ taskkill <span class="token operator">/</span>pid &lt;task pid> <span class="tok
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/09/Data-Architecture/dimension-modeling(1)/">
+                <a href="/2023/07/01/Docker/docker-concept/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="[Data Architecture] Dimension Modeling(1)">
+                        <img src="/images/logos/docker-logo.png" class="responsive-img" alt="Concept">
                         
-                        <span class="card-title diy-neon-red">[Data Architecture] Dimension Modeling(1)</span>
+                        <span class="card-title diy-neon-red">Concept</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -491,14 +546,14 @@ taskkill <span class="token operator">/</span>pid &lt;task pid> <span class="tok
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-09
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-01
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Data-Architecture/" class="post-category">
-                                    Data Architecture
+                            <a href="/categories/Docker/" class="post-category">
+                                    Docker
                                 </a>
                             
                             
