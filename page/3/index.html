@@ -207,19 +207,72 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/03/01/Kubernetes/k8s-volume/">
+                    <a href="/2024/03/01/Kubernetes/vm_installation/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Volume">
+                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="ubuntu installation">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Volume</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">ubuntu installation</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Stateless한 애플리케이션일반적으로 컨테이너는 stateless(상태를 저장하지 않는) 방식의 앱 컨테이너를 사용합니다. 이러한 장점으로 어떤 노드에 문제가 발생했을 때, 다른 노드로 옮길 수 있는 장점이 있습
+                                ubuntuos 버전 확인$ uname -a 
+
+$ ping &lt;>
+
+/etc/hosts 설정$ cat /etc/hosts
+
+127.0.0.1        localhost
+127.0.1.1        k8s-
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/03/01/Kubernetes/readiness-liveness-probe/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Readiness Probe &amp; Liveness Probe">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Readiness Probe &amp; Liveness Probe</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                Readiness ProbePending - ContainerCreating - Running
+PodScheduled
+Initialized
+ContainersReady
+Ready
+apiVersion: v1
+kind:
                             
                         </div> -->
                         <div class="publish-info">
@@ -276,46 +329,6 @@ Production environmentBest practic
                                 
                                 <i class="fas fa-user fa-fw"></i>
                                 Keyhong
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/02/01/Flink/datastream-api/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/flink-logo.png" class="responsive-img" alt="[Flink] Flink Document 완주하기(1) - DataStream">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Flink] Flink Document 완주하기(1) - DataStream</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                Flink DataStream API Programming GuideFlink에서의 DataStream 프로그램은 데이터 스트림에 대한 변환(예: 필터링, 상태 업데이트, 윈도우 정의, 집계 등)을 구현하는 일반적인
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Flink/" class="post-category">
-                                    Flink
-                                </a>
-                                
                                 
                             </span>
                         </div>
@@ -551,6 +564,46 @@ stream으로 들어오는 이벤트를 묶어서 처리하는 방식
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/2024/02/01/Flink/datastream-api/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/flink-logo.png" class="responsive-img" alt="[Flink] Flink Document 완주하기(1) - DataStream">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">[Flink] Flink Document 완주하기(1) - DataStream</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                Flink DataStream API Programming GuideFlink에서의 DataStream 프로그램은 데이터 스트림에 대한 변환(예: 필터링, 상태 업데이트, 윈도우 정의, 집계 등)을 구현하는 일반적인
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Flink/" class="post-category">
+                                    Flink
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
                     <a href="/2024/02/01/Flink/operator/">
                         <div class="card-image">
                             
@@ -579,47 +632,6 @@ stream으로 들어오는 이벤트를 묶어서 처리하는 방식
                                     Flink
                                 </a>
                                 
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/02/01/Flink/docs/Flink%20Docs%20Index/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/flink-logo.png" class="responsive-img" alt="Flink Docs Index">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Flink Docs Index</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                Try FlinkLearn Flink
-Overview
-Intro to the DataStream API
-Data Pipelines &amp; ETL
-Streaming Analytics
-Event-driven Appl
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-user fa-fw"></i>
-                                Keyhong
                                 
                             </span>
                         </div>
