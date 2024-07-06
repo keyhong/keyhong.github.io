@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="keywords" content="기본 설치, Data Engineering,Data Analysis,Python Backend">
     <meta name="description" content="시작하기 앞서
-프로그램을 설치하는 방법은 블로그마다 매우 상이합니다. 이는 버전에 따라 달라지기도 하고, 운영할 환경에 따라 달라지므로 사용할 환경을 먼저 이해하는 것이 중요합니다.예를 들어, celery나 kube">
+프로그램을 설치하는 방법은 블로그마다 매우 상이하다. 이는 버전에 따라 달라지기도 하고, 운영할 환경에 따라 달라지므로 사용할 환경을 먼저 이해하는 것이 중요하다. 예를 들어, celery나 kuber">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -241,9 +241,9 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="시작하기-앞서"><a href="#시작하기-앞서" class="headerlink" title="시작하기 앞서"></a>시작하기 앞서</h2><ul>
-<li><p>프로그램을 설치하는 방법은 블로그마다 매우 상이합니다. 이는 버전에 따라 달라지기도 하고, 운영할 환경에 따라 달라지므로 사용할 환경을 먼저 이해하는 것이 중요합니다.예를 들어, celery나 kubernetes로 airflow를 운영한다면 확장성을 고려해 컨테이너 기반으로 사용하는 게 좋을 것입니다. 반면, 테스트용으로 단일 서버에서 간단히 시험해보려면 local executor로 운영해도 무리는 없습니다.</p>
+<li><p>프로그램을 설치하는 방법은 블로그마다 매우 상이하다. 이는 버전에 따라 달라지기도 하고, 운영할 환경에 따라 달라지므로 사용할 환경을 먼저 이해하는 것이 중요하다. 예를 들어, celery나 kubernetes로 airflow를 운영한다면 확장성을 고려해 컨테이너 기반으로 사용하는 게 좋다. 반면, 테스트용으로 단일 서버에서 간단히 시험해보려면 local executor로 로컬에서 설치를 해도 큰 무리는 없다.</p>
 </li>
-<li><p>항상 달라지는 환경에서 내가 필요한 환경을 이해하고 맞춰 설치하는 가장 옳은 방법은 무엇보다도 <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/installation/index.html">공식 문서</a>를 읽는 확인하는 것입니다.</p>
+<li><p>항상 달라지는 환경에서 내가 필요한 환경을 이해하고 맞춰 설치하는 가장 옳은 방법은 무엇보다도 <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/installation/index.html">공식 문서</a>를 읽는 확인하는 것이다.</p>
 </li>
 </ul>
 <h2 id="Installtion-Using-PyPI"><a href="#Installtion-Using-PyPI" class="headerlink" title="Installtion Using PyPI"></a>Installtion Using PyPI</h2><h4 id="1-Python-pip-install-apach-airlfow"><a href="#1-Python-pip-install-apach-airlfow" class="headerlink" title="1. Python pip install apach-airlfow"></a>1. Python pip install apach-airlfow</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Airflow 패키지 설치(특정 버전 기준으로 호환 패키지 같이 설치)</span>
@@ -273,7 +273,7 @@ $ airflow <span class="token function">users</span> create <span class="token pu
     <span class="token parameter variable">--role</span> Admin <span class="token punctuation">\</span>
     <span class="token parameter variable">--email</span> <span class="token operator">&lt;</span>이메일<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="4-Airflow-메타데이터-DB로-PostgreSQL-로-연동하기"><a href="#4-Airflow-메타데이터-DB로-PostgreSQL-로-연동하기" class="headerlink" title="4. Airflow 메타데이터 DB로 PostgreSQL 로 연동하기"></a>4. Airflow 메타데이터 DB로 PostgreSQL 로 연동하기</h4><p>먼저, 백엔드로 사용할 수 있는 DBMS는 Airflow Version이나 시간의 변화에 따라 추가되거나 변동 될 수 있음을 인지해야 합니다. 상황에 따라 달라질 수 있으니 항상 설치 시점에 이용가능한 백엔드 데이터베이스를 확인해야 합니다. <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/howto/set-up-database.html#choosing-database-backend">Choosing database backend</a></p>
+<h4 id="4-Airflow-메타데이터-DB로-PostgreSQL-로-연동하기"><a href="#4-Airflow-메타데이터-DB로-PostgreSQL-로-연동하기" class="headerlink" title="4. Airflow 메타데이터 DB로 PostgreSQL 로 연동하기"></a>4. Airflow 메타데이터 DB로 PostgreSQL 로 연동하기</h4><p>먼저, 백엔드로 사용할 수 있는 DBMS는 Airflow Version이나 시간의 변화에 따라 추가되거나 변동 될 수 있음을 인지해야 한다. 상황에 따라 달라질 수 있으니 항상 설치 시점에 이용가능한 백엔드 데이터베이스를 확인해야 한다. <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/howto/set-up-database.html#choosing-database-backend">Choosing database backend</a></p>
 <p>| 백엔드 DBMS 리스트   | 버전               |<br>|——————————————–<br>| PostgreSQL           | 11, 12, 13, 14, 15 |<br>| MySQL                | 5.7, 8             |<br>| MSSQL (Experimental) | 2017, 2019         |<br>| SQLite               | 3.15.0+            |</p>
 <p>저는 오픈소스인 PostgreSQL을 메타스토어로 사용하였다.</p>
 <p><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/howto/set-up-database.html#setting-up-a-postgresql-database">PostgreSQL 데이터베이스 설정</a></p>
@@ -310,20 +310,18 @@ $ airflow <span class="token function">users</span> create <span class="token pu
 <pre class="line-numbers language-conf" data-language="conf"><div class="caption"><span>pg_hba.conf</span></div><code class="language-conf"># IPv4 local connections:
 host		all             all             0.0.0.0&#x2F;0               md5 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h4 id="Q-A"><a href="#Q-A" class="headerlink" title="Q &amp; A"></a>Q &amp; A</h4><ul>
-<li><p>Q. airflow에서 기본적으로 sqlite db를 제공하는 데, 왜 따로 backend database를 구축하여 사용하는 가?</p>
-</li>
-<li><p>A. sqlite를 기본적으로 사용하는 airflow executor는 sequential executor이다. 말 그대로, sequential(순차적)으로 작업을 처리할 때 사용가능하다. 다만, 실제 production 환경에서는 작업을 병렬로 처리해야 한다. 하나의 일이 끝나고 순차적으로 뒤의 task를 처리하는 sequential executor는 실제로 많은 일을 빠른 시간에 처리해야 환경에서는 실용적이지 못하다.</p>
-</li>
-</ul>
+<h4 id="Q-A"><a href="#Q-A" class="headerlink" title="Q &amp; A"></a>Q &amp; A</h4><blockquote>
+<p>Q. airflow에서 기본적으로 sqlite db를 제공하는 데, 왜 따로 backend database를 구축하여 사용하는 가?</p>
+</blockquote>
+<p>A. sqlite를 기본적으로 사용하는 airflow executor는 sequential executor이다. 말 그대로, sequential(순차적)으로 작업을 처리할 때 사용가능하다. 다만, 실제 production 환경에서는 작업을 병렬로 처리해야 한다. 하나의 일이 끝나고 순차적으로 뒤의 task를 처리하는 sequential executor는 실제로 많은 일을 빠른 시간에 처리해야 환경에서는 실용적이지 못하다.</p>
 <p>즉, task의 병렬처리를 위해 확장성 있으며 여러 세션으로 동시접근하여 read, write가 가능한 db가 필요하다. 일반적으로 상용화된 db는 동시제어와 접근을 가능하게 하며, 이에 대한 리소스 관리(connection pool)를 설정할 수 있다.<br>** Airflow는 수행할 작업 계획, 작업 결과 (successs or fail), 작업 이력 등을 모두 db에 쓰고 읽음으로써 관리한다. </p>
 <h4 id="5-airflow-cfg에-메타스토어에-대한-SqlAlchemy-연결-문자-지정"><a href="#5-airflow-cfg에-메타스토어에-대한-SqlAlchemy-연결-문자-지정" class="headerlink" title="5. airflow.cfg에 메타스토어에 대한 SqlAlchemy 연결 문자 지정"></a>5. airflow.cfg에 메타스토어에 대한 SqlAlchemy 연결 문자 지정</h4><p><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/configurations-ref.html">Configuration Reference</a></p>
 <ul>
-<li><p>SQLAlchemy 1.4.0 이상에서는 postgres:&#x2F;&#x2F;를 사용하면 오류가 발생하므로 sql_alchemy_conn에서 문자열로 <code>postgresql://</code>을 사용</p>
+<li><p>SQLAlchemy 1.4.0 이상에서는 <code>postgres://</code>를 사용하면 오류가 발생하므로 sql_alchemy_conn에서 문자열로 <code>postgresql://</code>을 사용한다.</p>
 </li>
-<li><p>SQLAlchemy를 사용할 때 psycopg2 드라이버를 사용하고, SQLAlchemy 연결 문자열에서 명시하는 것을 권장</p>
+<li><p>SQLAlchemy를 사용할 때 psycopg2 드라이버를 사용하고, SQLAlchemy 연결 문자열에서 명시하는 것을 권장한다.</p>
 </li>
-<li><p>database.sql_alchemy_conn는 메타데이터 데이터베이스에 대한 SqlAlchemy 연결 문자열</p>
+<li><p>database.sql_alchemy_conn는 메타데이터 데이터베이스에 대한 SqlAlchemy 연결 문자열이다.</p>
 </li>
 </ul>
 <pre class="line-numbers language-conf" data-language="conf"><div class="caption"><span>airflow.cfg</span></div><code class="language-conf">[database]
@@ -467,12 +465,12 @@ sql_alchemy_conn &#x3D; postgresql+psycopg2:&#x2F;&#x2F;&lt;user&gt;:&lt;passwor
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2023/08/01/Airflow/basic-concept/">
+                <a href="/2023/08/01/Airflow/file-sensor/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="기본 컨셉">
+                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="FileSensor">
                         
-                        <span class="card-title diy-neon-red">기본 컨셉</span>
+                        <span class="card-title diy-neon-red">FileSensor</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -507,12 +505,12 @@ sql_alchemy_conn &#x3D; postgresql+psycopg2:&#x2F;&#x2F;&lt;user&gt;:&lt;passwor
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/08/01/Airflow/file-sensor/">
+                <a href="/2023/08/01/Airflow/kubernetes-executor-installation/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="FileSensor">
+                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="Kubernetes Executor 설치">
                         
-                        <span class="card-title diy-neon-red">FileSensor</span>
+                        <span class="card-title diy-neon-red">Kubernetes Executor 설치</span>
                     </div>
                 </a>
                 <div class="card-content article-content">

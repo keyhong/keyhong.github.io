@@ -4,11 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Kafka Server Propery Options, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="클러스터의 브로커를 구분하기 위한 id# 클러스터 내 브로커마다 id는 다 달라야 합니다.
-broker.id&amp;#x3D;[N]
-
-카프카 브로커 통신을 위해 열어둘 인터페이스 HOST, Port, 프로토콜 설정# 브로커">
+    <meta name="keywords" content="Kafka Basic Concept, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="Kafka vs. MessageQueue 
+|                | AMQP (Advanced Message Queing Protocol) | Kafka|————————————————————————————-">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +18,7 @@ broker.id&amp;#x3D;[N]
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Kafka Server Propery Options | Keyhong</title>
+    <title>Kafka Basic Concept | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -185,7 +183,7 @@ broker.id&amp;#x3D;[N]
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        Kafka Server Propery Options</h1>
+                        Kafka Basic Concept</h1>
                 </div>
             </div>
         </div>
@@ -242,47 +240,87 @@ broker.id&amp;#x3D;[N]
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="클러스터의-브로커를-구분하기-위한-id"><a href="#클러스터의-브로커를-구분하기-위한-id" class="headerlink" title="클러스터의 브로커를 구분하기 위한 id"></a>클러스터의 브로커를 구분하기 위한 id</h4><pre class="line-numbers language-conf" data-language="conf"><code class="language-conf"># 클러스터 내 브로커마다 id는 다 달라야 합니다.
-broker.id&#x3D;[N]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+                <h2 id="Kafka-vs-MessageQueue"><a href="#Kafka-vs-MessageQueue" class="headerlink" title="Kafka vs. MessageQueue"></a>Kafka vs. MessageQueue</h2><p> </p>
+<p>|                | AMQP (Advanced Message Queing Protocol) | Kafka<br>|————————————————————————————-</p>
+<p>| products        | Erlang, RabbitMQ ..                                                          |<br>|————————————————————————————-<br>| Characteristics | - 기존 MQ는 이기종 간의 메시지의 포맷을 변경 할 때 메세지 브릿지 이용합니다. | -  토픽은 DB의 테이블이나 파일시스템의 폴더와 유사한 성질을 가지고 있습니다.<br>|                | - 시스템 통일의 불편함과 비효율성이 있습니다.                                | - Producer가 데이터를 넣고, Consumer는 데이터를 소비합니다.<br>|                |                                                                              | - 토픽은 이름을 가집니다. 목적에 따라 click log, send sms, location log 등 무슨 데이터를 담는 지 명확히 기재함으로써 유지 보수에 이점이 있습니다.<br>|                |                                                                              | - 하나의 토픽은 여러 개의 파티션으로 구성됩니다.</p>
+<p>|                |                                                                              | - 하나의 파티션은 Queue와 같이 파티션 끝에서 부터 차곡차곡 쌓습니다.<br>| ————————————————————————————-</p>
+<p>|                | - end-to-end 연결 방식의 아키텍처이기 때문에데이터 연동의 복잡성이 증가하고, 하드웨어, 운영체제의 장애가 발생 할 수 있습니다. | Producer&#x2F;Consumer를 분리합니다. 하나의 메세지를 여러 컨슈머가 소비 할 수 있습니다.<br>|————————————————————————————-                </p>
+<p>|                | 확장에 엄청난 노력 필요합니다 | 스케일 아웃 가능 (높은 처리량을 위한 메세지 최적화)<br>|————————————————————————————-</p>
+<p>|                | 각기 다른 파이프라인을 연결해야 합니다. | 관련 생태계(ksql, kafka streams ..)가 잘 만들어져 있습니다.<br>|————————————————————————————-</p>
+<h2 id="탄생-배경"><a href="#탄생-배경" class="headerlink" title="탄생 배경"></a>탄생 배경</h2><p>모든 시스템에서 데이터를 전송해도 실시간 처리도 가능한 상황 속에서, 데이터가 갑자기 많아지더라도 확장이 용이한 시스템이 필요했습니다. 이에 링크드인 내부의 데이터 팀에서 직접 개발하여 만들었는 데, 이것이 kafka 입니다.</p>
+<h2 id="Kafka-Broker-Cluster"><a href="#Kafka-Broker-Cluster" class="headerlink" title="Kafka Broker &amp; Cluster"></a>Kafka Broker &amp; Cluster</h2><h4 id="Kafka-broker"><a href="#Kafka-broker" class="headerlink" title="Kafka broker"></a>Kafka broker</h4><blockquote>
+<p>kafka cluster에서 실행되는 kafka application 서버 중 임의의 1대를 부르는 단어입니다.</p>
+</blockquote>
+<h4 id="Kafka-Cluster"><a href="#Kafka-Cluster" class="headerlink" title="Kafka Cluster"></a>Kafka Cluster</h4><ul>
+<li><p>kafka cluster는 일반적으로 3대 이상의 broker로 구성됩니다.</p>
+</li>
+<li><p>kafka cluster는 zookeeper와 연동(~2.5.0 버전) 합니다. zookeeper는 BrokerID, ControllerID 등의 메타데이터를 저장합니다.</p>
+</li>
+<li><p>N개의 broker 중 1대는 controller 기능을 수행합니다. controller는 각 broker에게 담당 파티션 할당하고 broker 정상 동작 하는 지 모니터링 합니다. 누가 컨트롤러 인지는 zookeeper에 저장 됩니다.</p>
+</li>
+</ul>
+<h2 id="Topic-Partition"><a href="#Topic-Partition" class="headerlink" title="Topic &amp; Partition"></a>Topic &amp; Partition</h2><p>Topic은 반드시 한 개 이상의 Partition을 지닙니다.</p>
+<h4 id="Topic"><a href="#Topic" class="headerlink" title="Topic"></a>Topic</h4><blockquote>
+<p>메세지 분류 단위입니다. 한 개의 토픽에는 N개의 파티션을 할당 가능 합니다.</p>
+</blockquote>
+<h4 id="Partition"><a href="#Partition" class="headerlink" title="Partition"></a>Partition</h4><ul>
+<li><p>각 파티션은 고유한 오프셋(offset)을 가집니다.</p>
+</li>
+<li><p>메세지 처리 순서는 파티션 별로 유지·관리 됩니다.</p>
+</li>
+<li><p>파티션 내부의 데이터 삭제는 옵션에 따라 달라질 수 있습니다. 레코드가 저장되는 최대 보존 시간(<code>log.retension.ms</code>)과 최대 보존 크기(<code>log.retension.byte</code>)를 지정 가능 합니다.</p>
+</li>
+</ul>
+<h4 id="Kafka의-Partition-정책"><a href="#Kafka의-Partition-정책" class="headerlink" title="Kafka의 Partition 정책"></a>Kafka의 Partition 정책</h4><ul>
+<li><p><strong>파티션을 늘릴 수는 있지만, 다시 줄일 수는 없습니다.</strong></p>
+</li>
+<li><p>파티션을 늘리면, Consumer 개수를 늘려서 데이터 처리를 분산 처리 가능하게 만들 수 있습니다.</p>
+</li>
+</ul>
+<h4 id="Kafka-Log-Segment"><a href="#Kafka-Log-Segment" class="headerlink" title="Kafka Log &amp; Segment"></a>Kafka Log &amp; Segment</h4><blockquote>
+<p>실제로 메세지가 저장되는 파일시스템 단위입니다. segment file의 형식은 <code>~.index</code>, <code>~.log</code>, <code>~.timeindex</code>와 같습니다.</p>
+</blockquote>
+<ul>
+<li><p>메세지가 저장될 때는 세그먼트 파일이 열려 있습니다. 세그먼트는 시간 또는 파일의 크기를 기준으로 닫힙니다.</p>
+</li>
+<li><p>세그먼트가 닫힌 이후 일정 시간 또는 용량에 따라 삭제(delete)하거나 압축(compact) 할 수 있습니다.</p>
+</li>
+</ul>
+<h2 id="Producer-Consumer"><a href="#Producer-Consumer" class="headerlink" title="Producer &amp; Consumer"></a>Producer &amp; Consumer</h2><h4 id="Producer-메세지-전송자"><a href="#Producer-메세지-전송자" class="headerlink" title="Producer (메세지 전송자)"></a>Producer (메세지 전송자)</h4><ul>
+<li>Producer가 메세지를 보낼 때, key를 지정해서 파티션을 선택 가능 합니다. 해당 알고리즘은 아래와 같습니다.</li>
+</ul>
+<ol>
+<li><p>key가 있고 null(즉, 키를 지정하지 않고 기본 파티셔너 설정을 사용)이라면, round-robin으로 파티션을 지정합니다.<br>** round-robin(RR) : 프로세스가 도착한 순서대로 프로세스를 디스패치. 정해진 시간 할당량에(또는 시간 간격에)에 의해 실행 제한</p>
+</li>
+<li><p>key가 있고 기본 파티셔너를 사용할 경우, key의 해시값을 구해 항상 특정 파티션에 할당하도록 합니다.</p>
+</li>
+</ol>
+<h4 id="Consumer-메세지-소비자"><a href="#Consumer-메세지-소비자" class="headerlink" title="Consumer (메세지 소비자)"></a>Consumer (메세지 소비자)</h4><ul>
+<li><p>Consumer가 토픽 내부의 파티션에서 레코드를 가져가더라도 레코드는 삭제되지 않습니다.</p>
+</li>
+<li><p><code>auto.offset.reset=earliest</code> 옵션을 설정하면, 파티션에 새로운 consumer group(기존 consumer group 제외)이 붙으면서 offset이 0번인 레코드(가장 오래된 레코드)부터 다시 소비가 가능합니다. </p>
+</li>
+<li><p>이는 동일 데이터를 2번 이상 사용할 수 있는데, 이는 Kafka를 사용하는 핵심적인 이유입니다.</p>
+</li>
+</ul>
+<h2 id="레코드-produce-consume-순서"><a href="#레코드-produce-consume-순서" class="headerlink" title="레코드 produce-consume 순서"></a>레코드 produce-consume 순서</h2><ol>
+<li><p>Producer는 레코드를 생성하여 broker로 전송 합니다.</p>
+</li>
+<li><p>전송된 레코드는 파티션에 신규 offset 번호와 함께 기록됩니다.</p>
+</li>
+<li><p>Consumer는 broker로부터 레코드를 요청하여 가져가는 데 이를 polling한다고 표현합니다. 절대로 <strong>broker가 Consumer로 레코드를 보내는 게 아닙니다.</strong></p>
+</li>
+</ol>
+<h2 id="직렬화-역직렬화"><a href="#직렬화-역직렬화" class="headerlink" title="직렬화 &#x2F; 역직렬화"></a>직렬화 &#x2F; 역직렬화</h2><p>Producer와 Consumer가 레코드 객체를 전달하고 소비할 때 byte나 string 형태로 주고 받을 수 있게 직렬화&amp; 역직렬화를 사용 할 수 있다.</p>
+<ul>
+<li><p>기본으로 제공되는 직렬화 클래스 : <code>StringSerializer</code>, <code>ShortSerializer</code> 등이 있습니다.</p>
+</li>
+<li><p>커스텀으로 만든 직렬화 클래스를 통해 객체를 직렬화 &amp; 역직렬화도 가능하다.</p>
+</li>
+<li><p><strong>주의할 점은 Producer와 Consumer의 직렬화&#x2F;역직렬화 객체는 동일하게 맞추어야 한다.</strong></p>
+</li>
+</ul>
 
-<h4 id="카프카-브로커-통신을-위해-열어둘-인터페이스-HOST-Port-프로토콜-설정"><a href="#카프카-브로커-통신을-위해-열어둘-인터페이스-HOST-Port-프로토콜-설정" class="headerlink" title="카프카 브로커 통신을 위해 열어둘 인터페이스 HOST, Port, 프로토콜 설정"></a>카프카 브로커 통신을 위해 열어둘 인터페이스 HOST, Port, 프로토콜 설정</h4><pre class="line-numbers language-conf" data-language="conf"><code class="language-conf"># 브로커 포트는 기본적으로 9092를 사용합니다.
-listenter&#x3D;PLAINTEXT:&#x2F;&#x2F;:9092<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h4 id="카프카-클라이언트-또는-카프카-커맨드라인-툴에서-접속할-때-사용하는-HOST와-Port-정보"><a href="#카프카-클라이언트-또는-카프카-커맨드라인-툴에서-접속할-때-사용하는-HOST와-Port-정보" class="headerlink" title="카프카 클라이언트 또는 카프카 커맨드라인 툴에서 접속할 때 사용하는 HOST와 Port 정보"></a>카프카 클라이언트 또는 카프카 커맨드라인 툴에서 접속할 때 사용하는 HOST와 Port 정보</h4><pre class="line-numbers language-conf" data-language="conf"><code class="language-conf">advertised.listeners&#x3D;PLAINTEXT..&#x2F;&#x2F;[HOST]:[PORT]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h4 id="SASL-SSL-SASL-PLAIN-보안설정시-프로토콜-매핑을-위한-설정"><a href="#SASL-SSL-SASL-PLAIN-보안설정시-프로토콜-매핑을-위한-설정" class="headerlink" title="SASL_SSL, SASL_PLAIN 보안설정시 프로토콜 매핑을 위한 설정"></a>SASL_SSL, SASL_PLAIN 보안설정시 프로토콜 매핑을 위한 설정</h4><pre class="line-numbers language-conf" data-language="conf"><code class="language-conf">SASL_PLAINTEXT, SASL_SSL:SASL_SSL<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h4 id="네트워크를-통한-처리를-할-때-사용할-네트워크-쓰레드-개수-설정"><a href="#네트워크를-통한-처리를-할-때-사용할-네트워크-쓰레드-개수-설정" class="headerlink" title="네트워크를 통한 처리를 할 때, 사용할 네트워크 쓰레드 개수 설정"></a>네트워크를 통한 처리를 할 때, 사용할 네트워크 쓰레드 개수 설정</h4><pre class="line-numbers language-conf" data-language="conf"><code class="language-conf">num.network.thread&#x3D;[N]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h4 id="카프카-브로커-내부에서-사용할-쓰레드-개수"><a href="#카프카-브로커-내부에서-사용할-쓰레드-개수" class="headerlink" title="카프카 브로커 내부에서 사용할 쓰레드 개수"></a>카프카 브로커 내부에서 사용할 쓰레드 개수</h4><pre class="line-numbers language-conf" data-language="conf"><code class="language-conf">num.io.thread&#x3D;[N]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h4 id="통신을-통해-가져온-데이터를-파일로-저장할-디렉토리-위치"><a href="#통신을-통해-가져온-데이터를-파일로-저장할-디렉토리-위치" class="headerlink" title="통신을 통해 가져온 데이터를 파일로 저장할 디렉토리 위치"></a>통신을 통해 가져온 데이터를 파일로 저장할 디렉토리 위치</h4><pre class="line-numbers language-conf" data-language="conf"><code class="language-conf">log.dirs&#x3D;[DIR]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h4 id="파티션-개수를-명시하지-않고-토픽을-생성할-때-기본-설정되는-파티션-개수"><a href="#파티션-개수를-명시하지-않고-토픽을-생성할-때-기본-설정되는-파티션-개수" class="headerlink" title="파티션 개수를 명시하지 않고, 토픽을 생성할 때 기본 설정되는 파티션 개수"></a>파티션 개수를 명시하지 않고, 토픽을 생성할 때 기본 설정되는 파티션 개수</h4><pre class="line-numbers language-conf" data-language="conf"><code class="language-conf"># 파티션 개수가 많을 수록, 컨슈머가 많아지면 병렬처리 데이터 양이 증가합니다.
-num.partitions&#x3D;[N]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<h4 id="카프카-브로커가-저장한-파일이-삭제되기까지-걸리는-시간-설정"><a href="#카프카-브로커가-저장한-파일이-삭제되기까지-걸리는-시간-설정" class="headerlink" title="카프카 브로커가 저장한 파일이 삭제되기까지 걸리는 시간 설정"></a>카프카 브로커가 저장한 파일이 삭제되기까지 걸리는 시간 설정</h4><pre class="line-numbers language-conf" data-language="conf"><code class="language-conf"># 보통은 &quot;hours&quot; 보다 &quot;ms&quot; 옵션으로 설정하여 운영하는 것을 추천합니다.
-log.retention.hours&#x3D;[N]
-
-# 값을 -1로 설정시 메세지는 영원히 삭제되지 않습니다.
-log.retention.ms&#x3D;[N]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="카프카-브로커가-저장할-파일의-최대-크기-지정-데이터-양이-많아-이-크기를-채우면-새로운-파일이-생성"><a href="#카프카-브로커가-저장할-파일의-최대-크기-지정-데이터-양이-많아-이-크기를-채우면-새로운-파일이-생성" class="headerlink" title="카프카 브로커가 저장할 파일의 최대 크기 지정. 데이터 양이 많아 이 크기를 채우면 새로운 파일이 생성"></a>카프카 브로커가 저장할 파일의 최대 크기 지정. 데이터 양이 많아 이 크기를 채우면 새로운 파일이 생성</h4><pre class="line-numbers language-conf" data-language="conf"><code class="language-conf"># default : 1,073,741,824 (1GB)
-log.segment.bytes&#x3D;[N]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<h4 id="카프카-브로커가-저장한-파일을-삭제하기-위해-체크하는-간격-설정"><a href="#카프카-브로커가-저장한-파일을-삭제하기-위해-체크하는-간격-설정" class="headerlink" title="카프카 브로커가 저장한 파일을 삭제하기 위해 체크하는 간격 설정"></a>카프카 브로커가 저장한 파일을 삭제하기 위해 체크하는 간격 설정</h4><pre class="line-numbers language-conf" data-language="conf"><code class="language-conf"># default : 300,000 (5분)
-log.retention.check.interval.ms&#x3D;[N]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<h4 id="카프카-브로커와-연동할-주키퍼의-HOST와-Port를-설정"><a href="#카프카-브로커와-연동할-주키퍼의-HOST와-Port를-설정" class="headerlink" title="카프카 브로커와 연동할 주키퍼의 HOST와 Port를 설정"></a>카프카 브로커와 연동할 주키퍼의 HOST와 Port를 설정</h4><pre class="line-numbers language-conf" data-language="conf"><code class="language-conf"># zookeeper port는 기본적으로 2181을 사용합니다.
-zookeeper.connect&#x3D;[HOST]:[PORT]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<h4 id="주키퍼의-세션-타임아웃-시간-설정"><a href="#주키퍼의-세션-타임아웃-시간-설정" class="headerlink" title="주키퍼의 세션 타임아웃 시간 설정"></a>주키퍼의 세션 타임아웃 시간 설정</h4><pre class="line-numbers language-conf" data-language="conf"><code class="language-conf"># default : 18,000 (18초)
-zookeeper.connection.timeout.ms&#x3D;[N]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<h4 id="토픽-삭제-가능-여부"><a href="#토픽-삭제-가능-여부" class="headerlink" title="토픽 삭제 가능 여부"></a>토픽 삭제 가능 여부</h4><pre class="line-numbers language-conf" data-language="conf"><code class="language-conf"># default : False
-delete.topic.enable&#x3D;False
-
-# 토픽 삭제가 가능하도록 설정합니다.
-delete.topic.enable&#x3D;True<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -308,7 +346,7 @@ delete.topic.enable&#x3D;True<span aria-hidden="true" class="line-numbers-rows">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2023/09/01/Kafka/kafka-server-propery-options/">http://example.com/2023/09/01/Kafka/kafka-server-propery-options/</a>
+                    <a href="http://example.com/2023/09/01/Kafka/basic-concept/">http://example.com/2023/09/01/Kafka/basic-concept/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -420,12 +458,12 @@ delete.topic.enable&#x3D;True<span aria-hidden="true" class="line-numbers-rows">
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2023/09/01/Kafka/kafka-cleanup-policy/">
+                <a href="/2023/09/01/Kafka/acks/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="Cleanup Policy">
+                        <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="Acks">
                         
-                        <span class="card-title diy-neon-red">Cleanup Policy</span>
+                        <span class="card-title diy-neon-red">Acks</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
