@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[SQL] Cross Join, Data Engineering,Data Analysis,Python Backend">
+    <meta name="keywords" content="Cross Join + VALUES 활용하기, Data Engineering,Data Analysis,Python Backend">
     <meta name="description" content="조인(Join)
 두 개의 테이블을 특정 기준 컬럼으로 결합하는 일
 
@@ -23,7 +23,7 @@ Inner L">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[SQL] Cross Join | Keyhong</title>
+    <title>Cross Join + VALUES 활용하기 | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -188,7 +188,7 @@ Inner L">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [SQL] Cross Join</h1>
+                        Cross Join + VALUES 활용하기</h1>
                 </div>
             </div>
         </div>
@@ -386,7 +386,7 @@ Execution Time: 53457.058 ms
       <span class="token keyword">FROM</span>
           <span class="token punctuation">(</span>
             <span class="token keyword">SELECT</span> <span class="token operator">*</span>
-              <span class="token keyword">FROM</span> ADHC<span class="token punctuation">.</span>SERVICE_PCELL_TIME_POP
+              <span class="token keyword">FROM</span> ADHC<span class="token punctuation">.</span>SERVICE_PCELL_TIME_POPSERVICE_PCELL_TIME_POP
             <span class="token keyword">WHERE</span> <span class="token keyword">LEFT</span><span class="token punctuation">(</span>STD_YMD<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">'$&#123;C_MONTH&#125;'</span>
           <span class="token punctuation">)</span> SERVICE_PCELL_TIME_POP
 <span class="token keyword">CROSS</span> <span class="token keyword">JOIN</span> <span class="token punctuation">(</span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">'00'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'01'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'02'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'03'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'04'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'05'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'06'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'07'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'08'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
@@ -401,7 +401,7 @@ Nested Loop  (cost=1000.00..152965.92 rows=258024 width=469) (actual time=0.579.
   ->  Gather  (cost=1000.00..149740.26 rows=10751 width=437) (actual time=0.560..732.158 rows=732964 loops=1)
         Workers Planned: 2
         Workers Launched: 2
-        ->  Parallel Seq Scan on daegu_service_pcell_time_pop  (cost=0.00..147665.16 rows=4480 width=437) (actual time=0.038..493.889 rows=244321 loops=3)
+        ->  Parallel Seq Scan on service_pcell_time_pop  (cost=0.00..147665.16 rows=4480 width=437) (actual time=0.038..493.889 rows=244321 loops=3)
               Filter: ("left"((std_ymd)::text, 6) = '201901'::text)
               Rows Removed by Filter: 472885
   ->  Materialize  (cost=0.00..0.42 rows=24 width=32) (actual time=0.001..0.017 rows=24 loops=732964)
@@ -549,12 +549,12 @@ Execution Time: 53296.674 ms
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2023/09/01/Kafka/kafka-sh-command/">
+                <a href="/2023/08/20/SQL/psql-command/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/kafka-logo.png" class="responsive-img" alt="Kafka Shell Command">
+                        <img src="/images/logos/postgres-logo.png" class="responsive-img" alt="[Postgresql] psql cli">
                         
-                        <span class="card-title diy-neon-red">Kafka Shell Command</span>
+                        <span class="card-title diy-neon-red">[Postgresql] psql cli</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -565,14 +565,14 @@ Execution Time: 53296.674 ms
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-09-01
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-08-20
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Kafka/" class="post-category">
-                                    Kafka
+                            <a href="/categories/Postgresql/" class="post-category">
+                                    Postgresql
                                 </a>
                             
                             
@@ -589,12 +589,12 @@ Execution Time: 53296.674 ms
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/08/20/SQL/psql-command/">
+                <a href="/2023/08/01/Airflow/Airflow%20Docs%20Index/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/postgres-logo.png" class="responsive-img" alt="[Postgresql] psql cli">
+                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="Airflow Docs Index">
                         
-                        <span class="card-title diy-neon-red">[Postgresql] psql cli</span>
+                        <span class="card-title diy-neon-red">Airflow Docs Index</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -605,16 +605,12 @@ Execution Time: 53296.674 ms
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-01
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Postgresql/" class="post-category">
-                                    Postgresql
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Keyhong
                             
                         </span>
                     </div>

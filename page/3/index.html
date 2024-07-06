@@ -207,26 +207,24 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/03/01/Kubernetes/vm_installation/">
+                    <a href="/2024/03/01/Kubernetes/kubernetest-concept-architecture/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="ubuntu installation">
+                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Kubernetest Concept &amp; Architecture">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">ubuntu installation</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Kubernetest Concept &amp; Architecture</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                ubuntuos 버전 확인$ uname -a 
+                                Docker &amp; Kubernetes 실전 가이드 인강 학습 내용과 쿠버네티스 도큐먼트 컴포넌트를 정리하였다. 
 
-$ ping &lt;>
 
-/etc/hosts 설정$ cat /etc/hosts
 
-127.0.0.1        localhost
-127.0.1.1        k8s-
+
+쿠버네티스는 컨테이너를 어디에 배포하든 도움이 되는 개념 및 도구 모음이다. Kuberne
                             
                         </div> -->
                         <div class="publish-info">
@@ -254,25 +252,72 @@ $ ping &lt;>
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/03/01/Kubernetes/etcd_backup_restore/">
+                    <a href="/2024/03/01/Kubernetes/readiness-liveness-probe/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="ectd Backup">
+                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Readiness Probe &amp; Liveness Probe">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">ectd Backup</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Readiness Probe &amp; Liveness Probe</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                ETCD backup$ tree /var/lib/etcd
+                                Readiness ProbePending - ContainerCreating - Running
+PodScheduled
+Initialized
+ContainersReady
+Ready
+apiVersion: v1
+kind:
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
 
-$ etcd --version
+                    <!--  -->
+                </div>
+            </div>
+            
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/03/01/Kubernetes/vm_installation/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="ubuntu installation">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">ubuntu installation</span>
+                        </div>
+                    </a>
 
-# etcd Backup
-$ ETCDCTL_API=3 etcdctl \
-    --endpoints=https://127.0
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                ubuntuos 버전 확인$ uname -a 
+
+$ ping &lt;>
+
+/etc/hosts 설정$ cat /etc/hosts
+
+127.0.0.1        localhost
+127.0.1.1        k8s-
                             
                         </div> -->
                         <div class="publish-info">
@@ -426,6 +471,51 @@ Flink Architecture
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/2024/02/01/Flink/flink-installation/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/flink-logo.png" class="responsive-img" alt="Installation">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Installation</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                Env
+H&#x2F;W : 1 Virtual Machine
+OS : Amazon Linux release 2 (Karoo)
+
+아카이브 파일 수동 설치설치순서
+패키지 색인 파일(패키지 저장소가 제공하는 패키지에 대한 
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Flink/" class="post-category">
+                                    Flink
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
                     <a href="/2024/02/01/Flink/flink-cluster-docker-compose/">
                         <div class="card-image">
                             
@@ -515,51 +605,6 @@ Flink Architecture
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/02/01/Flink/flink-installation/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/flink-logo.png" class="responsive-img" alt="Installation">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Installation</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                Env
-H&#x2F;W : 1 Virtual Machine
-OS : Amazon Linux release 2 (Karoo)
-
-아카이브 파일 수동 설치설치순서
-패키지 색인 파일(패키지 저장소가 제공하는 패키지에 대한 
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Flink/" class="post-category">
-                                    Flink
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
                     <a href="/2024/02/01/Flink/flink-window-operator/">
                         <div class="card-image">
                             
@@ -577,47 +622,6 @@ stream으로 들어오는 이벤트를 묶어서 처리하는 방식
 
 
 오차가 있는 데이터(sensor data) : 집계함수(mean, lower, upper, median) 등을 통해 데이터 정제
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Flink/" class="post-category">
-                                    Flink
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/02/01/Flink/operator/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/flink-logo.png" class="responsive-img" alt="Operators">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Operators</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                Operators연산자는 하나 이상의 데이터 스트림을 새로운 데이터 스트림으로 변환합니다. 프로그램은 여러 변환을 결합하여 정교한 데이터 플로우 토폴로지를 만들 수 있습니다.
-이 섹션은 기본 변환에 대한 설명, 해당
                             
                         </div> -->
                         <div class="publish-info">

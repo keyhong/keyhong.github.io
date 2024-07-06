@@ -4,16 +4,20 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[SQL] String Functions, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="CONCAT (CONCATENATE)-- Syntax
+    <meta name="keywords" content="syntax, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="SELECT
+데이터베이스에서 데이터를 조회하기 위해 사용되는 기본적인 명령문
+
+-- Syntax
 SELECT
-LEFT(first_name, 1) || LEFT(last_name, 1),
+column_name
+FROM table_nam
+
+
+SELECT
 first_name,
 last_name
-FROM customer
-;
-
-S">
+F">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -25,7 +29,7 @@ S">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[SQL] String Functions | Keyhong</title>
+    <title>syntax | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -190,7 +194,7 @@ S">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [SQL] String Functions</h1>
+                        syntax</h1>
                 </div>
             </div>
         </div>
@@ -215,7 +219,7 @@ S">
                         <div class="article-tag">
                             <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                                 <span class="chip bg-color">
-                                    2024-01-19</span>
+                                    2024-01-16</span>
                         </div>
                     
                     
@@ -247,7 +251,180 @@ S">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="CONCAT-CONCATENATE"><a href="#CONCAT-CONCATENATE" class="headerlink" title="CONCAT (CONCATENATE)"></a>CONCAT (CONCATENATE)</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
+                <h2 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h2><blockquote>
+<p>데이터베이스에서 데이터를 조회하기 위해 사용되는 기본적인 명령문</p>
+</blockquote>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
+<span class="token keyword">SELECT</span>
+column_name
+<span class="token keyword">FROM</span> table_nam
+
+
+<span class="token keyword">SELECT</span>
+first_name<span class="token punctuation">,</span>
+last_name
+<span class="token keyword">FROM</span> actor
+<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span>
+<span class="token operator">*</span>
+<span class="token keyword">FROM</span> actor
+<span class="token punctuation">;</span>
+
+<span class="token comment">-- 1. Formatting doesn't matter!</span>
+<span class="token keyword">SELECT</span>
+first_name<span class="token punctuation">,</span>
+last_name
+<span class="token keyword">FROM</span> actor
+<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span> first_name<span class="token punctuation">,</span> last_name
+<span class="token keyword">FROM</span> actor
+<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span>
+first_name<span class="token punctuation">,</span>
+last_name<span class="token punctuation">,</span>
+email
+<span class="token keyword">FROM</span> customer
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="DISTINCT"><a href="#DISTINCT" class="headerlink" title="DISTINCT"></a>DISTINCT</h2><blockquote>
+<p>쿼리 결과에서 중복된 값을 제거하여 고유한 값만을 반환하는 데 사용</p>
+</blockquote>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
+<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span>
+column_name
+<span class="token keyword">FROM</span> table_nam
+<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span>
+first_name
+<span class="token keyword">FROM</span> actor
+<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span>
+first_name
+<span class="token keyword">FROM</span> actor
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> first_name
+l
+<span class="token punctuation">;</span>
+
+<span class="token comment">-- 두 컬럼에 대해 DISTINCT</span>
+<span class="token comment">-- Note! : Distinct in terms of all selected columns!</span>
+<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span>
+first_name<span class="token punctuation">,</span>
+last_name
+<span class="token keyword">FROM</span> actor
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> first_name
+<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span>
+amount
+<span class="token keyword">FROM</span> payment
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> amount <span class="token keyword">DESC</span><span class="token punctuation">;</span>
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="ORDER-BY"><a href="#ORDER-BY" class="headerlink" title="ORDER BY"></a>ORDER BY</h2><blockquote>
+<p>쿼리 결과를 특정 열을 기준으로 정렬할 때 사용</p>
+</blockquote>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
+<span class="token keyword">SELECT</span> 
+column_name1<span class="token punctuation">,</span>
+column_name2
+<span class="token keyword">FROM</span> table_name
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> column_name1
+
+<span class="token comment">-- ASC를 default이나 명시적으로 표시하면 가독성이 높아집니다.</span>
+<span class="token keyword">SELECT</span> 
+column_name1<span class="token punctuation">,</span>
+column_name2
+<span class="token keyword">FROM</span> table_name
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> column_name1 <span class="token keyword">ASC</span>
+
+<span class="token keyword">SELECT</span> 
+column_name1<span class="token punctuation">,</span>
+column_name2
+<span class="token keyword">FROM</span> table_name
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> column_name1 <span class="token keyword">DESC</span>
+
+<span class="token keyword">SELECT</span> 
+first_name<span class="token punctuation">,</span>
+last_name
+<span class="token keyword">FROM</span> actor
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> first_name <span class="token keyword">DESC</span><span class="token punctuation">,</span> last_name <span class="token keyword">ASC</span>
+
+<span class="token keyword">SELECT</span>
+first_name<span class="token punctuation">,</span>
+last_name<span class="token punctuation">,</span>
+email
+<span class="token keyword">FROM</span> customer
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> last_name <span class="token keyword">DESC</span><span class="token punctuation">,</span> first_name <span class="token keyword">DESC</span><span class="token punctuation">;</span>
+
+<span class="token comment">-- ORDER BY를 컬럼 순서의 숫자로 쓰면 가독성이 낮아 비권장합니다. </span>
+<span class="token keyword">SELECT</span>
+first_name<span class="token punctuation">,</span>
+last_name<span class="token punctuation">,</span>
+email
+<span class="token keyword">FROM</span> customer
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> <span class="token number">2</span> <span class="token keyword">DESC</span><span class="token punctuation">,</span> <span class="token number">1</span> <span class="token keyword">DESC</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="COUNT"><a href="#COUNT" class="headerlink" title="COUNT()"></a>COUNT()</h2><blockquote>
+<p>특정 열의 레코드 수를 계산하는 데 사용</p>
+</blockquote>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
+<span class="token comment">-- more common than below </span>
+<span class="token keyword">SELECT</span>
+<span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> table_name
+
+<span class="token comment">-- another case</span>
+<span class="token comment">-- Note: COUNT()를 할 때 Null은 카운트 되지 않습니다!</span>
+<span class="token keyword">SELECT</span>
+<span class="token function">COUNT</span><span class="token punctuation">(</span>column_name<span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> table_name
+
+<span class="token keyword">SELECT</span>
+<span class="token function">COUNT</span><span class="token punctuation">(</span>first_name<span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> actor<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span>
+<span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> first_name<span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> actor<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> first_name<span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> customer<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="LIMIT"><a href="#LIMIT" class="headerlink" title="LIMIT"></a>LIMIT</h2><blockquote>
+<p>쿼리 결과에서 반환되는 행의 수를 제한하는 데 사용</p>
+</blockquote>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
+<span class="token keyword">SELECT</span>
+column_name1<span class="token punctuation">,</span>
+column_name2<span class="token punctuation">,</span>
+<span class="token keyword">FROM</span> table_name
+<span class="token keyword">LIMIT</span> n
+
+<span class="token keyword">SELECT</span>
+first_name
+<span class="token keyword">FROM</span> actor
+<span class="token keyword">LIMIT</span> <span class="token number">4</span>
+
+<span class="token keyword">SELECT</span>
+first_name
+<span class="token keyword">FROM</span> actor
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> first_name <span class="token keyword">ASC</span>
+<span class="token keyword">LIMIT</span> <span class="token number">4</span>
+
+<span class="token keyword">SELECT</span> <span class="token operator">*</span>
+<span class="token keyword">FROM</span> rental
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> rental_date <span class="token keyword">DESC</span>
+<span class="token keyword">LIMIT</span> <span class="token number">10</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h4 id="CONCAT-CONCATENATE"><a href="#CONCAT-CONCATENATE" class="headerlink" title="CONCAT (CONCATENATE)"></a>CONCAT (CONCATENATE)</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
 <span class="token keyword">SELECT</span>
 <span class="token keyword">LEFT</span><span class="token punctuation">(</span>first_name<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token keyword">LEFT</span><span class="token punctuation">(</span>last_name<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
 first_name<span class="token punctuation">,</span>
@@ -453,6 +630,52 @@ LOWER<span class="token punctuation">(</span>last_name<span class="token punctua
 <span class="token operator">OR</span> LENGTH<span class="token punctuation">(</span>last_name<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">10</span>
 <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+
+<p>출처 : <a target="_blank" rel="noopener" href="https://dog-developers.tistory.com/162/">UNION 연산 , UNION ALL 연산</a></p>
+<h2 id="UNION"><a href="#UNION" class="headerlink" title="UNION"></a>UNION</h2><blockquote>
+<p>SELECT 문들의 결과 집합을 단일 결과 집합으로 결합하며 결합 시 중복된 데이터는 제거</p>
+</blockquote>
+<ul>
+<li><p>두 개의 SELECT문 간 컬럼의 개수는 동일 (컬럼 개수가 같다)</p>
+</li>
+<li><p>해당 순서의 컬럼에는 서로 호환되는 데이터 유형 (데이터 타입이 같다)</p>
+</li>
+<li><p>정렬을 원할 시 구문 마지막 SELECT문에 ORDER BY를 사용</p>
+</li>
+<li><p>중복이 제거된다</p>
+</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> 
+  <span class="token keyword">FROM</span> soss<span class="token punctuation">.</span>ic_pcel_stdr_info
+  <span class="token keyword">WHERE</span> min_x_crd <span class="token operator">=</span> <span class="token punctuation">(</span> <span class="token keyword">SELECT</span> <span class="token function">MIN</span><span class="token punctuation">(</span>min_x_crd<span class="token punctuation">)</span> <span class="token keyword">FROM</span> SOSS<span class="token punctuation">.</span>IC_PCEL_STDR_INFO <span class="token punctuation">)</span>
+  <span class="token keyword">UNION</span>
+<span class="token keyword">SELECT</span> <span class="token operator">*</span>
+  <span class="token keyword">FROM</span> soss<span class="token punctuation">.</span>ic_pcel_stdr_info
+  <span class="token keyword">WHERE</span> min_y_crd <span class="token operator">=</span> <span class="token punctuation">(</span> <span class="token keyword">SELECT</span> <span class="token function">MIN</span><span class="token punctuation">(</span>min_y_crd<span class="token punctuation">)</span> <span class="token keyword">FROM</span> SOSS<span class="token punctuation">.</span>IC_PCEL_STDR_INFO <span class="token punctuation">)</span>
+  <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> grid_no
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="UNION-ALL"><a href="#UNION-ALL" class="headerlink" title="UNION ALL"></a>UNION ALL</h2><blockquote>
+<p>SELECT 문들의 결과 집합을 단일 결과 집합으로 결합하며 결합 시 중복된 데이터도 포함</p>
+</blockquote>
+<ul>
+<li><p>두 개의 SELECT문 간 컬럼의 개수는 동일 (컬럼 개수가 같다)</p>
+</li>
+<li><p>해당 순서의 컬럼에는 서로 호환되는 데이터 유형 (데이터 타입이 같다)</p>
+</li>
+<li><p>정렬을 원할 시 구문 마지막 SELECT문에 ORDER BY를 사용</p>
+</li>
+<li><p>중복값이 제거되지 않지만, 중복값 여부를 확인할 필요 없이 모두 합치기만 필요한 경우 속도가 더욱 빠르다</p>
+</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> 
+  <span class="token keyword">FROM</span> soss<span class="token punctuation">.</span>ic_pcel_stdr_info
+  <span class="token keyword">WHERE</span> min_x_crd <span class="token operator">=</span> <span class="token punctuation">(</span> <span class="token keyword">SELECT</span> <span class="token function">MIN</span><span class="token punctuation">(</span>min_x_crd<span class="token punctuation">)</span> <span class="token keyword">FROM</span> SOSS<span class="token punctuation">.</span>IC_PCEL_STDR_INFO <span class="token punctuation">)</span>
+<span class="token keyword">UNION</span> <span class="token keyword">ALL</span>
+<span class="token keyword">SELECT</span> <span class="token operator">*</span>
+  <span class="token keyword">FROM</span> soss<span class="token punctuation">.</span>ic_pcel_stdr_info
+  <span class="token keyword">WHERE</span> min_y_crd <span class="token operator">=</span> <span class="token punctuation">(</span> <span class="token keyword">SELECT</span> <span class="token function">MIN</span><span class="token punctuation">(</span>min_y_crd<span class="token punctuation">)</span> <span class="token keyword">FROM</span> SOSS<span class="token punctuation">.</span>IC_PCEL_STDR_INFO <span class="token punctuation">)</span>
+  <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> grid_no<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -478,7 +701,7 @@ LOWER<span class="token punctuation">(</span>last_name<span class="token punctua
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/01/19/SQL/concatenate/">http://example.com/2024/01/19/SQL/concatenate/</a>
+                    <a href="http://example.com/2024/01/16/SQL/syntax/">http://example.com/2024/01/16/SQL/syntax/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -630,12 +853,12 @@ LOWER<span class="token punctuation">(</span>last_name<span class="token punctua
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/16/SQL/count-%E1%84%86%E1%85%B5%E1%84%8B%E1%85%AA%E1%86%AB-/">
+                <a href="/2024/01/15/Linux/stream/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/sql-logo.png" class="responsive-img" alt="[SQL] basic">
+                        <img src="/images/logos/linux-logo.png" class="responsive-img" alt="Stream &amp; Redirection">
                         
-                        <span class="card-title diy-neon-red">[SQL] basic</span>
+                        <span class="card-title diy-neon-red">Stream &amp; Redirection</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -646,14 +869,14 @@ LOWER<span class="token punctuation">(</span>last_name<span class="token punctua
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-16
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-15
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/SQL/" class="post-category">
-                                    SQL
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
                                 </a>
                             
                             

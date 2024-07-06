@@ -4,20 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[SQL] basic, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="SELECT
-데이터베이스에서 데이터를 조회하기 위해 사용되는 기본적인 명령문
-
--- Syntax
-SELECT
-column_name
-FROM table_nam
-
-
-SELECT
-first_name,
-last_name
-F">
+    <meta name="keywords" content="Datahub, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="Datahub 정의
+DataHub는 메타데이터 관리, 데이터 검색 및 데이터 거버넌스를 간소화하도록 설계된 최신 데이터 카탈로그이다. 이를 통해 사용자는 데이터를 효율적으로 탐색 및 이해하고, 데이터 계보(linea">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -29,7 +18,7 @@ F">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[SQL] basic | Keyhong</title>
+    <title>Datahub | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -188,13 +177,13 @@ F">
 
     
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/sql-logo.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/datahub-logo.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [SQL] basic</h1>
+                        Datahub</h1>
                 </div>
             </div>
         </div>
@@ -219,7 +208,7 @@ F">
                         <div class="article-tag">
                             <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                                 <span class="chip bg-color">
-                                    2024-01-16</span>
+                                    2024-05-01</span>
                         </div>
                     
                     
@@ -227,15 +216,6 @@ F">
 
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/SQL/" class="post-category">
-                                SQL
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -251,177 +231,201 @@ F">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h2><blockquote>
-<p>데이터베이스에서 데이터를 조회하기 위해 사용되는 기본적인 명령문</p>
+                <h2 id="Datahub-정의"><a href="#Datahub-정의" class="headerlink" title="Datahub 정의"></a>Datahub 정의</h2><blockquote>
+<p>DataHub는 <code>메타데이터 관리</code>, <code>데이터 검색</code> 및 <code>데이터 거버넌스</code>를 간소화하도록 설계된 최신 데이터 카탈로그이다. 이를 통해 사용자는 데이터를 효율적으로 탐색 및 이해하고, <code>데이터 계보(lineage)</code>를 추적하고, 데이터 세트를 <code>프로파일링(profiling)</code>하고, 데이터 계약을 설정할 수 있다. 이 확장 가능한 메타데이터 관리 플랫폼은 개발자가 빠르게 진화하는 데이터 생태계의 복잡성을 관리하고 데이터 실무자가 조직 내에서 데이터의 총 가치를 활용할 수 있도록 구축 되었다.</p>
 </blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
-<span class="token keyword">SELECT</span>
-column_name
-<span class="token keyword">FROM</span> table_nam
+<h2 id="Quickstart"><a href="#Quickstart" class="headerlink" title="Quickstart"></a>Quickstart</h2><h3 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h3><p><code>Python 3.8+    </code> 설치되어야 한다. (Check using python3 –version).</p>
+<h3 id="Docker-Resource-Allocation"><a href="#Docker-Resource-Allocation" class="headerlink" title="Docker Resource Allocation"></a>Docker Resource Allocation</h3><ul>
+<li>Docker 엔진에 충분한 하드웨어 리소스를 할당이 필요하다.</li>
+<li>테스트 및 확인된 구성: <code>CPU 2개</code>, <code>RAM 8GB</code>, <code>스왑 영역 2GB</code>, <code>디스크 공간 10GB</code>.</li>
+</ul>
+<h3 id="Install-the-DataHub-CLI"><a href="#Install-the-DataHub-CLI" class="headerlink" title="Install the DataHub CLI"></a>Install the DataHub CLI</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># poetry 패키지 추가 (acryl-datahub)</span>
+$ poetry <span class="token function">add</span> acryl-datahub
+
+<span class="token comment"># poetry shell 실행 (가상환경 실행)</span>
+$ poetry shell
+
+<span class="token comment"># datahub 버전 확인</span>
+$ datahub version
+acryl-datahub, version <span class="token number">0.13</span>.3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="DataHub-Quickstart-Stop-DataHub"><a href="#DataHub-Quickstart-Stop-DataHub" class="headerlink" title="DataHub Quickstart &amp; Stop DataHub"></a>DataHub Quickstart &amp; Stop DataHub</h3><p><strong>Note</strong>: <code>맥 M1/M2</code>과 같이 Apple Silicon이 탑재된 Mac 컴퓨터에서는 <code>no matching manifest for linux/arm64/v8 in the manifest list entries.</code> 오류가 나타날 수 있다. 이 문제를 해결하려면 CLI에 옵션을 <code>--arch</code> 옵션을 실행하여 기본 아키텍처를 재정의 해야 한다.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Start DataHub</span>
+$ datahub <span class="token function">docker</span> quickstart
+
+<span class="token comment"># Start DataHub (m1 silicon)</span>
+$ datahub <span class="token function">docker</span> quickstart <span class="token parameter variable">--arch</span> m1
+
+<span class="token comment"># Stop datahub </span>
+$ datahub <span class="token function">docker</span> quickstart <span class="token parameter variable">--stop</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Open-Web-UI"><a href="#Open-Web-UI" class="headerlink" title="Open Web UI"></a>Open Web UI</h3><table>
+<thead>
+<tr>
+<th>Web UI Host</th>
+<th>Username</th>
+<th>Password</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="http://localhost:9002/">http://localhost:9002</a></td>
+<td>datahub</td>
+<td>datahub</td>
+</tr>
+</tbody></table>
+<h3 id="Sample-data-Ingestion"><a href="#Sample-data-Ingestion" class="headerlink" title="Sample data Ingestion"></a>Sample data Ingestion</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ datahub <span class="token function">docker</span> ingest-sample-data<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="basic-cli-commands"><a href="#basic-cli-commands" class="headerlink" title="basic cli commands"></a>basic cli commands</h3><h4 id="Reset-Datahub"><a href="#Reset-Datahub" class="headerlink" title="Reset Datahub"></a>Reset Datahub</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># datahub의 모든 상태를 초기화하려면(예: 데이터를 ingestion 하기 전에) CLI의 nuke 명령어를 사용할 수 있다.</span>
+$ datahub <span class="token function">docker</span> nuke<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h4 id="Customize-installation"><a href="#Customize-installation" class="headerlink" title="Customize installation"></a>Customize installation</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 사용자 정의 docker compose 파일을 사용하려는 경우</span>
+$ datahub <span class="token function">docker</span> quickstart --quickstart-compose-file <span class="token operator">&lt;</span>path to compose file<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h4 id="Back-up-DataHub-Restore-DataHub"><a href="#Back-up-DataHub-Restore-DataHub" class="headerlink" title="Back up DataHub &amp; Restore DataHub"></a>Back up DataHub &amp; Restore DataHub</h4><p>quickstart 이미지는 프로덕션 인스턴스로 사용하지 않는 것이 좋다. 그러나 현재 빠른 시작 상태를 백업하려는 경우(예: 곧 회사에 대한 데모가 있고 나중에 복원할 수 있도록 빠른 시작 데이터의 복사본을 만들고 싶은 경우) 빠른 시작에 <code>--backup</code> 플래그를 제공한다.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Back up (default)</span>
+datahub <span class="token function">docker</span> quickstart <span class="token parameter variable">--backup</span>
+
+<span class="token comment"># Back up to custom directory</span>
+datahub <span class="token function">docker</span> quickstart <span class="token parameter variable">--backup</span> --backup-file <span class="token operator">&lt;</span>path to backup file<span class="token operator">></span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
-<span class="token keyword">SELECT</span>
-first_name<span class="token punctuation">,</span>
-last_name
-<span class="token keyword">FROM</span> actor
-<span class="token punctuation">;</span>
 
-<span class="token keyword">SELECT</span>
-<span class="token operator">*</span>
-<span class="token keyword">FROM</span> actor
-<span class="token punctuation">;</span>
 
-<span class="token comment">-- 1. Formatting doesn't matter!</span>
-<span class="token keyword">SELECT</span>
-first_name<span class="token punctuation">,</span>
-last_name
-<span class="token keyword">FROM</span> actor
-<span class="token punctuation">;</span>
+<h2 id="Datahub-Component"><a href="#Datahub-Component" class="headerlink" title="Datahub Component"></a>Datahub Component</h2><h3 id="프로세스-디펜던시"><a href="#프로세스-디펜던시" class="headerlink" title="프로세스 디펜던시"></a>프로세스 디펜던시</h3><p>띄어지는 프로세스가 많아 DAG로 디펜던시(dependency)의 순서를 표시해보았다.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">elasticsearch              <span class="token operator">>></span> elasticsearch-setup  <span class="token operator">>></span>  datahub-upgrade  <span class="token operator">>></span>  datahub-gms  <span class="token operator">>></span>  <span class="token punctuation">[</span> datahub-actions, datahub-frontend-react <span class="token punctuation">]</span>
+zookeeper      <span class="token operator">>></span> broker   <span class="token operator">>></span> kafka-setup          <span class="token operator">>></span>  datahub-upgrade  <span class="token operator">>></span>  datahub-gms  <span class="token operator">>></span>  <span class="token punctuation">[</span> datahub-actions, datahub-frontend-react <span class="token punctuation">]</span>
+mysql                      <span class="token operator">>></span> mysql-setup          <span class="token operator">>></span>  datahub-upgrade  <span class="token operator">>></span>  datahub-gms  <span class="token operator">>></span>  <span class="token punctuation">[</span> datahub-actions, datahub-frontend-react <span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<span class="token keyword">SELECT</span> first_name<span class="token punctuation">,</span> last_name
-<span class="token keyword">FROM</span> actor
-<span class="token punctuation">;</span>
-
-<span class="token keyword">SELECT</span>
-first_name<span class="token punctuation">,</span>
-last_name<span class="token punctuation">,</span>
-email
-<span class="token keyword">FROM</span> customer
-<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="DISTINCT"><a href="#DISTINCT" class="headerlink" title="DISTINCT"></a>DISTINCT</h2><blockquote>
-<p>쿼리 결과에서 중복된 값을 제거하여 고유한 값만을 반환하는 데 사용</p>
+<h3 id="프로세스-설명"><a href="#프로세스-설명" class="headerlink" title="프로세스 설명"></a>프로세스 설명</h3><table>
+<thead>
+<tr>
+<th>Docker Service Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>datahub-upgrade</td>
+<td>DataHub 플랫폼의 업그레이드와 마이그레이션을 관리</td>
+</tr>
+<tr>
+<td>datahub-gms</td>
+<td>DataHub의 메타데이터를 저장하고 관리하는 백엔드 서비스</td>
+</tr>
+<tr>
+<td>datahub-actions</td>
+<td>특정 이벤트 발생 시 자동화된 작업을 수행</td>
+</tr>
+<tr>
+<td>datahub-frontend-react</td>
+<td>DataHub의 웹 프론트엔드로, React 기반으로 구현</td>
+</tr>
+</tbody></table>
+<h4 id="1-DataHub-Actions"><a href="#1-DataHub-Actions" class="headerlink" title="1. DataHub Actions"></a>1. DataHub Actions</h4><blockquote>
+<p>DataHub Actions는 DataHub에서 <code>특정 이벤트가 발생할 때 자동화된 작업을 수행</code>하는 기능</p>
 </blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
-<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span>
-column_name
-<span class="token keyword">FROM</span> table_nam
-<span class="token punctuation">;</span>
-
-<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span>
-first_name
-<span class="token keyword">FROM</span> actor
-<span class="token punctuation">;</span>
-
-<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span>
-first_name
-<span class="token keyword">FROM</span> actor
-<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> first_name
-l
-<span class="token punctuation">;</span>
-
-<span class="token comment">-- 두 컬럼에 대해 DISTINCT</span>
-<span class="token comment">-- Note! : Distinct in terms of all selected columns!</span>
-<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span>
-first_name<span class="token punctuation">,</span>
-last_name
-<span class="token keyword">FROM</span> actor
-<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> first_name
-<span class="token punctuation">;</span>
-
-<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span>
-amount
-<span class="token keyword">FROM</span> payment
-<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> amount <span class="token keyword">DESC</span><span class="token punctuation">;</span>
-<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<h2 id="ORDER-BY"><a href="#ORDER-BY" class="headerlink" title="ORDER BY"></a>ORDER BY</h2><blockquote>
-<p>쿼리 결과를 특정 열을 기준으로 정렬할 때 사용</p>
+<table>
+<thead>
+<tr>
+<th>Main Role</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>이벤트 트리거</td>
+<td>DataHub 내에서 데이터셋 생성, 수정, 삭제 등의 이벤트 발생 시 트리거한다.</td>
+</tr>
+<tr>
+<td>작업 정의 및 실행</td>
+<td>이벤트에 반응하여 자동으로 수행될 작업을 정의하고 실행한다. 예를 들어, 데이터셋이 수정될 때 Slack 알림을 보내거나 데이터 품질 검사를 실행할 수 있다.</td>
+</tr>
+<tr>
+<td>통합성</td>
+<td>외부 시스템과 쉽게 통합하여 다양한 자동화 작업을 수행할 수 있다. 예를 들어, Jira 티켓 생성, 이메일 알림, Slack 메시지 전송 등이 가능하다.</td>
+</tr>
+<tr>
+<td>모니터링 및 로깅</td>
+<td>실행된 작업을 모니터링하고 로깅하여 문제 발생 시 해결할 수 있도록 지원한다.</td>
+</tr>
+</tbody></table>
+<h4 id="2-DataHub-Upgrade"><a href="#2-DataHub-Upgrade" class="headerlink" title="2. DataHub Upgrade"></a>2. DataHub Upgrade</h4><blockquote>
+<p>DataHub Upgrade는 DataHub <code>플랫폼의 업그레이드 및 마이그레이션을 관리</code>하는 도구</p>
 </blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
-<span class="token keyword">SELECT</span> 
-column_name1<span class="token punctuation">,</span>
-column_name2
-<span class="token keyword">FROM</span> table_name
-<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> column_name1
-
-<span class="token comment">-- ASC를 default이나 명시적으로 표시하면 가독성이 높아집니다.</span>
-<span class="token keyword">SELECT</span> 
-column_name1<span class="token punctuation">,</span>
-column_name2
-<span class="token keyword">FROM</span> table_name
-<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> column_name1 <span class="token keyword">ASC</span>
-
-<span class="token keyword">SELECT</span> 
-column_name1<span class="token punctuation">,</span>
-column_name2
-<span class="token keyword">FROM</span> table_name
-<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> column_name1 <span class="token keyword">DESC</span>
-
-<span class="token keyword">SELECT</span> 
-first_name<span class="token punctuation">,</span>
-last_name
-<span class="token keyword">FROM</span> actor
-<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> first_name <span class="token keyword">DESC</span><span class="token punctuation">,</span> last_name <span class="token keyword">ASC</span>
-
-<span class="token keyword">SELECT</span>
-first_name<span class="token punctuation">,</span>
-last_name<span class="token punctuation">,</span>
-email
-<span class="token keyword">FROM</span> customer
-<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> last_name <span class="token keyword">DESC</span><span class="token punctuation">,</span> first_name <span class="token keyword">DESC</span><span class="token punctuation">;</span>
-
-<span class="token comment">-- ORDER BY를 컬럼 순서의 숫자로 쓰면 가독성이 낮아 비권장합니다. </span>
-<span class="token keyword">SELECT</span>
-first_name<span class="token punctuation">,</span>
-last_name<span class="token punctuation">,</span>
-email
-<span class="token keyword">FROM</span> customer
-<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> <span class="token number">2</span> <span class="token keyword">DESC</span><span class="token punctuation">,</span> <span class="token number">1</span> <span class="token keyword">DESC</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="COUNT"><a href="#COUNT" class="headerlink" title="COUNT()"></a>COUNT()</h2><blockquote>
-<p>특정 열의 레코드 수를 계산하는 데 사용</p>
+<table>
+<thead>
+<tr>
+<th>Main Role</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>데이터베이스 스키마 마이그레이션</td>
+<td>DataHub의 메타데이터 저장소(DB)의 스키마를 최신 버전으로 마이그레이션 한다.</td>
+</tr>
+<tr>
+<td>버전 관리</td>
+<td>DataHub의 다양한 컴포넌트의 버전을 관리하고, 업그레이드 시 호환성을 보장한다.</td>
+</tr>
+<tr>
+<td>자동화된 업그레이드 프로세스</td>
+<td>업그레이드 과정이 자동화되어, 사용자가 최소한의 개입으로 DataHub를 최신 버전으로 유지할 수 있다.</td>
+</tr>
+</tbody></table>
+<h4 id="3-DataHub-Frontend-React"><a href="#3-DataHub-Frontend-React" class="headerlink" title="3. DataHub Frontend React"></a>3. DataHub Frontend React</h4><blockquote>
+<p>DataHub Frontend React는 DataHub의 <code>웹 프론트엔드</code>를 구현한 React 기반 애플리케이션</p>
 </blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
-<span class="token comment">-- more common than below </span>
-<span class="token keyword">SELECT</span>
-<span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span>
-<span class="token keyword">FROM</span> table_name
-
-<span class="token comment">-- another case</span>
-<span class="token comment">-- Note: COUNT()를 할 때 Null은 카운트 되지 않습니다!</span>
-<span class="token keyword">SELECT</span>
-<span class="token function">COUNT</span><span class="token punctuation">(</span>column_name<span class="token punctuation">)</span>
-<span class="token keyword">FROM</span> table_name
-
-<span class="token keyword">SELECT</span>
-<span class="token function">COUNT</span><span class="token punctuation">(</span>first_name<span class="token punctuation">)</span>
-<span class="token keyword">FROM</span> actor<span class="token punctuation">;</span>
-
-<span class="token keyword">SELECT</span>
-<span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> first_name<span class="token punctuation">)</span>
-<span class="token keyword">FROM</span> actor<span class="token punctuation">;</span>
-
-<span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> first_name<span class="token punctuation">)</span>
-<span class="token keyword">FROM</span> customer<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<h2 id="LIMIT"><a href="#LIMIT" class="headerlink" title="LIMIT"></a>LIMIT</h2><blockquote>
-<p>쿼리 결과에서 반환되는 행의 수를 제한하는 데 사용</p>
+<table>
+<thead>
+<tr>
+<th>Main Role</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>유저 인터페이스</td>
+<td>사용자에게 직관적인 UI를 제공하여 데이터셋 검색, 탐색, 필터링 등을 용이하게 한다.</td>
+</tr>
+<tr>
+<td>데이터 시각화</td>
+<td>데이터 계보, 메타데이터 정보 등을 시각화하여 사용자에게 제공한다.</td>
+</tr>
+<tr>
+<td>사용자 정의 가능성</td>
+<td>React 기반으로 쉽게 커스터마이징 및 확장이 가능하다.</td>
+</tr>
+<tr>
+<td>API 통신</td>
+<td>DataHub의 백엔드(GMS)와 통신하여 실시간으로 데이터를 가져오고 표시한다.</td>
+</tr>
+</tbody></table>
+<h4 id="4-DataHub-GMS-Graph-Metadata-Service"><a href="#4-DataHub-GMS-Graph-Metadata-Service" class="headerlink" title="4. DataHub GMS (Graph Metadata Service)"></a>4. DataHub GMS (Graph Metadata Service)</h4><blockquote>
+<p>DataHub GMS는 DataHub의 백엔드 서비스로, <code>메타데이터를 저장하고 관리</code>하는 핵심 컴포넌트</p>
 </blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
-<span class="token keyword">SELECT</span>
-column_name1<span class="token punctuation">,</span>
-column_name2<span class="token punctuation">,</span>
-<span class="token keyword">FROM</span> table_name
-<span class="token keyword">LIMIT</span> n
-
-<span class="token keyword">SELECT</span>
-first_name
-<span class="token keyword">FROM</span> actor
-<span class="token keyword">LIMIT</span> <span class="token number">4</span>
-
-<span class="token keyword">SELECT</span>
-first_name
-<span class="token keyword">FROM</span> actor
-<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> first_name <span class="token keyword">ASC</span>
-<span class="token keyword">LIMIT</span> <span class="token number">4</span>
-
-<span class="token keyword">SELECT</span> <span class="token operator">*</span>
-<span class="token keyword">FROM</span> rental
-<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> rental_date <span class="token keyword">DESC</span>
-<span class="token keyword">LIMIT</span> <span class="token number">10</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>Main Role</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>메타데이터 저장소</td>
+<td>다양한 데이터 소스의 메타데이터를 저장하고 관리한다.</td>
+</tr>
+<tr>
+<td>API 제공</td>
+<td>메타데이터 검색, 업데이트, 삭제 등을 위한 API를 제공한다.</td>
+</tr>
+<tr>
+<td>데이터 계보 관리</td>
+<td>데이터셋 간의 관계와 의존성을 추적하여 데이터 계보를 관리한다.</td>
+</tr>
+<tr>
+<td>확장성</td>
+<td>확장 가능한 아키텍처를 통해 대규모 메타데이터를 효과적으로 관리할 수 있다.</td>
+</tr>
+</tbody></table>
 
                 
             </div>
@@ -448,7 +452,7 @@ first_name
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/01/16/SQL/count-%E1%84%86%E1%85%B5%E1%84%8B%E1%85%AA%E1%86%AB-/">http://example.com/2024/01/16/SQL/count-%E1%84%86%E1%85%B5%E1%84%8B%E1%85%AA%E1%86%AB-/</a>
+                    <a href="http://example.com/2024/05/01/Datahub/datahub/">http://example.com/2024/05/01/Datahub/datahub/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -560,12 +564,12 @@ first_name
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/19/SQL/concatenate/">
+                <a href="/2024/06/01/Open%20Source%20Docs/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/sql-logo.png" class="responsive-img" alt="[SQL] String Functions">
+                        <img src="/images/logos/open-source-logo.png" class="responsive-img" alt="Data Engineering Open Source Study">
                         
-                        <span class="card-title diy-neon-red">[SQL] String Functions</span>
+                        <span class="card-title diy-neon-red">Data Engineering Open Source Study</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -576,16 +580,12 @@ first_name
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-19
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-06-01
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/SQL/" class="post-category">
-                                    SQL
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Keyhong
                             
                         </span>
                     </div>
@@ -600,12 +600,12 @@ first_name
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/15/Linux/stream/">
+                <a href="/2024/04/01/AWS/AWS%20Elastic%20Beanstalk/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/linux-logo.png" class="responsive-img" alt="Stream &amp; Redirection">
+                        <img src="/images/logos/aws-logo.png" class="responsive-img" alt="AWS Elastic Beanstalk">
                         
-                        <span class="card-title diy-neon-red">Stream &amp; Redirection</span>
+                        <span class="card-title diy-neon-red">AWS Elastic Beanstalk</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -616,14 +616,14 @@ first_name
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-04-01
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
+                            <a href="/categories/AWS/" class="post-category">
+                                    AWS
                                 </a>
                             
                             

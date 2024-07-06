@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Common Config 정리, Data Engineering,Data Analysis,Python Backend">
+    <meta name="keywords" content="일반적인 컨피그 옵션 정리, Data Engineering,Data Analysis,Python Backend">
     <meta name="description" content="Airflow Config에어플로우를 사용하며, Excutor별로 중요하고 유용한 config 정리하였다. airflow config 설정은 airflow.cfg에서 default 값을 보고 변경할 수 있다. air">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Common Config 정리 | Keyhong</title>
+    <title>일반적인 컨피그 옵션 정리 | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -182,7 +182,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        Common Config 정리</h1>
+                        일반적인 컨피그 옵션 정리</h1>
                 </div>
             </div>
         </div>
@@ -239,8 +239,8 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Airflow-Config"><a href="#Airflow-Config" class="headerlink" title="Airflow Config"></a>Airflow Config</h2><p>에어플로우를 사용하며, Excutor별로 중요하고 유용한 config 정리하였다. airflow config 설정은 airflow.cfg에서 default 값을 보고 변경할 수 있다. airflow 설치 후 아무 작업을 하지 않았다면, default_airflow.cfg 라는 파일명으로 존재하는데, 파일명으로 airflow.cfg 로 바꿔서 사용하면 된다.<br> <br>기본적으로 airflow.cfg 파일을 읽어 들여 default value를 설정하지만, 특정 dag나 task별로 config 설정을 다르게 하고 싶은 경우도 있을 것이다. 그럴 때는 dag.py에서 class(DAG, Operator)내 파라미터를 지정(파라미터가 많기 때문에 없는 것은 default_agrs에 “key: value”의 딕셔너리 인자로 넣을 수 있다.)함으로써 실행하는 Context에 변화를 줄 수 있습니다.</p>
-<h2 id="Common-Conifg"><a href="#Common-Conifg" class="headerlink" title="Common Conifg"></a>Common Conifg</h2><p>어떤 executor를 사용하던 공통적으로 중요하다고 생각되는 config들을 정리하였습니다. airflow.cfg는 단일 파일으로써 <code>executor</code> config 값에 따라 읽는 config 값들이 달라질 수 있습니다. 하지만 <code>executor</code>의 변화에도 config 파일이 분리되어 있지 않고, 단일 airflow.cfg 파일을 읽기 때문에 사용자가 어느 어떤 executor를 사용하던 공통적으로 중요한 값들은 미리 정리해놓는 게 좋습니다. 아래는 그에 대한 config 값들과 </p>
+                <h2 id="Airflow-Config"><a href="#Airflow-Config" class="headerlink" title="Airflow Config"></a>Airflow Config</h2><p>에어플로우를 사용하며, Excutor별로 중요하고 유용한 config 정리하였다. airflow config 설정은 airflow.cfg에서 default 값을 보고 변경할 수 있다. airflow 설치 후 아무 작업을 하지 않았다면, default_airflow.cfg 라는 파일명으로 존재하는데, 파일명으로 airflow.cfg 로 바꿔서 사용하면 된다.<br> <br>기본적으로 airflow.cfg 파일을 읽어 들여 default value를 설정하지만, 특정 dag나 task별로 config 설정을 다르게 하고 싶은 경우도 있을 것이다. 그럴 때는 dag.py에서 class(DAG, Operator)내 파라미터를 지정(파라미터가 많기 때문에 없는 것은 default_agrs에 “key: value”의 딕셔너리 인자로 넣을 수 있다.)함으로써 실행하는 Context에 변화를 줄 수 있다.</p>
+<h2 id="Common-Conifg"><a href="#Common-Conifg" class="headerlink" title="Common Conifg"></a>Common Conifg</h2><p>어떤 executor를 사용하던 공통적으로 중요하다고 생각되는 config들을 정리하였다. airflow.cfg는 단일 파일으로써 <code>executor</code> config 값에 따라 읽는 config 값들이 달라질 수 있다. 하지만 <code>executor</code>의 변화에도 config 파일이 분리되어 있지 않고, 단일 airflow.cfg 파일을 읽기 때문에 사용자가 어느 어떤 executor를 사용하던 공통적으로 중요한 값들은 미리 정리해놓는 게 좋다. 아래는 그에 대한 config 값들을 풀어보았다.</p>
 <pre class="line-numbers language-ini" data-language="ini"><div class="caption"><span>airflow.cfg</span></div><code class="language-ini"><span class="token comment"># Airflow Pipeline이 있는 폴더. 절대경로로 지정</span>
 <span class="token key attr-name">dags_folder</span> <span class="token punctuation">=</span> <span class="token value attr-value">$&#123;AIRFLOW_HOME&#125;/dags</span>
 
@@ -249,7 +249,7 @@
 <span class="token key attr-name">executor</span> <span class="token punctuation">=</span> <span class="token value attr-value">SequentialExecutor</span>
 
 <span class="token comment"># 메타데이터 DBMS에 대한 SqlAlchemy 연결 문자열</span>
-<span class="token comment"># executor, database에 따라 달라지며 백엔드로 사용할 metadata db에 커넥션 방법은 아래 도큐먼트를 참조하여 구축할 수 있습니다.</span>
+<span class="token comment"># executor, database에 따라 달라지며 백엔드로 사용할 metadata db에 커넥션 방법은 아래 도큐먼트를 참조하여 구축할 수 있다.</span>
 <span class="token comment"># https://airflow.apache.org/docs/apache-airflow/stable/howto/set-up-database.html#database-uri)</span>
 <span class="token key attr-name">sql_alchemy_conn</span> <span class="token punctuation">=</span> <span class="token value attr-value">sqlite:///$&#123;AIRFLOW_HOME&#125;/airflow.db</span>
 
@@ -281,7 +281,7 @@
 <span class="token key attr-name">logging_level</span> <span class="token punctuation">=</span> <span class="token value attr-value">INFO</span>
 
 <span class="token comment"># 저장되는 로그 파일의 이름 템플릿입니다.</span>
-<span class="token comment">## &#123;&#123; &#125;&#125;는 jinja-template이며, config처럼 미리 정의한 방법을 실행해 정의한 값을 읽습니다.</span>
+<span class="token comment">## &#123;&#123; &#125;&#125;는 jinja-template이며, config처럼 미리 정의한 방법을 실행해 정의한 값을 읽다.</span>
 <span class="token key attr-name">log_filename_template</span> <span class="token punctuation">=</span> <span class="token value attr-value">dag_id=&#123;&#123;&#123;&#123; ti.dag_id &#125;&#125;&#125;&#125;/run_id=&#123;&#123;&#123;&#123; ti.run_id &#125;&#125;&#125;&#125;/task_id=&#123;&#123;&#123;&#123; ti.task_id &#125;&#125;&#125;&#125;/&#123;&#123;%% if ti.map_index >= 0 %%&#125;&#125;map_index=&#123;&#123;&#123;&#123; ti.map_index &#125;&#125;&#125;&#125;/&#123;&#123;%% endif %%&#125;&#125;attempt=&#123;&#123;&#123;&#123; try_number &#125;&#125;&#125;&#125;.log</span>
 
 <span class="token comment"># 스케줄러당 동시에 실행할 수 있는 최대 작업 인스턴스 수 </span>
@@ -427,12 +427,12 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2023/08/20/SQL/psql-command/">
+                <a href="/2023/08/01/Airflow/airflow-config/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/postgres-logo.png" class="responsive-img" alt="[Postgresql] psql cli">
+                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="airflow.cfg 풀어보기">
                         
-                        <span class="card-title diy-neon-red">[Postgresql] psql cli</span>
+                        <span class="card-title diy-neon-red">airflow.cfg 풀어보기</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -443,14 +443,14 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-08-20
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-08-01
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Postgresql/" class="post-category">
-                                    Postgresql
+                            <a href="/categories/Airflow/" class="post-category">
+                                    Airflow
                                 </a>
                             
                             
@@ -467,12 +467,12 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/08/01/Airflow/Airflow%20Docs%20Index/">
+                <a href="/2023/08/01/Airflow/basic-comand/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="Airflow Docs Index">
+                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="자주 사용하는 CLI 정리">
                         
-                        <span class="card-title diy-neon-red">Airflow Docs Index</span>
+                        <span class="card-title diy-neon-red">자주 사용하는 CLI 정리</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -487,8 +487,12 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Keyhong
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Airflow/" class="post-category">
+                                    Airflow
+                                </a>
+                            
                             
                         </span>
                     </div>
