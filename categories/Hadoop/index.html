@@ -220,20 +220,20 @@
                 </a>
                 
                 
-                <a href="/categories/AWS/" title="AWS: 10">
+                <a href="/categories/Data-Architecture/" title="Data Architecture: 6">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F5EEF8;">AWS
-                        <span class="tag-length">10</span>
+                            style="background-color: #F5EEF8;">Data Architecture
+                        <span class="tag-length">6</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/Data-Architecture/" title="Data Architecture: 6">
+                <a href="/categories/AWS/" title="AWS: 10">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D5F5E3;">Data Architecture
-                        <span class="tag-length">6</span>
+                            style="background-color: #D5F5E3;">AWS
+                        <span class="tag-length">10</span>
                     </span>
                 </a>
                 
@@ -292,19 +292,10 @@
                 </a>
                 
                 
-                <a href="/categories/Kafka/" title="Kafka: 5">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #85C1E9;">Kafka
-                        <span class="tag-length">5</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/Git/" title="Git: 3">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F8C471;">Git
+                            style="background-color: #85C1E9;">Git
                         <span class="tag-length">3</span>
                     </span>
                 </a>
@@ -313,17 +304,17 @@
                 <a href="/categories/Hadoop/" title="Hadoop: 13">
                     <span class="chip center-align waves-effect waves-light
                              chip-active "
-                            style="background-color: #F9E79F;">Hadoop
+                            style="background-color: #F8C471;">Hadoop
                         <span class="tag-length">13</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/Kubernetes/" title="Kubernetes: 17">
+                <a href="/categories/Kafka/" title="Kafka: 5">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D5F5E3;">Kubernetes
-                        <span class="tag-length">17</span>
+                            style="background-color: #F9E79F;">Kafka
+                        <span class="tag-length">5</span>
                     </span>
                 </a>
                 
@@ -333,6 +324,15 @@
                              chip-default "
                             style="background-color: #F8F9F9;">Hive
                         <span class="tag-length">16</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Kubernetes/" title="Kubernetes: 17">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #D5F5E3;">Kubernetes
+                        <span class="tag-length">17</span>
                     </span>
                 </a>
                 
@@ -364,24 +364,6 @@
                 </a>
                 
                 
-                <a href="/categories/SQL/" title="SQL: 6">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #A3E4D7;">SQL
-                        <span class="tag-length">6</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/Postgresql/" title="Postgresql: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #85C1E9;">Postgresql
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/Redis/" title="Redis: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -391,11 +373,29 @@
                 </a>
                 
                 
+                <a href="/categories/SQL/" title="SQL: 6">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #A3E4D7;">SQL
+                        <span class="tag-length">6</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/categories/Spark/" title="Spark: 20">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             style="background-color: #FFF;">Spark
                         <span class="tag-length">20</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Postgresql/" title="Postgresql: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #85C1E9;">Postgresql
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -727,18 +727,26 @@ MapReduce 성능을 높이기 위한 시스템이다.
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/10/01/Hadoop/hadoop3-docker-installation/">
+                    <a href="/2023/10/01/Hadoop/hadoop-3/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="Hadoop3 Journal HA Docker-Compose 구축">
+                            <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="Hadoop3">
                             
-                            <span class="card-title diy-neon-red">Hadoop3 Journal HA Docker-Compose 구축</span>
+                            <span class="card-title diy-neon-red">Hadoop3</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Background그간 인터넷에 무수히 많은 hadoop cluster를 구축하는 글을 보았습니다. 그 동안 hadoop을 cluster mode로 구축하는 것을 미뤄오다 이번에 docker로 hadoop3 jour
+                                Hadoop 2.0 새로운 특징
+네임노드 실패에 대한 고가용성(HA)를 보장
+
+네임노드 filling up으로 Federation 기능이 추가
+
+블록 사이즈가 64MB에서 128MB로 변경
+
+
+Hadoop 3.0 새
                             
                         </div>
                         <div class="publish-info">
@@ -801,26 +809,18 @@ MapReduce 성능을 높이기 위한 시스템이다.
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/10/01/Hadoop/hadoop-3/">
+                    <a href="/2023/10/01/Hadoop/hadoop3-docker-installation/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="Hadoop3">
+                            <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="Hadoop3 Journal HA Docker-Compose 구축">
                             
-                            <span class="card-title diy-neon-red">Hadoop3</span>
+                            <span class="card-title diy-neon-red">Hadoop3 Journal HA Docker-Compose 구축</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Hadoop 2.0 새로운 특징
-네임노드 실패에 대한 고가용성(HA)를 보장
-
-네임노드 filling up으로 Federation 기능이 추가
-
-블록 사이즈가 64MB에서 128MB로 변경
-
-
-Hadoop 3.0 새
+                                Background그간 인터넷에 무수히 많은 hadoop cluster를 구축하는 글을 보았습니다. 그 동안 hadoop을 cluster mode로 구축하는 것을 미뤄오다 이번에 docker로 hadoop3 jour
                             
                         </div>
                         <div class="publish-info">

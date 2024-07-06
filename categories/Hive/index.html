@@ -220,20 +220,20 @@
                 </a>
                 
                 
-                <a href="/categories/AWS/" title="AWS: 10">
+                <a href="/categories/Data-Architecture/" title="Data Architecture: 6">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F5EEF8;">AWS
-                        <span class="tag-length">10</span>
+                            style="background-color: #F5EEF8;">Data Architecture
+                        <span class="tag-length">6</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/Data-Architecture/" title="Data Architecture: 6">
+                <a href="/categories/AWS/" title="AWS: 10">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D5F5E3;">Data Architecture
-                        <span class="tag-length">6</span>
+                            style="background-color: #D5F5E3;">AWS
+                        <span class="tag-length">10</span>
                     </span>
                 </a>
                 
@@ -292,19 +292,10 @@
                 </a>
                 
                 
-                <a href="/categories/Kafka/" title="Kafka: 5">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #85C1E9;">Kafka
-                        <span class="tag-length">5</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/Git/" title="Git: 3">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F8C471;">Git
+                            style="background-color: #85C1E9;">Git
                         <span class="tag-length">3</span>
                     </span>
                 </a>
@@ -313,17 +304,17 @@
                 <a href="/categories/Hadoop/" title="Hadoop: 13">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F9E79F;">Hadoop
+                            style="background-color: #F8C471;">Hadoop
                         <span class="tag-length">13</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/Kubernetes/" title="Kubernetes: 17">
+                <a href="/categories/Kafka/" title="Kafka: 5">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D5F5E3;">Kubernetes
-                        <span class="tag-length">17</span>
+                            style="background-color: #F9E79F;">Kafka
+                        <span class="tag-length">5</span>
                     </span>
                 </a>
                 
@@ -333,6 +324,15 @@
                              chip-active "
                             style="background-color: #F8F9F9;">Hive
                         <span class="tag-length">16</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Kubernetes/" title="Kubernetes: 17">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #D5F5E3;">Kubernetes
+                        <span class="tag-length">17</span>
                     </span>
                 </a>
                 
@@ -364,24 +364,6 @@
                 </a>
                 
                 
-                <a href="/categories/SQL/" title="SQL: 6">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #A3E4D7;">SQL
-                        <span class="tag-length">6</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/Postgresql/" title="Postgresql: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #85C1E9;">Postgresql
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/Redis/" title="Redis: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -391,11 +373,29 @@
                 </a>
                 
                 
+                <a href="/categories/SQL/" title="SQL: 6">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #A3E4D7;">SQL
+                        <span class="tag-length">6</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/categories/Spark/" title="Spark: 20">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             style="background-color: #FFF;">Spark
                         <span class="tag-length">20</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Postgresql/" title="Postgresql: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #85C1E9;">Postgresql
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -521,21 +521,20 @@ ALTER TABLE
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/11/01/Hive/hive-installation/">
+                    <a href="/2023/11/01/Hive/hive-explode/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/hive-logo.png" class="responsive-img" alt="Installation">
+                            <img src="/images/logos/hive-logo.png" class="responsive-img" alt="Explode &amp; Lateral View">
                             
-                            <span class="card-title diy-neon-red">Installation</span>
+                            <span class="card-title diy-neon-red">Explode &amp; Lateral View</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Hive 설치하기
-하이브는 사용자의 워크스테이션에서 실행, 작성된 SQL 쿼리는 일련의 맵리듀스 잡으로 변환되어 하둡클러스터에서 구동
+                                Explode()컬럼의 값에 있는 배열의 모든 요소를 별도의 행으로 생성한다. 데이터가 많으면 행이 무수히 많아져 크기가 급속도로 커지므로 사용시에 항상 Out Of Memory 에러에 주의가 필요하다.
 
-HDFS에 저장된 데이터(directory&#x2F;file)에 구조(Schem
+-- 기본
                             
                         </div>
                         <div class="publish-info">
@@ -561,20 +560,21 @@ HDFS에 저장된 데이터(directory&#x2F;file)에 구조(Schem
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/11/01/Hive/hive-explode/">
+                    <a href="/2023/11/01/Hive/hive-installation/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/hive-logo.png" class="responsive-img" alt="Explode &amp; Lateral View">
+                            <img src="/images/logos/hive-logo.png" class="responsive-img" alt="Installation">
                             
-                            <span class="card-title diy-neon-red">Explode &amp; Lateral View</span>
+                            <span class="card-title diy-neon-red">Installation</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Explode()컬럼의 값에 있는 배열의 모든 요소를 별도의 행으로 생성한다. 데이터가 많으면 행이 무수히 많아져 크기가 급속도로 커지므로 사용시에 항상 Out Of Memory 에러에 주의가 필요하다.
+                                Hive 설치하기
+하이브는 사용자의 워크스테이션에서 실행, 작성된 SQL 쿼리는 일련의 맵리듀스 잡으로 변환되어 하둡클러스터에서 구동
 
--- 기본
+HDFS에 저장된 데이터(directory&#x2F;file)에 구조(Schem
                             
                         </div>
                         <div class="publish-info">
@@ -775,21 +775,19 @@ Hive Web UI, 커맨드라인 (HD Insight는 Window
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/11/01/Hive/date-mathematics-functions/">
+                    <a href="/2023/11/01/Hive/conditional-functions/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/hive-logo.png" class="responsive-img" alt="Date &amp; Mathematics Functions">
+                            <img src="/images/logos/hive-logo.png" class="responsive-img" alt="Conditional Functions">
                             
-                            <span class="card-title diy-neon-red">Date &amp; Mathematics Functions</span>
+                            <span class="card-title diy-neon-red">Conditional Functions</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Date FunctionsUNIX_TIMESTAMP (string date)
-타임스탬프 인수를 UNIX 시간대(‘1970-01-01 00:00:00’)에서 몇 초나 지났는 지 epoch를 정수로 반환한다.
-
-SELE
+                                Conditional Functions☆ IF (boolean testCondition, T valueTrue, T valueFalseOrNull)
+조건식을 만족하면 valueTrue를, 만족하지 않으면 valueF
                             
                         </div>
                         <div class="publish-info">
@@ -815,19 +813,21 @@ SELE
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/11/01/Hive/conditional-functions/">
+                    <a href="/2023/11/01/Hive/date-mathematics-functions/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/hive-logo.png" class="responsive-img" alt="Conditional Functions">
+                            <img src="/images/logos/hive-logo.png" class="responsive-img" alt="Date &amp; Mathematics Functions">
                             
-                            <span class="card-title diy-neon-red">Conditional Functions</span>
+                            <span class="card-title diy-neon-red">Date &amp; Mathematics Functions</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Conditional Functions☆ IF (boolean testCondition, T valueTrue, T valueFalseOrNull)
-조건식을 만족하면 valueTrue를, 만족하지 않으면 valueF
+                                Date FunctionsUNIX_TIMESTAMP (string date)
+타임스탬프 인수를 UNIX 시간대(‘1970-01-01 00:00:00’)에서 몇 초나 지났는 지 epoch를 정수로 반환한다.
+
+SELE
                             
                         </div>
                         <div class="publish-info">

@@ -314,18 +314,22 @@
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/12/01/Spark/spark-submit/">
+                        <a href="/2023/12/01/Spark/data-locality/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="spark-submit으로 job 제출하기">
+                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Data Locality">
                                 
-                                <span class="card-title">spark-submit으로 job 제출하기</span>
+                                <span class="card-title">Data Locality</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    basic실제 클러스터에는 spark-submit을 이용하여 스파크 프로그램을 실행시킨다. spark-submit은 spark를 설치하면 bin 폴더($SPARK_HOME&#x2F;bin) 안에 있다. spark-s
+                                    
+스파크는 기본적으로 가까운 노드에서 RDD로 데이터를 읽으려고 한다. 정확히 표현하면, 데이터의 이동을 하는 것이 아닌 데이터가 있는 노드로 이동해 해당 노드에서 프로세스를 뛰우려고 한다.
+
+
+변환 작업을 최적화 
                                 
                             </div>
                             <div class="publish-info">
@@ -473,18 +477,18 @@ Structured Stre
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/12/01/Spark/docs/Programming%20Guides/Spark%20SQL,%20DataFrames%20and%20Datasets%20Guide/Getting%20Started/">
+                        <a href="/2023/12/01/Spark/docs/Programming%20Guides/RDD%20Programming%20Guide/RDD%20Programming%20Guide/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Getting Started">
+                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="RDD Programming Guide">
                                 
-                                <span class="card-title">Getting Started</span>
+                                <span class="card-title">RDD Programming Guide</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Starting Point: SparkSession모든 Spark 기능의 진입점은 SparkSession 클래스입니다. 기본적인 SparkSession을 생성하려면 SparkSession.builder()를 사용하십
+                                    Overview고수준에서 모든 Spark 애플리케이션은 사용자의 main 함수를 실행하고 클러스터에서 다양한 parallel operations을 수행하는 드라이버 프로그램으로 구성됩니다. Spark가 제공하는 주요
                                 
                             </div>
                             <div class="publish-info">
@@ -525,18 +529,18 @@ Structured Stre
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/12/01/Spark/docs/Programming%20Guides/RDD%20Programming%20Guide/RDD%20Programming%20Guide/">
+                        <a href="/2023/12/01/Spark/docs/Programming%20Guides/Spark%20SQL,%20DataFrames%20and%20Datasets%20Guide/Getting%20Started/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="RDD Programming Guide">
+                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Getting Started">
                                 
-                                <span class="card-title">RDD Programming Guide</span>
+                                <span class="card-title">Getting Started</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Overview고수준에서 모든 Spark 애플리케이션은 사용자의 main 함수를 실행하고 클러스터에서 다양한 parallel operations을 수행하는 드라이버 프로그램으로 구성됩니다. Spark가 제공하는 주요
+                                    Starting Point: SparkSession모든 Spark 기능의 진입점은 SparkSession 클래스입니다. 기본적인 SparkSession을 생성하려면 SparkSession.builder()를 사용하십
                                 
                             </div>
                             <div class="publish-info">
@@ -590,6 +594,58 @@ Structured Stre
                                 
                                     AnnotationsKubernetes 어노테이션을 사용하여 objects에 임의의 식별되지 않는 메타데이터를 첨부할 수 있습니다. 도구 및 라이브러리와 같은 클라이언트는 이 메타데이터를 검색할 수 있습니다.
 Att
+                                
+                            </div>
+                            <div class="publish-info">
+                                <span class="publish-date">
+                                    <i class="far fa-clock fa-fw icon-date"></i>2023-12-01
+                                </span>
+                                <span class="publish-author">
+                                    
+                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                    
+                                    <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
+                                    </a>
+                                    
+                                    
+                                </span>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="cd-timeline-block">
+
+            
+            
+
+            
+            
+
+            
+            <div class="cd-timeline-img day" data-aos="zoom-in-up">
+                <span>01</span>
+            </div>
+            <article class="cd-timeline-content" data-aos="fade-up">
+                <div class="article col s12 m6">
+                    <div class="card">
+                        <a href="/2023/12/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Finalizers/">
+                            <div class="card-image">
+                                
+                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Finalizers">
+                                
+                                <span class="card-title">Finalizers</span>
+                            </div>
+                        </a>
+                        <div class="card-content article-content">
+                            <div class="summary block-with-text">
+                                
+                                    Finalizers파이널라이저는 삭제를 표시한 리소스가 완전히 삭제되기 전에 특정 조건이 충족될 때까지 Kubernetes가 기다리도록 지시하는 네임스페이스 키입니다. 파이널라이저는 삭제된 객체가 소유한 리소스를 정
                                 
                             </div>
                             <div class="publish-info">
@@ -684,58 +740,6 @@ metadata
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/12/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Finalizers/">
-                            <div class="card-image">
-                                
-                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Finalizers">
-                                
-                                <span class="card-title">Finalizers</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    Finalizers파이널라이저는 삭제를 표시한 리소스가 완전히 삭제되기 전에 특정 조건이 충족될 때까지 Kubernetes가 기다리도록 지시하는 네임스페이스 키입니다. 파이널라이저는 삭제된 객체가 소유한 리소스를 정
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2023-12-01
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                    
-                                    <a href="/categories/Kubernetes/" class="post-category">
-                                    Kubernetes
-                                    </a>
-                                    
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                    </div>
-                </div>
-            </article>
-        </div>
-        
-        <div class="cd-timeline-block">
-
-            
-            
-
-            
-            
-
-            
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>01</span>
-            </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
                         <a href="/2023/12/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Kubernetes_Object_Management/">
                             <div class="card-image">
                                 
@@ -788,18 +792,20 @@ metadata
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/12/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Labels%20and%20Selectors/">
+                        <a href="/2023/12/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Namespaces/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Labels and Selectors">
+                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Namespaces">
                                 
-                                <span class="card-title">Labels and Selectors</span>
+                                <span class="card-title">Namespaces</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Labels and SelectorsLabels은 Pod와 같은 objects에 첨부되는 키&#x2F;값 쌍입니다. 레이블은 사용자에게 의미 있고 관련 있는 객체의 식별 속성을 지정하는 데 사용됩니다. 그러나 레이블
+                                    Namespaces
+
+In Kubernetes, namespaces provide a mechanism for isolating groups of resources within a single cluster. Nam
                                 
                             </div>
                             <div class="publish-info">

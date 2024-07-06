@@ -246,7 +246,7 @@
 <li><p>항상 달라지는 환경에서 내가 필요한 환경을 이해하고 맞춰 설치하는 가장 옳은 방법은 무엇보다도 <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/installation/index.html">공식 문서</a>를 읽는 확인하는 것이다.</p>
 </li>
 </ul>
-<h2 id="Installtion-Using-PyPI"><a href="#Installtion-Using-PyPI" class="headerlink" title="Installtion Using PyPI"></a>Installtion Using PyPI</h2><h4 id="1-Python-pip-install-apach-airlfow"><a href="#1-Python-pip-install-apach-airlfow" class="headerlink" title="1. Python pip install apach-airlfow"></a>1. Python pip install apach-airlfow</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Airflow 패키지 설치(특정 버전 기준으로 호환 패키지 같이 설치)</span>
+<h2 id="Installtion-Using-PyPI"><a href="#Installtion-Using-PyPI" class="headerlink" title="Installtion Using PyPI"></a>Installtion Using PyPI</h2><h3 id="1-Python-pip-install-apach-airlfow"><a href="#1-Python-pip-install-apach-airlfow" class="headerlink" title="1. Python pip install apach-airlfow"></a>1. Python pip install apach-airlfow</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Airflow 패키지 설치(특정 버전 기준으로 호환 패키지 같이 설치)</span>
 $ <span class="token assign-left variable">CONSTRAINT_URL</span><span class="token operator">=</span><span class="token string">"https://raw.githubusercontent.com/apache/airflow/constraints-<span class="token variable">$&#123;AIRFLOW_VERSION&#125;</span>/constraints-<span class="token variable">$&#123;PYTHON_VERSION&#125;</span>.txt"</span>
 
 $ pip <span class="token function">install</span> <span class="token string">"apache-airflow==<span class="token variable">$&#123;AIRFLOW_VERSION&#125;</span>"</span> <span class="token parameter variable">--constraint</span> <span class="token string">"<span class="token variable">$&#123;CONSTRAINT_URL&#125;</span>"</span>
@@ -254,7 +254,7 @@ $ pip <span class="token function">install</span> <span class="token string">"ap
 <span class="token comment"># example</span>
 $ pip <span class="token function">install</span> <span class="token string">"apache-airflow==2.6.0"</span> <span class="token parameter variable">--constraint</span> <span class="token string">"https://raw.githubusercontent.com/apache/airflow/constraints-2.6.0/constraints-3.8.txt"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="2-AIRFLOW-HOME-환경변수-설정-및-기초파일-초기화"><a href="#2-AIRFLOW-HOME-환경변수-설정-및-기초파일-초기화" class="headerlink" title="2. AIRFLOW_HOME 환경변수 설정 및 기초파일 초기화"></a>2. AIRFLOW_HOME 환경변수 설정 및 기초파일 초기화</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># AIRFLOW_HOME 폴더 생성</span>
+<h3 id="2-AIRFLOW-HOME-환경변수-설정-및-기초파일-초기화"><a href="#2-AIRFLOW-HOME-환경변수-설정-및-기초파일-초기화" class="headerlink" title="2. AIRFLOW_HOME 환경변수 설정 및 기초파일 초기화"></a>2. AIRFLOW_HOME 환경변수 설정 및 기초파일 초기화</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># AIRFLOW_HOME 폴더 생성</span>
 $ <span class="token function">mkdir</span> ~/airflow
 
 <span class="token comment"># bash_profile(또는 bash_rc)에 환경변수 추가</span>
@@ -263,7 +263,7 @@ $ <span class="token builtin class-name">echo</span> <span class="token string">
 <span class="token comment"># airflow db 초기화</span>
 $ airflow db init<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="3-Airflow-관리자-계정-생성"><a href="#3-Airflow-관리자-계정-생성" class="headerlink" title="3. Airflow 관리자 계정 생성"></a>3. Airflow 관리자 계정 생성</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow <span class="token function">users</span> create <span class="token parameter variable">-h</span>
+<h3 id="3-Airflow-관리자-계정-생성"><a href="#3-Airflow-관리자-계정-생성" class="headerlink" title="3. Airflow 관리자 계정 생성"></a>3. Airflow 관리자 계정 생성</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow <span class="token function">users</span> create <span class="token parameter variable">-h</span>
 
 <span class="token comment"># 관리자 생성 명령어 입력 후 초기 비밀번호 입력</span>
 $ airflow <span class="token function">users</span> create <span class="token punctuation">\</span>
@@ -273,8 +273,31 @@ $ airflow <span class="token function">users</span> create <span class="token pu
     <span class="token parameter variable">--role</span> Admin <span class="token punctuation">\</span>
     <span class="token parameter variable">--email</span> <span class="token operator">&lt;</span>이메일<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="4-Airflow-메타데이터-DB로-PostgreSQL-로-연동하기"><a href="#4-Airflow-메타데이터-DB로-PostgreSQL-로-연동하기" class="headerlink" title="4. Airflow 메타데이터 DB로 PostgreSQL 로 연동하기"></a>4. Airflow 메타데이터 DB로 PostgreSQL 로 연동하기</h4><p>먼저, 백엔드로 사용할 수 있는 DBMS는 Airflow Version이나 시간의 변화에 따라 추가되거나 변동 될 수 있음을 인지해야 한다. 상황에 따라 달라질 수 있으니 항상 설치 시점에 이용가능한 백엔드 데이터베이스를 확인해야 한다. <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/howto/set-up-database.html#choosing-database-backend">Choosing database backend</a></p>
-<p>| 백엔드 DBMS 리스트   | 버전               |<br>|——————————————–<br>| PostgreSQL           | 11, 12, 13, 14, 15 |<br>| MySQL                | 5.7, 8             |<br>| MSSQL (Experimental) | 2017, 2019         |<br>| SQLite               | 3.15.0+            |</p>
+<h3 id="4-Airflow-메타데이터-DB로-PostgreSQL-로-연동하기"><a href="#4-Airflow-메타데이터-DB로-PostgreSQL-로-연동하기" class="headerlink" title="4. Airflow 메타데이터 DB로 PostgreSQL 로 연동하기"></a>4. Airflow 메타데이터 DB로 PostgreSQL 로 연동하기</h3><p>먼저, 백엔드로 사용할 수 있는 DBMS는 Airflow Version이나 시간의 변화에 따라 추가되거나 변동 될 수 있음을 인지해야 한다. 상황에 따라 달라질 수 있으니 항상 설치 시점에 이용가능한 백엔드 데이터베이스를 확인해야 한다. <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/howto/set-up-database.html#choosing-database-backend">Choosing database backend</a></p>
+<table>
+<thead>
+<tr>
+<th>백엔드 DBMS 리스트</th>
+<th>버전</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PostgreSQL</td>
+<td>11, 12, 13, 14, 15</td>
+</tr>
+<tr>
+<td>MySQL</td>
+<td>5.7, 8</td>
+</tr>
+<tr>
+<td>MSSQL (Experimental)</td>
+<td>2017, 2019</td>
+</tr>
+<tr>
+<td>SQLite</td>
+<td>3.15.0+</td>
+</tr>
+</tbody></table>
 <p>저는 오픈소스인 PostgreSQL을 메타스토어로 사용하였다.</p>
 <p><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/howto/set-up-database.html#setting-up-a-postgresql-database">PostgreSQL 데이터베이스 설정</a></p>
 <ul>
@@ -305,7 +328,7 @@ $ airflow <span class="token function">users</span> create <span class="token pu
 </ul>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">ALTER</span> <span class="token keyword">USER</span> airflow_user <span class="token keyword">SET</span> search_path <span class="token operator">=</span> <span class="token keyword">public</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h4 id="연결이-안된다면-PostgreSQL-pg-hba-conf-수정하기"><a href="#연결이-안된다면-PostgreSQL-pg-hba-conf-수정하기" class="headerlink" title="연결이 안된다면 PostgreSQL pg_hba.conf 수정하기"></a>연결이 안된다면 PostgreSQL pg_hba.conf 수정하기</h4><p><a target="_blank" rel="noopener" href="https://www.postgresql.org/docs/current/auth-pg-hba-conf.html">사용자를 데이터베이스 액세스 제어 목록에 pg_hba.conf 추가하기</a></p>
+<h3 id="연결이-안된다면-PostgreSQL-pg-hba-conf-수정하기"><a href="#연결이-안된다면-PostgreSQL-pg-hba-conf-수정하기" class="headerlink" title="연결이 안된다면 PostgreSQL pg_hba.conf 수정하기"></a>연결이 안된다면 PostgreSQL pg_hba.conf 수정하기</h3><p><a target="_blank" rel="noopener" href="https://www.postgresql.org/docs/current/auth-pg-hba-conf.html">사용자를 데이터베이스 액세스 제어 목록에 pg_hba.conf 추가하기</a></p>
 <p><code>/etc/postgresql/~/main</code> 경로에 있는 pg_hba.conf 파일 열고 아래와 같이 외부에서 접근 가능한 IP를 개방해준다. <code>0.0.0.0/0</code>는 모든 IP에 대한 개방을 허용하겠다는 의미이다.</p>
 <pre class="line-numbers language-conf" data-language="conf"><div class="caption"><span>pg_hba.conf</span></div><code class="language-conf"># IPv4 local connections:
 host		all             all             0.0.0.0&#x2F;0               md5 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -313,9 +336,10 @@ host		all             all             0.0.0.0&#x2F;0               md5 <span ari
 <h4 id="Q-A"><a href="#Q-A" class="headerlink" title="Q &amp; A"></a>Q &amp; A</h4><blockquote>
 <p>Q. airflow에서 기본적으로 sqlite db를 제공하는 데, 왜 따로 backend database를 구축하여 사용하는 가?</p>
 </blockquote>
-<p>A. sqlite를 기본적으로 사용하는 airflow executor는 sequential executor이다. 말 그대로, sequential(순차적)으로 작업을 처리할 때 사용가능하다. 다만, 실제 production 환경에서는 작업을 병렬로 처리해야 한다. 하나의 일이 끝나고 순차적으로 뒤의 task를 처리하는 sequential executor는 실제로 많은 일을 빠른 시간에 처리해야 환경에서는 실용적이지 못하다.</p>
-<p>즉, task의 병렬처리를 위해 확장성 있으며 여러 세션으로 동시접근하여 read, write가 가능한 db가 필요하다. 일반적으로 상용화된 db는 동시제어와 접근을 가능하게 하며, 이에 대한 리소스 관리(connection pool)를 설정할 수 있다.<br>** Airflow는 수행할 작업 계획, 작업 결과 (successs or fail), 작업 이력 등을 모두 db에 쓰고 읽음으로써 관리한다. </p>
-<h4 id="5-airflow-cfg에-메타스토어에-대한-SqlAlchemy-연결-문자-지정"><a href="#5-airflow-cfg에-메타스토어에-대한-SqlAlchemy-연결-문자-지정" class="headerlink" title="5. airflow.cfg에 메타스토어에 대한 SqlAlchemy 연결 문자 지정"></a>5. airflow.cfg에 메타스토어에 대한 SqlAlchemy 연결 문자 지정</h4><p><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/configurations-ref.html">Configuration Reference</a></p>
+<p>sqlite를 기본적으로 사용하는 airflow executor는 sequential executor이다. 말 그대로, sequential(순차적)으로 작업을 처리할 때 사용가능하다. 다만, 실제 production 환경에서는 작업을 병렬로 처리해야 한다. 하나의 일이 끝나고 순차적으로 뒤의 task를 처리하는 sequential executor는 실제로 많은 일을 빠른 시간에 처리해야 환경에서는 실용적이지 못하다.</p>
+<p>즉, task의 병렬처리를 위해 확장성 있으며 여러 세션으로 동시접근하여 read, write가 가능한 db가 필요하다. 일반적으로 상용화된 db는 동시제어와 접근을 가능하게 하며, 이에 대한 리소스 관리(connection pool)를 설정할 수 있다.</p>
+<p>Airflow는 수행할 작업 계획, 작업 결과 (successs or fail), 작업 이력 등을 모두 메타 DB에 Read&#x2F;Write를 함으로써 관리한다. </p>
+<h3 id="5-airflow-cfg에-메타스토어에-대한-SqlAlchemy-연결-문자-지정"><a href="#5-airflow-cfg에-메타스토어에-대한-SqlAlchemy-연결-문자-지정" class="headerlink" title="5. airflow.cfg에 메타스토어에 대한 SqlAlchemy 연결 문자 지정"></a>5. airflow.cfg에 메타스토어에 대한 SqlAlchemy 연결 문자 지정</h3><p><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/configurations-ref.html">Configuration Reference</a></p>
 <ul>
 <li><p>SQLAlchemy 1.4.0 이상에서는 <code>postgres://</code>를 사용하면 오류가 발생하므로 sql_alchemy_conn에서 문자열로 <code>postgresql://</code>을 사용한다.</p>
 </li>
@@ -327,7 +351,7 @@ host		all             all             0.0.0.0&#x2F;0               md5 <span ari
 <pre class="line-numbers language-conf" data-language="conf"><div class="caption"><span>airflow.cfg</span></div><code class="language-conf">[database]
 sql_alchemy_conn &#x3D; postgresql+psycopg2:&#x2F;&#x2F;&lt;user&gt;:&lt;password&gt;@&lt;host&gt;&#x2F;&lt;db&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h4 id="6-Airflow-Webserver-띄우기"><a href="#6-Airflow-Webserver-띄우기" class="headerlink" title="6. Airflow Webserver 띄우기"></a>6. Airflow Webserver 띄우기</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow webserver <span class="token parameter variable">-D</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="6-Airflow-Webserver-띄우기"><a href="#6-Airflow-Webserver-띄우기" class="headerlink" title="6. Airflow Webserver 띄우기"></a>6. Airflow Webserver 띄우기</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ airflow webserver <span class="token parameter variable">-D</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
                 
             </div>
             <hr/>
