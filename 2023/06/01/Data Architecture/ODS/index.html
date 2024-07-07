@@ -4,11 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[Data Architecture] Data Vault 2.0, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Hub, Link, Satellite
-HUB: Unique list of business keys
-
-LINK: Unique list of (n to n) relationships between business key">
+    <meta name="keywords" content="ODS, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="글을 쓰는 이유회사에서 구축한 DW에 ODS라는 데이터베이스를 본 적이 있다. 이게 뭔지 궁금해서 동료들에게 ODS에 대해 여쭤본 적이 있었지만 명확한 정의를 얻을 수는 없었다. 다들 어디에서는 본 적은 있지만, 왜">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +17,7 @@ LINK: Unique list of (n to n) relationships between business key">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[Data Architecture] Data Vault 2.0 | Keyhong</title>
+    <title>ODS | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -185,7 +182,7 @@ LINK: Unique list of (n to n) relationships between business key">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [Data Architecture] Data Vault 2.0</h1>
+                        ODS</h1>
                 </div>
             </div>
         </div>
@@ -210,7 +207,7 @@ LINK: Unique list of (n to n) relationships between business key">
                         <div class="article-tag">
                             <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                                 <span class="chip bg-color">
-                                    2024-01-06</span>
+                                    2023-06-01</span>
                         </div>
                     
                     
@@ -242,292 +239,50 @@ LINK: Unique list of (n to n) relationships between business key">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Hub-Link-Satellite"><a href="#Hub-Link-Satellite" class="headerlink" title="Hub, Link, Satellite"></a>Hub, Link, Satellite</h2><ul>
-<li><p>HUB: Unique list of business keys</p>
-</li>
-<li><p>LINK: Unique list of (n to n) relationships between business keys</p>
-</li>
-<li><p>SATELLITE: Contains descriptive historical data associated with Hubs and Links</p>
-</li>
-</ul>
-<h2 id="Business-Key"><a href="#Business-Key" class="headerlink" title="Business Key"></a>Business Key</h2><ul>
-<li><p>Natural Keys uniquely identify each entity (e.g. Customer Number, Product Code)</p>
-</li>
-<li><p>Have meaning to the business independent from the operational system</p>
-</li>
-<li><p>Not equal to PK all the time</p>
-</li>
-</ul>
-<h4 id="To-identify"><a href="#To-identify" class="headerlink" title="To identify:"></a>To identify:</h4><ul>
-<li><p>Check unique index in Database</p>
-</li>
-<li><p>Interview with business</p>
-</li>
-<li><p>Query DB to find unique column</p>
-</li>
-</ul>
-<h2 id="Hub"><a href="#Hub" class="headerlink" title="Hub"></a>Hub</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">########</span>
-Student
-<span class="token comment">########</span>
-Student Code <span class="token punctuation">(</span>PK, business key<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> HUB_Student
-Name <span class="token operator">=</span><span class="token operator">></span> SAT_Student
-Email <span class="token operator">=</span><span class="token operator">></span> SAT_Student
-Gender <span class="token operator">=</span><span class="token operator">></span> SAT_Student
-Faculty ID <span class="token punctuation">(</span>FK<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> LINK
-
-<span class="token comment">########</span>
-Faculty
-<span class="token comment">########</span>
-Faculty ID <span class="token punctuation">(</span>PK, business key<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> HUB_Faculty
-Description <span class="token operator">=</span><span class="token operator">></span> SAT_Faculty
-Adress <span class="token operator">=</span><span class="token operator">></span> SAT_Faculty
-Phone <span class="token operator">=</span><span class="token operator">></span> SAT_Faculty
-
-<span class="token comment">########</span>
-HUB
-<span class="token comment">########</span>
-H_Hash_KEY <span class="token punctuation">(</span>PK<span class="token punctuation">)</span>
-Business Key <span class="token punctuation">(</span>BK<span class="token punctuation">)</span>
-Load Date <span class="token punctuation">(</span>LOAD_DTS<span class="token punctuation">)</span>
-Record Source <span class="token punctuation">(</span>REC_SRC<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<ol>
-<li>Primary key(H_Hash_KEY)</li>
-</ol>
+                <h2 id="글을-쓰는-이유"><a href="#글을-쓰는-이유" class="headerlink" title="글을 쓰는 이유"></a>글을 쓰는 이유</h2><p>회사에서 구축한 DW에 ODS라는 데이터베이스를 본 적이 있다. 이게 뭔지 궁금해서 동료들에게 ODS에 대해 여쭤본 적이 있었지만 명확한 정의를 얻을 수는 없었다. 다들 어디에서는 본 적은 있지만, 왜 있는 지와 어떤 역할인지에 대한 정의가 너무나 다르다.</p>
+<p>그 때는 왜 그럴 까, 어쩌면 관례처럼 굳어진 것 때문일까? 라는 생각을 했었는 데, 강의를 들으면서 ODS의 존재 이유를 알게 됬다. 또 왜 다들 ODS에 대해 애매모호 한지도 궁금증이 풀리게 되었다. 오늘은 그 내용을 설명해보고자 한다.</p>
+<h2 id="ODS-Operational-Data-Store"><a href="#ODS-Operational-Data-Store" class="headerlink" title="ODS (Operational Data Store)"></a>ODS (Operational Data Store)</h2><blockquote>
+<p>DW와 유사하게 분석을 목적으로 만들어졌지만, 기업의 빠른 의사결정에 조금 더 초점이 맞춘 데이터베이스이다.</p>
+</blockquote>
+<h3 id="ODS-vs-DW-차이"><a href="#ODS-vs-DW-차이" class="headerlink" title="ODS vs DW 차이"></a>ODS vs DW 차이</h3><p>이게 가장 중요한 부분이다. 그럼 DW와 ODS 둘다 똑같이 분석용 DB인데 어떤 차이가 있나에 대한 질문이다. 이를 하나의 서비스 상황을 만들어 설명해보고자 한다.</p>
+<blockquote>
+<p>우리는 금융 시스템에 종사하고 있다. 우리가 하려는 일은 고객의 <U>현재 금융 상태를 파악</U>해서 바로 즉각적인 액션을 하려고 하거든요. 고객의 재무를 알 수 있는 계좌, 대출, 부동산 등 데이터를 하나의 데이터베이스에 모았다.</p>
+</blockquote>
+<p>위의 예시의 핵심 키워드는 “현재 금융 상태를 파악” 한다는 것이에요. 여기서 두 가지에 관점을 얻을 수 있다.</p>
 <ul>
-<li>Hash based unique identifier (Hashed value of Business Key)</li>
-<li>Surrogate keys (sequence number) replaced by hash-based primary keys in DV 2.0</li>
-</ul>
-<ol start="2">
-<li>Business Key</li>
-</ol>
-<ul>
-<li>BK can be a natural or composite key</li>
-</ul>
-<ol start="3">
-<li>Load Date</li>
-</ol>
-<ul>
-<li>Generally a date and time when the Business Key was first recorded</li>
-<li>This field is created the first time and never dropped or updated</li>
-</ul>
-<ol start="4">
-<li>Record Source</li>
-</ol>
-<ul>
-<li>Which source system the BK came from</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">############</span>
-HUB_Student
-<span class="token comment">############</span>
-HK_StudentCode <span class="token builtin class-name">:</span> HK_100, HK_101, HK_102, HK_103
-Student_Code <span class="token builtin class-name">:</span> <span class="token number">100</span>, <span class="token number">101</span>, <span class="token number">102</span>, <span class="token number">103</span>
-LOAD_DTS <span class="token builtin class-name">:</span> <span class="token number">29</span>-10-2020, <span class="token number">28</span>-10-2020, <span class="token number">27</span>-10-2020, <span class="token number">27</span>-10-2020
-REC_SRC <span class="token builtin class-name">:</span> SAP, SAP, ERP, ERP
-    
-<span class="token comment">############</span>
-HUB_Faculty
-<span class="token comment">############</span>
-HK_FacultyID <span class="token builtin class-name">:</span> HK_FE, HK_FA, HK_EL
-Faculty_ID <span class="token builtin class-name">:</span> FE, FA, FL
-LOAD_DTS <span class="token builtin class-name">:</span> <span class="token number">27</span>-10-2020, <span class="token number">27</span>-10-2020, <span class="token number">29</span>-10-2020
-REC_SRC <span class="token builtin class-name">:</span> SAP, ERP, ERP<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="Golden-Rules-HUB"><a href="#Golden-Rules-HUB" class="headerlink" title="Golden Rules - HUB"></a>Golden Rules - HUB</h4><ul>
-<li>The Hub entity must NEVER contain foreign keys</li>
-<li>Hubs must stand alone (be a parent to all other tables), the must never be children</li>
-<li>Should have at least 1 satellite</li>
-<li>Direct Hub-to-Hub relationship is not allowed.</li>
-<li>HUB BK and PK never change</li>
-</ul>
-<h2 id="LINK"><a href="#LINK" class="headerlink" title="LINK"></a>LINK</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#####</span>
-LINK
-<span class="token comment">#####</span>
-L_Hash_KEY <span class="token punctuation">(</span>HK, PK<span class="token punctuation">)</span>
-HUB1_HK <span class="token punctuation">(</span>FK1<span class="token punctuation">)</span>
-HUB2_HK <span class="token punctuation">(</span>FK2<span class="token punctuation">)</span>
-Load Date <span class="token punctuation">(</span>LOAD_DTS<span class="token punctuation">)</span>
-Record Source <span class="token punctuation">(</span>REC_SRC<span class="token punctuation">)</span>
-Dependent Child Key <span class="token punctuation">(</span>Optional<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<ol>
-<li>Primary Key(L_Hash_KEY)</li>
-</ol>
-<ul>
-<li>Hash based unique identifier (New Hash value based on Business Keys from linked HUBS)</li>
-</ul>
-<ol start="2">
-<li>Hash key of HUBS(HUB1_HK &amp; HUB2_HK)</li>
-</ol>
-<ul>
-<li>Hash keys of the linked Hub tables</li>
-</ul>
-<ol start="3">
-<li>Load Date</li>
-</ol>
-<ul>
-<li>Generally a date and time when the Relation &amp; Transaction was first recorded</li>
-</ul>
-<ol start="4">
-<li>Record Source</li>
-</ol>
-<ul>
-<li>Which source system record came from</li>
-</ul>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment">############</span>
-HUB_Student
-<span class="token comment">############</span>
-HK_StudentCode (PK)
-Student_Code
-LOAD_DTS
-REC_SRC
-
-<span class="token comment">############</span>
-HUB_Faculty
-<span class="token comment">############</span>
-HK_FacultyID (PK)
-Faculty_ID
-LOAD_DTS
-REC_SRC
-
-<span class="token comment">#############</span>
-LINK_STU_FAC
-<span class="token comment">#############</span>
-HK_Stu_Fac (PK)
-HK_StudentCode (FK1)
-HK_FacultyID (FK2)
-Load Date (LOAD_DTS)
-Record Source (REC_SRC0)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>HK_Stu_Fac: <strong>Hash</strong> (Student_Code &amp; Faculty_ID) (O)<br>HK_Stu_Fac: Hash (HK_StudentCode &amp; HK_Faculty_ID) (X)</p>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment">#############</span>
-LINK_STU_FAC
-<span class="token comment">############# </span>
-<span class="token key atrule">SK_Stu_Fac</span><span class="token punctuation">:</span> HK_100_FE<span class="token punctuation">,</span> HK_101_FE<span class="token punctuation">,</span> HK_102_FA<span class="token punctuation">,</span> HK_103_FL
-<span class="token key atrule">SK_StudentCode</span><span class="token punctuation">:</span> HK_100<span class="token punctuation">,</span> HK_101<span class="token punctuation">,</span> HK_102<span class="token punctuation">,</span> HK_103
-<span class="token key atrule">SK_FacultyID</span><span class="token punctuation">:</span> HK_FE<span class="token punctuation">,</span> HK_FE<span class="token punctuation">,</span> HK_FA<span class="token punctuation">,</span> HK_FL
-<span class="token key atrule">LOAD_DTS</span><span class="token punctuation">:</span> 29<span class="token punctuation">-</span>10<span class="token punctuation">-</span><span class="token number">2020</span><span class="token punctuation">,</span> 28<span class="token punctuation">-</span>10<span class="token punctuation">-</span><span class="token number">2020</span><span class="token punctuation">,</span> 27<span class="token punctuation">-</span>10<span class="token punctuation">-</span><span class="token number">2020</span><span class="token punctuation">,</span> 29<span class="token punctuation">-</span>10<span class="token punctuation">-</span><span class="token number">2020</span>
-<span class="token key atrule">REC_SRC</span><span class="token punctuation">:</span> SAP<span class="token punctuation">,</span> SAP<span class="token punctuation">,</span> ERP<span class="token punctuation">,</span> ERP<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>링크 테이블은 팩트 테이블 및 차원 모델링과 유사. 따라서 링크는 두 개 이상의 허브를 참조할 수 있다. 그렇기 때문에 하위 테이블로 수행될 수 있고 둘 이상의 상위 테이블이 있어야 한다. 그리고 링크 테이블의 세분성은 포함된 상위 키의 수로 식별.<br>링크 테이블에서 관계가 발생한 경우에는 절대 업데이터 할 수 없으며, 삭제하거 다시 삽입한다.</p>
-<p>모델을 생성할 수 있으므로 데이터 세계 모델링에 유연성과 확장성이 생성된다.<br>기존 구조와 로드 루틴을 변경하지 않고도 빠르게 변경할 수 있다.</p>
-<p>또는 관계가 1:N 인지 M:N인지 걱정할 필요가 없다. 링크 테이블은 기본적으로 M:N 관계를 생성한다. M:N 관계가 있는 이유는 유연성, 세분성, 동적 측면에서 이점을 제공하기 때문이다.</p>
-<h2 id="LINK-M-M-Relation"><a href="#LINK-M-M-Relation" class="headerlink" title="LINK (M-M Relation)"></a>LINK (M-M Relation)</h2><p>Many-to-Many relationships provide the following benefits:</p>
-<ul>
-<li><p>Flexibility (유연성)</p>
+<li><p>첫째, 우리는 <code>이력 데이터를 쌓거나 분석 할 필요가 없다.</code> 원하는 건 현재 상태이지, 과거의 상태가 아니기 때문이다.</p>
 </li>
-<li><p>Granularity (세분성)</p>
-</li>
-<li><p>Scalability (확장성)</p>
-</li>
-<li><p>Dynamic adaptability (동적 적응성)</p>
+<li><p>둘째, 최신 데이터를 반영하려면 <code>빠른 주기로 ETL을 해야 한다.</code> 보통 DW에 ETL하는 것보다 주기가 빠르다.</p>
 </li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 2 years ago : Student can register to only one faculty ( Faculty(1)-Student(N) )</span>
-
-<span class="token comment"># Today : Student can register more than one faculty ( Faculty(n)-Student(m) )</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<p>Data Vault는 리엔지니어링을 피하기 위해 3NF에서의 브릿지 테이블과 유사한 링크 테이블을 사용한다. 단, 브릿지 테이블의 복합 키로 PK를 구성하는 게 아닌 단일 컬럼으로 PK를 구성한다. 링크 테이블의 구조가 변경이나 확장에 도움이 된다. 이는 agile 접근에 적합하다.</p>
-<p>단, 기존 데이터 세트나 프로세스에 거의 영향을 미치지 말아야 한다. </p>
-<h4 id="Golden-Rules-LINK"><a href="#Golden-Rules-LINK" class="headerlink" title="Golden Rules - LINK"></a>Golden Rules - LINK</h4><ul>
-<li>The Link entity must NEVER contain natural business keys, or begin and end dates</li>
-<li>Like hub tables, link tables do not contain descriptive information</li>
-<li>Links exist at the lowest level granualarity</li>
-<li>Links are always M-M</li>
-<li>Satellites are optional for Links (except for hierarchical links)</li>
-<li>Links can be connected other links (흔하지도 않고 권장되지도 않는다.)</li>
+<blockquote>
+<p>요약하자면 ODS는 DW처럼 과거의 모든 데이터를 필요로 하지도 않고, 보다 빠르게 준실시간성 데이터가 흐르는 곳이다. 이러한 목적으로 설계되었기 때문에 운영적인 의사결정을 바로 할 수 있다.</p>
+</blockquote>
+<h3 id="ODS의-두-가지-형태"><a href="#ODS의-두-가지-형태" class="headerlink" title="ODS의 두 가지 형태"></a>ODS의 두 가지 형태</h3><ul>
+<li>전체적인 구조에서 ODS는 생성 위치는 두 가지 형태로 존재 할 수 있다.</li>
 </ul>
-<p>차원 모델링의 fact 테이블과 매우 유사하다.</p>
-<h2 id="SATELLITE"><a href="#SATELLITE" class="headerlink" title="SATELLITE"></a>SATELLITE</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">##########</span>
-SATELLITE
-<span class="token comment">##########</span>
-Hash_KEY<span class="token punctuation">(</span>HK<span class="token punctuation">)</span> <span class="token punctuation">(</span>PK, FK<span class="token punctuation">)</span>
-Load Date<span class="token punctuation">(</span>LOAD_DTS<span class="token punctuation">)</span> <span class="token punctuation">(</span>PK<span class="token punctuation">)</span>
-Attributes
-Hash Diff<span class="token punctuation">(</span>optional<span class="token punctuation">)</span>
-Record Source<span class="token punctuation">(</span>REC_SRC<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="parallel-구조"><a href="#parallel-구조" class="headerlink" title="parallel 구조"></a>parallel 구조</h4><ul>
+<li><p><code>DW와 평행한 구조</code>로 두 데이터베이스 모두 별도의 분석용 데이터베이스로 쓰인다.</p>
+</li>
+<li><p>DW와 ODS 모두 수집해야 하는 데이터가 있다면 <code>transform을 중복 수행</code>해야 하는 단점이 있다.</p>
+</li>
+</ul>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219940&authkey=%21AJK1lb1SENyHUFU&width=660" width="660" height="auto" alt="parallel한 구조"/>
+
+<h4 id="sequential-구조"><a href="#sequential-구조" class="headerlink" title="sequential 구조"></a>sequential 구조</h4><ul>
+<li><p>DW의 바로 직전 단계에서 데이터 소스 역할로 많이 쓰인다.</p>
+</li>
+<li><p>transform의 중복을 줄이기 위해 <code>대부분 sequential한 구조를 많이 채택</code>한다.</p>
+</li>
+</ul>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219941&authkey=%21AOn8GawtXzrjZ_g&width=660" width="660" height="auto" alt="sequential한 구조"/>
 
 
-<ol>
-<li>Primary Key</li>
-</ol>
-<ul>
-<li>Hash Key from connected Hub or Link + Load Date</li>
-</ul>
-<ol start="2">
-<li>Load Date</li>
-</ol>
-<ul>
-<li>Generally a date and time when the data was first recorded in EDW</li>
-</ul>
-<ol start="3">
-<li>Attributes</li>
-</ol>
-<ul>
-<li>Descriptive data like Name, Email, Gender</li>
-</ul>
-<ol start="4">
-<li>Hash Diff</li>
-</ol>
-<ul>
-<li>Helps to compare a new record to the older ones and identify changes</li>
-</ul>
-<ol start="5">
-<li>Record Source</li>
-</ol>
-<ul>
-<li>Which source system the record came from</li>
-</ul>
-<p>주요 목적은 모든 변경 사항을 캡처하여 시스템의 기록을 추적하는 것. 따라서 구조와 개념은 SCD Type-2와 매우 유사.<br>위성은 허브나 링크에 연결될 수 있지만 어떤 경우에도 상위 항목은 하나만 있어야 한다.</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">############</span>
-HUB_Student
-<span class="token comment">############</span>
-HK_StudentCode <span class="token punctuation">(</span>PK<span class="token punctuation">)</span>
-Student_Code
-LOAD_DTS
-REC_SRC
-
-<span class="token comment">############</span>
-SAT_Student
-<span class="token comment">############ </span>
-HK_StudentCode <span class="token punctuation">(</span>PK, FK<span class="token punctuation">)</span>
-LOAD_DTS <span class="token punctuation">(</span>PK<span class="token punctuation">)</span>
-REC_SRC
-Name
-Email
-Gender<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="Golden-Rules-SATELLITE"><a href="#Golden-Rules-SATELLITE" class="headerlink" title="Golden Rules - SATELLITE"></a>Golden Rules - SATELLITE</h4><ul>
-<li>A SATELLITE can have one and only one parent table</li>
-<li>The Satellite entity must NEVER contain foreign keys</li>
-<li>PK: HK + Load Date</li>
-<li>Existing records are never updated or deleted</li>
-<li>Main goal to store historical data</li>
-</ul>
-<h4 id="Split-by"><a href="#Split-by" class="headerlink" title="Split by"></a>Split by</h4><ul>
-<li>Source - avoid flip-flop effect</li>
-<li>Rate of Change (In order to avoid redundant storage of data)</li>
-<li>Data Types</li>
-</ul>
-<h2 id="Modeling-Steps"><a href="#Modeling-Steps" class="headerlink" title="Modeling Steps"></a>Modeling Steps</h2><ol>
-<li><p>Setting Naming Conventions</p>
-</li>
-<li><p>Model the HUBS</p>
-</li>
-<li><p>Model the LINKS</p>
-</li>
-</ol>
-<p>—– 아래부터는 비즈니스 요구 사항과 성능에 따라 달라진다 —–</p>
-<ol start="4">
-<li><p>Model the SATELLITES</p>
-</li>
-<li><p>ADD Standalone Objects</p>
-</li>
-<li><p>Add performance Tables</p>
-</li>
-<li><p>Design Information Mart</p>
-</li>
-</ol>
+<h3 id="ODS의-경계가-점점-없어지는-이유"><a href="#ODS의-경계가-점점-없어지는-이유" class="headerlink" title="ODS의 경계가 점점 없어지는 이유"></a>ODS의 경계가 점점 없어지는 이유</h3><blockquote>
+<p>최근 <code>플랫폼의 발전에서 따라 파이프라인의 속도가 훨씬 더 빨라졌다.</code> 그로 인해 DW에서도 빠르게 데이터를 받아볼 수 있죠. 실시간 데이터 처리에 Kafka, Spark, Storm, Flink 같은 플랫폼과 함께 이제는 병렬 처리도 가능해졌다. 이러한 빅데이터의 특징들로 인해 ETL이 아닌 ELT의 순서로 원본 데이터를 쌓는 방식(DataLake)가 생기게 되면서 ODS라는 단계가 간혹 없는 경우도 있다.</p>
+</blockquote>
+<h2 id="🙊-글-마무리"><a href="#🙊-글-마무리" class="headerlink" title="🙊 글 마무리"></a>🙊 글 마무리</h2><p>ODS의 경계가 많이 허물어지는 건 사실이다. 하지만 그렇다고 이젠 없어도 된다는 건 아니다. 여전히 운영용 데이터 분석이라는 목적이 있고, ODS가 구축된 곳이 많다. 또, sequential 구조처럼 DW 앞에서 데이터 소스 역할도 충분히 할 수 있다.</p>
+<p>중요한 건 ODS가 <code>기존에 구축되어 있는 지 확인하고, 있다면 있는 것을 활용</code>함으로써 DW 전까지 해야 할 업무 리소스를 줄일 수 있다는 점을 인지해야 한다.</p>
 
                 
             </div>
@@ -554,7 +309,7 @@ Gender<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/01/06/Data-Architecture/data-vault-2.0/">http://example.com/2024/01/06/Data-Architecture/data-vault-2.0/</a>
+                    <a href="http://example.com/2023/06/01/Data%20Architecture/ODS/">http://example.com/2023/06/01/Data%20Architecture/ODS/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -666,23 +421,23 @@ Gender<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/08/Data-Architecture/ods/">
+                <a href="/2023/06/01/Data%20Architecture/Dimension%20Modeling/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="[Data Architecture] ODS">
+                        <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="Dimension Modeling">
                         
-                        <span class="card-title diy-neon-red">[Data Architecture] ODS</span>
+                        <span class="card-title diy-neon-red">Dimension Modeling</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            ODS를 만들어야 할 때를 구분해봐요.
+                            
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-08
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-06-01
                         </span>
                         <span class="publish-author">
                             
@@ -706,23 +461,23 @@ Gender<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/06/Data-Architecture/data-warehouse/">
+                <a href="/2023/06/01/Data%20Architecture/Role-playing%20Dimension/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="[Data Architecture] Data Warehouse">
+                        <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="Role-playing Dimension">
                         
-                        <span class="card-title diy-neon-red">[Data Architecture] Data Warehouse</span>
+                        <span class="card-title diy-neon-red">Role-playing Dimension</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Data Warehouse, 왜 필요한 걸까요?
+                            
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-01
                             </span>
                         <span class="publish-author">
                             

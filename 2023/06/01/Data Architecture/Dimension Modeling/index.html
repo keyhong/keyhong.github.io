@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[Data Architecture] Slowly Changing Dimensions, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Data Warehouse, 왜 필요한 걸까요?">
+    <meta name="keywords" content="Dimension Modeling, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="시작하기 전에 Fact와 Dimension 먼저!모델링을 이해하려면 먼저 테이블 간의 관계가 있다는 걸 봐야해요. 그런데 테이블을 딱 하나만 만들어서 모든 컬럼을 넣으면 한 눈에 볼텐데 왜 테이블을 분할하고 관계를 ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[Data Architecture] Slowly Changing Dimensions | Keyhong</title>
+    <title>Dimension Modeling | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -182,7 +182,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [Data Architecture] Slowly Changing Dimensions</h1>
+                        Dimension Modeling</h1>
                 </div>
             </div>
         </div>
@@ -207,7 +207,7 @@
                         <div class="article-tag">
                             <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                                 <span class="chip bg-color">
-                                    2024-01-06</span>
+                                    2023-06-01</span>
                         </div>
                     
                     
@@ -239,66 +239,65 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Slowly-Changing-Dimensions-SCD"><a href="#Slowly-Changing-Dimensions-SCD" class="headerlink" title="Slowly Changing Dimensions (SCD)"></a>Slowly Changing Dimensions (SCD)</h2><ul>
-<li><p>Dimension that change over time</p>
-</li>
-<li><p>Manages current and historical version</p>
-</li>
-<li><p>Build to track changes</p>
-</li>
-<li><p>There are different types of SCD such as:</p>
+                <h2 id="시작하기-전에-Fact와-Dimension-먼저"><a href="#시작하기-전에-Fact와-Dimension-먼저" class="headerlink" title="시작하기 전에 Fact와 Dimension 먼저!"></a>시작하기 전에 Fact와 Dimension 먼저!</h2><p>모델링을 이해하려면 먼저 테이블 간의 관계가 있다는 걸 봐야해요. 그런데 테이블을 딱 하나만 만들어서 모든 컬럼을 넣으면 한 눈에 볼텐데 왜 테이블을 분할하고 관계를 만들었을까요?</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110064&authkey=%21ACMIE05DdRpUzIs&width=1070&height=165" width="1070" height="165" alt="row 포맷의 데이터"/>
+
 <ul>
-<li><p>Type-0 - Retain original</p>
+<li><p><code>일반적으로 행열의 2차원 데이터는 row한 저장 포맷</code>을 많이 사용해요. 위의 csv처럼 가로로 행을 구분하고 한 행에서는 구분문자(Delimiter)로 열을 구분하는 형식이에요.</p>
 </li>
-<li><p>Type-1 - Overwriting the old value</p>
+<li><p>만약 전체 데이터를 읽을 거라면 “왼쪽 → 오른쪽, 위 → 아래” 로 빠르게 읽을 수 있어요. 하지만 특정 컬럼만 읽는 다면, 필요한 컬럼 사이에 있는 값들도 읽고 버리도록 프로그램이 되어 있어요. 물론 요즘 DW는 columnar storage(행이 아닌 열 순서대로 데이터를 저장)을 지원하는 경우가 많아요.</p>
 </li>
-<li><p>Type-2 - New additional record</p>
-</li>
-<li><p>Type-3 - Adding a new attribute column</p>
-</li>
-<li><p>Type-4 - Using historical table</p>
+<li><p><code>분석에서는 집계(aggregation)를 주로 사용</code>해요. 컬럼이 길어진다면 집계 기준과 집계 대상 이외에 모든 컬럼을 읽어야 하는 건 낭비에요. 예를 들어 “카테고리별 (평균) 비용”과 같이 두 개의 컬럼으로만으로도 유의미한 통계를 도출할 수 있어요.</p>
 </li>
 </ul>
+<blockquote>
+<p>즉, 논리적으로 테이블을 분할하도록 설계함으로써 <code>사용성(usability)과 성능(performance)을 개선</code>시킬 수 있어요. 그 분할하는 기준을 잡기 위해서 우리는 기본적으로 Fact와 Dimension을 파악해요.</p>
+</blockquote>
+<h3 id="Fact"><a href="#Fact" class="headerlink" title="Fact"></a>Fact</h3><blockquote>
+<p><code>집계되고 분석되는 대상</code>이에요. 보통 <code>event나 transactional data</code>로 <code>numerical한 타입</code>을 가지고 있어요. 예를 들면 매출, 이익, 판매수량 같이 우리가 일반적으로 집계하려는 것이에요.</p>
+</blockquote>
+<h4 id="Fact-테이블의-구성"><a href="#Fact-테이블의-구성" class="headerlink" title="Fact 테이블의 구성"></a>Fact 테이블의 구성</h4><p>위에서 설명한 Fact가 있는 테이블을 Fact 테이블이라고 해요. Fact 테이블은 아래와 같이 구성될 수 있어요.</p>
+<ol>
+<li><code>PK</code> : 모든 단일 행의 고유 식별자에요.</li>
+<li><code>FK</code> : 보통 하나의 Fact 테이블은 여러 개의 외래키를 가져요. FK는 Dimension 테이블에 참조 역할을 해요.</li>
+<li><code>Fact</code> : 매출, 이익, 예산 등의 집계 대상이에요.</li>
+</ol>
+<h4 id="Fact의-성격"><a href="#Fact의-성격" class="headerlink" title="Fact의 성격"></a>Fact의 성격</h4><p>문맥을 설명하는 것보다 분석 대상으로 <code>측정 가능한 성격(measurable)</code>을 뛰고 있어요.</p>
+<h4 id="ETC"><a href="#ETC" class="headerlink" title="ETC"></a>ETC</h4><ul>
+<li><p><code>집계할 수 있다고 모든 대상이 Fact가 되지는 않아요.</code> 거래날짜나 트랜잭션일자도 Fact 테이블에 있지만 year·month·day를 집계한다고 의미있는 분석결과를 얻을 수는 없어요. 이런 값들은 Fact가 아닌 Dimension이에요.</p>
+</li>
+<li><p>numerical한 타입외에도 다른 타입의 팩트도 있어요.</p>
+</li>
+<li><p><code>원자 수준에서 Fact가 정의</code>되요. 이는 아래와 같이 다른 컬럼을 기준으로 행의 구분이 유일하다는 뜻이에요.</p>
 </li>
 </ul>
-<h2 id="SCD-Type의-종류"><a href="#SCD-Type의-종류" class="headerlink" title="SCD Type의 종류"></a>SCD Type의 종류</h2><h4 id="SCD-Type-0"><a href="#SCD-Type-0" class="headerlink" title="SCD (Type 0)"></a>SCD (Type 0)</h4><ul>
-<li><p>There is essentially no chagne</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110065&authkey=%21AL9adxbCgyQH5HY&width=1064&height=164" width="1064" height="164" alt="product id, product, category, subcategory 기준으로 cost는 원자성을 가져요." />
+
+<h3 id="Dimension"><a href="#Dimension" class="headerlink" title="Dimension"></a>Dimension</h3><blockquote>
+<p><code>Fact에 대한 의미 있는 맥락을 더해주는 것</code>이에요. <code>Fact만 있다고 의미 있는 통찰력을 얻을 수는 없어요.</code> 집계에는 항상 맥락이 같이 있어야 해요. 위에서 “카테고리별 (평균) 비용” 중 비용이 Fact였다면, 카테고리는 Dimension이에요. 단순히 비용만 집계한다고 어떤 의미가 있지는 않죠? <U>카테고리별</U> (평균) 비용이나, <U>연도가 2023년</U>의 (합계) 비용처럼 Fact의 집계에 부가적인 정보를 더해줘요.</p>
+</blockquote>
+<h4 id="Dimension-테이블의-구성"><a href="#Dimension-테이블의-구성" class="headerlink" title="Dimension 테이블의 구성"></a>Dimension 테이블의 구성</h4><ul>
+<li><p><code>PK</code> : Fact 테이블에서는 FK였던 값이에요. Dimension 테이블과 Fact 테이블은 1:N 관계(OneToMany)를 가져요.</p>
 </li>
-<li><p>The attribute will never changes</p>
+<li><p><code>Dimension</code> : Fact에 대한 의미 있는 맥락을 더해주는 것이에요.</p>
 </li>
-<li><p>Facts always grouped by the original value</p>
-</li>
-</ul>
-<h4 id="SCD-Type-1"><a href="#SCD-Type-1" class="headerlink" title="SCD (Type 1)"></a>SCD (Type 1)</h4><ul>
-<li><p>Overwrite Old Value</p>
-</li>
-<li><p>Attribute always reflect the most recent assignment, disregarding historical changes</p>
-</li>
-</ul>
-<h4 id="SCD-Type-2"><a href="#SCD-Type-2" class="headerlink" title="SCD (Type 2)"></a>SCD (Type 2)</h4><ul>
-<li><p>Create new additional record</p>
-</li>
-<li><p>New primary key (SK), flag column &amp; date columns added to track</p>
+<li><p><code>[FK]</code> : Dimension 테이블에서 또 다른 Dimension 테이블이 생길 수도 있어요. <code>FK가 있다면 Snowflake Schema</code>로 볼 수 있어요.</p>
 </li>
 </ul>
-<h4 id="SCD-Type-3"><a href="#SCD-Type-3" class="headerlink" title="SCD (Type 3)"></a>SCD (Type 3)</h4><ul>
-<li><p>Add a new column to the dimension to preserve historical information</p>
+<h4 id="Dimension의-성격"><a href="#Dimension의-성격" class="headerlink" title="Dimension의 성격"></a>Dimension의 성격</h4><p><code>설명적(descriptive)인 성격</code>을 가져요. people, products, places, time 등 맥락 Fact가 발생했을 때의 문맥을 설명하는 성격을 뛰고 있어요.</p>
+<h4 id="ETC-1"><a href="#ETC-1" class="headerlink" title="ETC"></a>ETC</h4><ul>
+<li><p><code>Dimension 테이블을 만들면 데이터의 중복을 줄이고, 디스크 용량을 절약</code>할 수 있어요. Fact 테이블에서는 길이가 긴 categorical 타입의 문자열이 Dimension 테이블로 나오면 기존 Fact 테이블에서의 값이 id(surrogate key)로 치환되고, Dimension 테이블은 Fact 테이블의 참조 테이블이 되어 값의 중복(redundancy)이 제거되요. 2차 정규화로 볼 수 있어요.</p>
 </li>
-<li><p>Allows to query in 2 different realities</p>
+<li><p>분석 결과인 보고서에 필터가 필요하거나 그룹핑하는 요구하는 경우가 많아 <code>Grouping, Filtering, Labeling이 수행되는 대상</code>에요.</p>
 </li>
-</ul>
-<h4 id="SCD-Type-4"><a href="#SCD-Type-4" class="headerlink" title="SCD (Type 4)"></a>SCD (Type 4)</h4><ul>
-<li><p>Historical table used to track any changes separte to the dimension table</p>
-</li>
-<li><p>The main dimension only keeps current data based on the present time period</p>
+<li><p>때로는 변화 될 수도 있지만, 보통은 Fact 테이블에 변화가 일어나도 <code>Dimension은 조금 더 정적(static)인 성향</code>이 있어요.</p>
 </li>
 </ul>
-<h2 id="SCD-Store-as-Snapshots"><a href="#SCD-Store-as-Snapshots" class="headerlink" title="SCD (Store as Snapshots)"></a>SCD (Store as Snapshots)</h2><ul>
-<li><p>Use table partitions and store as snapshots for dimensions</p>
-</li>
-<li><p>All data is added to snapshot daily or weekly</p>
-</li>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.udemy.com/course/data-warehouse-the-ultimate-guide/">Data Warehouse - The Ultimate Guide</a></li>
 </ul>
+<h2 id="🙊-글-마무리"><a href="#🙊-글-마무리" class="headerlink" title="🙊 글 마무리"></a>🙊 글 마무리</h2><p>Fact와 Dimension 설명이 길어서 Dimension Modeling을 다음 포스트에 이어 쓰려고 해요. Fact와 Dimension을 구분하는 건 모델링에 있어 정말 중요한 기본기라는 생각이 들었어요.</p>
+<p>DB에서 도메인을 이해한다는 게 무슨 말인지 참 어려웠는 데, 저는 Fact와 Dimension을 잘 구분한다는 게 Biz와 도메인을 이해한다는 것과 비슷하게 들린 거 있죠 ㅎㅎ. 익숙해질 때까지 반복!!</p>
 
                 
             </div>
@@ -325,7 +324,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/01/06/Data-Architecture/slowly-changing-dimension/">http://example.com/2024/01/06/Data-Architecture/slowly-changing-dimension/</a>
+                    <a href="http://example.com/2023/06/01/Data%20Architecture/Dimension%20Modeling/">http://example.com/2023/06/01/Data%20Architecture/Dimension%20Modeling/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -437,23 +436,23 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/06/Data-Architecture/role-playing-dimension/">
+                <a href="/2023/06/01/Data%20Architecture/Data%20Warehouse/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="[Data Architecture] Role-playing Dimension">
+                        <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="Data Warehouse">
                         
-                        <span class="card-title diy-neon-red">[Data Architecture] Role-playing Dimension</span>
+                        <span class="card-title diy-neon-red">Data Warehouse</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Role-playing Dimension 만들기
+                            Data Warehouse, 왜 필요한 걸까요?
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-06
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-06-01
                         </span>
                         <span class="publish-author">
                             
@@ -477,12 +476,12 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/01/Git/git-history-command/">
+                <a href="/2023/06/01/Data%20Architecture/ODS/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/git-logo.png" class="responsive-img" alt="[Git] GitHub에 보안 파일 커밋 이력 지우기">
+                        <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="ODS">
                         
-                        <span class="card-title diy-neon-red">[Git] GitHub에 보안 파일 커밋 이력 지우기</span>
+                        <span class="card-title diy-neon-red">ODS</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -493,14 +492,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-01
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Git/" class="post-category">
-                                    Git
+                            <a href="/categories/Data-Architecture/" class="post-category">
+                                    Data Architecture
                                 </a>
                             
                             

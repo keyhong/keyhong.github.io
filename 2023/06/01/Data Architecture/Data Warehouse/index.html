@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[Data Architecture] ODS, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="ODS를 만들어야 할 때를 구분해봐요.">
+    <meta name="keywords" content="Data Warehouse, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="Data Warehouse, 왜 필요한 걸까요?">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[Data Architecture] ODS | Keyhong</title>
+    <title>Data Warehouse | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -182,7 +182,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [Data Architecture] ODS</h1>
+                        Data Warehouse</h1>
                 </div>
             </div>
         </div>
@@ -207,7 +207,7 @@
                         <div class="article-tag">
                             <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                                 <span class="chip bg-color">
-                                    2024-01-08</span>
+                                    2023-06-01</span>
                         </div>
                     
                     
@@ -239,50 +239,105 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="🙊-글을-쓰는-이유"><a href="#🙊-글을-쓰는-이유" class="headerlink" title="🙊 글을 쓰는 이유"></a>🙊 글을 쓰는 이유</h2><p>회사에서 구축한 DW에 ODS라는 데이터베이스를 본 적이 있어요. 이게 뭔지 궁금해서 동료들에게 ODS에 대해 여쭤본 적이 있었지만 명확한 정의를 얻을 수는 없어요. 다들 어디에서는 본 적은 있지만, 왜 있는 지와 어떤 역할인지에 대한 정의가 너무나 다르더라구요.</p>
-<p>그 때는 왜 그럴 까, 어쩌면 관례처럼 굳어진 것 때문일까? 라는 생각을 했었는 데, 강의를 들으면서<br>ODS의 존재 이유를 알게 됬어요. 또 왜 다들 ODS에 대해 애매모호 한지도요. 오늘은 그 내용을 설명해보려고 해요.</p>
-<h2 id="ODS-Operational-Data-Store"><a href="#ODS-Operational-Data-Store" class="headerlink" title="ODS (Operational Data Store)"></a>ODS (Operational Data Store)</h2><blockquote>
-<p>DW와 유사하게 분석을 목적으로 만들어졌지만, 기업의 빠른 의사결정에 조금 더 초점이 맞춘 데이터베이스에요.</p>
+                <h2 id="글을-쓰는-이유"><a href="#글을-쓰는-이유" class="headerlink" title="글을 쓰는 이유"></a>글을 쓰는 이유</h2><p>회사에서 프로젝트를 하면 DW&#x2F;DM을 구축하는 일을 했다. 그런데 당시는 주니어이기도 했고 DDL로 테이블을 생성하라는 업무를 받아서 했지만 너무 급급해서 이걸 왜 하는 지 몰랐다. 최근에서야 DW를 구축하기 위해 어떤 과정들이 있고, 왜 하는 지 주변의 팀원분을 통해서 알게 되었다.</p>
+<p>듣고나니 실제로 어떻게 하는 지 그 과정과 디테일한 요소들이 궁금했다. 그래서 Udemy의 강의를 통해 DW&#x2F;DM 설계에 대한 디테일 능력을 기르고 있다. 그 곳에서 배운 지식을 공유하고자 한다.</p>
+<h2 id="DW-Data-Warehouse"><a href="#DW-Data-Warehouse" class="headerlink" title="DW (Data Warehouse)"></a>DW (Data Warehouse)</h2><h3 id="DW의-필요성"><a href="#DW의-필요성" class="headerlink" title="DW의 필요성"></a>DW의 필요성</h3><blockquote>
+<p>만약 우리 회사에서 고객에게 더 나은 서비스를 제공하고 싶다면 어떻게 할까? 아마, 현재의 문제를 파악하고 개선 방안을 세워야 할 것이다. 우리는 데이터를 통해 고객의 이탈지점을 찾을 수 있다. 또한 데이터를 통해 실험적인 도전에 대한 결과를 평가할 수도 있다. 중요한 건, 우선적으로 데이터를 자유롭게 활용할 수 있는 환경을 만드는 것이다. DW는 그에 대한 좋은 답안이 될 수 있다.💡</p>
 </blockquote>
-<h3 id="ODS-vs-DW-차이"><a href="#ODS-vs-DW-차이" class="headerlink" title="ODS vs DW 차이"></a>ODS vs DW 차이</h3><p>이게 가장 중요한 부분일 것 같아요. 그럼 DW와 ODS 둘다 똑같이 분석용 DB인데 어떤 차이가 있나에 대한 질문이에요. 이를 하나의 서비스 상황을 만들어 설명해볼께요.</p>
-<blockquote>
-<p>우리는 금융 시스템에 종사하고 있어요. 우리가 하려는 일은 고객의 <U>현재 금융 상태를 파악</U>해서 바로 즉각적인 액션을 하려고 하거든요. 고객의 재무를 알 수 있는 계좌, 대출, 부동산 등 데이터를 하나의 데이터베이스에 모았어요. </p>
+<h3 id="DW란"><a href="#DW란" class="headerlink" title="DW란"></a>DW란</h3><blockquote>
+<p>분석을 위해 전사에 흩어진 여러 데이터를 모은 하나의 집중화된 데이터베이스를 <code>Data Warehouse</code> 라고 한다.</p>
 </blockquote>
-<p>위의 예시의 핵심 키워드는 “현재 금융 상태를 파악” 한다는 것이에요. 여기서 두 가지에 관점을 얻을 수 있어요.</p>
 <ul>
-<li><p>첫째, 우리는 <code>이력 데이터를 쌓거나 분석 할 필요가 없어요.</code> 원하는 건 현재 상태이지, 과거의 상태가 아니에요.</p>
+<li><p><code>보통 DW는 별도의 서버에 구축</code>을 한다. 분석을 하는 것은 과거부터 쌓아온 대용량 데이터에 대한 처리를 위해서는 큰 리소스를 필요로 한다. 이를 운영용 서버에서 수행하면 기존 OLTP 서비스에 영향을 줄 가능성이 높다.</p>
 </li>
-<li><p>둘째, 최신 데이터를 반영하려면 <code>빠른 주기로 ETL을 해야 해요.</code> 보통 DW에 ETL하는 것보다 주기가 빨라요.</p>
+<li><p>그래서 <code>ETL(Extract, Transform, Load\)</code>이라는 프로세스를 통해 사용자 트랜잭션이 적어질 때 배치 단위로 운영용 DB에서 데이터를 끌어온다.</p>
 </li>
 </ul>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219933&authkey=%21APvDTYOfelYRBE8&width=961&height=515" width="961" height="515" alt="Extract, Transform, Load"/>
+
+<ul>
+<li><code>추출(E), 변환(T), 로드(L)은 데이터 웨어하우징에서 가장 중요한 과정이고 DW 생성 과정의 80%~90% 소요시간이 든다.</code> 이는 운영용 DB에서 과거부터 쌓여있던 많은 데이터를 정제하면서 물리적으로 이관하기 때문이다.</li>
+</ul>
+<h3 id="DW의-필요-능력"><a href="#DW의-필요-능력" class="headerlink" title="DW의 필요 능력"></a>DW의 필요 능력</h3><p>데이터를 통합하는 과정은 쉽지 않다. 아래와 같은 난제들이 있다.</p>
+<ul>
+<li><p><code>다양한 데이터의 포맷에 대한 이해</code>가 필요하다. JSON, CSV, ORC, Parquet, Avro 등 여러 타입이 있다.</p>
+</li>
+<li><p><code>도메인을 표준화하는 과정이 필요</code>하다. 테이블마다 같은 컬럼이라도 도메인에 따라 값의 표현 방법이 다를 수 있다.</p>
+</li>
+<li><p><code>DBMS에 대한 이해</code>가 필요하다. DBMS에 따라 설계나 최적화의 방법이 크게 달라질 수 있다.</p>
+</li>
+<li><p><code>비즈니스를 이해하는 능력</code>이 필요하다. 비즈니스에 따라 엔티티 간의 논리적인 관계를 어떻게 설계와 관리가 달라질 수 있다.</p>
+</li>
+</ul>
+<h3 id="DW-설계시-고려사항"><a href="#DW-설계시-고려사항" class="headerlink" title="DW 설계시 고려사항"></a>DW 설계시 고려사항</h3><ul>
+<li><p><code>데이터가 한 곳으로 집중화되면서 일관성</code>을 지녀야 한다.</p>
+</li>
+<li><p><code>주된 사용자는 분석가</code>이다. 너무 기술적이기 보다 사용자 친화적이고 이해하기 쉽게 설계해야 한다.</p>
+</li>
+<li><p><code>트랜잭션에 대한 빠른 성능</code>을 보장해야 한다. 분석용 SQL을 많이 날리기 때문에 물리적 모델링에 따라 성능 차이가 크게 날 수 있다.</p>
+</li>
+<li><p><code>레포트나 시각화 할 수 있는 Tool</code>도 함께 고려해야 한다. 쿼리를 통한 분석의 결과는 가시성이 좋지 않다.</p>
+</li>
+</ul>
+<h3 id="DW-생성-과정"><a href="#DW-생성-과정" class="headerlink" title="DW 생성 과정"></a>DW 생성 과정</h3><p>DW의 생성 프로세스에 대한 접근은 크게 <code>Bill Inmon의 top-down 방식인 EDW 접근</code>과 <code>Kimball의 bottom-up 방식인 Data mart 접근</code>이 유명하다. 여러 회사의 컨퍼런스와 강의를 들으니 전체적인 DW를 생성 프로세스는 Inmon의 접근으로, 테이블 논리적 설계는 Kimball이 star&#x2F;snowflake schema 방식을 채택하는 게 많이 보인다. 이에 대한 <a target="_blank" rel="noopener" href="https://www.linkedin.com/pulse/comparison-data-warehouse-design-approaches-kimball-inmon-hassan/">레퍼런스</a>를 먼저 한번 읽어보는 것을 추천한다.</p>
 <blockquote>
-<p>요약하자면 ODS는 DW처럼 과거의 모든 데이터를 필요로 하지도 않고, 보다 빠르게 준실시간성 데이터가 흐르는 곳이에요. 이러한 목적으로 설계되었기 때문에 운영적인 의사결정을 바로 할 수 있어요. </p>
+<p>DW는 일반적으로 <code>data source</code> → <code>Staging Layer</code> → <code>Data Warehouse(Core Layer)</code> → <code>Data Mart</code> 과정으로 이루어진다.</p>
 </blockquote>
-<h3 id="ODS의-두-가지-형태"><a href="#ODS의-두-가지-형태" class="headerlink" title="ODS의 두 가지 형태"></a>ODS의 두 가지 형태</h3><ul>
-<li>전체적인 구조에서 ODS는 생성 위치는 두 가지 형태로 존재 할 수 있어요.</li>
-</ul>
-<h4 id="parallel-구조"><a href="#parallel-구조" class="headerlink" title="parallel 구조"></a>parallel 구조</h4><ul>
-<li><p><code>DW와 평행한 구조</code>로 두 데이터베이스 모두 별도의 분석용 데이터베이스로 쓰여요.</p>
+<ul>
+<li><p>data source는 OLTP 특성을 가진 운영용 DB를 말한다.</p>
 </li>
-<li><p>DW와 ODS 모두 수집해야 하는 데이터가 있다면 <code>transform을 중복 수행</code>해야 하는 단점이 있어요.</p>
+<li><p><code>Staging Layer와 Data Warehouse는 필수적</code>인 레이어이다.</p>
 </li>
-</ul>
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219940&authkey=%21AJK1lb1SENyHUFU&width=660" width="660" height="auto" alt="parallel한 구조"/>
-
-<h4 id="sequential-구조"><a href="#sequential-구조" class="headerlink" title="sequential 구조"></a>sequential 구조</h4><ul>
-<li><p>DW의 바로 직전 단계에서 데이터 소스 역할로 많이 쓰여요.</p>
+<li><p><code>Cleansing Layer는 DW에 포함</code>되는 경우가 대부분이다.</p>
 </li>
-<li><p>transform의 중복을 줄이기 위해 <code>대부분 sequential한 구조를 많이 채택</code>하는 편이에요.</p>
+<li><p><code>DW가 Access Layer 역할을 할 경우 DM은 설계에 따라 없을 수도 있다.</code></p>
 </li>
 </ul>
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219941&authkey=%21AOn8GawtXzrjZ_g&width=660" width="660" height="auto" alt="sequential한 구조"/>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219934&authkey=%21AAn2uqPOZUkLJiE&width=1024" width="1024" height="auto" alt="Data Warehouse를 생성하는 전체적인 과정"/>
 
 
-<h3 id="ODS의-경계가-점점-없어지는-이유"><a href="#ODS의-경계가-점점-없어지는-이유" class="headerlink" title="ODS의 경계가 점점 없어지는 이유"></a>ODS의 경계가 점점 없어지는 이유</h3><blockquote>
-<p>최근 <code>플랫폼의 발전에서 따라 ETL 속도가 훨씬 더 빨라졌어요.</code> 그로 인해 DW에서도 빠르게 데이터를 받아볼 수 있죠. 실시간 데이터 처리에 Kafka, Spark, Storm, Flink 같은 플랫폼과 함께 이제는 병렬 처리도 가능해졌어요.</p>
+<h4 id="Staging-Layer"><a href="#Staging-Layer" class="headerlink" title="Staging Layer"></a>Staging Layer</h4><blockquote>
+<p>data source에서 데이터를 Extract해서 보관하는 레이어이다. 소스 시스템에 영향을 주지 않기 위해 수집할 때는 raw 그대로나 가벼운 cleasning 정도만 수행 후 가져오고, DW로 보낼 때 transform을 하면서 load한다.</p>
 </blockquote>
-<h2 id="🙊-글-마무리"><a href="#🙊-글-마무리" class="headerlink" title="🙊 글 마무리"></a>🙊 글 마무리</h2><p>ODS의 경계가 많이 허물어지는 건 사실이에요. 하지만 그렇다고 이젠 없어도 된다는 건 아니에요. 분명히 운영용 데이터 분석이라는 목적이 있어요. 또, sequential 구조처럼 DW 앞에서 데이터 소스 역할도 충분히 할 수 있어요.</p>
-<p>ODS가 <code>기존에 구축되어 있는 지 확인하고, 있다면 있는 것을 활용</code>함으로써 DW 전까지 해야 할 업무 리소스를 줄일 수 있다는 점을 인지해야 해요. </p>
+<ul>
+<li><p>설계에 따라 Staging의 테이블을 temporary와 permanent로 구분할 수 있다.</p>
+</li>
+<li><p>공통점</p>
+<ul>
+<li>temporary와 permanent <code>모두 매일 달라지는 분량의 원천 데이터만 가져온다</code>. 이를 <code>Delta Load</code>라고 한다.</li>
+</ul>
+</li>
+<li><p>차이점</p>
+</li>
+</ul>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219939&authkey=%21AAd-HLBeWPzNS6E&width=1024" width="1024" height="auto" alt="temporary는 새로 데이터를 넣기 전, 이전 데이터를 truncate 해요." />
+
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219936&authkey=%21APEYF3lVB-a8ycg&width=1024" width="1024" height="auto" alt="permanent는 Staging에 계속 트랜잭션 데이터를 쌓아나가요."/>
+
+<h4 id="Core-Layer"><a href="#Core-Layer" class="headerlink" title="Core Layer"></a>Core Layer</h4><blockquote>
+<p>일반적으로 우리가 Data Warehouse라고 부르는 레이어이다. staging에서 cleansing과 transform 과정을 거친 데이터가 들어왔기 때문에 좋은 품질의 계속 쌓이는 공간(Single Point of Truth)이다. 과거로부터 트랜잭션 데이터를 계속 보관하고 있다.</p>
+</blockquote>
+<ul>
+<li><p>일반적으로 분석가가 Access하는 Layer는 Data Mart이지만, <code>가끔 DM 없이 DW가 Access Layer 역할을 하기도 한다.</code></p>
+</li>
+<li><p>차원 모델링(Dimensional Modeling)으로 전체적인 구조를 만들어나간다. 흔히 우리가 배운 정규화(1·2·3차)를 통해 엔터티 간의 논리적인 관계를 만드는 과정이다.</p>
+<ul>
+<li><p><code>통계를 위한 집계 대상이 되는 측정 값(트랜잭션)을 &quot;Fact&quot;</code>라고 한다. Fact 테이블은 보통 (PK &amp; FK &amp; Fact)로 이루어져 있다.</p>
+</li>
+<li><p>Fact 테이블에서 측정 값 이외의 <code>부수적인 맥락의 컬럼(예를 들어, 일자나 카테고리)의 값을 Dimension&quot;</code>이라고 한다. Dimension 테이블은 해당 컬럼을 id로 바꾸어 참조 대상이 될 수 있도록 분리한 테이블을 말한다.</p>
+</li>
+<li><p>그럼 하나의 Fact 테이블을 중심으로 주변에 무수한 Dimension 테이블이 생기는 데, 이 모양이 별처럼 생겼다고 해서 <code>&quot;star schema&quot;</code>라고 한다. Dimension 테이블에서 또 다른 Dimension 테이블이 생기면 더 복잡하다. 그 때는 눈송이를 닮았다해서 <code>&quot;snowflake schema&quot;</code>라고 해요.</p>
+</li>
+</ul>
+</li>
+</ul>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219937&authkey=%21APa8UmARvr5-dkI&width=1024" width="1024" height="auto" alt="star schema"/>
+
+
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.udemy.com/course/data-warehouse-the-ultimate-guide/">Data Warehouse - The Ultimate Guide</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.udemy.com/course/modeling-data-warehouse-with-data-vault-for-beginners">Modeling Data Warehouse with Data Vault 2.0</a></li>
+</ul>
 
                 
             </div>
@@ -309,7 +364,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/01/08/Data-Architecture/ods/">http://example.com/2024/01/08/Data-Architecture/ods/</a>
+                    <a href="http://example.com/2023/06/01/Data%20Architecture/Data%20Warehouse/">http://example.com/2023/06/01/Data%20Architecture/Data%20Warehouse/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -421,12 +476,12 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/09/Data-Architecture/dimension-modeling(1)/">
+                <a href="/2023/06/01/Data%20Architecture/Data%20Vault%202.0/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="[Data Architecture] Dimension Modeling(1)">
+                        <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="Data Vault 2.0">
                         
-                        <span class="card-title diy-neon-red">[Data Architecture] Dimension Modeling(1)</span>
+                        <span class="card-title diy-neon-red">Data Vault 2.0</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -437,7 +492,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-09
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-06-01
                         </span>
                         <span class="publish-author">
                             
@@ -461,12 +516,12 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/06/Data-Architecture/data-vault-2.0/">
+                <a href="/2023/06/01/Data%20Architecture/Dimension%20Modeling/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="[Data Architecture] Data Vault 2.0">
+                        <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="Dimension Modeling">
                         
-                        <span class="card-title diy-neon-red">[Data Architecture] Data Vault 2.0</span>
+                        <span class="card-title diy-neon-red">Dimension Modeling</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -477,7 +532,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-01
                             </span>
                         <span class="publish-author">
                             
