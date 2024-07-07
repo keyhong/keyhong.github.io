@@ -4,8 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Kubernetes Object Management, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Kubernetes Object Managementkubectl 명령줄 도구는 Kubernetes 객체를 생성하고 관리하는 여러 가지 방법을 지원합니다. 이 문서는 다른 접근 방식에 대한 개요를 제공합니다. Kube">
+    <meta name="keywords" content="Field Selectors, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="Field SelectorsField selectors를 사용하면 하나 이상의 리소스 필드 값에 따라 Kubernetes objects를 선택할 수 있습니다. 다음은 필드 셀렉터 쿼리의 예시입니다:
+
+metadata">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +19,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Kubernetes Object Management | Keyhong</title>
+    <title>Field Selectors | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -182,7 +184,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        Kubernetes Object Management</h1>
+                        Field Selectors</h1>
                 </div>
             </div>
         </div>
@@ -207,7 +209,7 @@
                         <div class="article-tag">
                             <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                                 <span class="chip bg-color">
-                                    2023-12-01</span>
+                                    2024-03-01</span>
                         </div>
                     
                     
@@ -239,128 +241,81 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Kubernetes-Object-Management"><a href="#Kubernetes-Object-Management" class="headerlink" title="Kubernetes Object Management"></a>Kubernetes Object Management</h1><p><code>kubectl</code> 명령줄 도구는 Kubernetes 객체를 생성하고 관리하는 여러 가지 방법을 지원합니다. 이 문서는 다른 접근 방식에 대한 개요를 제공합니다. Kubernetes 객체를 kubectl로 관리하는 세부 정보는 Kubectl 책을 참고하세요.</p>
-<h2 id="Management-techniques"><a href="#Management-techniques" class="headerlink" title="Management techniques"></a>Management techniques</h2><blockquote>
-<p>경고: Kubernetes 객체는 하나의 기술만 사용하여 관리해야 합니다. 동일한 객체에 대해 기술을 혼합하면 정의되지 않은 동작이 발생할 수 있습니다.</p>
+                <h1 id="Field-Selectors"><a href="#Field-Selectors" class="headerlink" title="Field Selectors"></a>Field Selectors</h1><p><em>Field selectors</em>를 사용하면 하나 이상의 리소스 필드 값에 따라 Kubernetes <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/overview/working-with-objects/#kubernetes-objects">objects</a>를 선택할 수 있습니다. 다음은 필드 셀렉터 쿼리의 예시입니다:</p>
+<ul>
+<li><code>metadata.name=my-service</code></li>
+<li><code>metadata.namespace!=default</code></li>
+<li><code>status.phase=Pending</code></li>
+</ul>
+<p>이 <code>kubectl</code> 명령은 <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-phase">status.phase</a> 필드의 값이 <code>Running</code>인 모든 Pod를 선택합니다:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl get pods --field-selector <span class="token assign-left variable">status.phase</span><span class="token operator">=</span>Running<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<blockquote>
+<p><strong>Note</strong>: 필드 셀렉터는 본질적으로 리소스 <em>filters</em>입니다. 기본적으로 선택기&#x2F;필터가 적용되지 않으며, 즉 해당 유형의 모든 리소스가 선택됩니다. 이는 <code>kubectl</code> 쿼리 <code>kubectl get pods</code>와 <code>kubectl get pods --field-selector &quot;&quot;</code>이 동일하다는 것을 의미합니다.</p>
 </blockquote>
+<h2 id="Supported-fields"><a href="#Supported-fields" class="headerlink" title="Supported fields"></a>Supported fields</h2><p>지원되는 필드 셀렉터는 Kubernetes 리소스 유형에 따라 다릅니다. 모든 리소스 유형은 <code>metadata.name</code> 및 <code>metadata.namespace</code> 필드를 지원합니다. 지원되지 않는 필드 셀렉터를 사용하면 오류가 발생합니다. 예를 들어:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl get ingress --field-selector <span class="token assign-left variable">foo.bar</span><span class="token operator">=</span>baz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Error from server <span class="token punctuation">(</span>BadRequest<span class="token punctuation">)</span>: Unable to <span class="token function">find</span> <span class="token string">"ingresses"</span> that match label selector <span class="token string">""</span>, field selector <span class="token string">"foo.bar=baz"</span><span class="token builtin class-name">:</span> <span class="token string">"foo.bar"</span> is not a known field selector: only <span class="token string">"metadata.name"</span>, <span class="token string">"metadata.namespace"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <table>
 <thead>
 <tr>
-<th>Management technique</th>
-<th>Operates on</th>
-<th>Recommended environment</th>
-<th>Supported writers</th>
-<th>Learning curve</th>
+<th>List of supported fields</th>
+<th></th>
 </tr>
 </thead>
 <tbody><tr>
-<td>Imperative commands</td>
-<td>Live objects</td>
-<td>Development projects</td>
-<td>1+</td>
-<td>Lowest</td>
+<td>Pod</td>
+<td>spec.nodeNam <br> spec.restartPolic <br> spec.schedulerNam <br> spec.serviceAccountNam <br> spec.hostNetwor <br> status.phas <br> status.podI <br> status.nominatedNodeName</td>
 </tr>
 <tr>
-<td>Imperative object configuration</td>
-<td>Individual files</td>
-<td>Production projects</td>
-<td>1</td>
-<td>Moderate</td>
+<td>Event</td>
+<td>involvedObject.kind <br> involvedObject.namespace <br> involvedObject.name <br> involvedObject.uid <br> involvedObject.apiVersion <br> involvedObject.resourceVersion <br> involvedObject.fieldPath <br> reason <br> reportingComponent <br> source <br> type</td>
 </tr>
 <tr>
-<td>Declarative object configuration</td>
-<td>Directories of files</td>
-<td>Production projects</td>
-<td>1+</td>
-<td>Highest</td>
+<td>Secret</td>
+<td>type</td>
+</tr>
+<tr>
+<td>Namespace</td>
+<td>status.phase</td>
+</tr>
+<tr>
+<td>ReplicaSet</td>
+<td>status.replicas</td>
+</tr>
+<tr>
+<td>ReplicationController</td>
+<td>status.replicas</td>
+</tr>
+<tr>
+<td>Job</td>
+<td>status.successful</td>
+</tr>
+<tr>
+<td>Node</td>
+<td>spec.unschedulable</td>
+</tr>
+<tr>
+<td>CertificateSigningRequest</td>
+<td>spec.signerName</td>
 </tr>
 </tbody></table>
-<h2 id="Imperative-commands"><a href="#Imperative-commands" class="headerlink" title="Imperative commands"></a>Imperative commands</h2><p>명령형 명령을 사용할 때 사용자는 클러스터의 실제 객체에 직접 작용합니다. 사용자는 작업을 kubectl 명령에 인수나 플래그로 제공합니다.</p>
-<p>이 방법은 클러스터에서 시작하거나 일회성 작업을 실행하는 권장 방법입니다. 이 기술은 실제 객체에 직접 작용하기 때문에 이전 구성의 이력을 제공하지 않습니다.</p>
-<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><p>Deployment 객체를 생성하여 nginx 컨테이너의 인스턴스를 실행합니다:</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl create deployment nginx <span class="token parameter variable">--image</span> nginx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="Supported-operators"><a href="#Supported-operators" class="headerlink" title="Supported operators"></a>Supported operators</h2><p><code>=</code>, <code>==</code> 및 <code>!=</code> 연산자를 필드 셀렉터와 함께 사용할 수 있습니다 (<code>=</code>와 <code>==</code>는 동일한 의미를 가집니다). 예를 들어, 이 <code>kubectl</code> 명령은 <code>default</code> 네임스페이스에 속하지 않는 모든 Kubernetes 서비스를 선택합니다:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl get services  --all-namespaces --field-selector metadata.namespace<span class="token operator">!=</span>default<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="Trade-offs"><a href="#Trade-offs" class="headerlink" title="Trade-offs"></a>Trade-offs</h3><p>object configuration과 비교했을 때의 장점:</p>
-<ul>
-<li>명령은 단일 동작 단어로 표현됩니다.</li>
-<li>명령은 클러스터에 변경 사항을 적용하기 위해 단일 단계만 필요합니다.</li>
-</ul>
-<p>object configuration과 비교했을 때의 단점:</p>
-<ul>
-<li>명령은 변경 검토 프로세스와 통합되지 않습니다.</li>
-<li>명령은 변경과 관련된 감사 트레일을 제공하지 않습니다.</li>
-<li>명령은 실시간으로 제공되는 것 이외에는 기록의 소스를 제공하지 않습니다.</li>
-<li>명령은 새로운 객체를 생성하기 위한 템플릿을 제공하지 않습니다.</li>
-</ul>
-<h2 id="Imperative-object-configuration"><a href="#Imperative-object-configuration" class="headerlink" title="Imperative object configuration"></a>Imperative object configuration</h2><p>명령형 객체 구성에서 kubectl 명령은 작업(생성, 교체 등)을 지정하며 선택적으로 플래그와 하나 이상의 파일 이름을 포함합니다. 지정된 파일에는 YAML 또는 JSON 형식의 객체의 전체 정의가 포함되어야 합니다.</p>
-<p>See the <a href="">API reference</a> for more details on object definitions.</p>
-<p>객체 정의에 대한 자세한 내용은 <a href="">API reference</a>를 참조하십시오.</p>
 <blockquote>
-<p>경고: 명령형 <code>replace</code> 명령은 기존의 spec을 새로 제공된 spec으로 대체하며, 구성 파일에서 누락된 객체의 모든 변경 사항을 삭제합니다. 이 접근 방식은 구성 파일과 독립적으로 업데이트되는 리소스 유형에 사용해서는 안 됩니다. 예를 들어, <code>LoadBalancer</code> 유형의 서비스는 클러스터에 의해 구성에서 독립적으로 <code>externalIPs</code> 필드가 업데이트됩니다.</p>
+<p><strong>Note</strong>: <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement">집합 기반 연산자</a> (<code>in</code>, <code>notin</code>, <code>exists</code>)는 필드 셀렉터에 지원되지 않습니다.</p>
 </blockquote>
-<h3 id="Examples-1"><a href="#Examples-1" class="headerlink" title="Examples"></a>Examples</h3><p>구성 파일에 정의된 객체를 생성합니다:</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl create <span class="token parameter variable">-f</span> nginx.yaml<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="Chained-selectors"><a href="#Chained-selectors" class="headerlink" title="Chained selectors"></a>Chained selectors</h2><p><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels">label</a> 및 다른 셀렉터와 마찬가지로 필드 셀렉터는 쉼표로 구분된 목록으로 연결할 수 있습니다. 이 <code>kubectl</code> 명령은 <code>status.phase</code>가 <code>Running</code>이 아니고 <code>spec.restartPolicy</code> 필드가 <code>Always</code>인 모든 Pod를 선택합니다:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl get pods --field-selector<span class="token operator">=</span>status.phase<span class="token operator">!=</span>Running,spec.restartPolicy<span class="token operator">=</span>Always<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>두 개의 구성 파일에 정의된 객체를 삭제합니다:</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl delete <span class="token parameter variable">-f</span> nginx.yaml <span class="token parameter variable">-f</span> redis.yaml<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="Multiple-resource-types"><a href="#Multiple-resource-types" class="headerlink" title="Multiple resource types"></a>Multiple resource types</h2><p>여러 리소스 유형에 걸쳐 필드 셀렉터를 사용할 수 있습니다. 이 <code>kubectl</code> 명령은 <code>default</code> 네임스페이스에 속하지 않은 모든 Statefulset과 Service를 선택합니다:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl get statefulsets,services --all-namespaces --field-selector metadata.namespace<span class="token operator">!=</span>default<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>구성 파일에 정의된 객체를 실제 구성을 덮어쓰는 방식으로 업데이트합니다:</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl replace <span class="token parameter variable">-f</span> nginx.yaml<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h3 id="Trade-offs-1"><a href="#Trade-offs-1" class="headerlink" title="Trade-offs"></a>Trade-offs</h3><p>명령형 명령과 비교했을 때의 장점:</p>
-<ul>
-<li>객체 구성은 Git과 같은 소스 제어 시스템에 저장할 수 있습니다.</li>
-<li>객체 구성은 푸시하기 전에 변경 사항 검토 및 감사 트레일과 같은 프로세스와 통합될 수 있습니다.</li>
-<li>객체 구성은 새로운 객체를 생성하기 위한 템플릿을 제공합니다.</li>
-</ul>
-<br>
-
-<p>명령형 명령과 비교했을 때의 단점:</p>
-<ul>
-<li>객체 구성은 객체 스키마에 대한 기본적인 이해가 필요합니다.</li>
-<li>객체 구성은 YAML 파일을 작성하는 추가 단계가 필요합니다.</li>
-</ul>
-<br>
-
-<p>선언적 객체 구성과 비교했을 때의 장점:</p>
-<p>명령형 객체 구성은 더 간단하고 이해하기 쉬운 동작을 합니다.<br>Kubernetes 버전 1.5부터 명령형 객체 구성이 더 성숙해졌습니다.</p>
-<br>
-
-<p>선언적 객체 구성과 비교했을 때의 단점:</p>
-<p>명령형 객체 구성은 파일보다 디렉토리에서 더 잘 작동합니다.<br>실시간 객체의 업데이트는 구성 파일에 반영되어야 하며, 그렇지 않으면 다음 교체 중에 손실됩니다.</p>
-<h2 id="Declarative-object-configuration"><a href="#Declarative-object-configuration" class="headerlink" title="Declarative object configuration"></a>Declarative object configuration</h2><p>선언적 객체 구성을 사용할 때 사용자는 로컬에 저장된 객체 구성 파일에서 작업합니다. 그러나 사용자는 파일에 대해 취해야 할 작업을 정의하지 않습니다. kubectl은 개별 객체 당으로 자동으로 생성, 업데이트 및 삭제 작업을 감지합니다. 이는 서로 다른 객체에 대해 서로 다른 작업이 필요한 디렉토리에서 작업할 수 있도록 합니다.</p>
-<blockquote>
-<p>Note: 선언적 객체 구성은 다른 작성자가 만든 변경 사항을 유지합니다. 심지어 변경 사항이 객체 구성 파일로 다시 병합되지 않더라도 유지됩니다. 이는 전체 객체 구성을 <code>replace</code>하는 대신 관찰된 차이점만을 기록하는 <code>patch</code> API 작업을 사용함으로써 가능합니다.</p>
-</blockquote>
-<h3 id="Examples-2"><a href="#Examples-2" class="headerlink" title="Examples"></a>Examples</h3><p>configs 디렉토리의 모든 객체 구성 파일을 처리하고 실제 객체를 생성하거나 패치합니다. 먼저 변경 사항을 확인하기 위해 diff를 사용하여 적용할 변경 사항을 확인한 후에 apply할 수 있습니다:</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl <span class="token function">diff</span> <span class="token parameter variable">-f</span> configs/
-kubectl apply <span class="token parameter variable">-f</span> configs/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<p>디렉토리를 재귀적으로 처리합니다:</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl <span class="token function">diff</span> <span class="token parameter variable">-R</span> <span class="token parameter variable">-f</span> configs/
-kubectl apply <span class="token parameter variable">-R</span> <span class="token parameter variable">-f</span> configs/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<h3 id="Trade-offs-2"><a href="#Trade-offs-2" class="headerlink" title="Trade-offs"></a>Trade-offs</h3><p>명령형 객체 구성과 비교했을 때의 장점:</p>
-<ul>
-<li>실제 객체에 직접 만든 변경 사항이 구성 파일로 다시 병합되지 않더라도 유지됩니다.</li>
-<li>선언적 객체 구성은 디렉토리에서의 작업 및 개별 객체 당 작업 유형(생성, 패치, 삭제) 자동 감지에 대한 더 나은 지원을 제공합니다.</li>
-</ul>
-<p>명령형 객체 구성과 비교했을 때의 단점:</p>
-<ul>
-<li>선언적 객체 구성은 예기치 않은 결과가 발생할 때 디버그하기 어렵고 결과를 이해하는 데 어려움이 있습니다.</li>
-<li>diffs를 사용한 부분적인 업데이트는 복잡한 병합 및 패치 작업을 생성합니다.</li>
-</ul>
-<h2 id="What’s-next"><a href="#What’s-next" class="headerlink" title="What’s next"></a>What’s next</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/tasks/manage-kubernetes-objects/imperative-command/">Managing Kubernetes Objects Using Imperative Commands</a></li>
-<li><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/tasks/manage-kubernetes-objects/imperative-config/">Imperative Management of Kubernetes Objects Using Configuration Files</a></li>
-<li><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/tasks/manage-kubernetes-objects/declarative-config/">Declarative Management of Kubernetes Objects Using Configuration Files</a></li>
-<li><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/">Declarative Management of Kubernetes Objects Using Kustomize</a></li>
-<li><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands/">Kubectl Command Reference</a></li>
-<li><a target="_blank" rel="noopener" href="https://kubectl.docs.kubernetes.io/">Kubectl Book</a></li>
-<li><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/">Kubernetes API Reference</a></li>
-</ul>
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/overview/working-with-objects/object-management/">https://kubernetes.io/docs/concepts/overview/working-with-objects/object-management/</a></li>
+<li><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/overview/working-with-objects/field-selectors/">https://kubernetes.io/docs/concepts/overview/working-with-objects/field-selectors/</a></li>
 </ul>
 
                 
@@ -388,7 +343,7 @@ kubectl apply <span class="token parameter variable">-R</span> <span class="toke
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2023/12/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Kubernetes_Object_Management/">http://example.com/2023/12/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Kubernetes_Object_Management/</a>
+                    <a href="http://example.com/2024/03/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Field%20Selectors/">http://example.com/2024/03/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Field%20Selectors/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -500,12 +455,12 @@ kubectl apply <span class="token parameter variable">-R</span> <span class="toke
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2023/12/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Finalizers/">
+                <a href="/2024/03/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Annotations/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Finalizers">
+                        <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Annotations">
                         
-                        <span class="card-title diy-neon-red">Finalizers</span>
+                        <span class="card-title diy-neon-red">Annotations</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -516,7 +471,7 @@ kubectl apply <span class="token parameter variable">-R</span> <span class="toke
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-12-01
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-03-01
                         </span>
                         <span class="publish-author">
                             
@@ -540,12 +495,12 @@ kubectl apply <span class="token parameter variable">-R</span> <span class="toke
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/12/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Labels%20and%20Selectors/">
+                <a href="/2024/03/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Finalizers/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Labels and Selectors">
+                        <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Finalizers">
                         
-                        <span class="card-title diy-neon-red">Labels and Selectors</span>
+                        <span class="card-title diy-neon-red">Finalizers</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -556,7 +511,7 @@ kubectl apply <span class="token parameter variable">-R</span> <span class="toke
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-01
                             </span>
                         <span class="publish-author">
                             

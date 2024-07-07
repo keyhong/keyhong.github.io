@@ -4,9 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Owners and Dependents, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Owners and DependentsKubernetes에서 일부 객체는 다른 객체의 소유자입니다. 예를 들어, ReplicaSet은 일련의 Pod의 소유자입니다. 이러한 소유된 객체는 소유자의 종속 객체입니다.
-소">
+    <meta name="keywords" content="Finalizers, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="Finalizers파이널라이저는 삭제를 표시한 리소스가 완전히 삭제되기 전에 특정 조건이 충족될 때까지 Kubernetes가 기다리도록 지시하는 네임스페이스 키입니다. 파이널라이저는 삭제된 객체가 소유한 리소스를 정">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Owners and Dependents | Keyhong</title>
+    <title>Finalizers | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -183,7 +182,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        Owners and Dependents</h1>
+                        Finalizers</h1>
                 </div>
             </div>
         </div>
@@ -208,7 +207,7 @@
                         <div class="article-tag">
                             <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                                 <span class="chip bg-color">
-                                    2023-12-01</span>
+                                    2024-03-01</span>
                         </div>
                     
                     
@@ -240,25 +239,41 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Owners-and-Dependents"><a href="#Owners-and-Dependents" class="headerlink" title="Owners and Dependents"></a>Owners and Dependents</h1><p>Kubernetes에서 일부 <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/overview/working-with-objects/#kubernetes-objects">객체</a>는 다른 객체의 소유자입니다. 예를 들어, <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/">ReplicaSet</a>은 일련의 Pod의 소유자입니다. 이러한 소유된 객체는 소유자의 종속 객체입니다.</p>
-<p>소유권은 일부 리소스에서 사용하는 <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/">labels and selectors</a> 메커니즘과 다릅니다. 예를 들어, Service가 <code>EndpointSlice</code> 객체를 생성하는 경우를 고려해보세요. 이 Service는 <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels">labels</a>을 사용하여 제어 평면이 해당 Service에 사용되는 <code>EndpointSlice</code> 객체를 결정할 수 있도록 합니다. 라벨 외에도, 서비스 대신 관리되는 각 <code>EndpointSlice</code>에는 소유자 참조(owner reference)가 있습니다. 소유자 참조는 Kubernetes의 다양한 부분이 자신들이 제어하지 않는 객체와 간섭하지 않도록 돕습니다.</p>
-<h2 id="Owner-references-in-object-specifications"><a href="#Owner-references-in-object-specifications" class="headerlink" title="Owner references in object specifications"></a>Owner references in object specifications</h2><p>종속 객체는 소유자 객체를 참조하는 <code>metadata.ownerReferences</code> 필드를 가지고 있습니다. 유효한 소유자 참조는 종속 객체와 동일한 <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces">namespace</a> 내에서 객체 이름과 <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names">UID</a>로 구성됩니다. Kubernetes는 ReplicaSets, DaemonSets, Deployments, Jobs, CronJobs, ReplicationControllers와 같은 다른 객체의 종속 객체에 대해 이 필드의 값을 자동으로 설정합니다. 이 필드의 값을 변경하여 이러한 관계를 수동으로 구성할 수도 있습니다. 그러나 일반적으로는 그럴 필요가 없으며, Kubernetes가 자동으로 관계를 관리하도록 할 수 있습니다.</p>
-<p>종속 객체에는 <code>ownerReferences.blockOwnerDeletion</code> 필드도 있으며, 이 필드는 boolean 값을 가지며 특정 종속 객체가 가비지 컬렉션이 소유 객체를 삭제하는 것을 차단할 수 있는지 여부를 제어합니다. Kubernetes는 컨트롤러(예: Deployment 컨트롤러)가 <code>metadata.ownerReferences</code> 필드의 값을 설정하면 이 필드를 자동으로 <code>true</code>로 설정합니다. 또한, <code>blockOwnerDeletion</code> 필드의 값을 수동으로 설정하여 어떤 종속 객체가 가비지 컬렉션을 차단할지 제어할 수 있습니다.</p>
-<p>Kubernetes 입장 컨트롤러는 소유자의 삭제 권한에 따라 종속 리소스의 이 필드를 변경할 수 있는 사용자 접근을 제어합니다. 이 제어는 미인가된 사용자가 소유 객체의 삭제를 지연시키는 것을 방지합니다.</p>
-<blockquote>
-<p>Note:<br>네임스페이스 간 소유자 참조는 설계상으로 허용되지 않습니다. 네임스페이스에 속한 종속 객체는 클러스터 범위 또는 같은 네임스페이스 내의 네임스페이스 범위 소유자를 지정할 수 있습니다. 네임스페이스 범위의 소유자는 종속 객체와 동일한 네임스페이스에 존재해야 합니다. 소유자 참조가 같은 네임스페이스에 존재하지 않는 경우, 그 소유자 참조는 없는 것으로 간주되며, 모든 소유자가 없음으로 확인된 후 종속 객체는 삭제 대상이 됩니다.</p>
-</blockquote>
-<p>클러스터 범위의 종속 객체는 클러스터 범위의 소유자만 지정할 수 있습니다. v1.20 이상에서 클러스터 범위의 종속 객체가 소유자로 네임스페이스 범위의 종류를 지정하는 경우, 이는 해결할 수 없는 소유자 참조로 간주되어 가비지 수집 대상으로 처리되지 않습니다.</p>
-<p>v1.20+에서 가비지 컬렉터가 유효하지 않은 네임스페이스 간 <code>ownerReference</code>나 클러스터 범위 종속 객체가 네임스페이스 종류를 참조하는 <code>ownerReference</code>를 감지하면, <code>OwnerRefInvalidNamespace</code> 이유로 경고 이벤트가 보고됩니다. 관련된 객체(<code>involvedObject</code>)는 유효하지 않은 종속 객체입니다. 해당 종류의 이벤트를 확인하려면 <code>kubectl get events -A --field-selector=reason=OwnerRefInvalidNamespace</code> 명령을 실행할 수 있습니다.</p>
-<h2 id="Ownership-and-finalizers"><a href="#Ownership-and-finalizers" class="headerlink" title="Ownership and finalizers"></a>Ownership and finalizers</h2><p>Kubernetes에게 리소스 삭제를 요청하면, API 서버는 관리 컨트롤러가 리소스에 대한 [finalizer rules](finalizer rules)을 처리할 수 있도록 허용합니다. <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/overview/working-with-objects/finalizers/">Finalizers</a>는 클러스터가 올바르게 작동하기 위해 여전히 필요한 리소스의 실수로 인한 삭제를 방지합니다. 예를 들어, Pod에서 여전히 사용 중인 <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/">PersistentVolume</a>을 삭제하려고 하면, <code>PersistentVolume</code>에는 <code>kubernetes.io/pv-protection</code> 최종화가 있기 때문에 즉시 삭제되지 않습니다. 대신에 해당 <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/storage/volumes/">volume</a>은 종료(<code>Terminating</code>) 상태로 유지됩니다. Kubernetes는 <code>PersistentVolume</code>이 더 이상 Pod에 바인드되지 않은 후에 최종화를 해제하며, 이 과정은 최종화가 제거될 때까지 발생하지 않습니다.</p>
-<p>Kubernetes는 <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/architecture/garbage-collection/#cascading-deletion">foreground or orphan cascading deletion</a>를 사용할 때 소유 리소스에 최종화를 추가합니다. 전경 삭제에서는 컨트롤러가 소유자를 삭제하기 전에 <code>ownerReferences.blockOwnerDeletion=true</code>를 갖는 종속 리소스를 반드시 삭제해야 하도록 전경 최종화를 추가합니다. 고아 삭제 정책을 지정한 경우에는 Kubernetes가 <code>orphan</code> finalizer를 추가하여 컨트롤러가 소유자 객체를 삭제한 후에는 종속 리소스를 무시합니다.</p>
-<h2 id="What’s-next"><a href="#What’s-next" class="headerlink" title="What’s next"></a>What’s next</h2><ul>
-<li>Learn more about <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/overview/working-with-objects/finalizers/">Kubernetes finalizers</a>.</li>
-<li>Learn about <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/architecture/garbage-collection">garbage collection</a>.</li>
-<li>Read the API reference for <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#System">object metadata</a>.</li>
+                <h1 id="Finalizers"><a href="#Finalizers" class="headerlink" title="Finalizers"></a>Finalizers</h1><p>파이널라이저는 삭제를 표시한 리소스가 완전히 삭제되기 전에 특정 조건이 충족될 때까지 Kubernetes가 기다리도록 지시하는 네임스페이스 키입니다. 파이널라이저는 삭제된 객체가 소유한 리소스를 정리할 수 있도록 <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/architecture/controller/">controllers</a>에 알립니다.</p>
+<p>Kubernetes에게 파이널라이저가 지정된 객체를 삭제하라고 지시하면, Kubernetes API는 <code>.metadata.deletionTimestamp</code>를 채워서 해당 객체를 삭제 대기 상태로 표시하고 <code>202</code> 상태 코드(HTTP “수락됨”)를 반환합니다. 대상 객체는 컨트롤 플레인 또는 기타 구성 요소가 파이널라이저에서 정의한 작업을 수행하는 동안 종료 상태로 유지됩니다. 이러한 작업이 완료되면 컨트롤러는 대상 객체에서 관련 파이널라이저를 제거합니다. <code>metadata.finalizers</code> 필드가 비어 있을 때 Kubernetes는 삭제가 완료되었다고 간주하고 객체를 삭제합니다.</p>
+<p>파이널라이저를 사용하여 리소스의 <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/architecture/garbage-collection/">garbage collection</a>을 제어할 수 있습니다. 예를 들어, 컨트롤러가 대상 리소스를 삭제하기 전에 관련된 리소스나 인프라를 정리하기 위한 파이널라이저를 정의할 수 있습니다.</p>
+<p>파이널라이저를 사용하여 대상 리소스를 삭제하기 전에 <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/architecture/controller/">controllers</a>가 특정 정리 작업을 수행하도록 알림으로써, <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/overview/working-with-objects/#kubernetes-objects">objects</a>의 <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/architecture/garbage-collection/">garbage collection</a>을 제어할 수 있습니다.</p>
+<p>파이널라이저는 일반적으로 실행할 코드를 지정하지 않습니다. 대신, 일반적으로 주석과 유사한 특정 리소스의 키 목록입니다. 쿠버네티스는 일부 파이널라이저를 자동으로 지정하지만 직접 지정할 수도 있습니다.</p>
+<h2 id="How-finalizers-work"><a href="#How-finalizers-work" class="headerlink" title="How finalizers work"></a>How finalizers work</h2><p>리소스를 manifest 파일을 사용하여 생성할 때, <code>metadata.finalizers</code> 필드에서 finalizers를 지정할 수 있습니다. 리소스를 삭제하려고 할 때, 삭제 요청을 처리하는 API 서버는 <code>finalizers</code> 필드의 값을 인식하고 다음과 같은 작업을 수행합니다:</p>
+<ul>
+<li><p>삭제를 시작한 시간을 나타내는 <code>metadata.deletionTimestamp</code> 필드를 객체에 추가합니다.</p>
+</li>
+<li><p>객체의 <code>metadata.finalizers</code> 필드에서 모든 항목이 제거될 때까지 객체를 삭제하지 못하게 합니다.</p>
+</li>
+<li><p>HTTP “Accepted” 상태 코드인 <code>202</code>를 반환합니다.</p>
+</li>
 </ul>
+<p>해당 finalizer를 관리하는 컨트롤러는 <code>metadata.deletionTimestamp</code>가 설정된 객체의 업데이트를 인지하여 객체의 삭제가 요청되었음을 인식합니다. 그런 다음 컨트롤러는 해당 리소스에 지정된 finalizer의 요구 사항을 충족시키려고 시도합니다. 각 finalizer 조건이 충족되면 컨트롤러는 해당 키를 리소스의 <code>finalizers</code> 필드에서 제거합니다. <code>finalizers</code> 필드가 비워지면 <code>deletionTimestamp</code> 필드가 설정된 객체가 자동으로 삭제됩니다. 또한 finalizers를 사용하여 관리되지 않는 리소스의 삭제를 방지할 수도 있습니다.</p>
+<p>일반적인 finalizer 예로는 <code>kubernetes.io/pv-protection</code>이 있습니다. 이 finalizer는 <code>PersistentVolume</code> 객체의 실수로의 삭제를 방지합니다. <code>PersistentVolume</code> 객체가 Pod에 의해 사용 중일 때, Kubernetes는 <code>pv-protection</code> finalizer를 추가합니다. <code>PersistentVolume</code>을 삭제하려고 하면 Kubernetes는 Terminating 상태로 전환되지만, finalizer가 존재하기 때문에 컨트롤러는 삭제할 수 없습니다. Pod이 <code>PersistentVolume</code> 사용을 중지하면 Kubernetes는 <code>pv-protection</code> finalizer를 지우고, 컨트롤러는 볼륨을 삭제합니다.</p>
+<blockquote>
+<p>Note:</p>
+</blockquote>
+<ul>
+<li><p>객체를 <code>DELETE</code> 할 때 Kubernetes는 해당 객체에 삭제 타임스탬프를 추가하고, 즉시 해당 객체의 <code>.metadata.finalizers</code> 필드에 대한 변경을 제한합니다. 이제 삭제가 대기 중인 객체입니다. 기존의 finalizer를 제거할 수는 있지만(<code>finalizers</code> 목록에서 항목을 삭제), 새로운 finalizer를 추가할 수는 없습니다. 또한 <code>deletionTimestamp</code>가 설정된 후에는 해당 객체의 삭제 타임스탬프를 수정할 수 없습니다.</p>
+</li>
+<li><p>삭제가 요청된 후에는 이 객체를 되살릴 수 없습니다. 유일한 방법은 이 객체를 삭제하고 유사한 새 객체를 만드는 것입니다.</p>
+</li>
+</ul>
+<h2 id="Owner-references-labels-and-finalizers"><a href="#Owner-references-labels-and-finalizers" class="headerlink" title="Owner references, labels, and finalizers"></a>Owner references, labels, and finalizers</h2><p>라벨과 마찬가지로 <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/overview/working-with-objects/owners-dependents/">owner references</a>는 Kubernetes에서 객체 간의 관계를 설명하지만, 다른 목적으로 사용됩니다. <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/architecture/controller/">controller</a>가 Pod과 같은 객체를 관리할 때, 그룹화된 관련 객체의 변경 사항을 추적하는 데 라벨을 사용합니다. 예를 들어, <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/workloads/controllers/job/">Job</a>이 하나 이상의 Pod을 생성할 때, Job 컨트롤러는 해당 Pod에 라벨을 적용하고, 클러스터 내에서 동일한 라벨을 가진 다른 Pod의 변경 사항을 추적합니다.</p>
+<p>Job 컨트롤러는 또한 이러한 Pod에 대해 owner references를 추가합니다. 이 owner references는 Pod을 생성한 Job을 가리킵니다. 이러한 Pod이 실행 중인 상태에서 Job을 삭제하면, Kubernetes는 라벨이 아닌 owner references를 사용하여 클러스터에서 정리가 필요한 Pod을 결정합니다.</p>
+<p>Kubernetes는 삭제 대상 리소스에 대한 owner references를 식별할 때도 finalizer를 처리합니다.</p>
+<p>일부 상황에서는 finalizer가 종속 객체의 삭제를 차단할 수 있습니다. 이로 인해 목표로 한 소유 객체가 완전히 삭제되지 않은 채로 예상보다 오랫동안 남아 있는 경우가 발생할 수 있습니다. 이런 경우에는 문제의 원인을 해결하기 위해 대상 소유자와 종속 객체의 finalizer와 owner references를 확인해야 합니다.</p>
+<blockquote>
+<p>참고: 객체가 삭제 상태에서 멈춰 있는 경우, 삭제가 계속 진행될 수 있도록 수동으로 finalizer를 제거하는 것을 피하세요. 일반적으로 finalizer는 리소스에 이유가 있어 추가됩니다. 강제로 제거하면 클러스터에서 문제가 발생할 수 있습니다. finalizer의 목적을 이해하고 다른 방법으로 (예: 일부 종속 객체를 수동으로 정리) 달성할 수 있는 경우에만 이 작업을 수행해야 합니다.</p>
+</blockquote>
+<h2 id="What’s-next"><a href="#What’s-next" class="headerlink" title="What’s next"></a>What’s next</h2><p>Read <a target="_blank" rel="noopener" href="https://kubernetes.io/blog/2021/05/14/using-finalizers-to-control-deletion/">Using Finalizers to Control Deletion</a> on the Kubernetes blog.</p>
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/overview/working-with-objects/owners-dependents/">https://kubernetes.io/docs/concepts/overview/working-with-objects/owners-dependents/</a></li>
+<li><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/overview/working-with-objects/finalizers/">https://kubernetes.io/docs/concepts/overview/working-with-objects/finalizers/</a></li>
 </ul>
 
                 
@@ -286,7 +301,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2023/12/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Owners%20and%20Dependents/">http://example.com/2023/12/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Owners%20and%20Dependents/</a>
+                    <a href="http://example.com/2024/03/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Finalizers/">http://example.com/2024/03/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Finalizers/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -398,12 +413,12 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2023/12/01/Spark/docs/Programming%20Guides/pyspark/Getting%20Started/Testing%20PySpark/">
+                <a href="/2024/03/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Field%20Selectors/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Testing PySpark">
+                        <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Field Selectors">
                         
-                        <span class="card-title diy-neon-red">Testing PySpark</span>
+                        <span class="card-title diy-neon-red">Field Selectors</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -414,14 +429,14 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-12-01
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-03-01
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Spark/" class="post-category">
-                                    Spark
+                            <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
                                 </a>
                             
                             
@@ -438,12 +453,12 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/11/16/NestJS/nestjs-basic/">
+                <a href="/2024/03/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Kubernetes_Object_Management/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/nestjs-logo.png" class="responsive-img" alt="[NestJS] NestJS Basic">
+                        <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Kubernetes Object Management">
                         
-                        <span class="card-title diy-neon-red">[NestJS] NestJS Basic</span>
+                        <span class="card-title diy-neon-red">Kubernetes Object Management</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -454,14 +469,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-16
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-01
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/NestJS/" class="post-category">
-                                    NestJS
+                            <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
                                 </a>
                             
                             
