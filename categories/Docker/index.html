@@ -190,7 +190,7 @@
 
 
 <script>
-    $('.bg-cover').css('background-image', 'url(/medias/banner/0.jpg)');
+    $('.bg-cover').css('background-image', 'url(/medias/banner/0.jpeg)');
 </script>
 
 
@@ -283,10 +283,19 @@
                 </a>
                 
                 
-                <a href="/categories/Pipeline/" title="Pipeline: 1">
+                <a href="/categories/Git/" title="Git: 3">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #A3E4D7;">Pipeline
+                            style="background-color: #A3E4D7;">Git
+                        <span class="tag-length">3</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Datahub/" title="Datahub: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #85C1E9;">Datahub
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -295,17 +304,8 @@
                 <a href="/categories/Hadoop/" title="Hadoop: 13">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #85C1E9;">Hadoop
+                            style="background-color: #F8C471;">Hadoop
                         <span class="tag-length">13</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/Git/" title="Git: 3">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F8C471;">Git
-                        <span class="tag-length">3</span>
                     </span>
                 </a>
                 
@@ -319,6 +319,15 @@
                 </a>
                 
                 
+                <a href="/categories/Kubernetes/" title="Kubernetes: 17">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #D5F5E3;">Kubernetes
+                        <span class="tag-length">17</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/categories/Hive/" title="Hive: 16">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -328,11 +337,11 @@
                 </a>
                 
                 
-                <a href="/categories/Kubernetes/" title="Kubernetes: 17">
+                <a href="/categories/Linux/" title="Linux: 8">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D5F5E3;">Kubernetes
-                        <span class="tag-length">17</span>
+                            style="background-color: #E8F8F5;">Linux
+                        <span class="tag-length">8</span>
                     </span>
                 </a>
                 
@@ -355,11 +364,20 @@
                 </a>
                 
                 
-                <a href="/categories/Linux/" title="Linux: 8">
+                <a href="/categories/SQL/" title="SQL: 6">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #E8F8F5;">Linux
-                        <span class="tag-length">8</span>
+                            style="background-color: #A3E4D7;">SQL
+                        <span class="tag-length">6</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Postgresql/" title="Postgresql: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #85C1E9;">Postgresql
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -378,24 +396,6 @@
                              chip-default "
                             style="background-color: #FFF;">Spark
                         <span class="tag-length">20</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/SQL/" title="SQL: 6">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #A3E4D7;">SQL
-                        <span class="tag-length">6</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/Postgresql/" title="Postgresql: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #85C1E9;">Postgresql
-                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -440,18 +440,19 @@
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/01/Docker/docker-mysql-connection/">
+                    <a href="/2023/07/01/Docker/docker-image/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/docker-logo.png" class="responsive-img" alt="docker mysql">
+                            <img src="/images/logos/docker-logo.png" class="responsive-img" alt="Image">
                             
-                            <span class="card-title diy-neon-red">docker mysql</span>
+                            <span class="card-title diy-neon-red">Image</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                MySQL 연결 보완[Error] public key retrieval is not allowed원인 : Dbeaver Client 프로그램 사용하여 접속시 나오는 에러. mysql 8.X 버전 이후 발생.&#x3D
+                                Docker Image와 Image Layer
+도커 이미지는 이미지 레이어가 모인 논리적 대상. 레이어는 도커 엔진의 캐시에 물리적으로 저장된 파일입니다. 이미지 레이어는 여러 이미지와 컨테이너에서 공유되기 때문에 
                             
                         </div>
                         <div class="publish-info">
@@ -477,19 +478,23 @@
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/01/Docker/docker-image/">
+                    <a href="/2023/07/01/Docker/docker-container-concept/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/docker-logo.png" class="responsive-img" alt="Image">
+                            <img src="/images/logos/docker-logo.png" class="responsive-img" alt="Container">
                             
-                            <span class="card-title diy-neon-red">Image</span>
+                            <span class="card-title diy-neon-red">Container</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Docker Image와 Image Layer
-도커 이미지는 이미지 레이어가 모인 논리적 대상. 레이어는 도커 엔진의 캐시에 물리적으로 저장된 파일입니다. 이미지 레이어는 여러 이미지와 컨테이너에서 공유되기 때문에 
+                                컨테이너란?
+애플리케이션과 애플리케이션을 실행할 컴퓨터(IP 주소, 컴퓨터 이름, 디스크 드라이브)를 담은 가상 환경&#96;&#96;
+
+
+컨테이너는 개별 호스트명, IP주소, 디스크 드라이브를 갖음
+모든 컨테이너는
                             
                         </div>
                         <div class="publish-info">
@@ -556,23 +561,18 @@
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/01/Docker/docker-container-concept/">
+                    <a href="/2023/07/01/Docker/docker-mysql-connection/">
                         <div class="card-image tag-image">
                             
-                            <img src="/images/logos/docker-logo.png" class="responsive-img" alt="Container">
+                            <img src="/images/logos/docker-logo.png" class="responsive-img" alt="docker mysql">
                             
-                            <span class="card-title diy-neon-red">Container</span>
+                            <span class="card-title diy-neon-red">docker mysql</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                컨테이너란?
-애플리케이션과 애플리케이션을 실행할 컴퓨터(IP 주소, 컴퓨터 이름, 디스크 드라이브)를 담은 가상 환경&#96;&#96;
-
-
-컨테이너는 개별 호스트명, IP주소, 디스크 드라이브를 갖음
-모든 컨테이너는
+                                MySQL 연결 보완[Error] public key retrieval is not allowed원인 : Dbeaver Client 프로그램 사용하여 접속시 나오는 에러. mysql 8.X 버전 이후 발생.&#x3D
                             
                         </div>
                         <div class="publish-info">

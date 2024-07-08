@@ -4,9 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Pipeline 1. , Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Pipeline FlowKafka Common Property
-Kafka 구성 요소 속성에는 KAFKA_ 접두사를 붙이십시오. 예를 들어, metric.reporters는 Kafka 속성이므로 KAFKA_METRIC">
+    <meta name="keywords" content="CI/CI Pipeline, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="AWS">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +17,7 @@ Kafka 구성 요소 속성에는 KAFKA_ 접두사를 붙이십시오. 예를 들
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Pipeline 1.  | Keyhong</title>
+    <title>CI/CI Pipeline | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -177,13 +176,13 @@ Kafka 구성 요소 속성에는 KAFKA_ 접두사를 붙이십시오. 예를 들
 
     
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/pipeline-logo.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/aws-logo.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        Pipeline 1. </h1>
+                        CI/CI Pipeline</h1>
                 </div>
             </div>
         </div>
@@ -208,7 +207,7 @@ Kafka 구성 요소 속성에는 KAFKA_ 접두사를 붙이십시오. 예를 들
                         <div class="article-tag">
                             <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                                 <span class="chip bg-color">
-                                    2024-06-23</span>
+                                    2024-04-01</span>
                         </div>
                     
                     
@@ -220,8 +219,8 @@ Kafka 구성 요소 속성에는 KAFKA_ 접두사를 붙이십시오. 예를 들
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Pipeline/" class="post-category">
-                                Pipeline
+                            <a href="/categories/AWS/" class="post-category">
+                                AWS
                             </a>
                         
                     </div>
@@ -240,178 +239,213 @@ Kafka 구성 요소 속성에는 KAFKA_ 접두사를 붙이십시오. 예를 들
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Pipeline-Flow"><a href="#Pipeline-Flow" class="headerlink" title="Pipeline Flow"></a>Pipeline Flow</h2><h2 id="Kafka-Common-Property"><a href="#Kafka-Common-Property" class="headerlink" title="Kafka Common Property"></a>Kafka Common Property</h2><ul>
-<li>Kafka 구성 요소 속성에는 <code>KAFKA_</code> 접두사를 붙이십시오. 예를 들어, <code>metric.reporters</code>는 Kafka 속성이므로 <code>KAFKA_METRIC_REPORTERS</code>로 변환해야 합니다.</li>
-<li>Confluent 구성 요소(cp-server) 속성에는 <code>CONFLUENT_</code> 접두사를 붙이십시오. 예를 들어, <code>confluent.metrics.reporter.bootstrap.servers</code>는 Confluent Enterprise 기능 속성이므로 <code>CONFLUENT_METRICS_REPORTER_BOOTSTRAP_SERVERS</code>로 변환해야 합니다.</li>
+                <h2 id="CI-CD"><a href="#CI-CD" class="headerlink" title="CI &#x2F; CD"></a>CI &#x2F; CD</h2><blockquote>
+<p>애플리케이션 개발 단계를 자동화하고 짧은 주기로 고객에게 제공하는 개발 방법</p>
+</blockquote>
+<ul>
+<li>자주 빌드, 자주 배포하여 유저에게 빠르게 배포</li>
 </ul>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Description</th>
-<th>Settings</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>KAFKA_CONTROLLER_LISTENER_NAMES</td>
-<td>컨트롤러에서 사용되는 리스너의 이름을 쉼표로 구분하여 나열합니다. <code>process.roles=broker</code>로 설정된 노드에서는 이 목록에서 첫 번째 리스너만 브로커에서 사용됩니다. ZooKeeper 모드의 브로커는 이 값을 설정하지 않아야 합니다. KRaft 컨트롤러가 독립 또는 결합 모드로 동작하는 경우, 노드는 이 속성에 나열된 모든 리스너에서 KRaft 컨트롤러로서 대기하게 되며, 각 리스너는 <code>listeners</code> 속성에 나타나야 합니다.</td>
-<td>CONTROLLER</td>
-</tr>
-<tr>
-<td>KAFKA_LISTENER_SECURITY_PROTOCOL_MAP</td>
-<td>리스너 이름별로 사용할 보안 프로토콜에 대한 키&#x2F;값 쌍을 정의합니다. 이는 server properties 파일에서의 <code>listener.security.protocol.map</code> 구성 매개변수와 동등합니다.</td>
-<td>‘CONTROLLER:PLAINTEXT,INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT’</td>
-</tr>
-<tr>
-<td>KAFKA_INTER_BROKER_LISTENER_NAME</td>
-<td>Kafka 브로커 간 통신에 사용할 리스너를 정의합니다. Kafka 브로커들은 일반적으로 내부 네트워크 (예: Docker 네트워크, AWS VPC 등)에서 서로 통신합니다. 호스트&#x2F;IP는 브로커 머신에서 다른 머신에 접근 가능해야 합니다. 이는 server properties 파일에서의 <code>inter.broker.listener.name</code> 구성 매개변수와 동등합니다.</td>
-<td>INTERNAL</td>
-</tr>
-<tr>
-<td>KAFKA_CONTROLLER_QUORUM_VOTERS</td>
-<td>쿼럼 유권자의 쉼표로 구분된 목록입니다. 각 컨트롤러는 <code>&#123;id&#125;@&#123;host&#125;:&#123;port&#125;</code> 형식으로 ID, 호스트 및 포트 정보로 식별됩니다.</td>
-<td>‘1@broker1:29093,2@broker2:29093’</td>
-</tr>
-<tr>
-<td>KAFKA_PROCESS_ROLES</td>
-<td>이 서버의 역할 (<code>controller</code>, <code>broker</code> 또는 <code>broker,controller</code>).</td>
-<td>‘broker,controller’</td>
-</tr>
-<tr>
-<td>KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS</td>
-<td>Kafka 컨슈머 그룹이 처음 rebalance를 시작하기 전에 대기해야 하는 시간(밀리 초)</td>
-<td>0</td>
-</tr>
-<tr>
-<td>KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR</td>
-<td>토픽 내부의 오프셋(offset) 데이터를 저장하는 특수한 토픽의 복제 팩터(Replication Factor)를 설정하는 데 사용합니다.</td>
-<td>2</td>
-</tr>
-<tr>
-<td>KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR</td>
-<td>트랜잭션 상태 로그(transaction state log)를 복제하는 데 사용되는 설정 변수</td>
-<td>2</td>
-</tr>
-<tr>
-<td>CLUSTER_ID</td>
-<td>각 KRaft 클러스터는 CLUSTER_ID 변수에 고유한 클러스터 ID가 할당되어야 합니다. <code>kafka-storage</code> 도구를 사용하여 고유 ID를 생성하는 방법은 <a target="_blank" rel="noopener" href="https://docs.confluent.io/platform/current/kafka-metadata/config-kraft.html#generate-format-ids">Generate and format IDs</a>를 참조하십시오.</td>
-<td>‘luV2kvSyR8G89qbhm_QS2w&#x3D;&#x3D;’</td>
-</tr>
-<tr>
-<td>KAFKA_LOG_DIRS</td>
-<td>Kafka 브로커가 메시지 로그를 저장하는 디렉토리 경로를 지정</td>
-<td>&#x2F;tmp&#x2F;kraft-combined-logs</td>
-</tr>
-<tr>
-<td>KAFKA_METRIC_REPORTERS</td>
-<td>Kafka 브로커가 메트릭을 보내는 리포터(reporter) 클래스를 지정하는 역할</td>
-<td>io.confluent.metrics.reporter.ConfluentMetricsReporter</td>
-</tr>
-<tr>
-<td>CONFLUENT_METRICS_REPORTER_TOPIC_REPLICAS</td>
-<td></td>
-<td>1</td>
-</tr>
-<tr>
-<td>CONFLUENT_METRICS_ENABLE</td>
-<td>Confluent Control Center와 같은 모니터링 도구를 통해 Kafka 클러스터의 메트릭 수집을 활성화 또는 비활성화하는 데 사용</td>
-<td>‘true’</td>
-</tr>
-<tr>
-<td>CONFLUENT_SUPPORT_CUSTOMER_ID</td>
-<td>Confluent의 지원 서비스를 이용하는 고객을 식별하는 고유한 식별자</td>
-<td>annoymous</td>
-</tr>
-</tbody></table>
-<h2 id="Kafka-control-center-Property"><a href="#Kafka-control-center-Property" class="headerlink" title="Kafka control-center Property"></a>Kafka control-center Property</h2><table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Description</th>
-<th>Settings</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>KAFKA_NODE_ID</td>
-<td>서버의 고유 식별자</td>
-<td>1</td>
-</tr>
-<tr>
-<td>KAFKA_LISTENERS</td>
-<td>Kafka가 바인드하고 수신 대기하는 리스너, 호스트&#x2F;IP 및 포트의 쉼표로 구분된 목록입니다. 더 복잡한 네트워킹 환경에서는 머신의 네트워크 인터페이스에 연결된 IP 주소가 될 수 있습니다. 기본값은 <code>0.0.0.0</code>으로, 모든 인터페이스에서 수신 대기함을 의미합니다. 이는 server properties 파일에서의 <code>listeners</code> 구성 매개변수와 동등합니다 (ZooKeeper 모드: <code>CONFLUENT_HOME/etc/kafka/server.properties</code> 또는 KRaft 모드: <code>CONFLUENT_HOME/etc/kafka/kraft/server.properties</code>).<br><br>다중 노드(production)에서 ZooKeeper 모드로 실행 중인 경우, Dockerfile에서 <code>KAFKA_ADVERTISED_LISTENERS</code> 속성을 외부 호스트&#x2F;IP 주소로 설정해야 합니다. 그렇지 않으면 클라이언트는 기본적으로 내부 호스트 주소에 연결을 시도합니다. 단일 노드 환경, “bare metal”(VM 또는 Docker 없음)에서는 모든 것이 hostname 또는 단순히 <code>localhost</code>일 수 있습니다. 그러나 여러 노드와 같은 더 복잡한 네트워킹 설정에서는 추가 구성이 필요합니다.</td>
-<td>‘INTERNAL:&#x2F;&#x2F;broker1:29092,CONTROLLER:&#x2F;&#x2F;broker1:29093,EXTERNAL:&#x2F;&#x2F;0.0.0.0:9092’</td>
-</tr>
-<tr>
-<td>KAFKA_ADVERTISED_LISTENERS</td>
-<td>ZooKeeper 모드에 필요합니다. 호스트 이름이 광고되고 클라이언트가 도달할 수 있는 방법을 설명합니다. 이 값은 클라이언트가 사용할 수 있도록 ZooKeeper에 게시됩니다.<br><br>TLS&#x2F;SSL 또는 SASL 프로토콜을 사용하는 경우, 엔드포인트 값은 다음 형식으로 프로토콜을 지정해야 합니다:<br><br>• SSL: <code>SSL://</code> 또는 <code>SASL_SSL://</code><br>• SASL: <code>SASL_PLAINTEXT://</code> 또는 <code>SASL_SSL://</code><hr> <code>KAFKA_ADVERTISED_LISTENERS</code> 변수를 <code>localhost:29092</code>로 설정하십시오. 이렇게 하면 Kafka가 Docker 호스트에서 위치를 광고함으로써 컨테이너 외부에서 접근할 수 있습니다.</td>
-<td>‘INTERNAL:&#x2F;&#x2F;broker1:29092,EXTERNAL:&#x2F;&#x2F;localhost:9092’</td>
-</tr>
-<tr>
-<td>CONFLUENT_METRICS_REPORTER_BOOTSTRAP_SERVERS</td>
-<td></td>
-<td>broker1:29092</td>
-</tr>
-</tbody></table>
-<h2 id="Kafka-Individual-Property"><a href="#Kafka-Individual-Property" class="headerlink" title="Kafka Individual Property"></a>Kafka Individual Property</h2><table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Description</th>
-<th>Settings</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>CONTROL_CENTER_SCHEMA_REGISTRY_URL</td>
-<td>Schema Registry의 URL을 지정하는 데 사용</td>
-<td>‘<a target="_blank" rel="noopener" href="http://schema-registry:8081/">http://schema-registry:8081</a>‘</td>
-</tr>
-<tr>
-<td>CONTROL_CENTER_REPLICATION_FACTOR</td>
-<td>컨트롤 센터 토픽의 복제 팩터입니다. 운영 환경에서는 이 값을 3으로 설정하는 것을 권장합니다.</td>
-<td>1</td>
-</tr>
-<tr>
-<td>CONTROL_CENTER_INTERNAL_TOPICS_PARTITIONS</td>
-<td>Control Center 내부에서 사용하는 토픽의 파티션 수를 설정하는 데 사용</td>
-<td>1</td>
-</tr>
-<tr>
-<td>CONTROL_CENTER_MONITORING_INTERCEPTOR_TOPIC_PARTITIONS</td>
-<td>Control Center 모니터링 인터셉터 토픽의 파티션 수를 지정하는 데 사용</td>
-<td>1</td>
-</tr>
-<tr>
-<td>CONFLUENT_METRICS_TOPIC_REPLICATION</td>
-<td></td>
-<td>1</td>
-</tr>
-<tr>
-<td>CONFLUENT_METRICS_ENABLE</td>
-<td>Confluent Control Center와 같은 모니터링 도구를 통해 Kafka 클러스터의 메트릭 수집을 활성화 또는 비활성화하는 데 사용</td>
-<td>‘false’</td>
-</tr>
-<tr>
-<td>PORT</td>
-<td></td>
-<td>9021</td>
-</tr>
-</tbody></table>
-<br>
+<h2 id="CI-Continuous-Integration"><a href="#CI-Continuous-Integration" class="headerlink" title="CI (Continuous Integration)"></a>CI (Continuous Integration)</h2><ul>
+<li><p>개발자들이 코드 레포지터리로 푸시하는 방식</p>
+</li>
+<li><p>코드가 푸쉬되면 테스트와 빌드서버가 코드를 체크</p>
+</li>
+<li><p>개발자들은 테스트와 체크에 대해 성공&#x2F;실패 피드백</p>
+</li>
+<li><p>버그를 빠르게 발견하고 고칠 수 있음</p>
+</li>
+<li><p>지속적 테스트, 배포를 통해 코드를 빠르게 전달</p>
+</li>
+<li><p>Tools : GitHub, Bitbucket, CodeCommit</p>
+</li>
+</ul>
+<h2 id="CD-Continuous-Delivery-or-Deployment"><a href="#CD-Continuous-Delivery-or-Deployment" class="headerlink" title="CD (Continuous Delivery or Deployment)"></a>CD (Continuous Delivery or Deployment)</h2><ul>
+<li><p>필요할 때 소프트웨어가 안전하고 빠르게 배포되도록 함</p>
+</li>
+<li><p>Tools : CodeDeploy, Jenkins CD, Spinnaker</p>
+</li>
+<li><p>Continuous Delivery vs Continuous Deployment</p>
+<ul>
+<li>Continuous Delivery : 승인단계를 거친 후 자동으로 배포</li>
+<li>Continuous Deployment : 배포 전체 자동화</li>
+</ul>
+</li>
+</ul>
+<h2 id="Technology-Stack-for-CICD"><a href="#Technology-Stack-for-CICD" class="headerlink" title="Technology Stack for CICD"></a>Technology Stack for CICD</h2><blockquote>
+<p>Code &gt; Build &gt; Test &gt; Deploy &gt; Provision</p>
+</blockquote>
+<ul>
+<li><p>Code</p>
+<ul>
+<li>AWS CodeCommit</li>
+<li>GitHub or 3rd code repository</li>
+</ul>
+</li>
+<li><p>Build, Test</p>
+<ul>
+<li>AWS CodeBuild</li>
+<li>Jenkins CI or 3rd party CI servers</li>
+</ul>
+</li>
+<li><p>Deploy, Provision</p>
+<ul>
+<li>AWS Elastic Beanstalk</li>
+</ul>
+</li>
+<li><p>Deploy</p>
+<ul>
+<li>AWS CodeDeploy</li>
+</ul>
+</li>
+<li><p>Provision</p>
+<ul>
+<li>User Managed EC2 Instance Fleet (CloudFormation)</li>
+</ul>
+</li>
+<li><p>Orchestrate</p>
+<ul>
+<li>AWS CodePipeline</li>
+</ul>
+</li>
+</ul>
+<h4 id="AWS-CI-CI-Pipeline"><a href="#AWS-CI-CI-Pipeline" class="headerlink" title="AWS CI&#x2F;CI Pipeline"></a>AWS CI&#x2F;CI Pipeline</h4><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219876&authkey=%21AKvrf1XatoHm_4c&width=660" width="660" height="auto" />
 
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Environment variable replacement or pattern</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>bootstrap.servers</td>
-<td>CONTROL_CENTER_BOOTSTRAP_SERVERS</td>
-<td>Kafka 클러스터에 초기 연결을 설정하는 데 사용되는 호스트:포트 쌍입니다. 여러 개의 부트스트랩 서버를 사용할 수 있으며, <code>host1:port1,host2:port2,host3:port3...</code> 형식으로 지정할 수 있습니다.</td>
-</tr>
-</tbody></table>
+<h2 id="AWS-Code-Service"><a href="#AWS-Code-Service" class="headerlink" title="AWS Code Service"></a>AWS Code Service</h2><p>AWS의 소스관리, 빌드, 테스트, 배포, 관리 등을 위한 서비스</p>
+<ul>
+<li>자동화된 CI&#x2F;CD 파이프라인 구축</li>
+</ul>
+<h4 id="1-AWS-CodeCommit"><a href="#1-AWS-CodeCommit" class="headerlink" title="1. AWS CodeCommit"></a>1. AWS CodeCommit</h4><blockquote>
+<p>프라이빗 Git Repository를 호스팅하는 안전하고 확장성이 뛰어난 소스제어 서비스</p>
+</blockquote>
+<ul>
+<li>AWS 버전의 Github</li>
+<li>IAM Credential을 통해 접근(기존의 HTTP, SSH 프로토콜도 지원)</li>
+<li>AWS의 다양한 서비스와 연동</li>
+<li>이벤트 버스를 통한 이벤트 기반 로직 처리 가능</li>
+</ul>
+<h4 id="2-AWS-CodeBuild"><a href="#2-AWS-CodeBuild" class="headerlink" title="2. AWS CodeBuild"></a>2. AWS CodeBuild</h4><blockquote>
+<p>소스코드 컴파일 단계부터 테스트 실행 후 소프트웨어 패키지를 개발하여 배포하는 단계까지 마칠 수 있는 완전 관리형 지속적 통합 서비스</p>
+</blockquote>
+<ul>
+<li>CI&#x2F;CD 중 CI(Continuous Integration)를 담당</li>
+<li>별도의 프로비전 불필요</li>
+<li>간단하게 빌드 세팅이 된 서버 하나를 빌려서 사용하는 개념</li>
+</ul>
+<h4 id="3-AWS-CodeDeploy"><a href="#3-AWS-CodeDeploy" class="headerlink" title="3. AWS CodeDeploy"></a>3. AWS CodeDeploy</h4><blockquote>
+<p>EC2, Fargate, Lambda 및 온프레미스 서버와 같은 다양한 컴퓨팅 서비스에 대한 소프트웨어 배포를 자동화하는 완전 관리형 배포 서비스</p>
+</blockquote>
+<ul>
+<li>CI&#x2F;CD 중 CD(Continuous Delivery or Deploy)를 담당</li>
+<li>빌드&#x2F;테스트된 제품을 배포해주는 서비스</li>
+<li>다양한 배포 모드(In-Place, Blue&#x2F;Green) 등 지원</li>
+<li>배포 실패 시 자동으로 롤백 지원</li>
+<li>배포 상태를 모니터링 가능</li>
+</ul>
+<h4 id="4-AWS-CodePipeline"><a href="#4-AWS-CodePipeline" class="headerlink" title="4. AWS CodePipeline"></a>4. AWS CodePipeline</h4><blockquote>
+<p>빠르고 안정적인 애플리케이션 및 인프라 업데이트를 위해 release pipeline을 자동화하는 데 도움이 되는 완전 관리형 지속적 전달 서비스</p>
+</blockquote>
+<ul>
+<li>전체 프로세스 오케스트레이션</li>
+<li>Serverless</li>
+<li>이벤트 기반 운영 가능</li>
+<li>다양한 AWS 서비스 연동 가능</li>
+<li>다양한 외부 서비스 연동 가능 (Jenkins 등)</li>
+</ul>
+<h4 id="5-AWS-CodeStar"><a href="#5-AWS-CodeStar" class="headerlink" title="5. AWS CodeStar"></a>5. AWS CodeStar</h4><blockquote>
+<p>AWS에서 애플리케이션을 신속하게 개발, 빌드 및 배포 가능. AWS CodeStar는 통합된 사용자 인터페이스를 제공하여 한 곳에서 소프트웨어 개발 활동을 손쉽게 관리 가능</p>
+</blockquote>
+<ul>
+<li>Code Services의 모든 서비스를 통합하여 프로젝트 생성</li>
+<li>여러 템플릿에서 프로젝트에 맞는 템플릿 생성 가능</li>
+<li>IAM으로 권한 관리 가능</li>
+</ul>
+<h4 id="아티팩트"><a href="#아티팩트" class="headerlink" title="아티팩트"></a>아티팩트</h4><blockquote>
+<p>다음 스테이지로 전달할 CodeBuild에서 작업을 수행한 결과물</p>
+</blockquote>
+<ul>
+<li>빌드된 애플리케이션</li>
+<li>테스트 결과 내용</li>
+</ul>
+<p>다음 스테이지로 아티팩트를 전달</p>
+<h4 id="BuildSpec-yml"><a href="#BuildSpec-yml" class="headerlink" title="BuildSpec.yml"></a>BuildSpec.yml</h4><blockquote>
+<p>CodeBuild에서 수행할 내용을 정의한 문서 (yml 형식)</p>
+</blockquote>
+<ul>
+<li>정의 가능한 내용</li>
+</ul>
+<ol>
+<li>빌드환경(node.js, Python 등) 환경변수</li>
+<li>스테이지별 명령어</li>
+</ol>
+<ul>
+<li>install, pre_build, build, post_build</li>
+</ul>
+<ol start="3">
+<li>아티팩트 설정</li>
+</ol>
+<ul>
+<li>path 및 구성 방법</li>
+</ul>
+<ol start="4">
+<li>기타(cache, proxy 등)</li>
+</ol>
+<h4 id="appSpec-yml"><a href="#appSpec-yml" class="headerlink" title="appSpec.yml"></a>appSpec.yml</h4><blockquote>
+<p>CodeDeploy에서 수행할 내용을 정의한 문서 (yml 형식)</p>
+</blockquote>
+<ul>
+<li>정의 가능한 내용</li>
+</ul>
+<ol>
+<li>배포 방법</li>
+</ol>
+<ul>
+<li>각 스테이지 별 수행 내용 정의</li>
+</ul>
+<h2 id="배경"><a href="#배경" class="headerlink" title="배경"></a>배경</h2><blockquote>
+<p>버전 컨트롤(Version Contro)은 시간에 따라 코드에 일어나는 다양한 변화를 이해하는 기능</p>
+</blockquote>
+<ul>
+<li><p>커밋&#x2F;롤백 가능</p>
+</li>
+<li><p>git repository는 자신의 레포지터리 뿐 아니라 다른 사람의 레포지터리에도 살 수 있음</p>
+</li>
+<li><p>다른 개발자들과 협업, 코드를 백업, 코드 보기, 언제든 롤백 가능</p>
+</li>
+</ul>
+<h2 id="CodeCommit"><a href="#CodeCommit" class="headerlink" title="CodeCommit"></a>CodeCommit</h2><blockquote>
+<p>AWS 계정에 대한 개인 Git 레포지터리</p>
+</blockquote>
+<ul>
+<li><p>private Git repositories</p>
+</li>
+<li><p>No size limit on repositories (scale seamlessly)</p>
+</li>
+<li><p>Fully managed, high available</p>
+</li>
+<li><p>Code only in AWS Cloud account &#x3D;&gt; increased security and compliance</p>
+</li>
+<li><p>Secure(encrypted, access control, etc..)</p>
+</li>
+<li><p>Integrated with Jenkins &#x2F; CodeBuild &#x2F; other CI tools</p>
+</li>
+</ul>
+<h2 id="Git-Command"><a href="#Git-Command" class="headerlink" title="Git Command"></a>Git Command</h2><ul>
+<li>HTTP 주소로 원격 레포지토리에 연결하기</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> clone <span class="token operator">&lt;</span>원격 레포지터리 주소<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>브랜치를 만들고 이동하기</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> checkoub <span class="token parameter variable">-b</span> <span class="token operator">&lt;</span>branch<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>만든 브랜치를 master 브랜치로 푸쉬하기</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> push --set-upstream origin <span class="token operator">&lt;</span>branch<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
 
                 
             </div>
@@ -438,7 +472,7 @@ Kafka 구성 요소 속성에는 KAFKA_ 접두사를 붙이십시오. 예를 들
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/06/23/Data-Pipeline/Pipeline/">http://example.com/2024/06/23/Data-Pipeline/Pipeline/</a>
+                    <a href="http://example.com/2024/04/01/AWS/CI-CI%20Pipeline/">http://example.com/2024/04/01/AWS/CI-CI%20Pipeline/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -550,29 +584,32 @@ Kafka 구성 요소 속성에는 KAFKA_ 접두사를 붙이십시오. 예를 들
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/12/01/Trend/The%20State%20of%20Data%20Engineering%202024/">
+                <a href="/2024/04/01/AWS/Amazon%20CloudWatch/">
                     <div class="card-image">
                         
+                        <img src="/images/logos/aws-logo.png" class="responsive-img" alt="Amazon CloudWatch">
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="The State of Data Engineering 2024">
-                        
-                        <span class="card-title diy-neon-red">The State of Data Engineering 2024</span>
+                        <span class="card-title diy-neon-red">Amazon CloudWatch</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            AWS
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-12-01
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-04-01
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Keyhong
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/AWS/" class="post-category">
+                                    AWS
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -587,28 +624,32 @@ Kafka 구성 요소 속성에는 KAFKA_ 접두사를 붙이십시오. 예를 들
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/06/01/Open%20Source%20Docs/">
+                <a href="/2024/04/01/AWS/aws/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/" class="responsive-img" alt="Data Engineering Study">
+                        <img src="/images/logos/aws-logo.png" class="responsive-img" alt="AWS">
                         
-                        <span class="card-title diy-neon-red">Data Engineering Study</span>
+                        <span class="card-title diy-neon-red">AWS</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            AWS
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-06-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-04-01
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Keyhong
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/AWS/" class="post-category">
+                                    AWS
+                                </a>
+                            
                             
                         </span>
                     </div>
