@@ -208,29 +208,26 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/11/01/Hive/scd-type-1/">
+                    <a href="/2023/11/01/Hive/hive-sorting/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/hive-logo.png" class="responsive-img" alt="SCD Type 1 Insert">
+                            <img src="/images/logos/hive-logo.png" class="responsive-img" alt="Sorting">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">SCD Type 1 Insert</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Sorting</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                SELECT * FROM table1;
-John 1300
-Albert 1200
-Mark 1000
-Frank 1150
-Loopa 1100
-Lui 1300
-Lesa 900 
-Pars 800
-leo 700
-lock 650
+                                Hive에서 정렬을 수행하는 4개의 절
+ORDER BY
+SORT BY
+DISTRIBUTED BY
+CLUSTER BY
+
+(1) ORDER BY
+데이터 전체 정렬에 사용된다. 데이터의 전체 순서를 보장하며, 이를 위해 
                             
                         </div> -->
                         <div class="publish-info">
@@ -261,23 +258,29 @@ lock 650
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/11/01/Hive/string-functions/">
+                    <a href="/2023/11/01/Hive/scd-type-1/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/hive-logo.png" class="responsive-img" alt="String Functions">
+                            <img src="/images/logos/hive-logo.png" class="responsive-img" alt="SCD Type 1 Insert">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">String Functions</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">SCD Type 1 Insert</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                ☆ CONCAT
-두 문자열을 결합하여 반환한다.
-
--- Syntax: CONCAT (string|binary A, string|binary B...)
-SELECT CONCAT(col1, '-', col3) FROM 
+                                SELECT * FROM table1;
+John 1300
+Albert 1200
+Mark 1000
+Frank 1150
+Loopa 1100
+Lui 1300
+Lesa 900 
+Pars 800
+leo 700
+lock 650
                             
                         </div> -->
                         <div class="publish-info">
@@ -536,27 +539,24 @@ Hadoop 3.0 새
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/10/01/Hadoop/YARN/yarn-structure/">
+                    <a href="/2023/10/01/Hadoop/HDFS/block-abstraction/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="YARN 구조 파악하기">
+                            <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="HDFS 블록 추상화">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">YARN 구조 파악하기</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">HDFS 블록 추상화</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                YARN (Yet Another Resource Negotiator)
-하둡의 클러스터 자원 관리 시스템
+                                블록 (Block)
+물리적인 디스크(HDD, SDD)에서 한 번에 읽고 쓸 수 있는 데이터의 최대량
 
-
-Hadoop 2.X 부터 도입되었다.
-
-MapReduce 성능을 높이기 위한 시스템이다.
-
-다른 분산 컴퓨팅
+일반적인 파일 시스템
+디스크 블록 크기 : 기본적으로 512 Byte
+파일 시스템의 블록 크기 : 디스크 블록 크
                             
                         </div> -->
                         <div class="publish-info">
@@ -631,24 +631,27 @@ MapReduce 성능을 높이기 위한 시스템이다.
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/10/01/Hadoop/HDFS/block-abstraction/">
+                    <a href="/2023/10/01/Hadoop/YARN/yarn-structure/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="HDFS 블록 추상화">
+                            <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="YARN 구조 파악하기">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">HDFS 블록 추상화</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">YARN 구조 파악하기</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                블록 (Block)
-물리적인 디스크(HDD, SDD)에서 한 번에 읽고 쓸 수 있는 데이터의 최대량
+                                YARN (Yet Another Resource Negotiator)
+하둡의 클러스터 자원 관리 시스템
 
-일반적인 파일 시스템
-디스크 블록 크기 : 기본적으로 512 Byte
-파일 시스템의 블록 크기 : 디스크 블록 크
+
+Hadoop 2.X 부터 도입되었다.
+
+MapReduce 성능을 높이기 위한 시스템이다.
+
+다른 분산 컴퓨팅
                             
                         </div> -->
                         <div class="publish-info">

@@ -220,19 +220,10 @@
                 </a>
                 
                 
-                <a href="/categories/Data-Architecture/" title="Data Architecture: 6">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F5EEF8;">Data Architecture
-                        <span class="tag-length">6</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/AWS/" title="AWS: 10">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D5F5E3;">AWS
+                            style="background-color: #F5EEF8;">AWS
                         <span class="tag-length">10</span>
                     </span>
                 </a>
@@ -241,8 +232,17 @@
                 <a href="/categories/DBT/" title="DBT: 31">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #E8F8F5;">DBT
+                            style="background-color: #D5F5E3;">DBT
                         <span class="tag-length">31</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Data-Architecture/" title="Data Architecture: 6">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #E8F8F5;">Data Architecture
+                        <span class="tag-length">6</span>
                     </span>
                 </a>
                 
@@ -283,20 +283,20 @@
                 </a>
                 
                 
-                <a href="/categories/Git/" title="Git: 3">
+                <a href="/categories/Datahub/" title="Datahub: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #A3E4D7;">Git
-                        <span class="tag-length">3</span>
+                            style="background-color: #A3E4D7;">Datahub
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/Datahub/" title="Datahub: 1">
+                <a href="/categories/Git/" title="Git: 3">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #85C1E9;">Datahub
-                        <span class="tag-length">1</span>
+                            style="background-color: #85C1E9;">Git
+                        <span class="tag-length">3</span>
                     </span>
                 </a>
                 
@@ -319,15 +319,6 @@
                 </a>
                 
                 
-                <a href="/categories/Kubernetes/" title="Kubernetes: 17">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #D5F5E3;">Kubernetes
-                        <span class="tag-length">17</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/Hive/" title="Hive: 16">
                     <span class="chip center-align waves-effect waves-light
                              chip-active "
@@ -337,11 +328,11 @@
                 </a>
                 
                 
-                <a href="/categories/Linux/" title="Linux: 8">
+                <a href="/categories/Kubernetes/" title="Kubernetes: 17">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #E8F8F5;">Linux
-                        <span class="tag-length">8</span>
+                            style="background-color: #D5F5E3;">Kubernetes
+                        <span class="tag-length">17</span>
                     </span>
                 </a>
                 
@@ -364,6 +355,15 @@
                 </a>
                 
                 
+                <a href="/categories/Linux/" title="Linux: 8">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #E8F8F5;">Linux
+                        <span class="tag-length">8</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/categories/SQL/" title="SQL: 6">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -382,6 +382,15 @@
                 </a>
                 
                 
+                <a href="/categories/Trino/" title="Trino: 3">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F8F9F9;">Trino
+                        <span class="tag-length">3</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/categories/Redis/" title="Redis: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -396,15 +405,6 @@
                              chip-default "
                             style="background-color: #FFF;">Spark
                         <span class="tag-length">20</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/Trino/" title="Trino: 3">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F8F9F9;">Trino
-                        <span class="tag-length">3</span>
                     </span>
                 </a>
                 
@@ -437,6 +437,45 @@
 
     <article id="articles" class="container articles">
         <div class="row tags-posts">
+            
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/11/01/Hive/hive-no-drop-offline/">
+                        <div class="card-image tag-image">
+                            
+                            <img src="/images/logos/hive-logo.png" class="responsive-img" alt="NO_DROP과 OFFLINE으로 Table 보호하기">
+                            
+                            <span class="card-title diy-neon-red">NO_DROP과 OFFLINE으로 Table 보호하기</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                NO_DROP특정 테이블이나 파티션이 실수로 삭제되는 것을 방지한다. 프로젝트에서 어떠한 경우에도 삭제해서 안 되는 경우에 사용을 하면 좋다.
+테이블에 NO_DROP 활성화하기-- Syntax
+ALTER TABLE 
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Hive/" class="post-category">
+                                    Hive
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
@@ -497,45 +536,6 @@ Hive에서 제공하는 특수기능으로 A의 하위 문자열이 B와 일치�
 하이브는 사용자의 워크스테이션에서 실행, 작성된 SQL 쿼리는 일련의 맵리듀스 잡으로 변환되어 하둡클러스터에서 구동
 
 HDFS에 저장된 데이터(directory&#x2F;file)에 구조(Schem
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Hive/" class="post-category">
-                                    Hive
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                </div>
-            </div>
-            
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2023/11/01/Hive/hive-no-drop-offline/">
-                        <div class="card-image tag-image">
-                            
-                            <img src="/images/logos/hive-logo.png" class="responsive-img" alt="NO_DROP과 OFFLINE으로 Table 보호하기">
-                            
-                            <span class="card-title diy-neon-red">NO_DROP과 OFFLINE으로 Table 보호하기</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                NO_DROP특정 테이블이나 파티션이 실수로 삭제되는 것을 방지한다. 프로젝트에서 어떠한 경우에도 삭제해서 안 되는 경우에 사용을 하면 좋다.
-테이블에 NO_DROP 활성화하기-- Syntax
-ALTER TABLE 
                             
                         </div>
                         <div class="publish-info">

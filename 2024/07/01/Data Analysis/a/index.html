@@ -283,8 +283,7 @@
 <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> first_order_month
 <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> first_order_month <span class="token keyword">ASC</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-<h2 id="Rolling-Retension-1"><a href="#Rolling-Retension-1" class="headerlink" title="Rolling Retension"></a>Rolling Retension</h2><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> user_pseudo_id<span class="token punctuation">,</span> ga_session_id<span class="token punctuation">)</span> <span class="token keyword">AS</span> pv
+<h2 id="Funnel-Analysis"><a href="#Funnel-Analysis" class="headerlink" title="Funnel Analysis"></a>Funnel Analysis</h2><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> user_pseudo_id<span class="token punctuation">,</span> ga_session_id<span class="token punctuation">)</span> <span class="token keyword">AS</span> pv
      <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> CONCAT<span class="token punctuation">(</span>user_pseudo_id<span class="token punctuation">,</span> ga_session_id<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> pv
 <span class="token keyword">FROM</span> ga
 <span class="token keyword">WHERE</span> title <span class="token operator">=</span> <span class="token string">''</span>
@@ -326,6 +325,11 @@
      <span class="token keyword">LEFT</span> <span class="token keyword">JOIN</span> click <span class="token keyword">ON</span> scroll<span class="token punctuation">.</span>user_pseudo_id <span class="token operator">=</span> click<span class="token punctuation">.</span>user_pseudo_id
                      <span class="token operator">AND</span> scroll<span class="token punctuation">.</span>ga_session_id <span class="token operator">=</span> click<span class="token punctuation">.</span>ga_session_id
                      <span class="token operator">AND</span> scroll<span class="token punctuation">.</span>scroll_at <span class="token operator">&lt;=</span> click<span class="token punctuation">.</span>click_at<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>CREATE TABLE dm.dim_customer (<br>  customer_id AUTO_INCREMENT PRIMARY KEY<br>, first_name VARCHAR(255)<br>, last_name VARCHAR(255)<br>, username VARCHAR(255)<br>, email VARCHAR(255)<br>, gender VARCHAR(255)<br>, birthdate VARCHAR(255)<br>, device_type VARCHAR(255)<br>, device_id VARCHAR(255)<br>, device_version VARCHAR(255)<br>, home_location_lat VARCHAR(255)<br>, home_location_long FLOAT<br>, home_location FLOAT<br>, home_country VARCHAR(255)<br>, first_join_date VARCHAR(255)<br>)</p>
+
                 
             </div>
             <hr/>
