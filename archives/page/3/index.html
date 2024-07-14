@@ -314,18 +314,23 @@
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/03/01/Kubernetes/k8s-volume/">
+                        <a href="/2024/03/01/Kubernetes/kubernetest-concept-architecture/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Volume">
+                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Kubernetest Concept &amp; Architecture">
                                 
-                                <span class="card-title">Volume</span>
+                                <span class="card-title">Kubernetest Concept &amp; Architecture</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Stateless한 애플리케이션일반적으로 컨테이너는 stateless(상태를 저장하지 않는) 방식의 앱 컨테이너를 사용합니다. 이러한 장점으로 어떤 노드에 문제가 발생했을 때, 다른 노드로 옮길 수 있는 장점이 있습
+                                    Docker &amp; Kubernetes 실전 가이드 인강 학습 내용과 쿠버네티스 도큐먼트 컴포넌트를 정리하였다. 
+
+
+
+
+쿠버네티스는 컨테이너를 어디에 배포하든 도움이 되는 개념 및 도구 모음이다. Kuberne
                                 
                             </div>
                             <div class="publish-info">
@@ -424,23 +429,25 @@ kind:
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/03/01/Kubernetes/kubernetest-concept-architecture/">
+                        <a href="/2024/03/01/Kubernetes/vm_installation/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Kubernetest Concept &amp; Architecture">
+                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="ubuntu installation">
                                 
-                                <span class="card-title">Kubernetest Concept &amp; Architecture</span>
+                                <span class="card-title">ubuntu installation</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Docker &amp; Kubernetes 실전 가이드 인강 학습 내용과 쿠버네티스 도큐먼트 컴포넌트를 정리하였다. 
+                                    ubuntuos 버전 확인$ uname -a 
 
+$ ping &lt;>
 
+/etc/hosts 설정$ cat /etc/hosts
 
-
-쿠버네티스는 컨테이너를 어디에 배포하든 도움이 되는 개념 및 도구 모음이다. Kuberne
+127.0.0.1        localhost
+127.0.1.1        k8s-
                                 
                             </div>
                             <div class="publish-info">
@@ -481,25 +488,24 @@ kind:
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/03/01/Kubernetes/vm_installation/">
+                        <a href="/2024/03/01/Kubernetes/emptyDir/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="ubuntu installation">
+                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="emptyDir">
                                 
-                                <span class="card-title">ubuntu installation</span>
+                                <span class="card-title">emptyDir</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    ubuntuos 버전 확인$ uname -a 
+                                    emptyDir
+pod가 실행되는 host의 디스크를 임시로 컨테이너 볼륨으로 할당해서 사용하는 방법
 
-$ ping &lt;>
 
-/etc/hosts 설정$ cat /etc/hosts
+pod가 사라지면 emptyDir의 데이터도 함께 사라집니다.
 
-127.0.0.1        localhost
-127.0.1.1        k8s-
+주로 메모리와 디스크를 함께 이용하는 대용량 
                                 
                             </div>
                             <div class="publish-info">
@@ -700,58 +706,6 @@ Att
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/03/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Kubernetes_Object_Management/">
-                            <div class="card-image">
-                                
-                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Kubernetes Object Management">
-                                
-                                <span class="card-title">Kubernetes Object Management</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    Kubernetes Object Managementkubectl 명령줄 도구는 Kubernetes 객체를 생성하고 관리하는 여러 가지 방법을 지원합니다. 이 문서는 다른 접근 방식에 대한 개요를 제공합니다. Kube
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2024-03-01
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                    
-                                    <a href="/categories/Kubernetes/" class="post-category">
-                                    Kubernetes
-                                    </a>
-                                    
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                    </div>
-                </div>
-            </article>
-        </div>
-        
-        <div class="cd-timeline-block">
-
-            
-            
-
-            
-            
-
-            
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>01</span>
-            </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
                         <a href="/2024/03/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Field%20Selectors/">
                             <div class="card-image">
                                 
@@ -818,6 +772,58 @@ metadata
                             <div class="summary block-with-text">
                                 
                                     Finalizers파이널라이저는 삭제를 표시한 리소스가 완전히 삭제되기 전에 특정 조건이 충족될 때까지 Kubernetes가 기다리도록 지시하는 네임스페이스 키입니다. 파이널라이저는 삭제된 객체가 소유한 리소스를 정
+                                
+                            </div>
+                            <div class="publish-info">
+                                <span class="publish-date">
+                                    <i class="far fa-clock fa-fw icon-date"></i>2024-03-01
+                                </span>
+                                <span class="publish-author">
+                                    
+                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                    
+                                    <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
+                                    </a>
+                                    
+                                    
+                                </span>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="cd-timeline-block">
+
+            
+            
+
+            
+            
+
+            
+            <div class="cd-timeline-img day" data-aos="zoom-in-up">
+                <span>01</span>
+            </div>
+            <article class="cd-timeline-content" data-aos="fade-up">
+                <div class="article col s12 m6">
+                    <div class="card">
+                        <a href="/2024/03/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Kubernetes_Object_Management/">
+                            <div class="card-image">
+                                
+                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Kubernetes Object Management">
+                                
+                                <span class="card-title">Kubernetes Object Management</span>
+                            </div>
+                        </a>
+                        <div class="card-content article-content">
+                            <div class="summary block-with-text">
+                                
+                                    Kubernetes Object Managementkubectl 명령줄 도구는 Kubernetes 객체를 생성하고 관리하는 여러 가지 방법을 지원합니다. 이 문서는 다른 접근 방식에 대한 개요를 제공합니다. Kube
                                 
                             </div>
                             <div class="publish-info">
