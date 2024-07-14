@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="DDL, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="테이블 생성그 전에 알아둬야 할 상식!처음에 테이블을 CREATE EXTERNAL TABLE로 만들게 되면, 해당 테이블은 다시 INTERNAL로 만들 수 없습니다. INTERNAL로 만든 후, TBLPROPERTI">
+    <meta name="keywords" content="하이브 DDL, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="테이블 생성그 전에 알아둬야 할 상식!처음에 테이블을 CREATE EXTERNAL TABLE로 만들게 되면, 해당 테이블은 다시 INTERNAL로 만들 수 없다. INTERNAL로 만든 후, TBLPROPERTIES">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>DDL | Keyhong</title>
+    <title>하이브 DDL | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -182,7 +182,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        DDL</h1>
+                        하이브 DDL</h1>
                 </div>
             </div>
         </div>
@@ -239,7 +239,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="테이블-생성"><a href="#테이블-생성" class="headerlink" title="테이블 생성"></a>테이블 생성</h2><h4 id="그-전에-알아둬야-할-상식"><a href="#그-전에-알아둬야-할-상식" class="headerlink" title="그 전에 알아둬야 할 상식!"></a>그 전에 알아둬야 할 상식!</h4><p>처음에 테이블을 <code>CREATE EXTERNAL TABLE</code>로 만들게 되면, 해당 테이블은 다시 INTERNAL로 만들 수 없습니다. INTERNAL로 만든 후, TBLPROPERTIES의 (‘EXTERNAL’ &#x3D; ‘TRUE’ or ‘FALSE’)를 이용해 External와 INTERNAL을 왔다 갔다 할 수는 있습니다. 따라서 해당 테이블에 대한 설계 고려사항을 확인해야 합니다. </p>
+                <h2 id="테이블-생성"><a href="#테이블-생성" class="headerlink" title="테이블 생성"></a>테이블 생성</h2><h4 id="그-전에-알아둬야-할-상식"><a href="#그-전에-알아둬야-할-상식" class="headerlink" title="그 전에 알아둬야 할 상식!"></a>그 전에 알아둬야 할 상식!</h4><p>처음에 테이블을 <code>CREATE EXTERNAL TABLE</code>로 만들게 되면, 해당 테이블은 다시 INTERNAL로 만들 수 없다. INTERNAL로 만든 후, TBLPROPERTIES의 (‘EXTERNAL’ &#x3D; ‘TRUE’ or ‘FALSE’)를 이용해 External와 INTERNAL을 왔다 갔다 할 수는 있다. 따라서 해당 테이블에 대한 설계 고려사항을 확인해야 한다.</p>
 <h4 id="ORC-포맷으로-테이블-생성"><a href="#ORC-포맷으로-테이블-생성" class="headerlink" title="ORC 포맷으로 테이블 생성"></a>ORC 포맷으로 테이블 생성</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token punctuation">[</span>EXTERNAL<span class="token punctuation">]</span> <span class="token keyword">TABLE</span> <span class="token keyword">IF</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span> <span class="token operator">&lt;</span>테이블명<span class="token operator">></span> <span class="token punctuation">(</span>
   column1                   STRING               <span class="token keyword">COMMENT</span>   <span class="token operator">&lt;</span><span class="token string">'컬럼 COMMENT'</span><span class="token operator">></span>
 <span class="token punctuation">,</span> column2                   <span class="token keyword">BIGINT</span>               <span class="token keyword">COMMENT</span>   <span class="token operator">&lt;</span><span class="token string">'컬럼 COMMENT'</span><span class="token operator">></span>
@@ -265,7 +265,7 @@ LOCATION  <span class="token operator">&lt;</span><span class="token string">'�
 
 <h4 id="테이블-이름-변경"><a href="#테이블-이름-변경" class="headerlink" title="테이블 이름 변경"></a>테이블 이름 변경</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> <span class="token keyword">RENAME</span> <span class="token operator">&lt;</span>이전 테이블명<span class="token operator">></span> <span class="token keyword">RENAME</span> <span class="token keyword">TO</span> <span class="token operator">&lt;</span>새로운 테이블명<span class="token operator">></span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h4 id="데이터-이동-저장-위치-경로-변경"><a href="#데이터-이동-저장-위치-경로-변경" class="headerlink" title="데이터 이동 &amp; 저장 위치 경로 변경"></a>데이터 이동 &amp; 저장 위치 경로 변경</h4><p>EXTERANL시에만 메타데이터 변경과 함께 물리적인 데이터 위치가 이동됩니다. INTERNAL이면 메타 데이터인 TBLPROPERTIES (‘LOCATION’)만 변경하고 실제 데이터는 이동하지 않습니다. </p>
+<h4 id="데이터-이동-저장-위치-경로-변경"><a href="#데이터-이동-저장-위치-경로-변경" class="headerlink" title="데이터 이동 &amp; 저장 위치 경로 변경"></a>데이터 이동 &amp; 저장 위치 경로 변경</h4><p>EXTERANL시에만 메타데이터 변경과 함께 물리적인 데이터 위치가 이동된다. INTERNAL이면 메타 데이터인 TBLPROPERTIES (‘LOCATION’)만 변경하고 실제 데이터는 이동하지 않는다. </p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> <span class="token operator">&lt;</span>테이블명<span class="token operator">></span> <span class="token keyword">SET</span> LOCATION <span class="token operator">&lt;</span><span class="token string">"경로"</span><span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h2 id="테이블-메타-데이터-변경"><a href="#테이블-메타-데이터-변경" class="headerlink" title="테이블 메타 데이터 변경"></a>테이블 메타 데이터 변경</h2><h4 id="COMMENT-프로퍼티-수정"><a href="#COMMENT-프로퍼티-수정" class="headerlink" title="COMMENT 프로퍼티 수정"></a><code>COMMENT</code> 프로퍼티 수정</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> <span class="token operator">&lt;</span>테이블명<span class="token operator">></span> <span class="token keyword">SET</span> TBLPROPERTIES <span class="token punctuation">(</span><span class="token string">'COMMENT = &lt;"NEW-COMMENT">'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -417,18 +417,18 @@ LOCATION  <span class="token operator">&lt;</span><span class="token string">'�
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2023/11/01/Hive/conditional-functions/">
+                <a href="/2023/11/01/Hive/hive-concept/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/hive-logo.png" class="responsive-img" alt="Conditional Functions">
+                        <img src="/images/logos/hive-logo.png" class="responsive-img" alt="하이브 기본 개념">
                         
-                        <span class="card-title diy-neon-red">Conditional Functions</span>
+                        <span class="card-title diy-neon-red">하이브 기본 개념</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            hive
                         
                     </div>
                     <div class="publish-info">
@@ -457,12 +457,12 @@ LOCATION  <span class="token operator">&lt;</span><span class="token string">'�
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/11/01/Hive/date-mathematics-functions/">
+                <a href="/2023/11/01/Hive/hive-installation/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/hive-logo.png" class="responsive-img" alt="Date &amp; Mathematics Functions">
+                        <img src="/images/logos/hive-logo.png" class="responsive-img" alt="하이브 기본 설치">
                         
-                        <span class="card-title diy-neon-red">Date &amp; Mathematics Functions</span>
+                        <span class="card-title diy-neon-red">하이브 기본 설치</span>
                     </div>
                 </a>
                 <div class="card-content article-content">

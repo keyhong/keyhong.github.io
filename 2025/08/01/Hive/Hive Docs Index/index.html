@@ -4,11 +4,16 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Date &amp; Mathematics Functions, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Date FunctionsUNIX_TIMESTAMP (string date)
-타임스탬프 인수를 UNIX 시간대(‘1970-01-01 00:00:00’)에서 몇 초나 지났는 지 epoch를 정수로 반환한다.
-
-SELE">
+    <meta name="keywords" content="Hive Docs Index, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="개인 학습 포스팅
+하이브 기본 설치
+하이브 기본 개념
+HiveQL 정리
+하이브의 4가지 정렬
+하이브 파티셔닝
+하이브 DDL
+하이브에서 NO_DROP과 OFFLINE으로 테이블 보호하기
+하이브 SCD Type 1 Qu">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +25,7 @@ SELE">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Date &amp; Mathematics Functions | Keyhong</title>
+    <title>Hive Docs Index | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -185,7 +190,7 @@ SELE">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        Date &amp; Mathematics Functions</h1>
+                        Hive Docs Index</h1>
                 </div>
             </div>
         </div>
@@ -210,7 +215,7 @@ SELE">
                         <div class="article-tag">
                             <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                                 <span class="chip bg-color">
-                                    2023-11-01</span>
+                                    2025-08-01</span>
                         </div>
                     
                     
@@ -218,15 +223,6 @@ SELE">
 
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/Hive/" class="post-category">
-                                Hive
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -242,144 +238,17 @@ SELE">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Date-Functions"><a href="#Date-Functions" class="headerlink" title="Date Functions"></a>Date Functions</h2><h4 id="UNIX-TIMESTAMP-string-date"><a href="#UNIX-TIMESTAMP-string-date" class="headerlink" title="UNIX_TIMESTAMP (string date)"></a>UNIX_TIMESTAMP (string date)</h4><blockquote>
-<p>타임스탬프 인수를 UNIX 시간대(‘1970-01-01 00:00:00’)에서 몇 초나 지났는 지 epoch를 정수로 반환한다.</p>
-</blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> UNIX_TIMESTAMP<span class="token punctuation">(</span><span class="token string">'2023-12-13 00:00:00'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <h1 id="개인-학습-포스팅"><a href="#개인-학습-포스팅" class="headerlink" title="개인 학습 포스팅"></a>개인 학습 포스팅</h1><ul>
+<li><a target="_blank" rel="noopener" href="http://keyhong.github.io/2023/11/01/Hive/installation/">하이브 기본 설치</a></li>
+<li><a target="_blank" rel="noopener" href="http://keyhong.github.io/2023/11/01/Hive/hive-concept/">하이브 기본 개념</a></li>
+<li><a target="_blank" rel="noopener" href="http://keyhong.github.io/2023/11/01/Hive/hiveql/">HiveQL 정리</a></li>
+<li><a target="_blank" rel="noopener" href="http://keyhong.github.io/2023/11/01/Hive/hive-sorting/">하이브의 4가지 정렬</a></li>
+<li><a target="_blank" rel="noopener" href="http://keyhong.github.io/2023/11/01/Hive/partitioning/">하이브 파티셔닝</a></li>
+<li><a target="_blank" rel="noopener" href="http://keyhong.github.io/2023/11/01/Hive/hive-ddl/">하이브 DDL</a></li>
+<li><a target="_blank" rel="noopener" href="http://keyhong.github.io/2023/11/01/Hive/hive-no-drop-offline/">하이브에서 NO_DROP과 OFFLINE으로 테이블 보호하기</a></li>
+<li><a target="_blank" rel="noopener" href="http://keyhong.github.io/2023/11/01/Hive/scd-type-1/">하이브 SCD Type 1 Query</a></li>
+</ul>
 
-<span class="token comment">-- 초단위로 결과 반환</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="FROM-UNIXTIME-bigint-unixtime-string-format"><a href="#FROM-UNIXTIME-bigint-unixtime-string-format" class="headerlink" title="FROM_UNIXTIME (bigint unixtime[, string format])"></a>FROM_UNIXTIME (bigint unixtime[, string format])</h4><blockquote>
-<p>초 단위의 인수를 UNIX 기준 시간대( ‘1970-01-01 00:00:00’ )로 부터 지난 타임스탬프를 반환한다.</p>
-</blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> FROM_UNIXTIME<span class="token punctuation">(</span><span class="token number">1234145</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment">-- Return</span>
-<span class="token number">1970</span><span class="token operator">-</span><span class="token number">01</span><span class="token operator">-</span><span class="token number">15</span> <span class="token number">12</span>:<span class="token number">19</span>:<span class="token number">05</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="☆-TO-DATE-string-timestamp"><a href="#☆-TO-DATE-string-timestamp" class="headerlink" title="☆ TO_DATE (string timestamp)"></a>☆ TO_DATE (string timestamp)</h4><blockquote>
-<p>timestamp의 date 부분을 ‘yyyy-MM-dd’ 형식의 문자열로 반환한다.</p>
-</blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> TO_DATE<span class="token punctuation">(</span><span class="token string">'2000-01-01 10:20:30'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment">-- Return</span>
-<span class="token string">'2000-01-01'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="YEAR-string-date"><a href="#YEAR-string-date" class="headerlink" title="YEAR (string date)"></a>YEAR (string date)</h4><blockquote>
-<p>date의 연도를 정수로 반환한다.</p>
-</blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token keyword">YEAR</span><span class="token punctuation">(</span><span class="token string">'2000-01-01 10:20:30'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment">-- Return</span>
-<span class="token number">2000</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="MONTH-string-date"><a href="#MONTH-string-date" class="headerlink" title="MONTH (string date)"></a>MONTH (string date)</h4><blockquote>
-<p>date의 월을 정수로 반환한다.</p>
-</blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token keyword">MONTH</span><span class="token punctuation">(</span><span class="token string">'2000-01-01 10:20:30'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment">-- Return</span>
-<span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="DAY-string-date-DAYOFMONTH-date"><a href="#DAY-string-date-DAYOFMONTH-date" class="headerlink" title="DAY (string date), DAYOFMONTH (date)"></a>DAY (string date), DAYOFMONTH (date)</h4><blockquote>
-<p>date의 일을 정수로 반환한다.</p>
-</blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token keyword">DAY</span><span class="token punctuation">(</span><span class="token string">'2000-03-01 10:20:30'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment">-- Return</span>
-<span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="HOUR-string-date"><a href="#HOUR-string-date" class="headerlink" title="HOUR (string date)"></a>HOUR (string date)</h4><blockquote>
-<p>date의 시간을 정수로 반환한다.</p>
-</blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">HOUR</span><span class="token punctuation">(</span><span class="token string">'2000-03-01 10:20:30'</span><span class="token punctuation">)</span>
-
-<span class="token comment">-- Return</span>
-<span class="token number">10</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="MINUTE-string-date"><a href="#MINUTE-string-date" class="headerlink" title="MINUTE (string date)"></a>MINUTE (string date)</h4><blockquote>
-<p>timestamp의 분을 정수로 반환한다.</p>
-</blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">MINUTE</span><span class="token punctuation">(</span><span class="token string">'2000-03-01 10:20:30'</span><span class="token punctuation">)</span>
-
-<span class="token comment">-- Return</span>
-<span class="token number">20</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="SECOND-string-date"><a href="#SECOND-string-date" class="headerlink" title="SECOND (string date)"></a>SECOND (string date)</h4><blockquote>
-<p>timestamp의 초를 정수로 반환한다.</p>
-</blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SECOND</span><span class="token punctuation">(</span><span class="token string">'2000-03-01 10:20:30'</span><span class="token punctuation">)</span>
-
-<span class="token comment">-- Return</span>
-<span class="token number">30</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="WEEKOFYEAR-string-date"><a href="#WEEKOFYEAR-string-date" class="headerlink" title="WEEKOFYEAR (string date)"></a>WEEKOFYEAR (string date)</h4><blockquote>
-<p>date가 해당 연도에서 몇 번째 주인지 정수로 반환한다.</p>
-</blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">WEEKOFYEAR<span class="token punctuation">(</span><span class="token string">'2000-03-01 10:20:30'</span><span class="token punctuation">)</span>
-
-<span class="token comment">-- Return</span>
-<span class="token number">9</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="DATEDIFF-string-enddate-string-startdate"><a href="#DATEDIFF-string-enddate-string-startdate" class="headerlink" title="DATEDIFF(string enddate, string startdate)"></a>DATEDIFF(string enddate, string startdate)</h4><blockquote>
-<p>주어진 두 date의 차이 일수를 정수로 반환한다.</p>
-</blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">DATEDIFF<span class="token punctuation">(</span><span class="token string">'2000-03-01'</span><span class="token punctuation">,</span> <span class="token string">'2000-01-10'</span><span class="token punctuation">)</span>
-
-<span class="token comment">-- Return</span>
-<span class="token number">51</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="DATE-ADD-string-startdate-int-days"><a href="#DATE-ADD-string-startdate-int-days" class="headerlink" title="DATE_ADD (string startdate, int days)"></a>DATE_ADD (string startdate, int days)</h4><blockquote>
-<p>지정한 날짜에서 인자로 넣은 일의 수 만큼을 더한 날짜를 문자열로 반환한다.</p>
-</blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">DATE_ADD<span class="token punctuation">(</span><span class="token string">'2000-03-01'</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>
-
-<span class="token comment">-- Return</span>
-<span class="token string">'2000-03-06'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="DATE-SUB-string-startdate-int-days"><a href="#DATE-SUB-string-startdate-int-days" class="headerlink" title="DATE_SUB (string startdate, int days)"></a>DATE_SUB (string startdate, int days)</h4><blockquote>
-<p>지정한 날짜에서  인자로 넣은 일의 수 만큼을 뺀 날짜를 문자열로 반환한다.</p>
-</blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">DATE_SUB<span class="token punctuation">(</span><span class="token string">'2000-03-01'</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>
-
-<span class="token comment">-- Return</span>
-<span class="token string">'2000-02-25'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="Mathematics-Functions"><a href="#Mathematics-Functions" class="headerlink" title="Mathematics Functions"></a>Mathematics Functions</h2><h4 id="CEIL-double-a"><a href="#CEIL-double-a" class="headerlink" title="CEIL (double a)"></a>CEIL (double a)</h4><blockquote>
-<p>소수점을 올림하여 정수로 반환한다.</p>
-</blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> CEIL<span class="token punctuation">(</span><span class="token number">9.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment">-- Return</span>
-<span class="token number">10</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="FLOOR-double-a"><a href="#FLOOR-double-a" class="headerlink" title="FLOOR (double a)"></a>FLOOR (double a)</h4><blockquote>
-<p>소수점을 내림하여 정수로 반환한다.</p>
-</blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> FLOOR<span class="token punctuation">(</span><span class="token number">10.9</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment">-- Return</span>
-<span class="token number">10</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="☆-ROUND-double-a-int-d"><a href="#☆-ROUND-double-a-int-d" class="headerlink" title="☆ ROUND (double a[, int d])"></a>☆ ROUND (double a[, int d])</h4><blockquote>
-<p>소수를 원하는 자리에서 반올림하여 반환한다.</p>
-</blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token function">ROUND</span><span class="token punctuation">(</span><span class="token number">123.456</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment">-- Return</span>
-<span class="token number">123.46</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="RAND-int-seed"><a href="#RAND-int-seed" class="headerlink" title="RAND ([,int seed])"></a>RAND ([,int seed])</h4><blockquote>
-<p>랜덤한 난수를 반환한다.</p>
-</blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> RAND<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment">-- Return</span>
-랜덤한 난수
-
-<span class="token keyword">SELECT</span> RAND<span class="token punctuation">(</span><span class="token number">23</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment">-- Return</span>
-랜덤한 난수 <span class="token punctuation">(</span>단<span class="token punctuation">,</span> seed를 넣었기 때문에 여러 번 실행해도 동일한 난수를 반환한다<span class="token punctuation">.</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -405,7 +274,7 @@ SELE">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2023/11/01/Hive/date-mathematics-functions/">http://example.com/2023/11/01/Hive/date-mathematics-functions/</a>
+                    <a href="http://example.com/2025/08/01/Hive/Hive%20Docs%20Index/">http://example.com/2025/08/01/Hive/Hive%20Docs%20Index/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -517,12 +386,12 @@ SELE">
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2023/11/01/Hive/hive-ddl/">
+                <a href="/2025/11/01/Hive/hiveql/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/hive-logo.png" class="responsive-img" alt="DDL">
+                        <img src="/images/logos/hive-logo.png" class="responsive-img" alt="HiveQL 정리">
                         
-                        <span class="card-title diy-neon-red">DDL</span>
+                        <span class="card-title diy-neon-red">HiveQL 정리</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -533,7 +402,7 @@ SELE">
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-11-01
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-11-01
                         </span>
                         <span class="publish-author">
                             
@@ -557,32 +426,28 @@ SELE">
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/11/01/Hive/hive-explode/">
+                <a href="/2024/12/01/Trend/The%20State%20of%20Data%20Engineering%202024/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/hive-logo.png" class="responsive-img" alt="Explode &amp; Lateral View">
+                        <img src="/images/logos/book-logo.png" class="responsive-img" alt="The State of Data Engineering 2024">
                         
-                        <span class="card-title diy-neon-red">Explode &amp; Lateral View</span>
+                        <span class="card-title diy-neon-red">The State of Data Engineering 2024</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            IT Trend
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-12-01
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Hive/" class="post-category">
-                                    Hive
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Keyhong
                             
                         </span>
                     </div>

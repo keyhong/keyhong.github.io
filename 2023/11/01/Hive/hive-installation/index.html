@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Installation, Data Engineering,Data Analysis,Python Backend">
+    <meta name="keywords" content="하이브 기본 설치, Data Engineering,Data Analysis,Python Backend">
     <meta name="description" content="Hive 설치하기
 하이브는 사용자의 워크스테이션에서 실행, 작성된 SQL 쿼리는 일련의 맵리듀스 잡으로 변환되어 하둡클러스터에서 구동
 
@@ -20,7 +20,7 @@ HDFS에 저장된 데이터(directory&amp;#x2F;file)에 구조(Schem">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Installation | Keyhong</title>
+    <title>하이브 기본 설치 | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -185,7 +185,7 @@ HDFS에 저장된 데이터(directory&amp;#x2F;file)에 구조(Schem">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        Installation</h1>
+                        하이브 기본 설치</h1>
                 </div>
             </div>
         </div>
@@ -275,13 +275,13 @@ HDFS에 저장된 데이터(directory&amp;#x2F;file)에 구조(Schem">
 $ <span class="token function">vi</span> .bash_profile<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>.bashrc</span></div><code class="language-bash"><span class="token comment"># HIVE_HOME 환경 변수 등록</span>
-<span class="token builtin class-name">export</span> <span class="token assign-left variable">HADOOP_HOME</span><span class="token operator">=</span><span class="token string">'~/apache-hadoop-&lt;x.y.z>-bin'</span> 
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">HADOOP_HOME</span><span class="token operator">=</span><span class="token string">'~/apache-hadoop-&lt;x.y.z>-bin'</span>
 
 <span class="token comment"># PATH 환경 변수 등록</span>
 <span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token environment constant">$PATH</span><span class="token builtin class-name">:</span><span class="token variable">$HIVE_HOME</span>/bin
 
 <span class="token comment"># 하둡 Li 경로</span>
-<span class="token builtin class-name">export</span> <span class="token assign-left variable">CLASSPATH</span><span class="token operator">=</span><span class="token variable">$CLASSPATH</span>:/usr/local/hadoop/lib/* <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">CLASSPATH</span><span class="token operator">=</span><span class="token variable">$CLASSPATH</span>:/usr/local/hadoop/lib/*<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hadoop
 $ start-yarn.sh
@@ -356,7 +356,7 @@ $ <span class="token builtin class-name">export</span> HADOOP_HOME <span class="
 <li>DB 드라이버를 하이브 라이브러리 폴더에 복사</li>
 <li>기본 환경설정 파일들을 이용해서 hive-site.xml 생성</li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Hive config 폴더 이동 </span>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Hive config 폴더 이동</span>
 $ <span class="token builtin class-name">cd</span> <span class="token variable">$HIVE_HOME</span>/config
 
 <span class="token comment"># hive-default.xml.template 복사</span>
@@ -513,12 +513,12 @@ $ <span class="token function">vi</span> hive-site.xml<span aria-hidden="true" c
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2023/11/01/Hive/hive-explode/">
+                <a href="/2023/11/01/Hive/hive-ddl/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/hive-logo.png" class="responsive-img" alt="Explode &amp; Lateral View">
+                        <img src="/images/logos/hive-logo.png" class="responsive-img" alt="하이브 DDL">
                         
-                        <span class="card-title diy-neon-red">Explode &amp; Lateral View</span>
+                        <span class="card-title diy-neon-red">하이브 DDL</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -553,12 +553,12 @@ $ <span class="token function">vi</span> hive-site.xml<span aria-hidden="true" c
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/11/01/Hive/hive-architecture/">
+                <a href="/2023/11/01/Hive/hive-sorting/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/hive-logo.png" class="responsive-img" alt="Architecture">
+                        <img src="/images/logos/hive-logo.png" class="responsive-img" alt="하이브의 4가지 정렬">
                         
-                        <span class="card-title diy-neon-red">Architecture</span>
+                        <span class="card-title diy-neon-red">하이브의 4가지 정렬</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
