@@ -314,21 +314,22 @@
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/12/01/Spark/dataframe/">
+                        <a href="/2023/12/01/Spark/compression/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="pyspark.sql.DataFrame">
+                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Compression">
                                 
-                                <span class="card-title">pyspark.sql.DataFrame</span>
+                                <span class="card-title">Compression</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    RDD vs DataFrame
-RDD는 정보를 가진 행이나, 정보가 어떤 유형(type)인지 구체적 명시가 불가능하다.
-DataFrame이 Spark에서 하는 일은 RDD를 DataFrame 객체로 확장하는 것
-Da
+                                    CompressionSpark는 기본적으로 여러 가지 무손실 압축 형식을 지원한다.
+
+BZIP2로 압축된 아카이브
+GZIP, ZIP(&#x3D;DEFLATE, 압축 방법을 사용해 생성된 모든 압축 아카이브)
+일반적인
                                 
                             </div>
                             <div class="publish-info">
@@ -369,23 +370,21 @@ Da
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/12/01/Spark/dataset/">
+                        <a href="/2023/12/01/Spark/dataframe/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="DataSet">
+                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="pyspark.sql.DataFrame">
                                 
-                                <span class="card-title">DataSet</span>
+                                <span class="card-title">pyspark.sql.DataFrame</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    
-Spark 2.0에서 ‘DataFrame’과 상반된 ‘DataSet’ 도입
-
-파이썬에서는 둘의 경계가 모호. Python에서는 모든 것이 동적으로 입력되기 때문
-
-‘DataFrame’은 행 객체의 ‘DataSet’
+                                    RDD vs DataFrame
+RDD는 정보를 가진 행이나, 정보가 어떤 유형(type)인지 구체적 명시가 불가능하다.
+DataFrame이 Spark에서 하는 일은 RDD를 DataFrame 객체로 확장하는 것
+Da
                                 
                             </div>
                             <div class="publish-info">
@@ -478,58 +477,6 @@ Spark 2.0에서 ‘DataFrame’과 상반된 ‘DataSet’ 도입
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/12/01/Spark/pyspark-jvm-py4j/">
-                            <div class="card-image">
-                                
-                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="JVM py4j">
-                                
-                                <span class="card-title">JVM py4j</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    Question 1. PySpark 코드는 JVM 또는 Python 하위 프로세스에서 실행됩니까?PySpark에서 Python 및 JVM 코드는 별도의 OS 프로세스에 있습니다.PySpark는 Python과 JVM 
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2023-12-01
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                    
-                                    <a href="/categories/Spark/" class="post-category">
-                                    Spark
-                                    </a>
-                                    
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                    </div>
-                </div>
-            </article>
-        </div>
-        
-        <div class="cd-timeline-block">
-
-            
-            
-
-            
-            
-
-            
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>01</span>
-            </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
                         <a href="/2023/12/01/Spark/rdd-skew-optimization/">
                             <div class="card-image">
                                 
@@ -582,77 +529,18 @@ Spark 2.0에서 ‘DataFrame’과 상반된 ‘DataSet’ 도입
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/12/01/Spark/sourcing/">
+                        <a href="/2023/12/01/Spark/pyspark-jvm-py4j/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Data Sourcing">
+                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="JVM py4j">
                                 
-                                <span class="card-title">Data Sourcing</span>
+                                <span class="card-title">JVM py4j</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    지원하는 파일 시스템
-하나 이상의 파일로부터 RDD 를 생성하기 위해 스파크 메서드는 여러 파일 시스템을 지원
-
-
-구조화 되지 않은 Text 파일, 반구조화된 Json 파일, 구조화된 CSV 파일 등 다양한 형식 지
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2023-12-01
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                    
-                                    <a href="/categories/Spark/" class="post-category">
-                                    Spark
-                                    </a>
-                                    
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                    </div>
-                </div>
-            </article>
-        </div>
-        
-        <div class="cd-timeline-block">
-
-            
-            
-
-            
-            
-
-            
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>01</span>
-            </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
-                        <a href="/2023/12/01/Spark/rdd/">
-                            <div class="card-image">
-                                
-                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="pyspark.RDD">
-                                
-                                <span class="card-title">pyspark.RDD</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    RDD(Resilient Distributed Dataset)
-스파크 프로그래밍에서 사용되는 가장 기본적인 데이터 객체
-
-한글로 해석하면 복원 분산 데이터 집합이다. Spark에서 사용되는 가장 기본적인 데이터 객체
+                                    Question 1. PySpark 코드는 JVM 또는 Python 하위 프로세스에서 실행됩니까?PySpark에서 Python 및 JVM 코드는 별도의 OS 프로세스에 있습니다.PySpark는 Python과 JVM 
                                 
                             </div>
                             <div class="publish-info">
@@ -749,21 +637,77 @@ $ sudo apt-get u
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/12/01/Spark/spark-streaming-shutdown/">
+                        <a href="/2023/12/01/Spark/rdd/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Spark Streaming Gracefully Shutdown">
+                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="pyspark.RDD">
                                 
-                                <span class="card-title">Spark Streaming Gracefully Shutdown</span>
+                                <span class="card-title">pyspark.RDD</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    sparkStreamContext.stop()
-코드 상에서 sparkStreamContext.stop()를 call 하는 것은 그만
+                                    RDD(Resilient Distributed Dataset)
+스파크 프로그래밍에서 사용되는 가장 기본적인 데이터 객체
 
-방법 1 : spark.streaming.stopGracefullyOnShutdo
+한글로 해석하면 복원 분산 데이터 집합이다. Spark에서 사용되는 가장 기본적인 데이터 객체
+                                
+                            </div>
+                            <div class="publish-info">
+                                <span class="publish-date">
+                                    <i class="far fa-clock fa-fw icon-date"></i>2023-12-01
+                                </span>
+                                <span class="publish-author">
+                                    
+                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                    
+                                    <a href="/categories/Spark/" class="post-category">
+                                    Spark
+                                    </a>
+                                    
+                                    
+                                </span>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="cd-timeline-block">
+
+            
+            
+
+            
+            
+
+            
+            <div class="cd-timeline-img day" data-aos="zoom-in-up">
+                <span>01</span>
+            </div>
+            <article class="cd-timeline-content" data-aos="fade-up">
+                <div class="article col s12 m6">
+                    <div class="card">
+                        <a href="/2023/12/01/Spark/sourcing/">
+                            <div class="card-image">
+                                
+                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Data Sourcing">
+                                
+                                <span class="card-title">Data Sourcing</span>
+                            </div>
+                        </a>
+                        <div class="card-content article-content">
+                            <div class="summary block-with-text">
+                                
+                                    지원하는 파일 시스템
+하나 이상의 파일로부터 RDD 를 생성하기 위해 스파크 메서드는 여러 파일 시스템을 지원
+
+
+구조화 되지 않은 Text 파일, 반구조화된 Json 파일, 구조화된 CSV 파일 등 다양한 형식 지
                                 
                             </div>
                             <div class="publish-info">
@@ -816,6 +760,61 @@ $ sudo apt-get u
                             <div class="summary block-with-text">
                                 
                                     basic실제 클러스터에는 spark-submit을 이용하여 스파크 프로그램을 실행시킨다. spark-submit은 spark를 설치하면 bin 폴더($SPARK_HOME&#x2F;bin) 안에 있다. spark-s
+                                
+                            </div>
+                            <div class="publish-info">
+                                <span class="publish-date">
+                                    <i class="far fa-clock fa-fw icon-date"></i>2023-12-01
+                                </span>
+                                <span class="publish-author">
+                                    
+                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                    
+                                    <a href="/categories/Spark/" class="post-category">
+                                    Spark
+                                    </a>
+                                    
+                                    
+                                </span>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="cd-timeline-block">
+
+            
+            
+
+            
+            
+
+            
+            <div class="cd-timeline-img day" data-aos="zoom-in-up">
+                <span>01</span>
+            </div>
+            <article class="cd-timeline-content" data-aos="fade-up">
+                <div class="article col s12 m6">
+                    <div class="card">
+                        <a href="/2023/12/01/Spark/spark-streaming-shutdown/">
+                            <div class="card-image">
+                                
+                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Spark Streaming Gracefully Shutdown">
+                                
+                                <span class="card-title">Spark Streaming Gracefully Shutdown</span>
+                            </div>
+                        </a>
+                        <div class="card-content article-content">
+                            <div class="summary block-with-text">
+                                
+                                    sparkStreamContext.stop()
+코드 상에서 sparkStreamContext.stop()를 call 하는 것은 그만
+
+방법 1 : spark.streaming.stopGracefullyOnShutdo
                                 
                             </div>
                             <div class="publish-info">

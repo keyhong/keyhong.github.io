@@ -314,21 +314,21 @@
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/Python/Python-Data-Structure/collections-(1)/">
+                        <a href="/2024/01/01/Python/Python-Data-Structure/graph/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Collections(1)">
+                                <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Graph">
                                 
-                                <span class="card-title">[Python] Collections(1)</span>
+                                <span class="card-title">[Python] Graph</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    collections
-List, Tuple, Dict에 대한 Python Built-in 확장 자료 구조(모듈)
-편의성, 실행 효율(메모리의 사용량을 줄이거나 속도를 좀 더 빠르게) 등을 사용자에게 제공.
-아래의 여
+                                    Graph (그래프)
+가장 복잡한 자료구조
+G &#x3D; (V, E) [ V : Vetex Set (정점 또는 Node)*, E : Edge (두 정점 사이의 링크) ]
+V &#x3D; { 1, 2, 3, 4, 5
                                 
                             </div>
                             <div class="publish-info">
@@ -369,21 +369,29 @@ List, Tuple, Dict에 대한 Python Built-in 확장 자료 구조(모듈)
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/Python/Python-Data-Structure/graph/">
+                        <a href="/2024/01/01/Python/Python-Data-Structure/array/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Graph">
+                                <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Array">
                                 
-                                <span class="card-title">[Python] Graph</span>
+                                <span class="card-title">[Python] Array</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Graph (그래프)
-가장 복잡한 자료구조
-G &#x3D; (V, E) [ V : Vetex Set (정점 또는 Node)*, E : Edge (두 정점 사이의 링크) ]
-V &#x3D; { 1, 2, 3, 4, 5
+                                    Array (배열)
+삽입&#x2F;삭제 : O(N)
+
+arr + 자료형 크기 * 점프할 크기 &#x3D; 찾으려는 값의 메모리 주소값
+
+임의접근(Random Access)
+
+
+
+탐색 : O(1)
+
+C++에서는 siz
                                 
                             </div>
                             <div class="publish-info">
@@ -483,25 +491,29 @@ PS(Problem Solving)에서는 잘 안쓰이지만, 다른 자료구조들을 구�
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/Python/Python-Data-Structure/priority-queue/">
+                        <a href="/2024/01/01/Python/Python-Data-Structure/stack-queue/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Priority Queue">
+                                <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Stack과 Queue 알아보기">
                                 
-                                <span class="card-title">[Python] Priority Queue</span>
+                                <span class="card-title">[Python] Stack과 Queue 알아보기</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Priority Queue (우선순위 큐) (&#x3D;Heap)
-삽입&#x2F;삭제 : O(logN)
+                                    Stack
+삽입&#x2F;삭제 : O(1)
 
-이진트리 형태
+FILO(First In, Last Out)
 
-최상단(root node)에 가장 큰 값이 위치 : max-heap (c++)
 
-최상단(roo
+s = []
+s.append(123)
+s.append(456)
+s.append(789)
+
+print('size:', len
                                 
                             </div>
                             <div class="publish-info">
@@ -542,29 +554,25 @@ PS(Problem Solving)에서는 잘 안쓰이지만, 다른 자료구조들을 구�
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/Python/Python-Data-Structure/stack-queue/">
+                        <a href="/2024/01/01/Python/Python-Data-Structure/priority-queue/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Stack과 Queue 알아보기">
+                                <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Priority Queue">
                                 
-                                <span class="card-title">[Python] Stack과 Queue 알아보기</span>
+                                <span class="card-title">[Python] Priority Queue</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Stack
-삽입&#x2F;삭제 : O(1)
+                                    Priority Queue (우선순위 큐) (&#x3D;Heap)
+삽입&#x2F;삭제 : O(logN)
 
-FILO(First In, Last Out)
+이진트리 형태
 
+최상단(root node)에 가장 큰 값이 위치 : max-heap (c++)
 
-s = []
-s.append(123)
-s.append(456)
-s.append(789)
-
-print('size:', len
+최상단(roo
                                 
                             </div>
                             <div class="publish-info">
@@ -725,6 +733,59 @@ v.append((789, 987))
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
+                        <a href="/2024/01/01/DBT/snowflake-setup/">
+                            <div class="card-image">
+                                
+                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="DBT 설치하기">
+                                
+                                <span class="card-title">DBT 설치하기</span>
+                            </div>
+                        </a>
+                        <div class="card-content article-content">
+                            <div class="summary block-with-text">
+                                
+                                    DBT (Data Build Tool)란?
+dbt™ is a SQL-first transformation workflow that lets teams quickly and collaboratively deploy a
+                                
+                            </div>
+                            <div class="publish-info">
+                                <span class="publish-date">
+                                    <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                                </span>
+                                <span class="publish-author">
+                                    
+                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                    
+                                    <a href="/categories/DBT/" class="post-category">
+                                    DBT
+                                    </a>
+                                    
+                                    
+                                </span>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="cd-timeline-block">
+
+            
+            
+
+            
+            
+
+            
+            <div class="cd-timeline-img day" data-aos="zoom-in-up">
+                <span>01</span>
+            </div>
+            <article class="cd-timeline-content" data-aos="fade-up">
+                <div class="article col s12 m6">
+                    <div class="card">
                         <a href="/2024/01/01/Git/git-basic-command/">
                             <div class="card-image">
                                 
@@ -781,19 +842,23 @@ global
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/DBT/snowflake-setup/">
+                        <a href="/2024/01/01/Linux/authority/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="DBT 설치하기">
+                                <img src="/images/logos/linux-logo.png" class="responsive-img" alt="Authority">
                                 
-                                <span class="card-title">DBT 설치하기</span>
+                                <span class="card-title">Authority</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    DBT (Data Build Tool)란?
-dbt™ is a SQL-first transformation workflow that lets teams quickly and collaboratively deploy a
+                                    Linux Authority Command유저 생성$ useradd [-option] &lt;username>
+
+$ adduser [-option] &lt;username>
+
+유저 권한 변경# user modify
+
                                 
                             </div>
                             <div class="publish-info">
@@ -804,62 +869,8 @@ dbt™ is a SQL-first transformation workflow that lets teams quickly and collab
                                     
                                     <i class="fas fa-bookmark fa-fw icon-category"></i>
                                     
-                                    <a href="/categories/DBT/" class="post-category">
-                                    DBT
-                                    </a>
-                                    
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                    </div>
-                </div>
-            </article>
-        </div>
-        
-        <div class="cd-timeline-block">
-
-            
-            
-
-            
-            
-
-            
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>01</span>
-            </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
-                        <a href="/2024/01/01/Python/conda-env/">
-                            <div class="card-image">
-                                
-                                <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Conda Env">
-                                
-                                <span class="card-title">[Python] Conda Env</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    conda 가상환경 만들기  
-$ conda create --name &lt;virtual env name> python=&lt;python version>
-$ conda create --prefix=&lt;virt
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                    
-                                    <a href="/categories/Python/" class="post-category">
-                                    Python
+                                    <a href="/categories/Linux/" class="post-category">
+                                    Linux
                                     </a>
                                     
                                     

@@ -314,20 +314,23 @@
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/11/01/Hive/hive-no-drop-offline/">
+                        <a href="/2023/11/01/Hive/hive-rlike/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="NO_DROP과 OFFLINE으로 Table 보호하기">
+                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="RLIKE">
                                 
-                                <span class="card-title">NO_DROP과 OFFLINE으로 Table 보호하기</span>
+                                <span class="card-title">RLIKE</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    NO_DROP특정 테이블이나 파티션이 실수로 삭제되는 것을 방지한다. 프로젝트에서 어떠한 경우에도 삭제해서 안 되는 경우에 사용을 하면 좋다.
-테이블에 NO_DROP 활성화하기-- Syntax
-ALTER TABLE 
+                                    RLIKE
+Right Like의 약어이다.
+
+Hive에서 제공하는 특수기능으로 A의 하위 문자열이 B와 일치하면 true로 평가하여 필요 데이터만 추출할 수 있다.
+
+정규표현식과 함께 사용하면 유용하다. 탐색할 문자
                                 
                             </div>
                             <div class="publish-info">
@@ -368,23 +371,20 @@ ALTER TABLE
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/11/01/Hive/hive-rlike/">
+                        <a href="/2023/11/01/Hive/hive-no-drop-offline/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="RLIKE">
+                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="NO_DROP과 OFFLINE으로 Table 보호하기">
                                 
-                                <span class="card-title">RLIKE</span>
+                                <span class="card-title">NO_DROP과 OFFLINE으로 Table 보호하기</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    RLIKE
-Right Like의 약어이다.
-
-Hive에서 제공하는 특수기능으로 A의 하위 문자열이 B와 일치하면 true로 평가하여 필요 데이터만 추출할 수 있다.
-
-정규표현식과 함께 사용하면 유용하다. 탐색할 문자
+                                    NO_DROP특정 테이블이나 파티션이 실수로 삭제되는 것을 방지한다. 프로젝트에서 어떠한 경우에도 삭제해서 안 되는 경우에 사용을 하면 좋다.
+테이블에 NO_DROP 활성화하기-- Syntax
+ALTER TABLE 
                                 
                             </div>
                             <div class="publish-info">
@@ -649,28 +649,22 @@ Static Partitioning (정적 파티
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/11/01/Hive/scd-type-1/">
+                        <a href="/2023/11/01/Hive/string-functions/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="SCD Type 1 Insert">
+                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="String Functions">
                                 
-                                <span class="card-title">SCD Type 1 Insert</span>
+                                <span class="card-title">String Functions</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    SELECT * FROM table1;
-John 1300
-Albert 1200
-Mark 1000
-Frank 1150
-Loopa 1100
-Lui 1300
-Lesa 900 
-Pars 800
-leo 700
-lock 650
+                                    ☆ CONCAT
+두 문자열을 결합하여 반환한다.
+
+-- Syntax: CONCAT (string|binary A, string|binary B...)
+SELECT CONCAT(col1, '-', col3) FROM 
                                 
                             </div>
                             <div class="publish-info">
@@ -711,22 +705,28 @@ lock 650
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/11/01/Hive/string-functions/">
+                        <a href="/2023/11/01/Hive/scd-type-1/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="String Functions">
+                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="SCD Type 1 Insert">
                                 
-                                <span class="card-title">String Functions</span>
+                                <span class="card-title">SCD Type 1 Insert</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    ☆ CONCAT
-두 문자열을 결합하여 반환한다.
-
--- Syntax: CONCAT (string|binary A, string|binary B...)
-SELECT CONCAT(col1, '-', col3) FROM 
+                                    SELECT * FROM table1;
+John 1300
+Albert 1200
+Mark 1000
+Frank 1150
+Loopa 1100
+Lui 1300
+Lesa 900 
+Pars 800
+leo 700
+lock 650
                                 
                             </div>
                             <div class="publish-info">

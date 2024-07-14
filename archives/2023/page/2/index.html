@@ -592,18 +592,21 @@ ModuleGroups together c
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/12/01/Spark/caching/">
+                        <a href="/2023/12/01/Spark/catalyst-optimizer/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Caching">
+                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Catalyst Optimizer">
                                 
-                                <span class="card-title">Caching</span>
+                                <span class="card-title">Catalyst Optimizer</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Caching의 필요성스파크는 RDD는 action을 call 하기 전까지 여러 narrow&#x2F;wide transformation로 구성된 stage를 연이어 쌓은 계보(Lineage)를 가진다. 이 Line
+                                    카탈리스트 옵티마이저 (Catalyst Optimzer)
+Apache Spark의 중요한 컴포넌트
+
+구조적 쿼리인 SQL 또는 DataFrame&#x2F;Dataset API의 DAG 로직을 최적화하여 프로그램 런타
                                 
                             </div>
                             <div class="publish-info">
@@ -644,21 +647,18 @@ ModuleGroups together c
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/12/01/Spark/catalyst-optimizer/">
+                        <a href="/2023/12/01/Spark/caching/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Catalyst Optimizer">
+                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Caching">
                                 
-                                <span class="card-title">Catalyst Optimizer</span>
+                                <span class="card-title">Caching</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    카탈리스트 옵티마이저 (Catalyst Optimzer)
-Apache Spark의 중요한 컴포넌트
-
-구조적 쿼리인 SQL 또는 DataFrame&#x2F;Dataset API의 DAG 로직을 최적화하여 프로그램 런타
+                                    Caching의 필요성스파크는 RDD는 action을 call 하기 전까지 여러 narrow&#x2F;wide transformation로 구성된 stage를 연이어 쌓은 계보(Lineage)를 가진다. 이 Line
                                 
                             </div>
                             <div class="publish-info">
@@ -754,22 +754,22 @@ Master와 Cluster Manager는
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/12/01/Spark/compression/">
+                        <a href="/2023/12/01/Spark/data-locality/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Compression">
+                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Data Locality">
                                 
-                                <span class="card-title">Compression</span>
+                                <span class="card-title">Data Locality</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    CompressionSpark는 기본적으로 여러 가지 무손실 압축 형식을 지원한다.
+                                    
+스파크는 기본적으로 가까운 노드에서 RDD로 데이터를 읽으려고 한다. 정확히 표현하면, 데이터의 이동을 하는 것이 아닌 데이터가 있는 노드로 이동해 해당 노드에서 프로세스를 뛰우려고 한다.
 
-BZIP2로 압축된 아카이브
-GZIP, ZIP(&#x3D;DEFLATE, 압축 방법을 사용해 생성된 모든 압축 아카이브)
-일반적인
+
+변환 작업을 최적화 
                                 
                             </div>
                             <div class="publish-info">
@@ -810,22 +810,44 @@ GZIP, ZIP(&#x3D;DEFLATE, 압축 방법을 사용해 생성된 모든 압축 아�
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/12/01/Spark/data-locality/">
+                        <a href="/2023/12/01/Spark/dataframe-skew-optimization/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Data Locality">
+                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="DataFrame Skewness Optimization">
                                 
-                                <span class="card-title">Data Locality</span>
+                                <span class="card-title">DataFrame Skewness Optimization</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    
-스파크는 기본적으로 가까운 노드에서 RDD로 데이터를 읽으려고 한다. 정확히 표현하면, 데이터의 이동을 하는 것이 아닌 데이터가 있는 노드로 이동해 해당 노드에서 프로세스를 뛰우려고 한다.
+                                    Skew 데이터 생성하기
+table1
 
 
-변환 작업을 최적화 
+
+
+OrderID
+Qty
+Sales
+Discount (yes&#x3D;1, no&#x3D;0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Skew 데이터 불러오기
+import numpy 
                                 
                             </div>
                             <div class="publish-info">
