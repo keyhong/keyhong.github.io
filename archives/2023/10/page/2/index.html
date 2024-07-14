@@ -314,23 +314,18 @@
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/10/01/Hadoop/HDFS/block-abstraction/">
+                        <a href="/2023/10/01/Hadoop/YARN/resource-allocation/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="HDFS 블록 추상화">
+                                <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="클러스터 리소스 할당">
                                 
-                                <span class="card-title">HDFS 블록 추상화</span>
+                                <span class="card-title">클러스터 리소스 할당</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    블록 (Block)
-물리적인 디스크(HDD, SDD)에서 한 번에 읽고 쓸 수 있는 데이터의 최대량
-
-일반적인 파일 시스템
-디스크 블록 크기 : 기본적으로 512 Byte
-파일 시스템의 블록 크기 : 디스크 블록 크
+                                    클러스터에서 잡을 실행하기 위한 메모리와 CPU에는 한계가 있다. 때문에 사용자가 클러스터로 요청한 잡들에 우선순위를 부여해야 한다. SLA(Service Level Agreement, 서비스 수준 협약) 수준을 만
                                 
                             </div>
                             <div class="publish-info">
@@ -371,22 +366,26 @@
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/10/01/Hadoop/HDFS/hdfs-node/">
+                        <a href="/2023/10/01/Hadoop/YARN/yarn-structure/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="Node">
+                                <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="YARN 구조 파악하기">
                                 
-                                <span class="card-title">Node</span>
+                                <span class="card-title">YARN 구조 파악하기</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    HDFS 클러스터
-HDFS 클러스터는 마스터-슬레이브(master-slave) 구조로 동작하는 두 종류의 프로세스인 네임노드(namenode)와 데이터 노드(datanode)로 구성된다.
+                                    YARN (Yet Another Resource Negotiator)
+하둡의 클러스터 자원 관리 시스템
 
 
-분명하게 용어를 집고 넘
+Hadoop 2.X 부터 도입되었다.
+
+MapReduce 성능을 높이기 위한 시스템이다.
+
+다른 분산 컴퓨팅
                                 
                             </div>
                             <div class="publish-info">

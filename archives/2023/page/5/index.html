@@ -314,25 +314,78 @@
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/11/01/Hive/hive-architecture/">
+                        <a href="/2023/11/01/Hive/hive-concept/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="Architecture">
+                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="Concept">
                                 
-                                <span class="card-title">Architecture</span>
+                                <span class="card-title">Concept</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Hive ArchitectureMajor components
-UI
+                                    hive
+                                
+                            </div>
+                            <div class="publish-info">
+                                <span class="publish-date">
+                                    <i class="far fa-clock fa-fw icon-date"></i>2023-11-01
+                                </span>
+                                <span class="publish-author">
+                                    
+                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                    
+                                    <a href="/categories/Hive/" class="post-category">
+                                    Hive
+                                    </a>
+                                    
+                                    
+                                </span>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="cd-timeline-block">
+
+            
+            
+
+            
+            
+
+            
+            <div class="cd-timeline-img day" data-aos="zoom-in-up">
+                <span>01</span>
+            </div>
+            <article class="cd-timeline-content" data-aos="fade-up">
+                <div class="article col s12 m6">
+                    <div class="card">
+                        <a href="/2023/11/01/Hive/hive-config/">
+                            <div class="card-image">
+                                
+                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="Config">
+                                
+                                <span class="card-title">Config</span>
+                            </div>
+                        </a>
+                        <div class="card-content article-content">
+                            <div class="summary block-with-text">
+                                
+                                    hive-site.xml
+Hive 환경 설정을 위한 XML 설정 파일
 
 
-사용자가 쿼리 및 기타 작업을 시스템에 제출하기 위한 사용자 인터페이스
+Hive의 conf 디렉토리에 위치
 
+사용자가 Hive를 실행할 때마다 필요한 속성을 설정
 
-Hive Web UI, 커맨드라인 (HD Insight는 Window 
+hive-default.xml.template을 
                                 
                             </div>
                             <div class="publish-info">
@@ -534,26 +587,20 @@ HDFS에 저장된 데이터(directory&#x2F;file)에 구조(Schem
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/11/01/Hive/hive-config/">
+                        <a href="/2023/11/01/Hive/hive-no-drop-offline/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="Config">
+                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="NO_DROP과 OFFLINE으로 Table 보호하기">
                                 
-                                <span class="card-title">Config</span>
+                                <span class="card-title">NO_DROP과 OFFLINE으로 Table 보호하기</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    hive-site.xml
-Hive 환경 설정을 위한 XML 설정 파일
-
-
-Hive의 conf 디렉토리에 위치
-
-사용자가 Hive를 실행할 때마다 필요한 속성을 설정
-
-hive-default.xml.template을 
+                                    NO_DROP특정 테이블이나 파티션이 실수로 삭제되는 것을 방지한다. 프로젝트에서 어떠한 경우에도 삭제해서 안 되는 경우에 사용을 하면 좋다.
+테이블에 NO_DROP 활성화하기-- Syntax
+ALTER TABLE 
                                 
                             </div>
                             <div class="publish-info">
@@ -594,20 +641,23 @@ hive-default.xml.template을
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/11/01/Hive/hive-no-drop-offline/">
+                        <a href="/2023/11/01/Hive/hive-rlike/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="NO_DROP과 OFFLINE으로 Table 보호하기">
+                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="RLIKE">
                                 
-                                <span class="card-title">NO_DROP과 OFFLINE으로 Table 보호하기</span>
+                                <span class="card-title">RLIKE</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    NO_DROP특정 테이블이나 파티션이 실수로 삭제되는 것을 방지한다. 프로젝트에서 어떠한 경우에도 삭제해서 안 되는 경우에 사용을 하면 좋다.
-테이블에 NO_DROP 활성화하기-- Syntax
-ALTER TABLE 
+                                    RLIKE
+Right Like의 약어이다.
+
+Hive에서 제공하는 특수기능으로 A의 하위 문자열이 B와 일치하면 true로 평가하여 필요 데이터만 추출할 수 있다.
+
+정규표현식과 함께 사용하면 유용하다. 탐색할 문자
                                 
                             </div>
                             <div class="publish-info">
@@ -667,63 +717,6 @@ CLUSTER BY
 
 (1) ORDER BY
 데이터 전체 정렬에 사용된다. 데이터의 전체 순서를 보장하며, 이를 위해 
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2023-11-01
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                    
-                                    <a href="/categories/Hive/" class="post-category">
-                                    Hive
-                                    </a>
-                                    
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                    </div>
-                </div>
-            </article>
-        </div>
-        
-        <div class="cd-timeline-block">
-
-            
-            
-
-            
-            
-
-            
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>01</span>
-            </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
-                        <a href="/2023/11/01/Hive/hive-rlike/">
-                            <div class="card-image">
-                                
-                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="RLIKE">
-                                
-                                <span class="card-title">RLIKE</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    RLIKE
-Right Like의 약어이다.
-
-Hive에서 제공하는 특수기능으로 A의 하위 문자열이 B와 일치하면 true로 평가하여 필요 데이터만 추출할 수 있다.
-
-정규표현식과 함께 사용하면 유용하다. 탐색할 문자
                                 
                             </div>
                             <div class="publish-info">

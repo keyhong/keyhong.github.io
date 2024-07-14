@@ -368,25 +368,23 @@ ALTER TABLE
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/11/01/Hive/hive-sorting/">
+                        <a href="/2023/11/01/Hive/hive-rlike/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="Sorting">
+                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="RLIKE">
                                 
-                                <span class="card-title">Sorting</span>
+                                <span class="card-title">RLIKE</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Hive에서 정렬을 수행하는 4개의 절
-ORDER BY
-SORT BY
-DISTRIBUTED BY
-CLUSTER BY
+                                    RLIKE
+Right Like의 약어이다.
 
-(1) ORDER BY
-데이터 전체 정렬에 사용된다. 데이터의 전체 순서를 보장하며, 이를 위해 
+Hive에서 제공하는 특수기능으로 A의 하위 문자열이 B와 일치하면 true로 평가하여 필요 데이터만 추출할 수 있다.
+
+정규표현식과 함께 사용하면 유용하다. 탐색할 문자
                                 
                             </div>
                             <div class="publish-info">
@@ -427,23 +425,25 @@ CLUSTER BY
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/11/01/Hive/hive-rlike/">
+                        <a href="/2023/11/01/Hive/hive-sorting/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="RLIKE">
+                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="Sorting">
                                 
-                                <span class="card-title">RLIKE</span>
+                                <span class="card-title">Sorting</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    RLIKE
-Right Like의 약어이다.
+                                    Hive에서 정렬을 수행하는 4개의 절
+ORDER BY
+SORT BY
+DISTRIBUTED BY
+CLUSTER BY
 
-Hive에서 제공하는 특수기능으로 A의 하위 문자열이 B와 일치하면 true로 평가하여 필요 데이터만 추출할 수 있다.
-
-정규표현식과 함께 사용하면 유용하다. 탐색할 문자
+(1) ORDER BY
+데이터 전체 정렬에 사용된다. 데이터의 전체 순서를 보장하며, 이를 위해 
                                 
                             </div>
                             <div class="publish-info">
@@ -649,22 +649,28 @@ Static Partitioning (정적 파티
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/11/01/Hive/string-functions/">
+                        <a href="/2023/11/01/Hive/scd-type-1/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="String Functions">
+                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="SCD Type 1 Insert">
                                 
-                                <span class="card-title">String Functions</span>
+                                <span class="card-title">SCD Type 1 Insert</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    ☆ CONCAT
-두 문자열을 결합하여 반환한다.
-
--- Syntax: CONCAT (string|binary A, string|binary B...)
-SELECT CONCAT(col1, '-', col3) FROM 
+                                    SELECT * FROM table1;
+John 1300
+Albert 1200
+Mark 1000
+Frank 1150
+Loopa 1100
+Lui 1300
+Lesa 900 
+Pars 800
+leo 700
+lock 650
                                 
                             </div>
                             <div class="publish-info">
@@ -705,28 +711,22 @@ SELECT CONCAT(col1, '-', col3) FROM
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/11/01/Hive/scd-type-1/">
+                        <a href="/2023/11/01/Hive/string-functions/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="SCD Type 1 Insert">
+                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="String Functions">
                                 
-                                <span class="card-title">SCD Type 1 Insert</span>
+                                <span class="card-title">String Functions</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    SELECT * FROM table1;
-John 1300
-Albert 1200
-Mark 1000
-Frank 1150
-Loopa 1100
-Lui 1300
-Lesa 900 
-Pars 800
-leo 700
-lock 650
+                                    ☆ CONCAT
+두 문자열을 결합하여 반환한다.
+
+-- Syntax: CONCAT (string|binary A, string|binary B...)
+SELECT CONCAT(col1, '-', col3) FROM 
                                 
                             </div>
                             <div class="publish-info">
