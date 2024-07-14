@@ -208,26 +208,23 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/11/01/Hive/hive-sorting/">
+                    <a href="/2023/11/01/Hive/string-functions/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/hive-logo.png" class="responsive-img" alt="Sorting">
+                            <img src="/images/logos/hive-logo.png" class="responsive-img" alt="String Functions">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Sorting</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">String Functions</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Hive에서 정렬을 수행하는 4개의 절
-ORDER BY
-SORT BY
-DISTRIBUTED BY
-CLUSTER BY
+                                ☆ CONCAT
+두 문자열을 결합하여 반환한다.
 
-(1) ORDER BY
-데이터 전체 정렬에 사용된다. 데이터의 전체 순서를 보장하며, 이를 위해 
+-- Syntax: CONCAT (string|binary A, string|binary B...)
+SELECT CONCAT(col1, '-', col3) FROM 
                             
                         </div> -->
                         <div class="publish-info">
@@ -539,24 +536,74 @@ Hadoop 3.0 새
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/10/01/Hadoop/HDFS/block-abstraction/">
+                    <a href="/2023/10/01/Hadoop/YARN/yarn-structure/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="HDFS 블록 추상화">
+                            <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="YARN 구조 파악하기">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">HDFS 블록 추상화</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">YARN 구조 파악하기</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                블록 (Block)
-물리적인 디스크(HDD, SDD)에서 한 번에 읽고 쓸 수 있는 데이터의 최대량
+                                YARN (Yet Another Resource Negotiator)
+하둡의 클러스터 자원 관리 시스템
 
-일반적인 파일 시스템
-디스크 블록 크기 : 기본적으로 512 Byte
-파일 시스템의 블록 크기 : 디스크 블록 크
+
+Hadoop 2.X 부터 도입되었다.
+
+MapReduce 성능을 높이기 위한 시스템이다.
+
+다른 분산 컴퓨팅
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <!-- <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-01
+                            </span> -->
+                            <span class="summary block-with-text">
+                                <i class="fas fa-bookmark"></i> undefined
+                            </span>
+                            <!-- <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Hadoop/" class="post-category">
+                                    Hadoop
+                                </a>
+                                
+                                
+                            </span> -->
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/10/01/Hadoop/HDFS/hdfs-basic-concept/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="HDFS Basic Concept">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">HDFS Basic Concept</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                HDFS (Hadoop Distributed File System)
+네트워크로 연결된 여러 머신의 스토리지를 관리하는 하둡의 분산 파일 시스템
+
+
+분산 파일 시스템은 네트워크 기반으로, 네트워크 프로그램의 복잡성을 
                             
                         </div> -->
                         <div class="publish-info">
@@ -601,57 +648,6 @@ Hadoop 3.0 새
                             
                                 HDFS Block CachingHDFS Block Caching
 데이터노드는 디스크에 저장된 블록을 read. 하지만 빈번하게 접근하는 블록 파일은 오프-힙(off-heap) 블록캐시(block-cache)라는 데
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <!-- <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-01
-                            </span> -->
-                            <span class="summary block-with-text">
-                                <i class="fas fa-bookmark"></i> undefined
-                            </span>
-                            <!-- <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Hadoop/" class="post-category">
-                                    Hadoop
-                                </a>
-                                
-                                
-                            </span> -->
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2023/10/01/Hadoop/YARN/yarn-structure/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="YARN 구조 파악하기">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">YARN 구조 파악하기</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                YARN (Yet Another Resource Negotiator)
-하둡의 클러스터 자원 관리 시스템
-
-
-Hadoop 2.X 부터 도입되었다.
-
-MapReduce 성능을 높이기 위한 시스템이다.
-
-다른 분산 컴퓨팅
                             
                         </div> -->
                         <div class="publish-info">
