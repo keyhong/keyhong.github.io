@@ -5,11 +5,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Installation, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Ubuntu에서 단일 노드(Single Node) 스파크 배포
+    <meta name="description" content="단일 노드(Single Node) 스파크 배포
 패키지 색인 파일(패키지 저장소가 제공하는 패키지에 대한 정보 파일) 업데이트
 
 # Debian 계열 리눅스(Ubuntu)
-$ sudo apt-get u">
+$ sudo apt-get update
+
+# ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -243,7 +245,7 @@ $ sudo apt-get u">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Ubuntu에서-단일-노드-Single-Node-스파크-배포"><a href="#Ubuntu에서-단일-노드-Single-Node-스파크-배포" class="headerlink" title="Ubuntu에서 단일 노드(Single Node) 스파크 배포"></a>Ubuntu에서 단일 노드(Single Node) 스파크 배포</h2><ol>
+                <h2 id="단일-노드-Single-Node-스파크-배포"><a href="#단일-노드-Single-Node-스파크-배포" class="headerlink" title="단일 노드(Single Node) 스파크 배포"></a>단일 노드(Single Node) 스파크 배포</h2><ol>
 <li>패키지 색인 파일(패키지 저장소가 제공하는 패키지에 대한 정보 파일) 업데이트</li>
 </ol>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Debian 계열 리눅스(Ubuntu)</span>
@@ -299,9 +301,6 @@ $ <span class="token builtin class-name">source</span> ~/.bashrc
 $ spark-submit <span class="token parameter variable">--class</span> org.apache.spark.examples.SparkPi <span class="token punctuation">\</span>
     -- master <span class="token builtin class-name">local</span> <span class="token punctuation">\</span>
     <span class="token variable">$SPARK_HOME</span>/examples/jars/spark-examples*.jar <span class="token number">1000</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
 
 <h2 id="다중-노드-Multi-Node-스파크-클러스터-배포"><a href="#다중-노드-Multi-Node-스파크-클러스터-배포" class="headerlink" title="다중 노드(Multi Node) 스파크 클러스터 배포"></a>다중 노드(Multi Node) 스파크 클러스터 배포</h2><ol>
 <li>클러스터의 통신을 위한 hosts 등록</li>
@@ -455,7 +454,26 @@ spark <span class="token operator">=</span> SparkSession<span class="token punct
   <span class="token punctuation">.</span>config<span class="token punctuation">(</span><span class="token string">"spark.executor.cores"</span><span class="token punctuation">,</span>  <span class="token number">1</span><span class="token punctuation">)</span> \
   <span class="token punctuation">.</span>getOrCreate<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="Process별-Spark-Web-UI"><a href="#Process별-Spark-Web-UI" class="headerlink" title="Process별 Spark Web UI"></a>Process별 Spark Web UI</h2><p>| Master Web UI (SPARK_MASTER_IP:SPARK_MASTER_WEBUI_PORT) | SPARK_MASTER_HOST:7077 <br>| Worker Web UI (SPARK_MASTER_IP:SPARK_WORKER_WEBUI_PORT) | SPARK_WORKER_HOST1:8081, SPARK_WORKER_HOST2:8081, SPARK_WORKER_HOST3:8081 .. <br>| Application Web UI(Driver)                              | ClinetNode:4040 (i.e. localhost:4040)</p>
+<h2 id="Process별-Spark-Web-UI"><a href="#Process별-Spark-Web-UI" class="headerlink" title="Process별 Spark Web UI"></a>Process별 Spark Web UI</h2><table>
+<thead>
+<tr>
+<th>Process</th>
+<th>Host</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Master Web UI (SPARK_MASTER_IP:SPARK_MASTER_WEBUI_PORT)</td>
+<td>SPARK_MASTER_HOST:7077</td>
+</tr>
+<tr>
+<td>Worker Web UI (SPARK_MASTER_IP:SPARK_WORKER_WEBUI_PORT)</td>
+<td>SPARK_WORKER_HOST1:8081, SPARK_WORKER_HOST2:8081, SPARK_WORKER_HOST3:8081 ..</td>
+</tr>
+<tr>
+<td>Application Web UI(Driver)</td>
+<td>ClinetNode:4040 (i.e. localhost:4040)</td>
+</tr>
+</tbody></table>
 
                 
             </div>
@@ -594,12 +612,12 @@ spark <span class="token operator">=</span> SparkSession<span class="token punct
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2023/12/01/Spark/sourcing/">
+                <a href="/2023/12/01/Spark/dataframe-dataset/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Data Sourcing">
+                        <img src="/images/logos/spark-logo.png" class="responsive-img" alt="RDD / DataFrame / DataSet">
                         
-                        <span class="card-title diy-neon-red">Data Sourcing</span>
+                        <span class="card-title diy-neon-red">RDD / DataFrame / DataSet</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -634,12 +652,12 @@ spark <span class="token operator">=</span> SparkSession<span class="token punct
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/12/01/Spark/spark-streaming-shutdown/">
+                <a href="/2023/12/01/Spark/skew-optimization/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Spark Streaming Gracefully Shutdown">
+                        <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Skew Optimization">
                         
-                        <span class="card-title diy-neon-red">Spark Streaming Gracefully Shutdown</span>
+                        <span class="card-title diy-neon-red">Skew Optimization</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
