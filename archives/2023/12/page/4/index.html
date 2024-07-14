@@ -314,21 +314,22 @@
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/12/01/Spark/spark-streaming-shutdown/">
+                        <a href="/2023/12/01/Spark/data-locality/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Spark Streaming Gracefully Shutdown">
+                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Data Locality">
                                 
-                                <span class="card-title">Spark Streaming Gracefully Shutdown</span>
+                                <span class="card-title">Data Locality</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    sparkStreamContext.stop()
-코드 상에서 sparkStreamContext.stop()를 call 하는 것은 그만
+                                    
+스파크는 기본적으로 가까운 노드에서 RDD로 데이터를 읽으려고 한다. 정확히 표현하면, 데이터의 이동을 하는 것이 아닌 데이터가 있는 노드로 이동해 해당 노드에서 프로세스를 뛰우려고 한다.
 
-방법 1 : spark.streaming.stopGracefullyOnShutdo
+
+변환 작업을 최적화 
                                 
                             </div>
                             <div class="publish-info">
@@ -476,19 +477,18 @@ Structured Stre
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/12/01/Spark/docs/Programming%20Guides/pyspark/Getting%20Started/Testing%20PySpark/">
+                        <a href="/2023/12/01/Spark/docs/Programming%20Guides/RDD%20Programming%20Guide/RDD%20Programming%20Guide/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Testing PySpark">
+                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="RDD Programming Guide">
                                 
-                                <span class="card-title">Testing PySpark</span>
+                                <span class="card-title">RDD Programming Guide</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Testing PySpark이 안내서는 PySpark 코드에 견고한 테스트를 작성하는 데 도움이 되는 참조 자료입니다.
-PySpark 테스트 유틸리티 문서를 보려면 여기를 참조하세요. PySpark 내장 테스트 유틸
+                                    Overview고수준에서 모든 Spark 애플리케이션은 사용자의 main 함수를 실행하고 클러스터에서 다양한 parallel operations을 수행하는 드라이버 프로그램으로 구성됩니다. Spark가 제공하는 주요
                                 
                             </div>
                             <div class="publish-info">
@@ -529,18 +529,19 @@ PySpark 테스트 유틸리티 문서를 보려면 여기를 참조하세요. Py
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/12/01/Spark/docs/Programming%20Guides/RDD%20Programming%20Guide/RDD%20Programming%20Guide/">
+                        <a href="/2023/12/01/Spark/docs/Programming%20Guides/pyspark/Getting%20Started/Testing%20PySpark/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="RDD Programming Guide">
+                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Testing PySpark">
                                 
-                                <span class="card-title">RDD Programming Guide</span>
+                                <span class="card-title">Testing PySpark</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Overview고수준에서 모든 Spark 애플리케이션은 사용자의 main 함수를 실행하고 클러스터에서 다양한 parallel operations을 수행하는 드라이버 프로그램으로 구성됩니다. Spark가 제공하는 주요
+                                    Testing PySpark이 안내서는 PySpark 코드에 견고한 테스트를 작성하는 데 도움이 되는 참조 자료입니다.
+PySpark 테스트 유틸리티 문서를 보려면 여기를 참조하세요. PySpark 내장 테스트 유틸
                                 
                             </div>
                             <div class="publish-info">

@@ -371,18 +371,26 @@ adj[0][1] = adj
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/10/01/Hadoop/hadoop-Installation/">
+                        <a href="/2023/10/01/Hadoop/hadoop-3/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="Installation">
+                                <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="Hadoop3">
                                 
-                                <span class="card-title">Installation</span>
+                                <span class="card-title">Hadoop3</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Hadoop 설치시 유용 유틸리티운영시스템의 조건Red Hat Linux, CentOS, SUSE Linux Enterprise Server 11, SP1 등 다양한 리눅스에서 설치 가능. 다만, 운영체제는 반드시 
+                                    Hadoop 2.0 새로운 특징
+네임노드 실패에 대한 고가용성(HA)를 보장
+
+네임노드 filling up으로 Federation 기능이 추가
+
+블록 사이즈가 64MB에서 128MB로 변경
+
+
+Hadoop 3.0 새
                                 
                             </div>
                             <div class="publish-info">
@@ -423,26 +431,18 @@ adj[0][1] = adj
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/10/01/Hadoop/hadoop-3/">
+                        <a href="/2023/10/01/Hadoop/hadoop-Installation/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="Hadoop3">
+                                <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="Installation">
                                 
-                                <span class="card-title">Hadoop3</span>
+                                <span class="card-title">Installation</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Hadoop 2.0 새로운 특징
-네임노드 실패에 대한 고가용성(HA)를 보장
-
-네임노드 filling up으로 Federation 기능이 추가
-
-블록 사이즈가 64MB에서 128MB로 변경
-
-
-Hadoop 3.0 새
+                                    Hadoop 설치시 유용 유틸리티운영시스템의 조건Red Hat Linux, CentOS, SUSE Linux Enterprise Server 11, SP1 등 다양한 리눅스에서 설치 가능. 다만, 운영체제는 반드시 
                                 
                             </div>
                             <div class="publish-info">
@@ -535,26 +535,18 @@ Hadoop 3.0 새
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/10/01/Hadoop/YARN/yarn-structure/">
+                        <a href="/2023/10/01/Hadoop/YARN/resource-allocation/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="YARN 구조 파악하기">
+                                <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="클러스터 리소스 할당">
                                 
-                                <span class="card-title">YARN 구조 파악하기</span>
+                                <span class="card-title">클러스터 리소스 할당</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    YARN (Yet Another Resource Negotiator)
-하둡의 클러스터 자원 관리 시스템
-
-
-Hadoop 2.X 부터 도입되었다.
-
-MapReduce 성능을 높이기 위한 시스템이다.
-
-다른 분산 컴퓨팅
+                                    클러스터에서 잡을 실행하기 위한 메모리와 CPU에는 한계가 있다. 때문에 사용자가 클러스터로 요청한 잡들에 우선순위를 부여해야 한다. SLA(Service Level Agreement, 서비스 수준 협약) 수준을 만
                                 
                             </div>
                             <div class="publish-info">
@@ -595,18 +587,26 @@ MapReduce 성능을 높이기 위한 시스템이다.
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/10/01/Hadoop/YARN/resource-allocation/">
+                        <a href="/2023/10/01/Hadoop/YARN/yarn-structure/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="클러스터 리소스 할당">
+                                <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="YARN 구조 파악하기">
                                 
-                                <span class="card-title">클러스터 리소스 할당</span>
+                                <span class="card-title">YARN 구조 파악하기</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    클러스터에서 잡을 실행하기 위한 메모리와 CPU에는 한계가 있다. 때문에 사용자가 클러스터로 요청한 잡들에 우선순위를 부여해야 한다. SLA(Service Level Agreement, 서비스 수준 협약) 수준을 만
+                                    YARN (Yet Another Resource Negotiator)
+하둡의 클러스터 자원 관리 시스템
+
+
+Hadoop 2.X 부터 도입되었다.
+
+MapReduce 성능을 높이기 위한 시스템이다.
+
+다른 분산 컴퓨팅
                                 
                             </div>
                             <div class="publish-info">
@@ -760,22 +760,19 @@ MapReduce 성능을 높이기 위한 시스템이다.
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/10/01/Hadoop/HDFS/hdfs-federation/">
+                        <a href="/2023/10/01/Hadoop/HDFS/hdfs-block-caching/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="Federation">
+                                <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="Block Caching">
                                 
-                                <span class="card-title">Federation</span>
+                                <span class="card-title">Block Caching</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Federation
-여러 개의 독립적인 namenode와 datanode 클러스터를 하나의 논리적인 단일 namenode로 조합하는 방법
-
-Federation 필요성
-namenode는 파일시스템의 모든 파일과 각 블
+                                    HDFS Block CachingHDFS Block Caching
+데이터노드는 디스크에 저장된 블록을 read. 하지만 빈번하게 접근하는 블록 파일은 오프-힙(off-heap) 블록캐시(block-cache)라는 데
                                 
                             </div>
                             <div class="publish-info">

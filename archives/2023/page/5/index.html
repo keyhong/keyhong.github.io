@@ -532,21 +532,20 @@ hive-default.xml.template을
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/11/01/Hive/hive-installation/">
+                        <a href="/2023/11/01/Hive/hive-no-drop-offline/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="Installation">
+                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="NO_DROP과 OFFLINE으로 Table 보호하기">
                                 
-                                <span class="card-title">Installation</span>
+                                <span class="card-title">NO_DROP과 OFFLINE으로 Table 보호하기</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Hive 설치하기
-하이브는 사용자의 워크스테이션에서 실행, 작성된 SQL 쿼리는 일련의 맵리듀스 잡으로 변환되어 하둡클러스터에서 구동
-
-HDFS에 저장된 데이터(directory&#x2F;file)에 구조(Schem
+                                    NO_DROP특정 테이블이나 파티션이 실수로 삭제되는 것을 방지한다. 프로젝트에서 어떠한 경우에도 삭제해서 안 되는 경우에 사용을 하면 좋다.
+테이블에 NO_DROP 활성화하기-- Syntax
+ALTER TABLE 
                                 
                             </div>
                             <div class="publish-info">
@@ -604,60 +603,6 @@ Right Like의 약어이다.
 Hive에서 제공하는 특수기능으로 A의 하위 문자열이 B와 일치하면 true로 평가하여 필요 데이터만 추출할 수 있다.
 
 정규표현식과 함께 사용하면 유용하다. 탐색할 문자
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2023-11-01
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                    
-                                    <a href="/categories/Hive/" class="post-category">
-                                    Hive
-                                    </a>
-                                    
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                    </div>
-                </div>
-            </article>
-        </div>
-        
-        <div class="cd-timeline-block">
-
-            
-            
-
-            
-            
-
-            
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>01</span>
-            </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
-                        <a href="/2023/11/01/Hive/hive-no-drop-offline/">
-                            <div class="card-image">
-                                
-                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="NO_DROP과 OFFLINE으로 Table 보호하기">
-                                
-                                <span class="card-title">NO_DROP과 OFFLINE으로 Table 보호하기</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    NO_DROP특정 테이블이나 파티션이 실수로 삭제되는 것을 방지한다. 프로젝트에서 어떠한 경우에도 삭제해서 안 되는 경우에 사용을 하면 좋다.
-테이블에 NO_DROP 활성화하기-- Syntax
-ALTER TABLE 
                                 
                             </div>
                             <div class="publish-info">
@@ -830,6 +775,61 @@ CLUSTER BY
 Partitioning의 두 종류는 정적 파티셔닝과 동적 파티셔닝이 있다.
 
 Static Partitioning (정적 파티
+                                
+                            </div>
+                            <div class="publish-info">
+                                <span class="publish-date">
+                                    <i class="far fa-clock fa-fw icon-date"></i>2023-11-01
+                                </span>
+                                <span class="publish-author">
+                                    
+                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                    
+                                    <a href="/categories/Hive/" class="post-category">
+                                    Hive
+                                    </a>
+                                    
+                                    
+                                </span>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="cd-timeline-block">
+
+            
+            
+
+            
+            
+
+            
+            <div class="cd-timeline-img day" data-aos="zoom-in-up">
+                <span>01</span>
+            </div>
+            <article class="cd-timeline-content" data-aos="fade-up">
+                <div class="article col s12 m6">
+                    <div class="card">
+                        <a href="/2023/11/01/Hive/hive-installation/">
+                            <div class="card-image">
+                                
+                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="Installation">
+                                
+                                <span class="card-title">Installation</span>
+                            </div>
+                        </a>
+                        <div class="card-content article-content">
+                            <div class="summary block-with-text">
+                                
+                                    Hive 설치하기
+하이브는 사용자의 워크스테이션에서 실행, 작성된 SQL 쿼리는 일련의 맵리듀스 잡으로 변환되어 하둡클러스터에서 구동
+
+HDFS에 저장된 데이터(directory&#x2F;file)에 구조(Schem
                                 
                             </div>
                             <div class="publish-info">

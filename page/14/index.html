@@ -391,22 +391,19 @@ ModuleGroups together c
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Spark/catalyst-optimizer/">
+                    <a href="/2023/12/01/Spark/caching/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Catalyst Optimizer">
+                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Caching">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Catalyst Optimizer</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Caching</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                카탈리스트 옵티마이저 (Catalyst Optimzer)
-Apache Spark의 중요한 컴포넌트
-
-구조적 쿼리인 SQL 또는 DataFrame&#x2F;Dataset API의 DAG 로직을 최적화하여 프로그램 런타
+                                Caching의 필요성스파크는 RDD는 action을 call 하기 전까지 여러 narrow&#x2F;wide transformation로 구성된 stage를 연이어 쌓은 계보(Lineage)를 가진다. 이 Line
                             
                         </div> -->
                         <div class="publish-info">
@@ -437,19 +434,22 @@ Apache Spark의 중요한 컴포넌트
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Spark/caching/">
+                    <a href="/2023/12/01/Spark/catalyst-optimizer/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Caching">
+                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Catalyst Optimizer">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Caching</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Catalyst Optimizer</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Caching의 필요성스파크는 RDD는 action을 call 하기 전까지 여러 narrow&#x2F;wide transformation로 구성된 stage를 연이어 쌓은 계보(Lineage)를 가진다. 이 Line
+                                카탈리스트 옵티마이저 (Catalyst Optimzer)
+Apache Spark의 중요한 컴포넌트
+
+구조적 쿼리인 SQL 또는 DataFrame&#x2F;Dataset API의 DAG 로직을 최적화하여 프로그램 런타
                             
                         </div> -->
                         <div class="publish-info">
@@ -526,23 +526,23 @@ Master와 Cluster Manager는
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Spark/data-locality/">
+                    <a href="/2023/12/01/Spark/compression/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Data Locality">
+                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Compression">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Data Locality</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Compression</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                
-스파크는 기본적으로 가까운 노드에서 RDD로 데이터를 읽으려고 한다. 정확히 표현하면, 데이터의 이동을 하는 것이 아닌 데이터가 있는 노드로 이동해 해당 노드에서 프로세스를 뛰우려고 한다.
+                                CompressionSpark는 기본적으로 여러 가지 무손실 압축 형식을 지원한다.
 
-
-변환 작업을 최적화 
+BZIP2로 압축된 아카이브
+GZIP, ZIP(&#x3D;DEFLATE, 압축 방법을 사용해 생성된 모든 압축 아카이브)
+일반적인
                             
                         </div> -->
                         <div class="publish-info">
@@ -642,24 +642,22 @@ import numpy
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Spark/dataset/">
+                    <a href="/2023/12/01/Spark/dataframe/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="DataSet">
+                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="pyspark.sql.DataFrame">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">DataSet</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">pyspark.sql.DataFrame</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                
-Spark 2.0에서 ‘DataFrame’과 상반된 ‘DataSet’ 도입
-
-파이썬에서는 둘의 경계가 모호. Python에서는 모든 것이 동적으로 입력되기 때문
-
-‘DataFrame’은 행 객체의 ‘DataSet’
+                                RDD vs DataFrame
+RDD는 정보를 가진 행이나, 정보가 어떤 유형(type)인지 구체적 명시가 불가능하다.
+DataFrame이 Spark에서 하는 일은 RDD를 DataFrame 객체로 확장하는 것
+Da
                             
                         </div> -->
                         <div class="publish-info">

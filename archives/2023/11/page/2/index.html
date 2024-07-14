@@ -371,60 +371,6 @@ Hive에서 제공하는 특수기능으로 A의 하위 문자열이 B와 일치�
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/11/01/Hive/hive-no-drop-offline/">
-                            <div class="card-image">
-                                
-                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="NO_DROP과 OFFLINE으로 Table 보호하기">
-                                
-                                <span class="card-title">NO_DROP과 OFFLINE으로 Table 보호하기</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    NO_DROP특정 테이블이나 파티션이 실수로 삭제되는 것을 방지한다. 프로젝트에서 어떠한 경우에도 삭제해서 안 되는 경우에 사용을 하면 좋다.
-테이블에 NO_DROP 활성화하기-- Syntax
-ALTER TABLE 
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2023-11-01
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                    
-                                    <a href="/categories/Hive/" class="post-category">
-                                    Hive
-                                    </a>
-                                    
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                    </div>
-                </div>
-            </article>
-        </div>
-        
-        <div class="cd-timeline-block">
-
-            
-            
-
-            
-            
-
-            
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>01</span>
-            </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
                         <a href="/2023/11/01/Hive/hive-sorting/">
                             <div class="card-image">
                                 
@@ -597,18 +543,21 @@ Static Partitioning (정적 파티
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/11/01/Hive/rank-functions/">
+                        <a href="/2023/11/01/Hive/hive-installation/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="RANK(), DENSE_RANK(), ROW_NUMBER()">
+                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="Installation">
                                 
-                                <span class="card-title">RANK(), DENSE_RANK(), ROW_NUMBER()</span>
+                                <span class="card-title">Installation</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    HiveQL에서도 ANSI SQL과 마찬가지로 RANK(), DENSE_RANK(), ROW_NUMBER()의 순위 함수를 제공합니다. 순위 함수는 PARTITION BY ORDERB BY의 Window 함수와 함께
+                                    Hive 설치하기
+하이브는 사용자의 워크스테이션에서 실행, 작성된 SQL 쿼리는 일련의 맵리듀스 잡으로 변환되어 하둡클러스터에서 구동
+
+HDFS에 저장된 데이터(directory&#x2F;file)에 구조(Schem
                                 
                             </div>
                             <div class="publish-info">
@@ -649,22 +598,18 @@ Static Partitioning (정적 파티
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/11/01/Hive/string-functions/">
+                        <a href="/2023/11/01/Hive/rank-functions/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="String Functions">
+                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="RANK(), DENSE_RANK(), ROW_NUMBER()">
                                 
-                                <span class="card-title">String Functions</span>
+                                <span class="card-title">RANK(), DENSE_RANK(), ROW_NUMBER()</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    ☆ CONCAT
-두 문자열을 결합하여 반환한다.
-
--- Syntax: CONCAT (string|binary A, string|binary B...)
-SELECT CONCAT(col1, '-', col3) FROM 
+                                    HiveQL에서도 ANSI SQL과 마찬가지로 RANK(), DENSE_RANK(), ROW_NUMBER()의 순위 함수를 제공합니다. 순위 함수는 PARTITION BY ORDERB BY의 Window 함수와 함께
                                 
                             </div>
                             <div class="publish-info">
@@ -727,6 +672,62 @@ Lesa 900
 Pars 800
 leo 700
 lock 650
+                                
+                            </div>
+                            <div class="publish-info">
+                                <span class="publish-date">
+                                    <i class="far fa-clock fa-fw icon-date"></i>2023-11-01
+                                </span>
+                                <span class="publish-author">
+                                    
+                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                    
+                                    <a href="/categories/Hive/" class="post-category">
+                                    Hive
+                                    </a>
+                                    
+                                    
+                                </span>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="cd-timeline-block">
+
+            
+            
+
+            
+            
+
+            
+            <div class="cd-timeline-img day" data-aos="zoom-in-up">
+                <span>01</span>
+            </div>
+            <article class="cd-timeline-content" data-aos="fade-up">
+                <div class="article col s12 m6">
+                    <div class="card">
+                        <a href="/2023/11/01/Hive/string-functions/">
+                            <div class="card-image">
+                                
+                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="String Functions">
+                                
+                                <span class="card-title">String Functions</span>
+                            </div>
+                        </a>
+                        <div class="card-content article-content">
+                            <div class="summary block-with-text">
+                                
+                                    ☆ CONCAT
+두 문자열을 결합하여 반환한다.
+
+-- Syntax: CONCAT (string|binary A, string|binary B...)
+SELECT CONCAT(col1, '-', col3) FROM 
                                 
                             </div>
                             <div class="publish-info">
