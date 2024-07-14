@@ -314,22 +314,21 @@
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/12/01/Spark/data-locality/">
+                        <a href="/2023/12/01/Spark/spark-streaming-shutdown/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Data Locality">
+                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Spark Streaming Gracefully Shutdown">
                                 
-                                <span class="card-title">Data Locality</span>
+                                <span class="card-title">Spark Streaming Gracefully Shutdown</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    
-스파크는 기본적으로 가까운 노드에서 RDD로 데이터를 읽으려고 한다. 정확히 표현하면, 데이터의 이동을 하는 것이 아닌 데이터가 있는 노드로 이동해 해당 노드에서 프로세스를 뛰우려고 한다.
+                                    sparkStreamContext.stop()
+코드 상에서 sparkStreamContext.stop()를 call 하는 것은 그만
 
-
-변환 작업을 최적화 
+방법 1 : spark.streaming.stopGracefullyOnShutdo
                                 
                             </div>
                             <div class="publish-info">

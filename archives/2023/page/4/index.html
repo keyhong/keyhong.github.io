@@ -314,22 +314,21 @@
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/12/01/Spark/data-locality/">
+                        <a href="/2023/12/01/Spark/spark-streaming-shutdown/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Data Locality">
+                                <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Spark Streaming Gracefully Shutdown">
                                 
-                                <span class="card-title">Data Locality</span>
+                                <span class="card-title">Spark Streaming Gracefully Shutdown</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    
-스파크는 기본적으로 가까운 노드에서 RDD로 데이터를 읽으려고 한다. 정확히 표현하면, 데이터의 이동을 하는 것이 아닌 데이터가 있는 노드로 이동해 해당 노드에서 프로세스를 뛰우려고 한다.
+                                    sparkStreamContext.stop()
+코드 상에서 sparkStreamContext.stop()를 call 하는 것은 그만
 
-
-변환 작업을 최적화 
+방법 1 : spark.streaming.stopGracefullyOnShutdo
                                 
                             </div>
                             <div class="publish-info">
@@ -747,21 +746,18 @@ PySpark 테스트 유틸리티 문서를 보려면 여기를 참조하세요. Py
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/11/01/Hive/date-mathematics-functions/">
+                        <a href="/2023/11/01/Hive/hive-ddl/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="Date &amp; Mathematics Functions">
+                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="DDL">
                                 
-                                <span class="card-title">Date &amp; Mathematics Functions</span>
+                                <span class="card-title">DDL</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Date FunctionsUNIX_TIMESTAMP (string date)
-타임스탬프 인수를 UNIX 시간대(‘1970-01-01 00:00:00’)에서 몇 초나 지났는 지 epoch를 정수로 반환한다.
-
-SELE
+                                    테이블 생성그 전에 알아둬야 할 상식!처음에 테이블을 CREATE EXTERNAL TABLE로 만들게 되면, 해당 테이블은 다시 INTERNAL로 만들 수 없습니다. INTERNAL로 만든 후, TBLPROPERTI
                                 
                             </div>
                             <div class="publish-info">
@@ -802,25 +798,21 @@ SELE
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2023/11/01/Hive/hive-architecture/">
+                        <a href="/2023/11/01/Hive/date-mathematics-functions/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="Architecture">
+                                <img src="/images/logos/hive-logo.png" class="responsive-img" alt="Date &amp; Mathematics Functions">
                                 
-                                <span class="card-title">Architecture</span>
+                                <span class="card-title">Date &amp; Mathematics Functions</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Hive ArchitectureMajor components
-UI
+                                    Date FunctionsUNIX_TIMESTAMP (string date)
+타임스탬프 인수를 UNIX 시간대(‘1970-01-01 00:00:00’)에서 몇 초나 지났는 지 epoch를 정수로 반환한다.
 
-
-사용자가 쿼리 및 기타 작업을 시스템에 제출하기 위한 사용자 인터페이스
-
-
-Hive Web UI, 커맨드라인 (HD Insight는 Window 
+SELE
                                 
                             </div>
                             <div class="publish-info">

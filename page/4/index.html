@@ -341,19 +341,20 @@ Each object in your cluster has a Name that is unique for that type of resource.
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/03/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Recommended%20Labels/">
+                    <a href="/2024/03/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Owners%20and%20Dependents/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Recommended Labels">
+                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Owners and Dependents">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Recommended Labels</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Owners and Dependents</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Recommended LabelsYou can visualize and manage Kubernetes objects with more tools than kubectl and the dashboard. A comm
+                                Owners and DependentsKubernetes에서 일부 객체는 다른 객체의 소유자입니다. 예를 들어, ReplicaSet은 일련의 Pod의 소유자입니다. 이러한 소유된 객체는 소유자의 종속 객체입니다.
+소
                             
                         </div> -->
                         <div class="publish-info">
@@ -384,20 +385,19 @@ Each object in your cluster has a Name that is unique for that type of resource.
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/03/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Owners%20and%20Dependents/">
+                    <a href="/2024/03/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Recommended%20Labels/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Owners and Dependents">
+                            <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Recommended Labels">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Owners and Dependents</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Recommended Labels</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Owners and DependentsKubernetes에서 일부 객체는 다른 객체의 소유자입니다. 예를 들어, ReplicaSet은 일련의 Pod의 소유자입니다. 이러한 소유된 객체는 소유자의 종속 객체입니다.
-소
+                                Recommended LabelsYou can visualize and manage Kubernetes objects with more tools than kubectl and the dashboard. A comm
                             
                         </div> -->
                         <div class="publish-info">
@@ -471,23 +471,19 @@ Each object in your cluster has a Name that is unique for that type of resource.
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/02/01/Flink/flink-architecture/">
+                    <a href="/2024/02/01/Flink/flink-cluster-docker-compose/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/flink-logo.png" class="responsive-img" alt="Architecture">
+                            <img src="/images/logos/flink-logo.png" class="responsive-img" alt="flink-docker-compose">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Architecture</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">flink-docker-compose</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Flink란?
-무제한 및 제한 데이터 스트림에 대한 상태 저장 계산을 위한 프레임워크 및 분산 처리 엔진
-
-Flink Architecture
-모든 일반 클러스터 환경에서 실행(독립성), 메모리 내 속도와 모든 규모에
+                                flink-dokcer-compose 파일을 만든 이유flink 프로세스(jobmanger, taskmager)를 docker run으로 실행하는 게 불편하고, taskmager를 늘릴려면 매번 cli를 입력하는 게
                             
                         </div> -->
                         <div class="publish-info">
@@ -518,19 +514,71 @@ Flink Architecture
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2024/02/01/Flink/flink-cluster-docker-compose/">
+                    <a href="/2024/02/01/Flink/flink-installation/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/flink-logo.png" class="responsive-img" alt="flink-docker-compose">
+                            <img src="/images/logos/flink-logo.png" class="responsive-img" alt="Installation">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">flink-docker-compose</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Installation</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                flink-dokcer-compose 파일을 만든 이유flink 프로세스(jobmanger, taskmager)를 docker run으로 실행하는 게 불편하고, taskmager를 늘릴려면 매번 cli를 입력하는 게
+                                Env
+H&#x2F;W : 1 Virtual Machine
+OS : Amazon Linux release 2 (Karoo)
+
+아카이브 파일 수동 설치설치순서
+패키지 색인 파일(패키지 저장소가 제공하는 패키지에 대한 
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <!-- <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-01
+                            </span> -->
+                            <span class="summary block-with-text">
+                                <i class="fas fa-bookmark"></i> undefined
+                            </span>
+                            <!-- <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Flink/" class="post-category">
+                                    Flink
+                                </a>
+                                
+                                
+                            </span> -->
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/02/01/Flink/flink-window-operator/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/flink-logo.png" class="responsive-img" alt="Window Operator">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Window Operator</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                Window Operator
+stream으로 들어오는 이벤트를 묶어서 처리하는 방식
+
+
+오차가 있는 데이터(sensor data) : 집계함수(mean, lower, upper, median) 등을 통해 데이터 정제
                             
                         </div> -->
                         <div class="publish-info">
@@ -583,54 +631,6 @@ Flink Architecture
 
 스트리밍 이벤트별로 작업
 
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <!-- <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-01
-                            </span> -->
-                            <span class="summary block-with-text">
-                                <i class="fas fa-bookmark"></i> undefined
-                            </span>
-                            <!-- <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Flink/" class="post-category">
-                                    Flink
-                                </a>
-                                
-                                
-                            </span> -->
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/02/01/Flink/flink-installation/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/flink-logo.png" class="responsive-img" alt="Installation">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Installation</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                Env
-H&#x2F;W : 1 Virtual Machine
-OS : Amazon Linux release 2 (Karoo)
-
-아카이브 파일 수동 설치설치순서
-패키지 색인 파일(패키지 저장소가 제공하는 패키지에 대한 
                             
                         </div> -->
                         <div class="publish-info">

@@ -391,19 +391,69 @@ ModuleGroups together c
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Spark/caching/">
+                    <a href="/2023/12/01/Spark/components/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Caching">
+                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Components">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Caching</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Components</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Caching의 필요성스파크는 RDD는 action을 call 하기 전까지 여러 narrow&#x2F;wide transformation로 구성된 stage를 연이어 쌓은 계보(Lineage)를 가진다. 이 Line
+                                Mater &amp; Cluster Manager
+실행되는 분산 클러스터 리소스(YARN이나 Mesos의 경우, 컨테이너)를 모니터링하고 예약하고 할당하는 중앙 프로세스
+
+Master와 Cluster Manager는
+                            
+                        </div> -->
+                        <div class="publish-info">
+                            <!-- <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-01
+                            </span> -->
+                            <span class="summary block-with-text">
+                                <i class="fas fa-bookmark"></i> undefined
+                            </span>
+                            <!-- <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Spark/" class="post-category">
+                                    Spark
+                                </a>
+                                
+                                
+                            </span> -->
+                        </div>
+                    </div>
+
+                    <!--  -->
+                </div>
+            </div>
+            
+            
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/12/01/Spark/data-locality/">
+                        <div class="card-image">
+                            
+                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Data Locality">
+                            
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Data Locality</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <!-- <div class="summary block-with-text">
+                            
+                                
+스파크는 기본적으로 가까운 노드에서 RDD로 데이터를 읽으려고 한다. 정확히 표현하면, 데이터의 이동을 하는 것이 아닌 데이터가 있는 노드로 이동해 해당 노드에서 프로세스를 뛰우려고 한다.
+
+
+변환 작업을 최적화 
                             
                         </div> -->
                         <div class="publish-info">
@@ -450,52 +500,6 @@ ModuleGroups together c
 Apache Spark의 중요한 컴포넌트
 
 구조적 쿼리인 SQL 또는 DataFrame&#x2F;Dataset API의 DAG 로직을 최적화하여 프로그램 런타
-                            
-                        </div> -->
-                        <div class="publish-info">
-                            <!-- <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-01
-                            </span> -->
-                            <span class="summary block-with-text">
-                                <i class="fas fa-bookmark"></i> undefined
-                            </span>
-                            <!-- <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Spark/" class="post-category">
-                                    Spark
-                                </a>
-                                
-                                
-                            </span> -->
-                        </div>
-                    </div>
-
-                    <!--  -->
-                </div>
-            </div>
-            
-            
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2023/12/01/Spark/components/">
-                        <div class="card-image">
-                            
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Components">
-                            
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Components</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <!-- <div class="summary block-with-text">
-                            
-                                Mater &amp; Cluster Manager
-실행되는 분산 클러스터 리소스(YARN이나 Mesos의 경우, 컨테이너)를 모니터링하고 예약하고 할당하는 중앙 프로세스
-
-Master와 Cluster Manager는
                             
                         </div> -->
                         <div class="publish-info">
@@ -573,45 +577,24 @@ GZIP, ZIP(&#x3D;DEFLATE, 압축 방법을 사용해 생성된 모든 압축 아�
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Spark/dataframe-skew-optimization/">
+                    <a href="/2023/12/01/Spark/dataset/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="DataFrame Skewness Optimization">
+                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="DataSet">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">DataFrame Skewness Optimization</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">DataSet</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Skew 데이터 생성하기
-table1
+                                
+Spark 2.0에서 ‘DataFrame’과 상반된 ‘DataSet’ 도입
 
+파이썬에서는 둘의 경계가 모호. Python에서는 모든 것이 동적으로 입력되기 때문
 
-
-
-OrderID
-Qty
-Sales
-Discount (yes&#x3D;1, no&#x3D;0)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Skew 데이터 불러오기
-import numpy 
+‘DataFrame’은 행 객체의 ‘DataSet’
                             
                         </div> -->
                         <div class="publish-info">
@@ -642,22 +625,19 @@ import numpy
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Spark/dataframe/">
+                    <a href="/2023/12/01/Spark/pyspark-jvm-py4j/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="pyspark.sql.DataFrame">
+                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="JVM py4j">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">pyspark.sql.DataFrame</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">JVM py4j</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                RDD vs DataFrame
-RDD는 정보를 가진 행이나, 정보가 어떤 유형(type)인지 구체적 명시가 불가능하다.
-DataFrame이 Spark에서 하는 일은 RDD를 DataFrame 객체로 확장하는 것
-Da
+                                Question 1. PySpark 코드는 JVM 또는 Python 하위 프로세스에서 실행됩니까?PySpark에서 Python 및 JVM 코드는 별도의 OS 프로세스에 있습니다.PySpark는 Python과 JVM 
                             
                         </div> -->
                         <div class="publish-info">
