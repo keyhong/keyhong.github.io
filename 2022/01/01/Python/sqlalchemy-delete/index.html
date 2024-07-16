@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[Python] pandas의 append()를 안 쓰기 시작한 이유, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="pandas.DataFrame.append() 의 deprecatedpandas.DataFrame.append() 함수를 쓰면 FutureWarning 이 발생하면서  pandas.concat() 함수를 대신 사용하">
+    <meta name="keywords" content="SQLAlchemy 세션 함수 이용하기, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="Python">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[Python] pandas의 append()를 안 쓰기 시작한 이유 | Keyhong</title>
+    <title>SQLAlchemy 세션 함수 이용하기 | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -182,7 +182,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [Python] pandas의 append()를 안 쓰기 시작한 이유</h1>
+                        SQLAlchemy 세션 함수 이용하기</h1>
                 </div>
             </div>
         </div>
@@ -207,7 +207,7 @@
                         <div class="article-tag">
                             <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                                 <span class="chip bg-color">
-                                    2023-06-23</span>
+                                    2022-01-01</span>
                         </div>
                     
                     
@@ -239,92 +239,60 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="pandas-DataFrame-append-의-deprecated"><a href="#pandas-DataFrame-append-의-deprecated" class="headerlink" title="pandas.DataFrame.append() 의 deprecated"></a>pandas.DataFrame.append() 의 deprecated</h2><p>pandas.DataFrame.append() 함수를 쓰면 FutureWarning 이 발생하면서  pandas.concat() 함수를 대신 사용하라고 주의를 준다. 그럼 왜 concat을 대신 사용하라고 할까? 그 이유는 pandas.DataFrame.append() 함수는 메모리 사용과 처리 서능에 있어 비효율적인 문제가 있기 때문이다.
- </p>
-<ul>
-<li><p>pandas.DataFrame.append()는 내부적으로 결합할 데이터프레임을 반드시 복사(copy)하여 결합한다.</p>
-</li>
-<li><p>데이터가 크면 클수록 처리할 때 메모리 부족(Out Of Memory)가 발생할 가능성이 높고 처리 속도가 느리다.</p>
-</li>
-</ul>
-<h2 id="pandas-concat-사용하기"><a href="#pandas-concat-사용하기" class="headerlink" title="pandas.concat() 사용하기"></a>pandas.concat() 사용하기</h2><p>pandas.concat() 함수는 여러 데이터프레임을 Iterable 객체 안에 넣어 행 또는 열로 병합하는 함수이다. 그리고 옵션 설정을 통해 데이터프레임을 copy하지 않고 병합 가능하다.
- </p>
-<ul>
-<li><p>데이터프레임을 복사하지 않고 연결가능하다. (copy 옵션을 변경가능하다. default value는 true)</p>
-</li>
-<li><p>이에 따라 메모리 절약과 성능 향상의 이점이 있다.</p>
-</li>
-</ul>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># NDFrame</span>
-<span class="token comment"># pd.Series : 1차원 배열</span>
-<span class="token comment"># pd.DataFrame : 2차원 데이터 구조</span>
-<span class="token comment"># pd.Panel : 3차원 데이터 구조</span>
+                <h2 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h2><p>spark.sql API로 적재하던 해당 날짜의 데이터를 지울 일이 생겼다. 모듈은 Airlfow의 스케줄링에 의해 배치로 돌아가는 상황인데, 실패시 retry를 수행하기 때문에 사실상 다시 재실행하면 기존 날짜로 적재하던 테이블을 다시 비워주고 데이터를 넣어야 했다.</p>
+<h2 id="생각"><a href="#생각" class="headerlink" title="생각"></a>생각</h2><p>어떻게 할까 고민을 하다 python에서 사용할 수 있는 sqlalchemy 라이브러리를 사용했다. sqlalchemy에서 쿼리를 수행하기 위해서는 session 연결 후 cursor를 획득하여 쿼리를 수행하고 세션을 종료시킨다. 하지만 나의 프로그램에서는 3번의 쿼리를 연달아 실행시켜야 하기 때문에, 3번의 세션 연결을 하고 끊고를 반복하는 것보다는 한 번 세션을 연결 후 수행할 모든 쿼리를 실행 후에 세션을 닫는 게 훨씬 더 효율적이라 판단하였다.</p>
+<h2 id="해결-방법"><a href="#해결-방법" class="headerlink" title="해결 방법"></a>해결 방법</h2><p>sqlalchemy를 사용하여 postgres에서 delete문을 수행하는데, 역시나 delete문의 속도가 TRIGGER ALL (트리거의 동작범위)에 의해 많은 차이가 났다. 해당 데이터를 삽입하는 테이블은 다른 테이블 간의 관계성이 없기 때문에 데이터 삭제 전 <code>ALTER TABLE &#123;table&#125; DISABLE TRIGGER ALL</code>을 수행하여 트리거를 비활성화하고, 데이터 삽입 후 <code>ALTER TABLE &#123;table&#125; ENABLE TRIGGER ALL</code>를 수행하여 다시 원상 복구했더니 delete문의 속도가 많이 개선되었다.</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> logging
+<span class="token keyword">from</span> typing <span class="token keyword">import</span> Tuple
 
-<span class="token keyword">def</span> <span class="token function">concat</span><span class="token punctuation">(</span>
-    objs<span class="token punctuation">:</span> Iterable<span class="token punctuation">[</span>NDFrame<span class="token punctuation">]</span> <span class="token operator">|</span> Mapping<span class="token punctuation">[</span>HashableT<span class="token punctuation">,</span> NDFrame<span class="token punctuation">]</span><span class="token punctuation">,</span>
-    <span class="token operator">*</span><span class="token punctuation">,</span>
-    axis<span class="token punctuation">:</span> Axis <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-    join<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> <span class="token string">"outer"</span><span class="token punctuation">,</span>
-    ignore_index<span class="token punctuation">:</span> <span class="token builtin">bool</span> <span class="token operator">=</span> <span class="token boolean">False</span><span class="token punctuation">,</span>
-    keys<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span>
-    levels<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span>
-    names<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span>
-    verify_integrity<span class="token punctuation">:</span> <span class="token builtin">bool</span> <span class="token operator">=</span> <span class="token boolean">False</span><span class="token punctuation">,</span>
-    sort<span class="token punctuation">:</span> <span class="token builtin">bool</span> <span class="token operator">=</span> <span class="token boolean">False</span><span class="token punctuation">,</span>
-    copy<span class="token punctuation">:</span> <span class="token builtin">bool</span> <span class="token operator">|</span> <span class="token boolean">None</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span>
-<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> DataFrame <span class="token operator">|</span> Series<span class="token punctuation">:</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">from</span> sqlalchemy <span class="token keyword">import</span> create_engine
+<span class="token keyword">from</span> sqlalchemy<span class="token punctuation">.</span>orm <span class="token keyword">import</span> sessionmaker
 
-<h2 id="pandas-DataFrame-from-dict-활용하기"><a href="#pandas-DataFrame-from-dict-활용하기" class="headerlink" title="pandas.DataFrame.from_dict() 활용하기"></a>pandas.DataFrame.from_dict() 활용하기</h2><p>기존에 주로 사용하던 pandas.DataFrame.append() 함수를 쓰지 않으려고 하다보니 한 가지 불편한 문제가 생겼다. kafka에서 받은 하나의 row를 데이터프레임에 추가하려고 하다 보니 append()에 아규먼트로 딕셔너리를 스키마에 맞게 바로 넣어주면 데이터를 바로 추가할 수 있었던 그러한 이점을 활용 못하게 되었다. 왜냐하면 concat() 함수는 결합 대상을 dict가 아닌 Series or DataFrame objects의 sequence를 받기 때문에 중간에 dict를 데이터프레임으로 변환하는 과정이 필요하다.</p>
-<p>물론 주의를 주는 append() 함수를 쓰더라도 딕셔너리 객체 하나를 삽입하기 때문에, copy 하는 데 큰 메모리가 들지 않겠지만 그래도 향후 deprecated 될 가능성이 있고, 코드 상의 통일성을 맞추기 위해 앞으로는 concat() 함수를 사용하기로 하였다.</p>
-<p>그럼 하나의 데이터프레임에 하나의 딕셔너리 객체를 추가하려면 어떤 함수를 사용해야 할까? 그 때 사용하기 좋은 함수가 바로 pandas.DataFrame.from_dict() 이다. 이름에 걸맞게 딕셔너리를 dataframe으로 변환해주는 함수이다. DataFrame 클래스의 클래스메서드이며, 필수 파라미터로 data에 key : value인 딕셔너리 객체를 넣어준다.</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token decorator annotation punctuation">@classmethod</span>
-<span class="token keyword">def</span> <span class="token function">from_dict</span><span class="token punctuation">(</span>
-    cls<span class="token punctuation">,</span>
-    data<span class="token punctuation">:</span> <span class="token builtin">dict</span><span class="token punctuation">,</span>
-    orient<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> <span class="token string">"columns"</span><span class="token punctuation">,</span>
-    dtype<span class="token punctuation">:</span> Dtype <span class="token operator">|</span> <span class="token boolean">None</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span>
-    columns<span class="token punctuation">:</span> Axes <span class="token operator">|</span> <span class="token boolean">None</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span>
-<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> DataFrame<span class="token punctuation">:</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p> <br>from_dict() 함수를 이용해서 데이터프레임을 행으로 병합하는 코드를 작성해보자.
- </p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
+<span class="token keyword">def</span> <span class="token function">delete_table_data</span><span class="token punctuation">(</span>today<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+	
+    <span class="token comment"># postgresSQL 연결 정보</span>
+    user <span class="token operator">=</span> <span class="token boolean">None</span> <span class="token comment"># set your user</span>
+    password <span class="token operator">=</span> <span class="token boolean">None</span> <span class="token comment"># set your user pasword</span>
+    host <span class="token operator">=</span> <span class="token string">"localhost"</span> <span class="token comment"># 127.0.0.1</span>
+    port <span class="token operator">=</span> <span class="token number">5432</span> <span class="token comment"># postgreSQL default port</span>
+    database <span class="token operator">=</span> <span class="token boolean">None</span> <span class="token comment"># set your db name</span>
+    
+    <span class="token comment"># an Engine, which the Session will use for connection</span>
+    engine <span class="token operator">=</span> create_engine<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"postgresql://</span><span class="token interpolation"><span class="token punctuation">&#123;</span>user<span class="token punctuation">&#125;</span></span><span class="token string">:</span><span class="token interpolation"><span class="token punctuation">&#123;</span>password<span class="token punctuation">&#125;</span></span><span class="token string">@</span><span class="token interpolation"><span class="token punctuation">&#123;</span>host<span class="token punctuation">&#125;</span></span><span class="token string">:</span><span class="token interpolation"><span class="token punctuation">&#123;</span>port<span class="token punctuation">&#125;</span></span><span class="token string">/</span><span class="token interpolation"><span class="token punctuation">&#123;</span>database<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
 
-<span class="token comment"># 딕셔너리 데이터</span>
-data <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
-    <span class="token string">'Name'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'John'</span><span class="token punctuation">,</span> <span class="token string">'Emma'</span><span class="token punctuation">,</span> <span class="token string">'Peter'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-    <span class="token string">'Age'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">28</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-    <span class="token string">'City'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'New York'</span><span class="token punctuation">,</span> <span class="token string">'London'</span><span class="token punctuation">,</span> <span class="token string">'Paris'</span><span class="token punctuation">]</span>
-<span class="token punctuation">&#125;</span>
+    <span class="token comment"># 세션 팩토리 생성</span>
+    Session <span class="token operator">=</span> sessionmaker<span class="token punctuation">(</span>engine<span class="token punctuation">)</span>
 
-<span class="token comment"># dict to pandas.DataFrame</span>
-df <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">.</span>from_dict<span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+    <span class="token comment"># 세션을 사용하여 DB 작업 수행 (with context 문을 사용하면 session.close()을 자동적으로 수행한다)</span>
+    <span class="token keyword">with</span> Session<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">as</span> session<span class="token punctuation">:</span>
+        <span class="token keyword">try</span><span class="token punctuation">:</span>
+            talbes<span class="token punctuation">:</span> Tuple<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>
+                <span class="token string">"SOSS.DM_SAFE_IDEX_GRID"</span><span class="token punctuation">,</span> <span class="token comment"># my table 1</span>
+                <span class="token string">"SOSS.DM_SAFE_IDEX_ADMD"</span><span class="token punctuation">,</span> <span class="token comment"># my table 2</span>
+                <span class="token string">"SOSS.DM_SAFE_IDEX_SGG"</span> <span class="token comment"># my table 3</span>
+            <span class="token punctuation">)</span>
 
-<span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">)</span>
+            <span class="token keyword">for</span> table <span class="token keyword">in</span> talbes<span class="token punctuation">:</span>
+                <span class="token comment"># 데이터 삭제</span>
+                session<span class="token punctuation">.</span>execute<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"DELETE FROM </span><span class="token interpolation"><span class="token punctuation">&#123;</span>table<span class="token punctuation">&#125;</span></span><span class="token string"> WHERE stdr_de='</span><span class="token interpolation"><span class="token punctuation">&#123;</span>today<span class="token punctuation">&#125;</span></span><span class="token string">'"</span></span><span class="token punctuation">)</span>
+                
+            <span class="token comment"># 삭제를 했다면 commit. commit이 실행되지 않으면 삭제가 되지 않는다.</span>
+            session<span class="token punctuation">.</span>commit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            logging<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">&#123;</span>today<span class="token punctuation">&#125;</span></span><span class="token string"> 날짜 삭제!"</span></span><span class="token punctuation">)</span>
+    <span class="token keyword">except</span><span class="token punctuation">:</span>
+        <span class="token comment"># 예외가 발생한 경우 롤백</span>
+        session<span class="token punctuation">.</span>rollback<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-<span class="token comment">######### 출력 #########</span>
-<span class="token comment">#    Name  Age      City</span>
-<span class="token comment"># 0  John   25  New York</span>
-<span class="token comment"># 1  Emma   28    London</span>
-<span class="token comment"># 2 Peter   30     Paris</span>
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    <span class="token comment"># logging setting</span>
+    <span class="token builtin">format</span> <span class="token operator">=</span> <span class="token string">"%(asctime)s: %(message)s"</span>
+    logging<span class="token punctuation">.</span>basicConfig<span class="token punctuation">(</span><span class="token builtin">format</span><span class="token operator">=</span><span class="token builtin">format</span><span class="token punctuation">,</span> level<span class="token operator">=</span>logging<span class="token punctuation">.</span>INFO<span class="token punctuation">,</span> datefmt<span class="token operator">=</span><span class="token string">"%H:%M:%S"</span><span class="token punctuation">)</span>
 
-<span class="token comment"># 데이터프레임 결합하기</span>
-result <span class="token operator">=</span> pd<span class="token punctuation">.</span>conact<span class="token punctuation">(</span><span class="token punctuation">[</span>df1<span class="token punctuation">,</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">.</span>from_dict<span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> ignore_index<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> copy<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token comment"># execute my function</span>
+    delete_table_data<span class="token punctuation">(</span>today<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>concat() 사용시 copy 옵션을 False로 할 때 주의할 점이 있다.
- </p>
-<ul>
-<li><p>데이터프레임으로 결합할 딕셔너리의 값(value)은 array-like 형태로 넣어주어야 한다.</p>
-</li>
-<li><p>결합 대상이 되는 데이터프레임은 더 이상 바뀌지 않은 불변(immutable) 객체로 사용해야 한다.</p>
-</li>
-</ul>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
-<li><p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/docs/reference/api/pandas.concat.html">https://pandas.pydata.org/docs/reference/api/pandas.concat.html</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/version/1.3/reference/api/pandas.DataFrame.append.html">https://pandas.pydata.org/pandas-docs/version/1.3/reference/api/pandas.DataFrame.append.html</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.from_dict.html">https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.from_dict.html</a></p>
-</li>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.sqlalchemy.org/en/20/orm/session_api.html">sqlalchemy-orm-session_api-docs</a></li>
 </ul>
 
                 
@@ -352,7 +320,7 @@ result <span class="token operator">=</span> pd<span class="token punctuation">.
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2023/06/23/Python/no-pandas-append/">http://example.com/2023/06/23/Python/no-pandas-append/</a>
+                    <a href="http://example.com/2022/01/01/Python/sqlalchemy-delete/">http://example.com/2022/01/01/Python/sqlalchemy-delete/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -464,23 +432,23 @@ result <span class="token operator">=</span> pd<span class="token punctuation">.
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2023/06/24/Python/sqlalchemy_delete/">
+                <a href="/2022/01/01/Python/multi-processing/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] sqlalchemy delete">
+                        <img src="/images/logos/python-logo.png" class="responsive-img" alt="파이썬 멀티프로세싱">
                         
-                        <span class="card-title diy-neon-red">[Python] sqlalchemy delete</span>
+                        <span class="card-title diy-neon-red">파이썬 멀티프로세싱</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            Python
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-06-24
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-01
                         </span>
                         <span class="publish-author">
                             
@@ -504,30 +472,30 @@ result <span class="token operator">=</span> pd<span class="token punctuation">.
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/06/19/Trino/docker-execution/">
+                <a href="/2022/01/01/Python/no-pandas-append/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/trino-logo.png" class="responsive-img" alt="[Trino] Docker Test">
+                        <img src="/images/logos/python-logo.png" class="responsive-img" alt="Pandas append() deprecated">
                         
-                        <span class="card-title diy-neon-red">[Trino] Docker Test</span>
+                        <span class="card-title diy-neon-red">Pandas append() deprecated</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            Python
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-01
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Trino/" class="post-category">
-                                    Trino
+                            <a href="/categories/Python/" class="post-category">
+                                    Python
                                 </a>
                             
                             

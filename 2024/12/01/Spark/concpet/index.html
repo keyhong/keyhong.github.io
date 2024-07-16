@@ -383,26 +383,26 @@ spark <span class="token operator">=</span> SparkSession<span class="token punct
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110160&authkey=%21AP8umuOWu7PFW2E&width=1033&height=240" width="1033" height="240" alt="DAG의 로직이 최적화 되는 과정"/>
 
 
-<h4 id="Unresolved-Logical-Plan"><a href="#Unresolved-Logical-Plan" class="headerlink" title="Unresolved Logical Plan"></a>Unresolved Logical Plan</h4><p>Column 또는 Table 이 있는 지 확인</p>
-<h4 id="Catalog"><a href="#Catalog" class="headerlink" title="Catalog"></a>Catalog</h4><p>Spark에 있는 메타 데이터 레포지토리. 데이터 구조나 스키마 등을 가져옴</p>
-<h4 id="Analyzer"><a href="#Analyzer" class="headerlink" title="Analyzer"></a>Analyzer</h4><p>구문, 컬럼 이름, 테이블 이름을 카탈로그와 함께 한번 더 확인 (Cross–Checking)</p>
-<h4 id="Resolved-Logical-Plan-Logical-Plan"><a href="#Resolved-Logical-Plan-Logical-Plan" class="headerlink" title="Resolved Logical Plan(Logical Plan)"></a>Resolved Logical Plan(Logical Plan)</h4><p>카탈리스트 옵티마이저가 최적화하기 전의 상태</p>
-<h4 id="Optimized-Logical-Plan"><a href="#Optimized-Logical-Plan" class="headerlink" title="Optimized Logical Plan"></a>Optimized Logical Plan</h4><p>로직에 대한 퍼포먼스 평가 수행</p>
+<h3 id="Unresolved-Logical-Plan"><a href="#Unresolved-Logical-Plan" class="headerlink" title="Unresolved Logical Plan"></a>Unresolved Logical Plan</h3><p>Column 또는 Table 이 있는 지 확인</p>
+<h3 id="Catalog"><a href="#Catalog" class="headerlink" title="Catalog"></a>Catalog</h3><p>Spark에 있는 메타 데이터 레포지토리. 데이터 구조나 스키마 등을 가져옴</p>
+<h3 id="Analyzer"><a href="#Analyzer" class="headerlink" title="Analyzer"></a>Analyzer</h3><p>구문, 컬럼 이름, 테이블 이름을 카탈로그와 함께 한번 더 확인 (Cross–Checking)</p>
+<h3 id="Resolved-Logical-Plan-Logical-Plan"><a href="#Resolved-Logical-Plan-Logical-Plan" class="headerlink" title="Resolved Logical Plan(Logical Plan)"></a>Resolved Logical Plan(Logical Plan)</h3><p>카탈리스트 옵티마이저가 최적화하기 전의 상태</p>
+<h3 id="Optimized-Logical-Plan"><a href="#Optimized-Logical-Plan" class="headerlink" title="Optimized Logical Plan"></a>Optimized Logical Plan</h3><p>로직에 대한 퍼포먼스 평가 수행</p>
 <ul>
 <li>Task들이 하나의 stage에서 함께 할 수 있는 지</li>
 <li>여러 개의 join 쿼리를 순서를 바꾸면서 실행했을 때 퍼포먼스가 더 좋아지는 지</li>
 <li>Project(join하는 컬럼들)에 filter를 먼저 적용 할 수 있는 지</li>
 </ul>
-<h4 id="Physical-Plan"><a href="#Physical-Plan" class="headerlink" title="Physical Plan"></a>Physical Plan</h4><p>Logical Plan을 cluster가 알아들을 수 있도록 바꿈</p>
+<h3 id="Physical-Plan"><a href="#Physical-Plan" class="headerlink" title="Physical Plan"></a>Physical Plan</h3><p>Logical Plan을 cluster가 알아들을 수 있도록 바꿈</p>
 <ul>
 <li>여러가지의 시나리오를 생성하고 Cost Model에서 비교</li>
 <li>어느 plan이 가장 빠르고 최적인지 판단 &#x3D;&gt; Selected Physical Plan</li>
 </ul>
-<h4 id="Codegen"><a href="#Codegen" class="headerlink" title="Codegen"></a>Codegen</h4><p>Spark Tungsten Execution 엔진이 Physical Plan을 RDD로 변환</p>
-<h4 id="Adaptive-Planning"><a href="#Adaptive-Planning" class="headerlink" title="* Adaptive Planning"></a>* Adaptive Planning</h4><p>Runtime 중 최적화 Plan을 변경한다. 예를 들어 Broadcasting Join을 하는 경우가 있다.</p>
+<h3 id="Codegen"><a href="#Codegen" class="headerlink" title="Codegen"></a>Codegen</h3><p>Spark Tungsten Execution 엔진이 Physical Plan을 RDD로 변환</p>
+<h3 id="Adaptive-Planning"><a href="#Adaptive-Planning" class="headerlink" title="* Adaptive Planning"></a>* Adaptive Planning</h3><p>Runtime 중 최적화 Plan을 변경한다. 예를 들어 Broadcasting Join을 하는 경우가 있다.</p>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110162&authkey=%21AHXKyDd3LIkq7gs&width=1033&height=278" width="1033" height="278" alt="Big 테이블과 Small 테이블의 Join"/>
 
-<p>일반적으로 큰 테이블과 작은 테이블을 결합(Join)하게 되더라도 shuflle이 발생하게 된다. 문제는 작은 테이블을 결합하기 위해 큰 테이블의 모든 데이터들이 이동하게 되는 경우 이는 큰 cost를 발생한다.</p>
+<p>일반적으로 큰 테이블과 작은 테이블을 결합(Join)하게 되더라도 shuflle이 발생하게 된다. 문제는 작은 테이블을 결합하기 위해 큰 테이블의 모든 데이터들이 이동하게 되는 경우 이는 큰 비용이 발생한다.</p>
 <p>이에 아래와 같이 작은 테이블을 모든 서버의 메모리에 올려주게 되면, shuffle 없이 각 서버는 자기의 메모리에 있는 작은 테이블을 이용해서 결합이 가능하다. spark에서 broadcast 변수를 만들어 직접 할당 할 수도 있지만 이 때는 사용자가 작은 테이블을 충분히 메모리에 올릴 수 있는 지 점검이 필요하다. 이에 반해 해당 경우는 catalyst optimzer에 의한 자동화된 최적화로 볼 수 있다.</p>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110161&authkey=%21AH1d5ZyWkFJGJqM&width=969&height=466" width="969" height="466" alt="Broadcasting Join"/>
 
@@ -441,40 +441,40 @@ spark <span class="token operator">=</span> SparkSession<span class="token punct
 </li>
 </ul>
 <h2 id="스파크-내부-디렉터리-구조"><a href="#스파크-내부-디렉터리-구조" class="headerlink" title="스파크 내부 디렉터리 구조"></a>스파크 내부 디렉터리 구조</h2><p>스파크 설치시 압축을 푼 내부 폴더 구조를 정리하였다. 책이 나온 지 좀 되서 지금의 스파크 최선 버전인 3.4.1의 내부 구조가 살짝 상이한 부분은 있으나 핵심은 바뀌지 않는 듯 하다. 글을 쓸 때 참고했던 책에는 <code>$SPARK_HOME/yarn</code> 폴더가 있었는 데 지금은 없어서 해당 폴더 설명은 지웠다. 또한 부수적인 다른 폴더들도 있으나 책에서는 중요 역할을 하는 폴더만 설명해 놓은 듯 하다. </p>
-<h4 id="SPARK-HOME-bin"><a href="#SPARK-HOME-bin" class="headerlink" title="$SPARK_HOME&#x2F;bin&#x2F;"></a>$SPARK_HOME&#x2F;bin&#x2F;</h4><ul>
+<h3 id="SPARK-HOME-bin"><a href="#SPARK-HOME-bin" class="headerlink" title="$SPARK_HOME&#x2F;bin&#x2F;"></a>$SPARK_HOME&#x2F;bin&#x2F;</h3><ul>
 <li>pyspark, spark-shell, spark-sql 및 sparkR과 같은 셸 프로그램이다.</li>
 <li>spark-shell : 대화식으로 스파크 응용 프로그램을 실행한다.</li>
 <li>spark-submit : 일괄 처리 모드에서 비대화식으로 스파크 응용 프로그램을 실행한다.</li>
 </ul>
-<h4 id="SPARK-HOME-conf"><a href="#SPARK-HOME-conf" class="headerlink" title="$SPARK_HOME&#x2F;conf&#x2F;"></a>$SPARK_HOME&#x2F;conf&#x2F;</h4><ul>
+<h3 id="SPARK-HOME-conf"><a href="#SPARK-HOME-conf" class="headerlink" title="$SPARK_HOME&#x2F;conf&#x2F;"></a>$SPARK_HOME&#x2F;conf&#x2F;</h3><ul>
 <li>스파크 구성 파일(spark-defaults.conf.template)을 설정할 때 사용할 수 있는 템플릿이 있다.</li>
 <li>스파크 프로세스(spark-env.sh.template)에 필요한 환경 변수를 설정하는 데 사용되는  shell script가 있다.</li>
 <li>로깅을 제어하는 구성 템플릿(log4j.properties.template)이 있다.</li>
 <li>메트릭 컬렉션(metrics.properties.template)이 있다.</li>
 <li>워커 파일(workers.template) 템플릿(Standalone Mode로 실행되는 스파크 클러스터에 참여할 수 있는 슬레이브 노드를 제어)이 있다.</li>
 </ul>
-<h4 id="SPARK-HOME-data"><a href="#SPARK-HOME-data" class="headerlink" title="$SPARK_HOME&#x2F;data&#x2F;"></a>$SPARK_HOME&#x2F;data&#x2F;</h4><ul>
+<h3 id="SPARK-HOME-data"><a href="#SPARK-HOME-data" class="headerlink" title="$SPARK_HOME&#x2F;data&#x2F;"></a>$SPARK_HOME&#x2F;data&#x2F;</h3><ul>
 <li>스파크 프로젝트 내에서 mllib, graphx 및  streaming 라이브러리를 테스트하는 데 사용되는 Sample Data Set이다.</li>
 <li>$SPARK_HOME&#x2F;examples</li>
 <li>Pi 추정 응용 프로그램을 포함해 스파크 release와 함께 제공되는 모든 예제의 소스코드와 컴파일된 어셈블리(jar 파일) 폴더이다.</li>
 </ul>
-<h4 id="SPARK-HOME-jars"><a href="#SPARK-HOME-jars" class="headerlink" title="$SPARK_HOME&#x2F;jars&#x2F;"></a>$SPARK_HOME&#x2F;jars&#x2F;</h4><ul>
+<h3 id="SPARK-HOME-jars"><a href="#SPARK-HOME-jars" class="headerlink" title="$SPARK_HOME&#x2F;jars&#x2F;"></a>$SPARK_HOME&#x2F;jars&#x2F;</h3><ul>
 <li>스파크의 주요 어셈블리 및 snapy, py4j, parquet 등 스파크에서 사용하는 서비스를 지원하는 어셈블리 폴더이다.</li>
 <li>이 디렉토리는 기본적으로 스파크의 CLASSPATH 에 포함한다.</li>
 </ul>
-<h4 id="SPARK-HOME-licenses"><a href="#SPARK-HOME-licenses" class="headerlink" title="$SPARK_HOME&#x2F;licenses&#x2F;"></a>$SPARK_HOME&#x2F;licenses&#x2F;</h4><ul>
+<h3 id="SPARK-HOME-licenses"><a href="#SPARK-HOME-licenses" class="headerlink" title="$SPARK_HOME&#x2F;licenses&#x2F;"></a>$SPARK_HOME&#x2F;licenses&#x2F;</h3><ul>
 <li>py4j와 jquery와 같이 따로 포함된 프로젝트를 다루는 LICENSE 파일을 포함하는 폴더이다.</li>
 <li>법적 준수만을 목적으로, 스파크를 실행하는 데는 필요하지는 않는다.</li>
 </ul>
-<h4 id="SPARK-HOME-python"><a href="#SPARK-HOME-python" class="headerlink" title="$SPARK_HOME&#x2F;python&#x2F;"></a>$SPARK_HOME&#x2F;python&#x2F;</h4><ul>
+<h3 id="SPARK-HOME-python"><a href="#SPARK-HOME-python" class="headerlink" title="$SPARK_HOME&#x2F;python&#x2F;"></a>$SPARK_HOME&#x2F;python&#x2F;</h3><ul>
 <li>pyspark를 실행하는 데 필요한 모든 파이썬 라이브러리를 포함한다.</li>
 <li>직접적인 액세스를 할 필요는 없다.</li>
 <li>python에서 pip install pyspark 커맨드로도 설치가 가능한 라이브러리이다.</li>
 </ul>
-<h4 id="SPARK-HOME-R"><a href="#SPARK-HOME-R" class="headerlink" title="$SPARK_HOME&#x2F;R&#x2F;"></a>$SPARK_HOME&#x2F;R&#x2F;</h4><ul>
+<h3 id="SPARK-HOME-R"><a href="#SPARK-HOME-R" class="headerlink" title="$SPARK_HOME&#x2F;R&#x2F;"></a>$SPARK_HOME&#x2F;R&#x2F;</h3><ul>
 <li>SparkR 패키지와 관련 라이브러리 및 문서를 포함한다.</li>
 </ul>
-<h4 id="SPARK-HOME-sbin"><a href="#SPARK-HOME-sbin" class="headerlink" title="$SPARK_HOME&#x2F;sbin&#x2F;"></a>$SPARK_HOME&#x2F;sbin&#x2F;</h4><ul>
+<h3 id="SPARK-HOME-sbin"><a href="#SPARK-HOME-sbin" class="headerlink" title="$SPARK_HOME&#x2F;sbin&#x2F;"></a>$SPARK_HOME&#x2F;sbin&#x2F;</h3><ul>
 <li>local 또는 remote로 독립실행형 모드(Standalone Mode)로 실행되는 스파크 클러스터의 master 및 slave 서비스를 start&#x2F;stop하고, YARN 및 Mesos와 관련된 프로세스를 시작하는 관리 스크립트를 포함하는 폴더이다.</li>
 <li>Standalone Mode에서 다중 노드 클러스터를 배포할 때 이용하는 스크립트의 일부이다.</li>
 </ul>
@@ -545,7 +545,7 @@ $ <span class="token variable">$&#123;SPARK_HOME&#125;</span>/bin/spark-submit <
 <td></td>
 </tr>
 </tbody></table>
-<h4 id="Spark-Submit-예시"><a href="#Spark-Submit-예시" class="headerlink" title="Spark Submit 예시"></a>Spark Submit 예시</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">./bin/spark-submit <span class="token punctuation">\</span>
+<h3 id="Spark-Submit-예시"><a href="#Spark-Submit-예시" class="headerlink" title="Spark Submit 예시"></a>Spark Submit 예시</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">./bin/spark-submit <span class="token punctuation">\</span>
    <span class="token parameter variable">--master</span> <span class="token function">yarn</span> <span class="token punctuation">\</span>
    --deploy-mode cluster <span class="token punctuation">\</span> <span class="token comment"># 하둡에서 클러스터 모드일 경우, 드라이버를 임의의 노드 매니저 머신에 시작</span>
    --driver-memory 8g <span class="token punctuation">\</span> <span class="token comment"># 드라이버 프로세스 메모리 (☆ 중요 config) </span>
@@ -559,11 +559,11 @@ $ <span class="token variable">$&#123;SPARK_HOME&#125;</span>/bin/spark-submit <
 </ul>
 <h2 id="pyspark-jvm-py4j"><a href="#pyspark-jvm-py4j" class="headerlink" title="pyspark jvm py4j"></a>pyspark jvm py4j</h2><h4 id="Question-1-PySpark-코드는-JVM-또는-Python-하위-프로세스에서-실행됩니까"><a href="#Question-1-PySpark-코드는-JVM-또는-Python-하위-프로세스에서-실행됩니까" class="headerlink" title="Question 1. PySpark 코드는 JVM 또는 Python 하위 프로세스에서 실행됩니까?"></a>Question 1. PySpark 코드는 JVM 또는 Python 하위 프로세스에서 실행됩니까?</h4><p>PySpark에서 Python 및 JVM 코드는 별도의 OS 프로세스에 있습니다.<br>PySpark는 Python과 JVM 프로세스 간에 데이터를 교환하기 위해 두 언어 간의 상호 운용을 용이하게 하는 프레임워크인 Py4J를 사용합니다.</p>
 <p>PySpark 작업을 시작하면 Python 프로세스로 시작하여 JVM 인스턴스를 생성하고 그 안에서 일부 PySpark 특정 코드를 실행합니다. 그런 다음 해당 JVM에서 Spark 세션을 인스턴스화하여 Spark가 드라이버 프로세스가 구동 됩니다.<br>해당 드라이버는 스파크 세션이 구성된 방식에 따라 Spark 마스터에 연결하거나 in-proc 하나를 생성합니다.</p>
-<h2 id="Data-Locality"><a href="#Data-Locality" class="headerlink" title="Data Locality"></a>Data Locality</h2><blockquote>
-<p>스파크는 기본적으로 가까운 노드에서 RDD로 데이터를 읽으려고 한다. 정확히 표현하면, 데이터의 이동을 하는 것이 아닌 데이터가 있는 노드로 이동해 해당 노드에서 프로세스를 뛰우려고 한다.</p>
+<h2 id="데이터-지역성-Data-Locality"><a href="#데이터-지역성-Data-Locality" class="headerlink" title="데이터 지역성 (Data Locality)"></a>데이터 지역성 (Data Locality)</h2><h3 id="데이터-지역성"><a href="#데이터-지역성" class="headerlink" title="데이터 지역성"></a>데이터 지역성</h3><blockquote>
+<p>분산 파일 시스템에서 기본적으로 데이터와 가까운 노드에서 데이터를 읽으려는 성질. 정확히는 데이터를 이동시키는 것이 아닌 데이터가 많은 노드에서 프로세스를 뛰워 자기의 노드에서 자기가 소유한 데이터를 읽게 하는 방식이다.</p>
 </blockquote>
 <ul>
-<li>변환 작업을 최적화 하기 위해 HDFDS, S3 데이터와 같이 분산된 파티션의 데이터에 액세스</li>
+<li>변환 작업의 최적화에 집중하기 위해 HDFDS, S3 데이터와 같이 분산된 파티션의 데이터에 액세스한다.</li>
 </ul>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219899&authkey=%21ACuYBsFlFnNgcew&width=660" width="660" height="auto" />
 
@@ -585,10 +585,8 @@ $ <span class="token variable">$&#123;SPARK_HOME&#125;</span>/bin/spark-submit <
 <h3 id="최적화의-기본"><a href="#최적화의-기본" class="headerlink" title="최적화의 기본"></a>최적화의 기본</h3><p>프로그램을 최적화 시킬 때, 두 가지 I&#x2F;O를 줄이는 것이 정말 중요하다고 생각한다. 첫 번째는 Network I&#x2F;O 이다. Network I&#x2F;O를 개선하기 위해서는 서로 다른 서버 혹은 노드 간에 통신을 하기 전 이동할 데이터의 양을 줄이고,  꼭 필요한 통신만 할 수 있도록 처리 로직을 구현하는 것이 중요하다. 그리고 두 번째는 Disk I&#x2F;O를 개선하는 것이다. Disk I&#x2F;O를 줄이는 기본은 데이터 소스에서 꼭 필요 컬럼만 추출하고 컬럼을 나타낼 수 있는 데이터 타입을 명시적으로 지정하는 일이다. 예를 들어 Python에서 int32로 표현할 수 있는 컬럼을 명시적으로 지정하지 않아 자동화된 타입 추론에 의해 Int64로 읽게 된다면 row의 한 행 마다 32 bit를 불필요하게 더 쓴다. 이는 데이터의 행이 많아질 수록 (행의 개수 * 32) bit 씩 추가적인 메모리를 소모하므로 데이터 행이 많다면 더 큰 리소스 소모를 일으킨다. 다만, 타입을 명시적으로 지정할 때 주의 할 점은 너무 최소 비트로만 데이터를 읽어 들여 범위를 넘어서는 이상 값이 발견됬을 때, 에러가 발생하거나 자동으로 더 큰 타입이으로 casting 될 수 있으므로 충분히 컬럼 값의 범위를 고려해야 한다. 내 경험 상 pandas.DataFrame에서 NaN 값이 있다면 int가 float64로 자동 캐스팅 되는 것도 볼 수 있었다. Network I&#x2F;O는 개선하는 것은 정말 어렵고 효율 개선도 한계가 있다. 때문에 Disk I&#x2F;O를 개선하는 것이 필수적이며 단순하지만 더 큰 리소스 절감을 만들 수 있다.</p>
 <h3 id="HDFS-Block-Storage"><a href="#HDFS-Block-Storage" class="headerlink" title="HDFS : Block Storage"></a>HDFS : Block Storage</h3><img HDFS Architecture>
 
-
 <p>HDFS(Hadoop Distributed File System)는 데이터 파일을 블록(default 128 MB) 단위로 쪼개어 클러스터의 여러 Data Node에 나눠서 저장하고 서로 복제(replication)하여 고가용성(High Availability)을 만들어 낸다. 각 블록에 대한 위치 정보는 Hadoop Cluster의 Name Node의 메모리에 저장되어 있다. Hadoop도 JVM 위에서 구동되는 하나의 프로그램이기 때문에 당연히 리소스를 관리해야 한다. Hadoop을 공부하면 블록 추상화라는 재미있는 요소가 있는 데, 한번 읽어보면 얼마나 섬세하게 설계 했는 지 그 생각을 볼 수 있다. 하여튼 Hadoop이라는 프로그램은 클러스터를 여러 노드를 제어하기 위해 일반적으로 Yarn이라는 Cluster Resource Manager를 사용한다. Hadoop Cluster에서 앱을 구동하려면 Yarn을 통해 Data Node의 리소스를 할당받고 각 노드에서 Container라는 사용 가능한 리소스의 환경을 제공받는다. 이 위에서 Spark라는 분산 처리 가능한 프로세스가 실행된다. 그렇다. 이는 우리가 Spark에서 executor라고 부르는 것이며 이것은 하나의 프로세스다. 그럼 이 프로세스는 각 Data Node에 나눠져 있는 데 어떻게 task에 데이터를 나눠줄 수 있을까?<br> <br>쉽게 생각해보자. 어떤 하나의 노드에서 데이터를 읽는다면 읽은 데이터 사이즈 만큼 메모리에 가지고 있다가 그 데이터를 파티션 개수만큼 나눠서 네트워크를 통해 다른 노드에 나눠줄 수 있지 않을 까? 가능하다. 하지만 비효율적이다. 왜냐하면 하나의 노드에서 큰 데이터를 읽는 데는 많은 시간이 걸리고, 또한 분할하는 시간과 네트워크를 통해 데이터를 전송하는 시간이 많이 걸리기 때문이다. 분명 읽어들이는 동안 다른 노드의 CPU들은 유휴 시간(idle time)을 갖게 될 것이다.<br> <br>그럼 개선할 수 있는 방법은? 당연히 나눠서 일을 하는 것이다. 각 노드들이 동시 접근한 저장소를 만들고, 각 자 읽어야 할 데이터만 읽으면 따로 나눠줄 필요도 없을 것이다. 분산 파일 시스템에서의 Spark는 이 때 빛을 발한다. 아까 HDFS에 적재된 데이터가 블록 단위로 나눠져 여러 노드에 걸쳐 분산 저장된다고 했던 말 기억하는 가? 그럼 Spark의 executor가 각각 처리할 데이터를 자신의 Data Node에서 읽어 들이면 Disk I&#x2F;O의 속도와 불필요한 Network I&#x2F;O를  줄일 수 있지 않을까?
  </p>
-<h3 id="데이터-지역성"><a href="#데이터-지역성" class="headerlink" title="데이터 지역성"></a>데이터 지역성</h3><p>Spark는 분산 파일 시스템에서 기본적으로 가까운 노드에서 RDD로 데이터를 읽으려고 한다. 이는 변환 작업(transformation)의 최적화에 집중하기 위함이고 이를 위해 HDFS, S3 데이터와 같이 분산된 파티션의 데이터에 액세스 한다. 자신의 Data Node에 있는 소스 데이터의 블록을 모아 RDD 파티션을 구성하는 것이다. 물론 데이터를 읽자마자 Shuffle(rdd 파티션 간의 데이터 교환 작업)을 해야하는 경우라면, 이점이 많이 희석되겠지만 그럼에도 분산 파일 시스템에서의 여러 노드가 나눠서 Disk I&#x2F;O를 발생시키기 때문에 하나의 노드에서 하는 것 보다 훨씬 나을 것이다.</p>
 <img Spark Data Local>
 
 <p> </p>
@@ -603,10 +601,10 @@ $ <span class="token variable">$&#123;SPARK_HOME&#125;</span>/bin/spark-submit <
 <li>그럼에도 로컬 파일 시스템에서 사용하고 싶은 경우, NFS를 사용</li>
 </ul>
 <p> </p>
-<h2 id="Caching의-필요성"><a href="#Caching의-필요성" class="headerlink" title="Caching의 필요성"></a>Caching의 필요성</h2><p>스파크는 RDD는 action을 call 하기 전까지 여러 narrow&#x2F;wide transformation로 구성된 stage를 연이어 쌓은 계보(Lineage)를 가진다. 이 Lineage는 DAG(Directed Acyclic Graph)라는 방향성은 있지만 순환하지 않는 그래프 자료 구조인데, 도로로 비유하자면 일반통행만 가능한 도로라고 생각하면 된다. 이 도로의 종착점은 action이고 지나오는 중간 지점들이 transformation이다.</p>
+<h2 id="Caching의-필요성"><a href="#Caching의-필요성" class="headerlink" title="Caching의 필요성"></a>Caching의 필요성</h2><p>스파크는 RDD는 action을 call 하기 전까지 여러 narrow&#x2F;wide transformation로 구성된 stage를 연이어 쌓은 계보(Lineage)를 가진다. 이 Lineage는 DAG(Directed Acyclic Graph)라는 방향성은 있지만 순환하지 않는 그래프 자료 구조이다. 쉽게 비유하자면 일반통행 도로라고 생각하면 된다. 이 도로의 종착점은 action이고 지나오는 중간 지점들이 transformation이다.</p>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110157&authkey=%21AEmB1Ph9LUNzM20&width=673&height=579" width="673" height="579" alt="transformation, stage, DAG"/>
 
-<p>문제는 action을 call 할 때마다 해당 Lineage의 처음부터 다시 수행한다는 점이다, 가끔씩 스파크에서 중간 단계의 RDD를 재사용해야 하는 경우가 있다. 예를 들어, 데이터 소스에서 큰 데이터를 fetch 하는 데 많은 시간을 소요했는 데, 또 다시 이러한 고비용의 과정을 반복하는 것은 프로세싱 시간과 리소스에 있어 비효율적이다. 이를 해결하기 위한 방법은 간단하다. 중간 지점까지 수행한 RDD의 상태를 메모리나 디스크에 저장하는 것이다. 스파크에서는 이런 경우를 대비해 기존의 RDD를 재사용 할 수 있도록 <code>persist</code>와 <code>cache</code>가 함수를 지원한다.</p>
+<p>문제는 action을 call 할 때마다 Lineage의 처음부터 끝까지 다시 수행한다는 점이다. 가끔씩 스파크에서 중간 단계의 RDD를 재사용해야 하는 경우가 있다. 예를 들어, 데이터 소스에서 큰 데이터를 fetch 하는 데 많은 시간을 소요했는 데, 또 다시 이러한 고비용의 과정을 반복하는 것은 프로세싱 시간과 리소스에 있어 비효율적이다. 이를 해결하기 위한 방법은 간단하다. 중간 지점까지 수행한 RDD의 상태를 메모리나 디스크에 저장하는 것이다. 스파크에서는 이런 경우를 대비해 기존의 RDD를 재사용 할 수 있도록 <code>persist</code>와 <code>cache</code>가 함수를 지원한다.</p>
 <p>원래 스파크는 in-memory 방식을 사용한다고 하는 데, 대체 왜 이런 함수를 지원하는 걸까? 스파크는 대용량의 데이터를 처리하고 다루는 데 초점이 맞춰져 있다. 당연하게도 빅데이터를 다루는 일이기에, 모든 중간 stage 과정마다 가공한 결과를 전부 메모리에 저장하고 있는 것은 당연히 불가능하다. 그렇게 한다면, OOM(Out Of Memory) 에러를 맛보고 프로세스가 중지되어 버릴 것이다. 때문에 처리하는 과정을 넘어 갈 때마다 LRU 알고리즘에 의해 오래된 데이터를 메모리에서 제거하게 된다.</p>
 <p>그럼 cache도 중간 데이터를 메모리에 저장하도록 명시적으로 지시하는 것인데, cache를 위한 메모리 용량은 어떻게 설정하는 지를 봐야한다. 스파크는 Context나 Session을 만들 때 config를 수정하여 memory를 설정 할 수 있다. Spark Memory는 Storage Memory(클러스터 전체에 내부 데이터를 캐싱하고 전파)와 Execution Memory(셔플, 조인, 정렬 및 집계에서 계산에 사용)을 위한 메모리가 핵심이다. </p>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110156&authkey=%21ALzf-xm8E1DuXsU&width=1016&height=236" width="1016" height="236" alt="Spark Executor 메모리 구조 중 caching을 위한 Storage Memory"/>
@@ -616,16 +614,23 @@ $ <span class="token variable">$&#123;SPARK_HOME&#125;</span>/bin/spark-submit <
 
 pyspark<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>DataFrame<span class="token punctuation">.</span>persist<span class="token punctuation">(</span>
     storageLevel<span class="token punctuation">:</span> pyspark<span class="token punctuation">.</span>storagelevel<span class="token punctuation">.</span>StorageLevel <span class="token operator">=</span> StorageLevel<span class="token punctuation">(</span><span class="token boolean">True</span><span class="token punctuation">,</span> <span class="token boolean">True</span><span class="token punctuation">,</span> <span class="token boolean">False</span><span class="token punctuation">,</span> <span class="token boolean">True</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
-<span class="token punctuation">)</span> → pyspark<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>dataframe<span class="token punctuation">.</span>DataFrame<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">)</span> → pyspark<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>dataframe<span class="token punctuation">.</span>DataFrame
 
-<h1 id="스파크-내에서-storageLevel을-미리-정의한-객체를-불러와-사용하는-것이-편하다"><a href="#스파크-내에서-storageLevel을-미리-정의한-객체를-불러와-사용하는-것이-편하다" class="headerlink" title="스파크 내에서 storageLevel을 미리 정의한 객체를 불러와 사용하는 것이 편하다."></a>스파크 내에서 storageLevel을 미리 정의한 객체를 불러와 사용하는 것이 편하다.</h1><p>from pyspark.storagelevel import StorageLevel<br>DataFrame.persist(StorageLevel.MEMORY_AND_DISK_DESER)</p>
+<span class="token comment"># 스파크 내에서 storageLevel을 미리 정의한 객체를 불러와 사용하는 것이 편하다.</span>
+<span class="token keyword">from</span> pyspark<span class="token punctuation">.</span>storagelevel <span class="token keyword">import</span> StorageLevel
+DataFrame<span class="token punctuation">.</span>persist<span class="token punctuation">(</span>StorageLevel<span class="token punctuation">.</span>MEMORY_AND_DISK_DESER<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110158&authkey=%21AMY4RLzM3DbNpVI&width=560&height=437" width="560" height="437" alt="Storage Level 정리표"/>
 
 <h4 id="cache"><a href="#cache" class="headerlink" title="cache()"></a>cache()</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> pyspark
 
-pyspark<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>DataFrame<span class="token punctuation">.</span>cache<span class="token punctuation">(</span><span class="token punctuation">)</span> → pyspark<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>dataframe<span class="token punctuation">.</span>DataFrame<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+pyspark<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>DataFrame<span class="token punctuation">.</span>cache<span class="token punctuation">(</span><span class="token punctuation">)</span> → pyspark<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>dataframe<span class="token punctuation">.</span>DataFrame
 
-<p>** cache()는 스파크 데이터프레임의 default storage level인 persist(MEMORY_AND_DISK)를 호출하는 것과 같다.</p>
+<span class="token comment"># cache()는 스파크 데이터프레임의 default storage level인 persist(MEMORY_AND_DISK)를 호출하는 것과 같다.</span>
+DataFrame<span class="token punctuation">.</span>cache<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <h2 id="References-1"><a href="#References-1" class="headerlink" title="References"></a>References</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://spark.apache.org/docs/latest/rdd-programming-guide.html#rdd-persistence">rdd-persistence</a></li>
 <li><a target="_blank" rel="noopener" href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.StorageLevel.html">pyspark.StorageLevel</a></li>
@@ -764,42 +769,40 @@ pyspark<span class="token punctuation">.</span>sql<span class="token punctuation
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/12/01/Spark/%08concpet/">
+                <a href="/2025/11/01/Data%20Standardization/a/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/spark-logo.png" class="responsive-img" alt="스파크 개념">
+                        <img src="/images/logos/data-architect-logo.png" class="responsive-img" alt="데이터 표준화">
                         
-                        <span class="card-title diy-neon-yellow">스파크 개념</span>
+                        <span class="card-title diy-neon-red">데이터 표준화</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            데이터 표준화
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-12-01
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-11-01
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Spark/" class="post-category">
-                                    Spark
+                            <a href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%91%9C%EC%A4%80%ED%99%94/" class="post-category">
+                                    데이터 표준화
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>

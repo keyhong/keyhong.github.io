@@ -4,13 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[Python] GPU Setting, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="GPU Settingtensorflow GPU 호환 버전 확인
-
-tensorflow 설치 (cpu, gpu 통합)
-
-$ pip install tensorflow=[버전]
-$ conda install -c conda-">
+    <meta name="keywords" content="Pandas append() deprecated, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="Python">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -22,7 +17,7 @@ $ conda install -c conda-">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[Python] GPU Setting | Keyhong</title>
+    <title>Pandas append() deprecated | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -187,7 +182,7 @@ $ conda install -c conda-">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [Python] GPU Setting</h1>
+                        Pandas append() deprecated</h1>
                 </div>
             </div>
         </div>
@@ -212,7 +207,7 @@ $ conda install -c conda-">
                         <div class="article-tag">
                             <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                                 <span class="chip bg-color">
-                                    2024-01-01</span>
+                                    2022-01-01</span>
                         </div>
                     
                     
@@ -244,60 +239,94 @@ $ conda install -c conda-">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="GPU-Setting"><a href="#GPU-Setting" class="headerlink" title="GPU Setting"></a>GPU Setting</h2><p><a target="_blank" rel="noopener" href="https://www.tensorflow.org/install/source?hl=ko">tensorflow GPU 호환 버전 확인</a></p>
-<ol>
-<li>tensorflow 설치 (cpu, gpu 통합)</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ pip <span class="token function">install</span> <span class="token assign-left variable">tensorflow</span><span class="token operator">=</span><span class="token punctuation">[</span>버전<span class="token punctuation">]</span>
-$ conda <span class="token function">install</span> <span class="token parameter variable">-c</span> conda-forge <span class="token assign-left variable">cudatoolkit</span><span class="token operator">=</span><span class="token punctuation">[</span>호환버전<span class="token punctuation">]</span> <span class="token assign-left variable">cudnn</span><span class="token operator">=</span><span class="token punctuation">[</span>호환버전<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+                <h2 id="pandas-DataFrame-append-의-deprecated"><a href="#pandas-DataFrame-append-의-deprecated" class="headerlink" title="pandas.DataFrame.append()의 deprecated"></a>pandas.DataFrame.append()의 deprecated</h2><p>pandas.DataFrame.append() 함수를 쓰면 FutureWarning 이 발생하면서  pandas.concat() 함수를 대신 사용하라고 주의를 준다. 그럼 왜 concat을 대신 사용하라고 할까? 그 이유는 pandas.DataFrame.append() 함수는 메모리 사용과 처리 서능에 있어 비효율적인 문제가 있기 때문이다.
+ </p>
+<ul>
+<li><p>pandas.DataFrame.append()는 내부적으로 결합할 데이터프레임을 반드시 복사(copy)하여 결합한다.</p>
+</li>
+<li><p>데이터가 크면 클수록 처리할 때 메모리 부족(Out Of Memory)가 발생할 가능성이 높고 처리 속도가 느리다.</p>
+</li>
+</ul>
+<h2 id="pandas-concat-사용하기"><a href="#pandas-concat-사용하기" class="headerlink" title="pandas.concat() 사용하기"></a>pandas.concat() 사용하기</h2><p>pandas.concat() 함수는 여러 데이터프레임을 Iterable 객체 안에 넣어 행 또는 열로 병합하는 함수이다. 그리고 옵션 설정을 통해 데이터프레임을 copy하지 않고 병합 가능하다.
+ </p>
+<ul>
+<li><p>데이터프레임을 복사하지 않고 연결가능하다. (copy 옵션을 변경가능하다. default value는 true)</p>
+</li>
+<li><p>이에 따라 메모리 절약과 성능 향상의 이점이 있다.</p>
+</li>
+</ul>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># NDFrame</span>
+<span class="token comment"># pd.Series : 1차원 배열</span>
+<span class="token comment"># pd.DataFrame : 2차원 데이터 구조</span>
+<span class="token comment"># pd.Panel : 3차원 데이터 구조</span>
 
-<ol start="2">
-<li>device(cpu, gpu) 상태 확인</li>
-</ol>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> tensorflow<span class="token punctuation">.</span>python<span class="token punctuation">.</span>client <span class="token keyword">import</span> device_lib
-device_lib<span class="token punctuation">.</span>list_local_devices<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token keyword">def</span> <span class="token function">concat</span><span class="token punctuation">(</span>
+    objs<span class="token punctuation">:</span> Iterable<span class="token punctuation">[</span>NDFrame<span class="token punctuation">]</span> <span class="token operator">|</span> Mapping<span class="token punctuation">[</span>HashableT<span class="token punctuation">,</span> NDFrame<span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token operator">*</span><span class="token punctuation">,</span>
+    axis<span class="token punctuation">:</span> Axis <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    join<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> <span class="token string">"outer"</span><span class="token punctuation">,</span>
+    ignore_index<span class="token punctuation">:</span> <span class="token builtin">bool</span> <span class="token operator">=</span> <span class="token boolean">False</span><span class="token punctuation">,</span>
+    keys<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span>
+    levels<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span>
+    names<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span>
+    verify_integrity<span class="token punctuation">:</span> <span class="token builtin">bool</span> <span class="token operator">=</span> <span class="token boolean">False</span><span class="token punctuation">,</span>
+    sort<span class="token punctuation">:</span> <span class="token builtin">bool</span> <span class="token operator">=</span> <span class="token boolean">False</span><span class="token punctuation">,</span>
+    copy<span class="token punctuation">:</span> <span class="token builtin">bool</span> <span class="token operator">|</span> <span class="token boolean">None</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> DataFrame <span class="token operator">|</span> Series<span class="token punctuation">:</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<ol start="3">
-<li>gpu 사용 옵션 제거 (cpu 사용)</li>
-</ol>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> os
-os<span class="token punctuation">.</span>environ<span class="token punctuation">[</span><span class="token string">"CUDA_VISIBLE_DEVICES"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"0"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="pandas-DataFrame-from-dict-활용하기"><a href="#pandas-DataFrame-from-dict-활용하기" class="headerlink" title="pandas.DataFrame.from_dict() 활용하기"></a>pandas.DataFrame.from_dict() 활용하기</h2><p>기존에 주로 사용하던 pandas.DataFrame.append() 함수를 쓰지 않으려고 하다보니 한 가지 불편한 문제가 생겼다. kafka에서 받은 하나의 row를 데이터프레임에 추가하려고 하다 보니 append()에 아규먼트로 딕셔너리를 스키마에 맞게 바로 넣어주면 데이터를 바로 추가할 수 있었던 그러한 이점을 활용 못하게 되었다. 왜냐하면 concat() 함수는 결합 대상을 dict가 아닌 Series or DataFrame objects의 sequence를 받기 때문에 중간에 dict를 데이터프레임으로 변환하는 과정이 필요하다.</p>
+<p>물론 주의를 주는 append() 함수를 쓰더라도 딕셔너리 객체 하나를 삽입하기 때문에, copy 하는 데 큰 메모리가 들지 않겠지만 그래도 향후 deprecated 될 가능성이 있고, 코드 상의 통일성을 맞추기 위해 앞으로는 concat() 함수를 사용하기로 하였다.</p>
+<p>그럼 하나의 데이터프레임에 하나의 딕셔너리 객체를 추가하려면 어떤 함수를 사용해야 할까? 그 때 사용하기 좋은 함수가 바로 pandas.DataFrame.from_dict() 이다. 이름에 걸맞게 딕셔너리를 dataframe으로 변환해주는 함수이다. DataFrame 클래스의 클래스메서드이며, 필수 파라미터로 data에 key : value인 딕셔너리 객체를 넣어준다.</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token decorator annotation punctuation">@classmethod</span>
+<span class="token keyword">def</span> <span class="token function">from_dict</span><span class="token punctuation">(</span>
+    cls<span class="token punctuation">,</span>
+    data<span class="token punctuation">:</span> <span class="token builtin">dict</span><span class="token punctuation">,</span>
+    orient<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> <span class="token string">"columns"</span><span class="token punctuation">,</span>
+    dtype<span class="token punctuation">:</span> Dtype <span class="token operator">|</span> <span class="token boolean">None</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span>
+    columns<span class="token punctuation">:</span> Axes <span class="token operator">|</span> <span class="token boolean">None</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> DataFrame<span class="token punctuation">:</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p> <br>from_dict() 함수를 이용해서 데이터프레임을 행으로 병합하는 코드를 작성해보자.
+ </p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
 
-<ol start="4">
-<li>모니터링</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ nvidia-smi
-	
-Mon Feb <span class="token number">20</span> <span class="token number">18</span>:04:04 <span class="token number">2023</span>
-+-----------------------------------------------------------------------------+
-<span class="token operator">|</span> NVIDIA-SMI <span class="token number">515.86</span>.01    Driver Version: <span class="token number">515.86</span>.01    CUDA Version: <span class="token number">11.7</span>     <span class="token operator">|</span>
-<span class="token operator">|</span>-------------------------------+----------------------+----------------------+
-<span class="token operator">|</span> GPU  Name        Persistence-M<span class="token operator">|</span> Bus-Id        Disp.A <span class="token operator">|</span> Volatile Uncorr. ECC <span class="token operator">|</span>
-<span class="token operator">|</span> Fan  Temp  Perf  Pwr:Usage/Cap<span class="token operator">|</span>         Memory-Usage <span class="token operator">|</span> GPU-Util  Compute M. <span class="token operator">|</span>
-<span class="token operator">|</span>                               <span class="token operator">|</span>                      <span class="token operator">|</span>               MIG M. <span class="token operator">|</span>
-<span class="token operator">|</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span><span class="token operator">+=</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span><span class="token operator">+=</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span><span class="token operator">|</span>
-<span class="token operator">|</span>   <span class="token number">0</span>  Tesla V100-SXM2<span class="token punctuation">..</span>.  Off  <span class="token operator">|</span> 00000000:00:1E.0 Off <span class="token operator">|</span>                    <span class="token number">0</span> <span class="token operator">|</span>
-<span class="token operator">|</span> N/A   33C    P0    39W / 300W <span class="token operator">|</span>   5759MiB / 16384MiB <span class="token operator">|</span>      <span class="token number">0</span>%      Default <span class="token operator">|</span>
-<span class="token operator">|</span>                               <span class="token operator">|</span>                      <span class="token operator">|</span>                  N/A <span class="token operator">|</span>
-+-------------------------------+----------------------+----------------------+
+<span class="token comment"># 딕셔너리 데이터</span>
+data <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+    <span class="token string">'Name'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'John'</span><span class="token punctuation">,</span> <span class="token string">'Emma'</span><span class="token punctuation">,</span> <span class="token string">'Peter'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">'Age'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">28</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">'City'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'New York'</span><span class="token punctuation">,</span> <span class="token string">'London'</span><span class="token punctuation">,</span> <span class="token string">'Paris'</span><span class="token punctuation">]</span>
+<span class="token punctuation">&#125;</span>
 
-+-----------------------------------------------------------------------------+
-<span class="token operator">|</span> Processes:                                                                  <span class="token operator">|</span>
-<span class="token operator">|</span>  GPU   GI   CI        PID   Type   Process name                  GPU Memory <span class="token operator">|</span>
-<span class="token operator">|</span>        ID   ID                                                   Usage      <span class="token operator">|</span>
-<span class="token operator">|</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span><span class="token operator">|</span>
-<span class="token operator">|</span>    <span class="token number">0</span>   N/A  N/A   <span class="token number">3553167</span>      C   <span class="token punctuation">..</span>.a/envs/jupyter/bin/python     5757MiB <span class="token operator">|</span>
-+-----------------------------------------------------------------------------+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ol start="5">
-<li>nvcc 버전확인</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># tensorflow, pytorch는 보통 해당 기준으로 설치</span>
-$ nvcc <span class="token parameter variable">--version</span>
+<span class="token comment"># dict to pandas.DataFrame</span>
+df <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">.</span>from_dict<span class="token punctuation">(</span>data<span class="token punctuation">)</span>
 
-nvcc: NVIDIA <span class="token punctuation">(</span>R<span class="token punctuation">)</span> Cuda compiler driver
-Copyright <span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token number">2005</span>-2019 NVIDIA Corporation
-Built on Sun_Jul_28_19:07:16_PDT_2019
-Cuda compilation tools, release <span class="token number">10.1</span>, V10.1.243<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">)</span>
+
+<span class="token comment">######### 출력 #########</span>
+<span class="token comment">#    Name  Age      City</span>
+<span class="token comment"># 0  John   25  New York</span>
+<span class="token comment"># 1  Emma   28    London</span>
+<span class="token comment"># 2 Peter   30     Paris</span>
+
+<span class="token comment"># 데이터프레임 결합하기</span>
+result <span class="token operator">=</span> pd<span class="token punctuation">.</span>conact<span class="token punctuation">(</span><span class="token punctuation">[</span>df1<span class="token punctuation">,</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">.</span>from_dict<span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> ignore_index<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> copy<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>concat() 사용시 copy 옵션을 False로 할 때 주의할 점이 있다.
+ </p>
+<ul>
+<li><p>데이터프레임으로 결합할 딕셔너리의 값(value)은 array-like 형태로 넣어주어야 한다.</p>
+</li>
+<li><p>결합 대상이 되는 데이터프레임은 더 이상 바뀌지 않은 불변(immutable) 객체로 사용해야 한다.</p>
+</li>
+</ul>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/docs/reference/api/pandas.concat.html">https://pandas.pydata.org/docs/reference/api/pandas.concat.html</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/version/1.3/reference/api/pandas.DataFrame.append.html">https://pandas.pydata.org/pandas-docs/version/1.3/reference/api/pandas.DataFrame.append.html</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.from_dict.html">https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.from_dict.html</a></p>
+</li>
+</ul>
+
                 
             </div>
             <hr/>
@@ -323,7 +352,7 @@ Cuda compilation tools, release <span class="token number">10.1</span>, V10.1.24
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/01/01/Python/gpu-setting/">http://example.com/2024/01/01/Python/gpu-setting/</a>
+                    <a href="http://example.com/2022/01/01/Python/no-pandas-append/">http://example.com/2022/01/01/Python/no-pandas-append/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -435,23 +464,23 @@ Cuda compilation tools, release <span class="token number">10.1</span>, V10.1.24
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/01/Python/first-class-function/">
+                <a href="/2022/01/01/Python/sqlalchemy-delete/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Firts Class Function">
+                        <img src="/images/logos/python-logo.png" class="responsive-img" alt="SQLAlchemy 세션 함수 이용하기">
                         
-                        <span class="card-title diy-neon-red">[Python] Firts Class Function</span>
+                        <span class="card-title diy-neon-red">SQLAlchemy 세션 함수 이용하기</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            Python
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-01
                         </span>
                         <span class="publish-author">
                             
@@ -475,12 +504,12 @@ Cuda compilation tools, release <span class="token number">10.1</span>, V10.1.24
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/01/Python/jupyter/">
+                <a href="/1996/01/19/Carrer/side-project/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Jupyter-lab 외부 접속 오픈하기">
+                        <img src="/images/logos/life-logo.jpg" class="responsive-img" alt="[Toy] Dimension Modeling + Hadoop + Hive + Kudu + Trino + DBT">
                         
-                        <span class="card-title diy-neon-red">[Python] Jupyter-lab 외부 접속 오픈하기</span>
+                        <span class="card-title diy-neon-red">[Toy] Dimension Modeling + Hadoop + Hive + Kudu + Trino + DBT</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -491,16 +520,12 @@ Cuda compilation tools, release <span class="token number">10.1</span>, V10.1.24
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                                <i class="far fa-clock fa-fw icon-date"></i>1996-01-19
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Python/" class="post-category">
-                                    Python
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Keyhong
                             
                         </span>
                     </div>

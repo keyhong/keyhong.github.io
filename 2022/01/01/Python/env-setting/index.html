@@ -4,11 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="[Python] 파이썬 pip 설치 경로 이해하기, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Pip이란?
- “Pip Installs Packages”의 약자로 Python 패키지를 설치하고 관리하는 패키지 관리자입니다.
-
-Pip으로 특정경로에 패키지 설치$ pip install -target=[경로] [라이">
+    <meta name="keywords" content="파이썬 환경 구축 (Anaconda, Pip, Juptyer, Tensorflow), Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="Python">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +17,7 @@ Pip으로 특정경로에 패키지 설치$ pip install -target=[경로] [라이
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>[Python] 파이썬 pip 설치 경로 이해하기 | Keyhong</title>
+    <title>파이썬 환경 구축 (Anaconda, Pip, Juptyer, Tensorflow) | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -185,7 +182,7 @@ Pip으로 특정경로에 패키지 설치$ pip install -target=[경로] [라이
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        [Python] 파이썬 pip 설치 경로 이해하기</h1>
+                        파이썬 환경 구축 (Anaconda, Pip, Juptyer, Tensorflow)</h1>
                 </div>
             </div>
         </div>
@@ -210,7 +207,7 @@ Pip으로 특정경로에 패키지 설치$ pip install -target=[경로] [라이
                         <div class="article-tag">
                             <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                                 <span class="chip bg-color">
-                                    2024-01-01</span>
+                                    2022-01-01</span>
                         </div>
                     
                     
@@ -242,8 +239,22 @@ Pip으로 특정경로에 패키지 설치$ pip install -target=[경로] [라이
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Pip이란"><a href="#Pip이란" class="headerlink" title="Pip이란?"></a>Pip이란?</h2><blockquote>
-<p> “Pip Installs Packages”의 약자로 Python 패키지를 설치하고 관리하는 패키지 관리자입니다.</p>
+                <hr>
+<h2 id="title-date-2024-01-01author-Keyhongimg-images-logos-python-logo-pngtop-falsemathjax-falsecategories-Python"><a href="#title-date-2024-01-01author-Keyhongimg-images-logos-python-logo-pngtop-falsemathjax-falsecategories-Python" class="headerlink" title="title:date: 2024-01-01author: Keyhongimg: &#x2F;images&#x2F;logos&#x2F;python-logo.pngtop: falsemathjax: falsecategories: Python"></a>title:<br>date: 2024-01-01<br>author: Keyhong<br>img: &#x2F;images&#x2F;logos&#x2F;python-logo.png<br>top: false<br>mathjax: false<br>categories: Python</h2><h2 id="Anaconda"><a href="#Anaconda" class="headerlink" title="Anaconda"></a>Anaconda</h2><blockquote>
+<p>패키지 관리와 배포를 단순화하려는 목적으로 과학 컴퓨팅을 위해 Python과 R 프로그래밍 언어의 배포판</p>
+</blockquote>
+<h3 id="Conda-가상-환경-생성"><a href="#Conda-가상-환경-생성" class="headerlink" title="Conda 가상 환경 생성"></a>Conda 가상 환경 생성</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 가상환경 이름과 사용할 파이썬 버전을 지정하여 가상환경 생성</span>
+$ conda create <span class="token parameter variable">--name</span> <span class="token operator">&lt;</span>virtual <span class="token function">env</span> name<span class="token operator">></span> <span class="token assign-left variable">python</span><span class="token operator">=</span><span class="token operator">&lt;</span>python version<span class="token operator">></span>
+
+<span class="token comment"># 사용자가 지정한 경로에 가상환경 생성</span>
+$ conda create <span class="token parameter variable">--prefix</span><span class="token operator">=</span><span class="token operator">&lt;</span>virtual <span class="token function">env</span> path<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="Conda의-가상-환경-복제"><a href="#Conda의-가상-환경-복제" class="headerlink" title="Conda의 가상 환경 복제"></a>Conda의 가상 환경 복제</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 지정한 경로에 기존 가상환경을 복제하여 새로 생성</span>
+$ conda create <span class="token parameter variable">--prefix</span><span class="token operator">=</span><span class="token punctuation">[</span>가상환경 경로<span class="token punctuation">]</span> <span class="token parameter variable">--clone</span><span class="token operator">=</span><span class="token punctuation">[</span>복제할 가상환경명<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="conda-가상-환경-접속"><a href="#conda-가상-환경-접속" class="headerlink" title="conda 가상 환경 접속"></a>conda 가상 환경 접속</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 가상환경 접속(activate)</span>
+$ conda activate <span class="token operator">&lt;</span>virtual env<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="Pip"><a href="#Pip" class="headerlink" title="Pip"></a>Pip</h2><blockquote>
+<p> <code>Pip Installs Packages</code>의 약자로 Python 패키지를 설치하고 관리하는 패키지 관리자</p>
 </blockquote>
 <h2 id="Pip으로-특정경로에-패키지-설치"><a href="#Pip으로-특정경로에-패키지-설치" class="headerlink" title="Pip으로 특정경로에 패키지 설치"></a>Pip으로 특정경로에 패키지 설치</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ pip <span class="token function">install</span> <span class="token parameter variable">-target</span><span class="token operator">=</span><span class="token punctuation">[</span>경로<span class="token punctuation">]</span> <span class="token punctuation">[</span>라이브러리명<span class="token punctuation">]</span>
 
@@ -264,16 +275,102 @@ pprint<span class="token punctuation">(</span><span class="token builtin">list</
 
 <span class="token comment"># pip install [패키지를 하면] 기본적인 설치경로는 anaconda 디렉토리의 lib/python&lt;version>/site-packages 이다.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="꿀팁"><a href="#꿀팁" class="headerlink" title="꿀팁!"></a>꿀팁!</h2><p>가끔 <code>pip uninstall</code>이라는 패키지 삭제 명령어가 안 먹힐 때가 있다. 파이썬 패키지가 어디서 불러오는 지 과정을 알면 직접 패키지를 수동으로 지워주워 주어 삭제할 수 있다.</p>
-<h4 id="site-package-위치-찾기"><a href="#site-package-위치-찾기" class="headerlink" title="site-package 위치 찾기"></a>site-package 위치 찾기</h4><p>다음 커맨드를 치면 현재 사용중인 파이썬(가상환경을 쓰고 있다면 가상환경으로 반드시 접속해야 합니다.)이 패키지를 임포트하는 경로들이 나오게 됩니다. 그 중 site-package라는 단어가 있는 경로로 접속해주세요.</p>
+<h2 id="My-Tip"><a href="#My-Tip" class="headerlink" title="My Tip"></a>My Tip</h2><p>가끔 <code>pip uninstall</code>이라는 패키지 삭제 명령어가 오류가 날 때가 있다. 이런 경우 파이썬 패키지가 어떤 경로에서 임포트하는 지 해당 과정을 알면 직접 패키지를 수동으로 삭제할 수도 있다.</p>
+<h3 id="site-package-위치-찾기"><a href="#site-package-위치-찾기" class="headerlink" title="site-package 위치 찾기"></a>site-package 위치 찾기</h3><p>다음 커맨드를 치면 현재 사용중인 파이썬(가상환경을 쓰고 있다면 가상환경으로 반드시 접속해야 한다.)이 패키지를 임포트하는 경로들이 나온다. 그 중 site-package라는 단어가 있는 경로로 접속한다.</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ python <span class="token parameter variable">-m</span> site<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>그럼 무수한 폴더들이 나오는 데, 각 폴더의 이름은 하나의 패키지를 의미합니다. 그 폴더를 지우시면 패키지가 삭제됩니다.</p>
-<p>가끔 파이썬 패키지 중에는 바이너리(bin) 파일을 가진 패키지들이 있습니다. 예를 들면 airflow, dbt와 같이 CLI로 실행이 가능한 라이브러리 입니다. 이런 패키지들을 수동으로 제거할 때는 바이너리 파일이 별도의 폴더에 저장되기 때문에 같이 제거해주셔야 합니다. 바이너리 파일의 위치는 아래 명령어로 찾을 수 있습니다.</p>
+<p>그럼 여러 폴더들이 나오는 데, 배열(리스트)의 첫 번째 부터 순차적으로 임포트할 패키지가 있는 지 확인한다. 그 중 site-package 폴더 안에는 또 여러개의 폴더(각각 설치한 패키지)가 있고, 해당 폴더를 지우시면 패키지가 삭제됩니다.</p>
+<p>가끔 파이썬 패키지 중에는 바이너리(bin) 파일을 가진 패키지들이 있다. 예를 들면 <code>airflow</code>, <code>dbt</code>들은 CLI로 실행이 가능한 패키지이다. 이런 패키지들을 수동으로 제거할 때는 바이너리 파일이 별도의 폴더에 저장되기 때문에 별도로 제거하는 과정이 더 필요하다. 바이너리 파일의 위치는 아래 명령어로 찾을 수 있습니다.</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">which</span> <span class="token operator">&lt;</span>실행 가능한 패키지<span class="token operator">></span>
 
-<span class="token comment"># example</span>
-$ <span class="token function">which</span> airflow<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+$ <span class="token function">which</span> poetry
+/opt/homebrew/bin/poetry<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Jupyter-Lab"><a href="#Jupyter-Lab" class="headerlink" title="Jupyter Lab"></a>Jupyter Lab</h2><blockquote>
+<p>notebooks, code, data 작업을 위한 최신 웹 기반 인터랙티브 개발 환경. 인터페이스는 사용자들이 data science, scientific computing, computational journalism, machine learning에서 워크플로우를 구성하고 배열할 수 있도록 해준다.</p>
+</blockquote>
+<h3 id="Jupyter-Lab-설치"><a href="#Jupyter-Lab-설치" class="headerlink" title="Jupyter Lab 설치"></a>Jupyter Lab 설치</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ pip <span class="token function">install</span> jupyter-lab<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="jupyter-lab-config-py"><a href="#jupyter-lab-config-py" class="headerlink" title="jupyter_lab_config.py"></a>jupyter_lab_config.py</h3><blockquote>
+<p>JupyterLab의 설정 파일. 일반적으로 사용자의 홈의 서브 디렉터리(~&#x2F;.jupyter)에 위치한다.</p>
+</blockquote>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># jupyter_lab_config.py 파일이 존재하지 않는 경우, 커맨드로 생성</span>
+$ jupyter-lab --generate-config<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="Config-설정"><a href="#Config-설정" class="headerlink" title="Config 설정"></a>Config 설정</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">c.ServerApp.ip <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'IP'</span><span class="token punctuation">]</span> <span class="token comment"># '0.0.0.0' : 모든 IP 접속 허용</span>
+c.ServerApp.port <span class="token operator">=</span> <span class="token punctuation">[</span>PORT<span class="token punctuation">]</span> <span class="token comment"># jupyter 프로세스를 접속할 수 있는 개방 포트</span>
+c.ServerApp.notebook_dir <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'경로'</span><span class="token punctuation">]</span>
+c.ServerApp.password <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'패스워드'</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="jupyter-lab-실행"><a href="#jupyter-lab-실행" class="headerlink" title="jupyter-lab 실행"></a>jupyter-lab 실행</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ jupyter-lab<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="Tensorflow"><a href="#Tensorflow" class="headerlink" title="Tensorflow"></a>Tensorflow</h2><blockquote>
+<p>수치 계산, 대규모 머신 러닝, 딥러닝, 기타 통계 및 예측 분석 워크로드를 위한 오픈 소스 라이브러리</p>
+</blockquote>
+<h3 id="Tensorflow-GPU-세팅하기"><a href="#Tensorflow-GPU-세팅하기" class="headerlink" title="Tensorflow GPU 세팅하기"></a>Tensorflow GPU 세팅하기</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.tensorflow.org/install/source?hl=ko">tensorflow GPU 호환 버전 확인</a></li>
+</ul>
+<ol>
+<li>tensorflow 설치 (cpu, gpu 통합)</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># tensorflow 설치</span>
+$ pip <span class="token function">install</span> <span class="token assign-left variable">tensorflow</span><span class="token operator">=</span><span class="token punctuation">[</span>버전<span class="token punctuation">]</span>
+
+<span class="token comment"># GPU 사용을 위한 cuda 라이브러리 설치</span>
+$ conda <span class="token function">install</span> <span class="token parameter variable">-c</span> conda-forge <span class="token assign-left variable">cudatoolkit</span><span class="token operator">=</span><span class="token punctuation">[</span>호환버전<span class="token punctuation">]</span> <span class="token assign-left variable">cudnn</span><span class="token operator">=</span><span class="token punctuation">[</span>호환버전<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="2">
+<li>device(cpu, gpu) 상태 확인</li>
+</ol>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> tensorflow<span class="token punctuation">.</span>python<span class="token punctuation">.</span>client <span class="token keyword">import</span> device_lib
+device_lib<span class="token punctuation">.</span>list_local_devices<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ol start="3">
+<li>gpu 사용 옵션 제거 (cpu 사용)</li>
+</ol>
+<ul>
+<li>GPU 세팅이 되면 default로 GPU를 사용하도록 되어있다. GPU 사용을 끄고 싶다면 프로그램 실행 초반부에 아래와 같은 코드를 작성한다.</li>
+</ul>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> os
+os<span class="token punctuation">.</span>environ<span class="token punctuation">[</span><span class="token string">"CUDA_VISIBLE_DEVICES"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"0"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ol start="4">
+<li>nvidia 모니터링</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ nvidia-smi
+	
+Mon Feb <span class="token number">20</span> <span class="token number">18</span>:04:04 <span class="token number">2023</span>
++-----------------------------------------------------------------------------+
+<span class="token operator">|</span> NVIDIA-SMI <span class="token number">515.86</span>.01    Driver Version: <span class="token number">515.86</span>.01    CUDA Version: <span class="token number">11.7</span>     <span class="token operator">|</span>
+<span class="token operator">|</span>-------------------------------+----------------------+----------------------+
+<span class="token operator">|</span> GPU  Name        Persistence-M<span class="token operator">|</span> Bus-Id        Disp.A <span class="token operator">|</span> Volatile Uncorr. ECC <span class="token operator">|</span>
+<span class="token operator">|</span> Fan  Temp  Perf  Pwr:Usage/Cap<span class="token operator">|</span>         Memory-Usage <span class="token operator">|</span> GPU-Util  Compute M. <span class="token operator">|</span>
+<span class="token operator">|</span>                               <span class="token operator">|</span>                      <span class="token operator">|</span>               MIG M. <span class="token operator">|</span>
+<span class="token operator">|</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span><span class="token operator">+=</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span><span class="token operator">+=</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span><span class="token operator">|</span>
+<span class="token operator">|</span>   <span class="token number">0</span>  Tesla V100-SXM2<span class="token punctuation">..</span>.  Off  <span class="token operator">|</span> 00000000:00:1E.0 Off <span class="token operator">|</span>                    <span class="token number">0</span> <span class="token operator">|</span>
+<span class="token operator">|</span> N/A   33C    P0    39W / 300W <span class="token operator">|</span>   5759MiB / 16384MiB <span class="token operator">|</span>      <span class="token number">0</span>%      Default <span class="token operator">|</span>
+<span class="token operator">|</span>                               <span class="token operator">|</span>                      <span class="token operator">|</span>                  N/A <span class="token operator">|</span>
++-------------------------------+----------------------+----------------------+
+
++-----------------------------------------------------------------------------+
+<span class="token operator">|</span> Processes:                                                                  <span class="token operator">|</span>
+<span class="token operator">|</span>  GPU   GI   CI        PID   Type   Process name                  GPU Memory <span class="token operator">|</span>
+<span class="token operator">|</span>        ID   ID                                                   Usage      <span class="token operator">|</span>
+<span class="token operator">|</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span><span class="token operator">|</span>
+<span class="token operator">|</span>    <span class="token number">0</span>   N/A  N/A   <span class="token number">3553167</span>      C   <span class="token punctuation">..</span>.a/envs/jupyter/bin/python     5757MiB <span class="token operator">|</span>
++-----------------------------------------------------------------------------+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="5">
+<li>nvcc 버전확인</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># tensorflow, pytorch는 보통 해당 기준으로 설치</span>
+$ nvcc <span class="token parameter variable">--version</span>
+
+nvcc: NVIDIA <span class="token punctuation">(</span>R<span class="token punctuation">)</span> Cuda compiler driver
+Copyright <span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token number">2005</span>-2019 NVIDIA Corporation
+Built on Sun_Jul_28_19:07:16_PDT_2019
+Cuda compilation tools, release <span class="token number">10.1</span>, V10.1.243<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
                 
             </div>
             <hr/>
@@ -299,7 +396,7 @@ $ <span class="token function">which</span> airflow<span aria-hidden="true" clas
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/01/01/Python/pip/">http://example.com/2024/01/01/Python/pip/</a>
+                    <a href="http://example.com/2022/01/01/Python/env-setting/">http://example.com/2022/01/01/Python/env-setting/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -411,32 +508,28 @@ $ <span class="token function">which</span> airflow<span aria-hidden="true" clas
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/01/01/Python/jupyter/">
+                <a href="/2022/01/01/Python/Python%20Docs%20Index/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/python-logo.png" class="responsive-img" alt="[Python] Jupyter-lab 외부 접속 오픈하기">
+                        <img src="/images/logos/python-logo.png" class="responsive-img" alt="Python Docs Index">
                         
-                        <span class="card-title diy-neon-red">[Python] Jupyter-lab 외부 접속 오픈하기</span>
+                        <span class="card-title diy-neon-red">Python Docs Index</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            Python
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-01
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Python/" class="post-category">
-                                    Python
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Keyhong
                             
                         </span>
                     </div>
@@ -451,30 +544,30 @@ $ <span class="token function">which</span> airflow<span aria-hidden="true" clas
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/01/SQL/inline-view/">
+                <a href="/2022/01/01/Python/multi-processing/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/sql-logo.png" class="responsive-img" alt="[SQL] Inline View">
+                        <img src="/images/logos/python-logo.png" class="responsive-img" alt="파이썬 멀티프로세싱">
                         
-                        <span class="card-title diy-neon-red">[SQL] Inline View</span>
+                        <span class="card-title diy-neon-red">파이썬 멀티프로세싱</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            Python
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-01
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/SQL/" class="post-category">
-                                    SQL
+                            <a href="/categories/Python/" class="post-category">
+                                    Python
                                 </a>
                             
                             
