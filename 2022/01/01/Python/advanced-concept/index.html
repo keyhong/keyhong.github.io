@@ -243,7 +243,7 @@
 <p>프로그래밍 언어가 함수를 일급 객체(first-class citizen)로 취급하는 것</p>
 </blockquote>
 <p>적용이 되는 언어는 Python 이외에도 JavaScript 또한 일급함수가 있다.</p>
-<h4 id="응용"><a href="#응용" class="headerlink" title="응용"></a>응용</h4><ol>
+<h3 id="응용"><a href="#응용" class="headerlink" title="응용"></a>응용</h3><ol>
 <li>함수 자체를 다른 함수의 인자로 전달하는 것</li>
 <li>다른 함수의 리턴 값으로 리턴</li>
 <li>Runtime에 생성 가능</li>
@@ -268,10 +268,11 @@ SELECT <span class="token operator">*</span> FROM SOSS<span class="token punctua
 
 
 
-<h2 id="GIL-Global-Interpreter-Lock"><a href="#GIL-Global-Interpreter-Lock" class="headerlink" title="GIL (Global Interpreter Lock)"></a>GIL (Global Interpreter Lock)</h2><ul>
-<li><p>파이썬 인터프리터가 한 스레드만 하나의 바이트코드를 실행 시킬 수 있도록 해주는 Lock</p>
-</li>
-<li><p>하나의 스레드에 모든 자원을 허락하고 그 후에는 Lock을 걸어 다른 스레드는 실행할 수 없게 막는 것</p>
+<h2 id="GIL-Global-Interpreter-Lock"><a href="#GIL-Global-Interpreter-Lock" class="headerlink" title="GIL (Global Interpreter Lock)"></a>GIL (Global Interpreter Lock)</h2><blockquote>
+<p>파이썬 인터프리터가 한 쓰레드만 하나의 바이트코드를 실행 시킬 수 있도록 해주는 Lock</p>
+</blockquote>
+<ul>
+<li><p>하나의 쓰레드에 모든 자원을 허락하고 그 후에는 Lock을 걸어 다른 쓰레드는 실행할 수 없게 막는 것</p>
 </li>
 <li><p>GIL 사용이유 : <code>가비지컬렉터(garbage collector)</code>와 <code>참조 횟수 계산(Reference Counting)</code>을 통해 할당된 메모리 관리</p>
 </li>
@@ -282,16 +283,10 @@ SELECT <span class="token operator">*</span> FROM SOSS<span class="token punctua
 <ul>
 <li>멀티 쓰레딩 환경에서 여러개의 쓰레드가 어떤 공유 자원에 접근 가능 (Thread-safe 하지 않은 상태)</li>
 </ul>
-<h4 id="해결방벙"><a href="#해결방벙" class="headerlink" title="해결방벙"></a>해결방벙</h4><ul>
-<li>뮤텍스(Mutex)</li>
-</ul>
-<blockquote>
-<p>공유 자원에 접근하기 위해 가지고 있어야하는 일종의 열쇠(lock, unlock)를 통해 접근할 수 있는 스레드를 제한하고, 차례대로 처리하는 방법</p>
+<h3 id="해결방벙"><a href="#해결방벙" class="headerlink" title="해결방벙"></a>해결방벙</h3><h4 id="뮤텍스-Mutex"><a href="#뮤텍스-Mutex" class="headerlink" title="뮤텍스(Mutex)"></a>뮤텍스(Mutex)</h4><blockquote>
+<p>공유 자원에 접근하기 위해 가지고 있어야하는 일종의 열쇠(lock, unlock)를 통해 접근할 수 있는 쓰레드를 제한하고, 차례대로 처리하는 방법</p>
 </blockquote>
-<ul>
-<li>세마포어(Semaphore)</li>
-</ul>
-<h2 id="from-future-import-annotations"><a href="#from-future-import-annotations" class="headerlink" title="from future import annotations"></a>from <strong>future</strong> import annotations</h2><blockquote>
+<h4 id="세마포어-Semaphore"><a href="#세마포어-Semaphore" class="headerlink" title="세마포어(Semaphore)"></a>세마포어(Semaphore)</h4><h2 id="from-future-import-annotations"><a href="#from-future-import-annotations" class="headerlink" title="from future import annotations"></a>from <strong>future</strong> import annotations</h2><blockquote>
 <p>Python 3.10 이전 버전에서 사용되는 특정한 기능을 활성화하기 위한 구문</p>
 </blockquote>
 <ul>
@@ -440,30 +435,30 @@ SELECT <span class="token operator">*</span> FROM SOSS<span class="token punctua
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2023/06/01/Data%20Architecture/Role-playing%20Dimension/">
+                <a href="/2022/01/01/Python/sqlalchemy-delete/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="Role-playing Dimension">
+                        <img src="/images/logos/python-logo.png" class="responsive-img" alt="SQLAlchemy 세션 함수 이용하기">
                         
-                        <span class="card-title diy-neon-red">Role-playing Dimension</span>
+                        <span class="card-title diy-neon-red">SQLAlchemy 세션 함수 이용하기</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            Python
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-06-01
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-01
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Data-Architecture/" class="post-category">
-                                    Data Architecture
+                            <a href="/categories/Python/" class="post-category">
+                                    Python
                                 </a>
                             
                             
@@ -480,12 +475,12 @@ SELECT <span class="token operator">*</span> FROM SOSS<span class="token punctua
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/01/01/Python/Python%20Docs%20Index/">
+                <a href="/2022/01/01/Python/multi-processing/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/python-logo.png" class="responsive-img" alt="Python Docs Index">
+                        <img src="/images/logos/python-logo.png" class="responsive-img" alt="파이썬 멀티프로세싱">
                         
-                        <span class="card-title diy-neon-red">Python Docs Index</span>
+                        <span class="card-title diy-neon-red">파이썬 멀티프로세싱</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -500,8 +495,12 @@ SELECT <span class="token operator">*</span> FROM SOSS<span class="token punctua
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Keyhong
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Python/" class="post-category">
+                                    Python
+                                </a>
+                            
                             
                         </span>
                     </div>

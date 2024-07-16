@@ -239,22 +239,15 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="pandas-DataFrame-append-의-deprecated"><a href="#pandas-DataFrame-append-의-deprecated" class="headerlink" title="pandas.DataFrame.append()의 deprecated"></a>pandas.DataFrame.append()의 deprecated</h2><p>pandas.DataFrame.append() 함수를 쓰면 FutureWarning 이 발생하면서  pandas.concat() 함수를 대신 사용하라고 주의를 준다. 그럼 왜 concat을 대신 사용하라고 할까? 그 이유는 pandas.DataFrame.append() 함수는 메모리 사용과 처리 서능에 있어 비효율적인 문제가 있기 때문이다.
+                <h2 id="pandas-DataFrame-append-deprecated"><a href="#pandas-DataFrame-append-deprecated" class="headerlink" title="pandas.DataFrame.append() deprecated"></a>pandas.DataFrame.append() deprecated</h2><p><code>pandas.DataFrame.append()</code> 함수를 쓰면 FutureWarning 이 발생하면서 <code>pandas.concat()</code> 함수를 대신 사용하라고 주의를 준다. 그럼 왜 concat을 대신 사용하라고 할까? 그 이유는 pandas.DataFrame.append() 함수는 메모리 사용과 처리 서능에 있어 비효율적인 문제가 있기 때문이다.
  </p>
 <ul>
-<li><p>pandas.DataFrame.append()는 내부적으로 결합할 데이터프레임을 반드시 복사(copy)하여 결합한다.</p>
+<li><p><code>pandas.DataFrame.append()</code>는 내부적으로 결합할 데이터프레임을 <code>깊은 복사(deep copy)</code>하여 결합한다.</p>
 </li>
 <li><p>데이터가 크면 클수록 처리할 때 메모리 부족(Out Of Memory)가 발생할 가능성이 높고 처리 속도가 느리다.</p>
 </li>
 </ul>
-<h2 id="pandas-concat-사용하기"><a href="#pandas-concat-사용하기" class="headerlink" title="pandas.concat() 사용하기"></a>pandas.concat() 사용하기</h2><p>pandas.concat() 함수는 여러 데이터프레임을 Iterable 객체 안에 넣어 행 또는 열로 병합하는 함수이다. 그리고 옵션 설정을 통해 데이터프레임을 copy하지 않고 병합 가능하다.
- </p>
-<ul>
-<li><p>데이터프레임을 복사하지 않고 연결가능하다. (copy 옵션을 변경가능하다. default value는 true)</p>
-</li>
-<li><p>이에 따라 메모리 절약과 성능 향상의 이점이 있다.</p>
-</li>
-</ul>
+<h2 id="pandas-concat-사용"><a href="#pandas-concat-사용" class="headerlink" title="pandas.concat() 사용"></a>pandas.concat() 사용</h2><p><code>pandas.concat()</code> 함수는 여러 데이터프레임을 Iterable 객체 안에 넣어 행 또는 열로 병합하는 함수다. 옵션 설정을 통해 데이터프레임을 copy하지 않고 병합 가능하다. 함수의 copy 옵션을 변경(default는 true) 함으로서 데이터프레임을 복사하지 않고 연결가능하며 이에 따라 메모리 절약과 성능 향상의 이점이 있다.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># NDFrame</span>
 <span class="token comment"># pd.Series : 1차원 배열</span>
 <span class="token comment"># pd.DataFrame : 2차원 데이터 구조</span>
@@ -274,9 +267,9 @@
     copy<span class="token punctuation">:</span> <span class="token builtin">bool</span> <span class="token operator">|</span> <span class="token boolean">None</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span>
 <span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> DataFrame <span class="token operator">|</span> Series<span class="token punctuation">:</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="pandas-DataFrame-from-dict-활용하기"><a href="#pandas-DataFrame-from-dict-활용하기" class="headerlink" title="pandas.DataFrame.from_dict() 활용하기"></a>pandas.DataFrame.from_dict() 활용하기</h2><p>기존에 주로 사용하던 pandas.DataFrame.append() 함수를 쓰지 않으려고 하다보니 한 가지 불편한 문제가 생겼다. kafka에서 받은 하나의 row를 데이터프레임에 추가하려고 하다 보니 append()에 아규먼트로 딕셔너리를 스키마에 맞게 바로 넣어주면 데이터를 바로 추가할 수 있었던 그러한 이점을 활용 못하게 되었다. 왜냐하면 concat() 함수는 결합 대상을 dict가 아닌 Series or DataFrame objects의 sequence를 받기 때문에 중간에 dict를 데이터프레임으로 변환하는 과정이 필요하다.</p>
-<p>물론 주의를 주는 append() 함수를 쓰더라도 딕셔너리 객체 하나를 삽입하기 때문에, copy 하는 데 큰 메모리가 들지 않겠지만 그래도 향후 deprecated 될 가능성이 있고, 코드 상의 통일성을 맞추기 위해 앞으로는 concat() 함수를 사용하기로 하였다.</p>
-<p>그럼 하나의 데이터프레임에 하나의 딕셔너리 객체를 추가하려면 어떤 함수를 사용해야 할까? 그 때 사용하기 좋은 함수가 바로 pandas.DataFrame.from_dict() 이다. 이름에 걸맞게 딕셔너리를 dataframe으로 변환해주는 함수이다. DataFrame 클래스의 클래스메서드이며, 필수 파라미터로 data에 key : value인 딕셔너리 객체를 넣어준다.</p>
+<h2 id="pandas-DataFrame-from-dict-활용"><a href="#pandas-DataFrame-from-dict-활용" class="headerlink" title="pandas.DataFrame.from_dict() 활용"></a>pandas.DataFrame.from_dict() 활용</h2><p>기존에 주로 사용하던 <code>pandas.DataFrame.append()</code> 함수를 쓰지 않으려고 하다보니 한 가지 불편한 문제가 생겼다. kafka에서 받은 하나의 row를 데이터프레임에 추가하려고 하다 보니 <code>append()</code>에 argument로 딕셔너리를 스키마에 맞게 바로 넣어주면 데이터를 바로 추가할 수 있었던 그러한 이점을 활용 못하게 되었다. 왜냐하면 concat() 함수는 결합 대상을 dict가 아닌 Series or DataFrame objects의 sequence를 받기 때문에 중간에 dict를 데이터프레임으로 변환하는 과정이 필요하다.</p>
+<p>물론 주의를 주는 append() 함수를 쓰더라도 딕셔너리 객체 하나를 삽입하기 때문에, copy 하는 데 큰 메모리가 들지 않겠지만 그래도 향후 deprecated 될 가능성이 있고, 코드 상의 통일성을 맞추기 위해 concat() 함수를 사용했다.</p>
+<p>그럼 하나의 데이터프레임에 하나의 딕셔너리 객체를 추가하려면 어떤 함수를 사용해야 할까? 그 때 사용하기 좋은 함수가 바로 <code>pandas.DataFrame.from_dict()</code> 이다. 이름에 걸맞게 딕셔너리를 dataframe으로 변환해주는 함수이다. DataFrame 클래스의 클래스메서드이며, 필수 파라미터로 data에 key와 value로 구성된 딕셔너리 객체를 넣어준다.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token decorator annotation punctuation">@classmethod</span>
 <span class="token keyword">def</span> <span class="token function">from_dict</span><span class="token punctuation">(</span>
     cls<span class="token punctuation">,</span>
@@ -464,12 +457,12 @@ result <span class="token operator">=</span> pd<span class="token punctuation">.
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2022/01/01/Python/sqlalchemy-delete/">
+                <a href="/2022/01/01/Python/env-setting/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/python-logo.png" class="responsive-img" alt="SQLAlchemy 세션 함수 이용하기">
+                        <img src="/images/logos/python-logo.png" class="responsive-img" alt="파이썬 환경 구축 (Anaconda, Pip, Juptyer, Tensorflow)">
                         
-                        <span class="card-title diy-neon-red">SQLAlchemy 세션 함수 이용하기</span>
+                        <span class="card-title diy-neon-red">파이썬 환경 구축 (Anaconda, Pip, Juptyer, Tensorflow)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -504,28 +497,32 @@ result <span class="token operator">=</span> pd<span class="token punctuation">.
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/1996/01/19/Carrer/side-project/">
+                <a href="/2022/01/01/Python/sqlalchemy-delete/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/life-logo.jpg" class="responsive-img" alt="[Toy] Dimension Modeling + Hadoop + Hive + Kudu + Trino + DBT">
+                        <img src="/images/logos/python-logo.png" class="responsive-img" alt="SQLAlchemy 세션 함수 이용하기">
                         
-                        <span class="card-title diy-neon-red">[Toy] Dimension Modeling + Hadoop + Hive + Kudu + Trino + DBT</span>
+                        <span class="card-title diy-neon-red">SQLAlchemy 세션 함수 이용하기</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            Python
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>1996-01-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-01
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Keyhong
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Python/" class="post-category">
+                                    Python
+                                </a>
+                            
                             
                         </span>
                     </div>
