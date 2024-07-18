@@ -239,67 +239,112 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Datahub-정의"><a href="#Datahub-정의" class="headerlink" title="Datahub 정의"></a>Datahub 정의</h2><blockquote>
-<p>DataHub는 <code>메타데이터 관리</code>, <code>데이터 검색</code> 및 <code>데이터 거버넌스</code>를 간소화하도록 설계된 최신 데이터 카탈로그이다. 이를 통해 사용자는 데이터를 효율적으로 탐색 및 이해하고, <code>데이터 계보(lineage)</code>를 추적하고, 데이터 세트를 <code>프로파일링(profiling)</code>하고, 데이터 계약을 설정할 수 있다. 이 확장 가능한 메타데이터 관리 플랫폼은 개발자가 빠르게 진화하는 데이터 생태계의 복잡성을 관리하고 데이터 실무자가 조직 내에서 데이터의 총 가치를 활용할 수 있도록 구축 되었다.</p>
+                <h2 id="Datahub"><a href="#Datahub" class="headerlink" title="Datahub"></a>Datahub</h2><blockquote>
+<p><code>메타데이터 관리</code>, <code>데이터 검색</code> 및 <code>데이터 거버넌스</code>를 간소화하도록 설계된 최신 데이터 카탈로그</p>
 </blockquote>
-<h2 id="Quickstart"><a href="#Quickstart" class="headerlink" title="Quickstart"></a>Quickstart</h2><h3 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h3><p><code>Python 3.8+    </code> 설치되어야 한다. (Check using python3 –version).</p>
-<h3 id="Docker-Resource-Allocation"><a href="#Docker-Resource-Allocation" class="headerlink" title="Docker Resource Allocation"></a>Docker Resource Allocation</h3><ul>
-<li>Docker 엔진에 충분한 하드웨어 리소스를 할당이 필요하다.</li>
-<li>테스트 및 확인된 구성: <code>CPU 2개</code>, <code>RAM 8GB</code>, <code>스왑 영역 2GB</code>, <code>디스크 공간 10GB</code>.</li>
+<p>사용자는 <code>(1) 데이터의 효율적으로 탐색 및 이해</code>하고, <code>(2) 데이터 계보(lineage) 추적</code>하고, <code>(3) 데이터 프로파일링(profiling)</code>하고, <code>(4) 데이터 계약 설정</code>이 가능. 메타데이터 관리 플랫폼은 사용자들이 빠르게 변화하는 데이터의 복잡성을 관리하고 전사적으로 관리되는 데이터의 가치를 활용할 수 있도록 구축 되었다.</p>
+<h2 id="Quickstart"><a href="#Quickstart" class="headerlink" title="Quickstart"></a>Quickstart</h2><blockquote>
+<p><code>데이터허브에서 제공하는 Quickstart를 이용하면 로컬에서도 바로 테스트 환경을 만들 수 있다.</code> 물론, DBMS에서 데이터를 주입을 테스트해보려면 도커 컨테이너를 추가로 올려야 한다. </p>
+</blockquote>
+<h3 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h3><p><code>Python 3.8+</code> 설치되어야 한다. (Check using python3 –version).</p>
+<h3 id="Resource-Allocation"><a href="#Resource-Allocation" class="headerlink" title="Resource Allocation"></a>Resource Allocation</h3><ul>
+<li><p>프로덕션에서는 kubernetes 환경 위에서 helm으로 구동하는 것을 권장</p>
+</li>
+<li><p>테스트 환경을 위한 로컬에서도 구동할 수 있으며, Docker 엔진에 충분한 하드웨어 리소스를 할당이 필요 <br>(<code>CPU 2개</code>, <code>RAM 8GB</code>, <code>스왑 영역 2GB</code>, <code>디스크 공간 10GB</code>)</p>
+</li>
 </ul>
-<h3 id="Install-the-DataHub-CLI"><a href="#Install-the-DataHub-CLI" class="headerlink" title="Install the DataHub CLI"></a>Install the DataHub CLI</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># poetry 패키지 추가 (acryl-datahub)</span>
+<h3 id="Install-the-DataHub-CLI"><a href="#Install-the-DataHub-CLI" class="headerlink" title="Install the DataHub CLI"></a>Install the DataHub CLI</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="https://datahubproject.io/docs/quickstart/#install-the-datahub-cli">공식문서</a>에서는 pip과 poetry 두 개의 설치 방법을 알려주지만, <code>최근 파이썬 오픈소스 프로젝트들이 빌드시스템을 poetry로 전향</code>하고 있어 여기서는 poetry를 사용했다.</p>
+</blockquote>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># acryl-datahub 패키지 추가</span>
 $ poetry <span class="token function">add</span> acryl-datahub
 
-<span class="token comment"># poetry shell 실행 (가상환경 실행)</span>
+<span class="token comment"># poetry shell (가상환경 실행)</span>
 $ poetry shell
 
-<span class="token comment"># datahub 버전 확인</span>
+<span class="token comment"># datahub 설치 확인</span>
 $ datahub version
-acryl-datahub, version <span class="token number">0.13</span>.3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token operator">></span> acryl-datahub, version <span class="token number">0.13</span>.3
 
-<h3 id="DataHub-Quickstart-Stop-DataHub"><a href="#DataHub-Quickstart-Stop-DataHub" class="headerlink" title="DataHub Quickstart &amp; Stop DataHub"></a>DataHub Quickstart &amp; Stop DataHub</h3><p><strong>Note</strong>: <code>맥 M1/M2</code>과 같이 Apple Silicon이 탑재된 Mac 컴퓨터에서는 <code>no matching manifest for linux/arm64/v8 in the manifest list entries.</code> 오류가 나타날 수 있다. 이 문제를 해결하려면 CLI에 옵션을 <code>--arch</code> 옵션을 실행하여 기본 아키텍처를 재정의 해야 한다.</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Start DataHub</span>
+<span class="token comment"># datahub 시작</span>
+<span class="token comment"># 맥 M1/M2과 같은 Apple Silicon에서는 `no matching manifest for linux/arm64/v8 in the manifest list entries.` 오류가 나타날 수 있다.</span>
+<span class="token comment"># 이 문제를 해결하려면 `datahub docker quickstart`에 옵션을 `--arch` 옵션을 실행하여 기본 아키텍처를 재정의 해야 한다.</span>
 $ datahub <span class="token function">docker</span> quickstart
 
-<span class="token comment"># Start DataHub (m1 silicon)</span>
-$ datahub <span class="token function">docker</span> quickstart <span class="token parameter variable">--arch</span> m1
-
-<span class="token comment"># Stop datahub </span>
-$ datahub <span class="token function">docker</span> quickstart <span class="token parameter variable">--stop</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="Open-Web-UI"><a href="#Open-Web-UI" class="headerlink" title="Open Web UI"></a>Open Web UI</h3><table>
-<thead>
-<tr>
-<th>Web UI Host</th>
-<th>Username</th>
-<th>Password</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><a target="_blank" rel="noopener" href="http://localhost:9002/">http://localhost:9002</a></td>
-<td>datahub</td>
-<td>datahub</td>
-</tr>
-</tbody></table>
-<h3 id="Sample-data-Ingestion"><a href="#Sample-data-Ingestion" class="headerlink" title="Sample data Ingestion"></a>Sample data Ingestion</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ datahub <span class="token function">docker</span> ingest-sample-data<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h3 id="basic-cli-commands"><a href="#basic-cli-commands" class="headerlink" title="basic cli commands"></a>basic cli commands</h3><h4 id="Reset-Datahub"><a href="#Reset-Datahub" class="headerlink" title="Reset Datahub"></a>Reset Datahub</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># datahub의 모든 상태를 초기화하려면(예: 데이터를 ingestion 하기 전에) CLI의 nuke 명령어를 사용할 수 있다.</span>
-$ datahub <span class="token function">docker</span> nuke<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<h4 id="Customize-installation"><a href="#Customize-installation" class="headerlink" title="Customize installation"></a>Customize installation</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 사용자 정의 docker compose 파일을 사용하려는 경우</span>
-$ datahub <span class="token function">docker</span> quickstart --quickstart-compose-file <span class="token operator">&lt;</span>path to compose file<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<h4 id="Back-up-DataHub-Restore-DataHub"><a href="#Back-up-DataHub-Restore-DataHub" class="headerlink" title="Back up DataHub &amp; Restore DataHub"></a>Back up DataHub &amp; Restore DataHub</h4><p>quickstart 이미지는 프로덕션 인스턴스로 사용하지 않는 것이 좋다. 그러나 현재 빠른 시작 상태를 백업하려는 경우(예: 곧 회사에 대한 데모가 있고 나중에 복원할 수 있도록 빠른 시작 데이터의 복사본을 만들고 싶은 경우) 빠른 시작에 <code>--backup</code> 플래그를 제공한다.</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Back up (default)</span>
-datahub <span class="token function">docker</span> quickstart <span class="token parameter variable">--backup</span>
-
-<span class="token comment"># Back up to custom directory</span>
-datahub <span class="token function">docker</span> quickstart <span class="token parameter variable">--backup</span> --backup-file <span class="token operator">&lt;</span>path to backup file<span class="token operator">></span>
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment"># datahub 중지</span>
+$ datahub <span class="token function">docker</span> quickstart <span class="token parameter variable">--stop</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
+<h3 id="Frontend-Web-UI"><a href="#Frontend-Web-UI" class="headerlink" title="Frontend Web UI"></a>Frontend Web UI</h3><blockquote>
+<p>데이터허브 사용자들이 메타 정보를 검색, 용어 사전 등록, 데이터 주입 스케줄링이 가능한 <code>유저 웹 인터페이스</code></p>
+</blockquote>
+<p>서비스 포트는 <code>9002</code>를 사용한다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128837&authkey=%21AOfRuF2u1gK1QT4&width=3250&height=2250" width="3250" height="2250" alt="Frontend Main Page"/>
 
+<h3 id="Data-Ingestion"><a href="#Data-Ingestion" class="headerlink" title="Data Ingestion"></a>Data Ingestion</h3><blockquote>
+<p>여러 데이터베이스 소스로부터 <code>메타 정보를 모아 메타 관리 시스템인 데이터허브로 주입</code>하는 과정</p>
+</blockquote>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128838&authkey=%21AH3Bvqc62NpxJIc&width=3250&height=2250" width="3250" height="2250" alt="Data Ingestion"/>
+
+<p>데이터를 주입하는 방법은 크게 두 가지가 있다.</p>
+<ul>
+<li><p><code>데이터허브 Frontend Web에서 데이터 소스에 대한 정보를 직접 입력</code>하는 방법</p>
+<ul>
+<li><p>클릭 몇 번만으로 소스 연결 설정, 주입 옵션 설정이 간편하다.</p>
+</li>
+<li><p>메타 데이터를 소싱할 스케줄링을 만들 수 있다. (예: 일별 **시 **분).</p>
+</li>
+<li><p>배치 스케줄링이 끝난 후 <code>트리거를 거는 연계가 어려운 단점</code>이 있다.</p>
+</li>
+</ul>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://datahubproject.io/docs/metadata-ingestion/recipe_overview/">Recipes</a><code>를 API나 CLI로 주입</code>하는 방법</p>
+<ul>
+<li><p>CLI를 사용하는 것은 datahub-actions 프로세스가 구동된 서버에서만 가능하다.</p>
+</li>
+<li><p>일반적으로 스케줄링(예: 에어플로우)와 연계해서 사용하기 때문에 데이터허브 API를 통해 직접 주입하는 방법을 많이 사용하고 있다. <code>외부에서 API를 호출하려면 토큰을 발급받아 인증해야 한다.</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="API로-Data-Ingestion하는-예시"><a href="#API로-Data-Ingestion하는-예시" class="headerlink" title="API로 Data Ingestion하는 예시"></a>API로 Data Ingestion하는 예시</h4><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>my-recipes-example.yaml</span></div><code class="language-yaml"><span class="token comment"># The simplest recipe that pulls metadata from mariadb and puts it into DataHub</span>
+<span class="token comment"># using the Rest API.</span>
+<span class="token key atrule">source</span><span class="token punctuation">:</span>
+  <span class="token key atrule">type</span><span class="token punctuation">:</span> mariadb
+  <span class="token key atrule">config</span><span class="token punctuation">:</span>
+    <span class="token key atrule">host_port</span><span class="token punctuation">:</span> <span class="token string">'localhost:3306'</span>
+    <span class="token key atrule">database</span><span class="token punctuation">:</span> test_schema
+    <span class="token key atrule">username</span><span class="token punctuation">:</span> root
+    <span class="token key atrule">include_views</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+    <span class="token key atrule">include_tables</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+    <span class="token key atrule">profiling</span><span class="token punctuation">:</span>
+        <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+        <span class="token key atrule">profile_table_level_only</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+    <span class="token key atrule">password</span><span class="token punctuation">:</span> root
+<span class="token comment"># sink section omitted as we want to use the default datahub-rest sink</span>
+<span class="token key atrule">sink</span><span class="token punctuation">:</span>
+  <span class="token key atrule">type</span><span class="token punctuation">:</span> datahub<span class="token punctuation">-</span>rest
+  <span class="token key atrule">config</span><span class="token punctuation">:</span>
+    <span class="token key atrule">server</span><span class="token punctuation">:</span> <span class="token string">"http://localhost:8080"</span>
+    <span class="token key atrule">token</span><span class="token punctuation">:</span> <span class="token string">"eyJhbGciOiJIUzI1NiJ9.eyJhY3RvclR5cGUiOiJVU0VSIiwiYWN0b3JJZCI6ImRhdGFodWIiLCJ0eXBlIjoiUEVSU09OQUwiLCJ2ZXJzaW9uIjoiMiIsImp0aSI6IjE2MGViYjhlLTNkM2ItNDNlYi05OWIyLTI3YzI5NDg0OWNhZCIsInN1YiI6ImRhdGFodWIiLCJleHAiOjE3MjMzNTEwOTEsImlzcyI6ImRhdGFodWItbWV0YWRhdGEtc2VydmljZSJ9.3c8EqGZOoPVmj6mP5pqlzz0rQEO80aJHgvVeKEvrE10"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>recipes을 읽어 API를 호출하는 파이썬 코드</span></div><code class="language-python"><span class="token keyword">from</span> datahub<span class="token punctuation">.</span>configuration<span class="token punctuation">.</span>config_loader <span class="token keyword">import</span> load_config_file
+<span class="token keyword">from</span> datahub<span class="token punctuation">.</span>ingestion<span class="token punctuation">.</span>run<span class="token punctuation">.</span>pipeline <span class="token keyword">import</span> Pipeline
+
+<span class="token keyword">def</span> <span class="token function">datahub_recipe</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># Note that this will also resolve environment variables in the recipe.</span>
+    config <span class="token operator">=</span> load_config_file<span class="token punctuation">(</span><span class="token string">"./recipes.yaml"</span><span class="token punctuation">)</span>
+
+    pipeline <span class="token operator">=</span> Pipeline<span class="token punctuation">.</span>create<span class="token punctuation">(</span>config<span class="token punctuation">)</span>
+    pipeline<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    pipeline<span class="token punctuation">.</span>raise_from_status<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+datahub_recipe<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+<h2 id="Datahub-Architecture"><a href="#Datahub-Architecture" class="headerlink" title="Datahub Architecture"></a>Datahub Architecture</h2><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128839&authkey=%21APgVDq-Cmx-AIwc&width=3250&height=2250" width="3250" height="2250" />
 
 <h2 id="Datahub-Component"><a href="#Datahub-Component" class="headerlink" title="Datahub Component"></a>Datahub Component</h2><h3 id="프로세스-디펜던시"><a href="#프로세스-디펜던시" class="headerlink" title="프로세스 디펜던시"></a>프로세스 디펜던시</h3><p>띄어지는 프로세스가 많아 DAG로 디펜던시(dependency)의 순서를 표시해보았다.</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">elasticsearch              <span class="token operator">>></span> elasticsearch-setup  <span class="token operator">>></span>  datahub-upgrade  <span class="token operator">>></span>  datahub-gms  <span class="token operator">>></span>  <span class="token punctuation">[</span> datahub-actions, datahub-frontend-react <span class="token punctuation">]</span>

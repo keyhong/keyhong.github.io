@@ -1,0 +1,833 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="About Great Expectations OSSGreat Expectations는 데이터를 검증하고 문서화하는 데 있어 최고의 도구입니다. 시작할 준비가 되었다면, Quickstart를 참고하세요.
+소프트웨어 개">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Keyhong</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span diy-happy-monkey">Keyhong</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <!-- <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li> -->
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Keyhong</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpeg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title diy-neon-red">
+                        </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                        <div class="article-tag">
+                            <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                                <span class="chip bg-color">
+                                    2024-07-18</span>
+                        </div>
+                    
+                    
+
+
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="About-Great-Expectations-OSS"><a href="#About-Great-Expectations-OSS" class="headerlink" title="About Great Expectations OSS"></a>About Great Expectations OSS</h1><p>Great Expectations는 데이터를 <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/reference/learn/terms/validation">검증</a>하고 <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/reference/learn/terms/data_docs">문서화</a>하는 데 있어 최고의 도구입니다. 시작할 준비가 되었다면, <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/oss/tutorials/quickstart">Quickstart</a>를 참고하세요.</p>
+<p>소프트웨어 개발자들은 자동화된 테스트가 복잡한 코드베이스를 관리하는 데 필수적이라는 것을 오래전부터 알고 있었습니다. Great Expectations는 동일한 원칙, 자신감, 그리고 가속을 데이터 과학 및 데이터 엔지니어링 팀에게 제공합니다.</p>
+<h2 id="Why-use-Great-Expectations"><a href="#Why-use-Great-Expectations" class="headerlink" title="Why use Great Expectations?"></a>Why use Great Expectations?</h2><p>Great Expectations를 사용하면 로드하고 변환하는 데이터에 대해 기대하는 바를 명시할 수 있으며, 데이터 문제를 빠르게 잡아낼 수 있습니다 – Expectations는 기본적으로 데이터에 대한 유닛 테스트입니다. 뿐만 아니라, Great Expectations는 이러한 Expectations를 기반으로 데이터 문서화 및 데이터 품질 보고서도 생성합니다. 데이터 과학 및 데이터 엔지니어링 팀은 Great Expectations를 다음과 같은 용도로 사용합니다:</p>
+<ul>
+<li><p>다른 팀이나 벤더로부터 받은 데이터를 테스트하고 그 유효성을 보장합니다.</p>
+</li>
+<li><p>데이터 파이프라인의 단계로서 변환된 데이터를 검증하여 변환의 정확성을 보장합니다.</p>
+</li>
+<li><p>데이터 품질 문제가 데이터 제품으로 유입되는 것을 방지합니다.</p>
+</li>
+<li><p>전문가로부터 지식을 효율적으로 수집하고, 암묵적인 지식을 명시적으로 만듭니다.</p>
+</li>
+<li><p>풍부하고 공유 가능한 데이터 문서를 개발합니다.</p>
+</li>
+</ul>
+<p>데이터 팀이 Great Expectations를 어떻게 사용하는지 더 알고 싶다면, <a target="_blank" rel="noopener" href="https://greatexpectations.io/case-studies/">Great Expectations의 사례 연구</a>를 참고하세요.</p>
+<h2 id="Key-Features"><a href="#Key-Features" class="headerlink" title="Key Features"></a>Key Features</h2><h3 id="Expectations"><a href="#Expectations" class="headerlink" title="Expectations"></a>Expectations</h3><p>Expectations는 데이터에 대한 단언입니다. Great Expectations에서는 이러한 단언이 간단하고 사람이 읽기 쉬운 Python 메서드 형태로 선언적 언어로 표현됩니다. 예를 들어, “passenger_count” 열이 1에서 6 사이의 값을 가지기를 원한다는 것을 단언하려면 다음과 같이 작성할 수 있습니다:</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">expect_column_values_to_be_between<span class="token punctuation">(</span>
+    column<span class="token operator">=</span><span class="token string">"passenger_count"</span><span class="token punctuation">,</span>
+    min_value<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span>
+    max_value<span class="token operator">=</span><span class="token number">6</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>그런 다음 Great Expectations는 이 명령문을 사용하여 주어진 테이블의 passenger_count 열이 실제로 1에서 6 사이에 있는지 검증하고, 성공 또는 실패 결과를 반환합니다. 이 라이브러리는 현재 수십 가지의 매우 표현력 있는 내장 Expectations를 제공하며, 사용자 정의 Expectations를 작성할 수도 있습니다.</p>
+<h3 id="Data-validation"><a href="#Data-validation" class="headerlink" title="Data validation"></a>Data validation</h3><p>Expectations를 생성한 후, Great Expectations는 데이터를 일괄로 불러와서 해당 Expectations 모음으로 검증할 수 있습니다. Great Expectations는 Expectation Suite 내의 각 Expectation이 통과했는지 실패했는지를 알려주고, 테스트에 실패한 예기치 않은 값을 반환하여 데이터 문제 디버깅을 크게 가속화할 수 있습니다!</p>
+<h3 id="Data-Docs"><a href="#Data-Docs" class="headerlink" title="Data Docs"></a>Data Docs</h3><p>Great Expectations는 Expectations를 깨끗하고 사람이 읽기 쉬운 형식인 Data Docs로 렌더링합니다. 이 HTML 문서에는 검증이 실행될 때마다 Expectation Suites와 데이터 검증 결과가 모두 포함됩니다 – 이를 지속적으로 업데이트되는 데이터 품질 보고서로 생각하세요. 다음 이미지는 샘플 Data Doc을 보여줍니다:</p>
+<h3 id="Support-for-various-Data-Sources-and-Store-backends"><a href="#Support-for-various-Data-Sources-and-Store-backends" class="headerlink" title="Support for various Data Sources and Store backends"></a>Support for various Data Sources and Store backends</h3><p>Great Expectations는 현재 Pandas 데이터프레임, Spark 데이터프레임, SQLAlchemy를 통한 SQL 데이터베이스와 같은 다양한 데이터 소스에 대해 Expectations를 네이티브로 실행하는 것을 지원합니다.</p>
+<p>이는 데이터를 검증하기 위해 데이터베이스에 데이터를 저장할 필요가 없다는 것을 의미합니다: CSV 파일이나 데이터프레임에 로드할 수 있는 모든 데이터에 대해 Great Expectations를 실행할 수 있습니다.</p>
+<p>Great Expectations는 매우 구성 가능성이 높습니다.</p>
+<p>메타데이터 스토어를 구성하여 Expectations 및 검증 결과와 같은 모든 관련 메타데이터를 파일 시스템, 데이터베이스 백엔드, S3 및 Google Cloud Storage와 같은 클라우드 스토리지에 저장할 수 있습니다.</p>
+<h2 id="What-does-Great-Expectations-NOT-do"><a href="#What-does-Great-Expectations-NOT-do" class="headerlink" title="What does Great Expectations NOT do?"></a>What does Great Expectations NOT do?</h2><p>Great Expectations는 파이프라인 실행 프레임워크가 아닙니다.</p>
+<p>Great Expectations는 [Airflow], [dbt], [Prefect], [Dagster], [Kedro와] 같은 DAG 실행 도구와 원활하게 통합됩니다. Great Expectations는 파이프라인을 대신 실행하지 않습니다. 대신, 검증을 파이프라인의 한 단계로 실행할 수 있습니다.</p>
+<p>Great Expectations는 데이터 버전 관리 도구가 아닙니다.</p>
+<p>Great Expectations는 데이터를 자체적으로 저장하지 않습니다. 대신, 데이터에 대한 메타데이터(예: Expectations, 검증 결과 등)를 다룹니다. 데이터 자체를 버전 관리하려면 [DVC], [Quilt], [lakeFS]와 같은 도구를 확인하세요.</p>
+<p>Great Expectations는 현재 Python 환경에서 가장 잘 작동합니다.</p>
+<p>Great Expectations는 Python 기반입니다. Python 프로그래밍 환경을 사용하지 않고도 커맨드 라인에서 호출할 수 있지만, 다른 생태계에서 작업 중이라면 다른 도구가 더 나은 선택일 수 있습니다. 순수한 R 환경에서 실행 중이라면 대안으로 [assertR]을 고려할 수 있습니다. TensorFlow 생태계 내에서는 [TFDV]가 Great Expectations와 유사한 기능을 수행합니다.</p>
+<h2 id="Community-Resources"><a href="#Community-Resources" class="headerlink" title="Community Resources"></a>Community Resources</h2><p>Great Expectations는 Great Expectations 커뮤니티를 지원하고 성장시키는 데 전념하고 있습니다. 훌륭한 도구를 만드는 것만으로는 충분하지 않습니다. Great Expectations는 훌륭한 커뮤니티도 구축하고자 합니다.</p>
+<p>오픈 소스가 항상 친근하고 환영받는다는 평판을 가지고 있는 것은 아니며, 이는 우리를 슬프게 합니다. 모두가 오픈 소스에 속하며, Great Expectations는 여러분이 환영받는다고 느낄 수 있도록 노력하고 있습니다.</p>
+<h3 id="Contact-Great-Expectations"><a href="#Contact-Great-Expectations" class="headerlink" title="Contact Great Expectations"></a>Contact Great Expectations</h3><p>Great Expectations의 <a href="">공개 Slack 채널</a>에 참여하세요. 처음 게시하기 전에 <a href="">Slack 가이드라인</a>을 검토하세요.</p>
+<h3 id="Ask-a-question"><a href="#Ask-a-question" class="headerlink" title="Ask a question"></a>Ask a question</h3><p>Slack도 그에 적합합니다: [Slack에 가입]하고 <a href="">Slack에서 좋은 질문을 작성하는 방법</a>을 읽어보세요. <a href="">GitHub Discussions</a>도 사용할 수 있습니다.</p>
+<h3 id="File-a-bug-report-or-feature-request"><a href="#File-a-bug-report-or-feature-request" class="headerlink" title="File a bug report or feature request"></a>File a bug report or feature request</h3><p>버그 보고서 또는 기능 요청 제출</p>
+<p>버그 수정 또는 기능 요청이 있는 경우 <a href="">기존 이슈에 투표</a>하거나 <a href="">새로운 이슈</a>를 열어보세요.</p>
+<h3 id="Contribute-code-or-documentation"><a href="#Contribute-code-or-documentation" class="headerlink" title="Contribute code or documentation"></a>Contribute code or documentation</h3><p>Great Expectations에 기여하려면 <a href="">Contribute</a>를 참고하세요.</p>
+<h3 id="Not-interested-in-managing-your-own-configuration-or-infrastructure"><a href="#Not-interested-in-managing-your-own-configuration-or-infrastructure" class="headerlink" title="Not interested in managing your own configuration or infrastructure?"></a>Not interested in managing your own configuration or infrastructure?</h3><p>완전히 관리되는 SaaS 제공 서비스인 Great Expectations Cloud에 대해 자세히 알아보세요.</p>
+<p>주간 클라우드 워크숍에 등록하세요!</p>
+<p>최신 기능을 미리 보고 비공개 알파 프로그램에 참여할 수 있습니다!</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Gyuwon Hong</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2024/07/18/Data%20Quality/Docs/About%20GX%20OSS/">http://example.com/2024/07/18/Data%20Quality/Docs/About%20GX%20OSS/</a>
+                </span>
+            </div>
+            <!-- <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        reprint:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    use
+                    <a href="cc_by_url" rel="external nofollow noreferrer" target="_blank">cc_by_name</a>
+                    licensed
+                    <a href="/about" target="_blank">Gyuwon Hong</a>
+                    !
+                </span>
+            </div> -->
+        
+    </div>
+
+    <!-- <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script> -->
+
+
+
+            <div class="tag_share" style="display: block;">
+                <!-- <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                        </div>
+                    
+                </div> -->
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <!-- <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a> -->
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2024/07/18/Data%20Quality/Docs/Get%20started%20with%20GX%20OSS/GX%20Overview/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpeg" class="responsive-img" alt="">
+                        
+                        <span class="card-title diy-neon-red"></span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-07-18
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Gyuwon Hong
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/07/01/Data%20Analysis/a/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/data-analysis.jpg" class="responsive-img" alt="리텐션/퍼널 분석">
+                        
+                        <span class="card-title diy-neon-red">리텐션/퍼널 분석</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Data Analysis
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-07-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Keyhong
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;목차</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2024</span>
+            
+            <a href="/about" target="_blank">Gyuwon Hong</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+            
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+    <a href="https://github.com/keyhong" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:wnhong96@gmail.com" class="tooltipped" target="_blank" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- Back to Top Button -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
