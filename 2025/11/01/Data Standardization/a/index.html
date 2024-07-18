@@ -176,7 +176,7 @@
 
     
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/data-architect-logo.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/data-architecture-logo.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -242,13 +242,7 @@
                 <h2 id="표준화"><a href="#표준화" class="headerlink" title="표준화"></a>표준화</h2><blockquote>
 <p>코드, 용어, 데이터 도메인, 메타데이터 등의 표준을 수립하여 공공데이터베이스에 일관되게 적용하는 일련의 활동</p>
 </blockquote>
-<h3 id="표준-용어"><a href="#표준-용어" class="headerlink" title="표준 용어"></a>표준 용어</h3><blockquote>
-<p>데이터 사용자간 명확한 의사소통을 지원하기 위해 각 공공기관에서 업무적으로 사용하고 있는 단어 및 단어의 조합으로 구성되는 용어의 표준을 정의한 것</p>
-</blockquote>
-<h3 id="공통-표준-용어"><a href="#공통-표준-용어" class="headerlink" title="공통 표준 용어"></a>공통 표준 용어</h3><blockquote>
-<p>행정안전부 장관이 정하여 공공기관들의 업무 및 데이터베이스에 공동 활용하는 표준 용어</p>
-</blockquote>
-<h2 id="데이터-표준화의-목적"><a href="#데이터-표준화의-목적" class="headerlink" title="데이터 표준화의 목적"></a>데이터 표준화의 목적</h2><ul>
+<h2 id="데이터-표준화의-이해"><a href="#데이터-표준화의-이해" class="headerlink" title="데이터 표준화의 이해"></a>데이터 표준화의 이해</h2><h3 id="데이터-표준화의-목적"><a href="#데이터-표준화의-목적" class="headerlink" title="데이터 표준화의 목적"></a>데이터 표준화의 목적</h3><ul>
 <li>데이터 표준화는 <code>누구나 같은 의미로 이해하고 같은 방법으로 사용</code>할 수 있는 기준을 정의함으로서 정확한 정보의 유통 및 활용을 목적으로 한다.</li>
 </ul>
 <table>
@@ -279,7 +273,7 @@
 <td>- 데이터 타입 <br> - 데이터 길이 <br> - 기본 값 <br> - 제약조건 <br> - 값의 범위 <br> - 단위</td>
 </tr>
 </tbody></table>
-<h2 id="데이터-표준화-구성요소"><a href="#데이터-표준화-구성요소" class="headerlink" title="데이터 표준화 구성요소"></a>데이터 표준화 구성요소</h2><table>
+<h3 id="데이터-표준화-구성요소"><a href="#데이터-표준화-구성요소" class="headerlink" title="데이터 표준화 구성요소"></a>데이터 표준화 구성요소</h3><table>
 <thead>
 <tr>
 <th>구성요소</th>
@@ -303,7 +297,7 @@
 <td>- 데이터 표준 사전 정보 관리, 데이터 모델 형상 정보 관리, 데이터베이스 형상 정보 관리 <br> - 데이터 영향도 분석</td>
 </tr>
 </tbody></table>
-<h2 id="문제점-및-개선-효과"><a href="#문제점-및-개선-효과" class="headerlink" title="문제점 및 개선 효과"></a>문제점 및 개선 효과</h2><table>
+<h3 id="문제점-및-개선-효과"><a href="#문제점-및-개선-효과" class="headerlink" title="문제점 및 개선 효과"></a>문제점 및 개선 효과</h3><table>
 <thead>
 <tr>
 <th>현재 데이터 운영 문제</th>
@@ -335,6 +329,147 @@
 <td>모든 사람들이 항상 최근 자료를 참조하고 있다. 테이블 목록, 테이블 정의서, 코드 명세서와 같은 문서가 사라진다.</td>
 </tr>
 </tbody></table>
+<h2 id="표준화-수행-방법"><a href="#표준화-수행-방법" class="headerlink" title="표준화 수행 방법"></a>표준화 수행 방법</h2><h3 id="표준화-지침-마련"><a href="#표준화-지침-마련" class="headerlink" title="표준화 지침 마련"></a>표준화 지침 마련</h3><blockquote>
+<p>전사 차원의 데이터 표준화에 대한 정책을 수립하여 회사의 방향을 직원 간 공유하는 지침. 데이터 표준 원칙, 범위, 생성 규칙, 절차, 관리 양식 등 표준 관리 기준에 대한 상세한 가이드를 관련 부서와 협의하여 정의</p>
+</blockquote>
+<h4 id="주요-지침-구성"><a href="#주요-지침-구성" class="headerlink" title="주요 지침 구성"></a>주요 지침 구성</h4><table>
+<thead>
+<tr>
+<th>주요 지침 구성</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>데이터 표준화 목적</td>
+<td>- 프로젝트 개발, 유지보수 대상 오브젝트들에 대하여 <code>명확한 명칭부여 기준</code>을 정함으로써 프로그램의 <code>가독성</code>을 향상시키고 <code>일관성을 유지</code>하여 개발자의 <code>생산성 향상</code>과 인터페이스 개선 및 시스템의 <code>품질 향상</code> 등의 목적을 정의</td>
+</tr>
+<tr>
+<td>데이터 표준화 대상</td>
+<td>- 관리 대상 시스템(DB), 범정부 표준 적용 여부 등 <br> - 표준 사전 대상 정의(단어, 용어, 도메인, 코드 등)</td>
+</tr>
+<tr>
+<td>표준화 명명 규칙</td>
+<td>- <code>단어</code>, <code>용어</code>, <code>도메인</code> 생성 명명 규칙 기준 <br> - <code>코드 생성 명명 규칙</code> <br> - <code>각 사전 간의 관계 정의</code></td>
+</tr>
+<tr>
+<td>데이터 관리 조직 및 주요 표준화 프로세스 정의</td>
+<td>- <code>데이터 관리를 위한 조직</code>과 <code>조직 간(DA, 모델러, IT운영, 현업, DBA)</code>의 <code>R&amp;R</code> 정의 <br> - <code>주요 표준화 데이터 생성 및 적용에 대한 운영 프로세스 수립</code> <br> - <code>메타데이터 관리 시스템을 통한 활용 및 관리 프로세스 수립</code></td>
+</tr>
+</tbody></table>
+<h4 id="구성-사례"><a href="#구성-사례" class="headerlink" title="구성 사례"></a>구성 사례</h4><blockquote>
+<p>데이터 관련 조직, 데이터 표준화 개요, 표준 단어, 표준 용어, 표준 도메인, 데이터 오브젝트 명명규칙, 표준화 운영 조직 및 프로세스</p>
+</blockquote>
+<!-- #### 표준 용어
+
+> 데이터 사용자간 명확한 의사소통을 지원하기 위해 각 공공기관에서 업무적으로 사용하고 있는 단어 및 단어의 조합으로 구성되는 용어의 표준을 정의한 것
+
+#### 공통 표준 용어
+
+> 행정안전부 장관이 정하여 공공기관들의 업무 및 데이터베이스에 공동 활용하는 표준 용어 -->
+
+
+
+
+<h3 id="데이터-표준사전-구축"><a href="#데이터-표준사전-구축" class="headerlink" title="데이터 표준사전 구축"></a>데이터 표준사전 구축</h3><blockquote>
+<p>표준 데이터 생성 방안은 기존의 코드 표준과 현행 시스템 데이터 현황을 분석하여 표준 데이터 요소를 정의하고, 정의된 데이터 항목을 승인을 거쳐 데이터 표준으로 정함</p>
+</blockquote>
+<h4 id="표준-데이터-체크-리스트"><a href="#표준-데이터-체크-리스트" class="headerlink" title="표준 데이터 체크 리스트"></a>표준 데이터 체크 리스트</h4><ul>
+<li><p>데이터 요소의 표준 지침에 적합한가?</p>
+</li>
+<li><p>전사적인 코드 표준에 적합한가?</p>
+</li>
+<li><p>동음이의어, 이음동의어?</p>
+</li>
+<li><p>기존의 표준 코드는 반영되었는가?</p>
+</li>
+</ul>
+<blockquote>
+<p>기관에서 사용하고 있는 용어에 대해 모든 구성원들이 유일한 의미로 공유하기 위해 표준 데이터 사전을 생성</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>사전</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>단어 사전</td>
+<td>- 용어를 생성 조립하는 단위로 한글, 영문 정식명, 영문 약어, 단어 설명 <br> - 이음동의어, 동음이의어, 금칙어 정의</td>
+</tr>
+<tr>
+<td>용어 사전</td>
+<td>- 업무 용어: 업무적으로 사용하는 용어에 대한 설명 <br> - 표준 용어: 논리&#x2F;물리 모델에 적용하는 속성&#x2F;컬럼 ID</td>
+</tr>
+<tr>
+<td>도메인 사전</td>
+<td>- 표준 용어에 적용되는 데이터 속성(type, length) 정의 (DBMS별 논리&#x2F;물리 속성 정의) <br> - 데이터 속성 관리를 위한 도메인 유형 정의 (~금액, ~번호, ~코드, ~수, ~일자 …)</td>
+</tr>
+<tr>
+<td>코드 사전</td>
+<td>- 코드컬럼ID는 표준 용어와 같이 정의 됨 <br> - 코드컬럼ID에 코드 허용 값 범위 통합 관리 (계층 구조, 조회하면 콤보박스 Display 기준)</td>
+</tr>
+</tbody></table>
+<h4 id="표준-사전-상세-내용"><a href="#표준-사전-상세-내용" class="headerlink" title="표준 사전 상세 내용"></a>표준 사전 상세 내용</h4><blockquote>
+<p>데이터 표준화를 위해 명확한 분류 기준을 정의하여 각 요소간 일관성을 갖춤</p>
+</blockquote>
+<table>
+  <tr>
+    <th>데이터 사전</th>
+    <th colspan="4">내용</td>
+  </tr>
+  <tr>
+    <td rowspan="6">단어</td>
+    <td colspan="4">테이블과 컬럼의 한글명 및 영문명을 구성하는 최소 원소를 가리키며 용어는 반드시 정의된 단어의 조합으로 구성됨<br>※ 하나의 단어는 동시에 용어이거나 도메인 일 수 있다.</td>
+  </tr>
+  <tr>
+    <td rowspan="2">용어생성 구성분류</td>
+    <td>기본단어</td>
+    <td colspan="2">용어를 구성하는 단어(주제어, 수식어)</td>
+  </tr>
+  <tr>
+    <td>분류단어</td>
+    <td colspan="2"><code>용어를 생성시 최우측에 정의</code> 할 수 있는 도메인성 단어.<br>도메인성 단어: 실제 데이터 값에 대한 형식(type)이나 의미를 유추 할 수 있도록 구성된 단어</td>
+  </tr>
+  <tr>
+    <td rowspan="3">단어사용 유형분류</td>
+    <td>표준단어</td>
+    <td colspan="2">현재 표준단어로 사용이 허용된 단어</td>
+  </tr>
+  <tr>
+    <td rowspan="2">비표준단어</td>
+    <td>동음단어</td>
+    <td>표준단어와 유사한 의미로 정의되어 사용중인 단어(이음동의어)</td>
+  </tr>
+  <tr>
+    <td>금칙단어</td>
+    <td>현재 시점에 사용이 허락되지 않은 단어</td>
+  </tr>
+  <tr>
+    <td>용어</td>
+    <td colspan="6">단어의 조합(의미가 전달 가능한 단독 단어 가능)으로 이루어져 <code>엔터티 속성 및 테이블 컬럼의 명칭</code>으로 사용되는 용어</td>
+  </tr>
+  <tr>
+    <td rowspan="4">도메인</td>
+    <td colspan="6">속성의 일반적인 특징을 나타내는 데이터의 성격을 분류한 것으로 속성이 취할 수 있는 값의 집합<br>예) 코드, 금액, 일자, 수, 내용, 명 등</td>
+  </tr>
+  <tr>
+    <td>도메인 유형<br>(분류)</td>
+    <td colspan="5">도메인 관리를 위해 분류 체계를 구분함<br>예) <code>도메인대분류(명/내용/주소, 수/금액,율, 날짜, 번호, 코드)</code><br>예) <code>도메인소분류(명, 금액, 날짜 일련번호, 여부)</code></td>
+  </tr>    
+  <tr>
+    <td>도메인명<br>(인포타입)</td>
+    <td colspan="5">데이터 타입과 길이를 대표하기 위해 정의한 명칭데이터 논리모델링 또는 표준용어 정의시 DBMS에 종
+속적이지 않고 논리적 의미로 공통 정의된 타입<br>예) 금액N13, 내용V2000, 수N5</td>
+  </tr>
+  <tr>
+    <td>물리타입</td>
+    <td colspan="5">정의된 인포타입을 물리화하기 위해 DBMS에 별로 물리TYPE 또는 LENGTH를 정의함<br>예) [인포타입:논리] VARCHAR() -> [물리] VARCHAR2() [Oracle]<br>예) [인포타입:논리] NUMBER() -> [물리] NUMBER() [Oracle]<br>예) [인포타입:논리] NUMBER() -> [물리] NUMERIC() [Sybase IQ]</td>
+  </tr>
+
+  </tr>  
+</table>
+
 
                 
             </div>
@@ -477,7 +612,7 @@
                 <a href="/2025/11/01/Data%20Standardization/a/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/data-architect-logo.png" class="responsive-img" alt="데이터 표준화">
+                        <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="데이터 표준화">
                         
                         <span class="card-title diy-neon-yellow">데이터 표준화</span>
                     </div>
@@ -515,30 +650,30 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2025/02/01/Data%20Quality/Docs/Get%20started%20with%20GX%20OSS/Quickstart/">
+                <a href="/2024/12/01/Spark/%08concpet/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/great_expectations-logo.png" class="responsive-img" alt="Quickstart">
+                        <img src="/images/logos/spark-logo.png" class="responsive-img" alt="스파크 정리">
                         
-                        <span class="card-title diy-neon-red">Quickstart</span>
+                        <span class="card-title diy-neon-red">스파크 정리</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Data Quality
+                            Spark
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-02-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-12-01
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Data-Quality/" class="post-category">
-                                    Data Quality
+                            <a href="/categories/Spark/" class="post-category">
+                                    Spark
                                 </a>
                             
                             
