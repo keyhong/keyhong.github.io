@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="스파크 정리, Data Engineering,Data Analysis,Python Backend">
+    <meta name="keywords" content="Spark 정리, Data Engineering,Data Analysis,Python Backend">
     <meta name="description" content="Spark">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>스파크 정리 | Keyhong</title>
+    <title>Spark 정리 | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -182,7 +182,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        스파크 정리</h1>
+                        Spark 정리</h1>
                 </div>
             </div>
         </div>
@@ -239,140 +239,152 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="스파크-아키텍처"><a href="#스파크-아키텍처" class="headerlink" title="스파크 아키텍처"></a>스파크 아키텍처</h2><h3 id="Mater-Cluster-Manager"><a href="#Mater-Cluster-Manager" class="headerlink" title="Mater &amp; Cluster Manager"></a>Mater &amp; Cluster Manager</h3><blockquote>
-<p>실행되는 분산 클러스터 리소스(YARN이나 Mesos의 경우, 컨테이너)를 모니터링하고 예약하고 할당하는 중앙 프로세스</p>
-</blockquote>
-<p>Master와 Cluster Manager는 독립된 프로세스로 서로 분리될 수도 있고, 독립실행형 모드에서 스파크를 실행할 때처럼 하나의 프로세스로 결합될 수도 있습니다.</p>
-<h3 id="Spark-Master"><a href="#Spark-Master" class="headerlink" title="Spark Master"></a>Spark Master</h3><blockquote>
-<p>클러스터의 리소스를 요청하고 이를 Spark Driver에서 사용할 수 있게 만드는 프로세스</p>
+                <h2 id="Spark-Cluster-Mode-Component"><a href="#Spark-Cluster-Mode-Component" class="headerlink" title="Spark Cluster Mode Component"></a>Spark Cluster Mode Component</h2><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128840&authkey=%21AAiRi8XylH3oZRI&width=596&height=286" width="596" height="286" alt="Spark Cluster Mode Component"/>
+
+<h3 id="1-Driver-program"><a href="#1-Driver-program" class="headerlink" title="1. Driver program"></a>1. Driver program</h3><blockquote>
+<p>애플리케이션의 main() 함수를 실행하고 SparkContext를 생성하는 프로세스</p>
 </blockquote>
 <ul>
-<li><p>모든 배포 모드에서 Master는 Worker Node에 리소스나 컨테이너를 할당하고, 그 상태를 추적하고 진행 상황을 모니터링합니다.</p>
+<li><p><code>Spark의 응용 프로그램의 수명은 Driver로 시작하고 Driver로 끝난다.</code></p>
 </li>
-<li><p>스파크 독립실행형 모드로 실행하면, Master 프로세스는 Master Host의 8080 포트에서 웹 UI를 제공합니다.</p>
+<li><p>deploy mode에 따라 클라이언트 노드 또는 클러스터에 있는 노드 중 하나에 물리적으로 상주</p>
 </li>
 </ul>
-<h4 id="Spark-Master-vs-Spark-Driver"><a href="#Spark-Master-vs-Spark-Driver" class="headerlink" title="Spark Master vs. Spark Driver"></a>Spark Master vs. Spark Driver</h4><p>Driver와 Master의 런타임 함수를 구별하는 것은 중요합니다. Master 프로세스는 응용 프로그램의 실행을 통제하는 하는 것이 아닌, 단순히 리소스를 요청해서 Driver가 사용하게 하는 것입니다. Master는 리소스의 위치와 상태를 모니터링 하지만, 응용 프로그램의 실행 및 해당 작업과 단계의 조정에 관여하지 않는다. 이는 Driver 프로세스의 역할입니다.</p>
-<h3 id="Cluster-Manager"><a href="#Cluster-Manager" class="headerlink" title="Cluster Manager"></a>Cluster Manager</h3><blockquote>
-<p>Worker Node를 모니터링하고, Master가 요청하면 리소스를 예약하는 프로세스</p>
+<h4 id="역할-1-SparkSession-생성"><a href="#역할-1-SparkSession-생성" class="headerlink" title="역할 1 : SparkSession 생성"></a>역할 1 : SparkSession 생성</h4><blockquote>
+<p>스파크 모든 기능의 entry point가 되는 클래스. SparkSession 객체는 스파크 클러스터에 대한 연결을 나타냄</p>
 </blockquote>
 <ul>
-<li><p>Master는 클러스터가 예약한 리소스를 Executor의 형태로 제공합니다.</p>
+<li>대화식 셸(spark-shell, REPL)과 스파크 응용 프로그램의 시작 부분에서 인스턴스 생성 및 프로그램 전체에 사용</li>
+<li>Spark 2.0 이전에는 스파크 핵심 응용 프로그램에 사용된 <code>SparkContext</code>, <code>SQLContext</code>, <code>HiveContext</code>, <code>StreamingContext</code> 객체가 분리 되어 있었지만, <code>버전 2 이후에는 SparkSession 객체가 모든 객체를 단일 엔트리 포인트로 결합</code>해 모든 스파크 응용 프로그램에 사용 가능</li>
+</ul>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>응용 프로그램에서 SparkSession 인스턴스 생성</span></div><code class="language-python"><span class="token keyword">from</span> pyspark<span class="token punctuation">.</span>sql <span class="token keyword">import</span> SparkSession
+
+spark <span class="token operator">=</span> SparkSession<span class="token punctuation">.</span>builder \
+    <span class="token punctuation">.</span>master<span class="token punctuation">(</span><span class="token string">"spark://sparkmaster:7077"</span><span class="token punctuation">)</span> \ <span class="token comment"># master 설정</span>
+    <span class="token punctuation">.</span>appName<span class="token punctuation">(</span><span class="token string">"My Spark Application"</span><span class="token punctuation">)</span> \ <span class="token comment"># appName 설정</span>
+    <span class="token punctuation">.</span>config<span class="token punctuation">(</span><span class="token string">"spark.submit.deployMode"</span><span class="token punctuation">,</span> <span class="token string">"client"</span><span class="token punctuation">)</span> \ <span class="token comment"># deploy mode 설정</span>
+    <span class="token punctuation">.</span>getOrCreate<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><p>SparkSession 객체는 자식 객체인 <code>SparkContext</code>, <code>SparkConf</code>을 통해 master, appName, Executors 등 사용자가 설정한 모든 런타임 구성 속성 포함</p>
 </li>
-<li><p>Mesos나 YARN에서 스파크를 실행할 때, Cluster Manager는 Master 프로세스와 분리된다. 독립 실행형(Standalone) 모드일 때는 Master 프로세스가 Cluster Manager 역할도 함께 수행한다.</p>
-</li>
-<li><p>클러스터 매니저 함수는 하둡 클러스터에서 실행되는 스파크 응용 프로그램용 YARN 리소스 매니저(RM) 프로세스로 적합합니다. RM은 YARN Node Manager에서 실행되는 컨테이너의 상태를 예약, 할당 및 모니터링합니다. 스파크 응용 프로그램은 Cluster Mode에서 실행 중인 응용 프로그램의 Master 프로세스(Application Master)처럼 이 컨테이너를 사용해 Executor 프로세스를 호스트합니다.</p>
+<li><p>스파크 대화형 셸에서 SparkSession 인스턴스는 <code>spark</code>라는 이름으로 초기화됨. 비대화식 스파크 응용 프로그램(spark-submit, application)에서는 변수명을 변경 할 수 있지만, 일반적으로 spark라는 변수명을 그대로 활용</p>
 </li>
 </ul>
-<h3 id="Spark-Worker"><a href="#Spark-Worker" class="headerlink" title="Spark Worker"></a>Spark Worker</h3><h3 id="Spark-Executor"><a href="#Spark-Executor" class="headerlink" title="Spark Executor"></a>Spark Executor</h3><blockquote>
-<p>Spark Executor는 스파크 DAG 작업이 실행되는 프로세스<br> <br>Executor는 스파크 클러스터에 Worker Node의 CPU 및 메모리 리소스를 예약합니다. 해당 리소스는 스파크 응용 프로그램 전용이며, 응용 프로그램이 완료시 종료됩니다.<br> <br>스파크 프로그램은 많은 Executor로 구성되며 병렬로 작업합니다.<br> <br>일반적으로 Executor 프로세스를 호스팅하는 Worker Node에 유한하거나 고정된 수의 Executor가 특정 시점에 할당됩니다. 따라서 노드의 수를 알고 있는 클러스터에는 주어진 시간에 실행할 수 있는 Executor의 수가 한정됩니다..<br> <br>응용 프로그램이 클러스터의 실제 용량을 초과해 Executor를 요구하면, 다른 Executor가 완료하고 릴리즈하는 것으로 시작되도록 예약합니다. <br> <br>스파크 Executor를 호스팅하는 JVM에는 객체를 저장하고 관리하는 전용 메모리 공간인 Heap이 할당됩니다. Executor의 JVM 힙에 커밋된 메모리 양은 다음 두 가지로 설정 가능합니다.</p>
+<p> <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110154&authkey=%21AHL6Zgzu2Wo_IXo&width=1035&height=351" width="1035" height="351" alt="Spark Shell에서 Configuration 확인"/></p>
+<h4 id="역할-2-스파크-응용-프로그램의-실행을-계획하고-조정"><a href="#역할-2-스파크-응용-프로그램의-실행을-계획하고-조정" class="headerlink" title="역할 2 : 스파크 응용 프로그램의 실행을 계획하고 조정"></a>역할 2 : 스파크 응용 프로그램의 실행을 계획하고 조정</h4><p>driver는 프로세싱 입력에 따라 프로그램을 어떻게 실행할지 계획
+ </p>
+<ul>
+<li><p>요청된 모든 transformation 및 action에 따라 DAG를 작성. 그래프의 각 노드는 변형 또는 계산 단계를 나타냄</p>
+</li>
+<li><p>스파크 응용 프로그램은 작업(task)과 단계(stage)로 구성</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>용어</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Transformation</td>
+<td>데이터 조작 작업. shuffling 여부에 따라 narrow transformation과 wide transformation으로 나뉜다.</td>
+</tr>
+<tr>
+<td>Action</td>
+<td>출력 또는 프롬프트에 대한 프로그램 실행 요청</td>
+</tr>
+<tr>
+<td>Job</td>
+<td>하나의 Spark 액션 (예: save, collect)에 응답하여 생성되는 여러 작업으로 구성된 병렬 계산; 이 용어는 드라이버 로그에서 자주 볼 수 있습니다.</td>
+</tr>
+<tr>
+<td>Task</td>
+<td>하나의 executor에게 전송될 작업 단위</td>
+</tr>
+<tr>
+<td>Stage</td>
+<td>각 job은 Stage라고 불리는 서로 의존하는 작은 task 세트로 나뉘어진다(MapReduce에서의 map 및 reduce 단계와 유사). 이 용어는 driver 로그에서도 자주 볼 수 있다.</td>
+</tr>
+</tbody></table>
+<h4 id="DAG-Directly-Acyclic-Graph"><a href="#DAG-Directly-Acyclic-Graph" class="headerlink" title="DAG (Directly Acyclic Graph)"></a>DAG (Directly Acyclic Graph)</h4><blockquote>
+<p><code>방향성이 있는 비순환 그래프</code>. 데이터 흐름(data flow)와 그 종속성을 나타내기 위해 컴퓨터 과학에서 일반적으로 사용되는 수학적 구조</p>
 </blockquote>
+<ul>
+<li><p>정점(Vertex 또는 Node), 엣지(Edge)로 구성되며, 순환참조를 가질 수 없는 방식으로 노드를 연결하기 때문에 <code>불변성(Immutability)</code>를 가짐</p>
+</li>
+<li><p>테즈(Tez), 드릴(Drill), 프레스토(Presto)와 같은 다른 빅데이터 에코 시스템에도 스케줄링을 위해 사용</p>
+</li>
+</ul>
+<h4 id="응용프로그램-조직화-Orchestration"><a href="#응용프로그램-조직화-Orchestration" class="headerlink" title="응용프로그램 조직화 (Orchestration)"></a>응용프로그램 조직화 (Orchestration)</h4><p>driver는 DAG에 정의된 stage와 task의 실행을 설계함. 스케줄링 및 작업 실행과 관련된 주요 활동은 아래와 같음</p>
+<ul>
+<li> 실행에 사용할 수 있는 리소스 추적</li>
+<li> 가능한 데이터에 ‘close’를 실행하는 작업 스케줄링<br>(<code>데이터 지역성</code> : shuffle로 발생하는 Network I&#x2F;O 비용을 줄이기 위해 데이터를 가져와 작업을 처리하는 것이 아닌, 데이터가 위치한 노드로 가서 작업을 하는 방식)</li>
+</ul>
+<p> </p>
+<h4 id="상태-및-실행-결과를-클라이언트에게-반환"><a href="#상태-및-실행-결과를-클라이언트에게-반환" class="headerlink" title="상태 및 실행 결과를 클라이언트에게 반환"></a>상태 및 실행 결과를 클라이언트에게 반환</h4><ul>
+<li> driver는 응용 프로그램의 결과를 반환하는 책임을 가짐. 데이터를 클라이언트에 반환하도록 요청되는 action의 경우 반환값은 리턴 코드 또는 데이터가 될 수 있음</li>
+<li>driver는 응용 프로그램 UI를 제공. 기본 서비스 포트인 4040에 UI가 자동 생성되며, 후속 응용 프로그램이 동일한 호스트에 실행되면 4040에서 연속적인 포트 사용 (4041, 4042..)</li>
+</ul>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110153&authkey=%21AJpl3jPKEUJ7NDY&width=1034&height=445" width="1034" height="445" alt="스파크 응용 프로그램 Web UI"/>
+
+
+<h3 id="2-Executor"><a href="#2-Executor" class="headerlink" title="2. Executor"></a>2. Executor</h3><blockquote>
+<p>worker node에서 애플리케이션을 위해 실행되는 프로세스로, task를 실행하고 데이터를 메모리나 디스크 저장소에 유지함. 각 애플리케이션은 executor를 가지고 있음
+ </p>
+</blockquote>
+<ul>
+<li><p>Spark 애플리케이션은 많은 executor로 구성되며 병렬로 작업</p>
+</li>
+<li><p>일반적으로 executor를 호스팅하는 Worker Node에 유한하거나 고정된 수의 executor가 특정 시점에 할당. 따라서 노드의 수를 알고 있는 클러스터에는 주어진 시간에 실행할 수 있는 executor의 수가 한정됨</p>
+</li>
+<li><p>응용 프로그램이 클러스터의 실제 용량을 초과해 Executor를 요구하면, 다른 executor가 완료하고 릴리즈하는 것으로 시작되도록 예약</p>
+</li>
+<li><p>executor를 호스팅하는 JVM에는 객체를 저장하고 관리하는 전용 메모리 공간인 Heap이 할당. executor의 JVM 힙에 커밋된 메모리 양은 다음 두 가지로 설정 가능</p>
 <ul>
 <li><p>SparkSession을 생성할 때 config로 <code>spark.executor.memory</code> 설정</p>
 </li>
 <li><p>spakr-shell 또는 spark-submit 실행 명령 CLI에서 <code>--executor-memory</code> 아규먼트를 설정</p>
 </li>
 </ul>
-<p> <br>Executor는 작업의 출력 데이터를 메모리 또는 디스크에 저장합니다. Worker와 Executor는 할당된 작업만 인식하지만, Driver는 응용 프로그램을 구성하는 전체 작업과 관련된 종속성을 파악<br> <br>드라이버 프로세스에서 생성된 스파크 응용 프로그램 UI의 [Executors] 탭에서 응용 프로그램의 Executor를 검사 가능합니다.<br>스파크 독립실행형 클러스터(Standalone Mode)에서는 작업자 노드는 8081 포트부터 사용자 인터페이스를 노출합니다.</p>
-<h3 id="Spark-Driver"><a href="#Spark-Driver" class="headerlink" title="Spark Driver"></a>Spark Driver</h3><blockquote>
-<p>클라이언트가 스파크에서 응용 프로그램을 제출하는 데 사용하는 프로세스</p>
+</li>
+<li><p>Worker와 Executor는 할당된 작업만 인식하지만, driver는 응용 프로그램을 구성하는 전체 작업과 관련된 종속성 파악</p>
+</li>
+<li><p>driver에서 생성된 Spark 응용 프로그램 UI의 <code>Executors</code> 탭에서 응용 프로그램의 executor 검사 가능</p>
+</li>
+</ul>
+<h3 id="3-Cluster-Manager"><a href="#3-Cluster-Manager" class="headerlink" title="3. Cluster Manager"></a>3. Cluster Manager</h3><blockquote>
+<p>클러스터에서 리소스를 획득하기 위한 외부 서비스 (예: standalone manager, Mesos, YARN, Kubernetes)</p>
 </blockquote>
 <ul>
-<li><p><strong>스파크의 응용 프로그램의 수명은 스파크 드라이버로 시작하고 끝난다.</strong></p>
+<li><p>Mesos나 YARN에서 Spark를 실행할 때, cluster manager는 master와 분리. Standalone Mode 일 때는 Master가 Cluster Manager 역할도 함께 수행</p>
 </li>
-<li><p>스파크 드라이버는 클러스터에 있는 클라이언트나 노드에 물리적으로 상주할 수 있다.</p>
-</li>
-</ul>
-<h4 id="Spark-Driver의-역할"><a href="#Spark-Driver의-역할" class="headerlink" title="Spark Driver의 역할"></a>Spark Driver의 역할</h4><ol>
-<li>☆ 스파크 세션(SparkSession) 생성</li>
-</ol>
-<p>스파크 드라이버는 스파크세션(SparkSession)을 생성한다. SparkSession 객체는 스파크 클러스터에 대한 연결을 나타냅니다.</p>
-<ul>
-<li><ol>
-<li>대화식 셸(spark-shell, REPL)과 스파크 응용 프로그램의 시작 부분에서 인스턴스가 생성되고, 프로그램 전체에 사용된다.</li>
-</ol>
-</li>
-<li><ol start="2">
-<li>Spark 2.0 이전에는 스파크 핵심 응용 프로그램에 사용된 SparkContext, SQLContext, HiveContext, StreamingContext가 스파크 응용 프로그램의 엔트리 포인트에 포함되어 있었지만, <strong>2.0부터는 SparkSession 객체가 모든 객체를 단일 엔트리 포인트로 결합</strong>해 모든 스파크 응용 프로그램에 사용 할 수 있다.</li>
-</ol>
+<li><p>클러스터 매니저 함수는 하둡 클러스터에서 실행되는 Spark 응용 프로그램용 YARN 리소스 매니저(RM)로 적합하다. RM은 YARN Node Manager에서 실행되는 컨테이너의 상태를 예약, 할당 및 모니터링. Spark 응용 프로그램은 cluster mode에서 실행 중인 응용 프로그램의 master(Application Master)처럼 이 컨테이너를 사용해 executor를 호스트</p>
 </li>
 </ul>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token triple-quoted-string string">""" 비대화식 응용 프로그램에서 SparkSession 인스턴스 생성하기 """</span>
-<span class="token keyword">from</span> pyspark<span class="token punctuation">.</span>sql <span class="token keyword">import</span> SparkSession
-
-<span class="token comment"># SparkSession 클래스의 내부는 디자인패턴 중 빌더 패턴이 적용 되었다.</span>
-spark <span class="token operator">=</span> SparkSession<span class="token punctuation">.</span>builder \
-    <span class="token punctuation">.</span>master<span class="token punctuation">(</span><span class="token string">"spark://sparkmaster:7077"</span><span class="token punctuation">)</span> \ <span class="token comment"># master 설정</span>
-    <span class="token punctuation">.</span>appName<span class="token punctuation">(</span><span class="token string">"My Spark Application"</span><span class="token punctuation">)</span> \ <span class="token comment"># appName 설정</span>
-    <span class="token punctuation">.</span>config<span class="token punctuation">(</span><span class="token string">"spark.submit.deployMode"</span><span class="token punctuation">,</span> <span class="token string">"client"</span><span class="token punctuation">)</span> \ <span class="token comment"># driver, executor config 설정</span>
-    <span class="token punctuation">.</span>getOrCreate<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<ul>
-<li><ol start="3">
-<li><strong>SparkSession 객체는 자식 객체인 SparkContext, SparkConf을 통해 Master, appName, Executors 등 사용자가 설정한 모든 런타임 구성 속성을 포함</strong>한다.</li>
-</ol>
-</li>
-<li><ol start="4">
-<li>SparkSession 인스턴스의 객체 이름은 임의로 지정된다. 기본적으로 스파크 대화형 셸에서 SparkSession 인스턴스는 spark라는 이름으로 초기화 된다. <strong>spark-submit을 사용해 제출하는 비대화식 스파크 응용 프로그램에서는 개발자가 변수명을 마음대로 변경 할 수 있지만, 일반적으로 spark라는 변수명을 그대로 활용한다.</strong></li>
-</ol>
-</li>
-</ul>
-<p> <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110154&authkey=%21AHL6Zgzu2Wo_IXo&width=1035&height=351" width="1035" height="351" alt="Spark Shell에서 Configuration 확인"/></p>
-<ol start="2">
-<li>스파크 응용 프로그램의 실행을 계획하고 조정</li>
-</ol>
-<p>드라이버는 응용 프로그램 프로세싱 입력에 따라 프로그램을 어떻게 실행할지 계획한다.
- </p>
-<ul>
-<li><p>1. 요청된 모든 transformation 및 action에 따라 DAG를 작성한다. 그래프의 각 노드는 변형 또는 계산 단계를 나타낸다.</p>
-</li>
-<li><p>transformation</p>
-</li>
-</ul>
-<p> </p>
-<blockquote>
-<p>데이터 조작 작업. shuffling 여부에 따라 narrow transformation과 wide transformation으로 나뉜다.</p>
-</blockquote>
-<p>- action </p>
-<blockquote>
-<p>출력 또는 프롬프트에 대한 프로그램 실행 요청</p>
-</blockquote>
-<p>** DAG (Directly Acyclic Graph)</p>
-<ul>
-<li><p><strong>방향성이 있는 비순환 그래프</strong>는 데이터 흐름(data flow)와 그 종속성을 나타내기 위해 컴퓨터 과학에서 일반적으로 사용되는 수학적 구조이다. 정점(Vertex 또는 Node), 엣지(Edge)로 구성되며, 순환참조를 가질 수 없는 방식으로 노드를 연결하기 때문에 **불변성(Immutability)**를 가진다.</p>
-</li>
-<li><p>DAG는 테즈(Tez), 드릴(Drill), 프레스토(Presto)와 같은 다른 빅데이터 에코 시스템에도 스케줄링을 위해 사용된다.</p>
-</li>
-<li><ol start="2">
-<li>스파크 응용 프로그램은 DAG 작업(task)과 단계(stage)로 구성된다.</li>
-</ol>
-</li>
-<li><p>task</p>
-</li>
-</ul>
-<p> </p>
-<blockquote>
-<p>스파크 프로그램에서 스케줄링이 가능한 <strong>일의 최소 단위</strong></p>
+<h3 id="4-Master"><a href="#4-Master" class="headerlink" title="4. Master"></a>4. Master</h3><blockquote>
+<p>클러스터의 리소스를 요청하고 이를 driver가 사용할 수 있게 만드는 프로세스</p>
 </blockquote>
 <ul>
-<li>stage</li>
+<li><p>모든 배포 모드에서 master는 Worker Node에 리소스나 컨테이너를 할당하고, 그 상태를 추적하고 진행 상황을 모니터링함</p>
+</li>
+<li><p>master는 클러스터가 예약한 리소스를 executor의 형태로 제공</p>
+</li>
+<li><p>Spark Standalone Mode로 실행하면, master는 8080 포트에서 웹 UI를 제공함</p>
+</li>
+<li><p>master와 cluster manager는 독립된 프로세스로 서로 분리될 수도 있고, Spark Standalone Mode에서 Spark를 실행할 때처럼 하나의 프로세스로 결합될 수도 있음</p>
+</li>
 </ul>
-<p> </p>
-<blockquote>
-<p>함께 실행 할 수 있는 <strong>일련의 작업 모음</strong>이다. <strong>stage는 단계 종속성(stage dependencies)이 있다. shuffle을 하기 전까지 모든 executor들은 똑같이 처리가 완료된 상태이어야 한다.</strong> 따라서 stage는 shuffle이 발생하는 구간과 구간 사이의 일련의 task 모음이다.</p>
+<h4 id="Master-vs-Driver"><a href="#Master-vs-Driver" class="headerlink" title="Master vs. Driver"></a>Master vs. Driver</h4><p>driver와 master의 런타임 함수를 구별하는 것은 중요. master는 응용 프로그램의 실행을 통제하는 하는 것이 아닌, 단순히 리소스를 요청해서 Driver가 사용하게 함. <code>master는 리소스의 위치와 상태를 모니터링 하나 응용 프로그램의 실행 및 해당 작업과 단계의 조정에 관여하지 않음.</code> 이는 driver의 역할</p>
+<h3 id="Worker-Node"><a href="#Worker-Node" class="headerlink" title="Worker Node"></a>Worker Node</h3><blockquote>
+<p>클러스터에서 애플리케이션 코드를 실행할 수 있는 모든 노드</p>
 </blockquote>
-<h4 id="응용프로그램-조직화-Orchestration"><a href="#응용프로그램-조직화-Orchestration" class="headerlink" title="응용프로그램 조직화 (Orchestration)"></a>응용프로그램 조직화 (Orchestration)</h4><p>드라이버는 DAG에 정의된 stage와 task의 실행을 설계한다. 스케줄링 및 작업 실행과 관련된 드라이버의 주요 활동은 아래와 같다.</p>
-<p>1. 실행에 사용할 수 있는 리소스 추적<br> <br>2. 가능한 데이터에 ‘close’를 실행하는 작업 스케줄링 (데이터 지역성 : shuffle로 발생하는 Network I&#x2F;O 비용을 줄이기 위해 데이터를 가져와 작업을 처리하는 것이 아닌, 데이터가 위치한 노드로 가서 작업을 하는 방식) </p>
-<h4 id="☆-상태-및-실행-결과를-클라이언트에게-반환"><a href="#☆-상태-및-실행-결과를-클라이언트에게-반환" class="headerlink" title="☆ 상태 및 실행 결과를 클라이언트에게 반환"></a>☆ 상태 및 실행 결과를 클라이언트에게 반환</h4><p>1. 스파크 드라이버는 응용 프로그램의 결과를 반환하는 책임을 가진다. 데이터를 클라이언트에 반환하도록 요청되는 액션의 경우 반환값은 리턴 코드 또는 데이터가 될 수 있다.<br> <br>2. 스파크 드라이버는 응용 프로그램 UI도 제공한다. 기본 포트 40404으로 UI가 자동 생성되며, 후속 응용 프로그램이 동일한 호스트에 실행되면, 4040 포트에서 연속적인 포트(4041, 4042..)가 사용된다.</p>
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110153&authkey=%21AJpl3jPKEUJ7NDY&width=1034&height=445" width="1034" height="445" alt="스파크 응용 프로그램 Web UI"/>
-
-
-
-
-
-
-<h2 id="카탈리스트-옵티마이저-Catalyst-Optimzer"><a href="#카탈리스트-옵티마이저-Catalyst-Optimzer" class="headerlink" title="카탈리스트 옵티마이저 (Catalyst Optimzer)"></a>카탈리스트 옵티마이저 (Catalyst Optimzer)</h2><ul>
-<li><p>Apache Spark의 중요한 컴포넌트</p>
+<ul>
+<li>Spark Standalone Mode에서는 Worker Node는 8081 포트부터 사용자 인터페이스를 노출</li>
+</ul>
+<h2 id="Catalyst-Optimzer"><a href="#Catalyst-Optimzer" class="headerlink" title="Catalyst Optimzer"></a>Catalyst Optimzer</h2><ul>
+<li><p>Apache Spark SQL의 핵심 컴포넌트로, 쿼리 최적화를 수행하는 역할을 수행</p>
 </li>
 <li><p>구조적 쿼리인 SQL 또는 DataFrame&#x2F;Dataset API의 DAG 로직을 최적화하여 프로그램 런타임과 비용을 줄여줌</p>
 </li>
@@ -380,23 +392,39 @@ spark <span class="token operator">=</span> SparkSession<span class="token punct
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110160&authkey=%21AP8umuOWu7PFW2E&width=1033&height=240" width="1033" height="240" alt="DAG의 로직이 최적화 되는 과정"/>
 
 
-<h3 id="Unresolved-Logical-Plan"><a href="#Unresolved-Logical-Plan" class="headerlink" title="Unresolved Logical Plan"></a>Unresolved Logical Plan</h3><p>Column 또는 Table 이 있는 지 확인</p>
-<h3 id="Catalog"><a href="#Catalog" class="headerlink" title="Catalog"></a>Catalog</h3><p>Spark에 있는 메타 데이터 레포지토리. 데이터 구조나 스키마 등을 가져옴</p>
-<h3 id="Analyzer"><a href="#Analyzer" class="headerlink" title="Analyzer"></a>Analyzer</h3><p>구문, 컬럼 이름, 테이블 이름을 카탈로그와 함께 한번 더 확인 (Cross–Checking)</p>
-<h3 id="Resolved-Logical-Plan-Logical-Plan"><a href="#Resolved-Logical-Plan-Logical-Plan" class="headerlink" title="Resolved Logical Plan(Logical Plan)"></a>Resolved Logical Plan(Logical Plan)</h3><p>카탈리스트 옵티마이저가 최적화하기 전의 상태</p>
-<h3 id="Optimized-Logical-Plan"><a href="#Optimized-Logical-Plan" class="headerlink" title="Optimized Logical Plan"></a>Optimized Logical Plan</h3><p>로직에 대한 퍼포먼스 평가 수행</p>
+<h3 id="Unresolved-Logical-Plan"><a href="#Unresolved-Logical-Plan" class="headerlink" title="Unresolved Logical Plan"></a>Unresolved Logical Plan</h3><blockquote>
+<p>Column 또는 Table 이 있는 지 확인</p>
+</blockquote>
+<h3 id="Catalog"><a href="#Catalog" class="headerlink" title="Catalog"></a>Catalog</h3><blockquote>
+<p>Spark에 있는 메타 데이터 레포지토리. 데이터 구조나 스키마 등을 가져옴</p>
+</blockquote>
+<h3 id="Analyzer"><a href="#Analyzer" class="headerlink" title="Analyzer"></a>Analyzer</h3><blockquote>
+<p>구문, 컬럼 이름, 테이블 이름을 카탈로그와 함께 한번 더 확인 (Cross–Checking)</p>
+</blockquote>
+<h3 id="Resolved-Logical-Plan"><a href="#Resolved-Logical-Plan" class="headerlink" title="Resolved Logical Plan"></a>Resolved Logical Plan</h3><blockquote>
+<p>카탈리스트 옵티마이저가 최적화하기 전의 상태. Logical Plan이라고도 함</p>
+</blockquote>
+<h3 id="Optimized-Logical-Plan"><a href="#Optimized-Logical-Plan" class="headerlink" title="Optimized Logical Plan"></a>Optimized Logical Plan</h3><blockquote>
+<p>로직에 대한 퍼포먼스 평가 수행</p>
+</blockquote>
 <ul>
 <li>Task들이 하나의 stage에서 함께 할 수 있는 지</li>
 <li>여러 개의 join 쿼리를 순서를 바꾸면서 실행했을 때 퍼포먼스가 더 좋아지는 지</li>
 <li>Project(join하는 컬럼들)에 filter를 먼저 적용 할 수 있는 지</li>
 </ul>
-<h3 id="Physical-Plan"><a href="#Physical-Plan" class="headerlink" title="Physical Plan"></a>Physical Plan</h3><p>Logical Plan을 cluster가 알아들을 수 있도록 바꿈</p>
+<h3 id="Physical-Plan"><a href="#Physical-Plan" class="headerlink" title="Physical Plan"></a>Physical Plan</h3><blockquote>
+<p>Logical Plan을 cluster가 알아들을 수 있도록 바꿈</p>
+</blockquote>
 <ul>
 <li>여러가지의 시나리오를 생성하고 Cost Model에서 비교</li>
 <li>어느 plan이 가장 빠르고 최적인지 판단 &#x3D;&gt; Selected Physical Plan</li>
 </ul>
-<h3 id="Codegen"><a href="#Codegen" class="headerlink" title="Codegen"></a>Codegen</h3><p>Spark Tungsten Execution 엔진이 Physical Plan을 RDD로 변환</p>
-<h3 id="Adaptive-Planning"><a href="#Adaptive-Planning" class="headerlink" title="* Adaptive Planning"></a>* Adaptive Planning</h3><p>Runtime 중 최적화 Plan을 변경한다. 예를 들어 Broadcasting Join을 하는 경우가 있다.</p>
+<h3 id="Codegen"><a href="#Codegen" class="headerlink" title="Codegen"></a>Codegen</h3><blockquote>
+<p>Spark Tungsten Execution 엔진이 Physical Plan을 RDD로 변환</p>
+</blockquote>
+<h3 id="Adaptive-Planning"><a href="#Adaptive-Planning" class="headerlink" title="* Adaptive Planning"></a>* Adaptive Planning</h3><blockquote>
+<p>Runtime 중 최적화 Plan을 변경한다. 예를 들어 Broadcasting Join을 하는 경우가 있다.</p>
+</blockquote>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110162&authkey=%21AHXKyDd3LIkq7gs&width=1033&height=278" width="1033" height="278" alt="Big 테이블과 Small 테이블의 Join"/>
 
 <p>일반적으로 큰 테이블과 작은 테이블을 결합(Join)하게 되더라도 shuflle이 발생하게 된다. 문제는 작은 테이블을 결합하기 위해 큰 테이블의 모든 데이터들이 이동하게 되는 경우 이는 큰 비용이 발생한다.</p>
@@ -406,49 +434,73 @@ spark <span class="token operator">=</span> SparkSession<span class="token punct
 
 
 
-<h2 id="압축-지원"><a href="#압축-지원" class="headerlink" title="압축 지원"></a>압축 지원</h2><p>Spark는 기본적으로 여러 가지 무손실 압축 형식을 지원한다.</p>
+<h2 id="압축-지원"><a href="#압축-지원" class="headerlink" title="압축 지원"></a>압축 지원</h2><blockquote>
+<p>Spark는 기본적으로 여러 가지 무손실 압축 형식을 지원</p>
+</blockquote>
 <ul>
 <li>BZIP2로 압축된 아카이브</li>
 <li>GZIP, ZIP(&#x3D;DEFLATE, 압축 방법을 사용해 생성된 모든 압축 아카이브)</li>
 <li>일반적인 압축 파일 형식</li>
 </ul>
-<h3 id="원시-코덱-제공"><a href="#원시-코덱-제공" class="headerlink" title="원시 코덱 제공"></a>원시 코덱 제공</h3><p>원시 코덱은 데이터 압축 및 압축 해제용 라이브러리</p>
+<h3 id="원시-코덱-제공"><a href="#원시-코덱-제공" class="headerlink" title="원시 코덱 제공"></a>원시 코덱 제공</h3><blockquote>
+<p>원시 코덱은 데이터 압축 및 압축 해제용 라이브러리</p>
+</blockquote>
 <ul>
 <li>Built-in Codec : LZ4, LZF, LZ77 기반의 무손실 압축 형식</li>
 <li>스내피 (Snappy)</li>
 </ul>
-<h3 id="Snappy"><a href="#Snappy" class="headerlink" title="Snappy"></a>Snappy</h3><p>구글에서 자체 개발한 빠르고 분할 가능하며, CPU 자원을 덜 소모하는 데이터 압축 및 압축 해제 라이브러리</p>
+<h3 id="Snappy"><a href="#Snappy" class="headerlink" title="Snappy"></a>Snappy</h3><blockquote>
+<p>구글에서 자체 개발한 빠르고 분할 가능하며, CPU 자원을 덜 소모하는 데이터 압축 및 압축 해제 라이브러리</p>
+</blockquote>
 <ul>
-<li>Hadoop의 코어 및 Hadoop-Ecosystem 프로젝트에서 일반적으로 사용한다.</li>
-<li>Worker 간에 네트워크를 통해 교환되는 RDD 데이터와 같이 Spark 내부 데이터를 압축하는 데도 사용한다.</li>
+<li>Hadoop의 코어 및 Hadoop-Ecosystem 프로젝트에서 일반적으로 사용</li>
+<li>Worker 간에 네트워크를 통해 교환되는 RDD 데이터와 같이 Spark 내부 데이터를 압축하는 데도 사용</li>
 </ul>
-<h3 id="분할-가능-압축-형식-VS-분할-불가능한-압축-형식"><a href="#분할-가능-압축-형식-VS-분할-불가능한-압축-형식" class="headerlink" title="분할 가능 압축 형식 VS 분할 불가능한 압축 형식"></a>분할 가능 압축 형식 VS 분할 불가능한 압축 형식</h3><p>분산 처리 플랫폼(Spark, Hadoop.. )을 사용할 때, 압축 형식의 분할 가능 여부를 파악하는 것은 매우 중요하다.</p>
-<h4 id="분할-가능-압축-형식"><a href="#분할-가능-압축-형식" class="headerlink" title="분할 가능 압축 형식"></a>분할 가능 압축 형식</h4><p>일반적으로 아카이브의 무결성을 손상시키지 않으면서 블록 경계에서 분할 될 수 있도록 인덱싱 한다.</p>
+<h3 id="분할-가능-VS-분할-불가능"><a href="#분할-가능-VS-분할-불가능" class="headerlink" title="분할 가능 VS. 분할 불가능"></a>분할 가능 VS. 분할 불가능</h3><p>분산 처리 플랫폼(Spark, Hadoop.. )을 사용할 때, 압축 형식의 분할 가능 여부를 파악하는 것은 매우 중요</p>
+<h4 id="분할-가능-압축-형식"><a href="#분할-가능-압축-형식" class="headerlink" title="분할 가능 압축 형식"></a>분할 가능 압축 형식</h4><blockquote>
+<p>일반적으로 아카이브의 무결성을 손상시키지 않으면서 블록 경계에서 분할 될 수 있도록 인덱싱</p>
+</blockquote>
 <ul>
-<li><p>Snappy나 LZO(Lempel–Ziv–Oberhumer)와 같이 분할 가능한 압축 형식은 큰 데이터 세트에 적합하다.</p>
+<li><p>Snappy나 LZO(Lempel–Ziv–Oberhumer)와 같이 분할 가능한 압축 형식은 큰 데이터 세트에 적합</p>
 </li>
-<li><p>따라서 HDFS와 같은 분산 파일 시스템으로 파일을 처리하기 전에 압축 해제가 좋다.</p>
-</li>
-</ul>
-<h4 id="분할-불가능한-압축-형식"><a href="#분할-불가능한-압축-형식" class="headerlink" title="분할 불가능한 압축 형식"></a>분할 불가능한 압축 형식</h4><p>인덱싱 불가, 분할 불가하다. 분산 될 수 없기에 하나의 시스템에서 전체를 읽을 수 있어야 한다.</p>
-<ul>
-<li><p>ZIP, GZIP과 같은 데스크톱 압축형식은 높은 압축률을 얻을 수 있으나 분할이 불가하다.</p>
-</li>
-<li><p>탐색 가능한 데이터가 포함된 작은 파일에는 괜찮다.</p>
+<li><p>따라서 HDFS와 같은 분산 파일 시스템으로 파일을 처리하기 전에 압축 해제가 좋음</p>
 </li>
 </ul>
-<h2 id="스파크-내부-디렉터리-구조"><a href="#스파크-내부-디렉터리-구조" class="headerlink" title="스파크 내부 디렉터리 구조"></a>스파크 내부 디렉터리 구조</h2><p>스파크 설치시 압축을 푼 내부 폴더 구조를 정리하였다. 책이 나온 지 좀 되서 지금의 스파크 최선 버전인 3.4.1의 내부 구조가 살짝 상이한 부분은 있으나 핵심은 바뀌지 않는 듯 하다. 글을 쓸 때 참고했던 책에는 <code>$SPARK_HOME/yarn</code> 폴더가 있었는 데 지금은 없어서 해당 폴더 설명은 지웠다. 또한 부수적인 다른 폴더들도 있으나 책에서는 중요 역할을 하는 폴더만 설명해 놓은 듯 하다. </p>
+<h4 id="분할-불가능한-압축-형식"><a href="#분할-불가능한-압축-형식" class="headerlink" title="분할 불가능한 압축 형식"></a>분할 불가능한 압축 형식</h4><blockquote>
+<p>인덱싱 불가, 분할 불가. 분산 될 수 없기에 하나의 시스템에서 전체를 읽을 수 있어야 함</p>
+</blockquote>
+<ul>
+<li><p>ZIP, GZIP과 같은 데스크톱 압축형식은 높은 압축률을 얻을 수 있으나 분할이 불가능</p>
+</li>
+<li><p>탐색 가능한 데이터가 포함된 작은 파일에는 괜찮음</p>
+</li>
+</ul>
+<h2 id="스파크-내부-디렉터리-구조"><a href="#스파크-내부-디렉터리-구조" class="headerlink" title="스파크 내부 디렉터리 구조"></a>스파크 내부 디렉터리 구조</h2><p>스파크 내부 폴더 구조를 정리하였음. 스파크 최근 버전인 3.4.1의 내부 구조가 살짝 상이한 부분은 있으나 핵심은 바뀌지 않는 듯 하다. 글을 쓸 때 참고했던 책에는 <code>$SPARK_HOME/yarn</code> 폴더가 있었는 데 지금은 없어서 해당 폴더 설명은 지웠다. 또한 부수적인 다른 폴더들도 있으나 책에서는 중요 역할을 하는 폴더만 설명해 놓은 듯 하다. </p>
 <h3 id="SPARK-HOME-bin"><a href="#SPARK-HOME-bin" class="headerlink" title="$SPARK_HOME&#x2F;bin&#x2F;"></a>$SPARK_HOME&#x2F;bin&#x2F;</h3><ul>
-<li>pyspark, spark-shell, spark-sql 및 sparkR과 같은 셸 프로그램이다.</li>
-<li>spark-shell : 대화식으로 스파크 응용 프로그램을 실행한다.</li>
-<li>spark-submit : 일괄 처리 모드에서 비대화식으로 스파크 응용 프로그램을 실행한다.</li>
+<li>pyspark, spark-shell, spark-sql 및 sparkR과 같은 셸 프로그램이 존재</li>
 </ul>
+<table>
+<thead>
+<tr>
+<th>셸</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>spark-shell</td>
+<td>대화식으로 스파크 응용 프로그램을 실행</td>
+</tr>
+<tr>
+<td>spark-submit</td>
+<td>일괄 처리 모드에서 비대화식으로 스파크 응용 프로그램을 실행</td>
+</tr>
+</tbody></table>
 <h3 id="SPARK-HOME-conf"><a href="#SPARK-HOME-conf" class="headerlink" title="$SPARK_HOME&#x2F;conf&#x2F;"></a>$SPARK_HOME&#x2F;conf&#x2F;</h3><ul>
-<li>스파크 구성 파일(spark-defaults.conf.template)을 설정할 때 사용할 수 있는 템플릿이 있다.</li>
-<li>스파크 프로세스(spark-env.sh.template)에 필요한 환경 변수를 설정하는 데 사용되는  shell script가 있다.</li>
-<li>로깅을 제어하는 구성 템플릿(log4j.properties.template)이 있다.</li>
-<li>메트릭 컬렉션(metrics.properties.template)이 있다.</li>
-<li>워커 파일(workers.template) 템플릿(Standalone Mode로 실행되는 스파크 클러스터에 참여할 수 있는 슬레이브 노드를 제어)이 있다.</li>
+<li>스파크 구성 파일(<code>spark-defaults.conf.template</code>) 템플릿</li>
+<li>스파크 프로세스(<code>spark-env.sh.template</code>)에 필요한 환경 변수를 설정하는 데 사용되는 쉘 스크립트</li>
+<li>로깅을 제어하는 구성 템플릿(<code>log4j.properties.template</code>)이 있음</li>
+<li>메트릭 컬렉션(<code>metrics.properties.template</code>)이 있음</li>
+<li>워커 파일(<code>workers.template</code>) 템플릿(Standalone Mode로 실행하는 스파크 클러스터에 참여가능한 슬레이브 노드 제어)이 있다.</li>
 </ul>
 <h3 id="SPARK-HOME-data"><a href="#SPARK-HOME-data" class="headerlink" title="$SPARK_HOME&#x2F;data&#x2F;"></a>$SPARK_HOME&#x2F;data&#x2F;</h3><ul>
 <li>스파크 프로젝트 내에서 mllib, graphx 및  streaming 라이브러리를 테스트하는 데 사용되는 Sample Data Set이다.</li>
@@ -457,35 +509,35 @@ spark <span class="token operator">=</span> SparkSession<span class="token punct
 </ul>
 <h3 id="SPARK-HOME-jars"><a href="#SPARK-HOME-jars" class="headerlink" title="$SPARK_HOME&#x2F;jars&#x2F;"></a>$SPARK_HOME&#x2F;jars&#x2F;</h3><ul>
 <li>스파크의 주요 어셈블리 및 snapy, py4j, parquet 등 스파크에서 사용하는 서비스를 지원하는 어셈블리 폴더이다.</li>
-<li>이 디렉토리는 기본적으로 스파크의 CLASSPATH 에 포함한다.</li>
+<li>이 디렉토리는 기본적으로 스파크의 CLASSPATH에 포함</li>
 </ul>
 <h3 id="SPARK-HOME-licenses"><a href="#SPARK-HOME-licenses" class="headerlink" title="$SPARK_HOME&#x2F;licenses&#x2F;"></a>$SPARK_HOME&#x2F;licenses&#x2F;</h3><ul>
 <li>py4j와 jquery와 같이 따로 포함된 프로젝트를 다루는 LICENSE 파일을 포함하는 폴더이다.</li>
 <li>법적 준수만을 목적으로, 스파크를 실행하는 데는 필요하지는 않는다.</li>
 </ul>
 <h3 id="SPARK-HOME-python"><a href="#SPARK-HOME-python" class="headerlink" title="$SPARK_HOME&#x2F;python&#x2F;"></a>$SPARK_HOME&#x2F;python&#x2F;</h3><ul>
-<li>pyspark를 실행하는 데 필요한 모든 파이썬 라이브러리를 포함한다.</li>
-<li>직접적인 액세스를 할 필요는 없다.</li>
-<li>python에서 pip install pyspark 커맨드로도 설치가 가능한 라이브러리이다.</li>
+<li>pyspark를 실행하는 데 필요한 모든 파이썬 라이브러리를 포함</li>
+<li>직접적인 액세스를 할 필요는 없음</li>
+<li>python에서 pip install pyspark 커맨드로도 설치가 가능한 라이브러리</li>
 </ul>
 <h3 id="SPARK-HOME-R"><a href="#SPARK-HOME-R" class="headerlink" title="$SPARK_HOME&#x2F;R&#x2F;"></a>$SPARK_HOME&#x2F;R&#x2F;</h3><ul>
-<li>SparkR 패키지와 관련 라이브러리 및 문서를 포함한다.</li>
+<li>SparkR 패키지와 관련 라이브러리 및 문서를 포함</li>
 </ul>
 <h3 id="SPARK-HOME-sbin"><a href="#SPARK-HOME-sbin" class="headerlink" title="$SPARK_HOME&#x2F;sbin&#x2F;"></a>$SPARK_HOME&#x2F;sbin&#x2F;</h3><ul>
-<li>local 또는 remote로 독립실행형 모드(Standalone Mode)로 실행되는 스파크 클러스터의 master 및 slave 서비스를 start&#x2F;stop하고, YARN 및 Mesos와 관련된 프로세스를 시작하는 관리 스크립트를 포함하는 폴더이다.</li>
-<li>Standalone Mode에서 다중 노드 클러스터를 배포할 때 이용하는 스크립트의 일부이다.</li>
+<li>local 또는 remote로 Spark Standalone Mode로 실행되는 스파크 클러스터의 master 및 slave 서비스를 start&#x2F;stop하고, YARN 및 Mesos와 관련된 프로세스를 시작하는 관리 스크립트를 포함하는 폴더</li>
+<li>Standalone Mode에서 다중 노드 클러스터를 배포할 때 이용하는 스크립트의 일부</li>
 </ul>
-<h2 id="Spark-Submit"><a href="#Spark-Submit" class="headerlink" title="Spark Submit"></a>Spark Submit</h2><p>실제 클러스터에는 spark-submit을 이용하여 스파크 프로그램을 실행시킨다. spark-submit은 spark를 설치하면 bin 폴더($SPARK_HOME&#x2F;bin) 안에 있다. spark-submit은 컴파일된 JAR 파일을 읽어 들여 클러스터에 job을 분배 excutor가 작업을 하게 만든다. 이 모든 것을 IDE(IntelliJ, Eclipse, VSCode..) 없이 외부에서 할 수 있다. 이것이 standalone이다.<br> <br>spark-submit을 이용할 때 중요한 것은 script 내부 코드에 어떤 로컬 파일시스템 경로도 남기지 않아야 한다. 그 이유는 클러스터 노드가 어디서든 데이터 소스에 접근 가능하도록 해야 하기 때문이다. 때문에 데이터는 HDFS나 S3와 같은 공유 파일 시스템에 배포 가능하나, 클러스터 환경에서 NFS를 제외하고 특정 단일 노드의 로컬 파일시스템은 가능하지 않다.</p>
+<h2 id="Spark-Submit"><a href="#Spark-Submit" class="headerlink" title="Spark Submit"></a>Spark Submit</h2><p>실제 클러스터에는 spark-submit을 이용하여 스파크 응용 프로그램을 실행시킴. spark-submit은 spark를 설치하면 bin 폴더($SPARK_HOME&#x2F;bin) 안에 있다. spark-submit은 컴파일된 JAR 파일을 읽어 들여 클러스터에 job을 분배 excutor가 작업을 하게 만든다. 이 모든 것을 IDE(IntelliJ, Eclipse, VSCode..) 없이 외부에서 할 수 있다. 이것이 standalone이다.<br> <br>spark-submit을 이용할 때 중요한 것은 script 내부 코드에 어떤 로컬 파일시스템 경로도 남기지 않아야 한다. 그 이유는 클러스터 노드가 어디서든 데이터 소스에 접근 가능하도록 해야 하기 때문이다. 때문에 데이터는 HDFS나 S3와 같은 공유 파일 시스템에 배포 가능하나, 클러스터 환경에서 NFS를 제외하고 특정 단일 노드의 로컬 파일시스템은 가능하지 않다.</p>
 <h3 id="Submitting-Applications"><a href="#Submitting-Applications" class="headerlink" title="Submitting Applications"></a>Submitting Applications</h3><ul>
-<li><p>spark-submit 실행 스크립트는 bin 디렉터리에 존재한다.</p>
+<li><p>spark-submit 실행 스크립트는 bin 디렉터리에 존재</p>
 </li>
-<li><p>클러스터에서 스파크 job을 제출함으로써 애플리케이션을 시작하기 위해 사용된다.</p>
+<li><p>클러스터에서 스파크 job을 제출함으로써 애플리케이션을 시작하기 위해 사용</p>
 </li>
-<li><p>일관성 있는 인터페이스를 통해 스파크를 지원하는 모든 클러스터 매니저를 사용가능하며, 클러스터 매니저에 대해 별도의 구성을 할 필요가 없다.</p>
+<li><p>일관성 있는 인터페이스를 통해 스파크를 지원하는 모든 클러스터 매니저를 사용가능하며, 클러스터 매니저에 대해 별도의 구성을 할 필요가 없음</p>
 </li>
 </ul>
-<h3 id="Bundling-Your-Application’s-Dependencies"><a href="#Bundling-Your-Application’s-Dependencies" class="headerlink" title="Bundling Your Application’s Dependencies"></a>Bundling Your Application’s Dependencies</h3><p>실행 코드가 다른 라이브러리에 의존성이 있을 경우, 클러스터에 배포하기 위해 코드를 패키징하여 배포한다.<br>패키징을 위해 Java&#x2F;Scala를 사용하는 경우 assembly jar를 만들어 배포한다. Maven&#x2F;Sbt에는 assembly-plugin이 있어 이를 이용하여 jar 파일을 만들어 낼 수 있다.<br>패키징을 위해 Python을 사용하는 경우 –py-files 아규먼트를 이용해 .py | .zip | .egg 형식의 압축 파일을 함께 배포할 수 있다. </p>
-<h3 id="spark-submit으로-애플리케이션-시작하기"><a href="#spark-submit으로-애플리케이션-시작하기" class="headerlink" title="spark-submit으로 애플리케이션 시작하기"></a>spark-submit으로 애플리케이션 시작하기</h3><p>사용자 애플리케이션이 패키징되면 spark-submit를 이용하여 커맨드로 애플리케이션을 시작 할 수 있다. 이 때 사용 언어에 따라 classpath나 conf 등을 설정하여 여러 환경변수를 변경 가능하다.</p>
+<h3 id="Bundling-Your-Application’s-Dependencies"><a href="#Bundling-Your-Application’s-Dependencies" class="headerlink" title="Bundling Your Application’s Dependencies"></a>Bundling Your Application’s Dependencies</h3><p>실행 코드가 다른 라이브러리에 의존성이 있을 경우, 클러스터에 배포하기 위해 코드를 패키징하여 배포<br>패키징을 위해 Java&#x2F;Scala를 사용하는 경우 assembly jar를 만들어 배포한다. Maven&#x2F;Sbt에는 assembly-plugin이 있어 이를 이용하여 jar 파일을 만들어 낼 수 있음<br>패키징을 위해 Python을 사용하는 경우 –py-files 아규먼트를 이용해 .py | .zip | .egg 형식의 압축 파일을 함께 배포할 수 있음</p>
+<h3 id="spark-submit으로-애플리케이션-시작하기"><a href="#spark-submit으로-애플리케이션-시작하기" class="headerlink" title="spark-submit으로 애플리케이션 시작하기"></a>spark-submit으로 애플리케이션 시작하기</h3><p>사용자 애플리케이션이 패키징되면 spark-submit를 이용하여 커맨드로 애플리케이션을 시작 할 수 있음. 이 때 사용 언어에 따라 classpath나 conf 등을 설정하여 여러 환경변수를 변경 가능</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 기본적인 사용에 대한 snippet</span>
 $ <span class="token variable">$&#123;SPARK_HOME&#125;</span>/bin/spark-submit <span class="token punctuation">\</span>
     <span class="token parameter variable">--class</span> <span class="token operator">&lt;</span>main-class<span class="token operator">></span> <span class="token punctuation">\</span> <span class="token comment"># 자바, 스칼라로 스파크를 사용할 경우</span>
@@ -544,8 +596,8 @@ $ <span class="token variable">$&#123;SPARK_HOME&#125;</span>/bin/spark-submit <
 </tbody></table>
 <h3 id="Spark-Submit-예시"><a href="#Spark-Submit-예시" class="headerlink" title="Spark Submit 예시"></a>Spark Submit 예시</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">./bin/spark-submit <span class="token punctuation">\</span>
    <span class="token parameter variable">--master</span> <span class="token function">yarn</span> <span class="token punctuation">\</span>
-   --deploy-mode cluster <span class="token punctuation">\</span> <span class="token comment"># 하둡에서 클러스터 모드일 경우, 드라이버를 임의의 노드 매니저 머신에 시작</span>
-   --driver-memory 8g <span class="token punctuation">\</span> <span class="token comment"># 드라이버 프로세스 메모리 (☆ 중요 config) </span>
+   --deploy-mode cluster <span class="token punctuation">\</span> <span class="token comment"># 하둡에서 클러스터 모드일 경우, driver를 임의의 노드 매니저 머신에 시작</span>
+   --driver-memory 8g <span class="token punctuation">\</span> <span class="token comment"># driver 프로세스 메모리 (☆ 중요 config) </span>
    --executor-memory 16g <span class="token punctuation">\</span> <span class="token comment"># 익스큐터 프로세스 메모리 (☆ 중요 config)</span>
    --executor-cores <span class="token number">2</span>  <span class="token punctuation">\</span> <span class="token comment"># 익스큐터 코어 수. 2 이상이면 멀티 쓰레딩 (☆ 중요 config)</span>
    --py-files file1.py,file2.py,file3.zip, file4.egg <span class="token punctuation">\</span>
@@ -554,20 +606,19 @@ $ <span class="token variable">$&#123;SPARK_HOME&#125;</span>/bin/spark-submit <
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://spark.apache.org/docs/latest/submitting-applications.html">spark.apache.org&#x2F;docs&#x2F;latest&#x2F;submitting-applications</a></li>
 </ul>
-<h2 id="pyspark-jvm-py4j"><a href="#pyspark-jvm-py4j" class="headerlink" title="pyspark jvm py4j"></a>pyspark jvm py4j</h2><h4 id="Question-1-PySpark-코드는-JVM-또는-Python-하위-프로세스에서-실행됩니까"><a href="#Question-1-PySpark-코드는-JVM-또는-Python-하위-프로세스에서-실행됩니까" class="headerlink" title="Question 1. PySpark 코드는 JVM 또는 Python 하위 프로세스에서 실행됩니까?"></a>Question 1. PySpark 코드는 JVM 또는 Python 하위 프로세스에서 실행됩니까?</h4><p>PySpark에서 Python 및 JVM 코드는 별도의 OS 프로세스에 있습니다.<br>PySpark는 Python과 JVM 프로세스 간에 데이터를 교환하기 위해 두 언어 간의 상호 운용을 용이하게 하는 프레임워크인 Py4J를 사용합니다.</p>
-<p>PySpark 작업을 시작하면 Python 프로세스로 시작하여 JVM 인스턴스를 생성하고 그 안에서 일부 PySpark 특정 코드를 실행합니다. 그런 다음 해당 JVM에서 Spark 세션을 인스턴스화하여 Spark가 드라이버 프로세스가 구동 됩니다.<br>해당 드라이버는 스파크 세션이 구성된 방식에 따라 Spark 마스터에 연결하거나 in-proc 하나를 생성합니다.</p>
+<h2 id="pyspark-jvm-py4j"><a href="#pyspark-jvm-py4j" class="headerlink" title="pyspark jvm py4j"></a>pyspark jvm py4j</h2><h4 id="Question-1-PySpark-코드는-JVM-또는-Python-하위-프로세스에서-실행됩니까"><a href="#Question-1-PySpark-코드는-JVM-또는-Python-하위-프로세스에서-실행됩니까" class="headerlink" title="Question 1. PySpark 코드는 JVM 또는 Python 하위 프로세스에서 실행됩니까?"></a>Question 1. PySpark 코드는 JVM 또는 Python 하위 프로세스에서 실행됩니까?</h4><p>PySpark에서 Python 및 JVM 코드는 별도의 OS 프로세스에 있음<br>PySpark는 Python과 JVM 프로세스 간에 데이터를 교환하기 위해 두 언어 간의 상호 운용을 용이하게 하는 프레임워크인 Py4J를 사용</p>
+<p>PySpark 작업을 시작하면 Python 프로세스로 시작하여 JVM 인스턴스를 생성하고 그 안에서 일부 PySpark 특정 코드를 실행한다. 그런 다음 해당 JVM에서 Spark 세션을 인스턴스화하여 Spark가 driver 프로세스가 구동 된다.<br>해당 driver는 스파크 세션이 구성된 방식에 따라 Spark 마스터에 연결하거나 in-proc 하나를 생성한다.</p>
 <h2 id="데이터-지역성-Data-Locality"><a href="#데이터-지역성-Data-Locality" class="headerlink" title="데이터 지역성 (Data Locality)"></a>데이터 지역성 (Data Locality)</h2><h3 id="데이터-지역성"><a href="#데이터-지역성" class="headerlink" title="데이터 지역성"></a>데이터 지역성</h3><blockquote>
-<p>분산 파일 시스템에서 기본적으로 데이터와 가까운 노드에서 데이터를 읽으려는 성질. 정확히는 데이터를 이동시키는 것이 아닌 데이터가 많은 노드에서 프로세스를 뛰워 자기의 노드에서 자기가 소유한 데이터를 읽게 하는 방식이다.</p>
+<p>분산 파일 시스템에서 기본적으로 데이터와 가까운 노드에서 데이터를 읽으려는 성질. 데이터의 이동이 아닌 <code>데이터가 많은 노드에서 프로세스를 뛰워 자기의 노드에서 자기가 소유한 데이터를 읽게 하는 방식</code></p>
 </blockquote>
 <ul>
 <li>변환 작업의 최적화에 집중하기 위해 HDFDS, S3 데이터와 같이 분산된 파티션의 데이터에 액세스한다.</li>
 </ul>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219899&authkey=%21ACuYBsFlFnNgcew&width=660" width="660" height="auto" />
 
-<h3 id="분산-파일-시스템을-사용하지-않는-경우-로컬-파일시스템"><a href="#분산-파일-시스템을-사용하지-않는-경우-로컬-파일시스템" class="headerlink" title="분산 파일 시스템을 사용하지 않는 경우 (로컬 파일시스템)"></a>분산 파일 시스템을 사용하지 않는 경우 (로컬 파일시스템)</h3><blockquote>
-<p>Java.io.FileNotFoundException (파일이 존재하지 않습니다) 발생</p>
-</blockquote>
-<ul>
+<h3 id="분산-파일-시스템을-사용하지-않는-경우-로컬-파일시스템"><a href="#분산-파일-시스템을-사용하지-않는-경우-로컬-파일시스템" class="headerlink" title="분산 파일 시스템을 사용하지 않는 경우 (로컬 파일시스템)"></a>분산 파일 시스템을 사용하지 않는 경우 (로컬 파일시스템)</h3><ul>
+<li><p><code>Java.io.FileNotFoundException</code> 발생</p>
+</li>
 <li><p>로드 중인 파일이 클러스터의 모든 작업자 노드에서 동일한 상대 경로로 사용 가능한지 확인 필요</p>
 </li>
 <li><p>스파크의 RDD 파일 기반 소스로 HDFS 또는 S3 와 같은 분산 파일 시스템을 사용하는 것이 좋음</p>
@@ -577,19 +628,14 @@ $ <span class="token variable">$&#123;SPARK_HOME&#125;</span>/bin/spark-submit <
 <li><p>또는 로컬 파일 시스템에서 사용할 경우, NFS(네트워크 파일시스템) 을 사용</p>
 </li>
 </ul>
-<h3 id="다양한-환경에서-실행가능한-스파크"><a href="#다양한-환경에서-실행가능한-스파크" class="headerlink" title="다양한 환경에서 실행가능한 스파크"></a>다양한 환경에서 실행가능한 스파크</h3><p>스파크는 다양한 저장소에 붙여서 분산 처리가 가능한 프레임 워크이다. 하지만, Spark는 처음 개발된 환경은 Hadoop에서 사용하는 HDFS라는 분산 파일  시스템이며 해당 환경에서 In-Memory 기반으로 최적의 분산 처리를 수행하는 데 최적화가 되어있다. 때문에 오늘은 Spark를 분산 파일시스템에서 운영 할 때의 이점을 소개하고자 한다. 결론부터 말하자면 분산 파일시스템에서 Spark를 이용하면 데이터 지역성의 이점을 누릴 수 있다. 대표적인 분산 파일 시스템인 Hadoop에서의 데이터 지역성을 이해하기 전에 최적화에 대한 나의 기본 관점을 공유하고자 한다.
+<h3 id="다양한-환경에서-실행가능한-스파크"><a href="#다양한-환경에서-실행가능한-스파크" class="headerlink" title="다양한 환경에서 실행가능한 스파크"></a>다양한 환경에서 실행가능한 스파크</h3><p>스파크는 다양한 저장소에 붙여서 분산 처리가 가능한 프레임 워크. 하지만, Spark는 처음 개발된 환경은 Hadoop에서 사용하는 HDFS라는 분산 파일  시스템이며 해당 환경에서 In-Memory 기반으로 최적의 분산 처리를 수행하는 데 최적화가 되어있음. 때문에 Spark를 분산 파일시스템에서 운영 할 때 데이터 지역성의 이점을 누릴 수 있다. 대표적인 분산 파일 시스템인 HDFS에서의 데이터 지역성을 이해하기 전에 최적화에 대한 나의 기본 관점을 공유하고자 한다.
  </p>
 <h3 id="최적화의-기본"><a href="#최적화의-기본" class="headerlink" title="최적화의 기본"></a>최적화의 기본</h3><p>프로그램을 최적화 시킬 때, 두 가지 I&#x2F;O를 줄이는 것이 정말 중요하다고 생각한다. 첫 번째는 Network I&#x2F;O 이다. Network I&#x2F;O를 개선하기 위해서는 서로 다른 서버 혹은 노드 간에 통신을 하기 전 이동할 데이터의 양을 줄이고,  꼭 필요한 통신만 할 수 있도록 처리 로직을 구현하는 것이 중요하다. 그리고 두 번째는 Disk I&#x2F;O를 개선하는 것이다. Disk I&#x2F;O를 줄이는 기본은 데이터 소스에서 꼭 필요 컬럼만 추출하고 컬럼을 나타낼 수 있는 데이터 타입을 명시적으로 지정하는 일이다. 예를 들어 Python에서 int32로 표현할 수 있는 컬럼을 명시적으로 지정하지 않아 자동화된 타입 추론에 의해 Int64로 읽게 된다면 row의 한 행 마다 32 bit를 불필요하게 더 쓴다. 이는 데이터의 행이 많아질 수록 (행의 개수 * 32) bit 씩 추가적인 메모리를 소모하므로 데이터 행이 많다면 더 큰 리소스 소모를 일으킨다. 다만, 타입을 명시적으로 지정할 때 주의 할 점은 너무 최소 비트로만 데이터를 읽어 들여 범위를 넘어서는 이상 값이 발견됬을 때, 에러가 발생하거나 자동으로 더 큰 타입이으로 casting 될 수 있으므로 충분히 컬럼 값의 범위를 고려해야 한다. 내 경험 상 pandas.DataFrame에서 NaN 값이 있다면 int가 float64로 자동 캐스팅 되는 것도 볼 수 있었다. Network I&#x2F;O는 개선하는 것은 정말 어렵고 효율 개선도 한계가 있다. 때문에 Disk I&#x2F;O를 개선하는 것이 필수적이며 단순하지만 더 큰 리소스 절감을 만들 수 있다.</p>
 <h3 id="HDFS-Block-Storage"><a href="#HDFS-Block-Storage" class="headerlink" title="HDFS : Block Storage"></a>HDFS : Block Storage</h3><img HDFS Architecture>
 
 <p>HDFS(Hadoop Distributed File System)는 데이터 파일을 블록(default 128 MB) 단위로 쪼개어 클러스터의 여러 Data Node에 나눠서 저장하고 서로 복제(replication)하여 고가용성(High Availability)을 만들어 낸다. 각 블록에 대한 위치 정보는 Hadoop Cluster의 Name Node의 메모리에 저장되어 있다. Hadoop도 JVM 위에서 구동되는 하나의 프로그램이기 때문에 당연히 리소스를 관리해야 한다. Hadoop을 공부하면 블록 추상화라는 재미있는 요소가 있는 데, 한번 읽어보면 얼마나 섬세하게 설계 했는 지 그 생각을 볼 수 있다. 하여튼 Hadoop이라는 프로그램은 클러스터를 여러 노드를 제어하기 위해 일반적으로 Yarn이라는 Cluster Resource Manager를 사용한다. Hadoop Cluster에서 앱을 구동하려면 Yarn을 통해 Data Node의 리소스를 할당받고 각 노드에서 Container라는 사용 가능한 리소스의 환경을 제공받는다. 이 위에서 Spark라는 분산 처리 가능한 프로세스가 실행된다. 그렇다. 이는 우리가 Spark에서 executor라고 부르는 것이며 이것은 하나의 프로세스다. 그럼 이 프로세스는 각 Data Node에 나눠져 있는 데 어떻게 task에 데이터를 나눠줄 수 있을까?<br> <br>쉽게 생각해보자. 어떤 하나의 노드에서 데이터를 읽는다면 읽은 데이터 사이즈 만큼 메모리에 가지고 있다가 그 데이터를 파티션 개수만큼 나눠서 네트워크를 통해 다른 노드에 나눠줄 수 있지 않을 까? 가능하다. 하지만 비효율적이다. 왜냐하면 하나의 노드에서 큰 데이터를 읽는 데는 많은 시간이 걸리고, 또한 분할하는 시간과 네트워크를 통해 데이터를 전송하는 시간이 많이 걸리기 때문이다. 분명 읽어들이는 동안 다른 노드의 CPU들은 유휴 시간(idle time)을 갖게 될 것이다.<br> <br>그럼 개선할 수 있는 방법은? 당연히 나눠서 일을 하는 것이다. 각 노드들이 동시 접근한 저장소를 만들고, 각 자 읽어야 할 데이터만 읽으면 따로 나눠줄 필요도 없을 것이다. 분산 파일 시스템에서의 Spark는 이 때 빛을 발한다. 아까 HDFS에 적재된 데이터가 블록 단위로 나눠져 여러 노드에 걸쳐 분산 저장된다고 했던 말 기억하는 가? 그럼 Spark의 executor가 각각 처리할 데이터를 자신의 Data Node에서 읽어 들이면 Disk I&#x2F;O의 속도와 불필요한 Network I&#x2F;O를  줄일 수 있지 않을까?
  </p>
-<img Spark Data Local>
-
-<p> </p>
 <h3 id="분산-파일-시스템을-사용하지-않는-경우-Local-File-System"><a href="#분산-파일-시스템을-사용하지-않는-경우-Local-File-System" class="headerlink" title="분산 파일 시스템을 사용하지 않는 경우 (Local File System)"></a>분산 파일 시스템을 사용하지 않는 경우 (Local File System)</h3><p>Spark를 Local Mode로 구동한다면 로컬 파일 시스템에서 데이터를 읽을 수 있겠지만,  다행히도 클러스터에서 실행되도록 구동한다면 특정 로컬 파일시스템에서 읽는 것은 불가능하게 만들어 놓았다. 만약 클러스터의 Spark 프로세스가 특정 로컬의 파일을 읽으려고 한다면 Java.io.FileNotFoundException 에러가 발생한다. 물론, 특정 노드에서 NFS(Network Files System)을 이용한다면 가능하겠지만 분산 파일 시스템에 비하면 당연히 성능이 느릴 수 밖에 없다.
- </p>
-<h3 id="최종-정리"><a href="#최종-정리" class="headerlink" title="최종 정리"></a>최종 정리</h3><p>짧게 정리한다고 했는 데, 많은 생각과 경험을 우려내고 싶어서 글이 읽어졌다. (그럼에도 배운 것을 다 못 쓴 것 같아서 아쉬움이 남는다..) 마지막으로 최종 요약하며, 이 글을 쓰는 데 참고 했던 책을 공유하고자 한다.
  </p>
 <ul>
 <li>로드 중인 파일이 클러스터의 모든 작업자 노드에서 동일한 상대 경로로 사용 가능한지 확인 필요</li>
@@ -604,7 +650,7 @@ $ <span class="token variable">$&#123;SPARK_HOME&#125;</span>/bin/spark-submit <
 <p>문제는 action을 call 할 때마다 Lineage의 처음부터 끝까지 다시 수행한다는 점이다. 가끔씩 스파크에서 중간 단계의 RDD를 재사용해야 하는 경우가 있다. 예를 들어, 데이터 소스에서 큰 데이터를 fetch 하는 데 많은 시간을 소요했는 데, 또 다시 이러한 고비용의 과정을 반복하는 것은 프로세싱 시간과 리소스에 있어 비효율적이다. 이를 해결하기 위한 방법은 간단하다. 중간 지점까지 수행한 RDD의 상태를 메모리나 디스크에 저장하는 것이다. 스파크에서는 이런 경우를 대비해 기존의 RDD를 재사용 할 수 있도록 <code>persist</code>와 <code>cache</code>가 함수를 지원한다.</p>
 <p>원래 스파크는 in-memory 방식을 사용한다고 하는 데, 대체 왜 이런 함수를 지원하는 걸까? 스파크는 대용량의 데이터를 처리하고 다루는 데 초점이 맞춰져 있다. 당연하게도 빅데이터를 다루는 일이기에, 모든 중간 stage 과정마다 가공한 결과를 전부 메모리에 저장하고 있는 것은 당연히 불가능하다. 그렇게 한다면, OOM(Out Of Memory) 에러를 맛보고 프로세스가 중지되어 버릴 것이다. 때문에 처리하는 과정을 넘어 갈 때마다 LRU 알고리즘에 의해 오래된 데이터를 메모리에서 제거하게 된다.</p>
 <p>그럼 cache도 중간 데이터를 메모리에 저장하도록 명시적으로 지시하는 것인데, cache를 위한 메모리 용량은 어떻게 설정하는 지를 봐야한다. 스파크는 Context나 Session을 만들 때 config를 수정하여 memory를 설정 할 수 있다. Spark Memory는 Storage Memory(클러스터 전체에 내부 데이터를 캐싱하고 전파)와 Execution Memory(셔플, 조인, 정렬 및 집계에서 계산에 사용)을 위한 메모리가 핵심이다. </p>
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110156&authkey=%21ALzf-xm8E1DuXsU&width=1016&height=236" width="1016" height="236" alt="Spark Executor 메모리 구조 중 caching을 위한 Storage Memory"/>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110156&authkey=%21ALzf-xm8E1DuXsU&width=1016&height=236" width="1016" height="236" alt="executor 메모리 구조 중 caching을 위한 Storage Memory"/>
 
 <p>RDD를 유지하면 각 노드는 메모리에서 계산하는 파티션을 저장하고 해당 데이터 세트(또는 여기에서 파생된 데이터 세트)의 다른 작업에서 재사용한다. 이를 통해 향후 작업이 훨씬 빨라질 수 있다(종종 10배 이상). 캐싱은 반복 알고리즘과 빠른 대화식 사용을 위한 핵심 도구이다.</p>
 <h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><h4 id="persist"><a href="#persist" class="headerlink" title="persist()"></a>persist()</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> pyspark
@@ -658,7 +704,7 @@ DataFrame<span class="token punctuation">.</span>cache<span class="token punctua
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/12/01/Spark/%08concpet/">http://example.com/2024/12/01/Spark/%08concpet/</a>
+                    <a href="http://example.com/2024/12/01/Spark/spark-concept/">http://example.com/2024/12/01/Spark/spark-concept/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
