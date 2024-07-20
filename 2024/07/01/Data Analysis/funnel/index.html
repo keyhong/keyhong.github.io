@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="리텐션/퍼널 분석, Data Engineering,Data Analysis,Python Backend">
+    <meta name="keywords" content="리텐션 분석, Data Engineering,Data Analysis,Python Backend">
     <meta name="description" content="Data Analysis">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>리텐션/퍼널 분석 | Keyhong</title>
+    <title>리텐션 분석 | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -182,7 +182,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        리텐션/퍼널 분석</h1>
+                        리텐션 분석</h1>
                 </div>
             </div>
         </div>
@@ -230,59 +230,21 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="클래식-리텐션-Classic-Retension"><a href="#클래식-리텐션-Classic-Retension" class="headerlink" title="클래식 리텐션 (Classic Retension)"></a>클래식 리텐션 (Classic Retension)</h2><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">WITH</span> records_preprocessed <span class="token keyword">AS</span> <span class="token punctuation">(</span>
-  <span class="token keyword">SELECT</span> r<span class="token punctuation">.</span>customer_id
-       <span class="token punctuation">,</span> r<span class="token punctuation">.</span>order_id
-       <span class="token punctuation">,</span> r<span class="token punctuation">.</span>order_date
-       <span class="token punctuation">,</span> c<span class="token punctuation">.</span>first_order_date
-       <span class="token punctuation">,</span> DATE_FORMAT<span class="token punctuation">(</span>r<span class="token punctuation">.</span>order_date<span class="token punctuation">,</span> <span class="token string">'%Y-%m-01'</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> order_month
-       <span class="token punctuation">,</span> DATE_FORMAT<span class="token punctuation">(</span>c<span class="token punctuation">.</span>first_order_date<span class="token punctuation">,</span> <span class="token string">'%Y-%m-01'</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> first_order_month
-  <span class="token keyword">FROM</span> records <span class="token keyword">AS</span> r
-    <span class="token keyword">JOIN</span> customer_stats <span class="token keyword">AS</span> c <span class="token keyword">ON</span> r<span class="token punctuation">.</span>customer_id <span class="token operator">=</span> c<span class="token punctuation">.</span>customer_id
-<span class="token punctuation">)</span>
-<span class="token keyword">SELECT</span> first_order_month
-    <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> customer_id<span class="token punctuation">)</span> <span class="token keyword">AS</span> month0
-    <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> <span class="token keyword">CASE</span> <span class="token keyword">WHEN</span> <span class="token punctuation">(</span>DATE_ADD<span class="token punctuation">(</span>first_order_month<span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> <span class="token number">1</span> <span class="token keyword">MONTH</span><span class="token punctuation">)</span> <span class="token operator">=</span> order_month<span class="token punctuation">)</span> <span class="token keyword">THEN</span> customer_id <span class="token keyword">END</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> month1
-    <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> <span class="token keyword">CASE</span> <span class="token keyword">WHEN</span> <span class="token punctuation">(</span>DATE_ADD<span class="token punctuation">(</span>first_order_month<span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> <span class="token number">2</span> <span class="token keyword">MONTH</span><span class="token punctuation">)</span> <span class="token operator">=</span> order_month<span class="token punctuation">)</span> <span class="token keyword">THEN</span> customer_id <span class="token keyword">END</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> month2
-    <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> <span class="token keyword">CASE</span> <span class="token keyword">WHEN</span> <span class="token punctuation">(</span>DATE_ADD<span class="token punctuation">(</span>first_order_month<span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> <span class="token number">3</span> <span class="token keyword">MONTH</span><span class="token punctuation">)</span> <span class="token operator">=</span> order_month<span class="token punctuation">)</span> <span class="token keyword">THEN</span> customer_id <span class="token keyword">END</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> month3
-    <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> <span class="token keyword">CASE</span> <span class="token keyword">WHEN</span> <span class="token punctuation">(</span>DATE_ADD<span class="token punctuation">(</span>first_order_month<span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> <span class="token number">4</span> <span class="token keyword">MONTH</span><span class="token punctuation">)</span> <span class="token operator">=</span> order_month<span class="token punctuation">)</span> <span class="token keyword">THEN</span> customer_id <span class="token keyword">END</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> month4
-    <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> <span class="token keyword">CASE</span> <span class="token keyword">WHEN</span> <span class="token punctuation">(</span>DATE_ADD<span class="token punctuation">(</span>first_order_month<span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> <span class="token number">5</span> <span class="token keyword">MONTH</span><span class="token punctuation">)</span> <span class="token operator">=</span> order_month<span class="token punctuation">)</span> <span class="token keyword">THEN</span> customer_id <span class="token keyword">END</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> month5
-    <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> <span class="token keyword">CASE</span> <span class="token keyword">WHEN</span> <span class="token punctuation">(</span>DATE_ADD<span class="token punctuation">(</span>first_order_month<span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> <span class="token number">6</span> <span class="token keyword">MONTH</span><span class="token punctuation">)</span> <span class="token operator">=</span> order_month<span class="token punctuation">)</span> <span class="token keyword">THEN</span> customer_id <span class="token keyword">END</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> month6
-    <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> <span class="token keyword">CASE</span> <span class="token keyword">WHEN</span> <span class="token punctuation">(</span>DATE_ADD<span class="token punctuation">(</span>first_order_month<span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> <span class="token number">7</span> <span class="token keyword">MONTH</span><span class="token punctuation">)</span> <span class="token operator">=</span> order_month<span class="token punctuation">)</span> <span class="token keyword">THEN</span> customer_id <span class="token keyword">END</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> month7
-    <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> <span class="token keyword">CASE</span> <span class="token keyword">WHEN</span> <span class="token punctuation">(</span>DATE_ADD<span class="token punctuation">(</span>first_order_month<span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> <span class="token number">8</span> <span class="token keyword">MONTH</span><span class="token punctuation">)</span> <span class="token operator">=</span> order_month<span class="token punctuation">)</span> <span class="token keyword">THEN</span> customer_id <span class="token keyword">END</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> month8
-    <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> <span class="token keyword">CASE</span> <span class="token keyword">WHEN</span> <span class="token punctuation">(</span>DATE_ADD<span class="token punctuation">(</span>first_order_month<span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> <span class="token number">9</span> <span class="token keyword">MONTH</span><span class="token punctuation">)</span> <span class="token operator">=</span> order_month<span class="token punctuation">)</span> <span class="token keyword">THEN</span> customer_id <span class="token keyword">END</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> month9
-    <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> <span class="token keyword">CASE</span> <span class="token keyword">WHEN</span> <span class="token punctuation">(</span>DATE_ADD<span class="token punctuation">(</span>first_order_month<span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> <span class="token number">10</span> <span class="token keyword">MONTH</span><span class="token punctuation">)</span> <span class="token operator">=</span> order_month<span class="token punctuation">)</span> <span class="token keyword">THEN</span> customer_id <span class="token keyword">END</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> month10
-    <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> <span class="token keyword">CASE</span> <span class="token keyword">WHEN</span> <span class="token punctuation">(</span>DATE_ADD<span class="token punctuation">(</span>first_order_month<span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> <span class="token number">11</span> <span class="token keyword">MONTH</span><span class="token punctuation">)</span> <span class="token operator">=</span> order_month<span class="token punctuation">)</span> <span class="token keyword">THEN</span> customer_id <span class="token keyword">END</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> month11
-
-<span class="token keyword">FROM</span> records_preprocessed
-<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> first_order_month
-<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> first_order_month <span class="token keyword">ASC</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="롤링-리텐션-Rolling-Retension"><a href="#롤링-리텐션-Rolling-Retension" class="headerlink" title="롤링 리텐션 (Rolling Retension)"></a>롤링 리텐션 (Rolling Retension)</h2><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">WITH</span> customers <span class="token keyword">AS</span> <span class="token punctuation">(</span>
-  <span class="token keyword">SELECT</span> customer_id
-       <span class="token punctuation">,</span> first_order_date
-       <span class="token punctuation">,</span> last_order_date
-       <span class="token punctuation">,</span> DATE_FORMAT<span class="token punctuation">(</span>first_order_date<span class="token punctuation">,</span> <span class="token string">'%Y-%m-01'</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> first_order_month
-       <span class="token punctuation">,</span> DATE_FORMAT<span class="token punctuation">(</span>last_order_date<span class="token punctuation">,</span> <span class="token string">'%Y-%m-01'</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> last_order_month
-  <span class="token keyword">FROM</span> customer_stats
-<span class="token punctuation">)</span>
-<span class="token keyword">SELECT</span> first_order_month
-     <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> customer_id<span class="token punctuation">)</span> <span class="token keyword">AS</span> month0
-     <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> <span class="token keyword">CASE</span> <span class="token keyword">WHEN</span> DATE_ADD<span class="token punctuation">(</span>first_order_month<span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> <span class="token number">1</span> <span class="token keyword">MONTH</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> last_order_month <span class="token keyword">THEN</span> customer_id <span class="token keyword">END</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> month1
-     <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> <span class="token keyword">CASE</span> <span class="token keyword">WHEN</span> DATE_ADD<span class="token punctuation">(</span>first_order_month<span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> <span class="token number">2</span> <span class="token keyword">MONTH</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> last_order_month <span class="token keyword">THEN</span> customer_id <span class="token keyword">END</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> month2
-     <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> <span class="token keyword">CASE</span> <span class="token keyword">WHEN</span> DATE_ADD<span class="token punctuation">(</span>first_order_month<span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> <span class="token number">3</span> <span class="token keyword">MONTH</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> last_order_month <span class="token keyword">THEN</span> customer_id <span class="token keyword">END</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> month3
-     <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> <span class="token keyword">CASE</span> <span class="token keyword">WHEN</span> DATE_ADD<span class="token punctuation">(</span>first_order_month<span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> <span class="token number">4</span> <span class="token keyword">MONTH</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> last_order_month <span class="token keyword">THEN</span> customer_id <span class="token keyword">END</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> month4
-     <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> <span class="token keyword">CASE</span> <span class="token keyword">WHEN</span> DATE_ADD<span class="token punctuation">(</span>first_order_month<span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> <span class="token number">5</span> <span class="token keyword">MONTH</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> last_order_month <span class="token keyword">THEN</span> customer_id <span class="token keyword">END</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> month5
-     <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> <span class="token keyword">CASE</span> <span class="token keyword">WHEN</span> DATE_ADD<span class="token punctuation">(</span>first_order_month<span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> <span class="token number">6</span> <span class="token keyword">MONTH</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> last_order_month <span class="token keyword">THEN</span> customer_id <span class="token keyword">END</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> month6
-     <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> <span class="token keyword">CASE</span> <span class="token keyword">WHEN</span> DATE_ADD<span class="token punctuation">(</span>first_order_month<span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> <span class="token number">7</span> <span class="token keyword">MONTH</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> last_order_month <span class="token keyword">THEN</span> customer_id <span class="token keyword">END</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> month7
-     <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> <span class="token keyword">CASE</span> <span class="token keyword">WHEN</span> DATE_ADD<span class="token punctuation">(</span>first_order_month<span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> <span class="token number">8</span> <span class="token keyword">MONTH</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> last_order_month <span class="token keyword">THEN</span> customer_id <span class="token keyword">END</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> month8
-     <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> <span class="token keyword">CASE</span> <span class="token keyword">WHEN</span> DATE_ADD<span class="token punctuation">(</span>first_order_month<span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> <span class="token number">9</span> <span class="token keyword">MONTH</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> last_order_month <span class="token keyword">THEN</span> customer_id <span class="token keyword">END</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> month9
-     <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> <span class="token keyword">CASE</span> <span class="token keyword">WHEN</span> DATE_ADD<span class="token punctuation">(</span>first_order_month<span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> <span class="token number">10</span> <span class="token keyword">MONTH</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> last_order_month <span class="token keyword">THEN</span> customer_id <span class="token keyword">END</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> month10
-     <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> <span class="token keyword">CASE</span> <span class="token keyword">WHEN</span> DATE_ADD<span class="token punctuation">(</span>first_order_month<span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> <span class="token number">11</span> <span class="token keyword">MONTH</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> last_order_month <span class="token keyword">THEN</span> customer_id <span class="token keyword">END</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> month11
-<span class="token keyword">FROM</span> customers
-<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> first_order_month
-<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> first_order_month <span class="token keyword">ASC</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+                <h2 id="Funnel-Analysis"><a href="#Funnel-Analysis" class="headerlink" title="Funnel Analysis"></a>Funnel Analysis</h2><blockquote>
+<p>Retention analysis(또는 survival analysis)은 고객이 이탈하는 이유와 방식을 이해하기 위해 사용자 지표를 분석하는 과정</p>
+</blockquote>
+<ul>
+<li><p>일관된 유지 분석을 실행하면 다음과 같은 사항을 배울 수 있습니다.</p>
+</li>
+<li><p>고객이 이탈하는 이유</p>
+</li>
+<li><p>고객이 떠날 가능성이 더 높은 경우</p>
+</li>
+<li><p>이탈률이 최종 수익에 미치는 영향</p>
+</li>
+<li><p>고객 유지 전략을 개선하는 방법</p>
+</li>
+</ul>
 <h2 id="퍼널-분석-Funnel-Analysis"><a href="#퍼널-분석-Funnel-Analysis" class="headerlink" title="퍼널 분석 (Funnel Analysis)"></a>퍼널 분석 (Funnel Analysis)</h2><ul>
 <li>유입 채널별 전환률</li>
 </ul>
@@ -327,6 +289,12 @@
                      <span class="token operator">AND</span> scroll<span class="token punctuation">.</span>ga_session_id <span class="token operator">=</span> click<span class="token punctuation">.</span>ga_session_id
                      <span class="token operator">AND</span> scroll<span class="token punctuation">.</span>scroll_at <span class="token operator">&lt;=</span> click<span class="token punctuation">.</span>click_at
 <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> source<span class="token punctuation">,</span> medium<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.paddle.com/resources/customer-retention-analysis">https://www.paddle.com/resources/customer-retention-analysis</a></li>
+</ul>
+
                 
             </div>
             <hr/>
@@ -352,7 +320,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/07/01/Data%20Analysis/a/">http://example.com/2024/07/01/Data%20Analysis/a/</a>
+                    <a href="http://example.com/2024/07/01/Data%20Analysis/funnel/">http://example.com/2024/07/01/Data%20Analysis/funnel/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -504,23 +472,23 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/06/01/Open%20Source%20Docs/">
+                <a href="/2024/07/01/Data%20Analysis/retension/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/book-logo.png" class="responsive-img" alt="">
+                        <img src="/images/logos/data-analysis.jpg" class="responsive-img" alt="리텐션 분석">
                         
-                        <span class="card-title diy-neon-red"></span>
+                        <span class="card-title diy-neon-red">리텐션 분석</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Data Study Index
+                            Data Analysis
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-06-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-07-01
                             </span>
                         <span class="publish-author">
                             

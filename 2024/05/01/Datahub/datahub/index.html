@@ -252,7 +252,12 @@
 </li>
 <li><p>테스트 환경을 위한 로컬에서도 구동할 수 있으며, Docker 엔진에 충분한 하드웨어 리소스를 할당이 필요 <br>(<code>CPU 2개</code>, <code>RAM 8GB</code>, <code>스왑 영역 2GB</code>, <code>디스크 공간 10GB</code>)</p>
 </li>
+<li><p>아래와 같이 zookeeper, kafka(broker, schema-registry), elasticsearch, datahbub(gms, frontend-react, actions), mysql 프로세스가 띄어진다. (초기화 컨테이너는 제외)</p>
+</li>
 </ul>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128844&authkey=%21AJ--gHU2Zo3f6KM&width=1024" width="1024" height="auto" />
+
+
 <h3 id="Install-the-DataHub-CLI"><a href="#Install-the-DataHub-CLI" class="headerlink" title="Install the DataHub CLI"></a>Install the DataHub CLI</h3><blockquote>
 <p><a target="_blank" rel="noopener" href="https://datahubproject.io/docs/quickstart/#install-the-datahub-cli">공식문서</a>에서는 pip과 poetry 두 개의 설치 방법을 알려주지만, <code>최근 파이썬 오픈소스 프로젝트들이 빌드시스템을 poetry로 전향</code>하고 있어 여기서는 poetry를 사용했다.</p>
 </blockquote>
@@ -307,7 +312,67 @@ $ datahub <span class="token function">docker</span> quickstart <span class="tok
 </ul>
 </li>
 </ul>
-<h4 id="API로-Data-Ingestion하는-예시"><a href="#API로-Data-Ingestion하는-예시" class="headerlink" title="API로 Data Ingestion하는 예시"></a>API로 Data Ingestion하는 예시</h4><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>my-recipes-example.yaml</span></div><code class="language-yaml"><span class="token comment"># The simplest recipe that pulls metadata from mariadb and puts it into DataHub</span>
+<h3 id="Recipes"><a href="#Recipes" class="headerlink" title="Recipes"></a>Recipes</h3><blockquote>
+<p>메타데이터 수집을 위한 주요 구성 파일. 수집 스크립트에 데이터를 어디에서 가져올지(source)와 어디에 넣을지(sink)를 알려준다.</p>
+</blockquote>
+<p>&lt;img src&#x3D;”<a target="_blank" rel="noopener" href="https://onedrive.live.com/embed?resid=1133AC7476AA0922!28843&authkey=!APxaHeReZsTLIA8&width=684&height=294">https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128843&amp;authkey=%21APxaHeReZsTLIA8&amp;width=684&amp;height=294</a>“ width&#x3D;”684” height&#x3D;”294” alt&#x3D;”&#x2F;&gt;</p>
+<ul>
+<li>구성</li>
+</ul>
+<p>레시피 파일의 기본 형식은 <code>source</code>와 <code>sink</code>로 구성된다.</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># The simplest recipe that pulls metadata from MSSQL and puts it into DataHub</span>
+<span class="token comment"># using the Rest API.</span>
+<span class="token key atrule">source</span><span class="token punctuation">:</span>
+  <span class="token key atrule">type</span><span class="token punctuation">:</span> mssql
+  <span class="token key atrule">config</span><span class="token punctuation">:</span>
+    <span class="token key atrule">username</span><span class="token punctuation">:</span> sa
+    <span class="token key atrule">password</span><span class="token punctuation">:</span> $<span class="token punctuation">&#123;</span>MSSQL_PASSWORD<span class="token punctuation">&#125;</span>
+    <span class="token key atrule">database</span><span class="token punctuation">:</span> DemoData
+<span class="token comment"># sink section omitted as we want to use the default datahub-rest sink</span>
+<span class="token key atrule">sink</span><span class="token punctuation">:</span>
+  <span class="token key atrule">type</span><span class="token punctuation">:</span> <span class="token string">"datahub-rest"</span>
+  <span class="token key atrule">config</span><span class="token punctuation">:</span>
+    <span class="token key atrule">server</span><span class="token punctuation">:</span> <span class="token string">"http://localhost:8080"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h4><blockquote>
+<p>메타데이터를 추출하는 데이터 시스템</p>
+</blockquote>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>일반적으로 recipe 맨 위에 정의된다.</span></div><code class="language-yaml"><span class="token comment">#my_recipe.yml</span>
+<span class="token key atrule">source</span><span class="token punctuation">:</span> 
+  <span class="token key atrule">type</span><span class="token punctuation">:</span> &lt;source_name<span class="token punctuation">></span>
+  <span class="token key atrule">config</span><span class="token punctuation">:</span> 
+    <span class="token key atrule">option_1</span><span class="token punctuation">:</span> &lt;value<span class="token punctuation">></span>
+    <span class="token punctuation">...</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="Sink"><a href="#Sink" class="headerlink" title="Sink"></a>Sink</h4><blockquote>
+<p>메타데이터의 대상</p>
+</blockquote>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>일반적으로 recipe에서 source 뒤에 정의된다.</span></div><code class="language-yaml"><span class="token key atrule">source</span><span class="token punctuation">:</span> <span class="token punctuation">...</span>
+
+<span class="token key atrule">sink</span><span class="token punctuation">:</span>
+  <span class="token key atrule">type</span><span class="token punctuation">:</span> &lt;sink_type<span class="token punctuation">></span>
+  <span class="token key atrule">config</span><span class="token punctuation">:</span> <span class="token punctuation">...</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><p>싱크 유형으로는 두 가지가 있다.</p>
+<ul>
+<li>REST (datahub-rest) : </li>
+<li>Kafka (datahub-kafka) :</li>
+</ul>
+</li>
+</ul>
+<h4 id="UI-Ingestion"><a href="#UI-Ingestion" class="headerlink" title="UI Ingestion"></a>UI Ingestion</h4><ul>
+<li>소스의 연결 정보를 쉽게 입력할 수 있다.</li>
+</ul>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128842&authkey=%21ACXkibJf_l8BEbk&width=1239&height=883" width="1239" height="883" alt="Frontend Web Ingestion UI"/>
+
+
+<ul>
+<li>Web UI를 쓰면, 데이터를 수집할 소스를 연결할 후 실행시 필요한 라이브러리를 자동적으로 설치해준다.</li>
+</ul>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128846&authkey=%21AFxQGqs3Z2y5-fw&width=1915&height=891" width="1915" height="891" />
+
+<h4 id="API-Ingestion"><a href="#API-Ingestion" class="headerlink" title="API Ingestion"></a>API Ingestion</h4><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>my-recipes-example.yaml</span></div><code class="language-yaml"><span class="token comment"># The simplest recipe that pulls metadata from mariadb and puts it into DataHub</span>
 <span class="token comment"># using the Rest API.</span>
 <span class="token key atrule">source</span><span class="token punctuation">:</span>
   <span class="token key atrule">type</span><span class="token punctuation">:</span> mariadb
