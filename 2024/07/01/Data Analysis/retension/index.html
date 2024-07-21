@@ -230,12 +230,12 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Retension-Analysis"><a href="#Retension-Analysis" class="headerlink" title="Retension Analysis"></a>Retension Analysis</h2><blockquote>
+                <h2 id="리텐션-분석-Retension-Analysis"><a href="#리텐션-분석-Retension-Analysis" class="headerlink" title="리텐션 분석 (Retension Analysis)"></a>리텐션 분석 (Retension Analysis)</h2><blockquote>
 <p>Retention analysis(또는 survival analysis)은 고객이 이탈하는 이유와 방식을 이해하기 위해 사용자 지표를 분석하는 과정</p>
 </blockquote>
 <ul>
-<li><p>일관된 유지 분석을 실행하면 다음과 같은 사항을 배울 수 있습니다.</p>
-</li>
+<li><p>일관된 리텐션 분석을 실행하면 다음과 같은 사항을 배울 수 있다.</p>
+<ul>
 <li><p>고객이 이탈하는 이유</p>
 </li>
 <li><p>고객이 떠날 가능성이 더 높은 경우</p>
@@ -245,7 +245,9 @@
 <li><p>고객 유지 전략을 개선하는 방법</p>
 </li>
 </ul>
-<h2 id="클래식-리텐션-Classic-Retension"><a href="#클래식-리텐션-Classic-Retension" class="headerlink" title="클래식 리텐션 (Classic Retension)"></a>클래식 리텐션 (Classic Retension)</h2><ul>
+</li>
+</ul>
+<h2 id="리텐션-분석-SQL"><a href="#리텐션-분석-SQL" class="headerlink" title="리텐션 분석 SQL"></a>리텐션 분석 SQL</h2><h3 id="클래식-리텐션-Classic-Retension"><a href="#클래식-리텐션-Classic-Retension" class="headerlink" title="클래식 리텐션 (Classic Retension)"></a>클래식 리텐션 (Classic Retension)</h3><ul>
 <li>고객ID</li>
 <li>첫 주문 일자</li>
 <li>사용자 정의 기간(interval)별 주문 일자</li>
@@ -277,7 +279,7 @@
 <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> first_order_month
 <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> first_order_month <span class="token keyword">ASC</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="롤링-리텐션-Rolling-Retension"><a href="#롤링-리텐션-Rolling-Retension" class="headerlink" title="롤링 리텐션 (Rolling Retension)"></a>롤링 리텐션 (Rolling Retension)</h2><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">WITH</span> customers <span class="token keyword">AS</span> <span class="token punctuation">(</span>
+<h3 id="롤링-리텐션-Rolling-Retension"><a href="#롤링-리텐션-Rolling-Retension" class="headerlink" title="롤링 리텐션 (Rolling Retension)"></a>롤링 리텐션 (Rolling Retension)</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">WITH</span> customers <span class="token keyword">AS</span> <span class="token punctuation">(</span>
   <span class="token keyword">SELECT</span> customer_id
        <span class="token punctuation">,</span> first_order_date
        <span class="token punctuation">,</span> last_order_date
@@ -443,12 +445,12 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/07/01/Data%20Analysis/PMF/">
+                <a href="/2024/07/01/Data%20Analysis/funnel/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/data-analysis.jpg" class="responsive-img" alt="Product Market Fit">
+                        <img src="/images/logos/data-analysis.jpg" class="responsive-img" alt="퍼널 분석">
                         
-                        <span class="card-title diy-neon-red">Product Market Fit</span>
+                        <span class="card-title diy-neon-red">퍼널 분석</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -479,23 +481,23 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/07/01/Data%20Analysis/funnel/">
+                <a href="/2024/06/01/Open%20Source%20Docs/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/data-analysis.jpg" class="responsive-img" alt="리텐션 분석">
+                        <img src="/images/logos/book-logo.png" class="responsive-img" alt="">
                         
-                        <span class="card-title diy-neon-red">리텐션 분석</span>
+                        <span class="card-title diy-neon-red"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Data Analysis
+                            Data Study Index
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-07-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-06-01
                             </span>
                         <span class="publish-author">
                             
