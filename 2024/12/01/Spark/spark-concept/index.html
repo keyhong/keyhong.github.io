@@ -631,10 +631,7 @@ $ <span class="token variable">$&#123;SPARK_HOME&#125;</span>/bin/spark-submit <
 </ul>
 <p> </p>
 <h3 id="최적화의-기본"><a href="#최적화의-기본" class="headerlink" title="최적화의 기본"></a>최적화의 기본</h3><p>프로그램을 최적화 시킬 때, 두 가지 I&#x2F;O를 줄이는 것이 정말 중요하다고 생각한다. 첫 번째는 Network I&#x2F;O 이다. Network I&#x2F;O를 개선하기 위해서는 서로 다른 서버 혹은 노드 간에 통신을 하기 전 이동할 데이터의 양을 줄이고,  꼭 필요한 통신만 할 수 있도록 처리 로직을 구현하는 것이 중요하다. 그리고 두 번째는 Disk I&#x2F;O를 개선하는 것이다. Disk I&#x2F;O를 줄이는 기본은 데이터 소스에서 꼭 필요 컬럼만 추출하고 컬럼을 나타낼 수 있는 데이터 타입을 명시적으로 지정하는 일이다. 예를 들어 Python에서 int32로 표현할 수 있는 컬럼을 명시적으로 지정하지 않아 자동화된 타입 추론에 의해 Int64로 읽게 된다면 row의 한 행 마다 32 bit를 불필요하게 더 쓴다. 이는 데이터의 행이 많아질 수록 (행의 개수 * 32) bit 씩 추가적인 메모리를 소모하므로 데이터 행이 많다면 더 큰 리소스 소모를 일으킨다. 다만, 타입을 명시적으로 지정할 때 주의 할 점은 너무 최소 비트로만 데이터를 읽어 들여 범위를 넘어서는 이상 값이 발견됬을 때, 에러가 발생하거나 자동으로 더 큰 타입이으로 casting 될 수 있으므로 충분히 컬럼 값의 범위를 고려해야 한다. 내 경험 상 pandas.DataFrame에서 NaN 값이 있다면 int가 float64로 자동 캐스팅 되는 것도 볼 수 있었다. Network I&#x2F;O는 개선하는 것은 정말 어렵고 효율 개선도 한계가 있다. 때문에 Disk I&#x2F;O를 개선하는 것이 필수적이며 단순하지만 더 큰 리소스 절감을 만들 수 있다.</p>
-<h3 id="Hadoop-Distributed-File-System"><a href="#Hadoop-Distributed-File-System" class="headerlink" title="Hadoop Distributed File System"></a>Hadoop Distributed File System</h3><img HDFS Architecture>
-
-<p>HDFS(Hadoop Distributed File System)는 데이터 파일을 블록(default 128 MB) 단위로 쪼개어 클러스터의 여러 Data Node에 나눠서 저장하고 서로 복제(replication)하여 고가용성(High Availability)을 만들어 낸다. 각 블록에 대한 위치 정보는 Hadoop Cluster의 Name Node의 메모리에 저장되어 있다. Hadoop도 JVM 위에서 구동되는 하나의 프로그램이기 때문에 당연히 리소스를 관리해야 한다. Hadoop을 공부하면 블록 추상화라는 재미있는 요소가 있는 데, 한번 읽어보면 얼마나 섬세하게 설계 했는 지 그 생각을 볼 수 있다. 하여튼 Hadoop이라는 프로그램은 클러스터를 여러 노드를 제어하기 위해 일반적으로 Yarn이라는 Cluster Resource Manager를 사용한다. Hadoop Cluster에서 앱을 구동하려면 Yarn을 통해 Data Node의 리소스를 할당받고 각 노드에서 Container라는 사용 가능한 리소스의 환경을 제공받는다. 이 위에서 Spark라는 분산 처리 가능한 프로세스가 실행된다. 그렇다. 이는 우리가 Spark에서 executor라고 부르는 것이며 이것은 하나의 프로세스다. 그럼 이 프로세스는 각 Data Node에 나눠져 있는 데 어떻게 task에 데이터를 나눠줄 수 있을까?<br> <br>쉽게 생각해보자. 어떤 하나의 노드에서 데이터를 읽는다면 읽은 데이터 사이즈 만큼 메모리에 가지고 있다가 그 데이터를 파티션 개수만큼 나눠서 네트워크를 통해 다른 노드에 나눠줄 수 있지 않을 까? 가능하다. 하지만 비효율적이다. 왜냐하면 하나의 노드에서 큰 데이터를 읽는 데는 많은 시간이 걸리고, 또한 분할하는 시간과 네트워크를 통해 데이터를 전송하는 시간이 많이 걸리기 때문이다. 분명 읽어들이는 동안 다른 노드의 CPU들은 유휴 시간(idle time)을 갖게 될 것이다.<br> <br>그럼 개선할 수 있는 방법은? 당연히 나눠서 일을 하는 것이다. 각 노드들이 동시 접근한 저장소를 만들고, 각 자 읽어야 할 데이터만 읽으면 따로 나눠줄 필요도 없을 것이다. 분산 파일 시스템에서의 Spark는 이 때 빛을 발한다. 아까 HDFS에 적재된 데이터가 블록 단위로 나눠져 여러 노드에 걸쳐 분산 저장된다고 했던 말 기억하는 가? 그럼 Spark의 executor가 각각 처리할 데이터를 자신의 Data Node에서 읽어 들이면 Disk I&#x2F;O의 속도와 불필요한 Network I&#x2F;O를  줄일 수 있지 않을까?
- </p>
+<h3 id="Hadoop-Distributed-File-System"><a href="#Hadoop-Distributed-File-System" class="headerlink" title="Hadoop Distributed File System"></a>Hadoop Distributed File System</h3><p>HDFS(Hadoop Distributed File System)는 데이터 파일을 블록(default 128 MB) 단위로 쪼개어 클러스터의 여러 Data Node에 나눠서 저장하고 서로 복제(replication)하여 고가용성(High Availability)을 만들어 낸다. 각 블록에 대한 위치 정보는 Hadoop Cluster의 Name Node의 메모리에 저장되어 있다. Hadoop도 JVM 위에서 구동되는 하나의 프로그램이기 때문에 당연히 리소스를 관리해야 한다. Hadoop을 공부하면 블록 추상화라는 재미있는 요소가 있는 데, 한번 읽어보면 얼마나 섬세하게 설계 했는 지 그 생각을 볼 수 있다. 하여튼 Hadoop이라는 프로그램은 클러스터를 여러 노드를 제어하기 위해 일반적으로 Yarn이라는 Cluster Resource Manager를 사용한다. Hadoop Cluster에서 앱을 구동하려면 Yarn을 통해 Data Node의 리소스를 할당받고 각 노드에서 Container라는 사용 가능한 리소스의 환경을 제공받는다. 이 위에서 Spark라는 분산 처리 가능한 프로세스가 실행된다. 그렇다. 이는 우리가 Spark에서 executor라고 부르는 것이며 이것은 하나의 프로세스다. 그럼 이 프로세스는 각 Data Node에 나눠져 있는 데 어떻게 task에 데이터를 나눠줄 수 있을까?<br> <br>쉽게 생각해보자. 어떤 하나의 노드에서 데이터를 읽는다면 읽은 데이터 사이즈 만큼 메모리에 가지고 있다가 그 데이터를 파티션 개수만큼 나눠서 네트워크를 통해 다른 노드에 나눠줄 수 있지 않을 까? 가능하다. 하지만 비효율적이다. 왜냐하면 하나의 노드에서 큰 데이터를 읽는 데는 많은 시간이 걸리고, 또한 분할하는 시간과 네트워크를 통해 데이터를 전송하는 시간이 많이 걸리기 때문이다. 분명 읽어들이는 동안 다른 노드의 CPU들은 유휴 시간(idle time)을 갖게 될 것이다.<br> <br>그럼 개선할 수 있는 방법은? 당연히 나눠서 일을 하는 것이다. 각 노드들이 동시 접근한 저장소를 만들고, 각 자 읽어야 할 데이터만 읽으면 따로 나눠줄 필요도 없을 것이다. 분산 파일 시스템에서의 Spark는 이 때 빛을 발한다. 아까 HDFS에 적재된 데이터가 블록 단위로 나눠져 여러 노드에 걸쳐 분산 저장된다고 했던 말 기억하는 가? 그럼 Spark의 executor가 각각 처리할 데이터를 자신의 Data Node에서 읽어 들이면 Disk I&#x2F;O의 속도와 불필요한 Network I&#x2F;O를  줄일 수 있지 않을까?</p>
 <h3 id="분산-파일-시스템을-사용하지-않는-경우"><a href="#분산-파일-시스템을-사용하지-않는-경우" class="headerlink" title="분산 파일 시스템을 사용하지 않는 경우"></a>분산 파일 시스템을 사용하지 않는 경우</h3><p>Spark를 Local Mode로 구동한다면 로컬 파일 시스템에서 데이터를 읽을 수 있겠지만,  다행히도 클러스터에서 실행되도록 구동한다면 특정 로컬 파일시스템에서 읽는 것은 불가능하게 만들어 놓았다. 만약 클러스터의 Spark 프로세스가 특정 로컬의 파일을 읽으려고 한다면 Java.io.FileNotFoundException 에러가 발생한다. 물론, 특정 노드에서 NFS(Network Files System)을 이용한다면 가능하겠지만 분산 파일 시스템에 비하면 당연히 성능이 느릴 수 밖에 없다.
  </p>
 <ul>
@@ -650,10 +647,10 @@ $ <span class="token variable">$&#123;SPARK_HOME&#125;</span>/bin/spark-submit <
 <p>문제는 action을 call 할 때마다 Lineage의 처음부터 끝까지 다시 수행한다는 점이다. 가끔씩 스파크에서 중간 단계의 RDD를 재사용해야 하는 경우가 있다. 예를 들어, 데이터 소스에서 큰 데이터를 fetch 하는 데 많은 시간을 소요했는 데, 또 다시 이러한 고비용의 과정을 반복하는 것은 프로세싱 시간과 리소스에 있어 비효율적이다. 이를 해결하기 위한 방법은 간단하다. 중간 지점까지 수행한 RDD의 상태를 메모리나 디스크에 저장하는 것이다. 스파크에서는 이런 경우를 대비해 기존의 RDD를 재사용 할 수 있도록 <code>persist</code>와 <code>cache</code>가 함수를 지원한다.</p>
 <p>원래 스파크는 in-memory 방식을 사용한다고 하는 데, 대체 왜 이런 함수를 지원하는 걸까? 스파크는 대용량의 데이터를 처리하고 다루는 데 초점이 맞춰져 있다. 당연하게도 빅데이터를 다루는 일이기에, 모든 중간 stage 과정마다 가공한 결과를 전부 메모리에 저장하고 있는 것은 당연히 불가능하다. 그렇게 한다면, OOM(Out Of Memory) 에러를 맛보고 프로세스가 중지되어 버릴 것이다. 때문에 처리하는 과정을 넘어 갈 때마다 LRU 알고리즘에 의해 오래된 데이터를 메모리에서 제거하게 된다.</p>
 <p>그럼 cache도 중간 데이터를 메모리에 저장하도록 명시적으로 지시하는 것인데, cache를 위한 메모리 용량은 어떻게 설정하는 지를 봐야한다. 스파크는 Context나 Session을 만들 때 config를 수정하여 memory를 설정 할 수 있다. Spark Memory는 Storage Memory(클러스터 전체에 내부 데이터를 캐싱하고 전파)와 Execution Memory(셔플, 조인, 정렬 및 집계에서 계산에 사용)을 위한 메모리가 핵심이다. </p>
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110156&authkey=%21ALzf-xm8E1DuXsU&width=1016&height=236" width="1016" height="236" alt="executor 메모리 구조 중 caching을 위한 Storage Memory"/>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110156&authkey=%21ALzf-xm8E1DuXsU&width=1016&height=236" width="1016" height="236" alt="Storage Level 정리표"/>
 
 <p>RDD를 유지하면 각 노드는 메모리에서 계산하는 파티션을 저장하고 해당 데이터 세트(또는 여기에서 파생된 데이터 세트)의 다른 작업에서 재사용한다. 이를 통해 향후 작업이 훨씬 빨라질 수 있다(종종 10배 이상). 캐싱은 반복 알고리즘과 빠른 대화식 사용을 위한 핵심 도구이다.</p>
-<h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><h4 id="persist"><a href="#persist" class="headerlink" title="persist()"></a>persist()</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> pyspark
+<h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><pre class="line-numbers language-python" data-language="python"><div class="caption"><span>persist()</span></div><code class="language-python"><span class="token keyword">import</span> pyspark
 
 pyspark<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>DataFrame<span class="token punctuation">.</span>persist<span class="token punctuation">(</span>
     storageLevel<span class="token punctuation">:</span> pyspark<span class="token punctuation">.</span>storagelevel<span class="token punctuation">.</span>StorageLevel <span class="token operator">=</span> StorageLevel<span class="token punctuation">(</span><span class="token boolean">True</span><span class="token punctuation">,</span> <span class="token boolean">True</span><span class="token punctuation">,</span> <span class="token boolean">False</span><span class="token punctuation">,</span> <span class="token boolean">True</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
@@ -663,9 +660,7 @@ pyspark<span class="token punctuation">.</span>sql<span class="token punctuation
 <span class="token keyword">from</span> pyspark<span class="token punctuation">.</span>storagelevel <span class="token keyword">import</span> StorageLevel
 DataFrame<span class="token punctuation">.</span>persist<span class="token punctuation">(</span>StorageLevel<span class="token punctuation">.</span>MEMORY_AND_DISK_DESER<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110158&authkey=%21AMY4RLzM3DbNpVI&width=560&height=437" width="560" height="437" alt="Storage Level 정리표"/>
-
-<h4 id="cache"><a href="#cache" class="headerlink" title="cache()"></a>cache()</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> pyspark
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>cache()</span></div><code class="language-python"><span class="token keyword">import</span> pyspark
 
 pyspark<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>DataFrame<span class="token punctuation">.</span>cache<span class="token punctuation">(</span><span class="token punctuation">)</span> → pyspark<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>dataframe<span class="token punctuation">.</span>DataFrame
 
@@ -817,6 +812,46 @@ DataFrame<span class="token punctuation">.</span>cache<span class="token punctua
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
+                <a href="/2025/11/01/Data%20Standardization/a/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="데이터 표준화">
+                        
+                        <span class="card-title diy-neon-red">데이터 표준화</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            데이터 표준화
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-11-01
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%91%9C%EC%A4%80%ED%99%94/" class="post-category">
+                                    데이터 표준화
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
                 <a href="/2024/12/01/Trend/The%20State%20of%20Data%20Engineering%202024/">
                     <div class="card-image">
                         
@@ -832,53 +867,13 @@ DataFrame<span class="token punctuation">.</span>cache<span class="token punctua
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-12-01
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            Keyhong
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2024/12/01/Data%20Quality/Docs/About%20GX%20OSS/">
-                    <div class="card-image">
-                        
-                        <img src="/images/logos/great-expectations.png" class="responsive-img" alt="About GX OSS">
-                        
-                        <span class="card-title diy-neon-red">About GX OSS</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            Great_expectations
-                        
-                    </div>
-                    <div class="publish-info">
                             <span class="publish-date">
                                 <i class="far fa-clock fa-fw icon-date"></i>2024-12-01
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Great-expectations/" class="post-category">
-                                    Great_expectations
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Keyhong
                             
                         </span>
                     </div>

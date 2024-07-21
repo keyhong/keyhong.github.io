@@ -302,22 +302,19 @@ ModuleGroups together c
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Spark/dataframe-dataset/">
+                    <a href="/2023/12/01/Spark/skew-optimization/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="RDD / DataFrame / DataSet">
+                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Skew Optimization">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">RDD / DataFrame / DataSet</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Skew Optimization</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                RDD(Resilient Distributed Dataset)
-스파크 프로그래밍에서 사용되는 가장 기본적인 데이터 객체
-
-한글로 해석하면 복원 분산 데이터 집합이다. Spark에서 사용되는 가장 기본적인 데이터 객체
+                                Skew Optimizing스파크에서 skewness(왜도, 비대칭도)를 해결하는 것은 스파크 튜닝의 중요한 요소이다. 왜 skewness를 해결해야 하는 지는 스파크가 분산 처리 프레임워크라는 것을 생각한다면 당연
                             
                         </div> -->
                         <div class="publish-info">
@@ -348,19 +345,22 @@ ModuleGroups together c
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Spark/skew-optimization/">
+                    <a href="/2023/12/01/Spark/dataframe-dataset/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Skew Optimization">
+                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="RDD / DataFrame / DataSet">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Skew Optimization</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">RDD / DataFrame / DataSet</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                Skew Optimizing스파크에서 skewness(왜도, 비대칭도)를 해결하는 것은 스파크 튜닝의 중요한 요소이다. 왜 skewness를 해결해야 하는 지는 스파크가 분산 처리 프레임워크라는 것을 생각한다면 당연
+                                RDD(Resilient Distributed Dataset)
+스파크 프로그래밍에서 사용되는 가장 기본적인 데이터 객체
+
+한글로 해석하면 복원 분산 데이터 집합이다. Spark에서 사용되는 가장 기본적인 데이터 객체
                             
                         </div> -->
                         <div class="publish-info">
@@ -438,22 +438,25 @@ ModuleGroups together c
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Spark/spark-streaming-shutdown/">
+                    <a href="/2023/12/01/Spark/spark-installation/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Spark Streaming Gracefully Shutdown">
+                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Installation">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Spark Streaming Gracefully Shutdown</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Installation</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                sparkStreamContext.stop()
-코드 상에서 sparkStreamContext.stop()를 call 하는 것은 그만
+                                단일 노드(Single Node) 스파크 배포
+패키지 색인 파일(패키지 저장소가 제공하는 패키지에 대한 정보 파일) 업데이트
 
-방법 1 : spark.streaming.stopGracefullyOnShutdo
+# Debian 계열 리눅스(Ubuntu)
+$ sudo apt-get update
+
+# 
                             
                         </div> -->
                         <div class="publish-info">
@@ -484,25 +487,22 @@ ModuleGroups together c
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/12/01/Spark/spark-installation/">
+                    <a href="/2023/12/01/Spark/spark-streaming-shutdown/">
                         <div class="card-image">
                             
-                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Installation">
+                            <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Spark Streaming Gracefully Shutdown">
                             
-                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Installation</span>
+                            <span class="card-title diy-neon-red" style="font-size: 1.2rem;">Spark Streaming Gracefully Shutdown</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <!-- <div class="summary block-with-text">
                             
-                                단일 노드(Single Node) 스파크 배포
-패키지 색인 파일(패키지 저장소가 제공하는 패키지에 대한 정보 파일) 업데이트
+                                sparkStreamContext.stop()
+코드 상에서 sparkStreamContext.stop()를 call 하는 것은 그만
 
-# Debian 계열 리눅스(Ubuntu)
-$ sudo apt-get update
-
-# 
+방법 1 : spark.streaming.stopGracefullyOnShutdo
                             
                         </div> -->
                         <div class="publish-info">
