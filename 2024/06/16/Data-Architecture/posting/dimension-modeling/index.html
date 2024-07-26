@@ -5,7 +5,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Dimension Modeling, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="시작하기 전에 Fact와 Dimension 먼저!모델링을 이해하려면 먼저 테이블 간의 관계가 있다는 걸 봐야한다. 그런데 테이블을 딱 하나만 만들어서 모든 컬럼을 넣으면 한 눈에 볼텐데 왜 테이블을 분할하고 관계를 ">
+    <meta name="description" content="Thinking
+모델링을 이해하려면 먼저 테이블 간의 관계가 있다는 걸 봐야한다. 그런데 테이블을 딱 하나만 만들어서 모든 컬럼을 넣으면 한 눈에 볼텐데 왜 테이블을 분할하고 관계를 만들었을까?
+
+
+
+일반적으로 행열">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -205,8 +210,8 @@
                 <div class="post-cate">
                     <i class="fas fa-bookmark fa-fw icon-category"></i>
                     
-                        <a href="/categories/Data-Architecture/" class="post-category">
-                            Data Architecture
+                        <a href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98/" class="post-category">
+                            데이터 아키텍처
                         </a>
                     
                 </div>
@@ -223,7 +228,8 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="시작하기-전에-Fact와-Dimension-먼저"><a href="#시작하기-전에-Fact와-Dimension-먼저" class="headerlink" title="시작하기 전에 Fact와 Dimension 먼저!"></a>시작하기 전에 Fact와 Dimension 먼저!</h2><p>모델링을 이해하려면 먼저 테이블 간의 관계가 있다는 걸 봐야한다. 그런데 테이블을 딱 하나만 만들어서 모든 컬럼을 넣으면 한 눈에 볼텐데 왜 테이블을 분할하고 관계를 만들었을까?</p>
+                <h2 id="Thinking"><a href="#Thinking" class="headerlink" title="Thinking"></a>Thinking</h2><hr>
+<p>모델링을 이해하려면 먼저 테이블 간의 관계가 있다는 걸 봐야한다. 그런데 테이블을 딱 하나만 만들어서 모든 컬럼을 넣으면 한 눈에 볼텐데 왜 테이블을 분할하고 관계를 만들었을까?</p>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110064&authkey=%21ACMIE05DdRpUzIs&width=1070&height=165" width="1070" height="165" alt="row 포맷의 데이터"/>
 
 <ul>
@@ -237,17 +243,18 @@
 <blockquote>
 <p>즉, 논리적으로 테이블을 분할하도록 설계함으로써 <code>사용성(usability)과 성능(performance)을 개선</code>시킬 수 있다. 그 분할하는 기준을 잡기 위해서 우리는 기본적으로 Fact와 Dimension을 파악한다.</p>
 </blockquote>
-<h3 id="Fact"><a href="#Fact" class="headerlink" title="Fact"></a>Fact</h3><blockquote>
-<p><code>집계되고 분석되는 대상</code>이다. 보통 <code>event나 transactional data</code>로 <code>numerical한 타입</code>을 가지고 있다. 예를 들면 매출, 이익, 판매수량 같이 우리가 일반적으로 집계하려는 것이다.</p>
+<h2 id="Fact"><a href="#Fact" class="headerlink" title="Fact"></a>Fact</h2><hr>
+<blockquote>
+<p><code>집계되고 분석되는 대상</code>. 보통 <code>event나 transactional data</code>로 <code>numerical한 타입</code>을 가지고 있다. 예를 들면 매출, 이익, 판매수량 같이 우리가 일반적으로 집계하려는 것이다.</p>
 </blockquote>
-<h4 id="Fact-테이블의-구성"><a href="#Fact-테이블의-구성" class="headerlink" title="Fact 테이블의 구성"></a>Fact 테이블의 구성</h4><p>위에서 설명한 Fact가 있는 테이블을 Fact 테이블이라고 한다. Fact 테이블은 아래와 같이 구성될 수 있다.</p>
+<h3 id="Fact-테이블의-구성"><a href="#Fact-테이블의-구성" class="headerlink" title="Fact 테이블의 구성"></a>Fact 테이블의 구성</h3><p>위에서 설명한 Fact가 있는 테이블을 Fact 테이블이라고 한다. Fact 테이블은 아래와 같이 구성될 수 있다.</p>
 <ol>
 <li><code>PK</code> : 모든 단일 행의 고유 식별자이다.</li>
 <li><code>FK</code> : 보통 하나의 Fact 테이블은 여러 개의 외래키를 가진다. FK는 Dimension 테이블에 참조 역할을 한다.</li>
 <li><code>Fact</code> : 매출, 이익, 예산 등의 집계 대상이다.</li>
 </ol>
-<h4 id="Fact의-성격"><a href="#Fact의-성격" class="headerlink" title="Fact의 성격"></a>Fact의 성격</h4><p>문맥을 설명하는 것보다 분석 대상으로 <code>측정 가능한 성격(measurable)</code>을 뛰고 있다.</p>
-<h4 id="ETC"><a href="#ETC" class="headerlink" title="ETC"></a>ETC</h4><ul>
+<h3 id="Fact의-성격"><a href="#Fact의-성격" class="headerlink" title="Fact의 성격"></a>Fact의 성격</h3><p>문맥을 설명하는 것보다 분석 대상으로 <code>측정 가능한 성격(measurable)</code>을 뛰고 있다.</p>
+<h3 id="ETC"><a href="#ETC" class="headerlink" title="ETC"></a>ETC</h3><ul>
 <li><p><code>집계할 수 있다고 모든 대상이 Fact가 되지는 않는다.</code> 거래날짜나 트랜잭션일자도 Fact 테이블에 있지만 year·month·day를 집계한다고 의미있는 분석결과를 얻을 수는 없다. 이런 값들은 Fact가 아닌 Dimension이다.</p>
 </li>
 <li><p>numerical한 타입외에도 다른 타입의 팩트도 있다.</p>
@@ -257,10 +264,11 @@
 </ul>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110065&authkey=%21AL9adxbCgyQH5HY&width=1064&height=164" width="1064" height="164" alt="product id, product, category, subcategory 기준으로 cost는 원자성을 가진다." />
 
-<h3 id="Dimension"><a href="#Dimension" class="headerlink" title="Dimension"></a>Dimension</h3><blockquote>
-<p><code>Fact에 대한 의미 있는 맥락을 더해주는 것</code>이다. <code>Fact만 있다고 의미 있는 통찰력을 얻을 수는 없다.</code> 집계에는 항상 맥락이 같이 있어야 한다. 위에서 “카테고리별 (평균) 비용” 중 비용이 Fact였다면, 카테고리는 Dimension이다. 단순히 비용만 집계한다고 어떤 의미가 있지는 않다. <U>카테고리별</U> (평균) 비용이나, <U>연도가 2023년</U>의 (합계) 비용처럼 Fact의 집계에 부가적인 정보를 더해준다.</p>
+<h2 id="Dimension"><a href="#Dimension" class="headerlink" title="Dimension"></a>Dimension</h2><hr>
+<blockquote>
+<p><code>Fact에 대한 의미 있는 맥락을 더해주는 것</code>. <code>Fact만 있다고 의미 있는 통찰력을 얻을 수는 없다.</code> 집계에는 항상 맥락이 같이 있어야 한다. 위에서 “카테고리별 (평균) 비용” 중 비용이 Fact였다면, 카테고리는 Dimension이다. 단순히 비용만 집계한다고 어떤 의미가 있지는 않다. <U>카테고리별</U> (평균) 비용이나, <U>연도가 2023년</U>의 (합계) 비용처럼 Fact의 집계에 부가적인 정보를 더해준다.</p>
 </blockquote>
-<h4 id="Dimension-테이블의-구성"><a href="#Dimension-테이블의-구성" class="headerlink" title="Dimension 테이블의 구성"></a>Dimension 테이블의 구성</h4><ul>
+<h3 id="Dimension-테이블의-구성"><a href="#Dimension-테이블의-구성" class="headerlink" title="Dimension 테이블의 구성"></a>Dimension 테이블의 구성</h3><ul>
 <li><p><code>PK</code> : Fact 테이블에서는 FK였던 값이다. Dimension 테이블과 Fact 테이블은 1:N 관계(OneToMany)를 가진다.</p>
 </li>
 <li><p><code>Dimension</code> : Fact에 대한 의미 있는 맥락을 더해주는 것이다.</p>
@@ -268,8 +276,8 @@
 <li><p><code>[FK]</code> : Dimension 테이블에서 또 다른 Dimension 테이블이 생길 수도 있다. <code>FK가 있다면 Snowflake Schema</code>로 볼 수 있다.</p>
 </li>
 </ul>
-<h4 id="Dimension의-성격"><a href="#Dimension의-성격" class="headerlink" title="Dimension의 성격"></a>Dimension의 성격</h4><p><code>설명적(descriptive)인 성격</code>을 가진다. people, products, places, time 등 맥락 Fact가 발생했을 때의 문맥을 설명하는 성격을 뛰고 있다.</p>
-<h4 id="ETC-1"><a href="#ETC-1" class="headerlink" title="ETC"></a>ETC</h4><ul>
+<h3 id="Dimension의-성격"><a href="#Dimension의-성격" class="headerlink" title="Dimension의 성격"></a>Dimension의 성격</h3><p><code>설명적(descriptive)인 성격</code>을 가진다. people, products, places, time 등 맥락 Fact가 발생했을 때의 문맥을 설명하는 성격을 뛰고 있다.</p>
+<h3 id="ETC-1"><a href="#ETC-1" class="headerlink" title="ETC"></a>ETC</h3><ul>
 <li><p><code>Dimension 테이블을 만들면 데이터의 중복을 줄이고, 디스크 용량을 절약</code>할 수 있다. Fact 테이블에서는 길이가 긴 categorical 타입의 문자열이 Dimension 테이블로 나오면 기존 Fact 테이블에서의 값이 id(surrogate key)로 치환되고, Dimension 테이블은 Fact 테이블의 참조 테이블이 되어 값의 중복(redundancy)이 제거된다. 2차 정규화로 볼 수 있다.</p>
 </li>
 <li><p>분석 결과인 보고서에 필터가 필요하거나 그룹핑하는 요구하는 경우가 많아 <code>Grouping, Filtering, Labeling이 수행되는 대상</code>이다.</p>
@@ -277,7 +285,8 @@
 <li><p>때로는 변화 될 수도 있지만, 보통은 Fact 테이블에 변화가 일어나도 <code>Dimension은 조금 더 정적(static)인 성향</code>이 있다.</p>
 </li>
 </ul>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><hr>
+<ul>
 <li><a target="_blank" rel="noopener" href="https://www.udemy.com/course/data-warehouse-the-ultimate-guide/">Data Warehouse - The Ultimate Guide</a></li>
 </ul>
 
@@ -440,8 +449,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Data-Architecture/" class="post-category">
-                                    Data Architecture
+                            <a href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98/" class="post-category">
+                                    데이터 아키텍처
                                 </a>
                             
                             
@@ -480,8 +489,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Data-Architecture/" class="post-category">
-                                    Data Architecture
+                            <a href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98/" class="post-category">
+                                    데이터 아키텍처
                                 </a>
                             
                             

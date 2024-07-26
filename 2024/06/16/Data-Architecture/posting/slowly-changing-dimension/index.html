@@ -5,12 +5,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Slowly Changing Dimension, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Slowly Changing Dimensions (SCD)
-Dimension that change over time
+    <meta name="description" content="SCD (Slowly Changing Dimensions)
 
-Manages current and historical version
+시간이 지남에 따라 변하는 Dimension
 
-Build to track">
+
+현재 및 과거 버전을 관리. 변화를 추적하도록 설계됨
+
+SCD에는 다음과 같은 유형이 있다:
+
+
+Type ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -210,8 +215,8 @@ Build to track">
                 <div class="post-cate">
                     <i class="fas fa-bookmark fa-fw icon-category"></i>
                     
-                        <a href="/categories/Data-Architecture/" class="post-category">
-                            Data Architecture
+                        <a href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98/" class="post-category">
+                            데이터 아키텍처
                         </a>
                     
                 </div>
@@ -228,65 +233,56 @@ Build to track">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Slowly-Changing-Dimensions-SCD"><a href="#Slowly-Changing-Dimensions-SCD" class="headerlink" title="Slowly Changing Dimensions (SCD)"></a>Slowly Changing Dimensions (SCD)</h2><ul>
-<li><p>Dimension that change over time</p>
-</li>
-<li><p>Manages current and historical version</p>
-</li>
-<li><p>Build to track changes</p>
-</li>
-<li><p>There are different types of SCD such as:</p>
+                <h2 id="SCD-Slowly-Changing-Dimensions"><a href="#SCD-Slowly-Changing-Dimensions" class="headerlink" title="SCD (Slowly Changing Dimensions)"></a>SCD (Slowly Changing Dimensions)</h2><hr>
+<blockquote>
+<p>시간이 지남에 따라 변하는 Dimension</p>
+</blockquote>
 <ul>
-<li><p>Type-0 - Retain original</p>
+<li><p>현재 및 과거 버전을 관리. 변화를 추적하도록 설계됨</p>
 </li>
-<li><p>Type-1 - Overwriting the old value</p>
-</li>
-<li><p>Type-2 - New additional record</p>
-</li>
-<li><p>Type-3 - Adding a new attribute column</p>
-</li>
-<li><p>Type-4 - Using historical table</p>
+<li><p>SCD에는 다음과 같은 유형이 있다:</p>
 </li>
 </ul>
+<h3 id="Type-0"><a href="#Type-0" class="headerlink" title="Type 0"></a>Type 0</h3><blockquote>
+<p>원래 값을 유지</p>
+</blockquote>
+<ul>
+<li><p>변화가 거의 없음</p>
+</li>
+<li><p>속성은 절대 변경되지 않음</p>
+</li>
+<li><p>Fact는 항상 원래 값(original value)으로 그룹화됨</p>
 </li>
 </ul>
-<h2 id="SCD-Type의-종류"><a href="#SCD-Type의-종류" class="headerlink" title="SCD Type의 종류"></a>SCD Type의 종류</h2><h4 id="SCD-Type-0"><a href="#SCD-Type-0" class="headerlink" title="SCD (Type 0)"></a>SCD (Type 0)</h4><ul>
-<li><p>There is essentially no chagne</p>
-</li>
-<li><p>The attribute will never changes</p>
-</li>
-<li><p>Facts always grouped by the original value</p>
-</li>
+<h3 id="Type-1"><a href="#Type-1" class="headerlink" title="Type 1"></a>Type 1</h3><blockquote>
+<p>이전 값 덮어쓰기</p>
+</blockquote>
+<ul>
+<li><code>속성은 항상 가장 최근 업데이트 값을 반영</code>하며, <code>과거의 이력은 관리하지 않음</code></li>
 </ul>
-<h4 id="SCD-Type-1"><a href="#SCD-Type-1" class="headerlink" title="SCD (Type 1)"></a>SCD (Type 1)</h4><ul>
-<li><p>Overwrite Old Value</p>
-</li>
-<li><p>Attribute always reflect the most recent assignment, disregarding historical changes</p>
-</li>
+<h3 id="Type-2"><a href="#Type-2" class="headerlink" title="Type 2"></a>Type 2</h3><blockquote>
+<p>새로운 레코드를 추가</p>
+</blockquote>
+<ul>
+<li>새로운 기본 키(PK), <code>flag 컬럼 또는 날짜 컬럼(점 이력 또는 선분이력)이 추가해서 이력을 관리</code></li>
 </ul>
-<h4 id="SCD-Type-2"><a href="#SCD-Type-2" class="headerlink" title="SCD (Type 2)"></a>SCD (Type 2)</h4><ul>
-<li><p>Create new additional record</p>
-</li>
-<li><p>New primary key (SK), flag column &amp; date columns added to track</p>
-</li>
+<h3 id="Type-3"><a href="#Type-3" class="headerlink" title="Type 3"></a>Type 3</h3><blockquote>
+<p>새로운 속성 열을 차원에 추가하여 과거 이력을 보존</p>
+</blockquote>
+<ul>
+<li>2가지 다른 현실로 쿼리할 수 있게 함</li>
 </ul>
-<h4 id="SCD-Type-3"><a href="#SCD-Type-3" class="headerlink" title="SCD (Type 3)"></a>SCD (Type 3)</h4><ul>
-<li><p>Add a new column to the dimension to preserve historical information</p>
-</li>
-<li><p>Allows to query in 2 different realities</p>
-</li>
+<h3 id="Type-4"><a href="#Type-4" class="headerlink" title="Type 4"></a>Type 4</h3><blockquote>
+<p>이력 따로 관리하기 위해 별도의 히스토리 테이블을 사용</p>
+</blockquote>
+<ul>
+<li><code>메인 dimension은 현재 시간 기준으로 최신 상태의 데이터만 유지</code></li>
 </ul>
-<h4 id="SCD-Type-4"><a href="#SCD-Type-4" class="headerlink" title="SCD (Type 4)"></a>SCD (Type 4)</h4><ul>
-<li><p>Historical table used to track any changes separte to the dimension table</p>
-</li>
-<li><p>The main dimension only keeps current data based on the present time period</p>
-</li>
-</ul>
-<h2 id="SCD-Store-as-Snapshots"><a href="#SCD-Store-as-Snapshots" class="headerlink" title="SCD (Store as Snapshots)"></a>SCD (Store as Snapshots)</h2><ul>
-<li><p>Use table partitions and store as snapshots for dimensions</p>
-</li>
-<li><p>All data is added to snapshot daily or weekly</p>
-</li>
+<h3 id="Snapshot"><a href="#Snapshot" class="headerlink" title="Snapshot"></a>Snapshot</h3><blockquote>
+<p>테이블 파티션을 사용하고 dimension을 스냅샷으로 저장</p>
+</blockquote>
+<ul>
+<li>모든 데이터는 <code>매일 또는 매주 스냅샷으로 저장</code>됨</li>
 </ul>
 
                 
@@ -488,8 +484,8 @@ Build to track">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Data-Architecture/" class="post-category">
-                                    Data Architecture
+                            <a href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98/" class="post-category">
+                                    데이터 아키텍처
                                 </a>
                             
                             

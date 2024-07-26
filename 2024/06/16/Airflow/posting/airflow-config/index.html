@@ -1,0 +1,1794 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="airflow.cfg 풀어보기, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="airflow.cfg[core]
+# Airflow 파이프라인 파일이 저장되는 디렉터리의 경로를 설정
+# 주로 코드 리포지토리 내의 하위 디렉터리로 설정. 아래 path는 반드시 절대 경로로 지정되어야 함 (예: /p">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>airflow.cfg 풀어보기 | Keyhong</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span diy-happy-monkey">Keyhong</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <!-- <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li> -->
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Keyhong</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/airflow-logo.png')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title diy-neon-red">
+                        airflow.cfg 풀어보기</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="post-cate">
+                    <i class="fas fa-bookmark fa-fw icon-category"></i>
+                    
+                        <a href="/categories/Airflow/" class="post-category">
+                            Airflow
+                        </a>
+                    
+                </div>
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <pre class="line-numbers language-ini" data-language="ini"><div class="caption"><span>airflow.cfg</span></div><code class="language-ini"><span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">core</span><span class="token punctuation">]</span></span>
+<span class="token comment"># Airflow 파이프라인 파일이 저장되는 디렉터리의 경로를 설정</span>
+<span class="token comment"># 주로 코드 리포지토리 내의 하위 디렉터리로 설정. 아래 path는 반드시 절대 경로로 지정되어야 함 (예: /path/to/your/airflow/dags)</span>
+<span class="token comment"># 파이프라인 파일들은 이 디렉터리에 저장되며, Airflow는 여기에서 파이프라인을 찾아 실행함</span>
+<span class="token key attr-name">dags_folder</span> <span class="token punctuation">=</span> <span class="token value attr-value">/usr/local/airflow/dags</span>
+
+<span class="token comment"># Airflow가 로그 파일을 저장하는 폴더. 아래 path는 반드시 절대 경로여야 함</span>
+<span class="token key attr-name">base_log_folder</span> <span class="token punctuation">=</span> <span class="token value attr-value">/usr/local/airflow/logs</span>
+
+<span class="token comment"># Airflow은 AWS S3, Google Cloud Storage 또는 Elastic Search에 원격으로 로그를 저장할 수 있음</span>
+<span class="token comment"># 사용자는 저장 위치에 액세스할 수 있는 Airflow 연결 ID를 제공해야 함</span>
+<span class="token comment"># 만약 remote_logging이 true로 설정된 경우, 추가적인 구성 요구 사항에 대한 정보는 UPDATING.md를 참고하세요.</span>
+<span class="token key attr-name">remote_logging</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
+<span class="token key attr-name">remote_log_conn_id</span> <span class="token punctuation">=</span>
+<span class="token key attr-name">remote_base_log_folder</span> <span class="token punctuation">=</span>
+<span class="token key attr-name">encrypt_s3_logs</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
+
+<span class="token comment"># 로깅 레벨</span>
+<span class="token key attr-name">logging_level</span> <span class="token punctuation">=</span> <span class="token value attr-value">INFO</span>
+
+<span class="token comment"># Flask-appbuilder UI의 로깅 레벨 (** airflow의 Web UI는 python 웹 프레임워크인 flask로 구현)</span>
+<span class="token key attr-name">fab_logging_level</span> <span class="token punctuation">=</span> <span class="token value attr-value">WARN</span>
+
+<span class="token comment"># 로깅 클래스 (로깅 구성을 지정할 클래스). 이 클래스는 python class path에 있어야 함</span>
+<span class="token comment"># logging_config_class = my.path.default_local_settings.LOGGING_CONFIG</span>
+<span class="token comment"># 사용자 정의된 로깅 설정 클래스를 만들어 logging_config_class에 설정할 수 있습니다.</span>
+<span class="token key attr-name">logging_config_class</span> <span class="token punctuation">=</span>
+
+<span class="token comment"># Console에서컬러 로그를 활성화/비활성화하는 플래그</span>
+<span class="token comment"># 제어 터미널이 TTY일 때 로그에 색을 입힘</span>
+<span class="token key attr-name">colored_console_log</span> <span class="token punctuation">=</span> <span class="token value attr-value">True</span>
+
+<span class="token comment"># 컬러 로그가 활성화된 경우의 로그 형식</span>
+<span class="token key attr-name">colored_log_format</span> <span class="token punctuation">=</span> <span class="token value attr-value">[%%(blue)s%%(asctime)s%%(reset)s] &#123;&#123;%%(blue)s%%(filename)s:%%(reset)s%%(lineno)d&#125;&#125; %%(log_color)s%%(levelname)s%%(reset)s - %%(log_color)s%%(message)s%%(reset)s</span>
+<span class="token key attr-name">colored_formatter_class</span> <span class="token punctuation">=</span> <span class="token value attr-value">airflow.utils.log.colored_log.CustomTTYColoredFormatter</span>
+
+<span class="token comment"># 로그 라인의 형식</span>
+<span class="token key attr-name">log_format</span> <span class="token punctuation">=</span> <span class="token value attr-value">[%%(asctime)s] &#123;&#123;%%(filename)s:%%(lineno)d&#125;&#125; %%(levelname)s - %%(message)s</span>
+<span class="token key attr-name">simple_log_format</span> <span class="token punctuation">=</span> <span class="token value attr-value">%%(asctime)s %%(levelname)s - %%(message)s</span>
+
+<span class="token comment"># 로그 파일 이름의 형식</span>
+<span class="token comment"># 아래와 같이 jinja template(&#123;&#123; variable &#125;&#125;)을 이용해서 이름을 구성할 수 있습니다.</span>
+<span class="token comment"># &#123;&#123; ti.dag_id &#125;&#125;: 해당 작업이 속한 DAG의 식별자(ID).</span>
+<span class="token comment"># &#123;&#123; ti.task_id &#125;&#125;: 작업(Task)의 식별자(ID).</span>
+<span class="token comment"># &#123;&#123; ts &#125;&#125;: 작업이 시작된 시간을 나타내는 타임스탬프.</span>
+<span class="token comment"># &#123;&#123; try_number &#125;&#125;: 작업의 시도 횟수.</span>
+<span class="token comment"># &#123;&#123; filename &#125;&#125;: 파일의 이름</span>
+<span class="token key attr-name">log_filename_template</span> <span class="token punctuation">=</span> <span class="token value attr-value">&#123;&#123; ti.dag_id &#125;&#125;/&#123;&#123; ti.task_id &#125;&#125;/&#123;&#123; ts &#125;&#125;/&#123;&#123; try_number &#125;&#125;.log</span>
+<span class="token key attr-name">log_processor_filename_template</span> <span class="token punctuation">=</span> <span class="token value attr-value">&#123;&#123; filename &#125;&#125;.log</span>
+<span class="token key attr-name">dag_processor_manager_log_location</span> <span class="token punctuation">=</span> <span class="token value attr-value">/opt/airflow/logs/dag_processor_manager/dag_processor_manager.log</span>
+
+<span class="token comment"># task instance 로그를 읽기 위한 handler의 이름입니다.</span>
+<span class="token comment"># Handler: 로깅 시스템에서 로그 메시지를 어디에 기록할지를 결정하는 객체</span>
+<span class="token comment"># Default는 task handler를 사용합니다.</span>
+<span class="token key attr-name">task_log_reader</span> <span class="token punctuation">=</span> <span class="token value attr-value">task</span>
+
+<span class="token comment"># 호스트 이름을 해결하는 데 사용할 callable한 객체의 경로를 제공합니다.</span>
+<span class="token comment"># Hostname by providing a path to a callable, which will resolve the hostname</span>
+<span class="token comment"># 형식은 "package:function" 입니다.</span>
+<span class="token comment"># ------------ code test ------------ </span>
+<span class="token comment"># >>> import socket</span>
+<span class="token comment"># >>></span>
+<span class="token comment"># >>> # 호스트의 FQDN 가져오기</span>
+<span class="token comment"># >>> fqdn = socket.getfqdn()</span>
+<span class="token comment"># >>></span>
+<span class="token comment"># >>> # 결과 출력</span>
+<span class="token comment"># >>> print("Fully Qualified Domain Name (FQDN):", fqdn)</span>
+<span class="token comment"># Fully Qualified Domain Name (FQDN): LAPTOP-70HMS7FD.localdomain</span>
+<span class="token comment"># ------------------------------------</span>
+<span class="token comment"># 예를 들어, default 값인 "socket:getfqdn"은 "socket" 패키지의 getfqdn() 결과가 호스트 이름으로 사용될 것입니다.</span>
+<span class="token comment"># ** fqdn : 전체 호스트 이름(Fully Qualified Domain Name)</span>
+<span class="token comment"># ** socket은 파이썬 초기부터의 네트워크 통신을 위한 내장 모듈</span>
+
+<span class="token comment"># 지정된 함수에는 argument가 필요하지 않아야 합니다.</span>
+<span class="token comment"># No argument should be required in the function specified.</span>
+<span class="token comment"># hostname으로 IP address를 사용하려면 "airflow.utils.net:get_host_ip_address" 값을 사용하세요.</span>
+<span class="token key attr-name">hostname_callable</span> <span class="token punctuation">=</span> <span class="token value attr-value">socket:getfqdn</span>
+
+<span class="token comment"># 시간대 정보를 지정하지 않는 경우(naive)일 때 적용할 default timezone를 지정합니다.</span>
+<span class="token comment"># ** timezone:  지구의 다양한 지역에서 사용되는 표준 시간을 나타내는 객체</span>
+<span class="token comment"># Naive datetime: 시간대 정보가 없는 날짜와 시간 객체입니다. 예를 들어, "2022-01-22 12:30:00"</span>
+<span class="token comment"># Aware datetime: 시간대 정보를 포함하는 날짜와 시간 객체입니다. 예를 들어, "2022-01-22 12:30:00 UTC"</span>
+<span class="token comment"># 가능한 값은 utc(default), system 또는 IANA 시간대 문자열(예: Europe/Amsterdam)입니다.</span>
+<span class="token comment"># Default timezone in case supplied date times are naive (e.g. Europe/Amsterdam, Asia/Seoul)</span>
+<span class="token key attr-name">default_timezone</span> <span class="token punctuation">=</span> <span class="token value attr-value">Asia/Seoul</span>
+
+<span class="token comment"># airflow가 사용할 executor class 지정하는 설정입니다. </span>
+<span class="token comment"># Choices include: SequentialExecutor, LocalExecutor, CeleryExecutor, DaskExecutor, KubernetesExecutor</span>
+<span class="token comment"># (1) SequentialExecutor: Sqllite를 이용하는 가장 basic한 executor. db에 대한 동시성이 제공되지 않아 사용하지 않습니다.</span>
+<span class="token comment"># (2) LocalExecutor: 단일 머신에서 병렬처리를 제공하는 executor. scalable하지 않아 production에서는 제한적으로 사용합니다.</span>
+<span class="token comment"># (3) CeleryExecutor: 파이썬에서 병렬처리 방법인 celery(message queue를 이용한 비동기 처리 방식)을 이용합니다. redis/rabbitMQ가 있어야 합니다.</span>
+<span class="token comment"># (4) KubernetesExecutor:</span>
+<span class="token comment"># 쿠버네티스에서 deployment를 이용해서 task를 처리합니다. 클러스터의 머신을 지속적으로 점유하지 않고</span>
+<span class="token comment"># 필요시마다 여러 프로세스와 공유하는 방식으로 현대의 agile, MSA, Cloud Native, Devops와 관련이 많습니다.</span>
+<span class="token comment">#  learning curve가 있지만 앞으로 나아가야 할 길... 그리고 k8s를 배우고 있는 입장에서 최고..</span>
+<span class="token comment"># (5) DaskExecutor: Python용 병렬 컴퓨팅 프레임워크인 Dask를 사용합니다. 설명을 읽어보니 Pandas와 유사한 API인 Dask DataFrame를 사용하는 것으로, df를 행으로 수평 분할해(chunk) subprocess를 spawning 하여 파이썬의 GIL을 피해가려 한 것 같습니다.</span>
+<span class="token key attr-name">executor</span> <span class="token punctuation">=</span> <span class="token value attr-value">CeleryExecutor</span>
+
+<span class="token comment"># The SqlAlchemy connection string to the metadata database.</span>
+<span class="token comment"># ** SqlAlchemy는 파이썬에서 주로 사용하는 ORM(객체-모델 관계 매핑) 라이브러리입니다.</span>
+<span class="token comment"># SqlAlchemy는 다양한 데이터베이스 엔진을 지원합니다. 더 많은 정보는 공식 웹사이트를 참조하세요.</span>
+<span class="token key attr-name">sql_alchemy_conn</span> <span class="token punctuation">=</span> <span class="token value attr-value">mysql+mysqldb://airflow_admin:airflow_admin@mysql-server/airflow_db</span>
+
+<span class="token comment"># 데이터베이스에 대한 인코딩</span>
+<span class="token key attr-name">sql_engine_encoding</span> <span class="token punctuation">=</span> <span class="token value attr-value">utf-8</span>
+
+<span class="token comment"># SqlAlchemy가 데이터베이스 연결을 풀링할지 여부</span>
+<span class="token key attr-name">sql_alchemy_pool_enabled</span> <span class="token punctuation">=</span> <span class="token value attr-value">True</span>
+
+<span class="token comment"># SQLAlchemy의 풀 크기는 풀 내의 최대 데이터베이스 연결 수입니다. 0은 제한이 없음을 의미합니다.</span>
+<span class="token key attr-name">sql_alchemy_pool_size</span> <span class="token punctuation">=</span> <span class="token value attr-value">5</span>
+
+<span class="token comment"># pool의 최대 overflow 크기</span>
+<span class="token comment"># 풀 크기(pool_size)로 설정된 연결 수에 도달하면, 추가적인 연결이 이 한도까지 반환됩니다.</span>
+<span class="token comment"># 추가적인 연결이 pool로 반환될 때, 그들은 연결이 끊겨 폐기됩니다.</span>
+<span class="token comment"># poll이 허용하는 동시 연결의 총 수는 pool_size + max_overflow</span>
+<span class="token comment"># 그리고 pool이 허용하는 "대기 중" 연결의 총 수는 pool_size</span>
+<span class="token comment"># max_overflow를 -1로 설정하여 오버플로우 제한이 없음을 나타냄</span>
+<span class="token comment"># 총 동시 연결 수에 대한 제한이 없습니다. 기본값은 10입니다.</span>
+<span class="token key attr-name">sql_alchemy_max_overflow</span> <span class="token punctuation">=</span> <span class="token value attr-value">10</span>
+
+<span class="token comment"># sql_alchemy_pool_recycle은 연결이 재사용되기 전에 보관되는 시간입니다.</span>
+<span class="token comment"># pool에서 유휴 상태(idle)로 있는 연결이 무효화되기 전에 보유될 수 있는 시간(초)</span>
+<span class="token comment"># 이 설정은 SQLite에는 적용되지 않습니다. </span>
+<span class="token comment"># DB 연결 수가 한 번에 초과되는 경우, 더 낮은 구성 값은 시스템이 더 빨리 복구되도록 할 수 있습니다.</span>
+<span class="token key attr-name">sql_alchemy_pool_recycle</span> <span class="token punctuation">=</span> <span class="token value attr-value">1800</span>
+
+<span class="token comment"># DB 연결이 끊긴 후에 DB 연결을 다시 설정하기 위해 재시도할 때까지 걸리는 시간(초)</span>
+<span class="token comment"># 이 값을 0으로 설정하면 재시도가 비활성화됩니다.</span>
+<span class="token key attr-name">sql_alchemy_reconnect_timeout</span> <span class="token punctuation">=</span> <span class="token value attr-value">300</span>
+
+<span class="token comment"># 메타데이터 데이터베이스에 사용할 스키마(schema)</span>
+<span class="token comment"># SQLAlchemy는 다중 스키마 개념을 지원하는 데이터베이스를 지원</span>
+<span class="token key attr-name">sql_alchemy_schema</span> <span class="token punctuation">=</span>
+
+<span class="token comment"># executor에 대한 병렬성 설정의 양</span>
+<span class="token comment"># Airflow 설치에서 동시에 실행되는 task instance의 최대 수를 정의</span>
+<span class="token key attr-name">parallelism</span> <span class="token punctuation">=</span> <span class="token value attr-value">32</span>
+
+<span class="token comment"># 스케줄러에 의해 동시에 실행되는 task instance의 수입니다.</span>
+<span class="token key attr-name">dag_concurrency</span> <span class="token punctuation">=</span> <span class="token value attr-value">16</span>
+
+<span class="token comment"># DAG가 생성될 때 기본적으로 일시 중지 상태인지 여부</span>
+<span class="token key attr-name">dags_are_paused_at_creation</span> <span class="token punctuation">=</span> <span class="token value attr-value">True</span>
+
+<span class="token comment"># DAG 당 active DAG runs의 최대 수</span>
+<span class="token key attr-name">max_active_runs_per_dag</span> <span class="token punctuation">=</span> <span class="token value attr-value">16</span>
+
+<span class="token comment"># Airflow의 기본 예제를 로드할 것인지 여부. </span>
+<span class="token comment"># 실제 운영 환경에서는 이 값을 False로 설정하는 것이 좋다.</span>
+<span class="token key attr-name">load_examples</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
+
+<span class="token comment"># Airflow 플러그인이 저장된 위치</span>
+<span class="token key attr-name">plugins_folder</span> <span class="token punctuation">=</span> <span class="token value attr-value">/opt/airflow/plugins</span>
+
+<span class="token comment"># 데이터베이스에 연결 비밀번호를 저장하기 위한 비밀 키</span>
+<span class="token key attr-name">fernet_key</span> <span class="token punctuation">=</span> <span class="token value attr-value">l-OhyQHu1gNyu7rFmr1amZZfsp2qhpnfp8GwuR-zyw8=</span>
+
+<span class="token comment"># DAG를 피클링(pickling)하는 것을 비활성화할지 여부</span>
+<span class="token key attr-name">donot_pickle</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
+
+<span class="token comment"># DagBag을 채우는 동안 파이썬 파일을 가져오는 시간 제한</span>
+<span class="token key attr-name">dagbag_import_timeout</span> <span class="token punctuation">=</span> <span class="token value attr-value">30</span>
+
+<span class="token comment"># DagFileProcessor가 dag 파일을 처리하는 데 소요되는 시간 제한</span>
+<span class="token key attr-name">dag_file_processor_timeout</span> <span class="token punctuation">=</span> <span class="token value attr-value">50</span>
+
+<span class="token comment"># 작업 인스턴스를 subprocess에서 실행하는 데 사용되는 클래스</span>
+<span class="token key attr-name">task_runner</span> <span class="token punctuation">=</span> <span class="token value attr-value">StandardTaskRunner</span>
+
+<span class="token comment"># 만약 설정되었다면, run_as_user 인수가 없는 task는 이 사용자로 실행</span>
+<span class="token comment"># task를 실행할 때 Airflow를 실행하는 sudo 사용자의 권한을 낮추는 데 사용할 수 있습니다.</span>
+<span class="token key attr-name">default_impersonation</span> <span class="token punctuation">=</span>
+
+<span class="token comment"># 어떤 보안 모듈을 사용할 것인지 지정 (for example kerberos):</span>
+<span class="token key attr-name">security</span> <span class="token punctuation">=</span>
+
+<span class="token comment"># 이 값을 False로 설정하면 Chart 및 Ad Hoc 쿼리와 같은 일부 보안되지 않은 기능을 활성화</span>
+<span class="token comment"># In 2.0 will default to True.</span>
+<span class="token key attr-name">secure_mode</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
+
+<span class="token comment"># 단위 테스트 모드를 활성화 (런타임에서 많은 구성 옵션을 테스트 값으로 덮어씁니다.)</span>
+<span class="token key attr-name">unit_test_mode</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
+
+<span class="token comment"># xcom 위한 피클링(pickling)을 활성화할지 여부 (안 취약점으로 이어지는 RCE(Remote Code Execution) 공격을 허용한다는 점에 유의).</span>
+<span class="token comment"># This will be deprecated in Airflow 2.0 (be forced to False).</span>
+<span class="token key attr-name">enable_xcom_pickling</span> <span class="token punctuation">=</span> <span class="token value attr-value">True</span>
+
+<span class="token comment"># 작업이 강제로 종료될 때, 이는 몇 초 후에 발생하는지를 나타내는 값</span>
+<span class="token comment"># SIGTERM을 받은 후에 작업이 종료되기 전에 정리해야 하는 시간(초)입니다. 그 후 SIGKILL이 발생합니다.</span>
+<span class="token key attr-name">killed_task_cleanup_time</span> <span class="token punctuation">=</span> <span class="token value attr-value">60</span>
+
+<span class="token comment"># dag_run.conf로 params를 덮어쓸지 여부 </span>
+<span class="token comment"># `airflow dags backfill -c` 또는 `airflow dags trigger -c` 를 통해 일부 키-값 쌍을 전달하면, 해당 키-값 쌍이 params 내에서 기존 값들을 덮어쓸 것입니다.</span>
+<span class="token key attr-name">dag_run_conf_overrides_params</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
+
+<span class="token comment"># 메타데이터 데이터베이스 연결을 유효성 검사하기 위한 Worker 초기화 확인</span>
+<span class="token key attr-name">worker_precheck</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
+
+<span class="token comment"># DAG를 발견할 때, `DAG`와 `airflow` 문자열이 포함되지 않은 파일을 무시합니다</span>
+<span class="token key attr-name">dag_discovery_safe_mode</span> <span class="token punctuation">=</span> <span class="token value attr-value">True</span>
+
+
+<span class="token comment"># 각 task가 갖게 될 default 재시도 횟수. DAG나 task 수준에서 재시도 횟수를 재정의할 수 있습니다.</span>
+<span class="token key attr-name">default_task_retries</span> <span class="token punctuation">=</span> <span class="token value attr-value">0</span>
+
+<span class="token comment"># DAG를 직렬화하고 데이터베이스에 영속화할지 여부입니다.</span>
+<span class="token comment"># 만약 True로 설정된다면, 웹 서버는 DAG 파일을 구문 분석하는 대신 DB에서 읽습니다.</span>
+<span class="token comment"># More details: https://airflow.apache.org/docs/stable/dag-serialization.html</span>
+<span class="token key attr-name">store_serialized_dags</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
+
+<span class="token comment"># 직렬화된 DAG를 업데이트하는 속도는 최소 간격(minimum interval)보다 빠를 수 없습니다. 이는 데이터베이스 쓰기 속도를 줄이기 위한 것입니다.</span>
+<span class="token key attr-name">min_serialized_dag_update_interval</span> <span class="token punctuation">=</span> <span class="token value attr-value">30</span>
+
+<span class="token comment"># 각 dagrun에서 정의된 SLA에 대해 확인합니다.</span>
+<span class="token key attr-name">check_slas</span> <span class="token punctuation">=</span> <span class="token value attr-value">True</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">cli</span><span class="token punctuation">]</span></span>
+<span class="token comment"># CLI가 API에 액세스하는 방식</span>
+<span class="token comment"># LocalClient는 직접 데이터베이스를 사용하고, json_client는 웹서버에서 실행 중인 API를 사용할 것입니다.</span>
+<span class="token key attr-name">api_client</span> <span class="token punctuation">=</span> <span class="token value attr-value">airflow.api.client.local_client</span>
+
+<span class="token comment"># 만약 web_server_url_prefix를 설정했다면, 여기에 추가하는 것을 잊지 마세요.</span>
+<span class="token comment"># ex: ``endpoint_url = http://localhost:8080/myroot``</span>
+<span class="token comment"># 그러면 API는 다음과 같이 보임: ``http://localhost:8080/myroot/api/experimental/...``</span>
+<span class="token key attr-name">endpoint_url</span> <span class="token punctuation">=</span> <span class="token value attr-value">http://localhost:8080</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">debug</span><span class="token punctuation">]</span></span> 
+<span class="token comment"># DebugExecutor에서만 사용</span>
+<span class="token comment"># 만약 True로 설정된다면, DAG는 첫 번째 실패한 작업과 함께 실패합니다. 디버깅 목적으로 유용</span>
+<span class="token key attr-name">fail_fast</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">api</span><span class="token punctuation">]</span></span>
+<span class="token comment"># API 사용자의 인증 방법</span>
+<span class="token key attr-name">auth_backend</span> <span class="token punctuation">=</span> <span class="token value attr-value">airflow.api.auth.backend.default</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">lineage</span><span class="token punctuation">]</span></span>
+<span class="token comment"># 어떤 lineage backend를 사용할 지 설정</span>
+<span class="token key attr-name">backend</span> <span class="token punctuation">=</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">atlas</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">sasl_enabled</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
+<span class="token key attr-name">host</span> <span class="token punctuation">=</span>
+<span class="token key attr-name">port</span> <span class="token punctuation">=</span> <span class="token value attr-value">21000</span>
+<span class="token key attr-name">username</span> <span class="token punctuation">=</span>
+<span class="token key attr-name">password</span> <span class="token punctuation">=</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">operators</span><span class="token punctuation">]</span></span>
+<span class="token comment"># 기본 owner가 명시적으로 제공되지 않거나 `default_args`를 통해 전달되지 않는 한, 각 새로운 오퍼레이터에 할당</span>
+<span class="token key attr-name">default_owner</span> <span class="token punctuation">=</span> <span class="token value attr-value">airflow</span>
+<span class="token key attr-name">default_cpus</span> <span class="token punctuation">=</span> <span class="token value attr-value">1</span>
+<span class="token key attr-name">default_ram</span> <span class="token punctuation">=</span> <span class="token value attr-value">512</span>
+<span class="token key attr-name">default_disk</span> <span class="token punctuation">=</span> <span class="token value attr-value">512</span>
+<span class="token key attr-name">default_gpus</span> <span class="token punctuation">=</span> <span class="token value attr-value">0</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">hive</span><span class="token punctuation">]</span></span>
+<span class="token comment"># HiveOperator task를 위한 default mapreduce queue</span>
+<span class="token key attr-name">default_hive_mapred_queue</span> <span class="token punctuation">=</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">webserver</span><span class="token punctuation">]</span></span>
+<span class="token comment"># Airflow는 domain이나 CNAME(Canonical Name, DNS (Domain Name System) 레코드 유형 중 하나)을 추측할 수 없으므로, 웹 사이트의 기본 URL</span>
+<span class="token comment"># 이것은 Airflow가 보내는 automated email에서 링크를 올바른 웹 서버로 연결하는 데 사용됨</span>
+<span class="token key attr-name">base_url</span> <span class="token punctuation">=</span> <span class="token value attr-value">http://localhost:8080</span>
+
+<span class="token comment"># 웹 서버를 시작할 때 지정된 IP</span>
+<span class="token key attr-name">web_server_host</span> <span class="token punctuation">=</span> <span class="token value attr-value">0.0.0.0</span>
+
+<span class="token comment"># 웹 서버를 실행할 포트</span>
+<span class="token key attr-name">web_server_port</span> <span class="token punctuation">=</span> <span class="token value attr-value">8080</span>
+
+<span class="token comment"># 웹 서버의 SSL 인증서와 키의 경로.</span>
+<span class="token comment"># 양쪽 경로가 모두 제공되면 SSL이 활성화됩니다. 이는 웹 서버 포트를 변경하지 않습니다.</span>
+<span class="token key attr-name">web_server_ssl_cert</span> <span class="token punctuation">=</span>
+<span class="token key attr-name">web_server_ssl_key</span> <span class="token punctuation">=</span>
+
+<span class="token comment"># 웹 서버가 응답하지 않는 gunicorn master를 kill하기 전에 기다리는 시간(초)</span>
+<span class="token key attr-name">web_server_master_timeout</span> <span class="token punctuation">=</span> <span class="token value attr-value">120</span>
+
+<span class="token comment"># gunicorn 웹 서버가 worker에서 타임아웃되기 전에 대기하는 시간(초)</span>
+<span class="token key attr-name">web_server_worker_timeout</span> <span class="token punctuation">=</span> <span class="token value attr-value">120</span>
+
+<span class="token comment"># 한 번에 새로 고칠 worker의 수.  0으로 설정하면 worker 새로고침이 비활성화됩니다.</span>
+<span class="token comment"># 0이 아닌 경우, Airflow는 주기적으로 웹 서버 worker를 새로 고칩니다. 이를 위해 새로운 worker를 시작하고 이전 worker를 종료합니다.</span>
+<span class="token key attr-name">worker_refresh_batch_size</span> <span class="token punctuation">=</span> <span class="token value attr-value">1</span>
+
+<span class="token comment"># batch worker를 새로 고치기 전에 기다리는 시간(초)</span>
+<span class="token key attr-name">worker_refresh_interval</span> <span class="token punctuation">=</span> <span class="token value attr-value">30</span>
+
+<span class="token comment"># Flask 앱을 실행하는 데 사용되는 Secret key</span>
+<span class="token key attr-name">secret_key</span> <span class="token punctuation">=</span> <span class="token value attr-value">temporary_key</span>
+
+<span class="token comment"># Gunicorn 웹 서버를 실행할 worker의 수</span>
+<span class="token key attr-name">workers</span> <span class="token punctuation">=</span> <span class="token value attr-value">4</span>
+
+<span class="token comment"># gunicorn이 사용할 작업자 클래스</span>
+<span class="token comment"># 선택 사항: sync (default), eventlet, gevent</span>
+<span class="token key attr-name">worker_class</span> <span class="token punctuation">=</span> <span class="token value attr-value">sync</span>
+
+<span class="token comment"># gunicorn 웹 서버의 로그 파일입니다. '-'는 표준에러(stderr)를 의미합니다. </span>
+<span class="token key attr-name">access_logfile</span> <span class="token punctuation">=</span> <span class="token value attr-value">-</span>
+<span class="token key attr-name">error_logfile</span> <span class="token punctuation">=</span> <span class="token value attr-value">-</span>
+
+<span class="token comment"># 웹 서버에서 config 파일을 노출합니다.</span>
+<span class="token comment"># 이는 Flask-Admin 기반의 웹 UI (FAB 기반이 아닌 경우)에만 해당됩니다.</span>
+<span class="token comment"># FAB 기반의 웹 UI에서 RBAC 기능을 사용하는 경우, config에 대한 액세스는 role permission에 의해 제어됩니다.</span>
+<span class="token key attr-name">expose_config</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
+
+<span class="token comment"># 웹 서버에서 호스트 이름을 노출합니다.</span>
+<span class="token key attr-name">expose_hostname</span> <span class="token punctuation">=</span> <span class="token value attr-value">True</span>
+
+<span class="token comment"># 웹 서버에서 stacktrace를 노출합니다.</span>
+<span class="token key attr-name">expose_stacktrace</span> <span class="token punctuation">=</span> <span class="token value attr-value">True</span>
+
+<span class="token comment"># 인증(authentication)을 켜려면 true로 설정하세요: https://airflow.apache.org/security.html#web-authentication</span>
+<span class="token key attr-name">authenticate</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
+
+<span class="token comment"># 소유자 이름에 따라 DAG 목록을 필터링 (authentication이 활성화되어 있어야 함)</span>
+<span class="token key attr-name">filter_by_owner</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
+
+<span class="token comment"># 필터링 모드. 선택사항: user (default), ldapgroup</span>
+<span class="token comment"># LDAP 그룹 필터링을 사용하려면 LDAP 백엔드를 사용해야 합니다.</span>
+<span class="token comment"># "ldapgroup" 모드를 사용하려면 LDAP 서버에 "memberOf" 오버레이가 설정되어 있어야 합니다.</span>
+<span class="token key attr-name">owner_mode</span> <span class="token punctuation">=</span> <span class="token value attr-value">user</span>
+
+<span class="token comment"># Default DAG view.</span>
+<span class="token comment"># 유효 값: tree, graph, duration, gantt, landing_times</span>
+<span class="token key attr-name">dag_default_view</span> <span class="token punctuation">=</span> <span class="token value attr-value">tree</span>
+
+<span class="token comment"># Default DAG orientation.</span>
+<span class="token comment"># 유효 값: LR (Left->Right), TB (Top->Bottom), RL (Right->Left), BT (Bottom->Top)</span>
+<span class="token key attr-name">dag_orientation</span> <span class="token punctuation">=</span> <span class="token value attr-value">LR</span>
+
+<span class="token comment"># 웹 서버를 데모 모드로 설정합니다; 개인 정보 보호를 위해 Operator의 이름을 흐리게 표시합니다.</span>
+<span class="token key attr-name">demo_mode</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
+
+<span class="token comment"># 웹 서버가 다른 worker 머신에서 로그를 fetch 할 때 initial handshake를 기다리는 시간(초)</span>
+<span class="token key attr-name">log_fetch_timeout_sec</span> <span class="token punctuation">=</span> <span class="token value attr-value">5</span>
+
+<span class="token comment"># 다음 log fetching을 기다리는 시간 간격(초)</span>
+<span class="token key attr-name">log_fetch_delay_sec</span> <span class="token punctuation">=</span> <span class="token value attr-value">2</span>
+
+<span class="token comment"># TODO: 차후 다시 체킹할 config 항목</span>
+<span class="token comment"># Distance away from page bottom to enable auto tailing.</span>
+<span class="token key attr-name">log_auto_tailing_offset</span> <span class="token punctuation">=</span> <span class="token value attr-value">30</span>
+
+<span class="token comment"># TODO: 차후 다시 체킹할 config 항목</span>
+<span class="token comment"># Animation speed for auto tailing log display.</span>
+<span class="token key attr-name">log_animation_speed</span> <span class="token punctuation">=</span> <span class="token value attr-value">1000</span>
+
+<span class="token comment"># 기본적으로, 웹 서버는 일시 중지된 DAG를 표시. 이를 기본값으로 숨기도록 변경</span>
+<span class="token key attr-name">hide_paused_dags_by_default</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
+
+<span class="token comment"># UI의 모든 listing view에서 일관된 page size를 유지합니다.</span>
+<span class="token key attr-name">page_size</span> <span class="token punctuation">=</span> <span class="token value attr-value">100</span>
+
+<span class="token comment"># FAB 기반 웹 서버와 RBAC 기능을 사용</span>
+<span class="token key attr-name">rbac</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
+
+<span class="token comment"># navigation bar의 색상을 정의</span>
+<span class="token key attr-name">navbar_color</span> <span class="token punctuation">=</span> <span class="token value attr-value">#007A87</span>
+
+<span class="token comment"># default로 UI에 표시할 dagrun의 수를 정의</span>
+<span class="token key attr-name">default_dag_run_display_number</span> <span class="token punctuation">=</span> <span class="token value attr-value">25</span>
+
+<span class="token comment"># werkzeug의 ProxyFix 미들웨어를 활성화</span>
+<span class="token key attr-name">enable_proxy_fix</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
+
+<span class="token comment"># Number of values to trust for ``X-Forwarded-For``.</span>
+<span class="token comment"># More info: https://werkzeug.palletsprojects.com/en/0.16.x/middleware/proxy_fix/</span>
+<span class="token key attr-name">proxy_fix_x_for</span> <span class="token punctuation">=</span> <span class="token value attr-value">1</span>
+
+<span class="token comment"># Number of values to trust for ``X-Forwarded-Proto``</span>
+<span class="token key attr-name">proxy_fix_x_proto</span> <span class="token punctuation">=</span> <span class="token value attr-value">1</span>
+
+<span class="token comment"># Number of values to trust for ``X-Forwarded-Host``</span>
+<span class="token key attr-name">proxy_fix_x_host</span> <span class="token punctuation">=</span> <span class="token value attr-value">1</span>
+
+<span class="token comment"># Number of values to trust for ``X-Forwarded-Port``</span>
+<span class="token key attr-name">proxy_fix_x_port</span> <span class="token punctuation">=</span> <span class="token value attr-value">1</span>
+
+<span class="token comment"># Number of values to trust for ``X-Forwarded-Prefix``</span>
+<span class="token key attr-name">proxy_fix_x_prefix</span> <span class="token punctuation">=</span> <span class="token value attr-value">1</span>
+
+<span class="token comment"># Set secure flag on session cookie</span>
+<span class="token key attr-name">cookie_secure</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
+
+<span class="token comment"># Set samesite policy on session cookie</span>
+<span class="token key attr-name">cookie_samesite</span> <span class="token punctuation">=</span>
+
+<span class="token comment"># Default setting for wrap toggle on DAG code and TI log views.</span>
+<span class="token key attr-name">default_wrap</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
+
+<span class="token comment"># Allow the UI to be rendered in a frame</span>
+<span class="token key attr-name">x_frame_enabled</span> <span class="token punctuation">=</span> <span class="token value attr-value">True</span>
+
+<span class="token comment"># Send anonymous user activity to your analytics tool</span>
+<span class="token comment"># analytics_tool = # choose from google_analytics, segment, or metarouter</span>
+
+<span class="token comment"># Unique ID of your account in the analytics tool</span>
+<span class="token comment"># analytics_id =</span>
+
+<span class="token comment"># Update FAB permissions and sync security manager roles</span>
+<span class="token comment"># on webserver startup</span>
+<span class="token key attr-name">update_fab_perms</span> <span class="token punctuation">=</span> <span class="token value attr-value">True</span>
+
+<span class="token comment"># Minutes of non-activity before logged out from UI</span>
+<span class="token comment"># 0 means never get forcibly logged out</span>
+<span class="token key attr-name">force_log_out_after</span> <span class="token punctuation">=</span> <span class="token value attr-value">0</span>
+
+<span class="token comment"># The UI cookie lifetime in days</span>
+<span class="token key attr-name">session_lifetime_days</span> <span class="token punctuation">=</span> <span class="token value attr-value">30</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">email</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">email_backend</span> <span class="token punctuation">=</span> <span class="token value attr-value">airflow.utils.email.send_email_smtp</span>
+
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">smtp</span><span class="token punctuation">]</span></span>
+<span class="token comment"># If you want airflow to send emails on retries, failure, and you want to use</span>
+<span class="token comment"># the airflow.utils.email.send_email_smtp function, you have to configure an smtp server here</span>
+<span class="token key attr-name">smtp_host</span> <span class="token punctuation">=</span> <span class="token value attr-value">localhost</span>
+<span class="token key attr-name">smtp_starttls</span> <span class="token punctuation">=</span> <span class="token value attr-value">True</span>
+<span class="token key attr-name">smtp_ssl</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
+<span class="token comment"># Uncomment and set the user/pass settings if you want to use SMTP AUTH</span>
+<span class="token comment"># smtp_user = airflow</span>
+<span class="token comment"># smtp_password = airflow</span>
+<span class="token key attr-name">smtp_port</span> <span class="token punctuation">=</span> <span class="token value attr-value">25</span>
+<span class="token key attr-name">smtp_mail_from</span> <span class="token punctuation">=</span> <span class="token value attr-value">airflow@example.com</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">sentry</span><span class="token punctuation">]</span></span>
+
+<span class="token comment"># Sentry (https://docs.sentry.io) integration</span>
+<span class="token key attr-name">sentry_dsn</span> <span class="token punctuation">=</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">celery</span><span class="token punctuation">]</span></span>
+<span class="token comment"># This section only applies if you are using the CeleryExecutor in</span>
+<span class="token comment"># [core] section above</span>
+
+<span class="token comment"># The app name that will be used by celery</span>
+<span class="token key attr-name">celery_app_name</span> <span class="token punctuation">=</span> <span class="token value attr-value">airflow.executors.celery_executor</span>
+
+<span class="token comment"># The concurrency that will be used when starting workers with the</span>
+<span class="token comment"># "airflow worker" command. This defines the number of task instances that</span>
+<span class="token comment"># a worker will take, so size up your workers based on the resources on</span>
+<span class="token comment"># your worker box and the nature of your tasks</span>
+<span class="token key attr-name">worker_concurrency</span> <span class="token punctuation">=</span> <span class="token value attr-value">16</span>
+
+<span class="token comment"># The maximum and minimum concurrency that will be used when starting workers with the</span>
+<span class="token comment"># "airflow worker" command (always keep minimum processes, but grow to maximum if necessary).</span>
+<span class="token comment"># Note the value should be "max_concurrency,min_concurrency"</span>
+<span class="token comment"># Pick these numbers based on resources on worker box and the nature of the task.</span>
+<span class="token comment"># If autoscale option is available, worker_concurrency will be ignored.</span>
+<span class="token comment"># http://docs.celeryproject.org/en/latest/reference/celery.bin.worker.html#cmdoption-celery-worker-autoscale</span>
+<span class="token comment"># worker_autoscale = 16,12</span>
+<span class="token key attr-name">worker_autoscale</span> <span class="token punctuation">=</span> <span class="token value attr-value">16,12</span>
+
+<span class="token comment"># When you start an airflow worker, airflow starts a tiny web server</span>
+<span class="token comment"># subprocess to serve the workers local log files to the airflow main</span>
+<span class="token comment"># web server, who then builds pages and sends them to users. This defines</span>
+<span class="token comment"># the port on which the logs are served. It needs to be unused, and open</span>
+<span class="token comment"># visible from the main web server to connect into the workers.</span>
+<span class="token key attr-name">worker_log_server_port</span> <span class="token punctuation">=</span> <span class="token value attr-value">8793</span>
+
+<span class="token comment"># The Celery broker URL. Celery supports RabbitMQ, Redis and experimentally</span>
+<span class="token comment"># a sqlalchemy database. Refer to the Celery documentation for more</span>
+<span class="token comment"># information.</span>
+<span class="token comment"># http://docs.celeryproject.org/en/latest/userguide/configuration.html#broker-settings</span>
+<span class="token key attr-name">broker_url</span> <span class="token punctuation">=</span> <span class="token value attr-value">sqla+mysql://airflow:airflow@localhost:3306/airflow</span>
+<span class="token key attr-name">broker_url</span> <span class="token punctuation">=</span> <span class="token value attr-value">redis://redis:6379/1</span>
+
+<span class="token comment"># The Celery result_backend. When a job finishes, it needs to update the</span>
+<span class="token comment"># metadata of the job. Therefore it will post a message on a message bus,</span>
+<span class="token comment"># or insert it into a database (depending of the backend)</span>
+<span class="token comment"># This status is used by the scheduler to update the state of the task</span>
+<span class="token comment"># The use of a database is highly recommended</span>
+<span class="token comment"># http://docs.celeryproject.org/en/latest/userguide/configuration.html#task-result-backend-settings</span>
+<span class="token key attr-name">result_backend</span> <span class="token punctuation">=</span> <span class="token value attr-value">db+mysql://airflow:airflow@localhost:3306/airflow</span>
+<span class="token key attr-name">result_backend</span> <span class="token punctuation">=</span> <span class="token value attr-value">db+mysql://airflow_admin:airflow_admin@mysql-server/airflow</span>
+
+<span class="token comment"># Celery Flower is a sweet UI for Celery. Airflow has a shortcut to start</span>
+<span class="token comment"># it `airflow flower`. This defines the IP that Celery Flower runs on</span>
+<span class="token key attr-name">flower_host</span> <span class="token punctuation">=</span> <span class="token value attr-value">0.0.0.0</span>
+
+<span class="token comment"># The root URL for Flower</span>
+<span class="token comment"># Ex: flower_url_prefix = /flower</span>
+<span class="token key attr-name">flower_url_prefix</span> <span class="token punctuation">=</span>
+
+<span class="token comment"># This defines the port that Celery Flower runs on</span>
+<span class="token key attr-name">flower_port</span> <span class="token punctuation">=</span> <span class="token value attr-value">5555</span>
+
+<span class="token comment"># Securing Flower with Basic Authentication</span>
+<span class="token comment"># Accepts user:password pairs separated by a comma</span>
+<span class="token comment"># Example: flower_basic_auth = user1:password1,user2:password2</span>
+<span class="token key attr-name">flower_basic_auth</span> <span class="token punctuation">=</span>
+
+<span class="token comment"># Default queue that tasks get assigned to and that worker listen on.</span>
+<span class="token key attr-name">default_queue</span> <span class="token punctuation">=</span> <span class="token value attr-value">default</span>
+
+<span class="token comment"># How many processes CeleryExecutor uses to sync task state.</span>
+<span class="token comment"># 0 means to use max(1, number of cores - 1) processes.</span>
+<span class="token key attr-name">sync_parallelism</span> <span class="token punctuation">=</span> <span class="token value attr-value">0</span>
+
+<span class="token comment"># Import path for celery configuration options</span>
+<span class="token key attr-name">celery_config_options</span> <span class="token punctuation">=</span> <span class="token value attr-value">airflow.config_templates.default_celery.DEFAULT_CELERY_CONFIG</span>
+
+<span class="token comment"># In case of using SSL</span>
+<span class="token key attr-name">ssl_active</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
+<span class="token key attr-name">ssl_key</span> <span class="token punctuation">=</span>
+<span class="token key attr-name">ssl_cert</span> <span class="token punctuation">=</span>
+<span class="token key attr-name">ssl_cacert</span> <span class="token punctuation">=</span>
+
+<span class="token comment"># Celery Pool implementation.</span>
+<span class="token comment"># Choices include: prefork (default), eventlet, gevent or solo.</span>
+<span class="token comment"># See:</span>
+<span class="token comment">#   https://docs.celeryproject.org/en/latest/userguide/workers.html#concurrency</span>
+<span class="token comment">#   https://docs.celeryproject.org/en/latest/userguide/concurrency/eventlet.html</span>
+<span class="token key attr-name">pool</span> <span class="token punctuation">=</span> <span class="token value attr-value">prefork</span>
+
+<span class="token comment"># The number of seconds to wait before timing out ``send_task_to_executor`` or</span>
+<span class="token comment"># ``fetch_celery_task_state`` operations.</span>
+<span class="token key attr-name">operation_timeout</span> <span class="token punctuation">=</span> <span class="token value attr-value">2</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">celery_broker_transport_options</span><span class="token punctuation">]</span></span>
+<span class="token comment"># This section is for specifying options which can be passed to the</span>
+<span class="token comment"># underlying celery broker transport.  See:</span>
+<span class="token comment"># http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-broker_transport_options</span>
+
+<span class="token comment"># The visibility timeout defines the number of seconds to wait for the worker</span>
+<span class="token comment"># to acknowledge the task before the message is redelivered to another worker.</span>
+<span class="token comment"># Make sure to increase the visibility timeout to match the time of the longest</span>
+<span class="token comment"># ETA you're planning to use.</span>
+<span class="token comment">#</span>
+<span class="token comment"># visibility_timeout is only supported for Redis and SQS celery brokers.</span>
+<span class="token comment"># See:</span>
+<span class="token comment"># http://docs.celeryproject.org/en/master/userguide/configuration.html#std:setting-broker_transport_options</span>
+<span class="token comment"># Example: visibility_timeout = 21600</span>
+<span class="token comment"># visibility_timeout = 21600</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">dask</span><span class="token punctuation">]</span></span>
+<span class="token comment"># This section only applies if you are using the DaskExecutor in</span>
+<span class="token comment"># [core] section above</span>
+
+<span class="token comment"># The IP address and port of the Dask cluster's scheduler.</span>
+<span class="token key attr-name">cluster_address</span> <span class="token punctuation">=</span> <span class="token value attr-value">127.0.0.1:8786</span>
+<span class="token comment"># TLS/ SSL settings to access a secured Dask scheduler.</span>
+<span class="token key attr-name">tls_ca</span> <span class="token punctuation">=</span>
+<span class="token key attr-name">tls_cert</span> <span class="token punctuation">=</span>
+<span class="token key attr-name">tls_key</span> <span class="token punctuation">=</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">scheduler</span><span class="token punctuation">]</span></span>
+<span class="token comment"># Task instances listen for external kill signal (when you clear tasks</span>
+<span class="token comment"># from the CLI or the UI), this defines the frequency at which they should</span>
+<span class="token comment"># listen (in seconds).</span>
+<span class="token key attr-name">job_heartbeat_sec</span> <span class="token punctuation">=</span> <span class="token value attr-value">5</span>
+
+<span class="token comment"># The scheduler constantly tries to trigger new tasks (look at the</span>
+<span class="token comment"># scheduler section in the docs for more information). This defines</span>
+<span class="token comment"># how often the scheduler should run (in seconds).</span>
+<span class="token key attr-name">scheduler_heartbeat_sec</span> <span class="token punctuation">=</span> <span class="token value attr-value">5</span>
+
+<span class="token comment"># after how much time should the scheduler terminate in seconds</span>
+<span class="token comment"># -1 indicates to run continuously (see also num_runs)</span>
+<span class="token key attr-name">run_duration</span> <span class="token punctuation">=</span> <span class="token value attr-value">-1</span>
+
+<span class="token comment"># The number of times to try to schedule each DAG file</span>
+<span class="token comment"># -1 indicates unlimited number</span>
+<span class="token key attr-name">num_runs</span> <span class="token punctuation">=</span> <span class="token value attr-value">-1</span>
+
+<span class="token comment"># The number of seconds to wait between consecutive DAG file processing</span>
+<span class="token key attr-name">processor_poll_interval</span> <span class="token punctuation">=</span> <span class="token value attr-value">1</span>
+
+<span class="token comment"># after how much time (seconds) a new DAGs should be picked up from the filesystem</span>
+<span class="token key attr-name">min_file_process_interval</span> <span class="token punctuation">=</span> <span class="token value attr-value">0</span>
+
+<span class="token comment"># How often (in seconds) to scan the DAGs directory for new files. Default to 5 minutes.</span>
+<span class="token key attr-name">dag_dir_list_interval</span> <span class="token punctuation">=</span> <span class="token value attr-value">300</span>
+
+<span class="token comment"># How often should stats be printed to the logs</span>
+<span class="token key attr-name">print_stats_interval</span> <span class="token punctuation">=</span> <span class="token value attr-value">30</span>
+
+<span class="token comment"># If the last scheduler heartbeat happened more than scheduler_health_check_threshold ago (in seconds),</span>
+<span class="token comment"># scheduler is considered unhealthy.</span>
+<span class="token comment"># This is used by the health check in the "/health" endpoint</span>
+<span class="token key attr-name">scheduler_health_check_threshold</span> <span class="token punctuation">=</span> <span class="token value attr-value">30</span>
+
+<span class="token key attr-name">child_process_log_directory</span> <span class="token punctuation">=</span> <span class="token value attr-value">/opt/airflow/logs/scheduler</span>
+
+<span class="token comment"># Local task jobs periodically heartbeat to the DB. If the job has</span>
+<span class="token comment"># not heartbeat in this many seconds, the scheduler will mark the</span>
+<span class="token comment"># associated task instance as failed and will re-schedule the task.</span>
+<span class="token key attr-name">scheduler_zombie_task_threshold</span> <span class="token punctuation">=</span> <span class="token value attr-value">300</span>
+
+<span class="token comment"># Turn off scheduler catchup by setting this to False.</span>
+<span class="token comment"># Default behavior is unchanged and</span>
+<span class="token comment"># Command Line Backfills still work, but the scheduler</span>
+<span class="token comment"># will not do scheduler catchup if this is False,</span>
+<span class="token comment"># however it can be set on a per DAG basis in the</span>
+<span class="token comment"># DAG definition (catchup)</span>
+<span class="token key attr-name">catchup_by_default</span> <span class="token punctuation">=</span> <span class="token value attr-value">True</span>
+
+<span class="token comment"># This changes the batch size of queries in the scheduling main loop.</span>
+<span class="token comment"># If this is too high, SQL query performance may be impacted by one</span>
+<span class="token comment"># or more of the following:</span>
+<span class="token comment"># - reversion to full table scan</span>
+<span class="token comment"># - complexity of query predicate</span>
+<span class="token comment"># - excessive locking</span>
+<span class="token comment"># Additionally, you may hit the maximum allowable query length for your db.</span>
+<span class="token comment"># Set this to 0 for no limit (not advised)</span>
+<span class="token key attr-name">max_tis_per_query</span> <span class="token punctuation">=</span> <span class="token value attr-value">512</span>
+
+<span class="token comment"># Statsd (https://github.com/etsy/statsd) integration settings</span>
+<span class="token key attr-name">statsd_on</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
+<span class="token key attr-name">statsd_host</span> <span class="token punctuation">=</span> <span class="token value attr-value">localhost</span>
+<span class="token key attr-name">statsd_port</span> <span class="token punctuation">=</span> <span class="token value attr-value">8125</span>
+<span class="token key attr-name">statsd_prefix</span> <span class="token punctuation">=</span> <span class="token value attr-value">airflow</span>
+
+<span class="token comment"># If you want to avoid send all the available metrics to StatsD,</span>
+<span class="token comment"># you can configure an allow list of prefixes to send only the metrics that</span>
+<span class="token comment"># start with the elements of the list (e.g: scheduler,executor,dagrun)</span>
+<span class="token key attr-name">statsd_allow_list</span> <span class="token punctuation">=</span>
+
+<span class="token comment"># The scheduler can run multiple threads in parallel to schedule dags.</span>
+<span class="token comment"># This defines how many threads will run.</span>
+<span class="token key attr-name">max_threads</span> <span class="token punctuation">=</span> <span class="token value attr-value">2</span>
+<span class="token key attr-name">authenticate</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
+
+<span class="token comment"># Turn off scheduler use of cron intervals by setting this to False.</span>
+<span class="token comment"># DAGs submitted manually in the web UI or with trigger_dag will still run.</span>
+<span class="token key attr-name">use_job_schedule</span> <span class="token punctuation">=</span> <span class="token value attr-value">True</span>
+
+<span class="token comment"># Allow externally triggered DagRuns for Execution Dates in the future</span>
+<span class="token comment"># Only has effect if schedule_interval is set to None in DAG</span>
+<span class="token key attr-name">allow_trigger_in_future</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">ldap</span><span class="token punctuation">]</span></span>
+<span class="token comment"># set this to ldaps://&lt;your.ldap.server>:&lt;port></span>
+<span class="token key attr-name">uri</span> <span class="token punctuation">=</span>
+<span class="token key attr-name">user_filter</span> <span class="token punctuation">=</span> <span class="token value attr-value">objectClass=*</span>
+<span class="token key attr-name">user_name_attr</span> <span class="token punctuation">=</span> <span class="token value attr-value">uid</span>
+<span class="token key attr-name">group_member_attr</span> <span class="token punctuation">=</span> <span class="token value attr-value">memberOf</span>
+<span class="token key attr-name">superuser_filter</span> <span class="token punctuation">=</span>
+<span class="token key attr-name">data_profiler_filter</span> <span class="token punctuation">=</span>
+<span class="token key attr-name">bind_user</span> <span class="token punctuation">=</span> <span class="token value attr-value">cn=Manager,dc=example,dc=com</span>
+<span class="token key attr-name">bind_password</span> <span class="token punctuation">=</span> <span class="token value attr-value">insecure</span>
+<span class="token key attr-name">basedn</span> <span class="token punctuation">=</span> <span class="token value attr-value">dc=example,dc=com</span>
+<span class="token key attr-name">cacert</span> <span class="token punctuation">=</span> <span class="token value attr-value">/etc/ca/ldap_ca.crt</span>
+<span class="token key attr-name">search_scope</span> <span class="token punctuation">=</span> <span class="token value attr-value">LEVEL</span>
+
+<span class="token comment"># This setting allows the use of LDAP servers that either return a</span>
+<span class="token comment"># broken schema, or do not return a schema.</span>
+<span class="token key attr-name">ignore_malformed_schema</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">mesos</span><span class="token punctuation">]</span></span>
+<span class="token comment"># Mesos master address which MesosExecutor will connect to.</span>
+<span class="token key attr-name">master</span> <span class="token punctuation">=</span> <span class="token value attr-value">localhost:5050</span>
+
+<span class="token comment"># The framework name which Airflow scheduler will register itself as on mesos</span>
+<span class="token key attr-name">framework_name</span> <span class="token punctuation">=</span> <span class="token value attr-value">Airflow</span>
+
+<span class="token comment"># Number of cpu cores required for running one task instance using</span>
+<span class="token comment"># 'airflow run &lt;dag_id> &lt;task_id> &lt;execution_date> --local -p &lt;pickle_id>'</span>
+<span class="token comment"># command on a mesos slave</span>
+<span class="token key attr-name">task_cpu</span> <span class="token punctuation">=</span> <span class="token value attr-value">1</span>
+
+<span class="token comment"># Memory in MB required for running one task instance using</span>
+<span class="token comment"># 'airflow run &lt;dag_id> &lt;task_id> &lt;execution_date> --local -p &lt;pickle_id>'</span>
+<span class="token comment"># command on a mesos slave</span>
+<span class="token key attr-name">task_memory</span> <span class="token punctuation">=</span> <span class="token value attr-value">256</span>
+
+<span class="token comment"># Enable framework checkpointing for mesos</span>
+<span class="token comment"># See http://mesos.apache.org/documentation/latest/slave-recovery/</span>
+<span class="token key attr-name">checkpoint</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
+
+<span class="token comment"># Failover timeout in milliseconds.</span>
+<span class="token comment"># When checkpointing is enabled and this option is set, Mesos waits</span>
+<span class="token comment"># until the configured timeout for</span>
+<span class="token comment"># the MesosExecutor framework to re-register after a failover. Mesos</span>
+<span class="token comment"># shuts down running tasks if the</span>
+<span class="token comment"># MesosExecutor framework fails to re-register within this timeframe.</span>
+<span class="token comment"># failover_timeout = 604800</span>
+
+<span class="token comment"># Enable framework authentication for mesos</span>
+<span class="token comment"># See http://mesos.apache.org/documentation/latest/configuration/</span>
+<span class="token key attr-name">authenticate</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
+
+<span class="token comment"># Mesos credentials, if authentication is enabled</span>
+<span class="token comment"># Example: default_principal = admin</span>
+<span class="token comment"># default_principal =</span>
+<span class="token comment"># Example: default_secret = admin</span>
+<span class="token comment"># default_secret =</span>
+
+<span class="token comment"># Optional Docker Image to run on slave before running the command</span>
+<span class="token comment"># This image should be accessible from mesos slave i.e mesos slave</span>
+<span class="token comment"># should be able to pull this docker image before executing the command.</span>
+<span class="token comment"># docker_image_slave = puckel/docker-airflow</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">kerberos</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">ccache</span> <span class="token punctuation">=</span> <span class="token value attr-value">/tmp/airflow_krb5_ccache</span>
+
+<span class="token comment"># gets augmented with fqdn</span>
+<span class="token key attr-name">principal</span> <span class="token punctuation">=</span> <span class="token value attr-value">airflow</span>
+<span class="token key attr-name">reinit_frequency</span> <span class="token punctuation">=</span> <span class="token value attr-value">3600</span>
+<span class="token key attr-name">kinit_path</span> <span class="token punctuation">=</span> <span class="token value attr-value">kinit</span>
+<span class="token key attr-name">keytab</span> <span class="token punctuation">=</span> <span class="token value attr-value">airflow.keytab</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">github_enterprise</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">api_rev</span> <span class="token punctuation">=</span> <span class="token value attr-value">v3</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">admin</span><span class="token punctuation">]</span></span>
+<span class="token comment"># UI to hide sensitive variable fields when set to True</span>
+<span class="token key attr-name">hide_sensitive_variable_fields</span> <span class="token punctuation">=</span> <span class="token value attr-value">True</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">elasticsearch</span><span class="token punctuation">]</span></span>
+<span class="token comment"># Elasticsearch host</span>
+<span class="token key attr-name">host</span> <span class="token punctuation">=</span>
+
+<span class="token comment"># Format of the log_id, which is used to query for a given tasks logs</span>
+<span class="token key attr-name">log_id_template</span> <span class="token punctuation">=</span> <span class="token value attr-value">&#123;&#123;dag_id&#125;&#125;-&#123;&#123;task_id&#125;&#125;-&#123;&#123;execution_date&#125;&#125;-&#123;&#123;try_number&#125;&#125;</span>
+
+<span class="token comment"># Used to mark the end of a log stream for a task</span>
+<span class="token key attr-name">end_of_log_mark</span> <span class="token punctuation">=</span> <span class="token value attr-value">end_of_log</span>
+
+<span class="token comment"># Qualified URL for an elasticsearch frontend (like Kibana) with a template argument for log_id</span>
+<span class="token comment"># Code will construct log_id using the log_id template from the argument above.</span>
+<span class="token comment"># NOTE: The code will prefix the https:// automatically, don't include that here.</span>
+<span class="token key attr-name">frontend</span> <span class="token punctuation">=</span>
+
+<span class="token comment"># Write the task logs to the stdout of the worker, rather than the default files</span>
+<span class="token key attr-name">write_stdout</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
+
+<span class="token comment"># Instead of the default log formatter, write the log lines as JSON</span>
+<span class="token key attr-name">json_format</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
+
+<span class="token comment"># Log fields to also attach to the json output, if enabled</span>
+<span class="token key attr-name">json_fields</span> <span class="token punctuation">=</span> <span class="token value attr-value">asctime, filename, lineno, levelname, message</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">elasticsearch_configs</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">use_ssl</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
+<span class="token key attr-name">verify_certs</span> <span class="token punctuation">=</span> <span class="token value attr-value">True</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">kubernetes</span><span class="token punctuation">]</span></span>
+<span class="token comment"># The repository, tag and imagePullPolicy of the Kubernetes Image for the Worker to Run</span>
+<span class="token key attr-name">worker_container_repository</span> <span class="token punctuation">=</span>
+<span class="token key attr-name">worker_container_tag</span> <span class="token punctuation">=</span>
+<span class="token key attr-name">worker_container_image_pull_policy</span> <span class="token punctuation">=</span> <span class="token value attr-value">IfNotPresent</span>
+
+<span class="token comment"># If True (default), worker pods will be deleted upon termination</span>
+<span class="token key attr-name">delete_worker_pods</span> <span class="token punctuation">=</span> <span class="token value attr-value">True</span>
+
+<span class="token comment"># Number of Kubernetes Worker Pod creation calls per scheduler loop</span>
+<span class="token key attr-name">worker_pods_creation_batch_size</span> <span class="token punctuation">=</span> <span class="token value attr-value">1</span>
+
+<span class="token comment"># The Kubernetes namespace where airflow workers should be created. Defaults to `default`</span>
+<span class="token key attr-name">namespace</span> <span class="token punctuation">=</span> <span class="token value attr-value">default</span>
+
+<span class="token comment"># The name of the Kubernetes ConfigMap containing the Airflow Configuration (this file)</span>
+<span class="token comment"># Example: airflow_configmap = airflow-configmap</span>
+<span class="token key attr-name">airflow_configmap</span> <span class="token punctuation">=</span>
+
+<span class="token comment"># The name of the Kubernetes ConfigMap containing ``airflow_local_settings.py`` file.</span>
+<span class="token comment">#</span>
+<span class="token comment"># For example:</span>
+<span class="token comment">#</span>
+<span class="token comment"># ``airflow_local_settings_configmap = "airflow-configmap"`` if you have the following ConfigMap.</span>
+<span class="token comment">#</span>
+<span class="token comment"># ``airflow-configmap.yaml``:</span>
+<span class="token comment">#</span>
+<span class="token comment"># .. code-block:: yaml</span>
+<span class="token comment">#</span>
+<span class="token comment">#   ---</span>
+<span class="token comment">#   apiVersion: v1</span>
+<span class="token comment">#   kind: ConfigMap</span>
+<span class="token comment">#   metadata:</span>
+<span class="token comment">#     name: airflow-configmap</span>
+<span class="token comment">#   data:</span>
+<span class="token comment">#     airflow_local_settings.py: |</span>
+<span class="token comment">#         def pod_mutation_hook(pod):</span>
+<span class="token comment">#             ...</span>
+<span class="token comment">#     airflow.cfg: |</span>
+<span class="token comment">#         ...</span>
+<span class="token comment"># Example: airflow_local_settings_configmap = airflow-configmap</span>
+<span class="token key attr-name">airflow_local_settings_configmap</span> <span class="token punctuation">=</span>
+
+<span class="token comment"># For docker image already contains DAGs, this is set to `True`, and the worker will search for dags in dags_folder,</span>
+<span class="token comment"># otherwise use git sync or dags volume claim to mount DAGs</span>
+<span class="token key attr-name">dags_in_image</span> <span class="token punctuation">=</span> <span class="token value attr-value">False</span>
+
+<span class="token comment"># For either git sync or volume mounted DAGs, the worker will look in this subpath for DAGs</span>
+<span class="token key attr-name">dags_volume_subpath</span> <span class="token punctuation">=</span>
+
+<span class="token comment"># For DAGs mounted via a volume claim (mutually exclusive with git-sync and host path)</span>
+<span class="token key attr-name">dags_volume_claim</span> <span class="token punctuation">=</span>
+
+<span class="token comment"># For volume mounted logs, the worker will look in this subpath for logs</span>
+<span class="token key attr-name">logs_volume_subpath</span> <span class="token punctuation">=</span>
+
+<span class="token comment"># A shared volume claim for the logs</span>
+<span class="token key attr-name">logs_volume_claim</span> <span class="token punctuation">=</span>
+
+<span class="token comment"># For DAGs mounted via a hostPath volume (mutually exclusive with volume claim and git-sync)</span>
+<span class="token comment"># Useful in local environment, discouraged in production</span>
+<span class="token key attr-name">dags_volume_host</span> <span class="token punctuation">=</span>
+
+<span class="token comment"># A hostPath volume for the logs</span>
+<span class="token comment"># Useful in local environment, discouraged in production</span>
+<span class="token key attr-name">logs_volume_host</span> <span class="token punctuation">=</span>
+
+<span class="token comment"># A list of configMapsRefs to envFrom. If more than one configMap is</span>
+<span class="token comment"># specified, provide a comma separated list: configmap_a,configmap_b</span>
+<span class="token key attr-name">env_from_configmap_ref</span> <span class="token punctuation">=</span>
+
+<span class="token comment"># A list of secretRefs to envFrom. If more than one secret is</span>
+<span class="token comment"># specified, provide a comma separated list: secret_a,secret_b</span>
+<span class="token key attr-name">env_from_secret_ref</span> <span class="token punctuation">=</span>
+
+<span class="token comment"># Git credentials and repository for DAGs mounted via Git (mutually exclusive with volume claim)</span>
+<span class="token key attr-name">git_repo</span> <span class="token punctuation">=</span>
+<span class="token key attr-name">git_branch</span> <span class="token punctuation">=</span>
+<span class="token key attr-name">git_subpath</span> <span class="token punctuation">=</span>
+
+<span class="token comment"># The specific rev or hash the git_sync init container will checkout</span>
+<span class="token comment"># This becomes GIT_SYNC_REV environment variable in the git_sync init container for worker pods</span>
+<span class="token key attr-name">git_sync_rev</span> <span class="token punctuation">=</span>
+
+<span class="token comment"># Use git_user and git_password for user authentication or git_ssh_key_secret_name and git_ssh_key_secret_key</span>
+<span class="token comment"># for SSH authentication</span>
+<span class="token key attr-name">git_user</span> <span class="token punctuation">=</span>
+<span class="token key attr-name">git_password</span> <span class="token punctuation">=</span>
+<span class="token key attr-name">git_sync_root</span> <span class="token punctuation">=</span> <span class="token value attr-value">/git</span>
+<span class="token key attr-name">git_sync_dest</span> <span class="token punctuation">=</span> <span class="token value attr-value">repo</span>
+
+<span class="token comment"># Mount point of the volume if git-sync is being used.</span>
+<span class="token comment"># i.e. /usr/local/airflow/dags</span>
+<span class="token key attr-name">git_dags_folder_mount_point</span> <span class="token punctuation">=</span>
+
+<span class="token comment"># To get Git-sync SSH authentication set up follow this format</span>
+<span class="token comment">#</span>
+<span class="token comment"># airflow-secrets.yaml:</span>
+<span class="token comment"># ---</span>
+<span class="token comment"># apiVersion: v1</span>
+<span class="token comment"># kind: Secret</span>
+<span class="token comment"># metadata:</span>
+<span class="token comment">#   name: airflow-secrets</span>
+<span class="token comment"># data:</span>
+<span class="token comment">#   # key needs to be gitSshKey</span>
+<span class="token comment">#   gitSshKey: &lt;base64_encoded_data></span>
+<span class="token comment"># ---</span>
+<span class="token comment"># airflow-configmap.yaml:</span>
+<span class="token comment"># apiVersion: v1</span>
+<span class="token comment"># kind: ConfigMap</span>
+<span class="token comment"># metadata:</span>
+<span class="token comment">#   name: airflow-configmap</span>
+<span class="token comment"># data:</span>
+<span class="token comment">#   known_hosts: |</span>
+<span class="token comment">#       github.com ssh-rsa &lt;...></span>
+<span class="token comment">#   airflow.cfg: |</span>
+<span class="token comment">#       ...</span>
+<span class="token comment">#</span>
+<span class="token comment"># git_ssh_key_secret_name = airflow-secrets</span>
+<span class="token comment"># git_ssh_known_hosts_configmap_name = airflow-configmap</span>
+<span class="token key attr-name">git_ssh_key_secret_name</span> <span class="token punctuation">=</span>
+
+<span class="token comment"># To get Git-sync SSH authentication set up follow this format</span>
+<span class="token comment">#</span>
+<span class="token comment"># ``airflow-configmap.yaml``:</span>
+<span class="token comment">#</span>
+<span class="token comment"># .. code-block:: yaml</span>
+<span class="token comment">#</span>
+<span class="token comment">#   ---</span>
+<span class="token comment">#   apiVersion: v1</span>
+<span class="token comment">#   kind: ConfigMap</span>
+<span class="token comment">#   metadata:</span>
+<span class="token comment">#     name: airflow-configmap</span>
+<span class="token comment">#   data:</span>
+<span class="token comment">#     known_hosts: |</span>
+<span class="token comment">#         github.com ssh-rsa &lt;...></span>
+<span class="token comment">#     airflow.cfg: |</span>
+<span class="token comment">#         ...</span>
+<span class="token comment"># Example: git_ssh_known_hosts_configmap_name = airflow-configmap</span>
+<span class="token key attr-name">git_ssh_known_hosts_configmap_name</span> <span class="token punctuation">=</span>
+
+<span class="token comment"># To give the git_sync init container credentials via a secret, create a secret</span>
+<span class="token comment"># with two fields: GIT_SYNC_USERNAME and GIT_SYNC_PASSWORD (example below) and</span>
+<span class="token comment"># add ``git_sync_credentials_secret = &lt;secret_name>`` to your airflow config under the</span>
+<span class="token comment"># ``kubernetes`` section</span>
+<span class="token comment">#</span>
+<span class="token comment"># Secret Example:</span>
+<span class="token comment">#</span>
+<span class="token comment"># .. code-block:: yaml</span>
+<span class="token comment">#</span>
+<span class="token comment">#   ---</span>
+<span class="token comment">#   apiVersion: v1</span>
+<span class="token comment">#   kind: Secret</span>
+<span class="token comment">#   metadata:</span>
+<span class="token comment">#     name: git-credentials</span>
+<span class="token comment">#   data:</span>
+<span class="token comment">#     GIT_SYNC_USERNAME: &lt;base64_encoded_git_username></span>
+<span class="token comment">#     GIT_SYNC_PASSWORD: &lt;base64_encoded_git_password></span>
+<span class="token key attr-name">git_sync_credentials_secret</span> <span class="token punctuation">=</span>
+
+<span class="token comment"># For cloning DAGs from git repositories into volumes: https://github.com/kubernetes/git-sync</span>
+<span class="token key attr-name">git_sync_container_repository</span> <span class="token punctuation">=</span> <span class="token value attr-value">k8s.gcr.io/git-sync</span>
+<span class="token key attr-name">git_sync_container_tag</span> <span class="token punctuation">=</span> <span class="token value attr-value">v3.1.1</span>
+<span class="token key attr-name">git_sync_init_container_name</span> <span class="token punctuation">=</span> <span class="token value attr-value">git-sync-clone</span>
+<span class="token key attr-name">git_sync_run_as_user</span> <span class="token punctuation">=</span> <span class="token value attr-value">65533</span>
+
+<span class="token comment"># The name of the Kubernetes service account to be associated with airflow workers, if any.</span>
+<span class="token comment"># Service accounts are required for workers that require access to secrets or cluster resources.</span>
+<span class="token comment"># See the Kubernetes RBAC documentation for more:</span>
+<span class="token comment"># https://kubernetes.io/docs/admin/authorization/rbac/</span>
+<span class="token key attr-name">worker_service_account_name</span> <span class="token punctuation">=</span>
+
+<span class="token comment"># Any image pull secrets to be given to worker pods, If more than one secret is</span>
+<span class="token comment"># required, provide a comma separated list: secret_a,secret_b</span>
+<span class="token key attr-name">image_pull_secrets</span> <span class="token punctuation">=</span>
+
+<span class="token comment"># GCP Service Account Keys to be provided to tasks run on Kubernetes Executors</span>
+<span class="token comment"># Should be supplied in the format: key-name-1:key-path-1,key-name-2:key-path-2</span>
+<span class="token key attr-name">gcp_service_account_keys</span> <span class="token punctuation">=</span>
+
+<span class="token comment"># Use the service account kubernetes gives to pods to connect to kubernetes cluster.</span>
+<span class="token comment"># It's intended for clients that expect to be running inside a pod running on kubernetes.</span>
+<span class="token comment"># It will raise an exception if called from a process not running in a kubernetes environment.</span>
+<span class="token key attr-name">in_cluster</span> <span class="token punctuation">=</span> <span class="token value attr-value">True</span>
+
+<span class="token comment"># When running with in_cluster=False change the default cluster_context or config_file</span>
+<span class="token comment"># options to Kubernetes client. Leave blank these to use default behaviour like `kubectl` has.</span>
+<span class="token comment"># cluster_context =</span>
+<span class="token comment"># config_file =</span>
+
+<span class="token comment"># Affinity configuration as a single line formatted JSON object.</span>
+<span class="token comment"># See the affinity model for top-level key names (e.g. `nodeAffinity`, etc.):</span>
+<span class="token comment"># https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.12/#affinity-v1-core</span>
+<span class="token key attr-name">affinity</span> <span class="token punctuation">=</span>
+
+<span class="token comment"># A list of toleration objects as a single line formatted JSON array</span>
+<span class="token comment"># See:</span>
+<span class="token comment"># https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.12/#toleration-v1-core</span>
+<span class="token key attr-name">tolerations</span> <span class="token punctuation">=</span>
+
+<span class="token comment"># Keyword parameters to pass while calling a kubernetes client core_v1_api methods</span>
+<span class="token comment"># from Kubernetes Executor provided as a single line formatted JSON dictionary string.</span>
+<span class="token comment"># List of supported params are similar for all core_v1_apis, hence a single config variable for all apis.</span>
+<span class="token comment"># See:</span>
+<span class="token comment"># https://raw.githubusercontent.com/kubernetes-client/python/master/kubernetes/client/apis/core_v1_api.py</span>
+<span class="token comment"># Note that if no _request_timeout is specified, the kubernetes client will wait indefinitely</span>
+<span class="token comment"># for kubernetes api responses, which will cause the scheduler to hang.</span>
+<span class="token comment"># The timeout is specified as [connect timeout, read timeout]</span>
+<span class="token key attr-name">kube_client_request_args</span> <span class="token punctuation">=</span> <span class="token value attr-value">&#123;&#123;"_request_timeout" : [60,60] &#125;&#125;</span>
+
+<span class="token comment"># Worker pods security context options</span>
+<span class="token comment"># See:</span>
+<span class="token comment"># https://kubernetes.io/docs/tasks/configure-pod-container/security-context/</span>
+
+<span class="token comment"># Specifies the uid to run the first process of the worker pods containers as</span>
+<span class="token key attr-name">run_as_user</span> <span class="token punctuation">=</span>
+
+<span class="token comment"># Specifies a gid to associate with all containers in the worker pods</span>
+<span class="token comment"># if using a git_ssh_key_secret_name use an fs_group</span>
+<span class="token comment"># that allows for the key to be read, e.g. 65533</span>
+<span class="token key attr-name">fs_group</span> <span class="token punctuation">=</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">kubernetes_node_selectors</span><span class="token punctuation">]</span></span>
+
+<span class="token comment"># The Key-value pairs to be given to worker pods.</span>
+<span class="token comment"># The worker pods will be scheduled to the nodes of the specified key-value pairs.</span>
+<span class="token comment"># Should be supplied in the format: key = value</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">kubernetes_annotations</span><span class="token punctuation">]</span></span>
+
+<span class="token comment"># The Key-value annotations pairs to be given to worker pods.</span>
+<span class="token comment"># Should be supplied in the format: key = value</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">kubernetes_environment_variables</span><span class="token punctuation">]</span></span>
+
+<span class="token comment"># The scheduler sets the following environment variables into your workers. You may define as</span>
+<span class="token comment"># many environment variables as needed and the kubernetes launcher will set them in the launched workers.</span>
+<span class="token comment"># Environment variables in this section are defined as follows</span>
+<span class="token comment"># ``&lt;environment_variable_key> = &lt;environment_variable_value>``</span>
+<span class="token comment">#</span>
+<span class="token comment"># For example if you wanted to set an environment variable with value `prod` and key</span>
+<span class="token comment"># ``ENVIRONMENT`` you would follow the following format:</span>
+<span class="token comment"># ENVIRONMENT = prod</span>
+<span class="token comment">#</span>
+<span class="token comment"># Additionally you may override worker airflow settings with the ``AIRFLOW__&lt;SECTION>__&lt;KEY>``</span>
+<span class="token comment"># formatting as supported by airflow normally.</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">kubernetes_secrets</span><span class="token punctuation">]</span></span>
+
+<span class="token comment"># The scheduler mounts the following secrets into your workers as they are launched by the</span>
+<span class="token comment"># scheduler. You may define as many secrets as needed and the kubernetes launcher will parse the</span>
+<span class="token comment"># defined secrets and mount them as secret environment variables in the launched workers.</span>
+<span class="token comment"># Secrets in this section are defined as follows</span>
+<span class="token comment"># ``&lt;environment_variable_mount> = &lt;kubernetes_secret_object>=&lt;kubernetes_secret_key>``</span>
+<span class="token comment">#</span>
+<span class="token comment"># For example if you wanted to mount a kubernetes secret key named ``postgres_password`` from the</span>
+<span class="token comment"># kubernetes secret object ``airflow-secret`` as the environment variable ``POSTGRES_PASSWORD`` into</span>
+<span class="token comment"># your workers you would follow the following format:</span>
+<span class="token comment"># ``POSTGRES_PASSWORD = airflow-secret=postgres_credentials``</span>
+<span class="token comment">#</span>
+<span class="token comment"># Additionally you may override worker airflow settings with the ``AIRFLOW__&lt;SECTION>__&lt;KEY>``</span>
+<span class="token comment"># formatting as supported by airflow normally.</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">kubernetes_labels</span><span class="token punctuation">]</span></span>
+
+<span class="token comment"># The Key-value pairs to be given to worker pods.</span>
+<span class="token comment"># The worker pods will be given these static labels, as well as some additional dynamic labels</span>
+<span class="token comment"># to identify the task.</span>
+<span class="token comment"># Should be supplied in the format: ``key = value``</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Keyhong</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2024/06/16/Airflow/posting/airflow-config/">http://example.com/2024/06/16/Airflow/posting/airflow-config/</a>
+                </span>
+            </div>
+            <!-- <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        reprint:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    use
+                    <a href="cc_by_url" rel="external nofollow noreferrer" target="_blank">cc_by_name</a>
+                    licensed
+                    <a href="/about" target="_blank">Keyhong</a>
+                    !
+                </span>
+            </div> -->
+        
+    </div>
+
+    <!-- <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script> -->
+
+
+
+            <div class="tag_share" style="display: block;">
+                <!-- <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                        </div>
+                    
+                </div> -->
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <!-- <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a> -->
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2024/06/16/Airflow/posting/basic-comand/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="에어플로우 CLI 커맨드">
+                        
+                        <span class="card-title diy-neon-red">에어플로우 CLI 커맨드</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-06-16
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Airflow/" class="post-category">
+                                    Airflow
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/06/16/Airflow/posting/airflow-common-config/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="Config 정리">
+                        
+                        <span class="card-title diy-neon-red">Config 정리</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-06-16
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Airflow/" class="post-category">
+                                    Airflow
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;목차</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2024</span>
+            
+            <a href="/about" target="_blank">Gyuwon Hong</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+            
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+    <a href="https://github.com/keyhong" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:wnhong96@gmail.com" class="tooltipped" target="_blank" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- Back to Top Button -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

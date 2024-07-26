@@ -5,7 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Data Warehouse, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="회사에서 프로젝트를 하면 DW&amp;#x2F;DM을 구축하는 일을 했다. 그런데 당시는 주니어이기도 했고 DDL로 테이블을 생성하라는 업무를 받아서 했지만 너무 급급해서 이걸 왜 하는 지 몰랐다. 최근에서야 DW를 구축하">
+    <meta name="description" content="History
+회사에서 프로젝트를 하면 DW&amp;#x2F;DM을 구축하는 일을 했다. 그런데 당시는 주니어이기도 했고 DDL로 테이블을 생성하라는 업무를 받아서 했지만 너무 급급해서 이걸 왜 하는 지 몰랐다. 최근에서야">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -205,8 +206,8 @@
                 <div class="post-cate">
                     <i class="fas fa-bookmark fa-fw icon-category"></i>
                     
-                        <a href="/categories/Data-Architecture/" class="post-category">
-                            Data Architecture
+                        <a href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98/" class="post-category">
+                            데이터 아키텍처
                         </a>
                     
                 </div>
@@ -223,11 +224,13 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>회사에서 프로젝트를 하면 DW&#x2F;DM을 구축하는 일을 했다. 그런데 당시는 주니어이기도 했고 DDL로 테이블을 생성하라는 업무를 받아서 했지만 너무 급급해서 이걸 왜 하는 지 몰랐다. 최근에서야 DW를 구축하기 위해 어떤 과정들이 있고, 왜 하는 지 주변의 팀원분을 통해서 알게 되었다.</p>
+                <h2 id="History"><a href="#History" class="headerlink" title="History"></a>History</h2><hr>
+<p>회사에서 프로젝트를 하면 DW&#x2F;DM을 구축하는 일을 했다. 그런데 당시는 주니어이기도 했고 DDL로 테이블을 생성하라는 업무를 받아서 했지만 너무 급급해서 이걸 왜 하는 지 몰랐다. 최근에서야 DW를 구축하기 위해 어떤 과정들이 있고, 왜 하는 지 주변의 팀원분을 통해서 알게 되었다.</p>
 <p>듣고나니 실제로 어떻게 하는 지 그 과정과 디테일한 요소들이 궁금했다. 그래서 Udemy의 강의를 통해 DW&#x2F;DM 설계에 대한 디테일 능력을 기르고 있다. 그 곳에서 배운 지식을 공유하고자 한다.</p>
-<h2 id="DW-Data-Warehouse"><a href="#DW-Data-Warehouse" class="headerlink" title="DW (Data Warehouse)"></a>DW (Data Warehouse)</h2><h3 id="DW의-필요성"><a href="#DW의-필요성" class="headerlink" title="DW의 필요성"></a>DW의 필요성</h3><p>만약 우리 회사에서 고객에게 더 나은 서비스를 제공하고 싶다면 어떻게 할까? 아마, 현재의 문제를 파악하고 개선 방안을 세워야 할 것이다. 우리는 데이터를 통해 고객의 이탈지점을 찾을 수 있다. 또한 데이터를 통해 실험적인 도전에 대한 결과를 평가할 수도 있다. 중요한 건, <code>우선적으로 데이터를 자유롭게 활용할 수 있는 환경을 만드는 것</code>이다. <code>DW는 그에 대한 좋은 답안이 될 수 있다.💡</code></p>
-<h3 id="DW란"><a href="#DW란" class="headerlink" title="DW란"></a>DW란</h3><blockquote>
-<p>분석을 위해 전사에 흩어진 여러 데이터를 모은 하나의 집중화된 데이터베이스를 <code>Data Warehouse</code> 라고 한다.</p>
+<h2 id="DW-Data-Warehouse"><a href="#DW-Data-Warehouse" class="headerlink" title="DW (Data Warehouse)"></a>DW (Data Warehouse)</h2><hr>
+<h3 id="필요성"><a href="#필요성" class="headerlink" title="필요성"></a>필요성</h3><p>만약 우리 회사에서 고객에게 더 나은 서비스를 제공하고 싶다면 어떻게 할까? 아마, 현재의 문제를 파악하고 개선 방안을 세워야 할 것이다. 우리는 데이터를 통해 고객의 이탈지점을 찾을 수 있다. 또한 데이터를 통해 실험적인 도전에 대한 결과를 평가할 수도 있다. 중요한 건, <code>우선적으로 데이터를 자유롭게 활용할 수 있는 환경을 만드는 것</code>이다. <code>DW는 그에 대한 좋은 답안이 될 수 있다.💡</code></p>
+<h3 id="DW"><a href="#DW" class="headerlink" title="DW"></a>DW</h3><blockquote>
+<p>분석을 위해 전사에 흩어진 여러 데이터를 모은 하나의 집중화된 데이터베이스</p>
 </blockquote>
 <ul>
 <li><p><code>보통 DW는 별도의 서버에 구축</code>을 한다. 분석을 하는 것은 과거부터 쌓아온 대용량 데이터에 대한 처리를 위해서는 큰 리소스를 필요로 한다. 이를 운영용 서버에서 수행하면 기존 OLTP 서비스에 영향을 줄 가능성이 높다.</p>
@@ -240,7 +243,7 @@
 <ul>
 <li><code>추출(E), 변환(T), 로드(L)은 데이터 웨어하우징에서 가장 중요한 과정이고 DW 생성 과정의 80%~90% 소요시간이 든다.</code> 이는 운영용 DB에서 과거부터 쌓여있던 많은 데이터를 정제하면서 물리적으로 이관하기 때문이다.</li>
 </ul>
-<h3 id="DW의-필요-능력"><a href="#DW의-필요-능력" class="headerlink" title="DW의 필요 능력"></a>DW의 필요 능력</h3><p>데이터를 통합하는 과정은 쉽지 않다. 아래와 같은 난제들이 있다.</p>
+<h3 id="DW-개발의-필요-능력"><a href="#DW-개발의-필요-능력" class="headerlink" title="DW 개발의 필요 능력"></a>DW 개발의 필요 능력</h3><p>데이터를 통합하는 과정은 쉽지 않다. 아래와 같은 난제들이 있다.</p>
 <ul>
 <li><p><code>다양한 데이터의 포맷에 대한 이해</code>가 필요하다. JSON, CSV, ORC, Parquet, Avro 등 여러 타입이 있다.</p>
 </li>
@@ -251,7 +254,7 @@
 <li><p><code>비즈니스를 이해하는 능력</code>이 필요하다. 비즈니스에 따라 엔티티 간의 논리적인 관계를 어떻게 설계와 관리가 달라질 수 있다.</p>
 </li>
 </ul>
-<h3 id="DW-설계시-고려사항"><a href="#DW-설계시-고려사항" class="headerlink" title="DW 설계시 고려사항"></a>DW 설계시 고려사항</h3><ul>
+<h3 id="설계시-고려사항"><a href="#설계시-고려사항" class="headerlink" title="설계시 고려사항"></a>설계시 고려사항</h3><ul>
 <li><p><code>데이터가 한 곳으로 집중화되면서 일관성</code>을 지녀야 한다.</p>
 </li>
 <li><p><code>주된 사용자는 분석가</code>이다. 너무 기술적이기 보다 사용자 친화적이고 이해하기 쉽게 설계해야 한다.</p>
@@ -261,7 +264,7 @@
 <li><p><code>레포트나 시각화 할 수 있는 Tool</code>도 함께 고려해야 한다. 쿼리를 통한 분석의 결과는 가시성이 좋지 않다.</p>
 </li>
 </ul>
-<h3 id="DW-생성-과정"><a href="#DW-생성-과정" class="headerlink" title="DW 생성 과정"></a>DW 생성 과정</h3><p>DW의 생성 프로세스에 대한 접근은 크게 <code>Bill Inmon의 top-down 방식인 EDW 접근</code>과 <code>Kimball의 bottom-up 방식인 Data mart 접근</code>이 유명하다. 여러 회사의 컨퍼런스와 강의를 들으니 전체적인 DW를 생성 프로세스는 Inmon의 접근으로, 테이블 논리적 설계는 Kimball이 star&#x2F;snowflake schema 방식을 채택하는 게 많이 보인다. 이에 대한 <a target="_blank" rel="noopener" href="https://www.linkedin.com/pulse/comparison-data-warehouse-design-approaches-kimball-inmon-hassan/">레퍼런스</a>를 먼저 한번 읽어보는 것을 추천한다.</p>
+<h3 id="생성-과정"><a href="#생성-과정" class="headerlink" title="생성 과정"></a>생성 과정</h3><p>DW의 생성 프로세스에 대한 접근은 크게 <code>Bill Inmon의 top-down 방식인 EDW 접근</code>과 <code>Kimball의 bottom-up 방식인 Data mart 접근</code>이 유명하다. 여러 회사의 컨퍼런스와 강의를 들으니 전체적인 DW를 생성 프로세스는 Inmon의 접근으로, 테이블 논리적 설계는 Kimball이 star&#x2F;snowflake schema 방식을 채택하는 게 많이 보인다. 이에 대한 <a target="_blank" rel="noopener" href="https://www.linkedin.com/pulse/comparison-data-warehouse-design-approaches-kimball-inmon-hassan/">레퍼런스</a>를 먼저 한번 읽어보는 것을 추천한다.</p>
 <blockquote>
 <p>DW는 일반적으로 <code>data source</code> → <code>Staging Layer</code> → <code>Data Warehouse(Core Layer)</code> → <code>Data Mart</code> 과정으로 이루어진다.</p>
 </blockquote>
@@ -279,7 +282,7 @@
 
 
 <h4 id="Staging-Layer"><a href="#Staging-Layer" class="headerlink" title="Staging Layer"></a>Staging Layer</h4><blockquote>
-<p>data source에서 데이터를 Extract해서 보관하는 레이어이다. 소스 시스템에 영향을 주지 않기 위해 수집할 때는 raw 그대로나 가벼운 cleasning 정도만 수행 후 가져오고, DW로 보낼 때 transform을 하면서 load한다.</p>
+<p>data source에서 데이터를 Extract해서 보관하는 레이어. 소스 시스템에 영향을 주지 않기 위해 수집할 때는 raw 그대로나 가벼운 cleasning 정도만 수행 후 가져오고, DW로 보낼 때 transform을 하면서 load한다.</p>
 </blockquote>
 <ul>
 <li><p>설계에 따라 Staging의 테이블을 temporary와 permanent로 구분할 수 있다.</p>
@@ -297,7 +300,7 @@
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219936&authkey=%21APEYF3lVB-a8ycg&width=1024" width="1024" height="auto" alt="permanent는 Staging에 계속 트랜잭션 데이터를 쌓아나가요."/>
 
 <h4 id="Core-Layer"><a href="#Core-Layer" class="headerlink" title="Core Layer"></a>Core Layer</h4><blockquote>
-<p>일반적으로 우리가 Data Warehouse라고 부르는 레이어이다. staging에서 cleansing과 transform 과정을 거친 데이터가 들어왔기 때문에 좋은 품질의 계속 쌓이는 공간(Single Point of Truth)이다. 과거로부터 트랜잭션 데이터를 계속 보관하고 있다.</p>
+<p>일반적으로 우리가 Data Warehouse라고 부르는 레이어. staging에서 cleansing과 transform 과정을 거친 데이터가 들어왔기 때문에 좋은 품질의 계속 쌓이는 공간(Single Point of Truth)이다. 과거로부터 트랜잭션 데이터를 계속 보관하고 있다.</p>
 </blockquote>
 <ul>
 <li><p>일반적으로 분석가가 Access하는 Layer는 Data Mart이지만, <code>가끔 DM 없이 DW가 Access Layer 역할을 하기도 한다.</code></p>
@@ -316,7 +319,8 @@
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219937&authkey=%21APa8UmARvr5-dkI&width=1024" width="1024" height="auto" alt="star schema"/>
 
 
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><hr>
+<ul>
 <li><a target="_blank" rel="noopener" href="https://www.udemy.com/course/data-warehouse-the-ultimate-guide/">Data Warehouse - The Ultimate Guide</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.udemy.com/course/modeling-data-warehouse-with-data-vault-for-beginners">Modeling Data Warehouse with Data Vault 2.0</a></li>
 </ul>
@@ -480,8 +484,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Data-Architecture/" class="post-category">
-                                    Data Architecture
+                            <a href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98/" class="post-category">
+                                    데이터 아키텍처
                                 </a>
                             
                             
@@ -520,8 +524,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Data-Architecture/" class="post-category">
-                                    Data Architecture
+                            <a href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98/" class="post-category">
+                                    데이터 아키텍처
                                 </a>
                             
                             
