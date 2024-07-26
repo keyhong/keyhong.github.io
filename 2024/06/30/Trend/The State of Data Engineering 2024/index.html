@@ -1,0 +1,841 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="The State of Data Engineering 2024, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="
+
+Trend #1: GenAI influence on software infrastructure2023 데이터 엔지니어링 보고서에서 예측한 대로, 2024년 판은 생성형 AI의 부상에 크게 영향을 받았습니다. 20">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>The State of Data Engineering 2024 | Keyhong</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span diy-happy-monkey">Keyhong</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <!-- <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li> -->
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Keyhong</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/book-logo.png')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title diy-neon-red">
+                        The State of Data Engineering 2024</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="post-cate">
+                    <i class="fas fa-bookmark fa-fw icon-category"></i>
+                    
+                        <a href="/categories/Trend/" class="post-category">
+                            Trend
+                        </a>
+                    
+                </div>
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128812&authkey=%21AJS3wtQR0qOQRCs&width=2048&height=1075" width="2048" height="1075" />
+
+<h1 id="Trend-1-GenAI-influence-on-software-infrastructure"><a href="#Trend-1-GenAI-influence-on-software-infrastructure" class="headerlink" title="Trend #1: GenAI influence on software infrastructure"></a>Trend #1: GenAI influence on software infrastructure</h1><p>2023 데이터 엔지니어링 보고서에서 예측한 대로, 2024년 판은 <code>생성형 AI의 부상</code>에 크게 영향을 받았습니다. 2024 보고서에서는 저장소, 컴퓨팅 엔진, MLOps, 관측 도구에 미치는 영향을 논의할 것입니다. 그러나 거의 모든 범주에서 이 영향의 흔적을 발견할 수 있습니다. 하드웨어에 대해 논의하지 않으므로, Nvidia는 한 번만 언급될 것이며, GPU는 이 보고서의 범위에 포함되지 않습니다.</p>
+<h1 id="Trend-2-Expansion-of-product-offerings"><a href="#Trend-2-Expansion-of-product-offerings" class="headerlink" title="Trend #2: Expansion of product offerings"></a>Trend #2: Expansion of product offerings</h1><p>2023 보고서의 또 다른 측면은 경제 침체가 기업 성장에 미친 영향이었습니다. 시장 지수가 상승하고 있지만, 이는 소수의 기업이 하드웨어와 기반 모델에서 생성형 AI 혁명을 주도하고 있기 때문입니다. 나머지 <code>시장에서는 여전히 어려움이 계속되고 있어, 데이터 분야의 기술 기업들이 성장하기가 더 어려워졌습니다.</code> 따라서 수익을 늘리기 위한 노력으로 기업들이 인접한 영역으로 제품을 발전시키고 확장하려는 경쟁을 계속해서 목격하고 있습니다.</p>
+<h1 id="Trend-3-Open-table-formats-and-their-catalogs-creating-closed-gardens"><a href="#Trend-3-Open-table-formats-and-their-catalogs-creating-closed-gardens" class="headerlink" title="Trend #3: Open table formats and their catalogs creating closed gardens"></a>Trend #3: Open table formats and their catalogs creating closed gardens</h1><p><code>오픈 테이블 포맷과 그 카탈로그가 데이터 레이크에서 큰 파장</code>을 일으키고 있으며, <code>Databricks와 Snowflake 간의 거대한 전쟁의 중심</code>이 될 수 있습니다. 카탈로그는 열린 환경을 폐쇄된 정원으로 만드는 기술이 되고 있으며, Databricks와 AWS는 그 방향으로 나아가는 것 같습니다. 2월 Apache Iceberg 커뮤니티 콜에서는 코드베이스에서 하나를 제외한 모든 카탈로그를 배제하는 문제를 중심으로 진행되었고, Tabular가 커뮤니티를 장악하려는 움직임에 대응하기 위해 흥미로운 카탈로그 오픈 소스 릴리스가 있었습니다. 아, 드라마네요!</p>
+<p>이제 호기심이 생겼으니, 자세한 내용으로 들어가 봅시다.</p>
+<h2 id="Ingestion"><a href="#Ingestion" class="headerlink" title="Ingestion"></a>Ingestion</h2><p>이 층은 운영 시스템에서 데이터 저장소로의 파이프라인을 제공하는 스트리밍 기술과 SaaS 서비스를 포함합니다.</p>
+<p><code>카프카가 표준이 되어 프로토콜이 되었습니다.</code> 다른 참여자들은 자사의 혁신적인 기술로 같은 인터페이스를 사용하여 여기에 침투하려고 하고 있습니다. Warpstream, Redpanda, Apache Pulsar 등이 이 곳에 입지를 확보하려는 다른 플레이어들입니다. 이 관측에 대해 더 자세히 알아보세요.</p>
+<h2 id="Data-Lakes"><a href="#Data-Lakes" class="headerlink" title="Data Lakes"></a>Data Lakes</h2><p>이 층에는 <code>데이터 레이크로 사용되는 객체 저장 기술</code>이 포함됩니다.</p>
+<p>딥 러닝의 부상은 저장 및 아키텍처에 요구 사항을 제기했습니다. <code>데이터 검색 속도는 모델 훈련의 시간(따라서 비용도)을 최소화하기 위해 빠르게 되어야 합니다. 따라서 저장 성능이 중요해집니다.</code> 데이터 레이크 범주에서 객체 저장 공급업체들이 이에 도전해왔습니다. Minio는 항상 성능에 중점을 두어 벤치마크를 제공하고 있습니다. Amazon은 S3 Express One Zone을 출시하여 데이터 검색 성능에서 큰 향상을 보여줍니다. Vast Data는 AI 사용 사례를 위한 성능을 제공하는 Vast Platform을 출시했습니다.</p>
+<p>데이터를 계산에 더 가깝게 가져와야 하는 필요성은 AWS S3 Mountpoint, Azure ML 데이터 자산과 같은 로컬 저장소 데이터 마운트를 허용하는 여러 오픈 소스 도구의 출시로 이어졌습니다. lakeFS는 자체 마운트 기능을 6월 초에 출시할 예정입니다.</p>
+<h2 id="Metadata-Management"><a href="#Metadata-Management" class="headerlink" title="Metadata Management"></a>Metadata Management</h2><h3 id="Open-Table-Formats-OTF"><a href="#Open-Table-Formats-OTF" class="headerlink" title="Open Table Formats (OTF)"></a>Open Table Formats (OTF)</h3><p>이 범주와 그 세 플레이어인 <code>Apache Hudi, Apache Iceberg, Delta Lake은 모두 재단에서 완전히 오픈 소스로 제공되며, 상업적 기업들이 이를 핵심 비즈니스 전략의 일환으로 유지보수합니다.</code></p>
+<p>지난 해 Apache Iceberg는 이 범주에서 승리를 선언했으며, <code>시장의 움직임을 보면 Apache Iceberg 기반 환경으로의 이동이 계속될 것으로 보입니다.</code> Snowflake는 지난 해 Iceberg 지원을 선언하고, AWS는 데이터 제품에서 Iceberg 지원에 집중했으며, Starburst는 최근에 Apache Iceberg를 지원하는 제품을 발표하여 Dremio와 같은 수준의 제공을 하고 있습니다. Apache Iceberg가 오픈 테이블 포맷(OTF)의 점유를 확정짓는 다양한 측면에 대해 계속 읽어 보세요.</p>
+<p>현재 <code>Delta Lake는 Databricks 사용자만의 선택으로 보입니다. 그러나 그 성장하는 시장 점유율을 고려하면 이는 분명 저평가된 것일 겁니다.</code></p>
+<h3 id="Metastores"><a href="#Metastores" class="headerlink" title="Metastores"></a>Metastores</h3><p>이 범주에는 데이터 레이크의 메타 스토어가 포함되어 있으며, 레이크에 대한 SQL 인터페이스를 가능하게 합니다.</p>
+<p>Iceberg의 점유의 직접적인 영향은 Tabular과 경쟁하는 새롭고 고급 Iceberg REST 카탈로그입니다. LinkedIn이 오픈 소스로 출시한 OpenHouse와 그라비티노는 OSS 데이터 플랫폼의 일환으로 출시되었습니다. Iceberg 창시자들이 점점 더 상업적으로 변화하는 가운데, Apache Iceberg OSS에 많은 기여를 한 기업들은 Iceberg 주변의 OSS 생태계를 계속 육성하고 있습니다. 개인적인 견해로 보건대, Apache Iceberg의 독립적이고 오픈한 성격에 대한 이 갈등은 막 시작된 것입니다.</p>
+<p>또한, 메타스토어가 폐쇄된 정원과 벤더 잠금 문제의 문을 여는 방식에 대한 저희 견해도 제공했습니다.</p>
+<h2 id="Data-Version-Control-or-Git-for-Data-Lakes"><a href="#Data-Version-Control-or-Git-for-Data-Lakes" class="headerlink" title="Data Version Control, or Git for Data Lakes"></a>Data Version Control, or Git for Data Lakes</h2><p>이 범주에는 데이터 제품에서 엔지니어링 최상의 실천 방법을 가능하게 하는 데이터 버전 관리 시스템이 포함됩니다.</p>
+<p>올해에는 XetHub과 Oxen이 스텔스 모드에서 나와, 그리고 Underhive가 오픈 소스를 공개했습니다. 이 트렌드는 시장에서 데이터 버전 관리가 분석 또는 ML 시스템의 기능이 아니라 데이터 위의 조직 인프라라는 점에 대한 점점 더 큰 이해를 보여줍니다. 이는 lakeFS가 첫 날부터 채택한 접근 방식이며, 데이터 엔지니어링, ML, AI, 그리고 분석에서 모든 데이터 실무자를 수용할 수 있는 필수 기능을 갖춘 고도로 확장 가능한 데이터 버전 관리 시스템을 제공합니다.</p>
+<p>Thoughtworks의 2023 기술 레이더는 OSS 프로젝트 DVC를 채택할 기술로 소개하여, 데이터 버전 관리의 AI&#x2F;ML 사용 사례를 강력하게 인정했습니다.</p>
+<p>AI&#x2F;ML 사용 사례의 또 다른 인증원은 Hugging Face가 오랜 기간 동안 데이터 버전 관리를 위해 GitLFS를 사용한 것입니다. 데이터를 다루는 데 있어 AI&#x2F;ML에서 우리에게 가르쳐 줄 사람이 있다면 그것이 바로 Hugging Face일 것입니다. 🤗</p>
+<p>여기 데이터 버전 관리가 오픈 테이블 포맷과 상호작용하는 방법이 있습니다, 궁금한 분들을 위해.</p>
+<p>그리고 데이터 버전 관리 스킬을 테스트하려면, 시작할 최고의 장소는 로컬 환경을 구축하는 것입니다.</p>
+<h2 id="Compute"><a href="#Compute" class="headerlink" title="Compute"></a>Compute</h2><h3 id="Distributed-Compute"><a href="#Distributed-Compute" class="headerlink" title="Distributed Compute"></a>Distributed Compute</h3><p>이 범주에는 분산 계산 기술이 포함됩니다.</p>
+<p>뉴스가 없는 것이 좋은 소식일까요? 우리는 그렇게 생각하지 않습니다…</p>
+<h3 id="Analytics-Engines"><a href="#Analytics-Engines" class="headerlink" title="Analytics Engines"></a>Analytics Engines</h3><p>이 범주에는 데이터 분석을 위한 분석 기능을 제공하는 데이터베이스들이 포함됩니다.</p>
+<p><code>생성형 AI에 관련성을 높이기 위해 이 범주의 많은 회원들이 벡터 검색 도메인에서 기능을 제공합니다 (벡터 데이터베이스 범주를 참조하세요).</code> 사용자 관점에서는 하나의 데이터베이스가 데이터 아키텍처 내에서 여러 필요를 서비스할 수 있어 관리가 더 용이합니다. 이러한 예로 Clickhouse와 Elastic이 있습니다. 이들은 일반적으로 LLMs 주변의 데이터 관리와 강력한 자연스러운 사용 사례를 가지고 있습니다.</p>
+<p>새롭지는 않지만, Snowflake는 Snowpark를 통해 스택을 낮춰가고 있고, Databricks는 서버리스 SQL 웨어하우스를 통해 스택을 높이고 있습니다. Databricks는 생성형 AI 요구에 가장 빠르게 적응하여 지난 해 Snowflake보다 훨씬 빠르게 사업을 성장시켰습니다.</p>
+<p>위에서 언급한 대로, Starburst는 Apache Iceberg 기반의 데이터 웨어하우스를 출시하여 직접적으로 Dremio와 경쟁하고 있습니다.</p>
+<h2 id="Orchestration-and-Observability"><a href="#Orchestration-and-Observability" class="headerlink" title="Orchestration and Observability"></a>Orchestration and Observability</h2><h3 id="Orchestration"><a href="#Orchestration" class="headerlink" title="Orchestration"></a>Orchestration</h3><p>이 범주에는 데이터 파이프라인을 설계하고 관리하는 도구들이 포함됩니다.</p>
+<p>AI&#x2F;ML에 대한 투자 트렌드는 오케스트레이션 범주에서 명확히 나타나며, <code>대부분의 도구들이 AI/ML 파이프라인에 특화된 기능을 제공하려고 노력</code>하고 있습니다.</p>
+<p>또한 여기서 범주간 통합 트렌드도 나타나고 있습니다. 예를 들어, Dagster는 Dagster+를 제공하며, 내장 카탈로그, 자동으로 채워지는 리니지, 데이터 관측 가능성 기능, 그리고 <code>OpenAI API 호출을 관찰하고 관리하기 위한 OpenAI 통합을 제공</code>합니다.</p>
+<h3 id="Observability"><a href="#Observability" class="headerlink" title="Observability"></a>Observability</h3><p>이 범주에는 <code>데이터 품질 테스트와 모니터링, 데이터 파이프라인 건강 모니터링을 제공하는 도구들이 포함</code>됩니다.</p>
+<p><code>데이터 관측 가능성은 오랫동안 중소기업과 중규모 시장의 주요 요소였지만, 기업들이 이 기술을 점점 더 채택</code>하고 있습니다. 점점 더 많은 데이터 관측 가능성 솔루션들이 데이터 소스(내부 및 외부 모두)뿐만 아니라 인프라, 파이프라인, 그리고 데이터 투입 시스템까지 모니터링하는 데 사용되고 있습니다. 기업들은 또한 데이터 관측 가능성을 생성 AI 계획의 기본적인 우선 사항으로 여기고 있습니다. Gartner는 데이터 관측 가능성을 AI 준비 데이터의 필수 요소로 지정했습니다.</p>
+<p>이것이 다른 범주의 도구들에게 인기 있는 추가 요소가 된 이유일 수 있습니다. 이제 이는 엔드 투 엔드 MLOps 도구, Databricks 및 Snowflake 플랫폼, 오케스트레이션 도구, 그리고 카탈로그에서 제공됩니다. 이 도메인의 경쟁은 더 이상 동일한 제공을 하는 도구들 간의 경쟁이 아니라, 다른 기본 인프라를 제공하는 통합 플랫폼들과의 경쟁입니다.</p>
+<p>2023과 유사하게, Monte Carlo는 이 범주에서 선도적 역할을 하고 있으며, G2는 그들을 최고의 데이터 관측 가능성 플랫폼으로 인정하고 있으며, Cisco, American Airlines, NASDAQ와 같은 데이터 주도 기관들은 더 신뢰할 수 있는 AI 시스템을 구축하기 위해 Monte Carlo를 활용하고 있습니다.</p>
+<h2 id="Data-Science-Analytics-Usability"><a href="#Data-Science-Analytics-Usability" class="headerlink" title="Data Science + Analytics Usability"></a>Data Science + Analytics Usability</h2><h3 id="End-to-End-MLOps-tools"><a href="#End-to-End-MLOps-tools" class="headerlink" title="End-to-End MLOps tools"></a>End-to-End MLOps tools</h3><p>이 범주에는 실험 관리부터 생산 관측성까지의 전체 MLOps 스위트를 제공하는 플랫폼이나 그 기능의 큰 부분을 제공하는 플랫폼들이 포함됩니다.</p>
+<p>기대했던 대로, 이 범주는 생성형 AI에 의해 심각하게 영향을 받았습니다: 기초 모델에 대한 인터페이스, 촉발된 엔지니어링 도구, RAG 및 파인튜닝 지원, 관측 가능성과 재현성은 이 도구들에 추가된 기능의 일부로, 이들이 생성형 AI 사용자들에게 유효하도록 보장하기 위해 포함되었습니다. 과거에 이 범주가 할 일이 너무 많은 것을 시도하고 있다고 의심했다면, 지금은 더 많이 해결해야 할 문제가 있습니다.</p>
+<h3 id="Data-Centric-AI-ML"><a href="#Data-Centric-AI-ML" class="headerlink" title="Data-Centric AI&#x2F;ML"></a>Data-Centric AI&#x2F;ML</h3><p>이 범주에는 실험부터 생산까지 데이터를 관리하는 플랫폼들이 포함됩니다.</p>
+<p>구글 브레인 전 책임자 Andrew Ng가 만든 용어인 데이터 중심 ML은 머신러닝과 AI 시스템의 품질과 무결성을 우선시해야 한다는 필요성을 말합니다. 종종 모델 자체의 신뢰성보다는 데이터의 품질에 중점을 둡니다. 2024년에는 데이터 중심 AI로 발전하였습니다. 검색 보강 생성 (RAG)과 파인튜닝은 팀이 실험 이상의 사용 사례를 위해 맞춤형 엔터프라이즈급 AI를 구축할 수 있도록 하며, 이 범주의 도구들은 RAG를 더 쉽고 신뢰할 수 있게 만들기 위해 데이터 버전 관리, 데이터 관측 가능성, 벡터 데이터베이스와 함께 최적의 위치에 있습니다.</p>
+<h3 id="ML-observability-and-monitoring"><a href="#ML-observability-and-monitoring" class="headerlink" title="ML observability and monitoring"></a>ML observability and monitoring</h3><p>이 범주에는 모델 품질 메트릭을 제공하고 모델 드리프트를 모니터링하는 도구들이 포함됩니다.</p>
+<p>ML 관측 가능성 도구들이 생성형 AI 관련 관측 가능성 기능을 제공하는 반면, Hunnyhive, NannyML, AIMon과 같은 새로운 참여자들이 생성형 AI에 중점을 둔 상태로 참여하고 있으며, 데이터 관측 가능성 범주도 이 도메인을 향해 기울이고 있어서 올해 이곳에서의 경쟁은 치열합니다.</p>
+<p>이 범주와 데이터 관측 가능성에 대해 여전히 남아 있는 질문은: 데이터와 AI&#x2F;ML을 위한 두 가지 관측 가능성 범주가 실제로 존재하는지, 아니면 조직들은 이 두 가지를 위한 하나의 솔루션을 사용해야 할까요?</p>
+<h3 id="Vector-DataBases"><a href="#Vector-DataBases" class="headerlink" title="Vector DataBases"></a>Vector DataBases</h3><p>이 범주에는 이웃 벡터를 찾기 위한 고성능 읽기 및 쓰기 성능을 제공하는 벡터 관리에 특화된 데이터베이스들이 포함됩니다.</p>
+<p>벡터 데이터베이스는 이 범주에서 데이터베이스 수에서 가장 큰 성장을 이루었으며, 토론에서도 큰 주목을 받았습니다. 임베딩 위의 작업 성능을 보장하기 위해 AI&#x2F;ML 환경에서 반드시 필요한 도구로 간주됩니다. 이 필요는 특히 생성형 AI 모델과 파인튜닝과 함께 점점 더 커지고 있습니다. 최근에 우리는 벡터 데이터베이스 범주를 철저히 검토했으며, 정기적으로 최고의 선택 사항을 업데이트하고 있습니다.</p>
+<p>그러나 일부 의견은 벡터 데이터베이스가 필연적이라는 일반적인 가정에 도전하는 소리도 있습니다. 여기 그 중 하나가 있습니다.</p>
+<h3 id="Notebooks-and-workflow-management"><a href="#Notebooks-and-workflow-management" class="headerlink" title="Notebooks and workflow management"></a>Notebooks and workflow management</h3><p>Data+AI Summit에서 저희 부스로 오셔서 스티키 “노트북”을 받아가세요!</p>
+<h2 id="Catalogs-permissions-and-governance"><a href="#Catalogs-permissions-and-governance" class="headerlink" title="Catalogs, permissions, and governance"></a>Catalogs, permissions, and governance</h2><p>이 범주에는 데이터 발견성, 접근 제어 및 거버넌스 플랫폼이 포함됩니다.</p>
+<p>그러나 생성형 AI와 다른 AI 시스템이 성능이 좋고 효과적이기 위해서는 신뢰할 수 있고 준수하며 안전해야 합니다. 우리는 LLMs의 윤리성과 책임을 보장하는 것이 생성형 AI 팀이나 다른 ML 엔지니어링 그룹이 아닌 데이터 리더들에게 떨어질 것으로 예측합니다. 이를 지원하는 데 가장 적합한 도구들은 데이터 거버넌스 도구들이며, 예를 들어 RAG 플로우에 통합됨으로써 그 역할을 수행할 수 있습니다.</p>
+<p>이 범주에서 다른 도메인으로의 확장도 관찰됩니다. 예를 들어 Acryl Data, DataHub 뒤의 회사가 그들의 카탈로그에 데이터 관측 가능성 기능을 추가하는 것입니다.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>2024년이 단순한 생성형 AI를 넘어서고 있다는 것이 명백합니다. 기업들은 ChatGPT와 같은 기초 모델과의 상호작용을 지원하기 위해 인프라를 추가하고 있으며, GPU를 사용하여 이러한 모델을 파인튜닝하고 있습니다. 다른 근본적인 변화들이 일어나고 있으며, 이는 데이터 환경에서 새로운 인프라의 채택을 요구합니다. 이에 대한 예로는 벡터 데이터베이스, 오픈 테이블 포맷과 그들의 카탈로그, 그리고 데이터 버전 관리 시스템 등이 있습니다.</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://lakefs.io/blog/the-state-of-data-engineering-2024/">https://lakefs.io/blog/the-state-of-data-engineering-2024/</a></li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Keyhong</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2024/06/30/Trend/The%20State%20of%20Data%20Engineering%202024/">http://example.com/2024/06/30/Trend/The%20State%20of%20Data%20Engineering%202024/</a>
+                </span>
+            </div>
+            <!-- <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        reprint:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    use
+                    <a href="cc_by_url" rel="external nofollow noreferrer" target="_blank">cc_by_name</a>
+                    licensed
+                    <a href="/about" target="_blank">Keyhong</a>
+                    !
+                </span>
+            </div> -->
+        
+    </div>
+
+    <!-- <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script> -->
+
+
+
+            <div class="tag_share" style="display: block;">
+                <!-- <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                        </div>
+                    
+                </div> -->
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <!-- <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a> -->
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2024/07/07/Data-Architecture/data-architecture-docs-index/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="Data Architecture Docs Index">
+                        
+                        <span class="card-title diy-neon-red">Data Architecture Docs Index</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-07-07
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Index/" class="post-category">
+                                    Index
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/06/16/Spark/posting/spark-concept/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Spark 개념 정리">
+                        
+                        <span class="card-title diy-neon-red">Spark 개념 정리</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-06-16
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Spark/" class="post-category">
+                                    Spark
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;목차</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2024</span>
+            
+            <a href="/about" target="_blank">Gyuwon Hong</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+            
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+    <a href="https://github.com/keyhong" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:wnhong96@gmail.com" class="tooltipped" target="_blank" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- Back to Top Button -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
