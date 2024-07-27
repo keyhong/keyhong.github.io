@@ -314,82 +314,24 @@
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/03/01/Kubernetes/posting/emptyDir/">
+                        <a href="/2024/03/01/Kubernetes/posting/configmap/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="emptyDir">
+                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="환경변수를 ConfigMap에 저장하는 방법">
                                 
-                                <span class="card-title">emptyDir</span>
+                                <span class="card-title">환경변수를 ConfigMap에 저장하는 방법</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    emptyDir
-pod가 실행되는 host의 디스크를 임시로 컨테이너 볼륨으로 할당해서 사용하는 방법
+                                    환경변수를 ConfigMap에 저장하는 방법
+kubectl 명령어를 사용하여 바로 저장할 수 있음
+
+$ kubectl create configmap &lt;map-name> &lt;data-source> 
 
 
-pod가 사라지면 emptyDir의 데이터도 함께 사라집니다.
-
-주로 메모리와 디스크를 함께 이용하는 대용량 
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2024-03-01
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                    
-                                    <a href="/categories/Kubernetes/" class="post-category">
-                                    Kubernetes
-                                    </a>
-                                    
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                    </div>
-                </div>
-            </article>
-        </div>
-        
-        <div class="cd-timeline-block">
-
-            
-            
-
-            
-            
-
-            
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>01</span>
-            </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
-                        <a href="/2024/03/01/Kubernetes/posting/etcd_backup_restore/">
-                            <div class="card-image">
-                                
-                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="ectd Backup">
-                                
-                                <span class="card-title">ectd Backup</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    ETCD backup$ tree /var/lib/etcd
-
-$ etcd --version
-
-# etcd Backup
-$ ETCDCTL_API=3 etcdctl \
-    --endpoints=https://127.0
+123
                                 
                             </div>
                             <div class="publish-info">
@@ -448,6 +390,64 @@ pod가 실행된 host의 파일이나 디렉터리를 pod에 마운트하는 방
 emtyDir과 다르게 pod가 삭제되어도 host에 데이터가 남습니다.(영구 스토리지)
 
 Pod가 생성된 Node File
+                                
+                            </div>
+                            <div class="publish-info">
+                                <span class="publish-date">
+                                    <i class="far fa-clock fa-fw icon-date"></i>2024-03-01
+                                </span>
+                                <span class="publish-author">
+                                    
+                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                    
+                                    <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
+                                    </a>
+                                    
+                                    
+                                </span>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="cd-timeline-block">
+
+            
+            
+
+            
+            
+
+            
+            <div class="cd-timeline-img day" data-aos="zoom-in-up">
+                <span>01</span>
+            </div>
+            <article class="cd-timeline-content" data-aos="fade-up">
+                <div class="article col s12 m6">
+                    <div class="card">
+                        <a href="/2024/03/01/Kubernetes/posting/etcd_backup_restore/">
+                            <div class="card-image">
+                                
+                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="ectd Backup">
+                                
+                                <span class="card-title">ectd Backup</span>
+                            </div>
+                        </a>
+                        <div class="card-content article-content">
+                            <div class="summary block-with-text">
+                                
+                                    ETCD backup$ tree /var/lib/etcd
+
+$ etcd --version
+
+# etcd Backup
+$ ETCDCTL_API=3 etcdctl \
+    --endpoints=https://127.0
                                 
                             </div>
                             <div class="publish-info">
@@ -820,20 +820,18 @@ Att
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/03/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Field%20Selectors/">
+                        <a href="/2024/03/01/Kubernetes/docs/Concpets/Overview/Objects%20In%20Kubernetes/Finalizers/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Field Selectors">
+                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Finalizers">
                                 
-                                <span class="card-title">Field Selectors</span>
+                                <span class="card-title">Finalizers</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Field SelectorsField selectors를 사용하면 하나 이상의 리소스 필드 값에 따라 Kubernetes objects를 선택할 수 있습니다. 다음은 필드 셀렉터 쿼리의 예시입니다:
-
-metadata
+                                    Finalizers파이널라이저는 삭제를 표시한 리소스가 완전히 삭제되기 전에 특정 조건이 충족될 때까지 Kubernetes가 기다리도록 지시하는 네임스페이스 키입니다. 파이널라이저는 삭제된 객체가 소유한 리소스를 정
                                 
                             </div>
                             <div class="publish-info">

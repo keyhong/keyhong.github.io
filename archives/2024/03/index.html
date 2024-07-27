@@ -368,64 +368,6 @@ Production environmentBest practic
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/03/01/Kubernetes/posting/configmap/">
-                            <div class="card-image">
-                                
-                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="환경변수를 ConfigMap에 저장하는 방법">
-                                
-                                <span class="card-title">환경변수를 ConfigMap에 저장하는 방법</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    환경변수를 ConfigMap에 저장하는 방법
-kubectl 명령어를 사용하여 바로 저장할 수 있음
-
-$ kubectl create configmap &lt;map-name> &lt;data-source> 
-
-
-123
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2024-03-01
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                    
-                                    <a href="/categories/Kubernetes/" class="post-category">
-                                    Kubernetes
-                                    </a>
-                                    
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                    </div>
-                </div>
-            </article>
-        </div>
-        
-        <div class="cd-timeline-block">
-
-            
-            
-
-            
-            
-
-            
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>01</span>
-            </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
                         <a href="/2024/03/01/Kubernetes/posting/emptyDir/">
                             <div class="card-image">
                                 
@@ -484,24 +426,24 @@ pod가 사라지면 emptyDir의 데이터도 함께 사라집니다.
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/03/01/Kubernetes/posting/etcd_backup_restore/">
+                        <a href="/2024/03/01/Kubernetes/posting/configmap/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="ectd Backup">
+                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="환경변수를 ConfigMap에 저장하는 방법">
                                 
-                                <span class="card-title">ectd Backup</span>
+                                <span class="card-title">환경변수를 ConfigMap에 저장하는 방법</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    ETCD backup$ tree /var/lib/etcd
+                                    환경변수를 ConfigMap에 저장하는 방법
+kubectl 명령어를 사용하여 바로 저장할 수 있음
 
-$ etcd --version
+$ kubectl create configmap &lt;map-name> &lt;data-source> 
 
-# etcd Backup
-$ ETCDCTL_API=3 etcdctl \
-    --endpoints=https://127.0
+
+123
                                 
                             </div>
                             <div class="publish-info">
@@ -560,6 +502,64 @@ pod가 실행된 host의 파일이나 디렉터리를 pod에 마운트하는 방
 emtyDir과 다르게 pod가 삭제되어도 host에 데이터가 남습니다.(영구 스토리지)
 
 Pod가 생성된 Node File
+                                
+                            </div>
+                            <div class="publish-info">
+                                <span class="publish-date">
+                                    <i class="far fa-clock fa-fw icon-date"></i>2024-03-01
+                                </span>
+                                <span class="publish-author">
+                                    
+                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                    
+                                    <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
+                                    </a>
+                                    
+                                    
+                                </span>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="cd-timeline-block">
+
+            
+            
+
+            
+            
+
+            
+            <div class="cd-timeline-img day" data-aos="zoom-in-up">
+                <span>01</span>
+            </div>
+            <article class="cd-timeline-content" data-aos="fade-up">
+                <div class="article col s12 m6">
+                    <div class="card">
+                        <a href="/2024/03/01/Kubernetes/posting/etcd_backup_restore/">
+                            <div class="card-image">
+                                
+                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="ectd Backup">
+                                
+                                <span class="card-title">ectd Backup</span>
+                            </div>
+                        </a>
+                        <div class="card-content article-content">
+                            <div class="summary block-with-text">
+                                
+                                    ETCD backup$ tree /var/lib/etcd
+
+$ etcd --version
+
+# etcd Backup
+$ ETCDCTL_API=3 etcdctl \
+    --endpoints=https://127.0
                                 
                             </div>
                             <div class="publish-info">
