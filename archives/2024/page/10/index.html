@@ -78,7 +78,7 @@
       
       <i class="fas fa-home" style="zoom: 0.6;"></i>
       
-      <span>Index</span>
+      <span>Home</span>
     </a>
     
   </li>
@@ -135,7 +135,7 @@
 			
 			    <i class="fa-fw fas fa-home"></i>
 			
-			Index
+			Home
 		</a>
           
         </li>
@@ -816,24 +816,24 @@ Production environmentBest practic
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/03/01/Kubernetes/posting/emptyDir/">
+                        <a href="/2024/03/01/Kubernetes/posting/configmap/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="emptyDir">
+                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="환경변수를 ConfigMap에 저장하는 방법">
                                 
-                                <span class="card-title">emptyDir</span>
+                                <span class="card-title">환경변수를 ConfigMap에 저장하는 방법</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    emptyDir
-pod가 실행되는 host의 디스크를 임시로 컨테이너 볼륨으로 할당해서 사용하는 방법
+                                    환경변수를 ConfigMap에 저장하는 방법
+kubectl 명령어를 사용하여 바로 저장할 수 있음
+
+$ kubectl create configmap &lt;map-name> &lt;data-source> 
 
 
-pod가 사라지면 emptyDir의 데이터도 함께 사라집니다.
-
-주로 메모리와 디스크를 함께 이용하는 대용량 
+123
                                 
                             </div>
                             <div class="publish-info">

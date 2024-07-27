@@ -78,7 +78,7 @@
       
       <i class="fas fa-home" style="zoom: 0.6;"></i>
       
-      <span>Index</span>
+      <span>Home</span>
     </a>
     
   </li>
@@ -135,7 +135,7 @@
 			
 			    <i class="fa-fw fas fa-home"></i>
 			
-			Index
+			Home
 		</a>
           
         </li>
@@ -314,64 +314,6 @@
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/03/01/Kubernetes/posting/emptyDir/">
-                            <div class="card-image">
-                                
-                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="emptyDir">
-                                
-                                <span class="card-title">emptyDir</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    emptyDir
-pod가 실행되는 host의 디스크를 임시로 컨테이너 볼륨으로 할당해서 사용하는 방법
-
-
-pod가 사라지면 emptyDir의 데이터도 함께 사라집니다.
-
-주로 메모리와 디스크를 함께 이용하는 대용량 
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2024-03-01
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                    
-                                    <a href="/categories/Kubernetes/" class="post-category">
-                                    Kubernetes
-                                    </a>
-                                    
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                    </div>
-                </div>
-            </article>
-        </div>
-        
-        <div class="cd-timeline-block">
-
-            
-            
-
-            
-            
-
-            
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>01</span>
-            </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
                         <a href="/2024/03/01/Kubernetes/posting/configmap/">
                             <div class="card-image">
                                 
@@ -390,64 +332,6 @@ $ kubectl create configmap &lt;map-name> &lt;data-source>
 
 
 123
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2024-03-01
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                    
-                                    <a href="/categories/Kubernetes/" class="post-category">
-                                    Kubernetes
-                                    </a>
-                                    
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                    </div>
-                </div>
-            </article>
-        </div>
-        
-        <div class="cd-timeline-block">
-
-            
-            
-
-            
-            
-
-            
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>01</span>
-            </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
-                        <a href="/2024/03/01/Kubernetes/posting/hostpath/">
-                            <div class="card-image">
-                                
-                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="hostPath">
-                                
-                                <span class="card-title">hostPath</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    hostPath
-pod가 실행된 host의 파일이나 디렉터리를 pod에 마운트하는 방법
-
-
-emtyDir과 다르게 pod가 삭제되어도 host에 데이터가 남습니다.(영구 스토리지)
-
-Pod가 생성된 Node File
                                 
                             </div>
                             <div class="publish-info">
@@ -546,18 +430,24 @@ $ ETCDCTL_API=3 etcdctl \
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/03/01/Kubernetes/posting/k8s-volume/">
+                        <a href="/2024/03/01/Kubernetes/posting/emptyDir/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Volume">
+                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="emptyDir">
                                 
-                                <span class="card-title">Volume</span>
+                                <span class="card-title">emptyDir</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Stateless한 애플리케이션일반적으로 컨테이너는 stateless(상태를 저장하지 않는) 방식의 앱 컨테이너를 사용합니다. 이러한 장점으로 어떤 노드에 문제가 발생했을 때, 다른 노드로 옮길 수 있는 장점이 있습
+                                    emptyDir
+pod가 실행되는 host의 디스크를 임시로 컨테이너 볼륨으로 할당해서 사용하는 방법
+
+
+pod가 사라지면 emptyDir의 데이터도 함께 사라집니다.
+
+주로 메모리와 디스크를 함께 이용하는 대용량 
                                 
                             </div>
                             <div class="publish-info">
@@ -598,23 +488,76 @@ $ ETCDCTL_API=3 etcdctl \
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/03/01/Kubernetes/posting/kubernetest-concept-architecture/">
+                        <a href="/2024/03/01/Kubernetes/posting/hostpath/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Kubernetest Concept &amp; Architecture">
+                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="hostPath">
                                 
-                                <span class="card-title">Kubernetest Concept &amp; Architecture</span>
+                                <span class="card-title">hostPath</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Docker &amp; Kubernetes 실전 가이드 인강 학습 내용과 쿠버네티스 도큐먼트 컴포넌트를 정리하였다. 
+                                    hostPath
+pod가 실행된 host의 파일이나 디렉터리를 pod에 마운트하는 방법
 
 
+emtyDir과 다르게 pod가 삭제되어도 host에 데이터가 남습니다.(영구 스토리지)
 
+Pod가 생성된 Node File
+                                
+                            </div>
+                            <div class="publish-info">
+                                <span class="publish-date">
+                                    <i class="far fa-clock fa-fw icon-date"></i>2024-03-01
+                                </span>
+                                <span class="publish-author">
+                                    
+                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                    
+                                    <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
+                                    </a>
+                                    
+                                    
+                                </span>
+                            </div>
+                        </div>
 
-쿠버네티스는 컨테이너를 어디에 배포하든 도움이 되는 개념 및 도구 모음이다. Kuberne
+                        
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="cd-timeline-block">
+
+            
+            
+
+            
+            
+
+            
+            <div class="cd-timeline-img day" data-aos="zoom-in-up">
+                <span>01</span>
+            </div>
+            <article class="cd-timeline-content" data-aos="fade-up">
+                <div class="article col s12 m6">
+                    <div class="card">
+                        <a href="/2024/03/01/Kubernetes/posting/k8s-volume/">
+                            <div class="card-image">
+                                
+                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Volume">
+                                
+                                <span class="card-title">Volume</span>
+                            </div>
+                        </a>
+                        <div class="card-content article-content">
+                            <div class="summary block-with-text">
+                                
+                                    Stateless한 애플리케이션일반적으로 컨테이너는 stateless(상태를 저장하지 않는) 방식의 앱 컨테이너를 사용합니다. 이러한 장점으로 어떤 노드에 문제가 발생했을 때, 다른 노드로 옮길 수 있는 장점이 있습
                                 
                             </div>
                             <div class="publish-info">
@@ -673,6 +616,63 @@ ContainersReady
 Ready
 apiVersion: v1
 kind:
+                                
+                            </div>
+                            <div class="publish-info">
+                                <span class="publish-date">
+                                    <i class="far fa-clock fa-fw icon-date"></i>2024-03-01
+                                </span>
+                                <span class="publish-author">
+                                    
+                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                    
+                                    <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
+                                    </a>
+                                    
+                                    
+                                </span>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="cd-timeline-block">
+
+            
+            
+
+            
+            
+
+            
+            <div class="cd-timeline-img day" data-aos="zoom-in-up">
+                <span>01</span>
+            </div>
+            <article class="cd-timeline-content" data-aos="fade-up">
+                <div class="article col s12 m6">
+                    <div class="card">
+                        <a href="/2024/03/01/Kubernetes/posting/kubernetest-concept-architecture/">
+                            <div class="card-image">
+                                
+                                <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Kubernetest Concept &amp; Architecture">
+                                
+                                <span class="card-title">Kubernetest Concept &amp; Architecture</span>
+                            </div>
+                        </a>
+                        <div class="card-content article-content">
+                            <div class="summary block-with-text">
+                                
+                                    Docker &amp; Kubernetes 실전 가이드 인강 학습 내용과 쿠버네티스 도큐먼트 컴포넌트를 정리하였다. 
+
+
+
+
+쿠버네티스는 컨테이너를 어디에 배포하든 도움이 되는 개념 및 도구 모음이다. Kuberne
                                 
                             </div>
                             <div class="publish-info">
