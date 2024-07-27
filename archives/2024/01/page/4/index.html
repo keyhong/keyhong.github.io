@@ -314,18 +314,21 @@
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/DBT/reference/Project%20Configs/dbt_project.yml/">
+                        <a href="/2024/01/01/DBT/reference/Project%20Configs/analysis-paths/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="dbt_project.yml">
+                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="analysis-paths">
                                 
-                                <span class="card-title">dbt_project.yml</span>
+                                <span class="card-title">analysis-paths</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    dbt_project.yml모든 dbt project에는 dbt_project.yml 파일이 필요합니다. 이 파일은 dbt가 디렉토리를 dbt 프로젝트로 인식하는 방법입니다. 또한 dbt가 프로젝트를 운영하는 방법을
+                                    analysis-pathsdbt_project.ymlanalysis-paths: [directorypath]
+
+Definitionanalyses이 위치한 디렉토리의 사용자 지정 목록을 지정합니다.
+Default이 설
                                 
                             </div>
                             <div class="publish-info">
@@ -366,18 +369,18 @@
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/DBT/reference/Project%20Configs/dbtignore/">
+                        <a href="/2024/01/01/DBT/docs/Supported%20data%20platforms/Supported%20data%20platforms/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt=".dbtignore">
+                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="Supported data platforms">
                                 
-                                <span class="card-title">.dbtignore</span>
+                                <span class="card-title">Supported data platforms</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    .dbtignoredbt project의 루트에 .dbtignore 파일을 생성하여 dbt가 완전히 무시해야 하는 파일을 지정할 수 있습니다. 이 파일은 .gitignore file과 동일한 문법을 사용하여 작동합니
+                                    Supported data platformsdbt는 데이터베이스, 데이터 웨어하우스, 데이터 레이크 또는 쿼리 엔진에 연결하여 SQL을 실행합니다. 이러한 SQL을 사용하는 플랫폼들을 data platforms이라고
                                 
                             </div>
                             <div class="publish-info">
@@ -582,60 +585,6 @@ Definition선택적으로 매크로가 위치한 디렉토리의 사용자 지�
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/DBT/reference/Project%20Configs/model-paths/">
-                            <div class="card-image">
-                                
-                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="model-paths">
-                                
-                                <span class="card-title">model-paths</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    model-pathsdbt_project.ymlmodel-paths: [directorypath]
-
-Definitionmodels과 sources가 위치하는 사용자 정의 디렉터리 목록을 선택적으로 지정할 수 있습니다
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                    
-                                    <a href="/categories/DBT/" class="post-category">
-                                    DBT
-                                    </a>
-                                    
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                    </div>
-                </div>
-            </article>
-        </div>
-        
-        <div class="cd-timeline-block">
-
-            
-            
-
-            
-            
-
-            
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>01</span>
-            </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
                         <a href="/2024/01/01/DBT/reference/Project%20Configs/name/">
                             <div class="card-image">
                                 
@@ -705,6 +654,60 @@ DefinitionRe
                                 
                                     on-run-start &amp; on-run-enddbt_project.ymlon-run-start: sql-statement | [sql-statement]
 on-run-end: sql-statement | [s
+                                
+                            </div>
+                            <div class="publish-info">
+                                <span class="publish-date">
+                                    <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                                </span>
+                                <span class="publish-author">
+                                    
+                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                    
+                                    <a href="/categories/DBT/" class="post-category">
+                                    DBT
+                                    </a>
+                                    
+                                    
+                                </span>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="cd-timeline-block">
+
+            
+            
+
+            
+            
+
+            
+            <div class="cd-timeline-img day" data-aos="zoom-in-up">
+                <span>01</span>
+            </div>
+            <article class="cd-timeline-content" data-aos="fade-up">
+                <div class="article col s12 m6">
+                    <div class="card">
+                        <a href="/2024/01/01/DBT/reference/Project%20Configs/model-paths/">
+                            <div class="card-image">
+                                
+                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="model-paths">
+                                
+                                <span class="card-title">model-paths</span>
+                            </div>
+                        </a>
+                        <div class="card-content article-content">
+                            <div class="summary block-with-text">
+                                
+                                    model-pathsdbt_project.ymlmodel-paths: [directorypath]
+
+Definitionmodels과 sources가 위치하는 사용자 정의 디렉터리 목록을 선택적으로 지정할 수 있습니다
                                 
                             </div>
                             <div class="publish-info">

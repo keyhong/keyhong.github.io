@@ -529,18 +529,20 @@ Ubuntu는 짝수년도 4월에 LTS 버전이 출시됩니다. 꼭 latest 버전�
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/DBT/docs/Supported%20data%20platforms/Supported%20data%20platforms/">
+                        <a href="/2024/01/01/DBT/reference/Project%20Configs/clean-targets/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="Supported data platforms">
+                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="clean-targets">
                                 
-                                <span class="card-title">Supported data platforms</span>
+                                <span class="card-title">clean-targets</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Supported data platformsdbt는 데이터베이스, 데이터 웨어하우스, 데이터 레이크 또는 쿼리 엔진에 연결하여 SQL을 실행합니다. 이러한 SQL을 사용하는 플랫폼들을 data platforms이라고
+                                    clean-targetsdbt_project.ymlclean-targets: [directorypath]
+
+Definition선택적으로 dbt clean command로 제거할 사용자 지정 디렉터리 목록을 지정할 수
                                 
                             </div>
                             <div class="publish-info">
@@ -581,18 +583,21 @@ Ubuntu는 짝수년도 4월에 LTS 버전이 출시됩니다. 꼭 latest 버전�
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/DBT/docs/Supported%20data%20platforms/Trusted%20adapters/">
+                        <a href="/2024/01/01/DBT/reference/Project%20Configs/config-version/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="Trusted adapters">
+                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="config-version">
                                 
-                                <span class="card-title">Trusted adapters</span>
+                                <span class="card-title">config-version</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Trusted adapters신뢰할 수 있는 어댑터는 Trusted Adapter 프로그램에 참여하며, 해당 프로그램의 요구 사항을 준수하기로 약속합니다. 이들은 dbt Labs, 파트너 및 커뮤니티 회원에 의해 유
+                                    config-versiondbt v1.5부터는 config-version: 태그가 선택 사항입니다.
+dbt_project.ymlconfig-version: 2
+
+Definitiondbt_project.yml을 v2 
                                 
                             </div>
                             <div class="publish-info">
@@ -633,21 +638,18 @@ Ubuntu는 짝수년도 4월에 LTS 버전이 출시됩니다. 꼭 latest 버전�
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/DBT/reference/Project%20Configs/analysis-paths/">
+                        <a href="/2024/01/01/DBT/reference/Project%20Configs/dbt_project.yml/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="analysis-paths">
+                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="dbt_project.yml">
                                 
-                                <span class="card-title">analysis-paths</span>
+                                <span class="card-title">dbt_project.yml</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    analysis-pathsdbt_project.ymlanalysis-paths: [directorypath]
-
-Definitionanalyses이 위치한 디렉토리의 사용자 지정 목록을 지정합니다.
-Default이 설
+                                    dbt_project.yml모든 dbt project에는 dbt_project.yml 파일이 필요합니다. 이 파일은 dbt가 디렉토리를 dbt 프로젝트로 인식하는 방법입니다. 또한 dbt가 프로젝트를 운영하는 방법을
                                 
                             </div>
                             <div class="publish-info">
@@ -743,20 +745,18 @@ docs generate 명령
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/DBT/reference/Project%20Configs/clean-targets/">
+                        <a href="/2024/01/01/DBT/docs/Supported%20data%20platforms/Trusted%20adapters/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="clean-targets">
+                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="Trusted adapters">
                                 
-                                <span class="card-title">clean-targets</span>
+                                <span class="card-title">Trusted adapters</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    clean-targetsdbt_project.ymlclean-targets: [directorypath]
-
-Definition선택적으로 dbt clean command로 제거할 사용자 지정 디렉터리 목록을 지정할 수
+                                    Trusted adapters신뢰할 수 있는 어댑터는 Trusted Adapter 프로그램에 참여하며, 해당 프로그램의 요구 사항을 준수하기로 약속합니다. 이들은 dbt Labs, 파트너 및 커뮤니티 회원에 의해 유
                                 
                             </div>
                             <div class="publish-info">
@@ -797,21 +797,18 @@ Definition선택적으로 dbt clean command로 제거할 사용자 지정 디렉
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2024/01/01/DBT/reference/Project%20Configs/config-version/">
+                        <a href="/2024/01/01/DBT/reference/Project%20Configs/dbtignore/">
                             <div class="card-image">
                                 
-                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="config-version">
+                                <img src="/images/logos/dbt-logo.png" class="responsive-img" alt=".dbtignore">
                                 
-                                <span class="card-title">config-version</span>
+                                <span class="card-title">.dbtignore</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    config-versiondbt v1.5부터는 config-version: 태그가 선택 사항입니다.
-dbt_project.ymlconfig-version: 2
-
-Definitiondbt_project.yml을 v2 
+                                    .dbtignoredbt project의 루트에 .dbtignore 파일을 생성하여 dbt가 완전히 무시해야 하는 파일을 지정할 수 있습니다. 이 파일은 .gitignore file과 동일한 문법을 사용하여 작동합니
                                 
                             </div>
                             <div class="publish-info">
