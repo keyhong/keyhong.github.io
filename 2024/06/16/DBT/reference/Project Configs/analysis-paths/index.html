@@ -1,0 +1,1408 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="analysis-paths, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="analysis-paths
+dbt_project.ymlanalysis-paths: [directorypath]
+
+Definitionanalyses이 위치한 디렉토리의 사용자 지정 목록을 지정합니다.
+Default이 ">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>analysis-paths | Keyhong</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span diy-happy-monkey">Keyhong</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Home</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <!-- <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li> -->
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Keyhong</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Home
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/dbt-logo.png')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title diy-neon-red">
+                        analysis-paths</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="post-cate">
+                    <i class="fas fa-bookmark fa-fw icon-category"></i>
+                    
+                        <a href="/categories/DBT/" class="post-category">
+                            DBT
+                        </a>
+                    
+                </div>
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="analysis-paths"><a href="#analysis-paths" class="headerlink" title="analysis-paths"></a><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/analysis-paths">analysis-paths</a></h2><hr>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">analysis-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>directorypath<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/build/analyses">analyses</a>이 위치한 디렉토리의 사용자 지정 목록을 지정합니다.</p>
+<h3 id="Default"><a href="#Default" class="headerlink" title="Default"></a>Default</h3><p>이 설정을 지정하지 않으면, dbt는 <code>.sql</code> 파일을 분석으로 컴파일하지 않습니다.</p>
+<p>그러나, <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/commands/init"><code>dbt init</code> command</a>는 이 값을 <code>analyses</code>로 채웁니다 (<a target="_blank" rel="noopener" href="https://github.com/dbt-labs/dbt-starter-project/blob/HEAD/dbt_project.yml#L15">source</a>)</p>
+<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><h4 id="Use-a-subdirectory-named-analyses"><a href="#Use-a-subdirectory-named-analyses" class="headerlink" title="Use a subdirectory named analyses"></a>Use a subdirectory named <code>analyses</code></h4><p>이 값은 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/commands/init"><code>dbt init</code> command</a>에 의해 채워집니다.</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">analysis-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"analyses"</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="Use-a-subdirectory-named-custom-analyses"><a href="#Use-a-subdirectory-named-custom-analyses" class="headerlink" title="Use a subdirectory named custom_analyses"></a>Use a subdirectory named <code>custom_analyses</code></h4><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">analysis-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"custom_analyses"</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="asset-paths"><a href="#asset-paths" class="headerlink" title="asset-paths"></a><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/asset-paths">asset-paths</a></h2><hr>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">asset-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>directorypath<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="Definition-1"><a href="#Definition-1" class="headerlink" title="Definition"></a>Definition</h3><p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/build/analyses">analyses</a>이 위치한 디렉토리의 사용자 정의 목록을 지정하세요.</p>
+<p><code>docs generate</code> 명령어의 일부로 <code>target</code> 디렉토리에 복사할 사용자 정의 디렉토리 목록을 선택적으로 지정할 수 있습니다. 이것은 프로젝트 문서에서 귀하의 저장소 내 이미지를 렌더링하는 데 유용합니다.</p>
+<h3 id="Default-1"><a href="#Default-1" class="headerlink" title="Default"></a>Default</h3><p>기본적으로 dbt는 docs generate의 일환으로 추가 파일을 복사하지 않습니다. 즉, <code>asset-paths: []</code>입니다.</p>
+<h3 id="Examples-1"><a href="#Examples-1" class="headerlink" title="Examples"></a>Examples</h3><h4 id="Compile-files-in-the-assets-subdirectory-as-part-of-docs-generate"><a href="#Compile-files-in-the-assets-subdirectory-as-part-of-docs-generate" class="headerlink" title="Compile files in the assets subdirectory as part of docs generate"></a>Compile files in the <code>assets</code> subdirectory as part of <code>docs generate</code></h4><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">asset-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"assets"</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>이 디렉토리에 포함된 모든 파일은 <code>dbt docs generate</code>의 일환으로 <code>target/</code> 디렉토리로 복사됩니다. 이로써 프로젝트 문서에서 이미지로 접근할 수 있게 됩니다.</p>
+<p>이미지를 설명에 포함하는 방법에 대한 자세한 내용은 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/resource-properties/description#include-an-image-from-your-repo-in-your-descriptions">here</a>에서 전체 글을 확인하세요.</p>
+<h2 id="clean-targets"><a href="#clean-targets" class="headerlink" title="clean-targets"></a><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/clean-targets">clean-targets</a></h2><hr>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">clean-targets</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>directorypath<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="Definition-2"><a href="#Definition-2" class="headerlink" title="Definition"></a>Definition</h3><p>선택적으로 <code>dbt clean</code> <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/commands/clean">command</a>로 제거할 사용자 지정 디렉터리 목록을 지정할 수 있습니다. 따라서 이 목록에는 아티팩트(예: 컴파일된 파일, 로그, 설치된 패키지)를 포함하는 디렉터리만 포함해야 합니다.</p>
+<h3 id="Default-2"><a href="#Default-2" class="headerlink" title="Default"></a>Default</h3><p>이 configuration이 <code>dbt_project.yml</code> 파일에 포함되지 않은 경우, <code>clean</code> 명령어는 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/global-configs/json-artifacts">target-path</a>의 파일을 제거할 것입니다.</p>
+<h3 id="Examples-2"><a href="#Examples-2" class="headerlink" title="Examples"></a>Examples</h3><h4 id="Remove-packages-and-compiled-files-as-part-of-dbt-clean-preferred"><a href="#Remove-packages-and-compiled-files-as-part-of-dbt-clean-preferred" class="headerlink" title="Remove packages and compiled files as part of dbt clean (preferred)"></a>Remove packages and compiled files as part of dbt clean (preferred)</h4><p>패키지와 컴파일된 파일을 모두 제거하려면, <code>clean-targets</code> 구성에 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/packages-install-path">packages-install-path</a> 구성의 값을 포함하십시오.</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">clean-targets</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> target
+    <span class="token punctuation">-</span> dbt_packages<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>이제, <code>dbt clean</code>을 실행하십시오.</p>
+<p><code>target</code> 및 <code>dbt_packages</code> 디렉터리가 모두 제거됩니다.</p>
+<p>Note: 이것은 <code>init</code> 명령으로 생성된 dbt <a target="_blank" rel="noopener" href="https://github.com/dbt-labs/dbt-starter-project/blob/HEAD/dbt_project.yml">starter project</a>의 구성입니다.</p>
+<h4 id="Remove-logs-when-running-dbt-clean"><a href="#Remove-logs-when-running-dbt-clean" class="headerlink" title="Remove logs when running dbt clean"></a>Remove <code>logs</code> when running <code>dbt clean</code></h4><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">clean-targets</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>target<span class="token punctuation">,</span> dbt_packages<span class="token punctuation">,</span> logs<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="config-version"><a href="#config-version" class="headerlink" title="config-version"></a><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/config-version">config-version</a></h2><hr>
+<p>dbt v1.5부터는 <code>config-version</code>: 태그가 선택 사항입니다.</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">config-version</span><span class="token punctuation">:</span> <span class="token number">2</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="Definition-3"><a href="#Definition-3" class="headerlink" title="Definition"></a>Definition</h3><p><code>dbt_project.yml</code>을 v2 구조를 사용하도록 지정하십시오.</p>
+<p>이 configuration은 선택 사항입니다.</p>
+<h3 id="Default-3"><a href="#Default-3" class="headerlink" title="Default"></a>Default</h3><ul>
+<li>이 구성을 사용하지 않으면, dbt는 <code>dbt_project.yml</code>이 dbt v0.19.0에서 사용이 deprecated된 version 1 syntax를 사용하는 것으로 간주합니다.</li>
+</ul>
+<h2 id="dbt-project-yml"><a href="#dbt-project-yml" class="headerlink" title="dbt_project.yml"></a><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/dbt_project.yml">dbt_project.yml</a></h2><hr>
+<p>모든 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/build/projects">dbt project</a>에는 <code>dbt_project.yml</code> 파일이 필요합니다. 이 파일은 dbt가 디렉토리를 dbt 프로젝트로 인식하는 방법입니다. 또한 dbt가 프로젝트를 운영하는 방법을 알려주는 중요한 정보를 포함하고 있습니다.</p>
+<p>dbt는 몇 군데에서 <a target="_blank" rel="noopener" href="https://yaml.org/">YAML</a>을 사용합니다. YAML이 처음이라면 배열, 사전 및 문자열이 어떻게 표현되는지 학습하는 것이 좋습니다.</p>
+<p>기본적으로 dbt는 현재 작업 디렉토리와 해당 상위 디렉토리에서 <code>dbt_project.yml</code>을 찾지만, <code>--project-dir</code> 플래그나 <code>DBT_PROJECT_DIR</code> 환경 변수를 사용하여 다른 디렉토리를 설정할 수 있습니다.</p>
+<p>dbt v1.5 이상에서는 <code>dbt_project.yml</code> 파일의 <code>dbt-cloud</code> config 아래에 <code>project-id</code>를 사용하여 <code>dbt Cloud</code> 프로젝트 ID를 지정할 수 있습니다. 프로젝트 ID를 확인하려면 dbt Cloud 프로젝트 URL을 확인하세요. 예: <code>https://cloud.getdbt.com/11/projects/123456</code>에서 프로젝트 ID는 <code>123456</code>입니다.</p>
+<p>참고할 점은 <code>dbt_project.yml</code> 파일에서 config가 아닌 경우(예: <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/macro-properties">macros</a>), “property”을 설정할 수 없습니다. 이는 모든 종류의 리소스에 적용됩니다. 자세한 내용은 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/configs-and-properties">Configs and properties</a>를 참조하세요.</p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>다음 예는 <code>dbt_project.yml</code> 파일에서 사용 가능한 모든 구성 목록입니다:</p>
+<pre class="line-numbers language-Markdown" data-language="Markdown"><code class="language-Markdown">[name](&#x2F;reference&#x2F;project-configs&#x2F;name): string
+
+[config-version](&#x2F;reference&#x2F;project-configs&#x2F;config-version): 2
+[version](&#x2F;reference&#x2F;project-configs&#x2F;version): version
+
+[profile](&#x2F;reference&#x2F;project-configs&#x2F;profile): profilename
+
+[model-paths](&#x2F;reference&#x2F;project-configs&#x2F;model-paths): [directorypath]
+[seed-paths](&#x2F;reference&#x2F;project-configs&#x2F;seed-paths): [directorypath]
+[test-paths](&#x2F;reference&#x2F;project-configs&#x2F;test-paths): [directorypath]
+[analysis-paths](&#x2F;reference&#x2F;project-configs&#x2F;analysis-paths): [directorypath]
+[macro-paths](&#x2F;reference&#x2F;project-configs&#x2F;macro-paths): [directorypath]
+[snapshot-paths](&#x2F;reference&#x2F;project-configs&#x2F;snapshot-paths): [directorypath]
+[docs-paths](&#x2F;reference&#x2F;project-configs&#x2F;docs-paths): [directorypath]
+[asset-paths](&#x2F;reference&#x2F;project-configs&#x2F;asset-paths): [directorypath]
+
+[packages-install-path](&#x2F;reference&#x2F;project-configs&#x2F;packages-install-path): directorypath
+
+[clean-targets](&#x2F;reference&#x2F;project-configs&#x2F;clean-targets): [directorypath]
+
+[query-comment](&#x2F;reference&#x2F;project-configs&#x2F;query-comment): string
+
+[require-dbt-version](&#x2F;reference&#x2F;project-configs&#x2F;require-dbt-version): version-range | [version-range]
+
+[flags](&#x2F;reference&#x2F;global-configs&#x2F;project-flags):
+  [&lt;global-configs&gt;](&#x2F;reference&#x2F;global-configs&#x2F;project-flags)
+
+[dbt-cloud](&#x2F;docs&#x2F;cloud&#x2F;cloud-cli-installation):
+  [project-id](&#x2F;docs&#x2F;cloud&#x2F;configure-cloud-cli#configure-the-dbt-cloud-cli): project_id # Required
+  [defer-env-id](&#x2F;docs&#x2F;cloud&#x2F;about-cloud-develop-defer#defer-in-dbt-cloud-cli): environment_id # Optional
+
+[quoting](&#x2F;reference&#x2F;project-configs&#x2F;quoting):
+  database: true | false
+  schema: true | false
+  identifier: true | false
+
+metrics:
+  &lt;metric-configs&gt;
+
+models:
+  [&lt;model-configs&gt;](&#x2F;reference&#x2F;model-configs)
+
+seeds:
+  [&lt;seed-configs&gt;](&#x2F;reference&#x2F;seed-configs)
+
+semantic-models:
+  &lt;semantic-model-configs&gt;
+
+snapshots:
+  [&lt;snapshot-configs&gt;](&#x2F;reference&#x2F;snapshot-configs)
+
+sources:
+  [&lt;source-configs&gt;](source-configs)
+  
+tests:
+  [&lt;test-configs&gt;](&#x2F;reference&#x2F;data-test-configs)
+
+vars:
+  [&lt;variables&gt;](&#x2F;docs&#x2F;build&#x2F;project-variables)
+
+[on-run-start](&#x2F;reference&#x2F;project-configs&#x2F;on-run-start-on-run-end): sql-statement | [sql-statement]
+[on-run-end](&#x2F;reference&#x2F;project-configs&#x2F;on-run-start-on-run-end): sql-statement | [sql-statement]
+
+[dispatch](&#x2F;reference&#x2F;project-configs&#x2F;dispatch-config):
+  - macro_namespace: packagename
+    search_order: [packagename]
+
+[restrict-access](&#x2F;docs&#x2F;collaborate&#x2F;govern&#x2F;model-access): true | false<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Naming-convention"><a href="#Naming-convention" class="headerlink" title="Naming convention"></a>Naming convention</h3><p>It’s important to follow the correct YAML naming conventions for the configs in your dbt_project.yml file to ensure dbt can process them properly. This is especially true for resource types with more than one word.</p>
+<p>Use dashes (-) when configuring resource types with multiple words in your dbt_project.yml file. Here’s an example for saved queries:</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">saved-queries</span><span class="token punctuation">:</span>  <span class="token comment"># Use dashes for resource types in the dbt_project.yml file.</span>
+  <span class="token key atrule">my_saved_query</span><span class="token punctuation">:</span>
+    <span class="token key atrule">config</span><span class="token punctuation">:</span>
+      <span class="token key atrule">+cache</span><span class="token punctuation">:</span>
+        <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>Use underscore (_) when configuring resource types with multiple words for YAML files other than the dbt_project.yml file. For example, here’s the same saved queries resource in the semantic_models.yml file:</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>models/semantic_models.yml</span></div><code class="language-yaml"><span class="token key atrule">saved_queries</span><span class="token punctuation">:</span>  <span class="token comment"># Use underscores everywhere outside the dbt_project.yml file.</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> saved_query_name
+    <span class="token punctuation">...</span> <span class="token comment"># Rest of the saved queries configuration.</span>
+    <span class="token key atrule">config</span><span class="token punctuation">:</span>
+      <span class="token key atrule">cache</span><span class="token punctuation">:</span>
+        <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="dbtignore"><a href="#dbtignore" class="headerlink" title=".dbtignore"></a><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/dbtignore">.dbtignore</a></h2><hr>
+<p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/build/projects">dbt project</a>의 루트에 <code>.dbtignore</code> 파일을 생성하여 dbt가 <strong>완전히</strong> 무시해야 하는 파일을 지정할 수 있습니다. 이 파일은 <a target="_blank" rel="noopener" href="https://git-scm.com/docs/gitignore"><code>.gitignore</code> file과 동일한 문법을 사용</a>하여 작동합니다. 패턴과 일치하는 파일 및 하위 디렉토리는 dbt에 의해 읽히거나, 해석되거나, 다른 방식으로 감지되지 않습니다—마치 존재하지 않는 것처럼.</p>
+<h4 id="Examples-3"><a href="#Examples-3" class="headerlink" title="Examples"></a>Examples</h4><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>.dbtignore</span></div><code class="language-yaml"><span class="token comment"># .dbtignore</span>
+
+<span class="token comment"># ignore individual .py files</span>
+not<span class="token punctuation">-</span>a<span class="token punctuation">-</span>dbt<span class="token punctuation">-</span>model.py
+another<span class="token punctuation">-</span>non<span class="token punctuation">-</span>dbt<span class="token punctuation">-</span>model.py
+
+<span class="token comment"># ignore all .py files</span>
+<span class="token important">**.py</span>
+
+<span class="token comment"># ignore all .py files with "codegen" in the filename</span>
+<span class="token important">*codegen*.py</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="dispatch-config"><a href="#dispatch-config" class="headerlink" title="dispatch (config)"></a><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/dispatch-config">dispatch (config)</a></h2><hr>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">dispatch</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">macro_namespace</span><span class="token punctuation">:</span> packagename
+    <span class="token key atrule">search_order</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>packagename<span class="token punctuation">]</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">macro_namespace</span><span class="token punctuation">:</span> packagename
+    <span class="token key atrule">search_order</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>packagename<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Definition-4"><a href="#Definition-4" class="headerlink" title="Definition"></a>Definition</h3><p>일부 네임스페이스에서 매크로의 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/dbt-jinja-functions/dispatch">dispatch</a> 검색 위치를 선택적으로 재정의할 수 있습니다. 지정되지 않으면 기본적으로 <code>dispatch</code>는 <em><strong>first</strong></em> 루트 프로젝트에서 검색한 다음 <code>macro_namespace</code>으로 명명된 패키지에서 구현을 찾습니다.</p>
+<h3 id="Examples-4"><a href="#Examples-4" class="headerlink" title="Examples"></a>Examples</h3><p>저는 <code>dbt_utils</code> 패키지를 <code>spark_utils</code> 호환 패키지로 “shim”하고 싶습니다.</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">dispatch</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">macro_namespace</span><span class="token punctuation">:</span> dbt_utils
+    <span class="token key atrule">search_order</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'spark_utils'</span><span class="token punctuation">,</span> <span class="token string">'dbt_utils'</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><code>dbt_utils</code> 패키지의 일부 매크로를 루트 프로젝트(<code>&#39;my_root_project&#39;</code>)에서 다시 구현했으며, 내 버전이 우선되기를 원합니다. 그렇지 않으면 <code>dbt_utils</code>의 버전으로 되돌아갑니다.</p>
+<p><em><strong>Note: 이것은 기본 동작입니다. 필요에 따라 검색 순서를 명시적으로 표현할 수 있습니다.</strong></em></p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">dispatch</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">macro_namespace</span><span class="token punctuation">:</span> dbt_utils
+    <span class="token key atrule">search_order</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'my_root_project'</span><span class="token punctuation">,</span> <span class="token string">'dbt_utils'</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="docs-paths"><a href="#docs-paths" class="headerlink" title="docs-paths"></a><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/docs-paths">docs-paths</a></h2><hr>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">docs-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>directorypath<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="Definition-5"><a href="#Definition-5" class="headerlink" title="Definition"></a>Definition</h3><p>선택적으로 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/collaborate/documentation#docs-blocks">docs blocks</a>이 위치한 사용자 정의 디렉터리 목록을 지정할 수 있습니다.</p>
+<h3 id="Default-4"><a href="#Default-4" class="headerlink" title="Default"></a>Default</h3><p>기본적으로 dbt는 문서 블록을 찾기 위해 모든 리소스 경로 (즉, <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/model-paths">model-paths</a>, <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/seed-paths">seed-paths</a>, <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/analysis-paths">analysis-paths</a>, <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/macro-paths">macro-paths</a> 및 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/snapshot-paths">snapshot-paths</a>의 결합된 목록)를 검색합니다. 이 옵션이 구성되면 dbt는 문서 블록을 찾기 위해 지정된 디렉터리만 검색합니다.</p>
+<h3 id="Examples-5"><a href="#Examples-5" class="headerlink" title="Examples"></a>Examples</h3><p>문서 블록에는 <code>docs</code>라는 하위 디렉터리를 사용합니다.</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">docs-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"docs"</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>Note</strong>: 일반적으로 우리는 dbt의 기본 동작을 선호하여 이 구성을 생략합니다.</p>
+<h2 id="macro-paths"><a href="#macro-paths" class="headerlink" title="macro-paths"></a><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/macro-paths">macro-paths</a></h2><hr>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">macro-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>directorypath<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="Definition-6"><a href="#Definition-6" class="headerlink" title="Definition"></a>Definition</h3><p>선택적으로 매크로가 위치한 디렉토리의 사용자 지정 목록을 지정할 수 있습니다. 모델과 매크로를 같은 위치에 둘 수 없다는 점에 유의하십시오.</p>
+<h3 id="Default-5"><a href="#Default-5" class="headerlink" title="Default"></a>Default</h3><p>기본적으로, dbt는 <code>macros</code>라는 이름의 디렉토리에서 매크로를 검색합니다, 즉, <code>macro-paths: [&quot;macros&quot;]</code></p>
+<h3 id="Examples-6"><a href="#Examples-6" class="headerlink" title="Examples"></a>Examples</h3><h4 id="macros-대신-custom-macros라는-하위-디렉토리를-사용하십시오"><a href="#macros-대신-custom-macros라는-하위-디렉토리를-사용하십시오" class="headerlink" title="macros 대신 custom_macros라는 하위 디렉토리를 사용하십시오:"></a><code>macros</code> 대신 <code>custom_macros</code>라는 하위 디렉토리를 사용하십시오:</h4><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">macro-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"custom_macros"</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="model-paths"><a href="#model-paths" class="headerlink" title="model-paths"></a><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/model-paths">model-paths</a></h2><hr>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">model-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>directorypath<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="Definition-7"><a href="#Definition-7" class="headerlink" title="Definition"></a>Definition</h3><p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/build/models">models</a>과 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/build/sources">sources</a>가 위치하는 사용자 정의 디렉터리 목록을 선택적으로 지정할 수 있습니다.</p>
+<h3 id="Default-6"><a href="#Default-6" class="headerlink" title="Default"></a>Default</h3><p>기본적으로 dbt는 모델과 소스를 <code>models</code> 디렉터리에서 찾습니다. 즉, <code>model-paths: [&quot;models&quot;]</code></p>
+<h3 id="Examples-7"><a href="#Examples-7" class="headerlink" title="Examples"></a>Examples</h3><h4 id="Use-a-subdirectory-named-transformations-instead-of-models"><a href="#Use-a-subdirectory-named-transformations-instead-of-models" class="headerlink" title="Use a subdirectory named transformations instead of models"></a>Use a subdirectory named <code>transformations</code> instead of <code>models</code></h4><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">model-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"transformations"</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="name"><a href="#name" class="headerlink" title="name"></a><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/name">name</a></h2><hr>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">name</span><span class="token punctuation">:</span> string<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>Required configuration</strong></p>
+<p>dbt 프로젝트의 이름은 문자, 숫자 및 밑줄만 포함해야 하며, 숫자로 시작할 수 없습니다.</p>
+<h3 id="Definition-8"><a href="#Definition-8" class="headerlink" title="Definition"></a>Definition</h3><p>Required configuration</p>
+<h3 id="Recommendation"><a href="#Recommendation" class="headerlink" title="Recommendation"></a>Recommendation</h3><p>종종 조직은 하나의 dbt 프로젝트를 가지고 있어서, 프로젝트에 조직의 이름을 <code>snake_case</code>로 명명하는 것이 합리적입니다. 예를 들어:</p>
+<ul>
+<li><code>name: acme</code></li>
+<li><code>name: jaffle_shop</code></li>
+<li><code>name: evilcorp</code></li>
+</ul>
+<h3 id="Troubleshooting"><a href="#Troubleshooting" class="headerlink" title="Troubleshooting"></a>Troubleshooting</h3><h4 id="Invalid-project-name"><a href="#Invalid-project-name" class="headerlink" title="Invalid project name"></a>Invalid project name</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Encountered an error <span class="token keyword">while</span> reading the project:
+  ERROR: Runtime Error
+  at path <span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span>: <span class="token string">'jaffle-shop'</span> does not match <span class="token string">'^[^\\d\\W]\\w*$'</span>
+Runtime Error
+  Could not run dbt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>이 프로젝트에는 다음이 포함됩니다:</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">name</span><span class="token punctuation">:</span> jaffle<span class="token punctuation">-</span>shop<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>이 경우, 프로젝트 이름을 <code>snake_case</code>로 변경하십시오:</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">name</span><span class="token punctuation">:</span> jaffle_shop<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="on-run-start-on-run-end"><a href="#on-run-start-on-run-end" class="headerlink" title="on-run-start &amp; on-run-end"></a><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/on-run-start-on-run-end">on-run-start &amp; on-run-end</a></h2><hr>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">on-run-start</span><span class="token punctuation">:</span> sql<span class="token punctuation">-</span>statement <span class="token punctuation">|</span> <span class="token punctuation">[</span>sql<span class="token punctuation">-</span>statement<span class="token punctuation">]</span>
+<span class="token key atrule">on-run-end</span><span class="token punctuation">:</span> sql<span class="token punctuation">-</span>statement <span class="token punctuation">|</span> <span class="token punctuation">[</span>sql<span class="token punctuation">-</span>statement<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="Definition-9"><a href="#Definition-9" class="headerlink" title="Definition"></a>Definition</h3><p>다음 명령어가 시작되거나 끝날 때 실행할 SQL 문(또는 SQL 문 목록): <code>dbt build</code>, <code>dbt compile</code>, <code>dbt docs generate</code>, <code>dbt run</code>, <code>dbt seed</code>, <code>dbt snapshot</code>, <code>dbt test</code>.</p>
+<p><code>on-run-start</code>와 <code>on-run-end</code> 훅은 또한 SQL 문을 반환하는 매크로를 호출할 수도 있습니다.</p>
+<h3 id="Usage-notes"><a href="#Usage-notes" class="headerlink" title="Usage notes"></a>Usage notes</h3><ul>
+<li><code>on-run-end</code> 훅은 추가적인 Jinja 변수를 컨텍스트에서 사용할 수 있습니다 — <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/dbt-jinja-functions/on-run-end-context">docs</a>를 확인하세요.</li>
+</ul>
+<h3 id="Examples-8"><a href="#Examples-8" class="headerlink" title="Examples"></a>Examples</h3><p>이전 버전의 dbt에서는 <code>post-hook</code>의 가장 일반적인 용도는 <code>grant</code> 문을 실행하여 모델을 생성한 직후 데이터베이스 권한을 적용하는 것이었습니다. 대신 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/resource-configs/grants">grants resource config</a>을 사용하여 dbt 모델이 실행될 때 자동으로 권한을 적용하는 것을 권장합니다.</p>
+<h3 id="Grant-privileges-on-all-schemas-that-dbt-uses-at-the-end-of-a-run"><a href="#Grant-privileges-on-all-schemas-that-dbt-uses-at-the-end-of-a-run" class="headerlink" title="Grant privileges on all schemas that dbt uses at the end of a run"></a>Grant privileges on all schemas that dbt uses at the end of a run</h3><p>이것은 <code>on-run-end</code> 훅에서만 사용할 수 있는 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/dbt-jinja-functions/schemas">schemas</a> 변수를 활용합니다.</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">on-run-end</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token string">"&#123;% for schema in schemas %&#125;grant usage on schema &#123;&#123; schema &#125;&#125; to group reporter; &#123;% endfor %&#125;"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h4 id="Call-a-macro-to-grant-privileges"><a href="#Call-a-macro-to-grant-privileges" class="headerlink" title="Call a macro to grant privileges"></a>Call a macro to grant privileges</h4><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">on-run-end</span><span class="token punctuation">:</span> <span class="token string">"&#123;&#123; grant_select(schemas) &#125;&#125;"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="Additional-examples"><a href="#Additional-examples" class="headerlink" title="Additional examples"></a>Additional examples</h4><p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/build/hooks-operations#additional-examples">here</a>에서 더 심도 있는 예제를 모았습니다.</p>
+<h2 id="packages-install-path"><a href="#packages-install-path" class="headerlink" title="packages-install-path"></a><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/packages-install-path">packages-install-path</a></h2><hr>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">packages-install-path</span><span class="token punctuation">:</span> directorypath<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="Definition-10"><a href="#Definition-10" class="headerlink" title="Definition"></a>Definition</h3><p>선택적으로 <code>dbt deps</code> <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/commands/deps">명령</a>을 실행할 때 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/build/packages">패키지</a>가 설치되는 사용자 정의 디렉토리를 지정할 수 있습니다. 이 디렉토리는 일반적으로 Git에서 무시되는 디렉토리입니다.</p>
+<h3 id="Default-7"><a href="#Default-7" class="headerlink" title="Default"></a>Default</h3><p>기본적으로, dbt는 패키지를 <code>dbt_packages</code> 디렉토리에 설치합니다, 즉, <code>packages-install-path: dbt_packages</code></p>
+<h3 id="Examples-9"><a href="#Examples-9" class="headerlink" title="Examples"></a>Examples</h3><h4 id="dbt-packages-대신-packages라는-하위-디렉토리에-패키지를-설치하십시오"><a href="#dbt-packages-대신-packages라는-하위-디렉토리에-패키지를-설치하십시오" class="headerlink" title="dbt_packages 대신 packages라는 하위 디렉토리에 패키지를 설치하십시오."></a><code>dbt_packages</code> 대신 <code>packages</code>라는 하위 디렉토리에 패키지를 설치하십시오.</h4><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">packages-install-path</span><span class="token punctuation">:</span> packages<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="profile"><a href="#profile" class="headerlink" title="profile"></a><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/profile">profile</a></h2><hr>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">profile</span><span class="token punctuation">:</span> string<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="Definition-11"><a href="#Definition-11" class="headerlink" title="Definition"></a>Definition</h3><p>dbt 프로젝트가 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/terms/data-warehouse">data warehouse</a>에 연결하는 데 사용할 프로필.</p>
+<ul>
+<li>dbt Cloud에서 개발 중인 경우: 이 구성은 적용되지 않습니다.</li>
+<li>로컬에서 개발 중인 경우: 이 구성은 필수이며, 명령줄 옵션(예: <code>--profile</code>)이 제공되지 않는 한 필요합니다.</li>
+</ul>
+<h3 id="Related-guides"><a href="#Related-guides" class="headerlink" title="Related guides"></a>Related guides</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/core/connect-data-platform/connection-profiles#connecting-to-your-warehouse-using-the-command-line">Connecting to your warehouse using the command line</a></li>
+</ul>
+<h3 id="Recommendation-1"><a href="#Recommendation-1" class="headerlink" title="Recommendation"></a>Recommendation</h3><p>종종 조직은 하나의 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/terms/data-warehouse">data warehouse</a>만 보유하므로, 프로필 이름을 <code>snake_case</code>로 조직 이름을 사용하는 것이 합리적입니다. 예를 들어:</p>
+<ul>
+<li><code>profile: acme</code></li>
+<li><code>profile: jaffle_shop</code></li>
+</ul>
+<p>프로필 이름에 데이터 웨어하우스 기술의 이름을 포함하는 것도 합리적입니다. 특히 여러 개의 웨어하우스를 보유한 경우에는 더욱 그렇습니다. 예를 들어:</p>
+<ul>
+<li><code>profile: acme_snowflake</code></li>
+<li><code>profile: jaffle_shop_bigquery</code></li>
+<li><code>profile: jaffle_shop_redshift</code></li>
+</ul>
+<h2 id="query-comment"><a href="#query-comment" class="headerlink" title="query-comment"></a><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/query-comment">query-comment</a></h2><hr>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">query-comment</span><span class="token punctuation">:</span> string<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><code>query-comment</code> 구성은 다음과 같이 딕셔너리 입력도 허용합니다:</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">models</span><span class="token punctuation">:</span>
+  <span class="token key atrule">my_dbt_project</span><span class="token punctuation">:</span>
+    <span class="token key atrule">+materialized</span><span class="token punctuation">:</span> table
+
+<span class="token key atrule">query-comment</span><span class="token punctuation">:</span>
+  <span class="token key atrule">comment</span><span class="token punctuation">:</span> string
+  <span class="token key atrule">append</span><span class="token punctuation">:</span> true <span class="token punctuation">|</span> false
+  <span class="token key atrule">job-label</span><span class="token punctuation">:</span> true <span class="token punctuation">|</span> false  <span class="token comment"># BigQuery only</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Definition-12"><a href="#Definition-12" class="headerlink" title="Definition"></a>Definition</h3><p>dbt가 데이터베이스에 대해 실행하는 각 쿼리에 주석으로 삽입할 문자열입니다. 이 주석은 모델 및 테스트와 같은 특정 dbt 리소스에 SQL 문을 할당하는 데 사용될 수 있습니다.</p>
+<p><code>query-comment</code> 구성은 문자열을 반환하는 매크로를 호출할 수도 있습니다.</p>
+<h3 id="Default-8"><a href="#Default-8" class="headerlink" title="Default"></a>Default</h3><p>기본적으로 dbt는 실행하는 리소스의 정보를 포함하는 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/terms/json">JSON</a> 주석을 쿼리 맨 위에 삽입합니다. 이 정보에는 dbt 버전, 프로필 및 타겟 이름, 그리고 노드 ID 등이 포함됩니다. 예를 들어:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">/* <span class="token punctuation">&#123;</span><span class="token string">"app"</span><span class="token builtin class-name">:</span> <span class="token string">"dbt"</span>, <span class="token string">"dbt_version"</span><span class="token builtin class-name">:</span> <span class="token string">"0.15.0rc2"</span>, <span class="token string">"profile_name"</span><span class="token builtin class-name">:</span> <span class="token string">"debug"</span>,
+    <span class="token string">"target_name"</span><span class="token builtin class-name">:</span> <span class="token string">"dev"</span>, <span class="token string">"node_id"</span><span class="token builtin class-name">:</span> <span class="token string">"model.dbt2.my_model"</span><span class="token punctuation">&#125;</span> */
+
+create view analytics.analytics.orders as <span class="token punctuation">(</span>
+    <span class="token keyword">select</span> <span class="token punctuation">..</span>.
+  <span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Using-the-dictionary-syntax"><a href="#Using-the-dictionary-syntax" class="headerlink" title="Using the dictionary syntax"></a>Using the dictionary syntax</h3><p>딕셔너리 구문은 두 개의 키를 포함합니다:</p>
+<ul>
+<li><code>comment</code>(선택 사항, 기본값은 위의 설명 참조): 쿼리에 주석으로 삽입될 문자열입니다.</li>
+<li><code>append</code>(선택 사항, 기본값&#x3D;<code>false</code>): 주석을 쿼리의 맨 아래에 추가할지 여부를 지정합니다. 기본적으로 주석은 쿼리의 맨 위에 추가됩니다 (<code>append: false</code>).</li>
+</ul>
+<p>이 구문은 Snowflake와 같은 데이터베이스에서 유용합니다. Snowflake는 보통 <a target="_blank" rel="noopener" href="https://docs.snowflake.com/release-notes/about#queries-leading-comments-removed-during-execution">remove leading SQL comments</a> 때문에 이 구성을 사용하여 주석을 원하는 위치에 삽입할 수 있습니다.</p>
+<h3 id="Examples-10"><a href="#Examples-10" class="headerlink" title="Examples"></a>Examples</h3><h4 id="Prepend-a-static-comment"><a href="#Prepend-a-static-comment" class="headerlink" title="Prepend a static comment"></a>Prepend a static comment</h4><p>이 설정은 dbt가 실행하는 모든 SQL 쿼리의 맨 위에 주석으로 <code>/* executed by dbt */</code>를 추가합니다. append: false로 설정되어 있으므로 주석은 쿼리의 맨 위에 삽입됩니다.</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">models</span><span class="token punctuation">:</span>
+  <span class="token key atrule">my_dbt_project</span><span class="token punctuation">:</span>
+    <span class="token key atrule">+materialized</span><span class="token punctuation">:</span> table
+
+<span class="token key atrule">query-comment</span><span class="token punctuation">:</span>
+  <span class="token key atrule">comment</span><span class="token punctuation">:</span> string
+  <span class="token key atrule">append</span><span class="token punctuation">:</span> true <span class="token punctuation">|</span> false
+  <span class="token key atrule">job-label</span><span class="token punctuation">:</span> true <span class="token punctuation">|</span> false  <span class="token comment"># BigQuery only</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>Example output:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">/* executed by dbt */
+
+<span class="token keyword">select</span> <span class="token punctuation">..</span>.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="Disable-query-comments"><a href="#Disable-query-comments" class="headerlink" title="Disable query comments"></a>Disable query comments</h4><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml">query<span class="token punctuation">-</span>comment<span class="token punctuation">:</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>Or:</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">query-comment</span><span class="token punctuation">:</span> <span class="token null important">null</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="Prepend-a-dynamic-comment"><a href="#Prepend-a-dynamic-comment" class="headerlink" title="Prepend a dynamic comment"></a>Prepend a dynamic comment</h4><p>다음 예제는 활성화된 dbt 타겟에서 구성된 <code>user</code>에 따라 달라지는 주석을 삽입하는 방법을 보여줍니다.</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">query-comment</span><span class="token punctuation">:</span> <span class="token string">"run by &#123;&#123; target.user &#125;&#125; in dbt"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>Example output:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">/* run by drew <span class="token keyword">in</span> dbt */
+
+<span class="token keyword">select</span> <span class="token punctuation">..</span>.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="Append-the-default-comment"><a href="#Append-the-default-comment" class="headerlink" title="Append the default comment"></a>Append the default comment</h4><p>다음 예제는 딕셔너리 구문을 사용하여 기본 주석을 추가(선행하지 않음)하는 방법을 보여줍니다.</p>
+<p><code>comment:</code> 필드가 생략되어 기본값이 추가될 수 있도록 합니다.</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">query-comment</span><span class="token punctuation">:</span>
+  <span class="token key atrule">append</span><span class="token punctuation">:</span> <span class="token boolean important">True</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>Example output:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">select</span> <span class="token punctuation">..</span>.
+/* <span class="token punctuation">&#123;</span><span class="token string">"app"</span><span class="token builtin class-name">:</span> <span class="token string">"dbt"</span>, <span class="token string">"dbt_version"</span><span class="token builtin class-name">:</span> <span class="token string">"0.16.<span class="token variable"><span class="token variable">`</span>0rc2<span class="token variable">`</span></span>"</span>, <span class="token string">"profile_name"</span><span class="token builtin class-name">:</span> <span class="token string">"debug"</span>, <span class="token string">"target_name"</span><span class="token builtin class-name">:</span> <span class="token string">"dev"</span>, <span class="token string">"node_id"</span><span class="token builtin class-name">:</span> <span class="token string">"model.dbt2.my_model"</span><span class="token punctuation">&#125;</span> */
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="BigQuery-include-query-comment-items-as-job-labels"><a href="#BigQuery-include-query-comment-items-as-job-labels" class="headerlink" title="BigQuery: include query comment items as job labels"></a>BigQuery: include query comment items as job labels</h4><p>만약 <code>query-comment.job-label</code>이 true로 설정되면, dbt는 실행하는 쿼리에 대해 query comment 항목들(만약 딕셔너리로 지정된 경우) 또는 comment 문자열을 job label로 포함시킵니다. 이 레이블들은 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/query-comment#bigquery-include-query-comment-items-as-job-labels">BigQuery-specific config</a>에서 지정된 레이블들에 추가하여 포함됩니다.</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">query-comment</span><span class="token punctuation">:</span>
+  <span class="token key atrule">job-label</span><span class="token punctuation">:</span> <span class="token boolean important">True</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h4 id="Append-a-custom-comment"><a href="#Append-a-custom-comment" class="headerlink" title="Append a custom comment"></a>Append a custom comment</h4><p>다음 예제는 활성 dbt 타겟에서 구성된 <code>user</code>에 따라 달라지는 주석을 추가하는 데 딕셔너리 구문을 사용합니다.</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">query-comment</span><span class="token punctuation">:</span>
+  <span class="token key atrule">comment</span><span class="token punctuation">:</span> <span class="token string">"run by &#123;&#123; target.user &#125;&#125; in dbt"</span>
+  <span class="token key atrule">append</span><span class="token punctuation">:</span> <span class="token boolean important">True</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>Example output:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">select</span> <span class="token punctuation">..</span>.
+/* run by drew <span class="token keyword">in</span> dbt */
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="Intermediate-Use-a-macro-to-generate-a-comment"><a href="#Intermediate-Use-a-macro-to-generate-a-comment" class="headerlink" title="Intermediate: Use a macro to generate a comment"></a>Intermediate: Use a macro to generate a comment</h4><p><code>query-comment</code> 구성은 dbt 프로젝트 내의 매크로를 참조할 수 있습니다. 단순히 <code>macros</code> 디렉터리에 원하는 이름의 매크로(<code>query_comment</code>이 좋은 시작점입니다!)를 생성하면 됩니다.</p>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>macros/query_comment.sql</span></div><code class="language-sql">&#123;<span class="token operator">%</span> macro query_comment<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">%</span>&#125;
+
+  dbt &#123;&#123; dbt_version &#125;&#125;: running &#123;&#123; node<span class="token punctuation">.</span>unique_id &#125;&#125; <span class="token keyword">for</span> target &#123;&#123; target<span class="token punctuation">.</span>name &#125;&#125;
+
+&#123;<span class="token operator">%</span> endmacro <span class="token operator">%</span>&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>그런 다음 <code>dbt_project.yml</code> 파일에서 해당 매크로를 호출하면 됩니다. YAML 파서가 <code>&#123;</code>를 딕셔너리의 시작으로 해석하지 않도록 매크로를 따옴표로 묶어야 합니다.</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">query-comment</span><span class="token punctuation">:</span> <span class="token string">"&#123;&#123; query_comment() &#125;&#125;"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="Advanced-Use-a-macro-to-generate-a-comment"><a href="#Advanced-Use-a-macro-to-generate-a-comment" class="headerlink" title="Advanced: Use a macro to generate a comment"></a>Advanced: Use a macro to generate a comment</h4><p>다음 예제는 JSON 쿼리 주석을 보여줍니다. 이를 통해 dbt 프로젝트의 성능 특성을 이해할 수 있습니다.</p>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>macros/query_comment.sql</span></div><code class="language-sql">&#123;<span class="token operator">%</span> macro query_comment<span class="token punctuation">(</span>node<span class="token punctuation">)</span> <span class="token operator">%</span>&#125;
+    &#123;<span class="token operator">%</span><span class="token operator">-</span> <span class="token keyword">set</span> comment_dict <span class="token operator">=</span> &#123;&#125; <span class="token operator">-</span><span class="token operator">%</span>&#125;
+    &#123;<span class="token operator">%</span><span class="token operator">-</span> <span class="token keyword">do</span> comment_dict<span class="token punctuation">.</span><span class="token keyword">update</span><span class="token punctuation">(</span>
+        app<span class="token operator">=</span><span class="token string">'dbt'</span><span class="token punctuation">,</span>
+        dbt_version<span class="token operator">=</span>dbt_version<span class="token punctuation">,</span>
+        profile_name<span class="token operator">=</span>target<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'profile_name'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        target_name<span class="token operator">=</span>target<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'target_name'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">%</span>&#125;
+    &#123;<span class="token operator">%</span><span class="token operator">-</span> <span class="token keyword">if</span> node <span class="token operator">is</span> <span class="token operator">not</span> none <span class="token operator">-</span><span class="token operator">%</span>&#125;
+      &#123;<span class="token operator">%</span><span class="token operator">-</span> <span class="token keyword">do</span> comment_dict<span class="token punctuation">.</span><span class="token keyword">update</span><span class="token punctuation">(</span>
+        <span class="token keyword">file</span><span class="token operator">=</span>node<span class="token punctuation">.</span>original_file_path<span class="token punctuation">,</span>
+        node_id<span class="token operator">=</span>node<span class="token punctuation">.</span>unique_id<span class="token punctuation">,</span>
+        node_name<span class="token operator">=</span>node<span class="token punctuation">.</span>name<span class="token punctuation">,</span>
+        resource_type<span class="token operator">=</span>node<span class="token punctuation">.</span>resource_type<span class="token punctuation">,</span>
+        package_name<span class="token operator">=</span>node<span class="token punctuation">.</span>package_name<span class="token punctuation">,</span>
+        relation<span class="token operator">=</span>&#123;
+            <span class="token string">"database"</span>: node<span class="token punctuation">.</span><span class="token keyword">database</span><span class="token punctuation">,</span>
+            <span class="token string">"schema"</span>: node<span class="token punctuation">.</span><span class="token keyword">schema</span><span class="token punctuation">,</span>
+            <span class="token string">"identifier"</span>: node<span class="token punctuation">.</span>identifier
+        &#125;
+      <span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">%</span>&#125;
+    &#123;<span class="token operator">%</span> <span class="token keyword">else</span> <span class="token operator">%</span>&#125;
+      &#123;<span class="token operator">%</span><span class="token operator">-</span> <span class="token keyword">do</span> comment_dict<span class="token punctuation">.</span><span class="token keyword">update</span><span class="token punctuation">(</span>node_id<span class="token operator">=</span><span class="token string">'internal'</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">%</span>&#125;
+    &#123;<span class="token operator">%</span><span class="token operator">-</span> endif <span class="token operator">-</span><span class="token operator">%</span>&#125;
+    &#123;<span class="token operator">%</span> <span class="token keyword">do</span> <span class="token keyword">return</span><span class="token punctuation">(</span>tojson<span class="token punctuation">(</span>comment_dict<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">%</span>&#125;
+&#123;<span class="token operator">%</span> endmacro <span class="token operator">%</span>&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>위와 같이 이 매크로를 호출하세요:</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">query-comment</span><span class="token punctuation">:</span> <span class="token string">"&#123;&#123; query_comment(node) &#125;&#125;"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="Compilation-context"><a href="#Compilation-context" class="headerlink" title="Compilation context"></a>Compilation context</h3><p>쿼리 주석을 생성할 때 사용할 수 있는 다음 컨텍스트 변수들이 있습니다:</p>
+<table>
+<thead>
+<tr>
+<th>Context Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>dbt_version</td>
+<td>사용 중인 dbt의 버전입니다. 릴리즈 버전 관련 자세한 내용은 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/commands/version#versioning">Versioning</a> 문서를 참조하세요.</td>
+</tr>
+<tr>
+<td>env_var</td>
+<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/dbt-jinja-functions/env_var">env_var</a>를 참조하세요.</td>
+</tr>
+<tr>
+<td>modules</td>
+<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/dbt-jinja-functions/modules">modules</a>를 참조하세요.</td>
+</tr>
+<tr>
+<td>run_started_at</td>
+<td>dbt 호출이 시작된 시점</td>
+</tr>
+<tr>
+<td>invocation_id</td>
+<td>dbt 호출의 고유 ID</td>
+</tr>
+<tr>
+<td>fromjson</td>
+<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/dbt-jinja-functions/fromjson">fromjson</a>를 참조하세요.</td>
+</tr>
+<tr>
+<td>tojson</td>
+<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/dbt-jinja-functions/tojson">tojson</a>를 참조하세요.</td>
+</tr>
+<tr>
+<td>log</td>
+<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/dbt-jinja-functions/log">log</a>를 참조하세요.</td>
+</tr>
+<tr>
+<td>var</td>
+<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/dbt-jinja-functions/var">var</a>를 참조하세요.</td>
+</tr>
+<tr>
+<td>target</td>
+<td><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/dbt-jinja-functions/target">target</a>를 참조하세요.</td>
+</tr>
+<tr>
+<td>connection_name</td>
+<td>연결의 내부 이름을 나타내는 문자열입니다. 이 문자열은 dbt에 의해 생성됩니다.</td>
+</tr>
+<tr>
+<td>node</td>
+<td>파싱된 노드 객체의 사전 표현입니다. <code>node.unique_id</code>, <code>node.database</code>, <code>node.schema</code> 등을 사용할 수 있습니다.</td>
+</tr>
+</tbody></table>
+<h2 id="Configuring-quoting-in-projects"><a href="#Configuring-quoting-in-projects" class="headerlink" title="Configuring quoting in projects"></a><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/quoting">Configuring quoting in projects</a></h2><hr>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">quoting</span><span class="token punctuation">:</span>
+  <span class="token key atrule">database</span><span class="token punctuation">:</span> true <span class="token punctuation">|</span> false
+  <span class="token key atrule">schema</span><span class="token punctuation">:</span> true <span class="token punctuation">|</span> false
+  <span class="token key atrule">identifier</span><span class="token punctuation">:</span> true <span class="token punctuation">|</span> false<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Definition-13"><a href="#Definition-13" class="headerlink" title="Definition"></a>Definition</h3><p>dbt가 데이터베이스, 스키마 및 식별자를 따옴표로 묶어야 할지 선택적으로 구성하는 옵션입니다:</p>
+<ul>
+<li>관계(테이블&#x2F;뷰) 생성 시</li>
+<li><code>ref</code> 함수를 직접적인 관계 참조로 해석할 때</li>
+</ul>
+<h3 id="Default-9"><a href="#Default-9" class="headerlink" title="Default"></a>Default</h3><p>기본값은 데이터베이스에 따라 다릅니다.</p>
+<p>대부분의 어댑터에서는 기본적으로 식별자를 따옴표로 묶는 것이 <code>true</code>로 기본 설정되어 있습니다.</p>
+<p>왜냐하면 따옴표를 사용하든 사용하지 않든 관계에서 선택하는 것은 동일하기 때문입니다. 그러나 식별자를 따옴표로 묶으면 예약어와 특수 문자를 식별자에 사용할 수 있습니다. 이는 데이터베이스에서 식별자로 사용할 수 있는 범위를 확장하지만, 가능한 경우 이러한 사용을 피하는 것이 좋습니다.</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">quoting</span><span class="token punctuation">:</span>
+  <span class="token key atrule">database</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">schema</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">identifier</span><span class="token punctuation">:</span> <span class="token boolean important">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Examples-11"><a href="#Examples-11" class="headerlink" title="Examples"></a>Examples</h3><p>프로젝트에서 quoting을 <code>false</code>로 설정하세요.</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">quoting</span><span class="token punctuation">:</span>
+  <span class="token key atrule">database</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token key atrule">schema</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token key atrule">identifier</span><span class="token punctuation">:</span> <span class="token boolean important">false</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>그러면 dbt는 따옴표 없이 관계(테이블&#x2F;뷰)를 생성합니다.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">create table analytics.dbt_alice.dim_customers<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="Recommendation-2"><a href="#Recommendation-2" class="headerlink" title="Recommendation"></a>Recommendation</h3><h4 id="Snowflake"><a href="#Snowflake" class="headerlink" title="Snowflake"></a>Snowflake</h4><p>모든 quoting 구성을 False로 설정합니다. 이는 예약어를 식별자로 사용할 수 없음을 의미하지만, 보통 이러한 예약어를 사용하지 않는 것이 좋은 방법입니다.</p>
+<p>만약 Snowflake 소스 테이블이 따옴표로 묶인 데이터베이스, 스키마 또는 테이블 식별자를 사용한다면, 이를 source.yml 파일에서 구성할 수 있습니다. <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/resource-properties/quoting">Refer to configuring quoting for more info</a>.</p>
+<p>Explanation:</p>
+<p>대부분의 데이터베이스는 따옴표를 사용하지 않은 식별자를 <em>소문자</em>로 변환하지만, Snowflake는 따옴표를 사용하지 않은 식별자를 <em>대문자</em>로 변환합니다. 따라서 모델 이름이 소문자로 작성되고 따옴표로 묶인 경우, 따옴표 없이 참조할 수 없습니다! 아래 예제를 확인하여 더 많은 정보를 얻으세요.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">/*
+    You can run the following queries against your database
+    to build an intuition <span class="token keyword">for</span> how quoting works on Snowflake.
+*/
+
+-- This is the output of an example <span class="token variable"><span class="token variable">`</span>orders.sql<span class="token variable">`</span></span> model with quoting enabled
+create table <span class="token string">"analytics"</span><span class="token builtin class-name">.</span><span class="token string">"orders"</span> as <span class="token punctuation">(</span>
+
+  <span class="token keyword">select</span> <span class="token number">1</span> as <span class="token function">id</span>
+
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+/*
+    These queries WILL NOT work<span class="token operator">!</span> Since the table above was created with quotes,
+    Snowflake created the orders table with a lowercase schema and identifier.
+
+    Since unquoted identifiers are automatically uppercased, both of the
+    following queries are equivalent, and neither will work correctly.
+*/
+
+<span class="token keyword">select</span> * from analytics.orders<span class="token punctuation">;</span>
+<span class="token keyword">select</span> * from ANALYTICS.ORDERS<span class="token punctuation">;</span>
+
+/*
+    To query this table, you<span class="token string">'ll need to quote the schema and table. This
+    query should indeed complete without error.
+*/
+
+select * from "analytics"."orders";
+
+
+/*
+    To avoid this quoting madness, you can disable quoting for schemas
+    and identifiers in your dbt_project.yml file. This means that you
+    won'</span>t be able to use reserved words as model names, but you probably
+    shouldn't be doing that anyway<span class="token operator">!</span> Assuming schema and identifier quoting is
+    disabled, the following query would indeed work:
+*/
+
+<span class="token keyword">select</span> * from analytics.orders<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="Other-warehouses"><a href="#Other-warehouses" class="headerlink" title="Other warehouses"></a>Other warehouses</h4><p>기본값을 데이터 웨어하우스에 대해 유지하세요.</p>
+<h2 id="require-dbt-version"><a href="#require-dbt-version" class="headerlink" title="require-dbt-version"></a><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/require-dbt-version">require-dbt-version</a></h2><hr>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">require-dbt-version</span><span class="token punctuation">:</span> version<span class="token punctuation">-</span>range <span class="token punctuation">|</span> <span class="token punctuation">[</span>version<span class="token punctuation">-</span>range<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="Definition-14"><a href="#Definition-14" class="headerlink" title="Definition"></a>Definition</h3><p><code>require-dbt-version</code>을 사용하여 프로젝트가 특정 dbt 버전 범위에서만 작동하도록 제한할 수 있습니다.</p>
+<p>이 설정을 사용하면, 지원되지 않는 dbt 버전으로 프로젝트를 실행하려는 사용자에게 유용한 오류 메시지가 dbt에서 전송됩니다. 이는 패키지 유지자(<a target="_blank" rel="noopener" href="https://github.com/dbt-labs/dbt-utils">dbt-utils</a>와 같은)가 사용자의 dbt 버전이 패키지와 호환되는지 확인하는 데 유용할 수 있습니다. 이 설정을 사용하면 팀 전체가 로컬 개발에서 동일한 dbt 버전을 사용하여 동기화를 유지할 수 있어서 변경된 동작으로 인한 호환성 문제를 방지할 수 있습니다.</p>
+<p>만약 이 구성이 지정되지 않으면, 버전 검사가 수행되지 않습니다.</p>
+<h4 id="YAML-quoting"><a href="#YAML-quoting" class="headerlink" title="YAML quoting"></a>YAML quoting</h4><p>이 구성은 YAML 파서에 의해 문자열로 보간되어야 합니다. 따라서 구성의 값을 따옴표로 묶어야 하며, 공백을 피해야 합니다. 예를 들어:</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token comment"># ✅ These will work</span>
+<span class="token key atrule">require-dbt-version</span><span class="token punctuation">:</span> <span class="token string">">=1.0.0"</span> <span class="token comment"># Double quotes are OK</span>
+<span class="token key atrule">require-dbt-version</span><span class="token punctuation">:</span> <span class="token string">'>=1.0.0'</span> <span class="token comment"># So are single quotes</span>
+
+<span class="token comment"># ❌ These will not work</span>
+<span class="token key atrule">require-dbt-version</span><span class="token punctuation">:</span> <span class="token punctuation">></span>=1.0.0 <span class="token comment"># No quotes? No good</span>
+<span class="token key atrule">require-dbt-version</span><span class="token punctuation">:</span> <span class="token string">">= 1.0.0"</span> <span class="token comment"># Don't put whitespace after the equality signs</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Examples-12"><a href="#Examples-12" class="headerlink" title="Examples"></a>Examples</h3><h4 id="Specify-a-minimum-dbt-version"><a href="#Specify-a-minimum-dbt-version" class="headerlink" title="Specify a minimum dbt version"></a>Specify a minimum dbt version</h4><p>다음 예에서는 최소 경계를 지정하기 위해 <code>&gt;=</code> 연산자를 사용하여, 이 프로젝트가 1.0.0 이상의 모든 dbt 버전과 함께 실행되도록 설정합니다:</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">require-dbt-version</span><span class="token punctuation">:</span> <span class="token string">">=1.0.0"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="Pin-to-a-range"><a href="#Pin-to-a-range" class="headerlink" title="Pin to a range"></a>Pin to a range</h4><p>다음 예에서는 상한 및 하한 경계를 설정하기 위해 쉼표로 구분된 목록을 사용하여, 이 프로젝트가 dbt 1.x.x 버전과 함께 실행되도록 설정합니다:</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">require-dbt-version</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">">=1.0.0"</span><span class="token punctuation">,</span> <span class="token string">"&lt;2.0.0"</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>또는 </p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">require-dbt-version</span><span class="token punctuation">:</span> <span class="token string">">=1.0.0,&lt;2.0.0"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="Require-a-specific-dbt-version"><a href="#Require-a-specific-dbt-version" class="headerlink" title="Require a specific dbt version"></a>Require a specific dbt version</h4><p>다음 예에서는 프로젝트가 dbt v1.5 버전에서만 실행되도록 설정하는 방법입니다:</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">require-dbt-version</span><span class="token punctuation">:</span> <span class="token number">1.5</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="Invalid-dbt-versions"><a href="#Invalid-dbt-versions" class="headerlink" title="Invalid dbt versions"></a>Invalid dbt versions</h3><p>프로젝트 또는 포함된 패키지에서 지정된 <code>require-dbt-version</code>과 호출된 dbt 버전이 일치하지 않으면, dbt는 즉시 다음과 같은 오류로 실패합니다:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ dbt compile
+Running with <span class="token assign-left variable">dbt</span><span class="token operator">=</span><span class="token number">0.21</span>.0
+Encountered an error <span class="token keyword">while</span> reading the project:
+Runtime Error
+  This version of dbt is not supported with the <span class="token string">'my_project'</span> package.
+    Installed version of dbt: <span class="token operator">=</span><span class="token number">0.21</span>.0
+    Required version of dbt <span class="token keyword">for</span> <span class="token string">'my_project'</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span><span class="token string">'>=1.0.0'</span>, <span class="token string">'&lt;2.0.0'</span><span class="token punctuation">]</span>
+  Check the requirements <span class="token keyword">for</span> the <span class="token string">'my_project'</span> package, or run dbt again with --no-version-check<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Disabling-version-checks"><a href="#Disabling-version-checks" class="headerlink" title="Disabling version checks"></a>Disabling version checks</h3><p>호환되지 않는 dbt 버전으로 인한 실패를 억제하려면 <code>dbt run</code> 실행 시<code> --no-version-check</code> 플래그를 제공하십시오.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ dbt run --no-version-check
+Running with <span class="token assign-left variable">dbt</span><span class="token operator">=</span><span class="token number">0.21</span>.0
+Found <span class="token number">13</span> models, <span class="token number">2</span> tests, <span class="token number">1</span> archives, <span class="token number">0</span> analyses, <span class="token number">204</span> macros, <span class="token number">2</span> operations<span class="token punctuation">..</span><span class="token punctuation">..</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>자세한 사용법은 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/global-configs/version-compatibility">global configs</a>을 참조하세요.</p>
+<h3 id="Recommendation-3"><a href="#Recommendation-3" class="headerlink" title="Recommendation"></a>Recommendation</h3><ul>
+<li>이 구성은 권장됩니다.</li>
+<li>v1 이전에는 필요한 dbt 버전을 마이너 릴리스에 고정해야 합니다. v1 이후에는 메이저 릴리스에 고정해야 합니다 (위 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/require-dbt-version#pin-to-a-range">example</a> 참조).</li>
+</ul>
+<h2 id="seed-paths"><a href="#seed-paths" class="headerlink" title="seed-paths"></a><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/seed-paths">seed-paths</a></h2><hr>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">seed-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>directorypath<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="Definition-15"><a href="#Definition-15" class="headerlink" title="Definition"></a>Definition</h3><p>선택적으로 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/build/seeds">seed</a> 파일이 위치한 사용자 정의 디렉터리 목록을 지정할 수 있습니다.</p>
+<h3 id="Default-10"><a href="#Default-10" class="headerlink" title="Default"></a>Default</h3><p>기본적으로 dbt는 씨드 파일이 <code>seeds</code> 디렉터리에 위치한다고 예상합니다. 즉, <code>seed-paths: [&quot;seeds&quot;]</code>입니다.</p>
+<h3 id="Examples-13"><a href="#Examples-13" class="headerlink" title="Examples"></a>Examples</h3><h4 id="Use-a-subdirectory-named-custom-seeds-instead-of-seeds"><a href="#Use-a-subdirectory-named-custom-seeds-instead-of-seeds" class="headerlink" title="Use a subdirectory named custom_seeds instead of seeds"></a>Use a subdirectory named <code>custom_seeds</code> instead of <code>seeds</code></h4><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">seed-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"custom_seeds"</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="Co-locate-your-models-and-seeds-in-the-models-director"><a href="#Co-locate-your-models-and-seeds-in-the-models-director" class="headerlink" title="Co-locate your models and seeds in the models director"></a>Co-locate your models and seeds in the <code>models</code> director</h4><p>Note: 이는 dbt가 씨드(<code>.csv</code> 파일)와 모델(<code>.sql</code> 파일)을 위한 서로 다른 파일 유형을 찾기 때문에 작동합니다.</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">seed-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"models"</span><span class="token punctuation">]</span>
+<span class="token key atrule">model-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"models"</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="Split-your-seeds-across-two-directories"><a href="#Split-your-seeds-across-two-directories" class="headerlink" title="Split your seeds across two directories"></a>Split your seeds across two directories</h3><p>Note: 비슷한 효과를 얻기 위해 대신 <code>seeds/</code> 디렉터리 내에 두 개의 하위 디렉터리를 사용하는 것을 권장합니다.</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">seed-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"seeds"</span><span class="token punctuation">,</span> <span class="token string">"custom_seeds"</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<h2 id="snapshot-paths"><a href="#snapshot-paths" class="headerlink" title="snapshot-paths"></a><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/snapshot-paths">snapshot-paths</a></h2><hr>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">snapshot-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>directorypath<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="Definition-16"><a href="#Definition-16" class="headerlink" title="Definition"></a>Definition</h3><p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/build/snapshots">snapshots</a>이 위치하는 사용자 정의 디렉터리 목록을 선택적으로 지정할 수 있습니다. 모델과 스냅샷을 동일한 위치에 두는 것은 불가능합니다.</p>
+<h3 id="Default-11"><a href="#Default-11" class="headerlink" title="Default"></a>Default</h3><p>기본적으로 dbt는 스냅샷을 <code>snapshots</code> 디렉토리에서 찾습니다. 즉, <code>snapshot-paths: [&quot;snapshots&quot;]</code></p>
+<h3 id="Examples-14"><a href="#Examples-14" class="headerlink" title="Examples"></a>Examples</h3><h4 id="Use-a-subdirectory-named-archives-instead-of-snapshots"><a href="#Use-a-subdirectory-named-archives-instead-of-snapshots" class="headerlink" title="Use a subdirectory named archives instead of snapshots"></a>Use a subdirectory named <code>archives</code> instead of <code>snapshots</code></h4><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">snapshot-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"archives"</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h1 id="test-paths"><a href="#test-paths" class="headerlink" title="test-paths"></a><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/test-paths">test-paths</a></h1><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">test-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>directorypath<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="Definition-17"><a href="#Definition-17" class="headerlink" title="Definition"></a>Definition</h3><p><a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/build/data-tests">singular tests</a>가 위치하는 사용자 정의 디렉터리 목록을 선택적으로 지정할 수 있습니다.</p>
+<h3 id="Default-12"><a href="#Default-12" class="headerlink" title="Default"></a>Default</h3><p>이 설정을 지정하지 않으면 dbt는 기본적으로 <code>tests</code> 디렉터리에서 테스트를 찾습니다. 즉, <code>test-paths: [&quot;tests&quot;]</code>. 구체적으로는 다음과 같은 <code>.sql</code> 파일을 찾습니다:</p>
+<ul>
+<li><code>tests/generic</code> 하위 디렉터리에 있는 일반적인 테스트 정의</li>
+<li>다른 모든 파일에 있는 단일 테스트</li>
+</ul>
+<h3 id="Examples-15"><a href="#Examples-15" class="headerlink" title="Examples"></a>Examples</h3><h4 id="Use-a-subdirectory-named-custom-tests-instead-of-tests-for-data-tests"><a href="#Use-a-subdirectory-named-custom-tests-instead-of-tests-for-data-tests" class="headerlink" title="Use a subdirectory named custom_tests instead of tests for data tests"></a>Use a subdirectory named <code>custom_tests</code> instead of <code>tests</code> for data tests</h4><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">test-paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"custom_tests"</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<h2 id="version"><a href="#version" class="headerlink" title="version"></a><a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/version">version</a></h2><hr>
+<p>dbt 프로젝트에는 두 가지 다른 유형의 <code>version</code> 태그가 있습니다. 이 필드의 의미는 위치에 따라 다릅니다.</p>
+<h3 id="dbt-project-yml-versions"><a href="#dbt-project-yml-versions" class="headerlink" title="dbt_project.yml versions"></a><code>dbt_project.yml</code> versions</h3><p><code>dbt_project</code> 파일의 버전 태그는 dbt 프로젝트의 버전을 나타냅니다.</p>
+<p>dbt 버전 1.5부터 <code>dbt_project.yml</code> 파일의 <code>version</code> 필드는 선택적 매개변수입니다. 사용할 경우 버전은 <code>1.0.0</code>과 같은 <a target="_blank" rel="noopener" href="https://semver.org/">semantic version</a> 형식이어야 합니다. 지정되지 않은 경우 기본값은 <code>None</code>입니다. dbt 버전 1.4 이하를 사용하는 사용자는 이 태그가 필요하지만 현재 dbt에서 의미 있는 방식으로 사용되지 않습니다.</p>
+<p>Core 버전에 대해 자세히 알아보려면 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/dbt-versions/core">About dbt Core versions</a>을 참조하세요.</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>dbt_project.yml</span></div><code class="language-yaml"><span class="token key atrule">version</span><span class="token punctuation">:</span> version<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="yml-property-file-versions"><a href="#yml-property-file-versions" class="headerlink" title=".yml property file versions"></a><code>.yml</code> property file versions</h3><p><code>.yml</code> 속성 파일의 버전 태그는 제어 태그를 제공하여 dbt가 속성 파일을 처리하는 방식을 지정합니다.</p>
+<p>1.5 버전부터 dbt는 리소스 .yml 파일에서 이 구성을 더 이상 필요로하지 않습니다. 이 태그가 이전에 필요했던 이유에 대해 더 알고 싶다면 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/project-configs/version#faqs">FAQs</a>를 참조하십시오. dbt 버전 1.4 이하를 사용하는 사용자는 이 태그가 필요합니다.</p>
+<p>속성 파일에 대한 자세한 내용은 동일한 페이지의 일반 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/reference/configs-and-properties#where-can-i-define-properties">documentation</a>를 참조하세요.</p>
+<h4 id="Resource-property-file-with-version-specified"><a href="#Resource-property-file-with-version-specified" class="headerlink" title="Resource property file with version specified"></a>Resource property file with version specified</h4><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span><any valid filename>.yml</span></div><code class="language-yaml"><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token number">2</span>  <span class="token comment"># Only 2 is accepted by dbt versions up to 1.4.latest.</span>
+
+<span class="token key atrule">models</span><span class="token punctuation">:</span> 
+    <span class="token punctuation">...</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Resource-property-file-without-version-specified"><a href="#Resource-property-file-without-version-specified" class="headerlink" title="Resource property file without version specified"></a>Resource property file without version specified</h3><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span><any valid filename>.yml</span></div><code class="language-yaml"><span class="token key atrule">models</span><span class="token punctuation">:</span> 
+    <span class="token punctuation">...</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="FAQS"><a href="#FAQS" class="headerlink" title="FAQS"></a>FAQS</h3><blockquote>
+<p>Why do model and source yml files always start with <code>version: 2</code>?</p>
+</blockquote>
+<p>옛날에는 이 <code>.yml</code> 파일의 구조가 매우 다르게 되어 있었습니다 (그때 dbt를 사용하던 사람들에게 인사드립니다!). <code>version: 2</code>를 추가함으로써 이 구조를 더 확장 가능하게 만들 수 있었습니다.</p>
+<p>현재 리소스 yml 파일은 이 구성을 필요로하지 않습니다. 지정된 경우에만 <code>version: 2</code>를 지원합니다. .yml 파일을 곧 <code>version: 3</code>으로 업데이트 할 계획은 없지만, 이 구성이 우리에게 미래에 새로운 구조를 도입하기 쉽게 만들어 줍니다.</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Keyhong</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2024/06/16/DBT/reference/Project%20Configs/analysis-paths/">http://example.com/2024/06/16/DBT/reference/Project%20Configs/analysis-paths/</a>
+                </span>
+            </div>
+            <!-- <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        reprint:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    use
+                    <a href="cc_by_url" rel="external nofollow noreferrer" target="_blank">cc_by_name</a>
+                    licensed
+                    <a href="/about" target="_blank">Keyhong</a>
+                    !
+                </span>
+            </div> -->
+        
+    </div>
+
+    <!-- <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script> -->
+
+
+
+            <div class="tag_share" style="display: block;">
+                <!-- <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                        </div>
+                    
+                </div> -->
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <!-- <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a> -->
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2024/06/16/Docker/posting/docker-concept/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/docker-logo.png" class="responsive-img" alt="Docker 개념 정리">
+                        
+                        <span class="card-title diy-neon-red">Docker 개념 정리</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-06-16
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Docker/" class="post-category">
+                                    Docker
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/06/16/DBT/docs/Supported%20data%20platforms/Trusted%20adapters/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="Trusted adapters">
+                        
+                        <span class="card-title diy-neon-red">Trusted adapters</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-06-16
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/DBT/" class="post-category">
+                                    DBT
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;목차</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2024</span>
+            
+            <a href="/about" target="_blank">Gyuwon Hong</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+            
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+    <a href="https://github.com/keyhong" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:wnhong96@gmail.com" class="tooltipped" target="_blank" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- Back to Top Button -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

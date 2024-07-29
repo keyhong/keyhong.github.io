@@ -1,0 +1,1123 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[PRJ] 데이터 허브 센터 및 도시행정 서비스 고도화 기술 개발, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="데이터 허브 센터 및 도시행정 서비스 고도화 기술 개발프로젝트를 복기하면서처음 데이터 분석가로 일을 시작하면서, 당시 수행한 업무를 되돌아보았습니다. 과거를 돌아보니 해결했던 문제들에 대한 아쉬움도 남지만, 서비스 ">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>[PRJ] 데이터 허브 센터 및 도시행정 서비스 고도화 기술 개발 | Keyhong</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span diy-happy-monkey">Keyhong</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Home</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <!-- <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li> -->
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Keyhong</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Home
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/life-logo.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title diy-neon-red">
+                        [PRJ] 데이터 허브 센터 및 도시행정 서비스 고도화 기술 개발</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="post-cate">
+                    <i class="fas fa-bookmark fa-fw icon-category"></i>
+                    
+                </div>
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="데이터-허브-센터-및-도시행정-서비스-고도화-기술-개발"><a href="#데이터-허브-센터-및-도시행정-서비스-고도화-기술-개발" class="headerlink" title="데이터 허브 센터 및 도시행정 서비스 고도화 기술 개발"></a>데이터 허브 센터 및 도시행정 서비스 고도화 기술 개발</h1><h2 id="프로젝트를-복기하면서"><a href="#프로젝트를-복기하면서" class="headerlink" title="프로젝트를 복기하면서"></a>프로젝트를 복기하면서</h2><p>처음 데이터 분석가로 일을 시작하면서, 당시 수행한 업무를 되돌아보았습니다. 과거를 돌아보니 해결했던 문제들에 대한 아쉬움도 남지만, 서비스 기획부터 배포, 데이터 관리, 표준화와 모델링, 빅데이터 플랫폼 구축 등 다양한 경험을 할 수 있는 좋은 프로젝트였습니다. 특히 팀장님의 도움과 지금은 데이터 엔지니어로서의 관점에서 생각하면 더 좋을 부분들이 많이 있었습니다. 많은 일을 하면서 해당 프로젝트에서 중요하고 우선적으로 중요하다고 생각되는 업무를 일부 정리해보았습니다.</p>
+<h2 id="프로젝트-개요"><a href="#프로젝트-개요" class="headerlink" title="프로젝트 개요"></a>프로젝트 개요</h2><blockquote>
+<p>Use Case 서비스 중심으로 도시 데이터를 수집, 통합, 분석, 활용할 수 있는 데이터허브 및 관련 기술을 연구하고 대구시 현안 및 시민 참여 중심의 데이터허브센터 구축을 통해 이를 실증하는 프로젝트</p>
+</blockquote>
+<ul>
+<li><p>교통, 안전, 도시행정 분야 서비스의 데이터 연계를 통한 대구시 데이터 허브센터 구축</p>
+</li>
+<li><p>도시 데이터의 수집부터 활용까지의 Data Flow 전반의 수집, 통합, 처리, 관리, 분석 등 다양한 기술 요소 적용하여 도시 문제 해결을 위한 서비스 개발</p>
+</li>
+</ul>
+<h2 id="데이터-표준화"><a href="#데이터-표준화" class="headerlink" title="데이터 표준화"></a>데이터 표준화</h2><blockquote>
+<p>데이터를 분석하면서 사소하지만 가장 중요한 부분은 표준화였습니다. 테이블과 컬럼명을 표준화하고 팀장님의 검토를 받아 진행했는데, 분석 중에 데이터 컬럼의 도메인과 타입을 더 타이트하게 설정했어야 했다는 아쉬움이 남습니다. <br><br>예를 들어, 파이썬에서 위경도 좌표 변환을 할 때는 소수점 7자리까지 정밀한 연산이 필요한데, 데이터 전처리 과정에서 이를 고려하지 않은 분석가들이 있을 수 있습니다. <br><br>이러한 실수를 줄이기 위해 데이터 도메인을 정밀하게 설정해주면 변환 데이터 적재 시 유효성 검증의 효과를 누릴 수 있을 것으로 생각됩니다. 이러한 아쉬움을 바탕으로 해당 프로젝트에서 사용한 컬럼들의 도메인을 「공공데이터 공통표준용어」에서 보고 정리해보았습니다.</p>
+</blockquote>
+<h3 id="공통표준도메인"><a href="#공통표준도메인" class="headerlink" title="공통표준도메인"></a>공통표준도메인</h3><table>
+<thead>
+<tr>
+<th>공통표준도메인그룹명</th>
+<th>공통표준도메인명</th>
+<th>데이터타입</th>
+<th>데이터길이</th>
+<th>데이터소수점길이</th>
+<th>저장형식</th>
+<th>표현형식</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>날짜&#x2F;시간</td>
+<td>연월일V8</td>
+<td>VARCHAR</td>
+<td>8</td>
+<td>-</td>
+<td>YYYYMMDD</td>
+<td>YYYY-MM-DD</td>
+</tr>
+<tr>
+<td>날짜&#x2F;시간</td>
+<td>시V2</td>
+<td>VARCHAR</td>
+<td>2</td>
+<td>-</td>
+<td>HH</td>
+<td>HH</td>
+</tr>
+<tr>
+<td>수량</td>
+<td>위도N12,10</td>
+<td>NUMERIC</td>
+<td>12</td>
+<td>3</td>
+<td>99.9999999999</td>
+<td>99.9999999999</td>
+</tr>
+<tr>
+<td>수량</td>
+<td>경도N13,10</td>
+<td>NUMERIC</td>
+<td>13</td>
+<td>3</td>
+<td>999.9999999999</td>
+<td>999.9999999999</td>
+</tr>
+<tr>
+<td>코드</td>
+<td>코드C10</td>
+<td>CHAR</td>
+<td>10</td>
+<td>-</td>
+<td>10자리문자</td>
+<td>-</td>
+</tr>
+<tr>
+<td>번호</td>
+<td>번호V4</td>
+<td>VARCHAR</td>
+<td>4</td>
+<td>-</td>
+<td>4자리 이내 문자</td>
+<td>-</td>
+</tr>
+<tr>
+<td>율</td>
+<td>율N5,2</td>
+<td>NUMERIC</td>
+<td>5</td>
+<td>2</td>
+<td>999.99</td>
+<td>999.99</td>
+</tr>
+<tr>
+<td>수량</td>
+<td>수N14</td>
+<td>NUMERIC</td>
+<td>14</td>
+<td>-</td>
+<td>99999999999999</td>
+<td>99,999,999,999,999</td>
+</tr>
+</tbody></table>
+<h3 id="테이블명-컬럼명-표준화"><a href="#테이블명-컬럼명-표준화" class="headerlink" title="테이블명 &amp; 컬럼명 표준화"></a>테이블명 &amp; 컬럼명 표준화</h3><blockquote>
+<p>당시 제공받은 팀장님께 제공받은 표준용어사전으로 의해 기존 있는 용어는 그대로 사용하고 신규 용어는 단어를 조합하여 만드는 과정을 수행했습니다. 시간이 좀 많이 지났지만 이음동의어, 동음이의어, 명사형 단어 사용, 축약단어 사용불가, 영문명의 허용길이, 고유명사, 도메인 그룹, 표준코드 생성규칙 등 많은 배움을 주셨습니다. 그 당시 가이드 자료가 남아있어, 한번은 다시 정리를 하려고 합니다.  </p>
+</blockquote>
+<p>** 2개 테이블에 대한 표준화 예시</p>
+<table>
+<thead>
+<tr>
+<th>주제영역</th>
+<th>테이블명</th>
+<th>테이블한글명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SOSS</td>
+<td>SAFE_IDEX_GRID</td>
+<td>안전지수그리드</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>순번</th>
+<th>컬럼명</th>
+<th>컬럼한글명</th>
+<th>데이터 타입</th>
+<th>PK여부</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>STDR_DE</td>
+<td>기준일자</td>
+<td>STRING</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>2</td>
+<td>STDR_TM</td>
+<td>기준시간</td>
+<td>STRING</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>3</td>
+<td>GRID_ID</td>
+<td>그리드ID</td>
+<td>STRING</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>4</td>
+<td>GU_CD</td>
+<td>구코드</td>
+<td>STRING</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>ADMD_CD</td>
+<td>행정동코드</td>
+<td>STRING</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>SAFE_IDEX</td>
+<td>안전지수</td>
+<td>DECIMAL(5, 2)</td>
+<td></td>
+</tr>
+</tbody></table>
+<br>
+
+<table>
+<thead>
+<tr>
+<th>주제영역</th>
+<th>테이블명</th>
+<th>테이블한글명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SOSS</td>
+<td>PCEL_STDR_INFO</td>
+<td>공간격자기준정보</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>순번</th>
+<th>컬럼명</th>
+<th>컬럼한글명</th>
+<th>데이터 타입</th>
+<th>PK여부</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>GRID_ID</td>
+<td>그리드ID</td>
+<td>STRING</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>2</td>
+<td>ROW_NO</td>
+<td>행번호</td>
+<td>STRING</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>CLM_NO</td>
+<td>열번호</td>
+<td>STRING</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>ADMD_CD</td>
+<td>행정동코드</td>
+<td>STRING</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>LGLD_CD</td>
+<td>법정동코드</td>
+<td>STRING</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>AREA_COORD</td>
+<td>영역좌표</td>
+<td>STRING</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>CNTR_X_COORD</td>
+<td>중심X좌표</td>
+<td>DECIMAL(18, 8)</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>CNTR_Y_COORD</td>
+<td>중심Y좌표</td>
+<td>DECIMAL(18, 8)</td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>MIN_X_COORD</td>
+<td>최소X좌표</td>
+<td>DECIMAL(18, 8)</td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td>MIN_Y_COORD</td>
+<td>최소Y좌표</td>
+<td>DECIMAL(18, 8)</td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td>MAX_X_COORD</td>
+<td>최대X좌표</td>
+<td>DECIMAL(18, 8)</td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td>MAX_Y_COORD</td>
+<td>최대Y좌표</td>
+<td>DECIMAL(18, 8)</td>
+<td></td>
+</tr>
+<tr>
+<td>13</td>
+<td>CNTR_LON</td>
+<td>중심경도</td>
+<td>DECIMAL(13, 10)</td>
+<td></td>
+</tr>
+<tr>
+<td>14</td>
+<td>CNTR_LAT</td>
+<td>중심위도</td>
+<td>DECIMAL(12, 10)</td>
+<td></td>
+</tr>
+<tr>
+<td>15</td>
+<td>MIN_LON</td>
+<td>최소경도</td>
+<td>DECIMAL(13, 10)</td>
+<td></td>
+</tr>
+<tr>
+<td>16</td>
+<td>MIN_LAT</td>
+<td>최소위도</td>
+<td>DECIMAL(12, 10)</td>
+<td></td>
+</tr>
+<tr>
+<td>17</td>
+<td>MAX_LON</td>
+<td>최대경도</td>
+<td>DECIMAL(13, 10)</td>
+<td></td>
+</tr>
+<tr>
+<td>18</td>
+<td>MAX_LAT</td>
+<td>최대위도</td>
+<td>DECIMAL(12, 10)</td>
+<td></td>
+</tr>
+<tr>
+<td>19</td>
+<td>CCTV_CO</td>
+<td>CCTV대수</td>
+<td>BIGINT</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="데이터-모델링"><a href="#데이터-모델링" class="headerlink" title="데이터 모델링"></a>데이터 모델링</h2><blockquote>
+<p>서비스 마트 ERD에서는 각 차트가 하나의 서비스이자 엔티티로 구성되어 있습니다. 지도 상에 공간격자의 기준정보를 기반으로 다른 서비스들이 만들어지기에, 가장 메인이 되는 핵심 엔티티는 PCELL기준정보 입니다. 이 기준정보 테이블에서 (서비스명)그리드 테이블이 만들어지고, 그리드 테이블에서 안전지수&#x2F;CCTV효율지수 집계를 산출하여 행정동, 시군구 테이블이 만들어지므로 종속관계가 있습니다. 때문에 <code>그리드-행정동</code>, <code>그리드-시군구</code> 테이블의 카디널리티는 1:N 관계가 있습니다. <br><br> 식별자의 경우, ML 서비스의 예측 주기에 따라 결정되었습니다. 저희 서비스는 일별-시간별 예측이었기 때문에 주식별자는 <code>기준일자-기준시간-[그리드ID|행정동코드|구코드]</code>로 이루어져 있습니다. 다만, 제약조건이 없는 HDFS에서의 모델링이기 때문에 후보키(surrogate key)가 아닌 자연키(natural key)를 PK로 사용하였습니다. <br><br> 추가적으로 팀장님의 말씀를 듣고 서비스를 위해 만들었던 코드성 데이터는 별도의 공통코드 테이블에 모아서 관리를 했습니다. 당시, 순찰시간대 코드(24시간을 4시간 단위로 분리하여 0~6번의 코드)를 만들었는 데, 공통코드에 코드성 데이터를 모아 놓아 언제든 쉽게 찾을 수 있는 장점이 있었습니다.</p>
+</blockquote>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128739&authkey=%21AJ75IwKX3RiA7Nw&width=1345&height=724" width="1345" height="724" />
+
+
+<h2 id="ML-서비스-개발-및-고도화"><a href="#ML-서비스-개발-및-고도화" class="headerlink" title="ML 서비스 개발 및 고도화"></a>ML 서비스 개발 및 고도화</h2><h3 id="지역-안전-분석-서비스"><a href="#지역-안전-분석-서비스" class="headerlink" title="지역 안전 분석 서비스"></a>지역 안전 분석 서비스</h3><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128731&authkey=%21AEQUvzOVvrityG8&width=1024" width="1024" height="auto" />
+
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128732&authkey=%21ALqXKx1wuAzJOV4&width=1024" width="1024" height="auto" />
+
+<h3 id="CCTV-위치-최적화-서비스"><a href="#CCTV-위치-최적화-서비스" class="headerlink" title="CCTV 위치 최적화 서비스"></a>CCTV 위치 최적화 서비스</h3><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128729&authkey=%21AKyz2L36D1Kc300&width=1024" width="1024" height="auto" />
+
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128728&authkey=%21APXjDON2l5UkntQ&width=1024" width="1024" height="auto" />
+
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128730&authkey=%21APJ0-LBXGErb2ps&width=1024" width="1024" height="auto" />
+
+<h3 id="순찰거점-추천-서비스"><a href="#순찰거점-추천-서비스" class="headerlink" title="순찰거점 추천 서비스"></a>순찰거점 추천 서비스</h3><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128733&authkey=%21ACtdpJRWrWxxYTc&width=1024" width="1024" height="auto" />
+
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128734&authkey=%21ABpRQuvFaWUaNwA&width=1024" width="1024" height="auto" />
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Keyhong</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/1996/01/19/Side-Project/soss/">http://example.com/1996/01/19/Side-Project/soss/</a>
+                </span>
+            </div>
+            <!-- <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        reprint:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    use
+                    <a href="cc_by_url" rel="external nofollow noreferrer" target="_blank">cc_by_name</a>
+                    licensed
+                    <a href="/about" target="_blank">Keyhong</a>
+                    !
+                </span>
+            </div> -->
+        
+    </div>
+
+    <!-- <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script> -->
+
+
+
+            <div class="tag_share" style="display: block;">
+                <!-- <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                        </div>
+                    
+                </div> -->
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <!-- <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a> -->
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/1996/01/19/Side-Project/problem-solving/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpeg" class="responsive-img" alt="[PRJ] 기술을 통해 자동화된 데이터 품질 검사 시스템 구축하기(in-progress)">
+                        
+                        <span class="card-title diy-neon-red">[PRJ] 기술을 통해 자동화된 데이터 품질 검사 시스템 구축하기(in-progress)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>1996-01-19
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Keyhong
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Current&nbsp;<i class="far fa-dot-circle"></i>
+            </div>
+            <div class="card">
+                <a href="/1996/01/19/Side-Project/soss/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/life-logo.jpg" class="responsive-img" alt="[PRJ] 데이터 허브 센터 및 도시행정 서비스 고도화 기술 개발">
+                        
+                        <span class="card-title">[PRJ] 데이터 허브 센터 및 도시행정 서비스 고도화 기술 개발</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>1996-01-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Keyhong
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;목차</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2024</span>
+            
+            <a href="/about" target="_blank">Gyuwon Hong</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+            
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+    <a href="https://github.com/keyhong" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:wnhong96@gmail.com" class="tooltipped" target="_blank" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- Back to Top Button -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
