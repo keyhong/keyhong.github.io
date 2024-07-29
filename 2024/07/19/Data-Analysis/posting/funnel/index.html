@@ -240,22 +240,22 @@
           <span class="token punctuation">,</span> source
           <span class="token punctuation">,</span> medium          
      <span class="token keyword">FROM</span> ga
-     <span class="token keyword">WHERE</span> page_title <span class="token operator">=</span> <span class="token string">'백문이불여일타 SQL 캠프 입문반'</span>
+     <span class="token keyword">WHERE</span> page_title <span class="token operator">=</span> <span class="token string">'page_a'</span>
        <span class="token operator">AND</span> event_name <span class="token operator">=</span> <span class="token string">'page_view'</span>
 <span class="token punctuation">)</span><span class="token punctuation">,</span> scroll <span class="token keyword">AS</span> <span class="token punctuation">(</span>
      <span class="token keyword">SELECT</span> user_pseudo_id
           <span class="token punctuation">,</span> ga_session_id
           <span class="token punctuation">,</span> event_timestamp_kst <span class="token keyword">AS</span> scroll_at
      <span class="token keyword">FROM</span> ga
-     <span class="token keyword">WHERE</span> page_title <span class="token operator">=</span> <span class="token string">'백문이불여일타 SQL 캠프 입문반'</span>
+     <span class="token keyword">WHERE</span> page_title <span class="token operator">=</span> <span class="token string">'page_a'</span>
        <span class="token operator">AND</span> event_name <span class="token operator">=</span> <span class="token string">'scroll'</span>
 <span class="token punctuation">)</span><span class="token punctuation">,</span> click <span class="token keyword">AS</span> <span class="token punctuation">(</span>
      <span class="token keyword">SELECT</span> user_pseudo_id
           <span class="token punctuation">,</span> ga_session_id
           <span class="token punctuation">,</span> event_timestamp_kst <span class="token keyword">AS</span> click_at
      <span class="token keyword">FROM</span> ga
-     <span class="token keyword">WHERE</span> page_title <span class="token operator">=</span> <span class="token string">'백문이불여일타 SQL 캠프 입문반'</span>
-       <span class="token operator">AND</span> event_name <span class="token operator">IN</span> <span class="token punctuation">(</span><span class="token string">'SQL_basic_from_click'</span><span class="token punctuation">,</span> <span class="token string">'SQL_basic_1day_form_click'</span><span class="token punctuation">,</span> <span class="token string">'SQL_package_form_click'</span><span class="token punctuation">)</span>
+     <span class="token keyword">WHERE</span> page_title <span class="token operator">=</span> <span class="token string">'page_a'</span>
+       <span class="token operator">AND</span> event_name <span class="token operator">IN</span> <span class="token punctuation">(</span><span class="token string">'banner_click'</span><span class="token punctuation">,</span> <span class="token string">'posting_click'</span><span class="token punctuation">,</span> <span class="token string">'submit_button_click'</span><span class="token punctuation">)</span>
 <span class="token punctuation">)</span>
 
 <span class="token keyword">SELECT</span> source
@@ -275,8 +275,7 @@
                      <span class="token operator">AND</span> scroll<span class="token punctuation">.</span>scroll_at <span class="token operator">&lt;=</span> click<span class="token punctuation">.</span>click_at
 <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> source<span class="token punctuation">,</span> medium<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-
+<h2 id="시각화"><a href="#시각화" class="headerlink" title="시각화"></a>시각화</h2>
                 
             </div>
             <hr/>
