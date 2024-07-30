@@ -1,0 +1,1221 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Syntax 정리, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="SELECT
+데이터베이스에서 데이터를 조회하기 위해 사용되는 기본적인 명령문
+
+-- Syntax
+SELECT
+column_name
+FROM table_nam
+
+
+SELECT
+first_name,
+last_name
+F">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Syntax 정리 | Keyhong</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span diy-happy-monkey">Keyhong</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Home</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <!-- <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li> -->
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Keyhong</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Home
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/postgres-logo.png')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title diy-neon-red">
+                        Syntax 정리</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="post-cate">
+                    <i class="fas fa-bookmark fa-fw icon-category"></i>
+                    
+                        <a href="/categories/Postgresql/" class="post-category">
+                            Postgresql
+                        </a>
+                    
+                </div>
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h2><blockquote>
+<p>데이터베이스에서 데이터를 조회하기 위해 사용되는 기본적인 명령문</p>
+</blockquote>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
+<span class="token keyword">SELECT</span>
+column_name
+<span class="token keyword">FROM</span> table_nam
+
+
+<span class="token keyword">SELECT</span>
+first_name<span class="token punctuation">,</span>
+last_name
+<span class="token keyword">FROM</span> actor
+<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span>
+<span class="token operator">*</span>
+<span class="token keyword">FROM</span> actor
+<span class="token punctuation">;</span>
+
+<span class="token comment">-- 1. Formatting doesn't matter!</span>
+<span class="token keyword">SELECT</span>
+first_name<span class="token punctuation">,</span>
+last_name
+<span class="token keyword">FROM</span> actor
+<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span> first_name<span class="token punctuation">,</span> last_name
+<span class="token keyword">FROM</span> actor
+<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span>
+first_name<span class="token punctuation">,</span>
+last_name<span class="token punctuation">,</span>
+email
+<span class="token keyword">FROM</span> customer
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="DISTINCT"><a href="#DISTINCT" class="headerlink" title="DISTINCT"></a>DISTINCT</h2><blockquote>
+<p>쿼리 결과에서 중복된 값을 제거하여 고유한 값만을 반환하는 데 사용</p>
+</blockquote>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
+<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span>
+column_name
+<span class="token keyword">FROM</span> table_nam
+<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span>
+first_name
+<span class="token keyword">FROM</span> actor
+<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span>
+first_name
+<span class="token keyword">FROM</span> actor
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> first_name
+l
+<span class="token punctuation">;</span>
+
+<span class="token comment">-- 두 컬럼에 대해 DISTINCT</span>
+<span class="token comment">-- Note! : Distinct in terms of all selected columns!</span>
+<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span>
+first_name<span class="token punctuation">,</span>
+last_name
+<span class="token keyword">FROM</span> actor
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> first_name
+<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span>
+amount
+<span class="token keyword">FROM</span> payment
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> amount <span class="token keyword">DESC</span><span class="token punctuation">;</span>
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="ORDER-BY"><a href="#ORDER-BY" class="headerlink" title="ORDER BY"></a>ORDER BY</h2><blockquote>
+<p>쿼리 결과를 특정 열을 기준으로 정렬할 때 사용</p>
+</blockquote>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
+<span class="token keyword">SELECT</span> 
+column_name1<span class="token punctuation">,</span>
+column_name2
+<span class="token keyword">FROM</span> table_name
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> column_name1
+
+<span class="token comment">-- ASC를 default이나 명시적으로 표시하면 가독성이 높아집니다.</span>
+<span class="token keyword">SELECT</span> 
+column_name1<span class="token punctuation">,</span>
+column_name2
+<span class="token keyword">FROM</span> table_name
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> column_name1 <span class="token keyword">ASC</span>
+
+<span class="token keyword">SELECT</span> 
+column_name1<span class="token punctuation">,</span>
+column_name2
+<span class="token keyword">FROM</span> table_name
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> column_name1 <span class="token keyword">DESC</span>
+
+<span class="token keyword">SELECT</span> 
+first_name<span class="token punctuation">,</span>
+last_name
+<span class="token keyword">FROM</span> actor
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> first_name <span class="token keyword">DESC</span><span class="token punctuation">,</span> last_name <span class="token keyword">ASC</span>
+
+<span class="token keyword">SELECT</span>
+first_name<span class="token punctuation">,</span>
+last_name<span class="token punctuation">,</span>
+email
+<span class="token keyword">FROM</span> customer
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> last_name <span class="token keyword">DESC</span><span class="token punctuation">,</span> first_name <span class="token keyword">DESC</span><span class="token punctuation">;</span>
+
+<span class="token comment">-- ORDER BY를 컬럼 순서의 숫자로 쓰면 가독성이 낮아 비권장합니다. </span>
+<span class="token keyword">SELECT</span>
+first_name<span class="token punctuation">,</span>
+last_name<span class="token punctuation">,</span>
+email
+<span class="token keyword">FROM</span> customer
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> <span class="token number">2</span> <span class="token keyword">DESC</span><span class="token punctuation">,</span> <span class="token number">1</span> <span class="token keyword">DESC</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="COUNT"><a href="#COUNT" class="headerlink" title="COUNT()"></a>COUNT()</h2><blockquote>
+<p>특정 열의 레코드 수를 계산하는 데 사용</p>
+</blockquote>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
+<span class="token comment">-- more common than below </span>
+<span class="token keyword">SELECT</span>
+<span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> table_name
+
+<span class="token comment">-- another case</span>
+<span class="token comment">-- Note: COUNT()를 할 때 Null은 카운트 되지 않습니다!</span>
+<span class="token keyword">SELECT</span>
+<span class="token function">COUNT</span><span class="token punctuation">(</span>column_name<span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> table_name
+
+<span class="token keyword">SELECT</span>
+<span class="token function">COUNT</span><span class="token punctuation">(</span>first_name<span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> actor<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span>
+<span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> first_name<span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> actor<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> first_name<span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> customer<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="LIMIT"><a href="#LIMIT" class="headerlink" title="LIMIT"></a>LIMIT</h2><blockquote>
+<p>쿼리 결과에서 반환되는 행의 수를 제한하는 데 사용</p>
+</blockquote>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
+<span class="token keyword">SELECT</span>
+column_name1<span class="token punctuation">,</span>
+column_name2<span class="token punctuation">,</span>
+<span class="token keyword">FROM</span> table_name
+<span class="token keyword">LIMIT</span> n
+
+<span class="token keyword">SELECT</span>
+first_name
+<span class="token keyword">FROM</span> actor
+<span class="token keyword">LIMIT</span> <span class="token number">4</span>
+
+<span class="token keyword">SELECT</span>
+first_name
+<span class="token keyword">FROM</span> actor
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> first_name <span class="token keyword">ASC</span>
+<span class="token keyword">LIMIT</span> <span class="token number">4</span>
+
+<span class="token keyword">SELECT</span> <span class="token operator">*</span>
+<span class="token keyword">FROM</span> rental
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> rental_date <span class="token keyword">DESC</span>
+<span class="token keyword">LIMIT</span> <span class="token number">10</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h4 id="CONCAT-CONCATENATE"><a href="#CONCAT-CONCATENATE" class="headerlink" title="CONCAT (CONCATENATE)"></a>CONCAT (CONCATENATE)</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
+<span class="token keyword">SELECT</span>
+<span class="token keyword">LEFT</span><span class="token punctuation">(</span>first_name<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token keyword">LEFT</span><span class="token punctuation">(</span>last_name<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+first_name<span class="token punctuation">,</span>
+last_name
+<span class="token keyword">FROM</span> customer
+<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span>
+<span class="token keyword">LEFT</span><span class="token punctuation">(</span>first_name<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token string">'.'</span> <span class="token operator">||</span> <span class="token keyword">LEFT</span><span class="token punctuation">(</span>last_name<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token string">'.'</span> <span class="token keyword">AS</span> initials<span class="token punctuation">,</span>
+first_name<span class="token punctuation">,</span>
+last_name
+<span class="token keyword">FROM</span> customer
+<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span> 
+CONCAT<span class="token punctuation">(</span><span class="token keyword">LEFT</span><span class="token punctuation">(</span>first_name<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">LEFT</span><span class="token punctuation">(</span>last_name<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> customer
+<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span>
+<span class="token keyword">LEFT</span><span class="token punctuation">(</span>email<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token string">'***'</span> <span class="token operator">||</span> <span class="token keyword">RIGHT</span><span class="token punctuation">(</span>email<span class="token punctuation">,</span> <span class="token number">19</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> anonymized_email
+<span class="token keyword">FROM</span> customer<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="EXTRACT"><a href="#EXTRACT" class="headerlink" title="EXTRACT"></a>EXTRACT</h2><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
+EXTRACT <span class="token punctuation">(</span>field <span class="token keyword">from</span> <span class="token keyword">date</span><span class="token operator">/</span><span class="token keyword">time</span><span class="token operator">/</span><span class="token keyword">interval</span><span class="token punctuation">)</span>
+
+<span class="token comment">-- Date/time types</span>
+
+<span class="token comment">-- date : Just date without time : '2022-11-28' (YYYY-MM-DD)</span>
+<span class="token comment">-- time (with/without time zone) : Just time without date : '01:02:03.678'(without timezone) '01:02:03.678+02'(with timezone)</span>
+<span class="token comment">-- timestamp (with/without time zone) : Date and time : '2022-11-28 01:02:03.678+02'</span>
+<span class="token comment">-- intervals : Time interval : '01:02:03.678' </span>
+
+<span class="token comment">/** 주로 쓰이는 EXTRACT 
+
+1. DAY : day of month (1-31)
+2. DOW: day of week Sunday (0) to Saturday (6)
+3. DOY : day of year that ranges from 1 to 366
+4. HOUR : hour (0-23)
+5. MONTH : month (1-12)
+6. QUARTER : quarter of year
+7. WEEK : number of ISO 8601 week-numbering week of year
+8. YEAR : year
+*/</span>
+
+<span class="token keyword">SELECT</span>
+EXTRACT<span class="token punctuation">(</span><span class="token keyword">day</span> <span class="token keyword">from</span> rental_date<span class="token punctuation">)</span> 
+<span class="token keyword">FROM</span> rental<span class="token punctuation">;</span> 
+
+<span class="token keyword">SELECT</span>
+EXTRACT<span class="token punctuation">(</span><span class="token keyword">day</span> <span class="token keyword">from</span> rental_date<span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> rental
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> EXTRACT<span class="token punctuation">(</span><span class="token keyword">day</span> <span class="token keyword">from</span> rental_date<span class="token punctuation">)</span>
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">DESC</span>
+<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span>
+EXTRACT<span class="token punctuation">(</span><span class="token keyword">month</span> <span class="token keyword">from</span> rental_date<span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> rental
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> EXTRACT<span class="token punctuation">(</span><span class="token keyword">month</span> <span class="token keyword">from</span> rental_date<span class="token punctuation">)</span>
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">DESC</span>
+<span class="token punctuation">;</span>
+
+
+<span class="token keyword">SELECT</span>
+EXTRACT<span class="token punctuation">(</span><span class="token keyword">month</span> <span class="token keyword">from</span> payment_date<span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token string">"month"</span><span class="token punctuation">,</span>
+<span class="token function">SUM</span><span class="token punctuation">(</span>amount<span class="token punctuation">)</span> <span class="token keyword">as</span> total_payment_amount
+<span class="token keyword">FROM</span> payment
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> <span class="token string">"month"</span>
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> total_payment_amount <span class="token keyword">DESC</span><span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span>
+EXTRACT<span class="token punctuation">(</span>dow <span class="token keyword">from</span> payment_date<span class="token punctuation">)</span> <span class="token keyword">AS</span> day_of_week<span class="token punctuation">,</span>
+<span class="token function">SUM</span><span class="token punctuation">(</span>amount<span class="token punctuation">)</span> <span class="token keyword">AS</span> total_payment_amount
+<span class="token keyword">FROM</span> payment
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> day_of_week
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> total_payment_amount <span class="token keyword">DESC</span><span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span>
+EXTRACT<span class="token punctuation">(</span>week <span class="token keyword">from</span> payment_date<span class="token punctuation">)</span> <span class="token keyword">AS</span> week<span class="token punctuation">,</span>
+customer_id<span class="token punctuation">,</span>
+<span class="token function">SUM</span><span class="token punctuation">(</span>amount<span class="token punctuation">)</span> <span class="token keyword">AS</span> total_payment_amount 
+<span class="token keyword">FROM</span> payment
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> week<span class="token punctuation">,</span> customer_id
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> total_payment_amount <span class="token keyword">DESC</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="LEFT-RIGHT"><a href="#LEFT-RIGHT" class="headerlink" title="LEFT &amp; RIGHT"></a>LEFT &amp; RIGHT</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
+<span class="token keyword">SELECT</span> 
+<span class="token keyword">LEFT</span><span class="token punctuation">(</span>first_name<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+first_name
+<span class="token keyword">FROM</span> customer
+<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span> 
+<span class="token keyword">RIGHT</span><span class="token punctuation">(</span>first_name<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+first_name
+<span class="token keyword">FROM</span> customer
+<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span> 
+<span class="token keyword">RIGHT</span><span class="token punctuation">(</span><span class="token keyword">LEFT</span><span class="token punctuation">(</span>first_name<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+first_name
+<span class="token keyword">FROM</span> customer
+<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span>
+<span class="token keyword">RIGHT</span><span class="token punctuation">(</span><span class="token keyword">LEFT</span><span class="token punctuation">(</span><span class="token keyword">RIGHT</span><span class="token punctuation">(</span>email<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> customer
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="POSITION"><a href="#POSITION" class="headerlink" title="POSITION"></a>POSITION</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
+<span class="token keyword">SELECT</span>
+POSITION<span class="token punctuation">(</span><span class="token string">'@'</span> <span class="token operator">IN</span> email<span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> customer
+<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span>
+<span class="token keyword">LEFT</span><span class="token punctuation">(</span>email<span class="token punctuation">,</span> POSITION<span class="token punctuation">(</span><span class="token string">'@'</span> <span class="token operator">IN</span> email<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+email
+<span class="token keyword">FROM</span> customer
+
+<span class="token keyword">SELECT</span>
+<span class="token keyword">LEFT</span><span class="token punctuation">(</span>email<span class="token punctuation">,</span> POSITION<span class="token punctuation">(</span><span class="token string">'@'</span> <span class="token operator">IN</span> email<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+email
+<span class="token keyword">FROM</span> customer
+
+<span class="token keyword">SELECT</span>
+<span class="token keyword">LEFT</span><span class="token punctuation">(</span>email<span class="token punctuation">,</span> POSITION<span class="token punctuation">(</span>last_name <span class="token operator">IN</span> email<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+email
+<span class="token keyword">FROM</span> customer
+
+<span class="token keyword">SELECT</span>
+<span class="token keyword">LEFT</span><span class="token punctuation">(</span>email<span class="token punctuation">,</span> POSITION<span class="token punctuation">(</span>last_name <span class="token operator">IN</span> email<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+email
+<span class="token keyword">FROM</span> customer
+
+<span class="token keyword">SELECT</span>
+last_name <span class="token operator">||</span> <span class="token string">', '</span> <span class="token operator">||</span> <span class="token keyword">LEFT</span><span class="token punctuation">(</span>email<span class="token punctuation">,</span> POSITION<span class="token punctuation">(</span><span class="token string">'.'</span> <span class="token operator">IN</span> email<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> 
+<span class="token keyword">FROM</span> customer<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="SUBSTRING"><a href="#SUBSTRING" class="headerlink" title="SUBSTRING"></a>SUBSTRING</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
+SUBSTRING<span class="token punctuation">(</span>string <span class="token keyword">from</span> <span class="token keyword">start</span> <span class="token punctuation">[</span><span class="token keyword">for</span> length<span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span> 
+email<span class="token punctuation">,</span>
+SUBSTRING<span class="token punctuation">(</span>email <span class="token keyword">from</span> Position <span class="token punctuation">(</span><span class="token string">'.'</span> <span class="token operator">in</span> email<span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span> <span class="token keyword">for</span> <span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> customer<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span> 
+email<span class="token punctuation">,</span>
+SUBSTRING<span class="token punctuation">(</span>email <span class="token keyword">from</span> POSITION<span class="token punctuation">(</span><span class="token string">'.'</span> <span class="token operator">in</span> email<span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span> <span class="token keyword">for</span> LENGTH<span class="token punctuation">(</span>last_name<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> customer<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span> 
+email<span class="token punctuation">,</span>
+SUBSTRING<span class="token punctuation">(</span>email <span class="token keyword">from</span> <span class="token number">3</span> <span class="token keyword">for</span> <span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> customer<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span> 
+email<span class="token punctuation">,</span>
+SUBSTRING<span class="token punctuation">(</span>email <span class="token keyword">from</span> POSITION<span class="token punctuation">(</span><span class="token string">'.'</span> <span class="token operator">in</span> email<span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span> <span class="token keyword">for</span> POSITION<span class="token punctuation">(</span><span class="token string">'@'</span> <span class="token operator">in</span> email<span class="token punctuation">)</span><span class="token operator">-</span>POSITION<span class="token punctuation">(</span><span class="token string">'.'</span> <span class="token operator">in</span> email<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> customer<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> customer<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span> 
+<span class="token keyword">LEFT</span><span class="token punctuation">(</span>email<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token operator">||</span> <span class="token string">'***'</span>
+<span class="token operator">||</span> SUBSTRING<span class="token punctuation">(</span>email <span class="token keyword">from</span> POSITION<span class="token punctuation">(</span><span class="token string">'.'</span> <span class="token operator">in</span> email<span class="token punctuation">)</span> <span class="token keyword">for</span> <span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token operator">||</span> <span class="token string">'***'</span>
+<span class="token operator">||</span> SUBSTRING<span class="token punctuation">(</span>email <span class="token keyword">from</span> POSITION<span class="token punctuation">(</span><span class="token string">'@'</span> <span class="token operator">in</span> email<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> customer<span class="token punctuation">;</span>
+
+
+<span class="token keyword">SELECT</span> 
+<span class="token string">'***'</span>
+<span class="token operator">||</span> SUBSTRING<span class="token punctuation">(</span>email <span class="token keyword">from</span> POSITION<span class="token punctuation">(</span><span class="token string">'.'</span> <span class="token operator">in</span> email<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span> <span class="token keyword">for</span> <span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token operator">||</span> <span class="token string">'***'</span>
+<span class="token operator">||</span> SUBSTRING<span class="token punctuation">(</span>email <span class="token keyword">from</span> POSITION<span class="token punctuation">(</span><span class="token string">'@'</span> <span class="token operator">in</span> email<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> customer<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="TO-CHAR"><a href="#TO-CHAR" class="headerlink" title="TO_CHAR"></a>TO_CHAR</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
+TO_CHAR <span class="token punctuation">(</span><span class="token keyword">date</span><span class="token operator">/</span><span class="token keyword">time</span><span class="token operator">/</span><span class="token keyword">interval</span><span class="token punctuation">,</span> format<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h4 id="UPPER-LOWER-LENGTH"><a href="#UPPER-LOWER-LENGTH" class="headerlink" title="UPPER &amp; LOWER &amp; LENGTH"></a>UPPER &amp; LOWER &amp; LENGTH</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
+<span class="token keyword">SELECT</span> 
+UPPER<span class="token punctuation">(</span>email<span class="token punctuation">)</span> <span class="token keyword">AS</span> email_upper<span class="token punctuation">,</span>
+LOWER<span class="token punctuation">(</span>email<span class="token punctuation">)</span> <span class="token keyword">AS</span> email_lower<span class="token punctuation">,</span>
+LENGTH<span class="token punctuation">(</span>email<span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> customer
+<span class="token keyword">WHERE</span> LENGTH<span class="token punctuation">(</span>email<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">30</span>
+<span class="token punctuation">;</span>
+
+
+<span class="token keyword">SELECT</span> 
+LOWER<span class="token punctuation">(</span>first_name<span class="token punctuation">)</span> <span class="token keyword">AS</span> first_name<span class="token punctuation">,</span>
+LOWER<span class="token punctuation">(</span>last_name<span class="token punctuation">)</span> <span class="token keyword">AS</span> last_name
+<span class="token keyword">FROM</span> customer
+<span class="token keyword">WHERE</span> LENGTH<span class="token punctuation">(</span>first_name<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">10</span>
+<span class="token operator">OR</span> LENGTH<span class="token punctuation">(</span>last_name<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">10</span>
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p>출처 : <a target="_blank" rel="noopener" href="https://dog-developers.tistory.com/162/">UNION 연산 , UNION ALL 연산</a></p>
+<h2 id="UNION"><a href="#UNION" class="headerlink" title="UNION"></a>UNION</h2><blockquote>
+<p>SELECT 문들의 결과 집합을 단일 결과 집합으로 결합하며 결합 시 중복된 데이터는 제거</p>
+</blockquote>
+<ul>
+<li><p>두 개의 SELECT문 간 컬럼의 개수는 동일 (컬럼 개수가 같다)</p>
+</li>
+<li><p>해당 순서의 컬럼에는 서로 호환되는 데이터 유형 (데이터 타입이 같다)</p>
+</li>
+<li><p>정렬을 원할 시 구문 마지막 SELECT문에 ORDER BY를 사용</p>
+</li>
+<li><p>중복이 제거된다</p>
+</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> 
+  <span class="token keyword">FROM</span> soss<span class="token punctuation">.</span>ic_pcel_stdr_info
+  <span class="token keyword">WHERE</span> min_x_crd <span class="token operator">=</span> <span class="token punctuation">(</span> <span class="token keyword">SELECT</span> <span class="token function">MIN</span><span class="token punctuation">(</span>min_x_crd<span class="token punctuation">)</span> <span class="token keyword">FROM</span> SOSS<span class="token punctuation">.</span>IC_PCEL_STDR_INFO <span class="token punctuation">)</span>
+  <span class="token keyword">UNION</span>
+<span class="token keyword">SELECT</span> <span class="token operator">*</span>
+  <span class="token keyword">FROM</span> soss<span class="token punctuation">.</span>ic_pcel_stdr_info
+  <span class="token keyword">WHERE</span> min_y_crd <span class="token operator">=</span> <span class="token punctuation">(</span> <span class="token keyword">SELECT</span> <span class="token function">MIN</span><span class="token punctuation">(</span>min_y_crd<span class="token punctuation">)</span> <span class="token keyword">FROM</span> SOSS<span class="token punctuation">.</span>IC_PCEL_STDR_INFO <span class="token punctuation">)</span>
+  <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> grid_no
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="UNION-ALL"><a href="#UNION-ALL" class="headerlink" title="UNION ALL"></a>UNION ALL</h2><blockquote>
+<p>SELECT 문들의 결과 집합을 단일 결과 집합으로 결합하며 결합 시 중복된 데이터도 포함</p>
+</blockquote>
+<ul>
+<li><p>두 개의 SELECT문 간 컬럼의 개수는 동일 (컬럼 개수가 같다)</p>
+</li>
+<li><p>해당 순서의 컬럼에는 서로 호환되는 데이터 유형 (데이터 타입이 같다)</p>
+</li>
+<li><p>정렬을 원할 시 구문 마지막 SELECT문에 ORDER BY를 사용</p>
+</li>
+<li><p>중복값이 제거되지 않지만, 중복값 여부를 확인할 필요 없이 모두 합치기만 필요한 경우 속도가 더욱 빠르다</p>
+</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> 
+  <span class="token keyword">FROM</span> soss<span class="token punctuation">.</span>ic_pcel_stdr_info
+  <span class="token keyword">WHERE</span> min_x_crd <span class="token operator">=</span> <span class="token punctuation">(</span> <span class="token keyword">SELECT</span> <span class="token function">MIN</span><span class="token punctuation">(</span>min_x_crd<span class="token punctuation">)</span> <span class="token keyword">FROM</span> SOSS<span class="token punctuation">.</span>IC_PCEL_STDR_INFO <span class="token punctuation">)</span>
+<span class="token keyword">UNION</span> <span class="token keyword">ALL</span>
+<span class="token keyword">SELECT</span> <span class="token operator">*</span>
+  <span class="token keyword">FROM</span> soss<span class="token punctuation">.</span>ic_pcel_stdr_info
+  <span class="token keyword">WHERE</span> min_y_crd <span class="token operator">=</span> <span class="token punctuation">(</span> <span class="token keyword">SELECT</span> <span class="token function">MIN</span><span class="token punctuation">(</span>min_y_crd<span class="token punctuation">)</span> <span class="token keyword">FROM</span> SOSS<span class="token punctuation">.</span>IC_PCEL_STDR_INFO <span class="token punctuation">)</span>
+  <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> grid_no<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Keyhong</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2024/06/16/SQL/syntax/">http://example.com/2024/06/16/SQL/syntax/</a>
+                </span>
+            </div>
+            <!-- <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        reprint:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    use
+                    <a href="cc_by_url" rel="external nofollow noreferrer" target="_blank">cc_by_name</a>
+                    licensed
+                    <a href="/about" target="_blank">Keyhong</a>
+                    !
+                </span>
+            </div> -->
+        
+    </div>
+
+    <!-- <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script> -->
+
+
+
+            <div class="tag_share" style="display: block;">
+                <!-- <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                        </div>
+                    
+                </div> -->
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <!-- <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a> -->
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2024/06/16/SQL/cross-join/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/sql-logo.png" class="responsive-img" alt="Cross Join + VALUES 활용하기">
+                        
+                        <span class="card-title diy-neon-red">Cross Join + VALUES 활용하기</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-06-16
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/SQL/" class="post-category">
+                                    SQL
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/06/16/Spark/docs/Programming-Guides/Spark-SQL,-DataFrames-and-Datasets-Guide/Getting-Started/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Getting Started">
+                        
+                        <span class="card-title diy-neon-red">Getting Started</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-06-16
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Spark/" class="post-category">
+                                    Spark
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;목차</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2024</span>
+            
+            <a href="/about" target="_blank">Gyuwon Hong</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+            
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+    <a href="https://github.com/keyhong" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:wnhong96@gmail.com" class="tooltipped" target="_blank" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- Back to Top Button -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
