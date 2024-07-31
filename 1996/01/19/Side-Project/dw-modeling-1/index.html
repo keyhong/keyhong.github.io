@@ -4,14 +4,48 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="emptyDir, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="emptyDir
-pod가 실행되는 host의 디스크를 임시로 컨테이너 볼륨으로 할당해서 사용하는 방법
+    <meta name="keywords" content="DW Modeling (Logical), Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="DW ERD (Star Schema, HDFS)
+
+Thinking(1) SQL 스냅샷 테이블 쿼리 최적화
 
 
-pod가 사라지면 emptyDir의 데이터도 함께 사라집니다.
 
-주로 메모리와 디스크를 함께 이용하는 대용량 ">
+
+
+
+
+
+
+
+
+
+
+
+
+(2) HDFS 기반의 DW 차원 모델링
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -23,7 +57,7 @@ pod가 사라지면 emptyDir의 데이터도 함께 사라집니다.
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>emptyDir | Keyhong</title>
+    <title>DW Modeling (Logical) | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -182,13 +216,13 @@ pod가 사라지면 emptyDir의 데이터도 함께 사라집니다.
 
     
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/kubernetes-logo.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/life-logo.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        emptyDir</h1>
+                        DW Modeling (Logical)</h1>
                 </div>
             </div>
         </div>
@@ -211,10 +245,6 @@ pod가 사라지면 emptyDir의 데이터도 함께 사라집니다.
                 <div class="post-cate">
                     <i class="fas fa-bookmark fa-fw icon-category"></i>
                     
-                        <a href="/categories/Kubernetes/" class="post-category">
-                            Kubernetes
-                        </a>
-                    
                 </div>
             </div>
         </div>
@@ -229,54 +259,46 @@ pod가 사라지면 emptyDir의 데이터도 함께 사라집니다.
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="emptyDir"><a href="#emptyDir" class="headerlink" title="emptyDir"></a>emptyDir</h2><blockquote>
-<p>pod가 실행되는 host의 디스크를 임시로 컨테이너 볼륨으로 할당해서 사용하는 방법</p>
-</blockquote>
-<ul>
-<li><p><strong>pod가 사라지면 emptyDir의 데이터도 함께 사라집니다.</strong></p>
-</li>
-<li><p>주로 메모리와 디스크를 함께 이용하는 대용량 데이터 계산에 사용합니다.</p>
-</li>
-<li><p>과학 연산(오랜 연산 시간이 걸릴 때, 중간 데이터 저장용으로 디스크가 필요할 때 사용)에도 사용합니다.</p>
-</li>
-<li><p>연산 중 컨테이너에 문제가 생겨도 pod만 살아있다면 pod내 컨테이너를 재시작해 emptyDir에 저장해둔 데이터를 계속 사용 가능합니다.</p>
-</li>
-<li><p>동일 Pod 내의 여러 컨테이너 간에 임시 데이터를 공유하고 전달하는 데도 사용됩니다.</p>
-</li>
-</ul>
-<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>emptydir-pod.yaml</span></div><code class="language-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
-<span class="token key atrule">kind</span><span class="token punctuation">:</span> Pod
-<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
-    <span class="token key atrule">name</span><span class="token punctuation">:</span> emptydir<span class="token punctuation">-</span>pod
-<span class="token key atrule">spec</span><span class="token punctuation">:</span>
-    <span class="token key atrule">containers</span><span class="token punctuation">:</span>
-    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> &lt;container<span class="token punctuation">-</span>name<span class="token punctuation">></span>
-      <span class="token key atrule">image</span><span class="token punctuation">:</span> &lt;container<span class="token punctuation">-</span>image<span class="token punctuation">></span>
-      <span class="token key atrule">volumeMounts</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> <span class="token key atrule">mountPath</span><span class="token punctuation">:</span> &lt;마운트할 컨테이너 내부 경로 (i.e. /emptydir)<span class="token punctuation">></span>
-        <span class="token key atrule">name</span><span class="token punctuation">:</span> &lt;생성한 볼륨 이름 (i.e. emptydir<span class="token punctuation">-</span>v)<span class="token punctuation">></span>
-    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
-    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> &lt;생성할 볼륨 이름 (i.e. emptydir<span class="token punctuation">-</span>v)<span class="token punctuation">></span>
-      <span class="token key atrule">emptyDir</span><span class="token punctuation">:</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <h2 id="DW-ERD-Star-Schema-HDFS"><a href="#DW-ERD-Star-Schema-HDFS" class="headerlink" title="DW ERD (Star Schema, HDFS)"></a>DW ERD (Star Schema, HDFS)</h2><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128741&authkey=%21APSWgN65zYK_m0k&width=1412&height=1370" width="1412" height="1370" alt="Dimension Modeling ERD"/>
 
-<h3 id="볼륨-정의-부분-spec-volumes"><a href="#볼륨-정의-부분-spec-volumes" class="headerlink" title="볼륨 정의 부분(.spec.volumes[])"></a>볼륨 정의 부분(.spec.volumes[])</h3><blockquote>
-<p>.spec.volumes[] 하위 필드에서는 사용하려는 볼륨을 먼저 정의합니다.</p>
-</blockquote>
-<ul>
-<li><p>.spec.volumes[].name: 생성할 볼륨의 이름을 지정합니다.</p>
-</li>
-<li><p>.spec.volumes[].emptyDir: 필드값을 {}(빈 값)으로 지정합니다.</p>
-</li>
-</ul>
-<h3 id="컨테이너-내-마운트-부분-spec-containers-volumeMounts"><a href="#컨테이너-내-마운트-부분-spec-containers-volumeMounts" class="headerlink" title="컨테이너 내 마운트 부분 (.spec.containers[].volumeMounts)"></a>컨테이너 내 마운트 부분 (.spec.containers[].volumeMounts)</h3><blockquote>
-<p>.spec.containers[].volumeMounts 하위 필드에서는 생성한 볼륨을 컨테이너 내부와 마운트 합니다.</p>
-</blockquote>
-<ul>
-<li><p>.spec.containers[].volumeMounts.mountPath: .spec.volumes[]에서 만든 volume을 마운트 할 컨테이너 내부의 디렉터리 경로입니다.</p>
-</li>
-<li><p>.spec.containers[].volumeMounts.name: .spec.volumes[]에서 만든 볼륨의 이름입니다.</p>
-</li>
-</ul>
+<h2 id="Thinking"><a href="#Thinking" class="headerlink" title="Thinking"></a>Thinking</h2><h3 id="1-SQL-스냅샷-테이블-쿼리-최적화"><a href="#1-SQL-스냅샷-테이블-쿼리-최적화" class="headerlink" title="(1) SQL 스냅샷 테이블 쿼리 최적화"></a>(1) SQL 스냅샷 테이블 쿼리 최적화</h3><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129035&authkey=%21AGJ3d5LEK4oOzmI&width=2667&height=1500" width="2667" height="1500" />
+
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129034&authkey=%21AIP26ElaD9U5-Kw&width=2667&height=1500" width="2667" height="1500" />
+
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129032&authkey=%21AGxdXqvMr9IeV1Q&width=2667&height=1500" width="2667" height="1500" />
+
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129033&authkey=%21ALor4zL2tYieZ0w&width=2667&height=1500" width="2667" height="1500" />
+
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129031&authkey=%21ADie-6uw8kO0YUg&width=2667&height=1500" width="2667" height="1500" />
+
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129030&authkey=%21AONfyRVzIK98srM&width=2667&height=1500" width="2667" height="1500" />
+
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129029&authkey=%21AAVTMj0F6IGZckU&width=2667&height=1500" width="2667" height="1500" />
+
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129028&authkey=%21ABZrkZlpjSCwJ3g&width=2667&height=1500" width="2667" height="1500" />
+
+<h3 id="2-HDFS-기반의-DW-차원-모델링"><a href="#2-HDFS-기반의-DW-차원-모델링" class="headerlink" title="(2) HDFS 기반의 DW 차원 모델링"></a>(2) HDFS 기반의 DW 차원 모델링</h3><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129027&authkey=%21AFgZ-DXMEzguyKk&width=2667&height=1500" width="2667" height="1500" />
+
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129026&authkey=%21AFChGo-mCWzllcs&width=2667&height=1500" width="2667" height="1500" />
+
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129025&authkey=%21AJRkUgst7BRgjAk&width=2667&height=1500" width="2667" height="1500" />
+
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129023&authkey=%21AFrC6qtaleJw_bs&width=2667&height=1500" width="2667" height="1500" />
+
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129024&authkey=%21ABVLD3dXC3E1Fjw&width=2667&height=1500" width="2667" height="1500" />
+
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129021&authkey=%21AEit4156YJkqgek&width=2667&height=1500" width="2667" height="1500" />
+
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129022&authkey=%21ALv6J1IzGLXx0iM&width=2667&height=1500" width="2667" height="1500" />
+
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129020&authkey=%21ALOIAwzkpLgBXE0&width=2667&height=1500" width="2667" height="1500" />
+
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129019&authkey=%21AEANlVxTm2BkiH0&width=2667&height=1500" width="2667" height="1500" />
+
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129017&authkey=%21AHiTYQtRJZAwFRk&width=2667&height=1500" width="2667" height="1500" />
+
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129018&authkey=%21ALaJoGTxJQaZsRs&width=2667&height=1500" width="2667" height="1500" />
+
 
                 
             </div>
@@ -303,7 +325,7 @@ pod가 사라지면 emptyDir의 데이터도 함께 사라집니다.
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/06/16/Kubernetes/posting/emptyDir/">http://example.com/2024/06/16/Kubernetes/posting/emptyDir/</a>
+                    <a href="http://example.com/1996/01/19/Side-Project/dw-modeling-1/">http://example.com/1996/01/19/Side-Project/dw-modeling-1/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -415,12 +437,12 @@ pod가 사라지면 emptyDir의 데이터도 함께 사라집니다.
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/06/16/Kubernetes/posting/etcd_backup_restore/">
+                <a href="/2024/01/01/DBT/reference/About%20References/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="ectd Backup">
+                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="About References">
                         
-                        <span class="card-title diy-neon-red">ectd Backup</span>
+                        <span class="card-title diy-neon-red">About References</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -431,14 +453,14 @@ pod가 사라지면 emptyDir의 데이터도 함께 사라집니다.
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-06-16
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Kubernetes/" class="post-category">
-                                    Kubernetes
+                            <a href="/categories/DBT/" class="post-category">
+                                    DBT
                                 </a>
                             
                             
@@ -455,12 +477,12 @@ pod가 사라지면 emptyDir의 데이터도 함께 사라집니다.
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/06/16/Kubernetes/posting/configmap/">
+                <a href="/1996/01/19/Side-Project/dw-modeling-2/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="환경변수를 ConfigMap에 저장하는 방법">
+                        <img src="/images/logos/life-logo.jpg" class="responsive-img" alt="DW Modeling (Physical)">
                         
-                        <span class="card-title diy-neon-red">환경변수를 ConfigMap에 저장하는 방법</span>
+                        <span class="card-title diy-neon-red">DW Modeling (Physical)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -471,16 +493,12 @@ pod가 사라지면 emptyDir의 데이터도 함께 사라집니다.
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-06-16
+                                <i class="far fa-clock fa-fw icon-date"></i>1996-01-19
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Kubernetes/" class="post-category">
-                                    Kubernetes
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Keyhong
                             
                         </span>
                     </div>
