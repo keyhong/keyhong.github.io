@@ -5,13 +5,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Docker 개념 정리, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="도커
+    <meta name="description" content="Docker
 애플리케이션 개발, 배송 및 실행을 위한 개방형 플랫폼
 
 
 애플리케이션을 인프라에서 분리 하여 소프트웨어를 신속하게 제공
 애플리케이션을 관리하는 것과 동일한 방식 으로 인프라를 관리
-코드를 신속하게 배송, 테스">
+코드를 신속하게 배송">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -229,12 +229,12 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="도커"><a href="#도커" class="headerlink" title="도커"></a>도커</h2><blockquote>
+                <h2 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h2><blockquote>
 <p>애플리케이션 개발, 배송 및 실행을 위한 개방형 플랫폼</p>
 </blockquote>
 <ul>
-<li>애플리케이션을 <strong>인프라에서 분리</strong> 하여 소프트웨어를 신속하게 제공</li>
-<li><strong>애플리케이션을 관리하는 것과 동일한 방식</strong> 으로 인프라를 관리</li>
+<li>애플리케이션을 <code>인프라에서 분리</code> 하여 소프트웨어를 신속하게 제공</li>
+<li><code>애플리케이션을 관리하는 것과 동일한 방식</code> 으로 인프라를 관리</li>
 <li>코드를 신속하게 배송, 테스트 및 배포하기 위한 Docker의 방법론을 활용하면 코드 작성과 프로덕션에서 실행 사이의 지연 시간을 크게 감소</li>
 <li>이 과정을 빌드, 공유, 실행이라고 함</li>
 </ul>
@@ -247,7 +247,7 @@
 <!-- <https://www.docker.com/why-docker/> -->
 
 
-<h2 id="컨테이너"><a href="#컨테이너" class="headerlink" title="컨테이너"></a>컨테이너</h2><blockquote>
+<h2 id="Container"><a href="#Container" class="headerlink" title="Container"></a>Container</h2><blockquote>
 <p>애플리케이션과 애플리케이션을 실행할 컴퓨터(IP 주소, 컴퓨터 이름, 디스크 드라이브)를 담은 가상 환경</p>
 </blockquote>
 <ul>
@@ -272,7 +272,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="Docker-Container-Command"><a href="#Docker-Container-Command" class="headerlink" title="Docker Container Command"></a>Docker Container Command</h2><ul>
+<h2 id="Docker-Container-명령어"><a href="#Docker-Container-명령어" class="headerlink" title="Docker Container 명령어"></a>Docker Container 명령어</h2><ul>
 <li>컨테이너 실행</li>
 </ul>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> container run <span class="token operator">&lt;</span>이미지<span class="token operator">></span>
@@ -323,7 +323,7 @@
 $ <span class="token function">docker</span> container <span class="token function">rm</span> <span class="token parameter variable">-f</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">docker</span> container <span class="token function">ls</span> <span class="token parameter variable">-aq</span><span class="token variable">)</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="Docker-Image와-Image-Layer"><a href="#Docker-Image와-Image-Layer" class="headerlink" title="Docker Image와 Image Layer"></a>Docker Image와 Image Layer</h2><blockquote>
-<p>도커 이미지는 이미지 레이어가 모인 논리적 대상. 레이어는 도커 엔진의 캐시에 물리적으로 저장된 파일입니다. <strong>이미지 레이어는 여러 이미지와 컨테이너에서 공유되기 때문에 중요합니다</strong></p>
+<p>도커 이미지는 이미지 레이어가 모인 논리적 대상. 레이어는 도커 엔진의 캐시에 물리적으로 저장된 파일입니다. <code>이미지 레이어는 여러 이미지와 컨테이너에서 공유되기 때문에 중요</code></p>
 </blockquote>
 <h4 id="도커-이미지-히스토리-확인"><a href="#도커-이미지-히스토리-확인" class="headerlink" title="도커 이미지 히스토리 확인"></a>도커 이미지 히스토리 확인</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> image <span class="token function">history</span> <span class="token punctuation">[</span>image<span class="token punctuation">]</span>
 
@@ -336,9 +336,9 @@ $ <span class="token function">docker</span> container <span class="token functi
 </ul>
 </li>
 </ul>
-<p><strong>따라서, 같은 기반 레이어를 공유하는 애플리케이션의 숫자가 많을 수록 더욱 디스크 공간을 절약 가능</strong><br><strong>이미지 레이어를 여러 이미지가 공유한다면, 공유되는 레이어는 수정할 수 없어야 합니다. 도커는 이미지 레이어를 읽기 전용으로 만듭니다.</strong></p>
+<p><code>따라서, 같은 기반 레이어를 공유하는 애플리케이션의 숫자가 많을 수록 더욱 디스크 공간을 절약 가능</code><br><code>이미지 레이어를 여러 이미지가 공유한다면, 공유되는 레이어는 수정할 수 없어야 함. 도커는 이미지 레이어를 읽기 전용으로 생성</code></p>
 <ul>
-<li>이러한 이유로 이미지를 빌드하면서 만들어지는 레이어를 최적화하는 것이 필요합니다. 즉, Dockerfile 스크립트의 인스트럭션의 순서를 최적화하여 도커 이미지의 용량을 줄이고 빌드를 빠르게 만드는 기법을 활용합니다.</li>
+<li>이러한 이유로 이미지를 빌드하면서 만들어지는 레이어를 최적화하는 것이 필요. 즉, Dockerfile 스크립트의 인스트럭션의 순서를 최적화하여 도커 이미지의 용량을 줄이고 빌드를 빠르게 만드는 기법을 활용</li>
 </ul>
 <h2 id="이미지-레이어-캐시를-이용하여-Dockerfile-스크립트-최적화"><a href="#이미지-레이어-캐시를-이용하여-Dockerfile-스크립트-최적화" class="headerlink" title="이미지 레이어 캐시를 이용하여 Dockerfile 스크립트 최적화"></a>이미지 레이어 캐시를 이용하여 Dockerfile 스크립트 최적화</h2><ul>
 <li><p>도커의 이미지 레이어가 특정한 순서대로만 배치된다고 가정하기 때문에, 순서의 중간에 있는 레이어가 변경되면 변경된 레이어보다 위에 오는 레이어를 재사용 불가</p>
@@ -348,7 +348,7 @@ $ <span class="token function">docker</span> container <span class="token functi
 <li><p>인스트럭션의 결과가 이전 빌드와 같다면, 이전에 캐시된 레이어를 재사용</p>
 </li>
 </ul>
-<p><strong>캐시에 일치하는 레이어가 있는지 확인하기 위해 해시값을 이용. 기존 이미지 레이어에 해시값이 일치하는 것이 없다면 캐시 미스 발생 및 인스트럭션 실행</strong></p>
+<p><code>캐시에 일치하는 레이어가 있는지 확인하기 위해 해시값을 이용. 기존 이미지 레이어에 해시값이 일치하는 것이 없다면 캐시 미스 발생 및 인스트럭션 실행</code></p>
 <ul>
 <li><p>해시값은 Dockerfile 스크립트의 인스트럭션과 인스트럭션에 의해 복사되는 파일의 내용으로부터 계산</p>
 </li>

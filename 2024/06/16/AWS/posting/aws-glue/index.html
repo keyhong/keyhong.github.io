@@ -6,9 +6,10 @@
     <meta charset="utf-8">
     <meta name="keywords" content="AWS Glue, Data Engineering,Data Analysis,Python Backend">
     <meta name="description" content="Glue
+
 분석 사용자가 여러 소스의 데이터를 쉽게 검색, 준비, 이동, 통합할 수 있도록 하는 서버리스 데이터 통합 서비스
 
-주요한 용도는 S3 DataLake(이하 DL)의 메타 데이터를 만들고 관리한다. S3 자">
+주요한 용도는 S3 DataLake(이하 DL)의 메타 데이터를 만들고 관리한다. S3 ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -226,13 +227,15 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Glue"><a href="#Glue" class="headerlink" title="Glue"></a>Glue</h2><blockquote>
+                <h2 id="Glue"><a href="#Glue" class="headerlink" title="Glue"></a>Glue</h2><hr>
+<blockquote>
 <p>분석 사용자가 여러 소스의 데이터를 쉽게 검색, 준비, 이동, 통합할 수 있도록 하는 서버리스 데이터 통합 서비스</p>
 </blockquote>
 <p>주요한 용도는 S3 DataLake(이하 DL)의 메타 데이터를 만들고 관리한다. S3 자체로는 데이터에 대한 스키마를 가지고 있지 않다. DW와 DL의 큰 차이인데, <code>S3는 정형/반정형/비정형의 어떤 타입의 파일이라도 넣을 수 있다. 때문에 RDB 기반이 되는 DW와 달리 처음부터 스키마를 정의하지 않는다.</code></p>
 <p>하지만 <code>DL의 큰 단점이라면 테이블에 대한 정의가 없어 관리가 어렵고 스키마가 없어 어떤 Query도 날릴 수가 없다.</code> 그냥 순수하게 봤을 때는 전체가 문자열인 파일로 인식하는 것이다. (심지어는 ‘,’ 와 같은 구분자도 문자열로 인식하기에 0과 1로만 인식하는 컴퓨터의 입장에서는 사용자의 도움 없이는 절대로 구분할 수 없다.)</p>
 <p>이러한 이유로 <code>DL에서도 적어도 데이터를 읽을 때는 미리 정의된 스키마에 따라 읽어야 SQL을 이용해서 가공하는 것도 쉽고 분석하기도 편하다. Glue는 그런 역할을 도와줄 수 있다.</code> Glue를 공부하면 느낀 것은 상당히 기능이 많다는 것이다. 그 모든 기능을 통틀어서 Glue라는 이름으로 대표하지만, 개인적으로 공부한 관점에서는 “Glue가 무엇이다.” 라고 정의하는 것보다도 Glue가 어떤 핵심적인 기능을 가지고 있는 가를 중심으로 이해하는 게 편했다. 그 중 핵심이라 생각되는 기능을 몇 개만 정리해 보았다.</p>
-<h2 id="①-Glue-Crawler"><a href="#①-Glue-Crawler" class="headerlink" title="① Glue Crawler"></a>① Glue Crawler</h2><p><code>Data Lake(S3), DynamoDB(NoSQL DB), RDB(RDS) 등의 데이터 스토어에서 스키마를 만들어주는 역할을 한다.</code> JDBC로 붙을 수 있는 DB는 물론, Mongo DB와 DW격인 Redshift도 가능하다.</p>
+<h2 id="①-Glue-Crawler"><a href="#①-Glue-Crawler" class="headerlink" title="① Glue Crawler"></a>① Glue Crawler</h2><hr>
+<p><code>Data Lake(S3), DynamoDB(NoSQL DB), RDB(RDS) 등의 데이터 스토어에서 스키마를 만들어주는 역할을 한다.</code> JDBC로 붙을 수 있는 DB는 물론, Mongo DB와 DW격인 Redshift도 가능하다.</p>
 <ul>
 <li>가능한 데이터 스토어 : <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/ko_kr/glue/latest/dg/crawler-data-stores.html">https://docs.aws.amazon.com/ko_kr/glue/latest/dg/crawler-data-stores.html</a></li>
 </ul>
@@ -245,7 +248,8 @@
 <ul>
 <li>AWS Glue Trigger : <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/ko_kr/glue/latest/dg/about-triggers.html">https://docs.aws.amazon.com/ko_kr/glue/latest/dg/about-triggers.html</a></li>
 </ul>
-<h2 id="②-Glue-Data-Catalog"><a href="#②-Glue-Data-Catalog" class="headerlink" title="② Glue Data Catalog"></a>② Glue Data Catalog</h2><p><code>Athena(AWS presto), EMR(AWS Hadoop Cluster), Redshift(AWS DW), Glue ETL 등의 analysis 또는 etl 작업을 위한 솔루션에서 데이터와 매핑하여 사용할 메타 데이터를 저장한다.</code> Hadoop에서 Hive를 사용할 때 HDFS 데이터를 조회하기 위한 <code>메타데이터를 저장하는 Hive Metastore와 비슷하다.</code></p>
+<h2 id="②-Glue-Data-Catalog"><a href="#②-Glue-Data-Catalog" class="headerlink" title="② Glue Data Catalog"></a>② Glue Data Catalog</h2><hr>
+<p><code>Athena(AWS presto), EMR(AWS Hadoop Cluster), Redshift(AWS DW), Glue ETL 등의 analysis 또는 etl 작업을 위한 솔루션에서 데이터와 매핑하여 사용할 메타 데이터를 저장한다.</code> Hadoop에서 Hive를 사용할 때 HDFS 데이터를 조회하기 위한 <code>메타데이터를 저장하는 Hive Metastore와 비슷하다.</code></p>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110214&authkey=%21ALfKyKgUGe3BDdo&width=727&height=384" width="727" height="384" alt="데이터 스토어 > Glue Crawler > *Glue Data Catalog"/>
 
 <p>앞서 Glue Crawler를 통해 Data Catalog에 스키마를 만든다고 했는 데, <code>꼭 크롤러를 사용하지 않더라도 사용자가 수동으로 정의할 수도 있다.</code> 그래서 S3 Bucket 안에 하나의 폴더를 만들어서 테이블 스키마를 정의하고 매핑해 보았다.</p>

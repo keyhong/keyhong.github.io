@@ -5,11 +5,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Django 모델 (ORM), Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="애플리케이션의 다양한 데이터 저장 방법데이터베이스 : DBMS, NoSQL 등 
+    <meta name="description" content="애플리케이션의 다양한 데이터 저장 방법
+데이터베이스 : DBMS, NoSQL 등 
 파일 : 로컬, 외부 정적 스토리지
-캐시서버 : memcached, redis 등
- 
-데이터베이스와 SQL데이터베이스의 종류RDBMS ">
+캐시서버 : memcached, redis 등 ## 데이터베이스와 SQL데이터베이스의 종류
+RDB">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -227,23 +227,21 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="애플리케이션의-다양한-데이터-저장-방법"><a href="#애플리케이션의-다양한-데이터-저장-방법" class="headerlink" title="애플리케이션의 다양한 데이터 저장 방법"></a>애플리케이션의 다양한 데이터 저장 방법</h2><p>데이터베이스 : DBMS, NoSQL 등 </p>
+                <h2 id="애플리케이션의-다양한-데이터-저장-방법"><a href="#애플리케이션의-다양한-데이터-저장-방법" class="headerlink" title="애플리케이션의 다양한 데이터 저장 방법"></a>애플리케이션의 다양한 데이터 저장 방법</h2><hr>
+<p>데이터베이스 : DBMS, NoSQL 등 </p>
 <p>파일 : 로컬, 외부 정적 스토리지</p>
-<p>캐시서버 : memcached, redis 등
- </p>
-<h2 id="데이터베이스와-SQL"><a href="#데이터베이스와-SQL" class="headerlink" title="데이터베이스와 SQL"></a>데이터베이스와 SQL</h2><h3 id="데이터베이스의-종류"><a href="#데이터베이스의-종류" class="headerlink" title="데이터베이스의 종류"></a>데이터베이스의 종류</h3><p>RDBMS (관계형 데이터베이스 관리 시스템) : PostgreSQL, MySQL, MS-SQL, Oracle 등<br> <br>NoSQL : MongoDB, Cassandra, CouchDB, Google BigTable 등
- </p>
+<h2 id="캐시서버-memcached-redis-등-데이터베이스와-SQL"><a href="#캐시서버-memcached-redis-등-데이터베이스와-SQL" class="headerlink" title="캐시서버 : memcached, redis 등 ## 데이터베이스와 SQL"></a>캐시서버 : memcached, redis 등<br> <br>## 데이터베이스와 SQL</h2><h3 id="데이터베이스의-종류"><a href="#데이터베이스의-종류" class="headerlink" title="데이터베이스의 종류"></a>데이터베이스의 종류</h3><ul>
+<li>RDBMS (관계형 데이터베이스 관리 시스템) : PostgreSQL, MySQL, MS-SQL, Oracle 등</li>
+<li>NoSQL : MongoDB, Cassandra, CouchDB, Google BigTable 등</li>
+</ul>
+<p> </p>
 <h3 id="데이터베이스에-쿼리하기-위한-언어-SQL"><a href="#데이터베이스에-쿼리하기-위한-언어-SQL" class="headerlink" title="데이터베이스에 쿼리하기 위한 언어 -&gt; SQL"></a>데이터베이스에 쿼리하기 위한 언어 -&gt; SQL</h3><p>같은 작업을 하더라도, 보다 적은 수의 SQL, 보다 높은 성능의 SQL<br>직접 SQL을 만들어내기도 하지만, ORM(Object-relational mapping)을 통해 SQL을 생성&#x2F;실행하기도 합니다.<br>-&gt; Not magic.<br> <br>(중요) ORM을 쓰더라도, 내가 작성한 ORM 코드를 통해 어떤 SQL이 실행되고 있는 지, 파악을 하고 이를 최적화할 수 있어야 합니다. -&gt; django-debug-toolbar 적극 활용
  </p>
-<h2 id="장고-ORM-모델은-RDB만을-지원"><a href="#장고-ORM-모델은-RDB만을-지원" class="headerlink" title="장고 ORM 모델은 RDB만을 지원"></a>장고 ORM 모델은 RDB만을 지원</h2><p>장고 3.0.2 기준으로 기본 제공되는 backends
- </p>
-<h2 id="다양한-파이썬-ORM-awesome-python-orm"><a href="#다양한-파이썬-ORM-awesome-python-orm" class="headerlink" title="다양한 파이썬 ORM (awesome-python#orm)"></a>다양한 파이썬 ORM (awesome-python#orm)</h2><h3 id="Relational-Databases"><a href="#Relational-Databases" class="headerlink" title="Relational Databases"></a>Relational Databases</h3><p>Django Models, SQLAlchemy, Orator, Peewee, PonyORM 등</p>
-<h3 id="NoSQL-Databases"><a href="#NoSQL-Databases" class="headerlink" title="NoSQL Databases"></a>NoSQL Databases</h3><p>django-mongodb-engine, hot-redis, MongoEngine, PynamoDB 
- </p>
-<h2 id="장고의-강점은-Model과-Form"><a href="#장고의-강점은-Model과-Form" class="headerlink" title="장고의 강점은 Model과 Form"></a>장고의 강점은 Model과 Form</h2><h3 id="물론-장고에서도-다양한-ORM-라이브러리-사용-가능"><a href="#물론-장고에서도-다양한-ORM-라이브러리-사용-가능" class="headerlink" title="물론, 장고에서도 다양한 ORM, 라이브러리 사용 가능."></a>물론, 장고에서도 다양한 ORM, 라이브러리 사용 가능.</h3><h3 id="강력한-Model-Form"><a href="#강력한-Model-Form" class="headerlink" title="강력한 Model&#x2F;Form"></a>강력한 Model&#x2F;Form</h3><h3 id="물론-적절하게-섞어-쓰기도-가능합니다"><a href="#물론-적절하게-섞어-쓰기도-가능합니다" class="headerlink" title="물론, 적절하게 섞어 쓰기도 가능합니다."></a>물론, 적절하게 섞어 쓰기도 가능합니다.</h3><h3 id="SQL을-직접-실행하실-수도-있지만-가능하면-ORM을-쓰세요"><a href="#SQL을-직접-실행하실-수도-있지만-가능하면-ORM을-쓰세요" class="headerlink" title="SQL을 직접 실행하실 수도 있지만, 가능하면 ORM을 쓰세요."></a>SQL을 직접 실행하실 수도 있지만, 가능하면 ORM을 쓰세요.</h3><p> <br>직접 문자열을 조합하지 마시고, 인자로 처리하세요. -&gt; SQL Injection 방지
+<h2 id="장고-ORM-모델은-RDB만을-지원"><a href="#장고-ORM-모델은-RDB만을-지원" class="headerlink" title="장고 ORM 모델은 RDB만을 지원"></a>장고 ORM 모델은 RDB만을 지원</h2><h2 id="장고-3-0-2-기준으로-기본-제공되는-backends-다양한-파이썬-ORM-awesome-python-orm"><a href="#장고-3-0-2-기준으로-기본-제공되는-backends-다양한-파이썬-ORM-awesome-python-orm" class="headerlink" title="장고 3.0.2 기준으로 기본 제공되는 backends ## 다양한 파이썬 ORM (awesome-python#orm)"></a>장고 3.0.2 기준으로 기본 제공되는 backends<br> <br>## 다양한 파이썬 ORM (awesome-python#orm)</h2><h3 id="Relational-Databases"><a href="#Relational-Databases" class="headerlink" title="Relational Databases"></a>Relational Databases</h3><p>Django Models, SQLAlchemy, Orator, Peewee, PonyORM 등</p>
+<h3 id="NoSQL-Databases"><a href="#NoSQL-Databases" class="headerlink" title="NoSQL Databases"></a>NoSQL Databases</h3><h2 id="django-mongodb-engine-hot-redis-MongoEngine-PynamoDB-장고의-강점-Model-Form"><a href="#django-mongodb-engine-hot-redis-MongoEngine-PynamoDB-장고의-강점-Model-Form" class="headerlink" title="django-mongodb-engine, hot-redis, MongoEngine, PynamoDB  ## 장고의 강점 : Model &amp; Form"></a>django-mongodb-engine, hot-redis, MongoEngine, PynamoDB <br> <br>## 장고의 강점 : Model &amp; Form</h2><h3 id="물론-장고에서도-다양한-ORM-라이브러리-사용-가능"><a href="#물론-장고에서도-다양한-ORM-라이브러리-사용-가능" class="headerlink" title="물론, 장고에서도 다양한 ORM, 라이브러리 사용 가능."></a>물론, 장고에서도 다양한 ORM, 라이브러리 사용 가능.</h3><h3 id="강력한-Model-Form"><a href="#강력한-Model-Form" class="headerlink" title="강력한 Model&#x2F;Form"></a>강력한 Model&#x2F;Form</h3><h3 id="물론-적절하게-섞어-쓰기도-가능합니다"><a href="#물론-적절하게-섞어-쓰기도-가능합니다" class="headerlink" title="물론, 적절하게 섞어 쓰기도 가능합니다."></a>물론, 적절하게 섞어 쓰기도 가능합니다.</h3><h3 id="SQL을-직접-실행하실-수도-있지만-가능하면-ORM-사용을-권장"><a href="#SQL을-직접-실행하실-수도-있지만-가능하면-ORM-사용을-권장" class="headerlink" title="SQL을 직접 실행하실 수도 있지만, 가능하면 ORM 사용을 권장"></a>SQL을 직접 실행하실 수도 있지만, 가능하면 ORM 사용을 권장</h3><p> <br>직접 문자열을 조합하지 마시고, 인자로 처리하세요. -&gt; SQL Injection 방지
  </p>
 <h2 id="Django-Model-장고-내장-ORM"><a href="#Django-Model-장고-내장-ORM" class="headerlink" title="Django Model (장고 내장 ORM)"></a>Django Model (장고 내장 ORM)</h2><h3 id="과-를-1-1로-매핑"><a href="#과-를-1-1로-매핑" class="headerlink" title="&lt;데이터베이스 테이블&gt;과 &lt;파이썬 클래스&gt;를 1:1로 매핑"></a>&lt;데이터베이스 테이블&gt;과 &lt;파이썬 클래스&gt;를 1:1로 매핑</h3><h3 id="모델-클래스명은-단수형으로-지정-예-Posts-X-Post-O"><a href="#모델-클래스명은-단수형으로-지정-예-Posts-X-Post-O" class="headerlink" title="모델 클래스명은 단수형으로 지정 - 예 : Posts (X) Post (O)"></a>모델 클래스명은 단수형으로 지정 - 예 : Posts (X) Post (O)</h3><p>클래스이기에 필히 “첫 글자가 대문자인 PascalCase 네이밍”</p>
-<h3 id="매핑되는-모델-클래스는-DB-테이블-필드-내역이-일치해야-합니다"><a href="#매핑되는-모델-클래스는-DB-테이블-필드-내역이-일치해야-합니다" class="headerlink" title="매핑되는 모델 클래스는 DB 테이블 필드 내역이 일치해야 합니다."></a>매핑되는 모델 클래스는 DB 테이블 필드 내역이 일치해야 합니다.</h3><h3 id="모델을-만들기-전에-서비스에-맞게-데이터베이스-설계가-필수"><a href="#모델을-만들기-전에-서비스에-맞게-데이터베이스-설계가-필수" class="headerlink" title="모델을 만들기 전에, 서비스에 맞게 데이터베이스 설계가 필수."></a>모델을 만들기 전에, 서비스에 맞게 데이터베이스 설계가 필수.</h3><h3 id="이는-데이터베이스-영역-관계형-데이터베이스-학습도-필요합니다"><a href="#이는-데이터베이스-영역-관계형-데이터베이스-학습도-필요합니다" class="headerlink" title="이는 데이터베이스 영역. -&gt; 관계형 데이터베이스 학습도 필요합니다."></a>이는 데이터베이스 영역. -&gt; 관계형 데이터베이스 학습도 필요합니다.</h3><p> </p>
+<h3 id="매핑되는-모델-클래스는-DB-테이블-필드-내역이-일치해야-함"><a href="#매핑되는-모델-클래스는-DB-테이블-필드-내역이-일치해야-함" class="headerlink" title="매핑되는 모델 클래스는 DB 테이블 필드 내역이 일치해야 함"></a>매핑되는 모델 클래스는 DB 테이블 필드 내역이 일치해야 함</h3><h3 id="모델을-만들기-전에-서비스에-맞게-데이터베이스-설계-필수-이는-데이터베이스-영역-관계형-데이터베이스-학습도-필요합니다"><a href="#모델을-만들기-전에-서비스에-맞게-데이터베이스-설계-필수-이는-데이터베이스-영역-관계형-데이터베이스-학습도-필요합니다" class="headerlink" title="모델을 만들기 전에, 서비스에 맞게 데이터베이스 설계 필수. 이는 데이터베이스 영역. -&gt; 관계형 데이터베이스 학습도 필요합니다."></a>모델을 만들기 전에, 서비스에 맞게 데이터베이스 설계 필수. 이는 데이터베이스 영역. -&gt; 관계형 데이터베이스 학습도 필요합니다.</h3><p> </p>
 <h2 id="모델-활용-순서"><a href="#모델-활용-순서" class="headerlink" title="모델 활용 순서"></a>모델 활용 순서</h2><h3 id="장고-모델을-통해-데이터베이스-형상을-관리할-경우"><a href="#장고-모델을-통해-데이터베이스-형상을-관리할-경우" class="headerlink" title="장고 모델을 통해, 데이터베이스 형상을 관리할 경우"></a>장고 모델을 통해, 데이터베이스 형상을 관리할 경우</h3><ol>
 <li><p>모델 클래스 작성</p>
 </li>
@@ -258,8 +256,14 @@
 <h3 id="장고-외부에서-데이터베이스-형상을-관리할-경우"><a href="#장고-외부에서-데이터베이스-형상을-관리할-경우" class="headerlink" title="장고 외부에서, 데이터베이스 형상을 관리할 경우"></a>장고 외부에서, 데이터베이스 형상을 관리할 경우</h3><p>데이터베이스로부터 모델 클래스 소스 생성 -&gt; inspectdb 명령</p>
 <p>모델활용
  </p>
-<h2 id="모델명과-DB-테이블명"><a href="#모델명과-DB-테이블명" class="headerlink" title="모델명과 DB 테이블명"></a>모델명과 DB 테이블명</h2><h3 id="DB-테이블명-디폴트-“앱이름-모델명”"><a href="#DB-테이블명-디폴트-“앱이름-모델명”" class="headerlink" title="DB 테이블명 : 디폴트 “앱이름_모델명”"></a>DB 테이블명 : 디폴트 “앱이름_모델명”</h3><p>예<br>blog 앱<br> Post 모델 -&gt; “blog_post”<br> Comment 모델 -&gt; “blog_comment”</p>
-<p>shop 앱<br> Item 모델 -&gt; “shop_item”<br> Review 모델 -&gt; “shop_review”</p>
+<h2 id="모델명과-DB-테이블명"><a href="#모델명과-DB-테이블명" class="headerlink" title="모델명과 DB 테이블명"></a>모델명과 DB 테이블명</h2><h3 id="DB-테이블명-디폴트-“앱이름-모델명”"><a href="#DB-테이블명-디폴트-“앱이름-모델명”" class="headerlink" title="DB 테이블명 : 디폴트 “앱이름_모델명”"></a>DB 테이블명 : 디폴트 “앱이름_모델명”</h3><pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>Example</span></div><code class="language-bash">blog 앱
+ Post 모델 -<span class="token operator">></span> <span class="token string">"blog_post"</span>
+ Comment 모델 -<span class="token operator">></span> <span class="token string">"blog_comment"</span>
+
+shop 앱
+ Item 모델 -<span class="token operator">></span> <span class="token string">"shop_item"</span>
+ Review 모델 -<span class="token operator">></span> <span class="token string">"shop_review"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="커스텀-지정"><a href="#커스텀-지정" class="headerlink" title="커스텀 지정"></a>커스텀 지정</h3><p>모델 Meta 클래스의 db_table 속
  </p>
 <h2 id="적용순서"><a href="#적용순서" class="headerlink" title="적용순서"></a>적용순서</h2><h3 id="Item-모델-정의"><a href="#Item-모델-정의" class="headerlink" title="Item 모델 정의"></a>Item 모델 정의</h3><h3 id="마이그레이션-파일-생성"><a href="#마이그레이션-파일-생성" class="headerlink" title="마이그레이션 파일 생성"></a>마이그레이션 파일 생성</h3><p>python manage.py makemigrations &lt;앱이름&gt;</p>

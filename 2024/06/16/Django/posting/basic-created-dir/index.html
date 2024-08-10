@@ -5,10 +5,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="기본 생성된 파일/디렉터리 목록, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="기본 생성된 파일&amp;#x2F;디렉터리 목록기본 템플릿 : django&amp;#x2F;conf&amp;#x2F;project_template
+    <meta name="description" content="기본 생성된 파일&amp;#x2F;디렉터리 목록
+기본 템플릿 : django&amp;#x2F;conf&amp;#x2F;project_template
  : 프로젝트명으로 생성된 디렉터리. 다른 이름으로 변경해도 Don’t care.
 
-man">
+ma">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -226,28 +227,47 @@ man">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="기본-생성된-파일-디렉터리-목록"><a href="#기본-생성된-파일-디렉터리-목록" class="headerlink" title="기본 생성된 파일&#x2F;디렉터리 목록"></a>기본 생성된 파일&#x2F;디렉터리 목록</h2><p>기본 템플릿 : django&#x2F;conf&#x2F;project_template</p>
+                <h2 id="기본-생성된-파일-디렉터리-목록"><a href="#기본-생성된-파일-디렉터리-목록" class="headerlink" title="기본 생성된 파일&#x2F;디렉터리 목록"></a>기본 생성된 파일&#x2F;디렉터리 목록</h2><hr>
+<p>기본 템플릿 : django&#x2F;conf&#x2F;project_template</p>
 <p><project> : 프로젝트명으로 생성된 디렉터리. 다른 이름으로 변경해도 Don’t care.</p>
 <ul>
-<li><p>manage.py : 명령행을 통해 각종 장고 명령을 수행</p>
+<li><p><code>manage.py</code> : 명령행을 통해 각종 장고 명령을 수행하는 모듈</p>
 </li>
 <li><p><project> : 프로젝트명으로 생성된 디렉터리. 이 이름을 참조하고 있는 코드가 몇 개 있기에 함부로 수정 X</p>
+<ul>
+<li><p><code>__init__.py</code> : 모든 패키지 파이썬에는 <strong>init</strong>.py를 둔다. 패키지 임포트 할 때의 임포트 대성</p>
+</li>
+<li><p><code>settings.py</code> : 현재 프로젝트에서 장고 기본 설정(django&#x2F;conf&#x2F;global_settings.py)을 덮어쓰고, 새롭게 지정할 설정들</p>
+</li>
+<li><p><code>urls.py</code> : 최상위 URL 설정</p>
+</li>
+<li><p><code>wsgi.py</code> : 실서비스의 웹서비스 진입</p>
+</li>
+<li><p><code>asgi.py</code> : 비동기를 지원하는 프로토</p>
 </li>
 </ul>
-<p>– <strong>init</strong>.py : 모든 패키지 파이썬에는 <strong>init</strong>.py를 둔다. 패키지 임포트 할 때의 임포트 대성</p>
-<p>– settings.py : 현재 프로젝트에서 장고 기본 설정(django&#x2F;conf&#x2F;global_settings.py)을 덮어쓰고, 새롭게 지정할 설정들</p>
-<p>– urls.py : 최상위 URL 설정</p>
-<p>– wsgi.py : 실서비스의 웹서비스 진입</p>
-<p>– asgi.py : 비동기를 지원하는 프로토</p>
-<h2 id="프로젝트-초기화-작업-및-개발서버-구동"><a href="#프로젝트-초기화-작업-및-개발서버-구동" class="headerlink" title="프로젝트 초기화 작업 및 개발서버 구동"></a>프로젝트 초기화 작업 및 개발서버 구동</h2><h3 id="파이썬-명령은-각-머신의-파이썬-3-세팅에-따라-python-python3-혹은-python3-x-등이-될-수-있습니다"><a href="#파이썬-명령은-각-머신의-파이썬-3-세팅에-따라-python-python3-혹은-python3-x-등이-될-수-있습니다" class="headerlink" title="파이썬 명령은 각 머신의 파이썬 3 세팅에 따라, python, python3 혹은 python3.x 등이 될 수 있습니다."></a>파이썬 명령은 각 머신의 파이썬 3 세팅에 따라, python, python3 혹은 python3.x 등이 될 수 있습니다.</h3><p>django-admin startproject <project></p>
-<p>cd <project></p>
-<p>python manage.py migrate</p>
-<p>python manage.py createsuperuser</p>
-<p>python manage.py runserver</p>
-<h3 id="이제-웹-브라우저를-띄워-localhost-8000-admin으로-접속하시고-로그인해보세요"><a href="#이제-웹-브라우저를-띄워-localhost-8000-admin으로-접속하시고-로그인해보세요" class="headerlink" title="이제 웹 브라우저를 띄워, localhost:8000&#x2F;admin으로 접속하시고 로그인해보세요."></a>이제 웹 브라우저를 띄워, localhost:8000&#x2F;admin으로 접속하시고 로그인해보세요.</h3><p>윈도우의 컴퓨터 이름이나 계정명이 한글일 경우 서버 구동에 실패할 수도 있습니다. 이름을 영어로 변경한 후 다시 시도해보세요.</p>
-<h2 id="웹-개발시-브라우저-설정"><a href="#웹-개발시-브라우저-설정" class="headerlink" title="웹 개발시 브라우저 설정"></a>웹 개발시 브라우저 설정</h2><p>웹 서비스 개발 시의 웹 브라우저는 가급적 Google Chrome이나 Mozilla Firebox를 쓰시는 것이 좋습니다. </p>
-<p>최신 웹 기술을 지원하고 있고, 웹 브라우 개발자 도구 지원이 좋으며, 다양한 개발용 확장들이 있습니다.</p>
-<p>운영체제의 기본 브라우저 설정을 Chrome으로 변경해주세요.</p>
+</li>
+</ul>
+<h2 id="프로젝트-초기화-작업-및-개발서버-구동"><a href="#프로젝트-초기화-작업-및-개발서버-구동" class="headerlink" title="프로젝트 초기화 작업 및 개발서버 구동"></a>프로젝트 초기화 작업 및 개발서버 구동</h2><hr>
+<ul>
+<li>파이썬 명령은 각 머신의 파이썬 3 세팅에 따라, python, python3 혹은 python3.x 등이 될 수 있음</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">django-admin startproject <span class="token operator">&lt;</span>project<span class="token operator">></span>
+
+$ <span class="token builtin class-name">cd</span> <span class="token operator">&lt;</span>project<span class="token operator">></span>
+
+$ python manage.py migrate
+
+$ python manage.py createsuperuser
+
+$ python manage.py runserver<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>웹 브라우저에서 <code>localhost:8000/admin</code> 접속 및 로그인</li>
+</ul>
+<p>윈도우의 컴퓨터 이름이나 계정명이 한글일 경우 서버 구동에 실패할 가능성이 있음. 이름을 영어로 변경 필요.</p>
+<h2 id="웹-개발시-브라우저-설정"><a href="#웹-개발시-브라우저-설정" class="headerlink" title="웹 개발시 브라우저 설정"></a>웹 개발시 브라우저 설정</h2><hr>
+<p>웹 서비스 개발 시의 웹 브라우저는 가급적 Google Chrome이나 Mozilla Firebox를 쓰시는 것이 좋음. 최신 웹 기술을 지원하고 있고, 웹 브라우 개발자 도구 지원이 좋으며, 다양한 개발용 확장팩들이 있기 때문</p>
 
                 
             </div>
@@ -389,9 +409,9 @@ man">
                 <a href="/2024/06/16/Django/posting/django-app/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/django-logo.png" class="responsive-img" alt="장고 앱(app)">
+                        <img src="/images/logos/django-logo.png" class="responsive-img" alt="django app">
                         
-                        <span class="card-title diy-neon-red">장고 앱(app)</span>
+                        <span class="card-title diy-neon-red">django app</span>
                     </div>
                 </a>
                 <div class="card-content article-content">

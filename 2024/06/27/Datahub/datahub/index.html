@@ -6,9 +6,10 @@
     <meta charset="utf-8">
     <meta name="keywords" content="Datahub 실험기, Data Engineering,Data Analysis,Python Backend">
     <meta name="description" content="Datahub
+
 메타데이터 관리, 데이터 검색 및 데이터 거버넌스를 간소화하도록 설계된 최신 데이터 카탈로그
 
-사용자는 (1) 데이터의 효율적으로 탐색 및 이해하고, (2) 데이터 계보(lineage) 추적하고, (3">
+사용자는 (1) 데이터의 효율적으로 탐색 및 이해하고, (2) 데이터 계보(lineage) 추적하고, (">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -226,11 +227,13 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Datahub"><a href="#Datahub" class="headerlink" title="Datahub"></a>Datahub</h2><blockquote>
+                <h2 id="Datahub"><a href="#Datahub" class="headerlink" title="Datahub"></a>Datahub</h2><hr>
+<blockquote>
 <p><code>메타데이터 관리</code>, <code>데이터 검색</code> 및 <code>데이터 거버넌스</code>를 간소화하도록 설계된 최신 데이터 카탈로그</p>
 </blockquote>
 <p>사용자는 <code>(1) 데이터의 효율적으로 탐색 및 이해</code>하고, <code>(2) 데이터 계보(lineage) 추적</code>하고, <code>(3) 데이터 프로파일링(profiling)</code>하고, <code>(4) 데이터 계약 설정</code>이 가능. 메타데이터 관리 플랫폼은 사용자들이 빠르게 변화하는 데이터의 복잡성을 관리하고 전사적으로 관리되는 데이터의 가치를 활용할 수 있도록 구축 되었다.</p>
-<h2 id="Quickstart"><a href="#Quickstart" class="headerlink" title="Quickstart"></a>Quickstart</h2><blockquote>
+<h2 id="Quickstart"><a href="#Quickstart" class="headerlink" title="Quickstart"></a>Quickstart</h2><hr>
+<blockquote>
 <p><code>데이터허브에서 제공하는 Quickstart를 이용하면 로컬에서도 바로 테스트 환경을 만들 수 있다.</code> 물론, DBMS에서 데이터를 주입을 테스트해보려면 도커 컨테이너를 추가로 올려야 한다. </p>
 </blockquote>
 <h3 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h3><p><code>Python 3.8+</code> 설치되어야 한다. (Check using python3 –version).</p>
@@ -393,12 +396,11 @@ $ datahub <span class="token function">docker</span> quickstart <span class="tok
 
 datahub_recipe<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h2 id="Datahub-Architecture"><a href="#Datahub-Architecture" class="headerlink" title="Datahub Architecture"></a>Datahub Architecture</h2><hr>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128839&authkey=%21APgVDq-Cmx-AIwc&width=3250&height=2250" width="3250" height="2250" />
 
-
-
-<h2 id="Datahub-Architecture"><a href="#Datahub-Architecture" class="headerlink" title="Datahub Architecture"></a>Datahub Architecture</h2><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128839&authkey=%21APgVDq-Cmx-AIwc&width=3250&height=2250" width="3250" height="2250" />
-
-<h2 id="Datahub-Component"><a href="#Datahub-Component" class="headerlink" title="Datahub Component"></a>Datahub Component</h2><h3 id="프로세스-디펜던시"><a href="#프로세스-디펜던시" class="headerlink" title="프로세스 디펜던시"></a>프로세스 디펜던시</h3><p>띄어지는 프로세스가 많아 DAG로 디펜던시(dependency)의 순서를 표시해보았다.</p>
+<h2 id="Datahub-Component"><a href="#Datahub-Component" class="headerlink" title="Datahub Component"></a>Datahub Component</h2><hr>
+<h3 id="프로세스-디펜던시"><a href="#프로세스-디펜던시" class="headerlink" title="프로세스 디펜던시"></a>프로세스 디펜던시</h3><p>띄어지는 프로세스가 많아 DAG로 디펜던시(dependency)의 순서를 표시해보았다.</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">elasticsearch              <span class="token operator">>></span> elasticsearch-setup  <span class="token operator">>></span>  datahub-upgrade  <span class="token operator">>></span>  datahub-gms  <span class="token operator">>></span>  <span class="token punctuation">[</span> datahub-actions, datahub-frontend-react <span class="token punctuation">]</span>
 zookeeper      <span class="token operator">>></span> broker   <span class="token operator">>></span> kafka-setup          <span class="token operator">>></span>  datahub-upgrade  <span class="token operator">>></span>  datahub-gms  <span class="token operator">>></span>  <span class="token punctuation">[</span> datahub-actions, datahub-frontend-react <span class="token punctuation">]</span>
 mysql                      <span class="token operator">>></span> mysql-setup          <span class="token operator">>></span>  datahub-upgrade  <span class="token operator">>></span>  datahub-gms  <span class="token operator">>></span>  <span class="token punctuation">[</span> datahub-actions, datahub-frontend-react <span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>

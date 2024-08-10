@@ -5,7 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="DW Modeling (Physical), Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Toy Projectplay ground는 Hadoop + Hive + Kudu + Trino가 연결된 docker-compose.yaml 이다. Hadoop을 올릴 떄 처음 메타스토어를 초기화하는 작업을 하는 과정">
+    <meta name="description" content="Toy Project
+play ground는 Hadoop + Hive + Kudu + Trino가 연결된 docker-compose.yaml 이다. Hadoop을 올릴 떄 처음 메타스토어를 초기화하는 작업을 하는 과">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -219,18 +220,23 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Toy-Project"><a href="#Toy-Project" class="headerlink" title="Toy Project"></a>Toy Project</h2><p>play ground는 Hadoop + Hive + Kudu + Trino가 연결된 docker-compose.yaml 이다. Hadoop을 올릴 떄 처음 메타스토어를 초기화하는 작업을 하는 과정 모두 Dockerfile에 만들어 넣었다. 사용 시, 컨테이너가 올라간 이후 DBeaver 같은 툴로 Trino(localhost:8080)에 연결해서 바로 kudu와 hive를 사용할 수 있다.</p>
-<h2 id="소스-코드"><a href="#소스-코드" class="headerlink" title="소스 코드"></a>소스 코드</h2><ul>
+                <h2 id="Toy-Project"><a href="#Toy-Project" class="headerlink" title="Toy Project"></a>Toy Project</h2><hr>
+<p>play ground는 Hadoop + Hive + Kudu + Trino가 연결된 docker-compose.yaml 이다. Hadoop을 올릴 떄 처음 메타스토어를 초기화하는 작업을 하는 과정 모두 Dockerfile에 만들어 넣었다. 사용 시, 컨테이너가 올라간 이후 DBeaver 같은 툴로 Trino(localhost:8080)에 연결해서 바로 kudu와 hive를 사용할 수 있다.</p>
+<h2 id="소스-코드"><a href="#소스-코드" class="headerlink" title="소스 코드"></a>소스 코드</h2><hr>
+<ul>
 <li><a target="_blank" rel="noopener" href="https://github.com/keyhong/trino-playground">https://github.com/keyhong/trino-playground</a></li>
 </ul>
-<h2 id="차원-모델링"><a href="#차원-모델링" class="headerlink" title="차원 모델링"></a>차원 모델링</h2><p>이번에 ERD를 직접 그려 보았다. 도구는 <a target="_blank" rel="noopener" href="https://app.diagrams.net/">draw.io</a> 이다. 바탕색과 테이블 색을 설정할 수 있고, 엔티티 간의 관계를 쉽게 그릴 수 있는 도구다. 이 도구를 이용해 Fact와 Dimension으로 차원 모델링(스타 스키마)을 했고, 이력 테이블에 대해서는 SCD 4 (SCD2 + Historical Table)로 풀어냈다.</p>
+<h2 id="차원-모델링"><a href="#차원-모델링" class="headerlink" title="차원 모델링"></a>차원 모델링</h2><hr>
+<p>이번에 ERD를 직접 그려 보았다. 도구는 <a target="_blank" rel="noopener" href="https://app.diagrams.net/">draw.io</a> 이다. 바탕색과 테이블 색을 설정할 수 있고, 엔티티 간의 관계를 쉽게 그릴 수 있는 도구다. 이 도구를 이용해 Fact와 Dimension으로 차원 모델링(스타 스키마)을 했고, 이력 테이블에 대해서는 SCD 4 (SCD2 + Historical Table)로 풀어냈다.</p>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128741&authkey=%21APSWgN65zYK_m0k&width=1412&height=1370" width="1412" height="1370" alt="Dimension Modeling ERD"/>
 
-<h2 id="목표-아키텍처"><a href="#목표-아키텍처" class="headerlink" title="목표 아키텍처"></a>목표 아키텍처</h2><p>전체 프로세스를 도커로 올렸다. 단일 로컬에서도 구동되는 환경을 만들기 위해 replica를 조정하고 yarn, mapreduce 프로세스는 띄우지 않았다. hive, kudu, trion, dbt를 위한 playground를 최대한 가볍게 만들어 보았다. 짧은 시간으로 CI&#x2F;CD 까지는 하지 못했지만 Hadoop, Hive, Kudu, Trion, DBT는 사용가능하다.</p>
+<h2 id="목표-아키텍처"><a href="#목표-아키텍처" class="headerlink" title="목표 아키텍처"></a>목표 아키텍처</h2><hr>
+<p>전체 프로세스를 도커로 올렸다. 단일 로컬에서도 구동되는 환경을 만들기 위해 replica를 조정하고 yarn, mapreduce 프로세스는 띄우지 않았다. hive, kudu, trion, dbt를 위한 playground를 최대한 가볍게 만들어 보았다. 짧은 시간으로 CI&#x2F;CD 까지는 하지 못했지만 Hadoop, Hive, Kudu, Trion, DBT는 사용가능하다.</p>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110290&authkey=%21ANLiqU1wrXocfIc&width=1024" width="1024" height="auto" />
 
 
-<h2 id="플랫폼-구성"><a href="#플랫폼-구성" class="headerlink" title="플랫폼 구성"></a>플랫폼 구성</h2><table>
+<h2 id="플랫폼-구성"><a href="#플랫폼-구성" class="headerlink" title="플랫폼 구성"></a>플랫폼 구성</h2><hr>
+<table>
 <thead>
 <tr>
 <th>Pipeline Component</th>
@@ -292,7 +298,8 @@
 <li><p><code>dbt-trino</code>는 로컬에서 컨테이너가 아닌 로컬에서 실행했다.</p>
 </li>
 </ul>
-<h2 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h2><p>CLI 커맨드를 편리하게 사용하기 위해 <code>Makefile</code> 만들었다. 아래 실행 명령어를 통해 컨테이너를 구동할 수 있다.</p>
+<h2 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h2><hr>
+<p>CLI 커맨드를 편리하게 사용하기 위해 <code>Makefile</code> 만들었다. 아래 실행 명령어를 통해 컨테이너를 구동할 수 있다.</p>
 <pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>도커 컨테이너 올리기</span></div><code class="language-bash"><span class="token comment"># 1-1. If you want to specify the required profile and bring up containers using the CLI</span>
 $ <span class="token assign-left variable">COMPOSE_PROFILES</span><span class="token operator">=</span>trino,kudu,hive,dbt,airflow <span class="token function">docker-compose</span> <span class="token parameter variable">-f</span> docker-compose.yml up <span class="token parameter variable">--build</span> <span class="token parameter variable">-d</span> --remove-orphans
 
@@ -306,7 +313,8 @@ $ <span class="token function">make</span> down
 $ <span class="token function">make</span> delete.all<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
-<h2 id="빅테이터-플랫폼에서의-테이블-변경-Kudu"><a href="#빅테이터-플랫폼에서의-테이블-변경-Kudu" class="headerlink" title="빅테이터 플랫폼에서의 테이블 변경 : Kudu"></a>빅테이터 플랫폼에서의 테이블 변경 : Kudu</h2><p>빅데이터 환경에서 데이터 모델링을 그려보다 보니, <code>Dimension 테이블에서 변경이 발생한다면 어떻게 해결할까</code>라는 고민이 들었다. DataLake에서는 Schema-on-read이기 때문에 언제든지 특정 컬림이 추가되어 들어올 수가 있다. 이럴 때 <code>Hive만으로 테이블에 새로운 컬럼을 추가하려면 데이터를 지우고 테이블을 다시 만든 후 insert를 해야하기 때문에 확장성에 있어 어려움이 많다.</code> 이에 <code>Dimension 테이블은 Kudu에 저장해 향후에도 확장성을 높이려는 시도</code>를 하였다.</p>
+<h2 id="빅테이터-플랫폼에서의-테이블-변경-Kudu"><a href="#빅테이터-플랫폼에서의-테이블-변경-Kudu" class="headerlink" title="빅테이터 플랫폼에서의 테이블 변경 : Kudu"></a>빅테이터 플랫폼에서의 테이블 변경 : Kudu</h2><hr>
+<p>빅데이터 환경에서 데이터 모델링을 그려보다 보니, <code>Dimension 테이블에서 변경이 발생한다면 어떻게 해결할까</code>라는 고민이 들었다. DataLake에서는 Schema-on-read이기 때문에 언제든지 특정 컬림이 추가되어 들어올 수가 있다. 이럴 때 <code>Hive만으로 테이블에 새로운 컬럼을 추가하려면 데이터를 지우고 테이블을 다시 만든 후 insert를 해야하기 때문에 확장성에 있어 어려움이 많다.</code> 이에 <code>Dimension 테이블은 Kudu에 저장해 향후에도 확장성을 높이려는 시도</code>를 하였다.</p>
 <p>Kudu는 Columnar storage로, ACID가 가능한 분산 스토리지이다. Replica를 설정하여 데이터의 안정성을 보장할 수 있습니다. 또한 꼭 Hadoop 환경이 아니어도 구축 가능하다.</p>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110288&authkey=%21ANOYaAw5KekVAaA&width=660" width="660" height="auto" alt="kudu architecture"/>
 
@@ -338,17 +346,20 @@ $ <span class="token function">make</span> delete.all<span aria-hidden="true" cl
 </li>
 </ul>
 <p>단, <code>Kudu는 저장소 역할만 하는 플랫폼이기에 쿼리를 처리를 할 수 있는 엔진이 필요</code>한 데 흔히 impala를 함께 결합하지만, <code>저는 hive와 kudu를 하나의 세션에서 같이 사용하는 게 편리하다고 생각되어 trino를 사용</code>하였다.</p>
-<h2 id="ELT-Tool-Selection-dbt-trino"><a href="#ELT-Tool-Selection-dbt-trino" class="headerlink" title="ELT Tool Selection: dbt-trino"></a>ELT Tool Selection: dbt-trino</h2><h3 id="The-Reason-for-Choosing-Trino-Over-Impala"><a href="#The-Reason-for-Choosing-Trino-Over-Impala" class="headerlink" title="The Reason for Choosing Trino Over Impala"></a>The Reason for Choosing Trino Over Impala</h3><p><code>Transform 도구로 DBT Core를 사용하려고 시도</code>했다.</p>
+<h2 id="ELT-Tool-Selection-dbt-trino"><a href="#ELT-Tool-Selection-dbt-trino" class="headerlink" title="ELT Tool Selection: dbt-trino"></a>ELT Tool Selection: dbt-trino</h2><hr>
+<h3 id="The-Reason-for-Choosing-Trino-Over-Impala"><a href="#The-Reason-for-Choosing-Trino-Over-Impala" class="headerlink" title="The Reason for Choosing Trino Over Impala"></a>The Reason for Choosing Trino Over Impala</h3><p><code>Transform 도구로 DBT Core를 사용하려고 시도</code>했다.</p>
 <p>여러 adapter 중 하나를 선택할 수 있는 데, dbt가 아직은 성장하는 플랫폼이라 trino에서 제공하는 <a target="_blank" rel="noopener" href="https://docs.getdbt.com/docs/supported-data-platforms">검증된 어댑터(Verified adapters)</a>를 사용하는 것이 좋다. 그래서 높은 진입장벽이 있는 impala가 아닌 spark와 trino 중 고민을 했다.</p>
 <h3 id="dbt-trino-vs-dbt-spark"><a href="#dbt-trino-vs-dbt-spark" class="headerlink" title="dbt-trino vs. dbt-spark"></a>dbt-trino vs. dbt-spark</h3><p>spark는 사용자도 많고 충분히 성장한 플랫폼이지만, 내가 스파크를 사용하면서 느꼈던 장점은 <code>IDE와 위에서 복잡한 프로세싱을 프로그래밍 방식으로 처리하는 방식인 데, sql만 사용하는 것은 그 장점이 반감</code>된다고 생각했다. 또한, 스파크가 learning curve가 많이 있는 플랫폼이라는 점도 고려했다.</p>
 <p>trino는 <code>hive의 한계인 이종 시스템에 대한 연합 쿼리를 가능하게 하는 분산처리 엔진</code>이다. <code>확장성이 높고, ANSI SQL 문법을 지향</code>한다. 그래서 SQL만 안다면 빠른 학습이 가능하다는 장점이 있다.</p>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110289&authkey=%21AOD15AKtu8t3vLQ&width=577&height=326" width="577" height="326" alt="연합 쿼리가 가능한 trino"/>
 
-<h2 id="The-Synergy-between-dbt-and-Trino"><a href="#The-Synergy-between-dbt-and-Trino" class="headerlink" title="The Synergy between dbt and Trino"></a>The Synergy between dbt and Trino</h2><p>dbt는 파이썬으로 구성된 오픈소스 transform 툴이다. 쿼리를 CTE(Common Table Expression) 문법으로 구상하기 때문에 쿼리를 이해하기 쉽다. 하지만 <code>dbt를 통해 짠 쿼리는 파이썬의 모델이라는 객체를 통해 변환되고, 변환된 쿼리는 시각적으로 디버깅을 하기 어려운 단점</code>이 있습니다.</p>
+<h2 id="The-Synergy-between-dbt-and-Trino"><a href="#The-Synergy-between-dbt-and-Trino" class="headerlink" title="The Synergy between dbt and Trino"></a>The Synergy between dbt and Trino</h2><hr>
+<p>dbt는 파이썬으로 구성된 오픈소스 transform 툴이다. 쿼리를 CTE(Common Table Expression) 문법으로 구상하기 때문에 쿼리를 이해하기 쉽다. 하지만 <code>dbt를 통해 짠 쿼리는 파이썬의 모델이라는 객체를 통해 변환되고, 변환된 쿼리는 시각적으로 디버깅을 하기 어려운 단점</code>이 있습니다.</p>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110292&authkey=%21AD6AC4r6UN9ipGs&width=1024" width="1024" height="auto" alt="dbt에서 파싱된 쿼리를 trino 웹에서 확인"/>
 
 <p>이에 대해 trino와 잘 맞는다고 생각한 점은 <code>웹에서 실행된 쿼리 구문을 직접적으로 볼 수 있는 웹 UI를 제공한다는 점</code>이다. dbt로 etl를 실행했을 때, 실패하면 파싱이 제대로 됬는 지 혹은 구문이 잘못됬는 지 웹에 실제로 실행된 쿼리를 확인할 수 있다. 이를 통해 쿼리에 대한 트러블 슈팅을 보다 쉬웠다.</p>
-<h2 id="Data-Integrity-Tests-Offered-by-dbt"><a href="#Data-Integrity-Tests-Offered-by-dbt" class="headerlink" title="Data Integrity Tests Offered by dbt"></a>Data Integrity Tests Offered by dbt</h2><p>dbt를 써보며 느꼈던 큰 장점은 파이썬이라는 프로그래밍이 접목되어 있어, 유틸리티를 편하게 쓸 수 있는 점이다. 보시다시피 <code>dbt에서는 무결성을 위한 테스트를 할 수 있도록 지원</code>하는 데, 따로 쿼리를 짤 필요 없이 yaml 파일을 통해 쉽게 테스트를 할 수 있다.</p>
+<h2 id="Data-Integrity-Tests-Offered-by-dbt"><a href="#Data-Integrity-Tests-Offered-by-dbt" class="headerlink" title="Data Integrity Tests Offered by dbt"></a>Data Integrity Tests Offered by dbt</h2><hr>
+<p>dbt를 써보며 느꼈던 큰 장점은 파이썬이라는 프로그래밍이 접목되어 있어, 유틸리티를 편하게 쓸 수 있는 점이다. 보시다시피 <code>dbt에서는 무결성을 위한 테스트를 할 수 있도록 지원</code>하는 데, 따로 쿼리를 짤 필요 없이 yaml 파일을 통해 쉽게 테스트를 할 수 있다.</p>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110293&authkey=%21AGIJAM2MJq7vvzI&width=1024" width="1024" height="auto" alt="dbt test"/>
 
 <ul>
@@ -496,12 +507,12 @@ $ <span class="token function">make</span> delete.all<span aria-hidden="true" cl
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/1996/01/19/Side-Project/dw-modeling-1/">
+                <a href="/1996/01/19/Side-Project/problem-solving/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/life-logo.jpg" class="responsive-img" alt="DW Modeling (Logical)">
+                        <img src="/images/logos/life-logo.jpg" class="responsive-img" alt="기술을 통해 자동화된 데이터 품질 검사 시스템 구축하기(in-progress)">
                         
-                        <span class="card-title diy-neon-red">DW Modeling (Logical)</span>
+                        <span class="card-title diy-neon-red">기술을 통해 자동화된 데이터 품질 검사 시스템 구축하기(in-progress)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -532,12 +543,12 @@ $ <span class="token function">make</span> delete.all<span aria-hidden="true" cl
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/1996/01/19/Side-Project/nonghyup-consulting/">
+                <a href="/1996/01/19/Side-Project/soss/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/life-logo.jpg" class="responsive-img" alt="농협양곡 빅데이터 컨설팅">
+                        <img src="/images/logos/life-logo.jpg" class="responsive-img" alt="프로젝트 복기하면서 느낀 배움">
                         
-                        <span class="card-title diy-neon-red">농협양곡 빅데이터 컨설팅</span>
+                        <span class="card-title diy-neon-red">프로젝트 복기하면서 느낀 배움</span>
                     </div>
                 </a>
                 <div class="card-content article-content">

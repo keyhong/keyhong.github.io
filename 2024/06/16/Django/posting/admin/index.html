@@ -5,7 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="admin, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="django admindjango.contrib.admin 앱을 통해 제공디폴트 경로 : &amp;#x2F;admin&amp;#x2F; -&amp;gt; 실제 서비스에서는 다른 주소로 변경 권장혹은 django-admin-honeypot">
+    <meta name="description" content="django admin
+django.contrib.admin 앱을 통해 제공디폴트 경로 : &amp;#x2F;admin&amp;#x2F; -&amp;gt; 실제 서비스에서는 다른 주소로 변경 권장혹은 django-admin-honeypo">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -223,10 +224,10 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="django-admin"><a href="#django-admin" class="headerlink" title="django admin"></a>django admin</h2><h3 id="django-contrib-admin-앱을-통해-제공"><a href="#django-contrib-admin-앱을-통해-제공" class="headerlink" title="django.contrib.admin 앱을 통해 제공"></a>django.contrib.admin 앱을 통해 제공</h3><p>디폴트 경로 : &#x2F;admin&#x2F; -&gt; 실제 서비스에서는 다른 주소로 변경 권장<br>혹은 django-admin-honeypot 앱을 통해, 가짜 admin 페이지 노출</p>
+                <h2 id="django-admin"><a href="#django-admin" class="headerlink" title="django admin"></a>django admin</h2><hr>
+<h3 id="django-contrib-admin-앱을-통해-제공"><a href="#django-contrib-admin-앱을-통해-제공" class="headerlink" title="django.contrib.admin 앱을 통해 제공"></a>django.contrib.admin 앱을 통해 제공</h3><p>디폴트 경로 : &#x2F;admin&#x2F; -&gt; 실제 서비스에서는 다른 주소로 변경 권장<br>혹은 django-admin-honeypot 앱을 통해, 가짜 admin 페이지 노출</p>
 <h3 id="모델-클래스-등록을-통해-조회-추가-수정-삭제-웹-UI를-제공"><a href="#모델-클래스-등록을-통해-조회-추가-수정-삭제-웹-UI를-제공" class="headerlink" title="모델 클래스 등록을 통해, 조회&#x2F;추가&#x2F;수정&#x2F;삭제 웹 UI를 제공"></a>모델 클래스 등록을 통해, 조회&#x2F;추가&#x2F;수정&#x2F;삭제 웹 UI를 제공</h3><p>서비스 초기에, 관리 도구로서 사용하기에 제격<br>관리도구 만들 시간을 줄이고, End-User 서비스에 집중 !</p>
-<h3 id="내부적으로-Django-Form을-적극적으로-사용"><a href="#내부적으로-Django-Form을-적극적으로-사용" class="headerlink" title="내부적으로 Django Form을 적극적으로 사용"></a>내부적으로 Django Form을 적극적으로 사용</h3><p> </p>
-<h2 id="모델-클래스를-admin에-등록하기"><a href="#모델-클래스를-admin에-등록하기" class="headerlink" title="모델 클래스를 admin에 등록하기"></a>모델 클래스를 admin에 등록하기</h2><pre class="line-numbers language-python" data-language="python"><div class="caption"><span>app/admin.py</span></div><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>contrib <span class="token keyword">import</span> admin
+<h3 id="내부적으로-Django-Form을-적극적으로-사용"><a href="#내부적으로-Django-Form을-적극적으로-사용" class="headerlink" title="내부적으로 Django Form을 적극적으로 사용"></a>내부적으로 Django Form을 적극적으로 사용</h3><h2 id="모델-클래스를-admin에-등록하기"><a href="#모델-클래스를-admin에-등록하기" class="headerlink" title=" ## 모델 클래스를 admin에 등록하기"></a> <br>## 모델 클래스를 admin에 등록하기</h2><pre class="line-numbers language-python" data-language="python"><div class="caption"><span>app/admin.py</span></div><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>contrib <span class="token keyword">import</span> admin
 <span class="token keyword">from</span> <span class="token punctuation">.</span>model <span class="token keyword">import</span> Item
 
 <span class="token comment"># 등록법 #1</span>
@@ -243,7 +244,8 @@ admin<span class="token punctuation">.</span>site<span class="token punctuation"
 <span class="token keyword">class</span> <span class="token class-name">ItemAdmin</span><span class="token punctuation">(</span>admin<span class="token punctuation">.</span>ModelAdmin<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">pass</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="모델-클래스에-str-구현"><a href="#모델-클래스에-str-구현" class="headerlink" title="모델 클래스에 str 구현"></a>모델 클래스에 <strong>str</strong> 구현</h2><p>admin 모델리스트에서 “모델 object”를 원하는 대로 변경하기 위해</p>
+<h2 id="모델-클래스에-str-구현"><a href="#모델-클래스에-str-구현" class="headerlink" title="모델 클래스에 __str__ 구현"></a>모델 클래스에 <code>__str__</code> 구현</h2><hr>
+<p>admin 모델리스트에서 “모델 object”를 원하는 대로 변경하기 위해 사용</p>
 <h3 id="객체를-출력할-때-객체-str-의-리턴값을-활용"><a href="#객체를-출력할-때-객체-str-의-리턴값을-활용" class="headerlink" title="객체를 출력할 때, 객체.str()의 리턴값을 활용"></a>객체를 출력할 때, 객체.<strong>str</strong>()의 리턴값을 활용</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>db <span class="token keyword">import</span> models
 
 <span class="token keyword">class</span> <span class="token class-name">Item</span><span class="token punctuation">(</span>models<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -255,7 +257,8 @@ admin<span class="token punctuation">.</span>site<span class="token punctuation"
     <span class="token keyword">def</span> <span class="token function">__str__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
     	<span class="token keyword">return</span> <span class="token string-interpolation"><span class="token string">f"&lt;</span><span class="token interpolation"><span class="token punctuation">&#123;</span>self<span class="token punctuation">.</span>pk<span class="token punctuation">&#125;</span></span><span class="token string">> </span><span class="token interpolation"><span class="token punctuation">&#123;</span>self<span class="token punctuation">.</span>name<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span> <span class="token comment"># str(...)은 자바의 toString()과 유사</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="list-display-속성-정의"><a href="#list-display-속성-정의" class="headerlink" title="list_display 속성 정의"></a>list_display 속성 정의</h2><p>모델 리스트에 출력할 컬럼 지정</p>
+<h2 id="list-display-속성-정의"><a href="#list-display-속성-정의" class="headerlink" title="list_display 속성 정의"></a>list_display 속성 정의</h2><hr>
+<p>모델 리스트에 출력할 컬럼 지정</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>contrib <span class="token keyword">import</span> admin
 <span class="token keyword">from</span> <span class="token punctuation">.</span>model <span class="token keyword">import</span> Item
 
@@ -266,7 +269,8 @@ admin<span class="token punctuation">.</span>site<span class="token punctuation"
     <span class="token keyword">def</span> <span class="token function">short_desc</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> item<span class="token punctuation">)</span><span class="token punctuation">:</span>
     	<span class="token keyword">return</span> item<span class="token punctuation">.</span>desc<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">20</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="search-fields-속성-정의"><a href="#search-fields-속성-정의" class="headerlink" title="search_fields 속성 정의"></a>search_fields 속성 정의</h2><p>admin내 검색 UI를 통해, DB를 통한 where 쿼리 대상 필드</p>
+<h2 id="search-fields-속성-정의"><a href="#search-fields-속성-정의" class="headerlink" title="search_fields 속성 정의"></a>search_fields 속성 정의</h2><hr>
+<p>admin내 검색 UI를 통해, DB를 통한 where 쿼리 대상 필드</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>contrib <span class="token keyword">import</span> admin
 <span class="token keyword">from</span> <span class="token punctuation">.</span>models <span class="token keyword">import</span> Item
 
@@ -289,7 +293,8 @@ admin<span class="token punctuation">.</span>site<span class="token punctuation"
 <span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>Post<span class="token punctuation">.</span>objects<span class="token punctuation">.</span><span class="token builtin">all</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">filter</span><span class="token punctuation">(</span>message__icontains<span class="token operator">=</span><span class="token string">"첫번째"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>query<span class="token punctuation">)</span>
 SELECT <span class="token string">"instagram_post"</span><span class="token punctuation">.</span><span class="token string">"id"</span><span class="token punctuation">,</span> <span class="token string">"instagram_post"</span><span class="token punctuation">.</span><span class="token string">"message"</span><span class="token punctuation">,</span> <span class="token string">"instagram_post"</span><span class="token punctuation">.</span><span class="token string">"created_at"</span><span class="token punctuation">,</span> <span class="token string">"instagram_post"</span><span class="token punctuation">.</span><span class="token string">"updated_at"</span> FROM <span class="token string">"instagram_post"</span> WHERE <span class="token string">"instagram_post"</span><span class="token punctuation">.</span><span class="token string">"message"</span> LIKE <span class="token operator">%</span>첫번째<span class="token operator">%</span> ESCAPE '\'<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="list-filter-속성-정의"><a href="#list-filter-속성-정의" class="headerlink" title="list_filter 속성 정의"></a>list_filter 속성 정의</h2><p>지정 필드값으로 필터링 옵션 제공</p>
+<h2 id="list-filter-속성-정의"><a href="#list-filter-속성-정의" class="headerlink" title="list_filter 속성 정의"></a>list_filter 속성 정의</h2><hr>
+<p>지정 필드값으로 필터링 옵션 제공</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>contrib <span class="token keyword">import</span> admin
 <span class="token keyword">from</span> <span class="token punctuation">.</span>models <span class="token keyword">import</span> Item
 
@@ -479,12 +484,12 @@ SELECT <span class="token string">"instagram_post"</span><span class="token punc
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/06/16/DBT/reference/Project%20Configs/analysis-paths/">
+                <a href="/2024/06/16/DBT/reference/Project%20Configs/project-configs/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="analysis-paths">
+                        <img src="/images/logos/dbt-logo.png" class="responsive-img" alt="Project Configs">
                         
-                        <span class="card-title diy-neon-red">analysis-paths</span>
+                        <span class="card-title diy-neon-red">Project Configs</span>
                     </div>
                 </a>
                 <div class="card-content article-content">

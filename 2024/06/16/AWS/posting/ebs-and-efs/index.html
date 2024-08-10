@@ -4,11 +4,14 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="EBS &amp; EFS, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="EBS (Elastic Block Store) Volume인스턴스가 작동하는 동안 부착 할 수 있는 네트워크 드라이브
+    <meta name="keywords" content="Amazon EBS &amp; EFS, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="Amazon EBS (Elastic Block Store)
 
-인스턴스가 종료된 후에도 데이터를 영구적으로 저장한다.
-인스턴스 하나에 여러 개의 EBS를 부착">
+인스턴스가 작동하는 동안 부착 할 수 있는 네트워크 드라이브
+
+
+인스턴스 종료 후에도 데이터를 영구적으로 저장
+인스턴스 재시작 없이 볼륨 제거/변경을 콘솔">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +23,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>EBS &amp; EFS | Keyhong</title>
+    <title>Amazon EBS &amp; EFS | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -185,7 +188,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        EBS &amp; EFS</h1>
+                        Amazon EBS &amp; EFS</h1>
                 </div>
             </div>
         </div>
@@ -226,55 +229,65 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="EBS-Elastic-Block-Store-Volume"><a href="#EBS-Elastic-Block-Store-Volume" class="headerlink" title="EBS (Elastic Block Store) Volume"></a>EBS (Elastic Block Store) Volume</h2><p>인스턴스가 작동하는 동안 부착 할 수 있는 네트워크 드라이브</p>
+                <h2 id="Amazon-EBS-Elastic-Block-Store"><a href="#Amazon-EBS-Elastic-Block-Store" class="headerlink" title="Amazon EBS (Elastic Block Store)"></a>Amazon EBS (Elastic Block Store)</h2><hr>
+<blockquote>
+<p>인스턴스가 작동하는 동안 부착 할 수 있는 네트워크 드라이브</p>
+</blockquote>
 <ul>
-<li><strong>인스턴스가 종료된 후에도 데이터를 영구적으로 저장</strong>한다.</li>
-<li><strong>인스턴스 하나에 여러 개의 EBS를 부착 할 수는 있지만 하나의 EBS를 여러 인스턴스에 부착하는 것은 불가능</strong>하다.</li>
+<li><code>인스턴스 종료 후에도 데이터를 영구적으로 저장</code></li>
+<li><code>인스턴스 재시작 없이 볼륨 제거/변경을 콘솔에서 바로 수행</code> 가능</li>
+<li><code>인스턴스 하나에 여러 개의 EBS를 부착 할 수는 있지만 하나의 EBS를 여러 인스턴스에 부착하는 것은 불가</code></li>
+<li><code>볼륨 사이즈를 늘릴 수는 있지만, 낮추기는 불가능</code></li>
+<li>볼륨 타입을 변경 가능 (예를 들면, Gp2 → Gp3). 원하는 IOPS나 처리량을 조정하여 성능을 높일 수 있다.</li>
 </ul>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110202&authkey=%21ADG9HGhDZOrMJ8U&width=684&height=294" width="684" height="294" alt="(left) 하나의 인스턴스에 여러 EBS 부착 (right) EBS를 생성하여 부착을 안 하고 유지도 가능"/>
 
 <ul>
-<li><p><strong>EBS는 특정 가용영역(AZ, Availability Zone)에 바인딩</strong> 된다.<br>– us-east-1a에서 생성된 EBS는 us-east-1b의 인스턴스에 연결 불가능 하다.<br>– 볼륨을 이동하고 싶으면 스냅샷을 사용해야 한다.</p>
-</li>
-<li><p>Free Tier에서는 매달 30GB의 General Purpose SSD 또는 Magnetic 타입의 EBS를 무료 제공한다.</p>
-</li>
-<li><p>물리적 드라이브가 아닌 네트워크 드라이브이다.</p>
-</li>
-</ul>
-<p>– <strong>약간의 latency는 발생</strong>한다.<br>– 하나의 인스턴스에서 다른 인스턴스로 빠르게 부착을 변경 가능하다.</p>
+<li><p><code>EBS는 특정 가용영역(AZ, Availability Zone)에 바인딩</code></p>
 <ul>
-<li><strong>용량을 미리 프로비저닝</strong> 해야 한다. (필요 <strong>GB 수</strong>, <strong>IOPS</strong>: I&#x2F;O per Sec)</li>
+<li>us-east-1a에서 생성된 EBS는 us-east-1b의 인스턴스에 연결 불가능</li>
+<li>볼륨을 이동하고 싶으면 스냅샷을 사용해야 함</li>
 </ul>
-<p>– 해당 프로비저닝 용량에 대해 요금을 청구한다.<br>– 시간이 지나더라도 차후에 용량을 늘릴 수 있다.</p>
-<h2 id="종료시-삭제-속성"><a href="#종료시-삭제-속성" class="headerlink" title="종료시 삭제 속성"></a>종료시 삭제 속성</h2><blockquote>
+</li>
+<li><p>Free Tier에서는 매달 30GB의 General Purpose SSD 또는 Magnetic 타입의 EBS를 무료 제공</p>
+</li>
+<li><p>물리적 드라이브가 아닌 네트워크 드라이브</p>
+<ul>
+<li><code>약간의 latency는 발생</code></li>
+<li>하나의 인스턴스에서 다른 인스턴스로 빠르게 부착을 변경 가능</li>
+</ul>
+</li>
+<li><p><code>용량을 미리 프로비저닝</code> 해야 한다. (필요 <code>GB 수</code>, <code>IOPS</code>: I&#x2F;O per Sec)</p>
+<ul>
+<li>해당 프로비저닝 용량에 대해 요금을 청구</li>
+<li>시간이 지나더라도 차후에 용량을 늘릴 수 있다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="종료시-삭제-속성"><a href="#종료시-삭제-속성" class="headerlink" title="종료시 삭제 속성"></a>종료시 삭제 속성</h3><blockquote>
 <p>EC2 인스턴스가 종료될 때 EBS의 행위(삭제 또는 유지)를 컨트롤 하는 속성</p>
 </blockquote>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110204&authkey=%21AAydvf0xv_e-MdA&width=751&height=139" width="751" height="139" alt="콘솔에서 종료시 삭제 속성을 설정하는 체크박스"/>
 
 <ul>
-<li>(default) root EBS는 인스턴스 종료시 삭제된다.</li>
-<li>(default) 다른 EBS는 인스턴스 종료시 삭제되지 않는다.</li>
-<li>두 경우 모두 속성 값을 변경 할 수 있다.</li>
-<li>AWS 콘솔과 AWS CLI로 모두 컨트롤 가능하다.</li>
+<li>(default) root EBS는 인스턴스 종료시 삭제</li>
+<li>(default) 다른 EBS는 인스턴스 종료시 삭제되지 않음</li>
+<li>두 경우 모두 속성 값을 변경 가능</li>
+<li>AWS 콘솔과 AWS CLI로 모두 컨트롤 가능</li>
 </ul>
-<h2 id="EBS-Elastic-Volume"><a href="#EBS-Elastic-Volume" class="headerlink" title="EBS Elastic Volume"></a>EBS Elastic Volume</h2><ul>
-<li><strong>인스턴스의 재시작 없이 볼륨을 제거&#x2F;변경을 콘솔에서 바로 수행</strong>할 수 있다.</li>
-<li><strong>볼륨 사이즈를 늘릴 수는 있지만, 낮출 수는 없다.</strong></li>
-<li>볼륨 타입을 변경 할 수 있다. (예를 들면, Gp2 → Gp3)</li>
-<li>원하는 IOPS나 처리량을 조정하여 성능을 높일 수 있다.</li>
-</ul>
-<h2 id="EFS-Elastic-File-System"><a href="#EFS-Elastic-File-System" class="headerlink" title="EFS (Elastic File System)"></a>EFS (Elastic File System)</h2><blockquote>
+<h2 id="Amazon-EFS-Elastic-File-System"><a href="#Amazon-EFS-Elastic-File-System" class="headerlink" title="Amazon EFS (Elastic File System)"></a>Amazon EFS (Elastic File System)</h2><hr>
+<blockquote>
 <p>관리형 네트워크 파일 시스템</p>
 </blockquote>
 <ul>
-<li>네트워크 파일 시스템이기 때문에 <strong>많은 EC2 인스턴스에 마운트가 가능</strong>하다.</li>
-<li><strong>마운트 되는 EC2 인스턴스는 서로 다른 가용 영역에 있어도 가능</strong>하다.</li>
+<li>네트워크 파일 시스템이기 때문에 <code>많은 EC2 인스턴스에 마운트 가능</code></li>
+<li><code>마운트 되는 EC2 인스턴스는 서로 다른 가용 영역에 있어도 가능</code></li>
 </ul>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110203&authkey=%21AGkq2LvwY1fa68w&width=480&height=261" width="480" height="261" alt="다양한 가용영역에 있는 EC2들을 EFS에 부착이 가능하다."/>
 
 <ul>
 <li>고가용성, 확장성, 고비용(gp2 EBS의 3배 정도 가격)</li>
-<li><strong>사용량에 따라 비용이 들기 때문에 미리 프로비저닝 할 필요는 없다.</strong></li>
+<li><code>사용량에 따라 비용이 들기 때문에 미리 프로비저닝 할 필요는 없다.</code></li>
 </ul>
 
                 

@@ -5,7 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="NestJS 맛보기, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="NestJS의 필요성javascript의 웹 서버 프레임워크인 express를 쓰면서 API 서버를 구축해본 적이 있다. expres가 제공해주는 router-controller-service 구조를 사용하여 처리를">
+    <meta name="description" content="NestJS의 필요성
+javascript의 웹 서버 프레임워크인 express를 쓰면서 API 서버를 구축해본 적이 있다. expres가 제공해주는 router-controller-service 구조를 사용하여 처리">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -223,9 +224,11 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="NestJS의-필요성"><a href="#NestJS의-필요성" class="headerlink" title="NestJS의 필요성"></a>NestJS의 필요성</h2><p>javascript의 웹 서버 프레임워크인 express를 쓰면서 API 서버를 구축해본 적이 있다. expres가 제공해주는 router-controller-service 구조를 사용하여 처리를 할 수 있지만, 프로그램의 유지 보수 관리 혹은 확장 가능성 측면에서 여전히 코드의 복잡도가 높아 다소 아쉬움이 많이 느껴졌다. 그러던 도중 많은 개발자들이 함께 개발을 할 때 어떻게 javascript의 자유로운 개발 방식을 규격화하고 코드의 아키텍처를 보다 효율적으로 만들어 낼 수 있을 까 고민하던 도중 Typescript와 NestJS에 대해 알게 되었다.</p>
+                <h2 id="NestJS의-필요성"><a href="#NestJS의-필요성" class="headerlink" title="NestJS의 필요성"></a>NestJS의 필요성</h2><hr>
+<p>javascript의 웹 서버 프레임워크인 express를 쓰면서 API 서버를 구축해본 적이 있다. expres가 제공해주는 router-controller-service 구조를 사용하여 처리를 할 수 있지만, 프로그램의 유지 보수 관리 혹은 확장 가능성 측면에서 여전히 코드의 복잡도가 높아 다소 아쉬움이 많이 느껴졌다. 그러던 도중 많은 개발자들이 함께 개발을 할 때 어떻게 javascript의 자유로운 개발 방식을 규격화하고 코드의 아키텍처를 보다 효율적으로 만들어 낼 수 있을 까 고민하던 도중 Typescript와 NestJS에 대해 알게 되었다.</p>
 <p>결론적으로 말하자면 Nestjs는 서버 개발을 할 때 아키텍처를 누구든 비슷하게 설계하도록 아키텍처 문제를 해결하는 데 중점을 둔 웹 서버 프레임워크라고 한다. 좋은 아키텍처는 테스트와 확장을 쉽게 만들어주고, 모듈 간의 의존성은 줄여주어 유지보수를 쉽게 만들어준다. NestJS는 서버를 만들 때의 폴더 구조(컨트롤러, 서비스, 미들웨어..)을 정의하고 이를 데코레이터(@~) 기반으로 제공한다.</p>
-<h2 id="NestJS-특징"><a href="#NestJS-특징" class="headerlink" title="NestJS 특징"></a>NestJS 특징</h2><ul>
+<h2 id="NestJS-특징"><a href="#NestJS-특징" class="headerlink" title="NestJS 특징"></a>NestJS 특징</h2><hr>
+<ul>
 <li><p>Node.js에서 실행하는 서버 사이드 프레임 워크</p>
 </li>
 <li><p>Typescript와 잘 맞는다. Typescript는 Javascript에 type을 추가한 언어로, Javascript로 트랜스파일 된다. 또한 컴파일 타임에 타입을 체킹함으로써 미리 에러를 체킹 할 수 있다. </p>
@@ -235,7 +238,8 @@
 <li><p>Http 요청 부분에 추상화된 코드를 제공해 express와 Fastify를 사용한다.</p>
 </li>
 </ul>
-<h2 id="Express-vs-NestJS"><a href="#Express-vs-NestJS" class="headerlink" title="Express vs. NestJS"></a>Express vs. NestJS</h2><h4 id="Express"><a href="#Express" class="headerlink" title="Express"></a>Express</h4><ul>
+<h2 id="Express-vs-NestJS"><a href="#Express-vs-NestJS" class="headerlink" title="Express vs. NestJS"></a>Express vs. NestJS</h2><hr>
+<h3 id="Express"><a href="#Express" class="headerlink" title="Express"></a>Express</h3><ul>
 <li>소규모의 웹 프레임워크</li>
 <li>router 함수를 추가하거나 미들웨어를 사용한다.</li>
 <li>의존성 주입(Dependency Injection, 두 개체 간의 관계를 맺고 한 쪽의 상태 변화가 다른 쪽에 영향을 끼치는 상태)이 없다.</li>
@@ -243,7 +247,7 @@
 <li>테스트 도구를 직접 설치</li>
 <li>특정한 아키텍처를 요구하지 않는다.</li>
 </ul>
-<h4 id="NestJS"><a href="#NestJS" class="headerlink" title="NestJS"></a>NestJS</h4><ul>
+<h3 id="NestJS"><a href="#NestJS" class="headerlink" title="NestJS"></a>NestJS</h3><ul>
 <li>효율을 극대화 시킨 웹 프레임워크. NestJS는 express를 품고 있다.</li>
 <li>router로 데코레이터(@Controller)를 사용한다.</li>
 <li>의존성 주입 기능을 제공하여, 서비스의 의존 관계 관리가 쉽다. 이를 통해 코드를 재사용하기 쉽다.</li>
@@ -252,7 +256,8 @@
 <li>컨트롤러, 프로바이더, 모듈을 사용한 애플리케이션 아키텍처 제공</li>
 <li>빠른 성능이 필요한 부분에는 Fastify를, 다른 부분에는 다양한 서드파티의 지원을 받는 express를 사용 할 수 있어 성능, 확장성, 유연함을 모두 지닌다.</li>
 </ul>
-<h2 id="NestJS-설치하기"><a href="#NestJS-설치하기" class="headerlink" title="NestJS 설치하기"></a>NestJS 설치하기</h2><h4 id="방법-1-NestJS-구동에-필요한-패키지를-수동-설치"><a href="#방법-1-NestJS-구동에-필요한-패키지를-수동-설치" class="headerlink" title="[방법 1] NestJS 구동에 필요한 패키지를 수동 설치"></a>[방법 1] NestJS 구동에 필요한 패키지를 수동 설치</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">npm</span> i @nestjs/core @nestjs/common @nestjs/platform-express reflect-metadata typescript<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="NestJS-설치"><a href="#NestJS-설치" class="headerlink" title="NestJS 설치"></a>NestJS 설치</h2><hr>
+<h3 id="방법-1-NestJS-구동에-필요한-패키지를-수동-설치"><a href="#방법-1-NestJS-구동에-필요한-패키지를-수동-설치" class="headerlink" title="[방법 1] NestJS 구동에 필요한 패키지를 수동 설치"></a>[방법 1] NestJS 구동에 필요한 패키지를 수동 설치</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">npm</span> i @nestjs/core @nestjs/common @nestjs/platform-express reflect-metadata typescript<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
 <li>@nestjs&#x2F;common : NestJS의 공통 패키지</li>
@@ -261,7 +266,7 @@
 <li>reflect-metadata : 데코레이터 사용에 필요한 패키지</li>
 <li>typescript : 타입스크립트를 지원하는 패키지</li>
 </ul>
-<h4 id="방법-2-nest-cli로-설치"><a href="#방법-2-nest-cli로-설치" class="headerlink" title="[방법 2] nest-cli로 설치"></a>[방법 2] nest-cli로 설치</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">// global 옵션을 이용해 nest-cli 설치
+<h3 id="방법-2-nest-cli로-설치"><a href="#방법-2-nest-cli로-설치" class="headerlink" title="[방법 2] nest-cli로 설치"></a>[방법 2] nest-cli로 설치</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">// global 옵션을 이용해 nest-cli 설치
 $ <span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">-g</span> @netsjs/cli
 
 // 프로젝트 생성
@@ -270,7 +275,7 @@ $ nest <span class="token operator">&lt;</span>프로젝트명<span class="token
 // 프로젝트 생성 <span class="token punctuation">(</span>윗 명령어 에러시<span class="token punctuation">)</span>
 $ npx @nestjs/cli new <span class="token operator">&lt;</span>프로젝트명<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="Typescript-설정하기"><a href="#Typescript-설정하기" class="headerlink" title="Typescript 설정하기"></a>Typescript 설정하기</h4><p>NestJS는 타입스크립트를 온전히 지원하기 때문에 타입스크립트를 사용하면 개발이 편리하다. Tyepscript를 사용하기 위해서는 ts.config 파일을 초기화하고 컴파일러 옵션을 설정해야 한다. </p>
+<h3 id="Typescript-설정하기"><a href="#Typescript-설정하기" class="headerlink" title="Typescript 설정하기"></a>Typescript 설정하기</h3><p>NestJS는 타입스크립트를 온전히 지원하기 때문에 타입스크립트를 사용하면 개발이 편리하다. Tyepscript를 사용하기 위해서는 ts.config 파일을 초기화하고 컴파일러 옵션을 설정해야 한다. </p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 프로젝트 루트 디렉토리에 ts.config 파일 생성</span>
 $ tsc <span class="token parameter variable">--init</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
@@ -291,15 +296,17 @@ $ tsc <span class="token parameter variable">--init</span><span aria-hidden="tru
 <li>experimentalDecorators : 데코레이터 사용 여부 (NestJS에서 필수적 옵션)</li>
 <li>emitDecoratorMetadata : 컴파일시 데코레이터가 설정된 메타 데이터를 같이 내보낼 지 여부. reflect-metadata 패키지와 함께 사용 (NestJS에서 필수적 옵션)</li>
 </ul>
-<h2 id="NestJS-네이밍-컨벤션"><a href="#NestJS-네이밍-컨벤션" class="headerlink" title="NestJS 네이밍 컨벤션"></a>NestJS 네이밍 컨벤션</h2><h4 id="파일명은-으로-연결-모듈이-둘-이상-단어로-구성될-경우-대시-로-연결"><a href="#파일명은-으로-연결-모듈이-둘-이상-단어로-구성될-경우-대시-로-연결" class="headerlink" title="파일명은 .으로 연결 &amp; 모듈이 둘 이상 단어로 구성될 경우 대시(-)로 연결"></a>파일명은 .으로 연결 &amp; 모듈이 둘 이상 단어로 구성될 경우 대시(-)로 연결</h4><p>&lt;모듈명&gt;.&lt;컴포넌트명&gt;.ts<br>test.controller.ts<br>first-test.controller.ts</p>
-<h4 id="클래스명은-Camel-Case-사용"><a href="#클래스명은-Camel-Case-사용" class="headerlink" title="클래스명은 Camel Case 사용"></a>클래스명은 Camel Case 사용</h4><p>&#x2F;&#x2F; &lt;모듈명&gt;&lt;컴포넌트명&gt;<br>testController</p>
-<h2 id="Etc"><a href="#Etc" class="headerlink" title="Etc"></a>Etc</h2><h4 id="같은-디렉터리에-있는-클래스는-index-ts로-임포트를-권장"><a href="#같은-디렉터리에-있는-클래스는-index-ts로-임포트를-권장" class="headerlink" title="같은 디렉터리에 있는 클래스는 index.ts로 임포트를 권장"></a>같은 디렉터리에 있는 클래스는 index.ts로 임포트를 권장</h4><pre class="line-numbers language-typescript" data-language="typescript"><code class="language-typescript"><span class="token comment">// 비권장 import</span>
+<h2 id="NestJS-네이밍-컨벤션"><a href="#NestJS-네이밍-컨벤션" class="headerlink" title="NestJS 네이밍 컨벤션"></a>NestJS 네이밍 컨벤션</h2><hr>
+<h3 id="파일명은-으로-연결-모듈이-둘-이상-단어로-구성될-경우-대시-로-연결"><a href="#파일명은-으로-연결-모듈이-둘-이상-단어로-구성될-경우-대시-로-연결" class="headerlink" title="파일명은 .으로 연결 &amp; 모듈이 둘 이상 단어로 구성될 경우 대시(-)로 연결"></a>파일명은 .으로 연결 &amp; 모듈이 둘 이상 단어로 구성될 경우 대시(-)로 연결</h3><p>&lt;모듈명&gt;.&lt;컴포넌트명&gt;.ts<br>test.controller.ts<br>first-test.controller.ts</p>
+<h3 id="클래스명은-Camel-Case-사용"><a href="#클래스명은-Camel-Case-사용" class="headerlink" title="클래스명은 Camel Case 사용"></a>클래스명은 Camel Case 사용</h3><p>&#x2F;&#x2F; &lt;모듈명&gt;&lt;컴포넌트명&gt;<br>testController</p>
+<h2 id="ETC"><a href="#ETC" class="headerlink" title="ETC"></a>ETC</h2><hr>
+<h3 id="같은-디렉터리에-있는-클래스는-index-ts로-임포트를-권장"><a href="#같은-디렉터리에-있는-클래스는-index-ts로-임포트를-권장" class="headerlink" title="같은 디렉터리에 있는 클래스는 index.ts로 임포트를 권장"></a>같은 디렉터리에 있는 클래스는 index.ts로 임포트를 권장</h3><pre class="line-numbers language-typescript" data-language="typescript"><code class="language-typescript"><span class="token comment">// 비권장 import</span>
 <span class="token keyword">import</span> <span class="token punctuation">&#123;</span> MyTestController <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'./controllers/my-test.controller'</span>
 
 <span class="token comment">// 권장 import (index.ts)</span>
 <span class="token keyword">import</span> <span class="token punctuation">&#123;</span> MyTestController <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'./controllers'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="Interface-사용을-권장"><a href="#Interface-사용을-권장" class="headerlink" title="Interface 사용을 권장"></a>Interface 사용을 권장</h4><p>인터페이스는 타입을 정의하는 데 사용하고, 클래스에서 인터페이스 상속을 통해 구체적 내용을 정의한다.</p>
+<h3 id="Interface-사용을-권장"><a href="#Interface-사용을-권장" class="headerlink" title="Interface 사용을 권장"></a>Interface 사용을 권장</h3><p>인터페이스는 타입을 정의하는 데 사용하고, 클래스에서 인터페이스 상속을 통해 구체적 내용을 정의한다.</p>
 <pre class="line-numbers language-typescript" data-language="typescript"><code class="language-typescript"><span class="token keyword">interface</span> <span class="token class-name">Series</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
 <span class="token keyword">interface</span> <span class="token class-name">BookSeries</span> <span class="token keyword">extends</span> <span class="token class-name">Series</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
 <span class="token keyword">class</span> <span class="token class-name">MovieSeries</span> <span class="token keyword">extends</span> <span class="token class-name">Series</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>

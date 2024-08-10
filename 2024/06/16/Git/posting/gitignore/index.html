@@ -6,10 +6,11 @@
     <meta charset="utf-8">
     <meta name="keywords" content=".gitignore, Data Engineering,Data Analysis,Python Backend">
     <meta name="description" content=".gitignore
+
 local git repository에서 추적을 하지 않은 폴더 또는 파일의 확장자를 정의하는 파일
 
 생성방법 1 : github 레포지터리에서 생성하기
-github repository에서 프로젝">
+github repository에서 프로">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -227,10 +228,11 @@ github repository에서 프로젝">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="gitignore"><a href="#gitignore" class="headerlink" title=".gitignore"></a>.gitignore</h2><blockquote>
+                <h2 id="gitignore"><a href="#gitignore" class="headerlink" title=".gitignore"></a>.gitignore</h2><hr>
+<blockquote>
 <p>local git repository에서 추적을 하지 않은 폴더 또는 파일의 확장자를 정의하는 파일</p>
 </blockquote>
-<h4 id="생성방법-1-github-레포지터리에서-생성하기"><a href="#생성방법-1-github-레포지터리에서-생성하기" class="headerlink" title="생성방법 1 : github 레포지터리에서 생성하기"></a>생성방법 1 : github 레포지터리에서 생성하기</h4><ol>
+<h3 id="생성방법-1-github-레포지터리에서-생성하기"><a href="#생성방법-1-github-레포지터리에서-생성하기" class="headerlink" title="생성방법 1 : github 레포지터리에서 생성하기"></a>생성방법 1 : github 레포지터리에서 생성하기</h3><ol>
 <li><p>github repository에서 프로젝트를 생성하며, gitignore 생성여부를 선택 가능</p>
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://www.toptal.com/developers/gitignore">https://www.toptal.com/developers/gitignore</a> 사이트에 들어가서 환경별 .gitignore 코드를 생성가능</p>
@@ -239,10 +241,11 @@ github repository에서 프로젝">
 </li>
 </ol>
 <p>track 중인 기존 파일들이 있는 상태에서 .gitignore를 새로 적용하는 경우</p>
-<h4 id="생성방법-2-npm으로-cli에서-설치하기"><a href="#생성방법-2-npm으로-cli에서-설치하기" class="headerlink" title="생성방법 2 : npm으로 cli에서 설치하기"></a>생성방법 2 : npm으로 cli에서 설치하기</h4><p>만약 npm(nodejs 패키지매니저)가 설치 되어있다면, npm 명령어로도 설치 가능하다</p>
+<h3 id="생성방법-2-npm으로-cli에서-설치하기"><a href="#생성방법-2-npm으로-cli에서-설치하기" class="headerlink" title="생성방법 2 : npm으로 cli에서 설치하기"></a>생성방법 2 : npm으로 cli에서 설치하기</h3><p>만약 npm(nodejs 패키지매니저)가 설치 되어있다면, npm 명령어로도 설치 가능하다</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">npx gitignore python<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h2 id="프로젝트-작업-중-로컬에-gitignore을-추가하였을-때-github에도-적용시키기"><a href="#프로젝트-작업-중-로컬에-gitignore을-추가하였을-때-github에도-적용시키기" class="headerlink" title="프로젝트 작업 중 로컬에 .gitignore을 추가하였을 때 github에도 적용시키기"></a>프로젝트 작업 중 로컬에 .gitignore을 추가하였을 때 github에도 적용시키기</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 로컬 파일은 남기고 원격저장소에만 파일 삭제  </span>
+<h2 id="프로젝트-작업-중-로컬에-gitignore을-추가하였을-때-github에도-적용시키기"><a href="#프로젝트-작업-중-로컬에-gitignore을-추가하였을-때-github에도-적용시키기" class="headerlink" title="프로젝트 작업 중 로컬에 .gitignore을 추가하였을 때 github에도 적용시키기"></a>프로젝트 작업 중 로컬에 .gitignore을 추가하였을 때 github에도 적용시키기</h2><hr>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 로컬 파일은 남기고 원격저장소에만 파일 삭제  </span>
 <span class="token function">git</span> <span class="token function">rm</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">--cached</span> <span class="token operator">&lt;</span>파일/폴더 또는 .<span class="token operator">></span>
 
 <span class="token comment"># 로컬, 원격 파일 모두 삭제</span>

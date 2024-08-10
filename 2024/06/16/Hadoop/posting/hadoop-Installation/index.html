@@ -5,7 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Hadoop Installation, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Hadoop 설치시 유용 유틸리티운영시스템의 조건Red Hat Linux, CentOS, SUSE Linux Enterprise Server 11, SP1 등 다양한 리눅스에서 설치 가능. 다만, 운영체제는 반드시 ">
+    <meta name="description" content="Hadoop 설치시 유용 유틸리티
+운영시스템의 조건Red Hat Linux, CentOS, SUSE Linux Enterprise Server 11, SP1 등 다양한 리눅스에서 설치 가능. 다만, 운영체제는 반드시">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -223,7 +224,8 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Hadoop-설치시-유용-유틸리티"><a href="#Hadoop-설치시-유용-유틸리티" class="headerlink" title="Hadoop 설치시 유용 유틸리티"></a>Hadoop 설치시 유용 유틸리티</h2><h3 id="운영시스템의-조건"><a href="#운영시스템의-조건" class="headerlink" title="운영시스템의 조건"></a>운영시스템의 조건</h3><p>Red Hat Linux, CentOS, SUSE Linux Enterprise Server 11, SP1 등 다양한 리눅스에서 설치 가능. 다만, 운영체제는 반드시 64비트 버전을 사용하여야 한다.</p>
+                <h2 id="Hadoop-설치시-유용-유틸리티"><a href="#Hadoop-설치시-유용-유틸리티" class="headerlink" title="Hadoop 설치시 유용 유틸리티"></a>Hadoop 설치시 유용 유틸리티</h2><hr>
+<h3 id="운영시스템의-조건"><a href="#운영시스템의-조건" class="headerlink" title="운영시스템의 조건"></a>운영시스템의 조건</h3><p>Red Hat Linux, CentOS, SUSE Linux Enterprise Server 11, SP1 등 다양한 리눅스에서 설치 가능. 다만, 운영체제는 반드시 64비트 버전을 사용하여야 한다.</p>
 <h3 id="유용한-유틸리티-추천"><a href="#유용한-유틸리티-추천" class="headerlink" title="유용한 유틸리티 추천"></a>유용한 유틸리티 추천</h3><h4 id="yum-Yellowdog-Updater-Modified"><a href="#yum-Yellowdog-Updater-Modified" class="headerlink" title="yum (Yellowdog Updater, Modified)"></a>yum (Yellowdog Updater, Modified)</h4><ul>
 <li><p>Red Hat Linux RPM(Red Hat Package Manager) 소프트웨어 패키지를 가져와 설정, 삭제, 검색, 관리 할 수 있게 해주는 tool</p>
 </li>
@@ -249,7 +251,8 @@
 <h4 id="pdsh-Parallel-Distributed-SHell"><a href="#pdsh-Parallel-Distributed-SHell" class="headerlink" title="pdsh (Parallel Distributed SHell)"></a>pdsh (Parallel Distributed SHell)</h4><ul>
 <li>병렬화된 원격 셸. 명령을 원격으로 실행할 수 있다.</li>
 </ul>
-<h2 id="Hadoop-설치-모드"><a href="#Hadoop-설치-모드" class="headerlink" title="Hadoop 설치 모드"></a>Hadoop 설치 모드</h2><h3 id="독립형-standalone"><a href="#독립형-standalone" class="headerlink" title="독립형(standalone)"></a>독립형(standalone)</h3><ul>
+<h2 id="Hadoop-설치-모드"><a href="#Hadoop-설치-모드" class="headerlink" title="Hadoop 설치 모드"></a>Hadoop 설치 모드</h2><hr>
+<h3 id="독립형-standalone"><a href="#독립형-standalone" class="headerlink" title="독립형(standalone)"></a>독립형(standalone)</h3><ul>
 <li>모든 하둡 서비스는 하나의 JVM에서 동작</li>
 <li>YARN이나 HDFS 같은 백그라운드에서 동작하는 데몬(daemon)은 없음</li>
 <li>데이터를 저장하는 데 HDFS가 아닌 로컬 파일 시스템을 사용</li>
@@ -271,7 +274,8 @@
 </ul>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110182&authkey=%21ADFlC4jqDHIu6A8&width=288&height=145" width="288" height="145" alt="Fully-distributed Mode"/>
 
-<h2 id="Hadoop-Installation-with-HDP"><a href="#Hadoop-Installation-with-HDP" class="headerlink" title="Hadoop Installation with HDP"></a>Hadoop Installation with HDP</h2><ol>
+<h2 id="Hadoop-Installation-with-HDP"><a href="#Hadoop-Installation-with-HDP" class="headerlink" title="Hadoop Installation with HDP"></a>Hadoop Installation with HDP</h2><hr>
+<ol>
 <li><p>Virtual Box (VM) 다운로드<br><a target="_blank" rel="noopener" href="https://www.virtualbox.org/wiki/Downloads">Virtual Box</a></p>
 </li>
 <li><p>Hortonworks HDP 2.6.5 버전 다운로드<br><a target="_blank" rel="noopener" href="https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html">Hortonworks HDP 2.6.5</a></p>
@@ -304,15 +308,15 @@ export HADOOP_STREAMING&#x3D;$HADOOP_HOME&#x2F;share&#x2F;hadoop&#x2F;tools&#x2F
 export HADOOP_LOG_DIR&#x3D;$HADOOP_HOME&#x2F;logs 
 export PDSH_RCMD_TYPE&#x3D;ssh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-<h2 id="Installation-On-Premise-Pseudo-Distributed"><a href="#Installation-On-Premise-Pseudo-Distributed" class="headerlink" title="Installation On Premise(Pseudo Distributed)"></a>Installation On Premise(Pseudo Distributed)</h2><h4 id="가상-분산-모드-Pseudo-distributed"><a href="#가상-분산-모드-Pseudo-distributed" class="headerlink" title="가상 분산 모드(Pseudo-distributed)"></a>가상 분산 모드(Pseudo-distributed)</h4><blockquote>
+<h2 id="Installation-On-Premise-Pseudo-Distributed"><a href="#Installation-On-Premise-Pseudo-Distributed" class="headerlink" title="Installation On Premise (Pseudo Distributed)"></a>Installation On Premise (Pseudo Distributed)</h2><hr>
+<h3 id="가상-분산-모드-Pseudo-distributed"><a href="#가상-분산-모드-Pseudo-distributed" class="headerlink" title="가상 분산 모드(Pseudo-distributed)"></a>가상 분산 모드(Pseudo-distributed)</h3><blockquote>
 <p>하나의 서버에 하둡을 완전분산모드 형태로 운영하는 모드</p>
 </blockquote>
-<h4 id="설치-환경"><a href="#설치-환경" class="headerlink" title="설치 환경"></a>설치 환경</h4><ul>
+<h3 id="설치-환경"><a href="#설치-환경" class="headerlink" title="설치 환경"></a>설치 환경</h3><ul>
 <li>H&#x2F;W : Virtual Machine 1 </li>
 <li>OS : Linux</li>
 </ul>
-<h4 id="설치순서"><a href="#설치순서" class="headerlink" title="설치순서"></a>설치순서</h4><ol>
+<h3 id="설치순서"><a href="#설치순서" class="headerlink" title="설치순서"></a>설치순서</h3><ol>
 <li>패키지 색인 파일(패키지 저장소가 제공하는 패키지에 대한 정보 파일) 업데이트</li>
 </ol>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Debian 계열 리눅스(Ubuntu)</span>
@@ -430,7 +434,7 @@ $ start-dfs.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><s
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
 <li>빅데이터 전문가의 하둡 관리』- Sam R. Alapati</li>
 </ul>
-<h2 id="Installation-with-docker"><a href="#Installation-with-docker" class="headerlink" title="Installation (with docker)"></a>Installation (with docker)</h2><h3 id="Components"><a href="#Components" class="headerlink" title="Components"></a>Components</h3><hr>
+<h2 id="Installation-with-docker"><a href="#Installation-with-docker" class="headerlink" title="Installation with docker"></a>Installation with docker</h2><h3 id="Components"><a href="#Components" class="headerlink" title="Components"></a>Components</h3><hr>
 <h4 id="Network"><a href="#Network" class="headerlink" title="Network"></a>Network</h4><pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>docker-compose.yaml</span></div><code class="language-yaml"><span class="token comment"># 172.28.1.0: Network IP, 172.28.1.255: Broadcast IP</span>
 <span class="token comment"># CIDR가 172.28.0.0/16이기 때문에 172.28.*.1 ~ 172.28.*.254 까지 사용 가능합니다(*는 일치)  </span>
 <span class="token key atrule">networks</span><span class="token punctuation">:</span>

@@ -5,12 +5,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="핵심 구성요소, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="장고 주요 기능 (1)
+    <meta name="description" content="django 주요 기능 (1)
 Function Based View : 함수로 HTTP 요청 처리
 
 Models : 데이터베이스와의 인터페이스
 
-Templates : 복잡한 문자열 조합을 보다 용이하게 할 수 있도록 도와준다">
+Templates : 복잡한 문자열 조합을 보다 용이하게 할 수 있도록 ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -228,7 +228,7 @@ Templates : 복잡한 문자열 조합을 보다 용이하게 할 수 있도록 
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="장고-주요-기능-1"><a href="#장고-주요-기능-1" class="headerlink" title="장고 주요 기능 (1)"></a>장고 주요 기능 (1)</h2><ol>
+                <h2 id="django-주요-기능-1"><a href="#django-주요-기능-1" class="headerlink" title="django 주요 기능 (1)"></a>django 주요 기능 (1)</h2><ol>
 <li><p>Function Based View : 함수로 HTTP 요청 처리</p>
 </li>
 <li><p>Models : 데이터베이스와의 인터페이스</p>
@@ -244,7 +244,7 @@ Templates : 복잡한 문자열 조합을 보다 용이하게 할 수 있도록 
 <li><p>Messages framework : 유저에게 1회성 메세지 노출 목적</p>
 </li>
 </ol>
-<h2 id="장고-주요-기능-2"><a href="#장고-주요-기능-2" class="headerlink" title="장고 주요 기능 (2)"></a>장고 주요 기능 (2)</h2><ol>
+<h2 id="django-주요-기능-2"><a href="#django-주요-기능-2" class="headerlink" title="django 주요 기능 (2)"></a>django 주요 기능 (2)</h2><ol>
 <li><p>Class Based View : 클래스로 함수 기반 뷰 만들기</p>
 </li>
 <li><p>Forms : 입력폼 생성, 입력값 유효성 검사 및 DB로의 저장<br>Validators &amp; Field &amp; Widgets</p>
@@ -264,9 +264,13 @@ Templates : 복잡한 문자열 조합을 보다 용이하게 할 수 있도록 
 <li><p>Sitemaps</p>
 </li>
 </ol>
-<h2 id="장고-기본앱"><a href="#장고-기본앱" class="headerlink" title="장고 기본앱"></a>장고 기본앱</h2><p><strong>admin</strong>, admindocs, <strong>auth</strong>, contenttypes, flatpages, gis, humanize, <strong>messages</strong>, postgres, redirects, <strong>sessions</strong>, sitemaps, sites, <strong>staticfiles</strong>, syndication</p>
-<h2 id="웹-애플리케이션의-기본-구조"><a href="#웹-애플리케이션의-기본-구조" class="headerlink" title="웹 애플리케이션의 기본 구조"></a>웹 애플리케이션의 기본 구조</h2><p>웹 브라우저 &lt;-&gt; 다양한 언어 &#x2F; 프레임워크로 만드는 웹 서버 (우리는 Django)<br>            &lt;-&gt; 데이터베이스 서버 (SQLite, MySQL, PostgreSQL 등)<br>            &lt;-&gt; 캐시 서버 (Memcached, Redis)</p>
-<h2 id="장고-기본-구조"><a href="#장고-기본-구조" class="headerlink" title="장고 기본 구조"></a>장고 기본 구조</h2><p>웹 브라우저 &lt;-&gt; ( URLConf : 미리 URL별로 호출할 함수를 리스트에 등록)<br>           &lt;-&gt; (뷰(View) : URL에 맞춰 호출된 함수)<br>           &lt;-&gt; (모델 : 파이썬 코드 데이터베이스와 통신)<br>           &lt;-&gt; (템플릿 엔진 : 복잡한 문자열을 손쉽게 조합하기 위한 문자열 렌더링 엔진)<br>           &lt;-&gt; 데이터베이스 서버 (SQLite, MySQL, PostgreSQL 등)<br>           &lt;-&gt; 캐시 서버 (Memcached, Redis)</p>
+<h2 id="django-기본앱"><a href="#django-기본앱" class="headerlink" title="django 기본앱"></a>django 기본앱</h2><ul>
+<li><code>admin</code>, admindocs, <code>auth</code>, contenttypes, flatpages, gis, humanize, <code>messages</code>, postgres, redirects, <code>sessions</code>, sitemaps, sites, <code>staticfiles</code>, syndication</li>
+</ul>
+<h2 id="웹-애플리케이션의-기본-구조"><a href="#웹-애플리케이션의-기본-구조" class="headerlink" title="웹 애플리케이션의 기본 구조"></a>웹 애플리케이션의 기본 구조</h2><hr>
+<p>웹 브라우저 &lt;-&gt; 다양한 언어 &#x2F; 프레임워크로 만드는 웹 서버 (우리는 Django)<br>            &lt;-&gt; 데이터베이스 서버 (SQLite, MySQL, PostgreSQL 등)<br>            &lt;-&gt; 캐시 서버 (Memcached, Redis)</p>
+<h2 id="django-기본-구조"><a href="#django-기본-구조" class="headerlink" title="django 기본 구조"></a>django 기본 구조</h2><hr>
+<p>웹 브라우저 &lt;-&gt; ( URLConf : 미리 URL별로 호출할 함수를 리스트에 등록)<br>           &lt;-&gt; (뷰(View) : URL에 맞춰 호출된 함수)<br>           &lt;-&gt; (모델 : 파이썬 코드 데이터베이스와 통신)<br>           &lt;-&gt; (템플릿 엔진 : 복잡한 문자열을 손쉽게 조합하기 위한 문자열 렌더링 엔진)<br>           &lt;-&gt; 데이터베이스 서버 (SQLite, MySQL, PostgreSQL 등)<br>           &lt;-&gt; 캐시 서버 (Memcached, Redis)</p>
 
                 
             </div>
@@ -448,9 +452,9 @@ Templates : 복잡한 문자열 조합을 보다 용이하게 할 수 있도록 
                 <a href="/2024/06/16/Django/posting/django-app/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/django-logo.png" class="responsive-img" alt="장고 앱(app)">
+                        <img src="/images/logos/django-logo.png" class="responsive-img" alt="django app">
                         
-                        <span class="card-title diy-neon-red">장고 앱(app)</span>
+                        <span class="card-title diy-neon-red">django app</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
