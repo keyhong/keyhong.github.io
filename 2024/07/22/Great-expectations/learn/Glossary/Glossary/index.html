@@ -1,0 +1,957 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="great_expectattions 용어 정리, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="Data Context
+
+데이터 컨텍스트는 Great Expectations (GX) 배포의 주요 진입점으로, 모든 지원 구성 요소에 대한 구성 및 메서드를 제공
+
+
+GX API의 주요 진입점으로서, 데이터 컨텍스트">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>great_expectattions 용어 정리 | Keyhong</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span diy-happy-monkey">Keyhong</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Home</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <!-- <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li> -->
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Keyhong</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Home
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/great-expectations-logo.png')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title diy-neon-red">
+                        great_expectattions 용어 정리</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="post-cate">
+                    <i class="fas fa-bookmark fa-fw icon-category"></i>
+                    
+                        <a href="/categories/Great-expectations/" class="post-category">
+                            Great_expectations
+                        </a>
+                    
+                </div>
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="Data-Context"><a href="#Data-Context" class="headerlink" title="Data Context"></a>Data Context</h2><hr>
+<blockquote>
+<p>데이터 컨텍스트는 Great Expectations (GX) 배포의 주요 진입점으로, 모든 지원 구성 요소에 대한 구성 및 메서드를 제공</p>
+</blockquote>
+<ul>
+<li><p>GX API의 주요 진입점으로서, 데이터 컨텍스트는 비타입 입력 또는 일반 기본값을 기반으로 공통 객체에 접근하는 편리한 방법을 제공</p>
+</li>
+<li><p>데이터 컨텍스트는 또한 상위 구성 요소를 구성할 수 있게 하며, 데이터 컨텍스트 구성을 백업하기 위해 다양한 저장 방법론을 사용 가능</p>
+</li>
+<li><p>데이터 컨텍스트를 인스턴스화하고 구성을 저장한 후에는 항상 동일하게 동작</p>
+</li>
+</ul>
+<h3 id="Relationships-to-other-objects"><a href="#Relationships-to-other-objects" class="headerlink" title="Relationships to other objects"></a>Relationships to other objects</h3><ul>
+<li><p>데이터 컨텍스트는 저장소, 플러그인 및 데이터 문서를 구성하는 메서드를 제공</p>
+</li>
+<li><p>또한 데이터 소스, 기대사항 및 체크포인트를 생성, 구성 및 액세스하는 데 필요한 메서드를 제공</p>
+</li>
+<li><p>추가로, Data Context는 메트릭, 검증 결과 및 데이터 문서의 내용을 관리하는 데 도움을 줌</p>
+</li>
+</ul>
+<h3 id="Use-Cases"><a href="#Use-Cases" class="headerlink" title="Use Cases"></a>Use Cases</h3><ul>
+<li><p>GX 환경을 구성할 때 Data Context를 인스턴스화하게 됩니다. <a href="">Data Context 인스턴스화 참조</a>.</p>
+</li>
+<li><p>또한 Data Context를 사용하여 저장소, 플러그인 및 Data Docs에 대한 선택적 구성을 관리할 수 있습니다. 저장소를 구성하려면 <a href="">GX 환경 구성 참조</a>. Data Docs를 호스팅하고 공유하려면 <a href="">Data Docs 호스팅 및 공유</a> 참조.</p>
+</li>
+<li><p>데이터에 연결할 때 Data Context를 사용하여 데이터 소스를 생성하고 구성합니다. 데이터 소스를 생성하고 구성하는 방법에 대한 자세한 내용은 <a href="">데이터 소스 연결</a> 참조.</p>
+</li>
+<li><p>Expectations을 생성할 때 Data Context를 사용하여 Expectations Suites과 Expectations을 생성하고, 이를 Expectations Store에 저장합니다. Data Context는 또한 메트릭과 검증 결과를 관리합니다. Data Context는 Data Docs의 내용을 관리합니다 (예: 검증 결과와 Expectations을 표시). Expectations 생성에 대한 자세한 내용은 <a href="">Expectations 생성</a> 참조.</p>
+</li>
+<li><p>데이터를 검증할 때 Data Context는 체크포인트를 생성, 구성, 저장 및 액세스하기 위한 진입점을 제공합니다. Data Context를 사용하여 체크포인트를 생성하는 방법에 대한 자세한 내용은 <a href="">Validate Data</a> 참조.</p>
+</li>
+</ul>
+<h3 id="Access-to-APIs"><a href="#Access-to-APIs" class="headerlink" title="Access to APIs"></a>Access to APIs</h3><p>Data Context는 GX API에 대한 주요 진입점을 제공합니다.</p>
+<p>Data Context는 공통 객체에 접근하는 편리한 방법을 제공합니다.</p>
+<p>GX의 내부 워크플로는 강력한 타입을 가지지만, Data Context의 편의 메서드는 예외로 비타입 입력 또는 일반 기본값을 기반으로 한 접근을 허용합니다.</p>
+<h3 id="Configuration-management"><a href="#Configuration-management" class="headerlink" title="Configuration management"></a>Configuration management</h3><p>데이터 컨텍스트는 GX 배포의 핵심 구성 요소에 대한 기본 생성, 읽기, 업데이트 및 삭제(CRUD) 작업을 포함합니다. 여기에는 데이터 소스, 기대사항 모음, 체크포인트가 포함됩니다. 또한 데이터 컨텍스트는 데이터 문서, 저장소, 플러그인 등에 접근하고 통합할 수 있게 합니다.</p>
+<h3 id="Component-management-and-config-storage"><a href="#Component-management-and-config-storage" class="headerlink" title="Component management and config storage"></a>Component management and config storage</h3><p>데이터 컨텍스트는 데이터 소스, 체크포인트, 기대사항 모음과 같은 구성 요소를 생성하고, 이러한 구성 요소에 대한 정보가 저장되는 위치를 관리하는 데 도움을 줍니다.</p>
+<p>실제 배포를 위해서는 데이터 소스 및 생산 환경에 따라 이러한 구성 요소를 정의해야 합니다. 이는 로컬 환경이 아닌 다른 곳에 이러한 구성 요소에 대한 정보를 저장하는 것을 포함할 수 있습니다. 특정 환경 및 데이터 소스에 대한 구현 예제를 보려면 <a href="">통합</a> 참조.</p>
+<h3 id="GX-Cloud-compatibility"><a href="#GX-Cloud-compatibility" class="headerlink" title="GX Cloud compatibility"></a>GX Cloud compatibility</h3><p>데이터 컨텍스트는 GX 프로젝트 전체를 포함하기 때문에, GX 클라우드는 이를 참조하여 오픈 소스 GX에서 GX 클라우드로의 원활한 업그레이드를 허용할 수 있습니다.</p>
+<h3 id="Instantiating-a-Data-Context"><a href="#Instantiating-a-Data-Context" class="headerlink" title="Instantiating a Data Context"></a>Instantiating a Data Context</h3><p>데이터 컨텍스트를 생성한 후에는 Python에서 <code>DataContext</code>를 인스턴스화하여 향후 작업을 시작할 가능성이 큽니다.</p>
+<p>예를 들어:</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> great_expectations <span class="token keyword">as</span> gx
+
+context <span class="token operator">=</span> gx<span class="token punctuation">.</span>get_context<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>대안으로 특정 디렉토리를 지정하려면 <code>context_root_dir</code> 파라미터를 사용할 수 있습니다.</p>
+<p>GX 클라우드를 사용하는 경우, <code>get_context</code>를 호출하기 전에 클라우드 환경 변수를 설정합니다.</p>
+<h3 id="Untyped-inputs"><a href="#Untyped-inputs" class="headerlink" title="Untyped inputs"></a>Untyped inputs</h3><p>GX의 코드 표준은 강력한 타입 입력을 지향합니다. 그러나 데이터 컨텍스트의 편의 함수는 이 표준에 대한 주목할 만한 예외입니다. 예를 들어, 타입 입력으로 배치를 얻으려면 다음 코드를 실행합니다:</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> great_expectations<span class="token punctuation">.</span>core<span class="token punctuation">.</span>batch <span class="token keyword">import</span> BatchRequest<span class="token punctuation">,</span> RuntimeBatchRequest
+
+batch <span class="token operator">=</span> context<span class="token punctuation">.</span>get_batch_list<span class="token punctuation">(</span>batch_request<span class="token operator">=</span>batch_request<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>비타입 입력을 선호하는 경우 다음 예제와 유사한 코드를 실행합니다:</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">data_asset_name <span class="token operator">=</span> <span class="token string">"&lt;your_data_asset_name>"</span>
+
+context<span class="token punctuation">.</span>get_batch_list<span class="token punctuation">(</span>
+    datasource_name<span class="token operator">=</span><span class="token string">"taxi_datasource"</span><span class="token punctuation">,</span>
+    data_connector_name<span class="token operator">=</span><span class="token string">"default_inferred_data_connector_name"</span><span class="token punctuation">,</span>
+    data_asset_name<span class="token operator">=</span>data_asset_name<span class="token punctuation">,</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>예제 코드에서 <code>get_batch()</code> 메서드는 의도한 타입을 추론하여 올바른 내부 메서드로 전달하는 역할을 합니다.</p>
+<p>비타입과 타입 입력 간의 이 구분은 GX 코드베이스 내에서 중요한 아키텍처 결정 사항을 반영합니다. 내부 워크플로는 강력한 타입을 가지지만, <code>DataContext</code>의 일부 편의 메서드에 대해서는 예외가 허용됩니다.</p>
+<p>강력한 타입 검사는 더 깨끗한 코드 작성과 강력한 보장 및 오류 상태에 대한 더 나은 이해를 가능하게 합니다. 또한 GX가 정적 타입 검사기, 사이클로메트릭 복잡성 분석 등의 도구를 활용할 수 있게 합니다.</p>
+<p>타입 입력 요구는 GX 시작을 어렵게 만들 수 있습니다. 예를 들어, 이전 코드 예제에 나온 첫 번째 메서드는 <code>BatchRequest</code>가 무엇인지 모르는 경우 위협적일 수 있습니다. 또한 Batch Request가 <code>great_expectations.core.batch</code>에서 가져온다는 것을 알아야 합니다. 비타입 입력을 허용하면 GX를 훨씬 더 빠르게 시작할 수 있습니다. 그러나 비타입 입력은 혼란을 초래할 위험이 항상 존재합니다. 위험을 줄이거나 없애기 위해 GX는 다음 지침을 사용합니다:</p>
+<ul>
+<li><p>타입 추론은 보수적입니다. 타입 추론에 추측이 필요하다면, 메서드는 오류를 반환합니다.</p>
+</li>
+<li><p>추측 없이 추론할 수 있는 대체 입력을 결정하는 데 도움을 주기 위해 유익한 오류가 제공됩니다.</p>
+</li>
+</ul>
+<p>Action</p>
+<blockquote>
+<p>Validation Result를 받아서 처리하는 run 메서드를 가진 Python 클래스.</p>
+</blockquote>
+<p>Batch</p>
+<blockquote>
+<p>Data Asset에서 선택된 레코드들.</p>
+</blockquote>
+<p>Batch Request</p>
+<blockquote>
+<p>Batch를 생성하기 위해 Data Source에 제공되는 요청.</p>
+</blockquote>
+<p>Checkpoint</p>
+<blockquote>
+<p>Great Expectations의 실제 배포에서 데이터를 검증하는 주요 수단.</p>
+</blockquote>
+<p>Checkpoint Store</p>
+<blockquote>
+<p>Great Expectations의 실제 배포에서 데이터를 검증하는 수단에 대한 정보를 저장하고 검색하는 커넥터.</p>
+</blockquote>
+<p>Custom Expectation</p>
+<blockquote>
+<p>Great Expectations 라이브러리 외부에서 개발된 Expectation 클래스의 확장.</p>
+</blockquote>
+<p>Data Asset</p>
+<blockquote>
+<p>Great Expectations 라이브러리 외부에서 개발된 Expectation 클래스의 확장.</p>
+</blockquote>
+<p>Data Assistant</p>
+<blockquote>
+<p>데이터를 설명하기 위해 질문을 던지고, 관찰된 것을 설명하며, 답변을 기반으로 Metrics를 제시하고 Expectations를 제안하는 유틸리티.</p>
+</blockquote>
+<h2 id="Data-Docs"><a href="#Data-Docs" class="headerlink" title="Data Docs"></a>Data Docs</h2><hr>
+<blockquote>
+<p>Expectations, Validation Results 등을 상세히 설명하는 Great Expectations 메타데이터로 생성된 사람이 읽을 수 있는 문서.</p>
+</blockquote>
+<h2 id="Data-Docs-Store"><a href="#Data-Docs-Store" class="headerlink" title="Data Docs Store"></a>Data Docs Store</h2><blockquote>
+<p>Expectations, Validation Results 등을 상세히 설명하는 Great Expectations 메타데이터로 생성된 사람이 읽을 수 있는 문서에 대한 정보를 저장하고 검색하는 커넥터.</p>
+</blockquote>
+<h2 id="Data-Source"><a href="#Data-Source" class="headerlink" title="Data Source"></a>Data Source</h2><blockquote>
+<p>다양한 소스 시스템에서 데이터를 액세스하고 상호작용하기 위한 표준 API를 제공.</p>
+</blockquote>
+<h2 id="Evaluation-Parameter"><a href="#Evaluation-Parameter" class="headerlink" title="Evaluation Parameter"></a>Evaluation Parameter</h2><blockquote>
+<p>간단한 표현식을 평가하거나 이전에 생성된 메트릭스를 참조하여 Validation 중에 사용되는 동적 값.</p>
+</blockquote>
+<h2 id="Evaluation-Parameter-Store"><a href="#Evaluation-Parameter-Store" class="headerlink" title="Evaluation Parameter Store"></a>Evaluation Parameter Store</h2><blockquote>
+<p>간단한 표현식을 평가하거나 이전에 생성된 메트릭스를 참조하여 Validation 중에 사용되는 파라미터에 대한 정보를 저장하고 검색하는 커넥터.</p>
+</blockquote>
+<h2 id="Execution-Engine"><a href="#Execution-Engine" class="headerlink" title="Execution Engine"></a>Execution Engine</h2><blockquote>
+<p>메트릭스를 계산하기 위해 데이터를 처리할 수 있는 시스템.</p>
+</blockquote>
+<h2 id="Expectation"><a href="#Expectation" class="headerlink" title="Expectation"></a>Expectation</h2><blockquote>
+<p>데이터에 대한 검증 가능한 주장.</p>
+</blockquote>
+<p>Expectation Store</p>
+<blockquote>
+<p>데이터에 대한 검증 가능한 주장 모음에 대한 정보를 저장하고 검색하는 커넥터.</p>
+</blockquote>
+<p>Expectation Suite</p>
+<blockquote>
+<p>데이터에 대한 검증 가능한 주장 모음.</p>
+</blockquote>
+<p>Metric</p>
+<blockquote>
+<p>열의 평균과 같은 데이터의 계산된 속성.</p>
+</blockquote>
+<h2 id="MetricProviders"><a href="#MetricProviders" class="headerlink" title="MetricProviders"></a>MetricProviders</h2><blockquote>
+<p>Expectations를 지원하기 위해 Metrics를 생성하고 등록하며, Expectation 소프트웨어 개발 키트(SDK)의 중요한 부분.</p>
+</blockquote>
+<h2 id="Metric-Store"><a href="#Metric-Store" class="headerlink" title="Metric Store"></a>Metric Store</h2><blockquote>
+<p>열의 평균과 같은 데이터의 계산된 속성에 대한 정보를 저장하고 검색하는 커넥터.</p>
+</blockquote>
+<h2 id="Plugin"><a href="#Plugin" class="headerlink" title="Plugin"></a>Plugin</h2><blockquote>
+<p>Great Expectations의 구성 요소 및&#x2F;또는 기능을 확장.</p>
+</blockquote>
+<h2 id="Renderer"><a href="#Renderer" class="headerlink" title="Renderer"></a>Renderer</h2><blockquote>
+<p>Expectations, Validation Results 등을 Data Docs 또는 이메일 알림이나 슬랙 메시지와 같은 다른 출력물로 변환하는 메서드.</p>
+</blockquote>
+<h2 id="Store"><a href="#Store" class="headerlink" title="Store"></a>Store</h2><blockquote>
+<p>Great Expectations의 메타데이터에 대한 정보를 저장하고 검색하는 커넥터.</p>
+</blockquote>
+<h2 id="Supporting-Resource"><a href="#Supporting-Resource" class="headerlink" title="Supporting Resource"></a>Supporting Resource</h2><blockquote>
+<p>Great Expectations 코드베이스 외부에서 사용되는 리소스.</p>
+</blockquote>
+<h2 id="Validation"><a href="#Validation" class="headerlink" title="Validation"></a>Validation</h2><blockquote>
+<p>Expectation Suite를 Batch에 적용하는 행위.</p>
+</blockquote>
+<h2 id="Validation-Result"><a href="#Validation-Result" class="headerlink" title="Validation Result"></a>Validation Result</h2><blockquote>
+<p>데이터가 Expectation 또는 Expectation Suite에 대해 검증될 때 생성되는 결과.</p>
+</blockquote>
+<h2 id="Validation-Result-Store"><a href="#Validation-Result-Store" class="headerlink" title="Validation Result Store"></a>Validation Result Store</h2><blockquote>
+<p>데이터가 Expectation Suite에 대해 검증될 때 생성된 객체에 대한 정보를 저장하고 검색하는 커넥터.</p>
+</blockquote>
+<h2 id="Validator"><a href="#Validator" class="headerlink" title="Validator"></a>Validator</h2><blockquote>
+<p>데이터를 대상으로 Expectation Suite를 실행하는 데 사용.</p>
+</blockquote>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Keyhong</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2024/07/22/Great-expectations/learn/Glossary/Glossary/">http://example.com/2024/07/22/Great-expectations/learn/Glossary/Glossary/</a>
+                </span>
+            </div>
+            <!-- <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        reprint:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    use
+                    <a href="cc_by_url" rel="external nofollow noreferrer" target="_blank">cc_by_name</a>
+                    licensed
+                    <a href="/about" target="_blank">Keyhong</a>
+                    !
+                </span>
+            </div> -->
+        
+    </div>
+
+    <!-- <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script> -->
+
+
+
+            <div class="tag_share" style="display: block;">
+                <!-- <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                        </div>
+                    
+                </div> -->
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <!-- <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a> -->
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2024/08/10/Data-Governance/posting/data-profiling/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="데이터 품질진단 (프로파일링)">
+                        
+                        <span class="card-title diy-neon-red">데이터 품질진단 (프로파일링)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-08-10
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B1%B0%EB%B2%84%EB%84%8C%EC%8A%A4/" class="post-category">
+                                    데이터 거버넌스
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/07/20/Data-Analysis/posting/product-market-fit/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/data-analysis-logo.jpg" class="responsive-img" alt="Product Market Fit">
+                        
+                        <span class="card-title diy-neon-red">Product Market Fit</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-07-20
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D/" class="post-category">
+                                    데이터 분석
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;목차</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2024</span>
+            
+            <a href="/about" target="_blank">Gyuwon Hong</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+            
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+    <a href="https://github.com/keyhong" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:wnhong96@gmail.com" class="tooltipped" target="_blank" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- Back to Top Button -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
