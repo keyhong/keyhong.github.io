@@ -237,7 +237,19 @@
 <blockquote>
 <p><code>단일 컬럼</code>과 같은 작은 단위로 시작하여 <code>테이블과 테이블의 상관관계 데이터를 검증</code>하는 복잡한 순서 단계로 프로파일링 실시</p>
 </blockquote>
-<h3 id="Column-Profiling"><a href="#Column-Profiling" class="headerlink" title="Column Profiling"></a>Column Profiling</h3><h3 id="Single-Table-Profiling"><a href="#Single-Table-Profiling" class="headerlink" title="Single-Table Profiling"></a>Single-Table Profiling</h3><h3 id="Cross-Table-Profiling"><a href="#Cross-Table-Profiling" class="headerlink" title="Cross-Table Profiling"></a>Cross-Table Profiling</h3><h2 id="1-3-프로파일링-수행-시기"><a href="#1-3-프로파일링-수행-시기" class="headerlink" title="1.3 프로파일링 수행 시기"></a>1.3 프로파일링 수행 시기</h2><hr>
+<ul>
+<li><p>Column Profiling : 개별 속성 값에 대한 검증</p>
+</li>
+<li><p>Single-Table Profiling : 복수 개의 컬럼 간의 관계에 대한 검증 <br>(EX) 결혼여부가 N인데, 결혼일자가 있는 경우 &#x3D;&gt; 이상 데이터</p>
+</li>
+<li><p>Cross-Table Profiling : 두 테이블의 참조 관게에 대한 검증</p>
+</li>
+</ul>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129134&authkey=%21ADmPyDpfR1-as1g&width=1024" width="1024" height="auto" />
+
+
+
+<h2 id="1-3-프로파일링-수행-시기"><a href="#1-3-프로파일링-수행-시기" class="headerlink" title="1.3 프로파일링 수행 시기"></a>1.3 프로파일링 수행 시기</h2><hr>
 <blockquote>
 <p>데이터의 저장, 연계, 가공, 활용 등 <code>데이터에 변경이 발생하는 모든 영역에서 수시로 프로파일링을 수행</code>함으로 <code>데이터의 오류를 사전에 파악하고 예방</code>해야 함</p>
 </blockquote>
@@ -275,44 +287,50 @@
 
 
 <h2 id="1-5-프로파일링-절차"><a href="#1-5-프로파일링-절차" class="headerlink" title="1.5 프로파일링 절차"></a>1.5 프로파일링 절차</h2><hr>
-<h3 id="프로파일링-절차-1-3"><a href="#프로파일링-절차-1-3" class="headerlink" title="프로파일링 절차 (1&#x2F;3)"></a>프로파일링 절차 (1&#x2F;3)</h3><blockquote>
+<h3 id="1-데이터-값-진단"><a href="#1-데이터-값-진단" class="headerlink" title="(1) 데이터 값 진단"></a>(1) 데이터 값 진단</h3><blockquote>
 <p>데이터 값 진단은 데이터 품질진단 및 개선 활동(6단계)에서 수행하는 여러 진단활동 중 하나로서, 구조&#x2F;표준&#x2F;관리수준 진단과 함께 동일 절차로 수행됨<hr>* 각 진단의 세부 절차는 품질진단기법 및 진단 관점에 따라 달라짐</p>
 </blockquote>
-<ol>
-<li><p>품질진단 수요조사</p>
-</li>
-<li><p>품질진단 준비</p>
-</li>
-<li><p>품질진단 수행</p>
-<ul>
-<li>값 진단</li>
-<li>업무규칙 진단</li>
-<li>구조&#x2F;표준 진단</li>
-<li>품질관리 수준 진단</li>
-</ul>
-</li>
-<li><p>오류 원인 분석</p>
-</li>
-</ol>
-<h3 id="프로파일링-절차-2-3"><a href="#프로파일링-절차-2-3" class="headerlink" title="프로파일링 절차 (2&#x2F;3)"></a>프로파일링 절차 (2&#x2F;3)</h3><blockquote>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129133&authkey=%21ALdUf9SEZluCJpU&width=1024" width="1024" height="auto" alt="품질진단 중 데이터 값 진단"/>
+
+<h3 id="2-데이터-값-진단-절차와-상세-활동"><a href="#2-데이터-값-진단-절차와-상세-활동" class="headerlink" title="(2) 데이터 값 진단 절차와 상세 활동"></a>(2) 데이터 값 진단 절차와 상세 활동</h3><blockquote>
 <p>데이터 값 진단 절차와 상세 활동</p>
 </blockquote>
 <ol>
 <li><p>진단대상 DB 확정</p>
 </li>
 <li><p>품질진단 환경 준비</p>
-<ul>
-<li>품질진단 전담인력 지정</li>
-<li>협조체계 구성</li>
-<li>산출물 준비</li>
-<li>진단대상 데이터 준비</li>
-<li>데이터베이스 접속 권한</li>
-<li>보안환경 확인</li>
-<li>수행장소마련</li>
-</ul>
 </li>
-<li><p>값 진단 수행</p>
-</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>품질진단 환경 준비</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>품질진단 전담인력 지정</td>
+</tr>
+<tr>
+<td>협조체계 구성</td>
+</tr>
+<tr>
+<td>산출물 준비</td>
+</tr>
+<tr>
+<td>진단대상 데이터 준비</td>
+</tr>
+<tr>
+<td>데이터베이스 접속 권한</td>
+</tr>
+<tr>
+<td>보안환경 확인</td>
+</tr>
+<tr>
+<td>수행장소마련</td>
+</tr>
+</tbody></table>
+<ol start="3">
+<li>값 진단 수행</li>
 </ol>
 <table>
   <tr>
@@ -368,12 +386,13 @@
 
 
 <ol start="4">
-<li><p>오류원인 분석 및 확정</p>
-<p> -&gt; 오류내역 검토 -&gt; 수정 및 보완 -&gt; 오류 확정 -&gt; 결과 보고서</p>
-</li>
+<li>오류원인 분석 및 확정</li>
 </ol>
-<h3 id="프로파일링-절차-3-3"><a href="#프로파일링-절차-3-3" class="headerlink" title="프로파일링 절차 (3&#x2F;3)"></a>프로파일링 절차 (3&#x2F;3)</h3><blockquote>
-<p>‘3 값 진단 수행, 4 오류원인 분석 및 확정’ 단계의 상세 활동</p>
+<blockquote>
+<p>오류내역 검토 -&gt; 수정 및 보완 -&gt; 오류 확정 -&gt; 결과 보고서</p>
+</blockquote>
+<h3 id="4-‘값-진단-수행’-‘오류원인-분석-및-확정’-단계-상세-활동"><a href="#4-‘값-진단-수행’-‘오류원인-분석-및-확정’-단계-상세-활동" class="headerlink" title="(4) ‘값 진단 수행’, ‘오류원인 분석 및 확정’ 단계 상세 활동"></a>(4) ‘값 진단 수행’, ‘오류원인 분석 및 확정’ 단계 상세 활동</h3><blockquote>
+<p><code>3. 값 진단 수행</code>, <code>4. 오류원인 분석 및 확정</code> 단계의 상세 활동</p>
 </blockquote>
 <table>
   <tr>
@@ -447,7 +466,9 @@
 
 
 <h2 id="1-6-테이블-컬럼정보-수집"><a href="#1-6-테이블-컬럼정보-수집" class="headerlink" title="1.6 테이블&#x2F;컬럼정보 수집"></a>1.6 테이블&#x2F;컬럼정보 수집</h2><hr>
-<h3 id="테이블-컬럼정보-수집-1-3"><a href="#테이블-컬럼정보-수집-1-3" class="headerlink" title="테이블&#x2F;컬럼정보 수집 (1&#x2F;3)"></a>테이블&#x2F;컬럼정보 수집 (1&#x2F;3)</h3><p>진단대상 데이터베이스에 접속하여 실제 물리 DB의 테이블&#x2F;컬럼 정보를 추출</p>
+<h3 id="1-물리-DB의-테이블-컬럼-정보-추출"><a href="#1-물리-DB의-테이블-컬럼-정보-추출" class="headerlink" title="(1) 물리 DB의 테이블&#x2F;컬럼 정보 추출"></a>(1) 물리 DB의 테이블&#x2F;컬럼 정보 추출</h3><blockquote>
+<p>진단대상 데이터베이스에 접속하여 실제 물리 DB의 테이블&#x2F;컬럼 정보를 추출</p>
+</blockquote>
 <p>&lt;테이블&#x2F;컬럼 정보&gt;</p>
 <table>
 <thead>
@@ -606,73 +627,14 @@
 <td>Y</td>
 <td></td>
 </tr>
-<tr>
-<td>ORDER_DETAL</td>
-<td>주문상세</td>
-<td>1</td>
-<td>ORDER_NO</td>
-<td>주문번호</td>
-<td>VARCHAR2</td>
-<td>10</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>ORDER_DETAL</td>
-<td>주문상세</td>
-<td>2</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>ORDER_DETAL</td>
-<td>주문상세</td>
-<td>3</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>ORDER_DETAL</td>
-<td>주문상세</td>
-<td>4</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>ORDER_DETAL</td>
-<td>주문상세</td>
-<td>5</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>ORDER_DETAL</td>
-<td>주문상세</td>
-<td>6</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
 </tbody></table>
+<!-- | ORDER_DETAL  | 주문상세     | 1        | ORDER_NO | 주문번호 | VARCHAR2 | 10 |
+| ORDER_DETAL  | 주문상세     | 2        | 
+| ORDER_DETAL  | 주문상세     | 3        |
+| ORDER_DETAL  | 주문상세     | 4        |
+| ORDER_DETAL  | 주문상세     | 5        |
+| ORDER_DETAL  | 주문상세     | 6        | -->
+
 <pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>추출 SQL (Oracle 예시)</span></div><code class="language-sql"><span class="token keyword">SELECT</span> A<span class="token punctuation">.</span>TABLE_NAME   <span class="token keyword">AS</span> <span class="token string">'테이블영문명'</span>
      <span class="token punctuation">,</span> A<span class="token punctuation">.</span>COMMENTS     <span class="token keyword">AS</span> <span class="token string">'테이블한글명'</span>
      <span class="token punctuation">,</span> A<span class="token punctuation">.</span>COLUMN_ID    <span class="token keyword">AS</span> <span class="token string">'컬럼순서'</span>
@@ -704,7 +666,7 @@
 <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> <span class="token string">'테이블영문명'</span><span class="token punctuation">,</span> <span class="token string">'컬럼순서'</span>
 <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="테이블-컬럼정보-수집-2-3"><a href="#테이블-컬럼정보-수집-2-3" class="headerlink" title="테이블&#x2F;컬럼정보 수집 (2&#x2F;3)"></a>테이블&#x2F;컬럼정보 수집 (2&#x2F;3)</h3><blockquote>
+<h3 id="2-기준-자료가-될-수-있는-문서-수집"><a href="#2-기준-자료가-될-수-있는-문서-수집" class="headerlink" title="(2) 기준 자료가 될 수 있는 문서 수집"></a>(2) 기준 자료가 될 수 있는 문서 수집</h3><blockquote>
 <p>프로파일링 분석을 정확하게 하기 위한 기준 자료가 될 수 있는 문서를 수집</p>
 </blockquote>
 <table>
@@ -743,7 +705,7 @@
 
 
 
-<h3 id="테이블-컬럼정보-수집-3-3"><a href="#테이블-컬럼정보-수집-3-3" class="headerlink" title="테이블&#x2F;컬럼정보 수집 (3&#x2F;3)"></a>테이블&#x2F;컬럼정보 수집 (3&#x2F;3)</h3><blockquote>
+<h3 id="3-물리-DB의-메타-정보와-수집된-기준정보-비교-분석"><a href="#3-물리-DB의-메타-정보와-수집된-기준정보-비교-분석" class="headerlink" title="(3) 물리 DB의 메타 정보와 수집된 기준정보 비교 분석"></a>(3) 물리 DB의 메타 정보와 수집된 기준정보 비교 분석</h3><blockquote>
 <p>물리 DB의 메타 정보와 수집된 기준정보의 비교 분석을 통해 비 표준화 사항 발견</p>
 </blockquote>
 <p>&lt;물리 DB 메타 정보&gt;</p>
@@ -931,18 +893,19 @@
 
 
 <h2 id="1-7-컬럼-분석"><a href="#1-7-컬럼-분석" class="headerlink" title="1.7 컬럼 분석"></a>1.7 컬럼 분석</h2><hr>
-<h3 id="컬럼-분석-1-2"><a href="#컬럼-분석-1-2" class="headerlink" title="컬럼 분석 (1&#x2F;2)"></a>컬럼 분석 (1&#x2F;2)</h3><p>컬럼에 대한 컬럼 분석 실시 결과 (예시)</p>
+<blockquote>
+<p>컬럼의 통계데이터를 수집함으로서 오류징후를 파악하는 데 용이함</p>
+</blockquote>
 <ul>
 <li>컬럼분석을 통해 오류 뿐만 아니라, 데이터 값의 빈도, 데이터 패턴 등을 미리 파악할 수 있음</li>
 </ul>
-<h3 id="컬럼-분석-2-2"><a href="#컬럼-분석-2-2" class="headerlink" title="컬럼 분석 (2&#x2F;2)"></a>컬럼 분석 (2&#x2F;2)</h3><p>컬럼의 통계데이터를 수집함으로서 오류징후를 파악하는 데 용이함</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129132&authkey=%21AKvgZvFfcBVdfDI&width=1024" width="1024" height="auto" alt="컬럼에 대한 컬럼 분석 실시 결과 (예시)"/>
+
+<h3 id="1-MIN-MAX-분석"><a href="#1-MIN-MAX-분석" class="headerlink" title="(1) MIN &#x2F; MAX 분석"></a>(1) MIN &#x2F; MAX 분석</h3><blockquote>
+<p>MIN 값과 MAX 값을 통하여 <code>수치 값의 범위를 파악</code></p>
+</blockquote>
 <ul>
-<li><p>MIN &#x2F; MAX 분석</p>
-<ul>
-<li>MIN 값과 MAX 값을 통하여 <code>수치 값의 범위를 파악</code></li>
 <li>개별 빈도 값을 추출하지 않고 빠른 시간 내에 오류 징후를 파악 가능</li>
-</ul>
-</li>
 </ul>
 <table>
 <thead>
@@ -960,19 +923,17 @@
 <td><code>9999999</code></td>
 </tr>
 </tbody></table>
-<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>MIN / MAX 분석</span></div><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token string">'판매가격'</span>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>MIN / MAX 분석 쿼리</span></div><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token string">'판매가격'</span>
      <span class="token punctuation">,</span> <span class="token function">MIN</span><span class="token punctuation">(</span>sal_price<span class="token punctuation">)</span>
      <span class="token punctuation">,</span> <span class="token function">MAX</span><span class="token punctuation">(</span>sal_price<span class="token punctuation">)</span>
 <span class="token keyword">FROM</span> order_detail
 <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h3 id="2-NULL-SPACE-분석"><a href="#2-NULL-SPACE-분석" class="headerlink" title="(2) NULL &#x2F; SPACE 분석"></a>(2) NULL &#x2F; SPACE 분석</h3><blockquote>
+<p>NULL 값과 SPACE 건수를 통하여 <code>값의 유무를 파악</code></p>
+</blockquote>
 <ul>
-<li><p>NULL &#x2F; SPACE 분석</p>
-<ul>
-<li>NULL 값과 SPACE 건수를 통하여 <code>값의 유무를 파악</code></li>
 <li>컬럼의 사용유무, 필수입력 컬럼 등에 대한 오류 징후 파악 가능</li>
-</ul>
-</li>
 </ul>
 <table>
 <thead>
@@ -992,7 +953,7 @@
 <td><code>37</code></td>
 </tr>
 </tbody></table>
-<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>NULL / SPACE 분석</span></div><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span>         <span class="token keyword">AS</span> TOT_CNT
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>NULL / SPACE 분석 쿼리</span></div><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span>         <span class="token keyword">AS</span> TOT_CNT
      <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span>etc_info<span class="token punctuation">)</span>  <span class="token keyword">AS</span> NOT_NULL_CNT
      <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span>
         <span class="token keyword">CASE</span> <span class="token keyword">WHEN</span> etc_info <span class="token operator">IS</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token operator">AND</span> TRIM<span class="token punctuation">(</span>etc_info<span class="token punctuation">)</span> <span class="token operator">IS</span> <span class="token boolean">NULL</span> <span class="token keyword">THEN</span> <span class="token string">'1'</span>
@@ -1000,13 +961,11 @@
        <span class="token punctuation">)</span>                <span class="token keyword">AS</span> SPACE_CNT
 <span class="token keyword">FROM</span> vender
 <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="3-DISTINCT-DUPLICATE-분석"><a href="#3-DISTINCT-DUPLICATE-분석" class="headerlink" title="(3) DISTINCT &#x2F; DUPLICATE 분석"></a>(3) DISTINCT &#x2F; DUPLICATE 분석</h3><blockquote>
+<p>개별 값 및 중복 값의 건수를 통해 <code>값의 분포를 파악</code></p>
+</blockquote>
 <ul>
-<li><p>DISTINCT &#x2F; DUPLICATE 분석</p>
-<ul>
-<li>개별 값 및 중복 값의 건수를 통해 <code>값의 분포를 파악</code></li>
 <li>컬럼의 사용유무, 필수입력 컬럼 등에 대한 오류징후 파악 가능</li>
-</ul>
-</li>
 </ul>
 <table>
 <thead>
@@ -1026,7 +985,7 @@
 <td><code>7</code></td>
 </tr>
 </tbody></table>
-<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>DISTINCT / DUPLICATE 분석</span></div><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span>                                            <span class="token keyword">AS</span> TOT_CNT
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>DISTINCT / DUPLICATE 분석 쿼리</span></div><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span>                                            <span class="token keyword">AS</span> TOT_CNT
      <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span>comb_res_yn<span class="token punctuation">)</span>                                  <span class="token keyword">AS</span> NOT_NULL_CNT
      <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> comb_res_yn<span class="token punctuation">)</span>                         <span class="token keyword">AS</span> DISTINCT_CNT
      <span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token function">COUNT</span><span class="token punctuation">(</span>comb_res_yn<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> comb_res_yn<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token keyword">AS</span> DUPLICATE_CNT
@@ -1034,8 +993,10 @@
 <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
-<h2 id="1-8-유효성-진단대상-선정-도메인-분석"><a href="#1-8-유효성-진단대상-선정-도메인-분석" class="headerlink" title="1.8 유효성 진단대상 선정 - 도메인 분석"></a>1.8 유효성 진단대상 선정 - 도메인 분석</h2><hr>
+<h2 id="1-8-유효성-진단대상-선정"><a href="#1-8-유효성-진단대상-선정" class="headerlink" title="1.8 유효성 진단대상 선정"></a>1.8 유효성 진단대상 선정</h2><hr>
+<h3 id="1-도메인-분석"><a href="#1-도메인-분석" class="headerlink" title="(1) 도메인 분석"></a>(1) 도메인 분석</h3><blockquote>
 <p>테이블 컬럼 정보를 통한 도메인 정의 및 분류 수행</p>
+</blockquote>
 <ul>
 <li>분류 작업을 통해 속성이 갖는 도메인을 그룹화</li>
 </ul>
@@ -1134,8 +1095,15 @@
 </table>
 
 
-
-<h2 id="1-9-진단방법-선정-도메인-정의-1-2"><a href="#1-9-진단방법-선정-도메인-정의-1-2" class="headerlink" title="1.9 진단방법 선정 - 도메인 정의 (1&#x2F;2)"></a>1.9 진단방법 선정 - 도메인 정의 (1&#x2F;2)</h2><hr>
+<h3 id="2-업무요건-분석"><a href="#2-업무요건-분석" class="headerlink" title="(2) 업무요건 분석"></a>(2) 업무요건 분석</h3><ul>
+<li><p>데이터 관리문서에 명시된 데이터 규칙</p>
+</li>
+<li><p>업무 담당자가 지식으로 알고 있는 규칙</p>
+</li>
+<li><p>응용 프로그램에서 코딩된 규칙</p>
+</li>
+</ul>
+<h2 id="1-9-진단방법-선정-도메인-정의"><a href="#1-9-진단방법-선정-도메인-정의" class="headerlink" title="1.9 진단방법 선정 - 도메인 정의"></a>1.9 진단방법 선정 - 도메인 정의</h2><hr>
 <blockquote>
 <p>테이블 컬럼 정보를 통한 도메인 정의 및 분류 수행</p>
 </blockquote>
