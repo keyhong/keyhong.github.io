@@ -418,7 +418,7 @@
   <tr>
     <td rowspan="2">용어생성 구성분류</td>
     <td>기본단어</td>
-    <td colspan="2">용어를 구성하는 단어(주제어, 수식어)</td>
+    <td colspan="2">용어를 구성하는 단어 (주제어, 수식어)</td>
   </tr>
   <tr>
     <td>분류단어</td>
@@ -432,7 +432,7 @@
   <tr>
     <td rowspan="2">비표준단어</td>
     <td>동음단어</td>
-    <td>표준단어와 유사한 의미로 정의되어 사용중인 단어(이음동의어)</td>
+    <td>표준단어와 유사한 의미로 정의되어 사용중인 단어 (이음동의어)</td>
   </tr>
   <tr>
     <td>금칙단어</td>
@@ -448,7 +448,7 @@
   </tr>
   <tr>
     <td>도메인 유형<br>(분류)</td>
-    <td colspan="5">도메인 관리를 위해 분류 체계를 구분함<br>예) <code>도메인대분류(명/내용/주소, 수/금액,율, 날짜, 번호, 코드)</code><br>예) <code>도메인소분류(명, 금액, 날짜 일련번호, 여부)</code></td>
+    <td colspan="5">도메인 관리를 위해 분류 체계를 구분함<br>예) <code>도메인대분류(명칭/내용/연락처, 수량/금액/비율, 날짜, 번호, 코드)</code><br>예) <code>도메인소분류(명, 금액, 날짜, 일련번호, 여부 ...)</code></td>
   </tr>    
   <tr>
     <td>도메인명<br>(인포타입)</td>
@@ -464,24 +464,28 @@
 </table>
 
 
-<h2 id="데이터-표준사전-구축-표준화-상세-절차"><a href="#데이터-표준사전-구축-표준화-상세-절차" class="headerlink" title="데이터 표준사전 구축 - 표준화 상세 절차"></a>데이터 표준사전 구축 - 표준화 상세 절차</h2><h2 id="데이터-표준화-지침"><a href="#데이터-표준화-지침" class="headerlink" title="데이터 표준화 (지침)"></a>데이터 표준화 (지침)</h2><h3 id="1-1-표준데이터-관계도"><a href="#1-1-표준데이터-관계도" class="headerlink" title="1.1 표준데이터 관계도"></a>1.1 표준데이터 관계도</h3><h4 id="표준단어"><a href="#표준단어" class="headerlink" title="표준단어"></a>표준단어</h4><blockquote>
+<h2 id="데이터-표준사전-구축-표준화-상세-절차"><a href="#데이터-표준사전-구축-표준화-상세-절차" class="headerlink" title="데이터 표준사전 구축 - 표준화 상세 절차"></a>데이터 표준사전 구축 - 표준화 상세 절차</h2><h2 id="데이터-표준화-지침"><a href="#데이터-표준화-지침" class="headerlink" title="데이터 표준화 (지침)"></a>데이터 표준화 (지침)</h2><h3 id="1-1-표준데이터-관계도"><a href="#1-1-표준데이터-관계도" class="headerlink" title="1.1 표준데이터 관계도"></a>1.1 표준데이터 관계도</h3><h4 id="1-표준단어"><a href="#1-표준단어" class="headerlink" title="(1) 표준단어"></a>(1) 표준단어</h4><blockquote>
 <p>용어를 구성하는 원소로 의미적으로 더 이상 쪼개지지 않는 최소 단위의 형태소 (단어)</p>
 </blockquote>
 <ul>
 <li>유사어(금칙어) + 기본단어 분류단어</li>
 </ul>
-<h4 id="도메인"><a href="#도메인" class="headerlink" title="도메인"></a>도메인</h4><blockquote>
+<h4 id="2-도메인"><a href="#2-도메인" class="headerlink" title="(2) 도메인"></a>(2) 도메인</h4><blockquote>
 <p>데이터의 형식 및 길이를 데이터의 특성에 따라 정형화한 명칭</p>
 </blockquote>
-<p>도메인 그룹 (예: 금액, 일자, 내용 등)<br>표준도메인 (예: 금액 Number[10], 금액 Number[5])</p>
-<h4 id="표준용어"><a href="#표준용어" class="headerlink" title="표준용어"></a>표준용어</h4><blockquote>
+<ul>
+<li>도메인 그룹 (예: 금액, 일자, 내용 등)</li>
+<li>표준도메인 (예: 금액 Number[10], 금액 Number[5])</li>
+</ul>
+<h4 id="3-표준용어"><a href="#3-표준용어" class="headerlink" title="(3) 표준용어"></a>(3) 표준용어</h4><blockquote>
 <p>표준단어의 조합으로 구성되고, 정형화된 데이터의 타입과 길이를 갖는 통일된 하나의 속성(컬럼) 명칭</p>
 </blockquote>
 <ul>
 <li>수식어[선택] + 주제어[권장] + 수식어[계약] + 분류어[필수] + 번호[선택]</li>
 </ul>
 <p>** 주제어 : 업무명이나, 용어의 성격 또는 의미적 주제&#x2F;객체가 되는 단어<br>** 분류어 : 데이터의 특성을 한정</p>
-<h3 id="1-2-표준데이터-명명규칙"><a href="#1-2-표준데이터-명명규칙" class="headerlink" title="1.2 표준데이터 명명규칙"></a>1.2 표준데이터 명명규칙</h3><h4 id="표준단어-명명-규칙"><a href="#표준단어-명명-규칙" class="headerlink" title="표준단어 명명 규칙"></a>표준단어 명명 규칙</h4><table>
+<h3 id="1-2-표준데이터-명명규칙"><a href="#1-2-표준데이터-명명규칙" class="headerlink" title="1.2 표준데이터 명명규칙"></a>1.2 표준데이터 명명규칙</h3><hr>
+<h4 id="1-표준단어-명명-규칙"><a href="#1-표준단어-명명-규칙" class="headerlink" title="(1) 표준단어 명명 규칙"></a>(1) 표준단어 명명 규칙</h4><table>
 <thead>
 <tr>
 <th>명명규칙</th>
@@ -517,7 +521,7 @@
 <td>- 한글화 적용 : FUND(X), 펀드(O) <br> - 범용적인 경우 예외 (약어, 경제&#x2F;금융용어 등) : IP(O), MMK(O)</td>
 </tr>
 </tbody></table>
-<h4 id="도메인-사용-규칙"><a href="#도메인-사용-규칙" class="headerlink" title="도메인 사용 규칙"></a>도메인 사용 규칙</h4><ul>
+<h4 id="2-도메인-사용-규칙"><a href="#2-도메인-사용-규칙" class="headerlink" title="(2) 도메인 사용 규칙"></a>(2) 도메인 사용 규칙</h4><ul>
 <li>도메인 그룹 -&gt; 표준용어의 <code>분류어</code>로 사용 (특별한 경우가 아니면, <code>일련번호</code> -&gt; <code>순번</code> 사용)</li>
 </ul>
 <table>
@@ -570,7 +574,7 @@
 </ul>
 </li>
 </ul>
-<h4 id="표준용어-명명-규칙"><a href="#표준용어-명명-규칙" class="headerlink" title="표준용어 명명 규칙"></a>표준용어 명명 규칙</h4><ul>
+<h4 id="3-표준용어-명명-규칙"><a href="#3-표준용어-명명-규칙" class="headerlink" title="(3) 표준용어 명명 규칙"></a>(3) 표준용어 명명 규칙</h4><ul>
 <li>표준용어 구성</li>
 </ul>
 <blockquote>
@@ -607,7 +611,8 @@
 <p>예) 고객^마감^관리^코드 -&gt; CUST_CLS_MGNT_CD (16자)</p>
 </li>
 </ul>
-<h3 id="1-3-표준코드-생성-규칙"><a href="#1-3-표준코드-생성-규칙" class="headerlink" title="1.3 표준코드 생성 규칙"></a>1.3 표준코드 생성 규칙</h3><h4 id="표준-코드-구성"><a href="#표준-코드-구성" class="headerlink" title="표준 코드 구성"></a>표준 코드 구성</h4><p>성별코드</p>
+<h3 id="1-3-표준코드-생성-규칙"><a href="#1-3-표준코드-생성-규칙" class="headerlink" title="1.3 표준코드 생성 규칙"></a>1.3 표준코드 생성 규칙</h3><hr>
+<h4 id="1-표준-코드-구성"><a href="#1-표준-코드-구성" class="headerlink" title="(1) 표준 코드 구성"></a>(1) 표준 코드 구성</h4><p>&lt;성별코드&gt;</p>
 <table>
 <thead>
 <tr>
@@ -625,24 +630,26 @@
 </tr>
 </tbody></table>
 <ul>
-<li>코드명 : 코드를 대표하는 명칭</li>
-<li>코드값 : 코드의 값을 구분하는 값 (문자, 숫자)</li>
-<li>코드값명 : 각 코드값에 대한 실제 의미</li>
-</ul>
+<li><p><code>성별코드</code> &#x3D;&gt; <code>코드명</code> : 코드를 대표하는 명칭</p>
 <blockquote>
-<p>코드 명 &#x3D; 수식어[필수] + 코드유형[선택] + 코드[필수] </p>
+<p>코드 명 &#x3D; <code>성별</code> (수식어[필수]) + <code> </code> (코드유형[선택]) +<code>코드</code>(코드[필수])<hr>** 코드 유형 : 구분, 분류, 유형, 형태, 등급, 사유, 방법, 관계, 기준, 그룹, 단계 등</p>
 </blockquote>
-<p>** 코드유형 : 구분, 분류, 유형, 형태, 등급, 사유, 방법, 관계, 기준, 그룹, 단계 등</p>
-<h4 id="표준코드-유형"><a href="#표준코드-유형" class="headerlink" title="표준코드 유형"></a>표준코드 유형</h4><ul>
-<li><p>일반 코드 : 공통코드 테이블에서 통합되어 관리되는 코드 -&gt; ‘성별코드’ 등</p>
 </li>
-<li><p>목록 코드 : 별도의 테이블에서 개별적으로 정의되어 관리되는 코드 -&gt; ‘상품코드’ 등</p>
+<li><p><code>1</code>, <code>2</code> &#x3D;&gt; <code>코드값</code> : 코드의 값을 구분하는 값 (문자, 숫자)</p>
+</li>
+<li><p><code>남자</code>, <code>여자</code> &#x3D;&gt; <code>코드값명</code> : 각 코드값에 대한 실제 의미</p>
+</li>
+</ul>
+<h4 id="2-표준코드-유형"><a href="#2-표준코드-유형" class="headerlink" title="(2) 표준코드 유형"></a>(2) 표준코드 유형</h4><ul>
+<li><p>일반 코드 : <code>공통코드 테이블에서 통합되어 관리되는 코드</code> -&gt; ‘성별코드’ 등</p>
+</li>
+<li><p>목록 코드 : <code>별도의 테이블에서 개별적으로 정의되어 관리되는 코드</code> -&gt; ‘상품코드’ 등</p>
 <ul>
 <li>코드 위치 정보(테이블명, 코드값컬럼명, 코드값명컬럼명) 관리</li>
 </ul>
 </li>
 </ul>
-<h4 id="표준코드-생성규칙"><a href="#표준코드-생성규칙" class="headerlink" title="표준코드 생성규칙"></a>표준코드 생성규칙</h4><ul>
+<h4 id="3-표준코드-생성규칙"><a href="#3-표준코드-생성규칙" class="headerlink" title="(3) 표준코드 생성규칙"></a>(3) 표준코드 생성규칙</h4><ul>
 <li><p>코드값</p>
 <ul>
 <li><p><code>중복사용불가</code> -&gt; [1] 남자, [1] 여자 (X)</p>
@@ -654,7 +661,7 @@
 <li><p>숫자 타입 코드값이 데이터 길이보다 작은 경우, 앞에서부터 <code>문자 &#39;0&#39;을 채워 코드값 정의</code></p>
 </li>
 </ul>
-<p>에시) 남자 01, 여자 02</p>
+<p>(예시) 남자 01, 여자 02</p>
 </li>
 <li><p>코드값명</p>
 <ul>
@@ -669,8 +676,8 @@
 <li><p>외부공인기관에서 정의한 코드는 생성규칙 대상에서 제외</p>
 </li>
 </ul>
-<h4 id="표준코드-오류-사례"><a href="#표준코드-오류-사례" class="headerlink" title="표준코드 오류 사례"></a>표준코드 오류 사례</h4><p>예) 민원유형코드 &#x2F; Varchar[3]</p>
-<p>민원유형___ -&gt; 분류어 누락</p>
+<h4 id="4-표준코드-오류-사례"><a href="#4-표준코드-오류-사례" class="headerlink" title="(4) 표준코드 오류 사례"></a>(4) 표준코드 오류 사례</h4><p>예) 민원유형코드 &#x2F; Varchar[3]</p>
+<p>&lt;<code>민원유형___</code>&gt; -&gt; <code>분류어 누락</code></p>
 <table>
 <thead>
 <tr>
@@ -680,40 +687,70 @@
 </tr>
 </thead>
 <tbody><tr>
-<td>01</td>
+<td><code>01</code></td>
 <td>남자</td>
-<td>표준도메인 길이 불일치</td>
+<td><code>표준도메인 길이(Varchar[3]) 불일치</code></td>
 </tr>
 <tr>
-<td>02</td>
+<td><code>02</code></td>
 <td>장애</td>
-<td>코드값 중복, 표준도메인 길이 불일치</td>
+<td><code>코드값 중복</code>, 표준도메인 길이 불일치</td>
 </tr>
 <tr>
-<td>02</td>
+<td><code>02</code></td>
 <td>입원</td>
 <td>코드값 중복, 표준도메인 길이 불일치</td>
 </tr>
 <tr>
 <td>03</td>
-<td>특이</td>
-<td>코드값명 중복, 표준도메인 길이 불일치</td>
+<td><code>특이</code></td>
+<td><code>코드값명 중복</code>, 표준도메인 길이 불일치</td>
+</tr>
+<tr>
+<td><code>4</code></td>
+<td><code>특이</code></td>
+<td>코드값명 중복, <code>코드값 길이 불일치</code>, 표준도메인 길이 불일치</td>
+</tr>
+</tbody></table>
+<h3 id="1-4-데이터-표준화-일정"><a href="#1-4-데이터-표준화-일정" class="headerlink" title="1.4 데이터 표준화 일정"></a>1.4 데이터 표준화 일정</h3><hr>
+<h4 id="1-AS-IS"><a href="#1-AS-IS" class="headerlink" title="(1) AS-IS"></a>(1) AS-IS</h4><table>
+<thead>
+<tr>
+<th>순번</th>
+<th>태스크</th>
+<th>소요 기간</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>표준화 교육</td>
+<td>2~3일</td>
+</tr>
+<tr>
+<td>2</td>
+<td>AS-IS 표준데이터(코드템플릿) 배포</td>
+<td>1일</td>
+</tr>
+</tbody></table>
+<h4 id="2-TO-BE-데이터-표준화"><a href="#2-TO-BE-데이터-표준화" class="headerlink" title="(2) TO-BE 데이터 표준화"></a>(2) TO-BE 데이터 표준화</h4><table>
+<thead>
+<tr>
+<th>순번</th>
+<th>태스크</th>
+<th>소요 기간</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>3</td>
+<td>단어&#x2F;도메인&#x2F;용어 표준화 완료(코드템플릿 수집)</td>
+<td>1달</td>
 </tr>
 <tr>
 <td>4</td>
-<td>특이</td>
-<td>코드값명 중복, 코드값 길이 불일치, 표준도메인 길이 불일치</td>
+<td>코드 표준화 완료</td>
+<td>10일</td>
 </tr>
 </tbody></table>
-<h3 id="1-4-데이터-표준화-일정"><a href="#1-4-데이터-표준화-일정" class="headerlink" title="1.4 데이터 표준화 일정"></a>1.4 데이터 표준화 일정</h3><h4 id="AS-IS"><a href="#AS-IS" class="headerlink" title="AS-IS"></a>AS-IS</h4><ol>
-<li><p>표준화 교육 (2~3일)</p>
-</li>
-<li><p>AS-IS 표준데이터(코드템플릿) 배포 (1일)</p>
-</li>
-</ol>
-<h4 id="TO-BE-데이터-표준화"><a href="#TO-BE-데이터-표준화" class="headerlink" title="TO-BE 데이터 표준화"></a>TO-BE 데이터 표준화</h4><ol start="3">
-<li>단어&#x2F;도메인&#x2F;용어 표준화 완료(코드템플릿 수집) (1달)</li>
-</ol>
 <ul>
 <li><p>단어&#x2F;도메인&#x2F;용어 표준화</p>
 <ul>
@@ -730,21 +767,153 @@
 </ul>
 </li>
 </ul>
-<ol start="4">
-<li>코드 표준화 완료 (10일)</li>
-</ol>
-<h4 id="고객-검토"><a href="#고객-검토" class="headerlink" title="고객 검토"></a>고객 검토</h4><ol start="5">
-<li>자료정제 및 표준데이터 적재 (2주)</li>
-</ol>
-<h4 id="변경-관리"><a href="#변경-관리" class="headerlink" title="변경 관리"></a>변경 관리</h4><ol start="6">
-<li>메타시스템 변경 관리</li>
-</ol>
-<h3 id="1-5-TO-BE-데이터-표준화"><a href="#1-5-TO-BE-데이터-표준화" class="headerlink" title="1.5 TO-BE 데이터 표준화"></a>1.5 TO-BE 데이터 표준화</h3><h4 id="데이터-표준화-프로세스-설계단계"><a href="#데이터-표준화-프로세스-설계단계" class="headerlink" title="데이터 표준화 프로세스 (설계단계)"></a>데이터 표준화 프로세스 (설계단계)</h4><h4 id="표준데이터-신청-양식"><a href="#표준데이터-신청-양식" class="headerlink" title="표준데이터 신청 양식"></a>표준데이터 신청 양식</h4><ul>
-<li><p>작성방법</p>
-</li>
-<li></li>
+<h4 id="3-고객-검토"><a href="#3-고객-검토" class="headerlink" title="(3) 고객 검토"></a>(3) 고객 검토</h4><table>
+<thead>
+<tr>
+<th>순번</th>
+<th>태스크</th>
+<th>소요 기간</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>5</td>
+<td>자료정제 및 표준데이터 적재</td>
+<td>2주</td>
+</tr>
+</tbody></table>
+<h4 id="4-변경-관리"><a href="#4-변경-관리" class="headerlink" title="(4) 변경 관리"></a>(4) 변경 관리</h4><table>
+<thead>
+<tr>
+<th>순번</th>
+<th>태스크</th>
+<th>소요 기간</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>6</td>
+<td>메타시스템 변경 관리</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<h3 id="1-5-TO-BE-데이터-표준화"><a href="#1-5-TO-BE-데이터-표준화" class="headerlink" title="1.5 TO-BE 데이터 표준화"></a>1.5 TO-BE 데이터 표준화</h3><h4 id="1-데이터-표준화-프로세스-설계단계"><a href="#1-데이터-표준화-프로세스-설계단계" class="headerlink" title="(1) 데이터 표준화 프로세스 (설계단계)"></a>(1) 데이터 표준화 프로세스 (설계단계)</h4><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129136&authkey=%21AC69rZZLzWofVNA&width=1024" width="1024" height="auto" alt="데이터 표준화 프로세스"/>
+
+<h4 id="2-표준데이터-신청-양식"><a href="#2-표준데이터-신청-양식" class="headerlink" title="(2) 표준데이터 신청 양식"></a>(2) 표준데이터 신청 양식</h4><ul>
+<li>표준단어 신청서</li>
 </ul>
-<h2 id="메타시스템-활용"><a href="#메타시스템-활용" class="headerlink" title="메타시스템 활용"></a>메타시스템 활용</h2>
+<table>
+<thead>
+<tr>
+<th>단어명</th>
+<th>영문명 (Full Name)</th>
+<th>약어</th>
+<th>정의</th>
+<th>신청일</th>
+<th>작성자</th>
+<th>결과등록&#x2F;반려</th>
+<th>반려사유</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>표준</td>
+<td>Standard</td>
+<td>STND</td>
+<td>사물의 정도, 성격을 알기 위한 근거나 기준</td>
+<td>2024-01-01</td>
+<td>홍길동</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>** <code>단어명</code>, <code>정의</code>, <code>신청일</code>, <code>작성자</code> 항목은 필수 입력 항목</p>
+<ul>
+<li>표준용어 신청서</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>표준용어명</th>
+<th>영문명</th>
+<th>도메인그룹</th>
+<th>타입</th>
+<th>길이</th>
+<th>소수</th>
+<th>정의</th>
+<th>신청일</th>
+<th>작성자</th>
+<th>표준코드명</th>
+<th>소스코드위치<br>차세대&#x2F;KISS</th>
+<th>코드유형<br>일반&#x2F;목록</th>
+<th>결과등록&#x2F;반려</th>
+<th>반려사유</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>급여이체할인금액</td>
+<td>STRF_DC_AMT</td>
+<td>금액</td>
+<td>NUMBER</td>
+<td>15</td>
+<td></td>
+<td>급여이체할인금액 정보를 관리하는 속성</td>
+<td>2024-01-01</td>
+<td>홍길동</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>RM성별코드</td>
+<td>RM_GNDR_CD</td>
+<td>코드</td>
+<td>VARCHAR</td>
+<td>1</td>
+<td></td>
+<td>개인대출 차주의 성별코드</td>
+<td>2024-01-01</td>
+<td>홍길동</td>
+<td>성별코드</td>
+<td>차세대</td>
+<td>일반</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>가족관계코드</td>
+<td>FAM_RELCD</td>
+<td>코드</td>
+<td>VARCHAR</td>
+<td>1</td>
+<td></td>
+<td>가족관계코드 정보를 관리하는 속성</td>
+<td>2024-01-01</td>
+<td>홍길동</td>
+<td>가족관계코드</td>
+<td>KISS</td>
+<td>일반</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>계정코드</td>
+<td>ACCNT_CD</td>
+<td>코드</td>
+<td>VARCHAR</td>
+<td>10</td>
+<td></td>
+<td>계정코드 (구성 : 계정과목코드(6)+계정항목코드(4))</td>
+<td>2024-01-01</td>
+<td>홍길동</td>
+<td>계정코드</td>
+<td>KISS</td>
+<td>목록</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>** <code>표준용어명</code>, <code>도메인그룹</code>, <code>타입</code>, <code>길이</code>, <code>정의</code>, <code>신청일</code>, <code>작성자</code> 항목은 필수 입력 항목<br>** <code>표준코드명</code>, <code>소스코드위치</code>, <code>코드유형</code> 항목은 조건 입력 항목 (도메인그룹이 ‘코드’ 인 경우, 작성)</p>
+
                 
             </div>
             <hr/>
