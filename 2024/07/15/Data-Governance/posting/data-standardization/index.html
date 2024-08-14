@@ -515,11 +515,14 @@
 </tr>
 <tr>
 <td>영문단어 사용 원칙</td>
-<td>- 한글화 적용 : FUND(X), 펀드(O) <br> - 범용적인 경우 예외 (약어, 경제&#x2F;금융용어 등) : IP(O), MMK(O)</td>
+<td>• 한글화 적용 : FUND(X), 펀드(O) <br> • 범용적인 경우 예외 (약어, 경제&#x2F;금융용어 등) : IP(O), MMK(O)</td>
 </tr>
 </tbody></table>
-<h4 id="2-도메인-사용-규칙"><a href="#2-도메인-사용-규칙" class="headerlink" title="(2) 도메인 사용 규칙"></a>(2) 도메인 사용 규칙</h4><ul>
-<li>도메인 그룹 -&gt; 표준용어의 <code>분류어</code>로 사용 (특별한 경우가 아니면, <code>일련번호</code> -&gt; <code>순번</code> 사용)</li>
+<h4 id="2-도메인-사용-규칙"><a href="#2-도메인-사용-규칙" class="headerlink" title="(2) 도메인 사용 규칙"></a>(2) 도메인 사용 규칙</h4><ol>
+<li><code>도메인 그룹</code> : 표준용어의 <code>분류어</code>로 사용</li>
+</ol>
+<ul>
+<li>특별한 경우가 아니면, <code>일련번호</code>는 <code>순번</code>으로 사용</li>
 </ul>
 <table>
 <thead>
@@ -561,52 +564,53 @@
 <td>코드, 여부, 유무</td>
 </tr>
 </tbody></table>
-<ul>
-<li><p>표준도메인 -&gt; <code>전사 표준도메인 우선 적용</code> (데이터 타입&#x2F;길이)</p>
+<ol start="2">
+<li><code>표준도메인</code>(데이터 타입&#x2F;길이) : <code>전사 표준도메인 우선 적용</code></li>
+</ol>
 <ul>
 <li><p>사례 : 금액 Number[15], 일자 Varchar[8], 사원번호 Varchar[10] 등</p>
 </li>
-<li><p>적용할 데이터 타입&#x2F;길이가 없는 경우, 수용 가능한 값 (Value)의 타입을 정하고 최대 길이 사용</p>
+<li><p><code>적용할 데이터 타입/길이가 없는 경우</code>, <code>수용 가능한 값 (Value)의 타입을 정하고 최대 길이 사용</code></p>
 </li>
 </ul>
+<h4 id="3-표준용어-명명-규칙"><a href="#3-표준용어-명명-규칙" class="headerlink" title="(3) 표준용어 명명 규칙"></a>(3) 표준용어 명명 규칙</h4><ol>
+<li><p>표준용어 구성<br>⚠️ <code>표준용어는 반드시 1개의 표준도메인과 Mapping</code> (같은 타입&#x2F;길이 표현)</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129143&authkey=%21ADNBFOEgqOjYPMY&width=1270&height=172" width="1270" height="172" alt="표준용어 구성"/>
+<br>
 </li>
-</ul>
-<h4 id="3-표준용어-명명-규칙"><a href="#3-표준용어-명명-규칙" class="headerlink" title="(3) 표준용어 명명 규칙"></a>(3) 표준용어 명명 규칙</h4><ul>
-<li>표준용어 구성</li>
-</ul>
-<blockquote>
-<p>단어 + 단어 + … + 분류어 - 표준도메인</p>
-</blockquote>
-<p>** 표준용어는 반드시 1개의 표준도메인과 Mapping (같은 타입&#x2F;길이 표현)</p>
-<ul>
 <li><p>금액, 수 관련 용어 어순</p>
+</li>
+</ol>
 <ul>
-<li><p>기간수식어 + 기간(시간) + 대상 + 장소 + 전(후) + 총 + 누적 + 도메인수식어 + 원화(외화) + 도메인</p>
+<li><p><code>기간수식어</code> + <code>기간(시간)</code> + <code>대상</code> + <code>장소</code> + 전(후) + 총 + 누적 + 도메인수식어 + 원화(외화) + 도메인</p>
 <ul>
-<li><p>기간수식어 : 최근, 과거, 이전, 최초, 최종 등</p>
+<li><p><code>기간수식어</code> : 최근, 과거, 이전, 최초, 최종 등</p>
 </li>
-<li><p>기간(시간) : 당월, 3개월, 1일, 전년말 등</p>
+<li><p><code>기간(시간)</code> : 당월, 3개월, 1일, 전년말 등</p>
 </li>
-<li><p>대상 : 은행집계, 20세미만 등</p>
+<li><p><code>대상</code> : 은행집계, 20세미만 등</p>
 </li>
-<li><p>장소 : 해외, 국내</p>
+<li><p><code>장소</code> : 해외, 국내</p>
 </li>
 </ul>
 </li>
-</ul>
-<p>예) 당월^20세미만^총^가입자^수</p>
+<li><p>예) 당월^20세미만^총^가입자^수</p>
 </li>
+</ul>
+<ol start="3">
 <li><p><code>전사 표준용어 우선 적용</code></p>
 </li>
 <li><p>표준용어는 반드시 <code>분류어(도메인그룹)으로 종료</code></p>
 </li>
 <li><p>의미를 훼손하지 않는 범위 내에서 최대한 간결하고 명확한 표현 지향 -&gt; <code>5개 이내의 단어 조합 권장</code></p>
 </li>
-<li><p>표준용어 영문명은 표준단어의 영문약어에 언더바(‘_’)를 붙여서 정의</p>
+<li><p><code>표준용어 영문명은</code> 표준단어의 영문약어에 <code>언더바(&#39;_&#39;)</code>를 붙여서 정의</p>
 </li>
 <li><p><code>표준용어 영문명 길이</code>는 ‘_’ 포함 전체 <code>30자 이내로 구성</code> (시스템 제약)</p>
-<p>예) 고객^마감^관리^코드 -&gt; CUST_CLS_MGNT_CD (16자)</p>
 </li>
+</ol>
+<ul>
+<li>예) 고객^마감^관리^코드 &#x3D; CUST_CLS_MGNT_CD (16자)</li>
 </ul>
 <h3 id="1-3-표준코드-생성-규칙"><a href="#1-3-표준코드-생성-규칙" class="headerlink" title="1.3 표준코드 생성 규칙"></a>1.3 표준코드 생성 규칙</h3><hr>
 <h4 id="1-표준-코드-구성"><a href="#1-표준-코드-구성" class="headerlink" title="(1) 표준 코드 구성"></a>(1) 표준 코드 구성</h4><p>&lt;성별코드&gt;</p>
@@ -626,17 +630,16 @@
 <td>여자</td>
 </tr>
 </tbody></table>
-<ul>
-<li><p><code>성별코드</code> &#x3D;&gt; <code>코드명</code> : 코드를 대표하는 명칭</p>
+<ol>
+<li><code>성별코드</code> -&gt; <code>코드명</code> : 코드를 대표하는 명칭</li>
+</ol>
 <blockquote>
 <p>코드 명 &#x3D; <code>성별</code> (수식어[필수]) + <code> </code> (코드유형[선택]) +<code>코드</code>(코드[필수])<hr>** 코드 유형 : 구분, 분류, 유형, 형태, 등급, 사유, 방법, 관계, 기준, 그룹, 단계 등</p>
 </blockquote>
-</li>
-<li><p><code>1</code>, <code>2</code> &#x3D;&gt; <code>코드값</code> : 코드의 값을 구분하는 값 (문자, 숫자)</p>
-</li>
-<li><p><code>남자</code>, <code>여자</code> &#x3D;&gt; <code>코드값명</code> : 각 코드값에 대한 실제 의미</p>
-</li>
-</ul>
+<ol start="2">
+<li><code>1</code>, <code>2</code> -&gt; <code>코드값</code> : 코드의 값을 구분하는 값 (문자, 숫자)</li>
+<li><code>남자</code>, <code>여자</code> -&gt; <code>코드값명</code> : 각 코드값에 대한 실제 의미</li>
+</ol>
 <h4 id="2-표준코드-유형"><a href="#2-표준코드-유형" class="headerlink" title="(2) 표준코드 유형"></a>(2) 표준코드 유형</h4><ul>
 <li><p>일반 코드 : <code>공통코드 테이블에서 통합되어 관리되는 코드</code> -&gt; ‘성별코드’ 등</p>
 </li>
@@ -646,35 +649,35 @@
 </ul>
 </li>
 </ul>
-<h4 id="3-표준코드-생성규칙"><a href="#3-표준코드-생성규칙" class="headerlink" title="(3) 표준코드 생성규칙"></a>(3) 표준코드 생성규칙</h4><ul>
-<li><p>코드값</p>
+<h4 id="3-표준코드-생성규칙"><a href="#3-표준코드-생성규칙" class="headerlink" title="(3) 표준코드 생성규칙"></a>(3) 표준코드 생성규칙</h4><ol>
+<li>코드값</li>
+</ol>
 <ul>
 <li><p><code>중복사용불가</code> -&gt; [1] 남자, [1] 여자 (X)</p>
 </li>
-<li><p>데이터 타입은 <code>문자형을 사용</code> -&gt; Char, Varchar</p>
+<li><p><code>데이터 타입</code>은 <code>문자형</code>을 사용 -&gt; Char, Varchar</p>
 </li>
-<li><p>데이터 길이는 <code>코드값 증가를 고려</code>하여 결정</p>
+<li><p><code>데이터 길이</code>는 <code>코드값 증가를 고려</code>하여 결정</p>
 </li>
-<li><p>숫자 타입 코드값이 데이터 길이보다 작은 경우, 앞에서부터 <code>문자 &#39;0&#39;을 채워 코드값 정의</code></p>
+<li><p><code>숫자 타입 코드값이 데이터 길이보다 작은 경우</code>, 앞에서부터 <code>문자 &#39;0&#39;을 채워 코드값 정의</code> -&gt; 남자 01, 여자 02</p>
 </li>
 </ul>
-<p>(예시) 남자 01, 여자 02</p>
-</li>
-<li><p>코드값명</p>
+<ol start="2">
+<li>코드값명</li>
+</ol>
 <ul>
 <li><p><code>중복사용불가</code> -&gt; [1] 남자, [2] 남자 (X)</p>
 </li>
-<li><p>의미가 불분명한 코드값명 사용 금지 -&gt; ‘NULL’ 등 (기타 등 사용 권장)</p>
+<li><p><code>의미가 불분명한 코드값명 사용 금지</code> : ‘NULL’ 등 (기타 등 사용 권장)</p>
 </li>
-<li><p>스페이스바 등 특수문자 사용 지양</p>
-</li>
-</ul>
-</li>
-<li><p>외부공인기관에서 정의한 코드는 생성규칙 대상에서 제외</p>
+<li><p>스페이스바 등 <code>특수문자 사용 지양</code></p>
 </li>
 </ul>
+<ol start="3">
+<li><code>외부공인기관에서 정의한 코드는 생성규칙 대상에서 제외</code></li>
+</ol>
 <h4 id="4-표준코드-오류-사례"><a href="#4-표준코드-오류-사례" class="headerlink" title="(4) 표준코드 오류 사례"></a>(4) 표준코드 오류 사례</h4><p>예) 민원유형코드 &#x2F; Varchar[3]</p>
-<p>&lt;<code>민원유형___</code>&gt; -&gt; <code>분류어 누락</code></p>
+<p>&lt;<code>민원유형___</code>&gt; -&gt; <code>분류어 누락</code> (유형은 분류어가 아님)</p>
 <table>
 <thead>
 <tr>
