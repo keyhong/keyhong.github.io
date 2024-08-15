@@ -1,0 +1,1270 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="품질진단 항목 (데이터 값 진단), Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="1. 여부
+
+분류 데이터(OO여부, OO유무 등)가 2개의 유효 값을 갖는지 컬럼 집단
+
+(1) 진단 방법
+컬럼을 구성하는 2개의 유효 값 이외의 데이터를 오류로 판단
+
+컬럼 분석 DISTINCT 분석을 통해서도 오">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>품질진단 항목 (데이터 값 진단) | Keyhong</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span diy-happy-monkey">Keyhong</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Home</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <!-- <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li> -->
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Keyhong</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Home
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/data-architecture-logo.png')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title diy-neon-red">
+                        품질진단 항목 (데이터 값 진단)</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="post-cate">
+                    <i class="fas fa-bookmark fa-fw icon-category"></i>
+                    
+                        <a href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B1%B0%EB%B2%84%EB%84%8C%EC%8A%A4/" class="post-category">
+                            데이터 거버넌스
+                        </a>
+                    
+                </div>
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="1-여부"><a href="#1-여부" class="headerlink" title="1. 여부"></a>1. 여부</h2><hr>
+<blockquote>
+<p>분류 데이터(OO여부, OO유무 등)가 2개의 유효 값을 갖는지 컬럼 집단</p>
+</blockquote>
+<h3 id="1-진단-방법"><a href="#1-진단-방법" class="headerlink" title="(1) 진단 방법"></a>(1) 진단 방법</h3><ul>
+<li><p>컬럼을 구성하는 <code>2개의 유효 값 이외의 데이터를 오류로 판단</code></p>
+</li>
+<li><p>컬럼 분석 DISTINCT 분석을 통해서도 오류 예측 가능</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>테이블명</th>
+<th>컬럼명</th>
+<th>총건수</th>
+<th>DISTINCT</th>
+<th>DUPLICATE</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>고객</td>
+<td>통합고객여부</td>
+<td>10</td>
+<td>3</td>
+<td>7</td>
+</tr>
+</tbody></table>
+<ul>
+<li>유효 값을 파악할 수 없는 경우, 전체 데이터에 대한 값 분포를 파악하여 오류 데이터를 예측</li>
+</ul>
+<h3 id="2-검증-SQL"><a href="#2-검증-SQL" class="headerlink" title="(2) 검증 SQL"></a>(2) 검증 SQL</h3><pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>여부 검증 SQL</span></div><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token comment">/* 여부분석 */</span>
+       comb_res_yn
+     <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span>
+ <span class="token keyword">FROM</span> customer
+<span class="token keyword">WHERE</span> comb_res_yn <span class="token operator">NOT</span> <span class="token keyword">INT</span> <span class="token punctuation">(</span><span class="token string">'Y'</span><span class="token punctuation">,</span> <span class="token string">'N'</span><span class="token punctuation">)</span>
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> comb_res_yn
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">DESC</span>
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="3-오류-원인"><a href="#3-오류-원인" class="headerlink" title="(3) 오류 원인"></a>(3) 오류 원인</h3><ul>
+<li><p>다수의 응용 프로그램에서 데이터가 입력되는 경우</p>
+</li>
+<li><p>Default 값 설정이 되어 있지 않은 경우</p>
+</li>
+</ul>
+<h3 id="4-개선방안-및-고려사항"><a href="#4-개선방안-및-고려사항" class="headerlink" title="(4) 개선방안 및 고려사항"></a>(4) 개선방안 및 고려사항</h3><ul>
+<li><p>여부 값에 대한 표준화</p>
+</li>
+<li><p>기존 값에 대한 정제</p>
+</li>
+<li><p>Default 값 설정</p>
+</li>
+</ul>
+<h2 id="2-날짜"><a href="#2-날짜" class="headerlink" title="2. 날짜"></a>2. 날짜</h2><hr>
+<blockquote>
+<p>날짜&#x2F;시간 유형 데이터에 대한 유효성 진단</p>
+</blockquote>
+<h3 id="1-진단방법"><a href="#1-진단방법" class="headerlink" title="(1) 진단방법"></a>(1) 진단방법</h3><ul>
+<li><p>유효한 형식과 날짜로 구성되지 않은 값을 오류로 판단</p>
+</li>
+<li><p>보통 <code>데이터 타입이 DATE형이 아닌 문자로 구성된 날짜 컬럼을 진단</code></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>컬럼명</th>
+<th>데이터타입</th>
+<th>길이</th>
+<th></th>
+<th>도메인</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>생산년도</td>
+<td>VARCHAR2</td>
+<td>4</td>
+<td>-&gt;</td>
+<td>년도 (YYYY)</td>
+</tr>
+<tr>
+<td>고객등록일자</td>
+<td>VARCHAR2</td>
+<td>8</td>
+<td>-&gt;</td>
+<td>년월일 (YYYYMMDD)</td>
+</tr>
+<tr>
+<td>주문일시</td>
+<td>VARCHAR2</td>
+<td>12</td>
+<td>-&gt;</td>
+<td>년월일시분 (YYYYMMDDHH24MI)</td>
+</tr>
+</tbody></table>
+<ul>
+<li>단, 타입이 <code>DATE형이지만 날짜의 유효범위가 존재하는 경우</code> 날짜에 <code>범위조건을 입력</code>하여 진단수행 가능 <br>(예, 미래일자는 존재 불가)</li>
+</ul>
+<h3 id="2-오류예시"><a href="#2-오류예시" class="headerlink" title="(2) 오류예시"></a>(2) 오류예시</h3><table>
+  <tr>
+    <th>테이블명</th>
+    <th>컬럼명</td>
+    <th>컬럼값</td>
+    <th>건수</td>
+  </tr>
+  <tr>
+    <td rowspan="5" style="text-align: center;">주문상세</td>
+    <td rowspan="5">배송일자<br>(YYYYMMDD)</td>
+    <td style="text-align: center; color: red; font-weight: bold;">20150232</td>
+    <td style="text-align: center;">1</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; color: red; font-weight: bold;">201506</td>
+    <td style="text-align: center;">1</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; color: red; font-weight: bold;">2015</td>
+    <td style="text-align: center;">8</td>
+  </tr>  
+  <tr>
+    <td style="text-align: center; color: red; font-weight: bold;">11111112</td>
+    <td style="text-align: center;">1</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; color: red; font-weight: bold;">2015-11-13</td>
+    <td style="text-align: center;">1</td>
+  </tr>         
+</table>
+
+
+<h3 id="3-오류-원인-1"><a href="#3-오류-원인-1" class="headerlink" title="(3) 오류 원인"></a>(3) 오류 원인</h3><ul>
+<li><p>입력자의 데이터 수기 입력 오류</p>
+</li>
+<li><p>날짜 입력 시 날짜 형식에 대한 검증 부재</p>
+</li>
+</ul>
+<h3 id="4-개선방안-및-고려사항-1"><a href="#4-개선방안-및-고려사항-1" class="headerlink" title="(4) 개선방안 및 고려사항"></a>(4) 개선방안 및 고려사항</h3><ul>
+<li><p>날짜 입력 시 날짜를 선택하여 입력하도록 응용 프로그램 개선</p>
+</li>
+<li><p>날짜 형식에 대한 표준화 수행</p>
+</li>
+</ul>
+<h2 id="3-코드"><a href="#3-코드" class="headerlink" title="3. 코드"></a>3. 코드</h2><hr>
+<blockquote>
+<p>개별코드&#x2F;통합코드 마스터와 트랜잭션 코드와의 유효성 진단</p>
+</blockquote>
+<h3 id="1-진단방법-1"><a href="#1-진단방법-1" class="headerlink" title="(1) 진단방법"></a>(1) 진단방법</h3><ul>
+<li><p>단일코드, 목록형코드 등으로 정의된 컬럼이 <code>정의된 컬럼 값으로 구성되어 있는지 분석</code></p>
+</li>
+<li><p><code>공통코드 테이블에 의한 참조분석</code>과 <code>개별코드 참조분석</code>으로 분류하여 수행</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>코드유형</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>단일코드</td>
+<td>하나의 key로 구성된 코드로서 열거형, 범위형 코드 값을 갖음 <br> 일반적으로 단일코드는 공통코드로 관리</td>
+</tr>
+<tr>
+<td>복합코드</td>
+<td>하나 이상의 key로 구성된 코드</td>
+</tr>
+<tr>
+<td>목록형코드</td>
+<td>코드, 코드명 이외의 속성을 갖거나 외부로부터 추출하여 변경이 낮은 코드 <br> 목록코드는 별도 Entity에서 관리하므로 반드시 개별코드 Entity를 참조</td>
+</tr>
+</tbody></table>
+<h3 id="2-오류-예시"><a href="#2-오류-예시" class="headerlink" title="(2) 오류 예시"></a>(2) 오류 예시</h3><table>
+  <tr>
+    <th>테이블명</th>
+    <th>컬럼명</td>
+    <th>컬럼값</td>
+    <th>건수</td>
+  </tr>
+  <tr>
+    <td rowspan="2" style="text-align: center;">고객</td>
+    <td rowspan="2">고객상태코드<br>(CUST_STCD)<br><br>- ST01: 휴면<br>- ST02: 활동중<br>- ST03: 탈퇴</td>
+    <td style="text-align: center; color: red; font-weight: bold;">ST3</td>
+    <td style="text-align: center;">1</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; color: red; font-weight: bold;">법인</td>
+    <td style="text-align: center;">2</td>
+  </tr>
+</table>
+
+<h3 id="3-검증-SQL"><a href="#3-검증-SQL" class="headerlink" title="(3) 검증 SQL"></a>(3) 검증 SQL</h3><pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>공통코드를 통한 참조분석 검증 SQL</span></div><code class="language-sql"><span class="token keyword">SELECT</span> A<span class="token punctuation">.</span>cust_stcd
+  <span class="token keyword">FROM</span> customer <span class="token keyword">AS</span> A <span class="token comment">-- 진단 대상 테이블</span>
+ <span class="token keyword">WHERE</span> A<span class="token punctuation">.</span>cust_stcd <span class="token operator">IS</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span>
+   <span class="token operator">AND</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span> <span class="token punctuation">(</span>
+      <span class="token keyword">SELECT</span> <span class="token operator">*</span>
+        <span class="token keyword">FROM</span> code_dtl <span class="token keyword">AS</span> X <span class="token comment">-- 공통코드 테이블</span>
+       <span class="token keyword">WHERE</span> X<span class="token punctuation">.</span>code_id <span class="token operator">=</span> <span class="token string">'cust_stcd'</span> <span class="token comment">-- 코드명</span>
+         <span class="token operator">AND</span> X<span class="token punctuation">.</span>code_val <span class="token operator">=</span> A<span class="token punctuation">.</span>cust_stcd <span class="token comment">-- 코드값명</span>
+   <span class="token punctuation">)</span>
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="4-오류-원인"><a href="#4-오류-원인" class="headerlink" title="(4) 오류 원인"></a>(4) 오류 원인</h3><ul>
+<li><p>코드의 신규, 변경 건에 대한 현행화 관리 미흡</p>
+</li>
+<li><p>응용 프로그램에서 코드 값을 하드 코딩하여 사용</p>
+</li>
+</ul>
+<h3 id="5-개선방안-및-고려사항"><a href="#5-개선방안-및-고려사항" class="headerlink" title="(5) 개선방안 및 고려사항"></a>(5) 개선방안 및 고려사항</h3><ul>
+<li><p>코드 신규, 변경 시 공통코드에 현행화 관리 및 배포 통제</p>
+</li>
+<li><p>프로그램 상에서 코드 값 매핑시 하드코딩 금지</p>
+</li>
+</ul>
+<h2 id="4-번호-형식"><a href="#4-번호-형식" class="headerlink" title="4. 번호(형식)"></a>4. 번호(형식)</h2><hr>
+<blockquote>
+<p>문자, 숫자 등으로 구성된 패턴을 갖는 값의 패턴 일관성 진단</p>
+</blockquote>
+<h3 id="1-진단-방법-1"><a href="#1-진단-방법-1" class="headerlink" title="(1) 진단 방법"></a>(1) 진단 방법</h3><ul>
+<li><p>데이터의 <code>생성규칙(패턴)에 어긋나는 값을 오류로 판단</code></p>
+</li>
+<li><p>일반적으로 <code>내부 표준에 따른 번호·문자체계의 기준에 따라 단순 패턴 검증</code>을 수행</p>
+</li>
+<li><p>주민등록번호, 사업자등록번호와 같은 오류 검증번호가 존재하는 데이터는 검증 계산식에 의해 검증을 수행</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>컬럼명</th>
+<th>검증 규칙</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>고객번호</td>
+<td>고객번호는 5자리의 숫자로 구성된다</td>
+</tr>
+<tr>
+<td>주문번호</td>
+<td>주문번호는 5자리의 숫자와 5자리의 영문으로 구성된다</td>
+</tr>
+<tr>
+<td>전화번호</td>
+<td>전화번호는 하이픈 구분자를 갖는 숫자로 구성된다</td>
+</tr>
+<tr>
+<td>주민등록번호</td>
+<td>계산에 의한 값이 마지막 13번째 번호(검증번호)와 일치해야 한다</td>
+</tr>
+<tr>
+<td>사업자등록번호</td>
+<td>계산에 의한 값이 마지막 10번째 번호(검증번호)와 일치해야 한다</td>
+</tr>
+<tr>
+<td>···</td>
+<td>···</td>
+</tr>
+</tbody></table>
+<h3 id="2-오류-예시-1"><a href="#2-오류-예시-1" class="headerlink" title="(2) 오류 예시"></a>(2) 오류 예시</h3><table>
+  <tr>
+    <th>테이블명</th>
+    <th>컬럼명</td>
+    <th>패턴</td>
+    <th>건수</td>
+  </tr>
+  <tr>
+    <td rowspan="5" style="text-align: center;">공급업체</td>
+    <td rowspan="5" style="text-align: center;">전화번호<br>(하이픈구분자)</td>
+    <td style="text-align: center; color: red; font-weight: bold;">99-9999-****</td>
+    <td style="text-align: center;">1</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; color: red; font-weight: bold;">99B999B9999</td>
+    <td style="text-align: center;">1</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; color: red;">-</td>
+    <td style="text-align: center;">8</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; color: red; font-weight: bold;">11111112</td>
+    <td style="text-align: center;">1</td>
+  </tr>    
+  <tr>
+    <td style="text-align: center; color: red; font-weight: bold;">2015-11-13</td>
+    <td style="text-align: center;">1</td>
+  </tr>         
+</table>
+
+<h3 id="3-오류-원인-2"><a href="#3-오류-원인-2" class="headerlink" title="(3) 오류 원인"></a>(3) 오류 원인</h3><ul>
+<li><p>데이터 생성규칙 미정의</p>
+</li>
+<li><p>데이터 입력 시점에 생성규칙에 의한 패턴 검증기능 부재</p>
+</li>
+<li><p>같은 속성에 다른 구분자 사용</p>
+</li>
+</ul>
+<h3 id="4-개선방안-및-고려사항-2"><a href="#4-개선방안-및-고려사항-2" class="headerlink" title="(4) 개선방안 및 고려사항"></a>(4) 개선방안 및 고려사항</h3><ul>
+<li><p>데이터 입력 시 패턴 검증 응용 프로그램 개선</p>
+</li>
+<li><p>데이터 값의 구분자 통일 등 데이터 생성규칙 정의</p>
+</li>
+</ul>
+<h2 id="5-금액-수량-율"><a href="#5-금액-수량-율" class="headerlink" title="5. 금액&#x2F;수량&#x2F;율"></a>5. 금액&#x2F;수량&#x2F;율</h2><hr>
+<blockquote>
+<p>범위가 존재하는 데이터의 유효 범위를 벗어난 값을 오류로 진단</p>
+</blockquote>
+<h3 id="1-진단방법-2"><a href="#1-진단방법-2" class="headerlink" title="(1) 진단방법"></a>(1) 진단방법</h3><ul>
+<li><p>숫자로 저장된 ‘금액’, ‘수량’, ‘율’ 도메인 컬럼의 모든 유효 범위를 벗어나는 오류를 측정</p>
+</li>
+<li><p>‘건수’, ‘횟수’, ‘사업비’, ‘가격’, ‘비율’, ‘산정율’ 등과 같이 숫자로 저장되는 데이터 값의 단위가 혼재되어 있거나, 유효 값의 범위를 벗어나는 데이터를 오류로 측정</p>
+</li>
+<li><p>컬럼분석 MIN 값과 MAX 값을 통하여 수칱 값의 범위를 파악</p>
+</li>
+</ul>
+<p>⚠️ 일반적으로 금액, 수량과 관련된 컬럼은 음수(-)가 나올 수 없음</p>
+<table>
+<thead>
+<tr>
+<th>테이블명</th>
+<th>컬럼명</th>
+<th>MIN</th>
+<th>MAX</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>주문상세</td>
+<td>판매가격</td>
+<td>-99999</td>
+<td>9999999999</td>
+</tr>
+</tbody></table>
+<h3 id="2-검증-SQL-1"><a href="#2-검증-SQL-1" class="headerlink" title="(2) 검증 SQL"></a>(2) 검증 SQL</h3><pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>금액/수량 검증 SQL</span></div><code class="language-sql"><span class="token keyword">SELECT</span> sal_price
+     <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> err_cnt
+  <span class="token keyword">FROM</span> order_detail
+ <span class="token keyword">WHERE</span> <span class="token number">1</span><span class="token operator">=</span><span class="token number">1</span>
+   <span class="token operator">AND</span> <span class="token punctuation">(</span>sal_price <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">OR</span> sal_price <span class="token operator">></span> <span class="token number">100000</span><span class="token punctuation">)</span> <span class="token comment">--범위 지정</span>
+ <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> sal_price
+ <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> sal_price
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="3-오류-원인-3"><a href="#3-오류-원인-3" class="headerlink" title="(3) 오류 원인"></a>(3) 오류 원인</h3><ul>
+<li><p>입력자의 데이터수기 입력오류</p>
+</li>
+<li><p>데이터 입력 시 수치 값의 허용범위 검증기능 부재</p>
+</li>
+<li><p>수량, 금액의 단위가 혼재하는 경우</p>
+</li>
+</ul>
+<h3 id="4-개선방안-및-고려사항-3"><a href="#4-개선방안-및-고려사항-3" class="headerlink" title="(4) 개선방안 및 고려사항"></a>(4) 개선방안 및 고려사항</h3><ul>
+<li><p>데이터 입력 시 이상치 범위 값에 대한 응용 프로그램 개선</p>
+</li>
+<li><p>수량, 금액 등 단위 존재하는 값에 대한 표준화 수행</p>
+</li>
+</ul>
+<h2 id="6-참조-값"><a href="#6-참조-값" class="headerlink" title="6. 참조 값"></a>6. 참조 값</h2><hr>
+<blockquote>
+<p>부모-자식 관계 데이터의 참조 무결성 진단</p>
+</blockquote>
+<h3 id="1-진단방법-3"><a href="#1-진단방법-3" class="headerlink" title="(1) 진단방법"></a>(1) 진단방법</h3><ul>
+<li><p><code>부모-자식 간의 관계 정합성을 검증</code>하여 부모가 없는 자식 데이터가 존재하는지 진단</p>
+</li>
+<li><p>데이터를 관리하는 구조의 설계, 구축의 문제로 인해 데이터 값이 일관되게 관리되지 못하거나 정합성을 확보하지 못하는 경우 발생</p>
+</li>
+<li><p>데이터 모델(ERD)상 식별관계로 정의하였으나, 데이터베이스의 물리제약(FK)으로 설정하지 않은 경우 발생함</p>
+</li>
+</ul>
+<h3 id="2-참조값-검증-SQL"><a href="#2-참조값-검증-SQL" class="headerlink" title="(2) 참조값 검증 SQL"></a>(2) 참조값 검증 SQL</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> X<span class="token punctuation">.</span><span class="token operator">*</span>
+  <span class="token keyword">FROM</span> <span class="token punctuation">(</span>
+    <span class="token keyword">SELECT</span> B<span class="token punctuation">.</span>cust_id <span class="token keyword">AS</span> 기준정보
+        <span class="token punctuation">,</span>  A<span class="token punctuation">.</span>cust_id <span class="token keyword">AS</span> 참조정보
+      <span class="token keyword">FROM</span> order_m <span class="token keyword">AS</span> A
+        <span class="token keyword">LEFT</span> <span class="token keyword">JOIN</span> customer <span class="token keyword">AS</span> B
+               <span class="token keyword">ON</span> a<span class="token punctuation">.</span>cust_id <span class="token operator">=</span> b<span class="token punctuation">.</span>cust_id
+  <span class="token punctuation">)</span> <span class="token keyword">AS</span> X
+ <span class="token keyword">WHERE</span> x<span class="token punctuation">.</span>기준정보 <span class="token operator">IS</span> <span class="token boolean">NULL</span>
+ <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="3-오류-원인-4"><a href="#3-오류-원인-4" class="headerlink" title="(3) 오류 원인"></a>(3) 오류 원인</h3><ul>
+<li><p>부모 데이터 삭제 시, 자식 데이터가 그대로 남아 있는 경우</p>
+</li>
+<li><p>프로그램 개발, 성능 확보 등을 위해 물리적인 제약(FK)을 설정하지 않은 경우</p>
+</li>
+<li><p>DBMS 제약을 설정하지 않고 응용 프로그램에서 참조무결성을 확보하려 하였으나, 오류가 발생한 경우</p>
+</li>
+</ul>
+<h3 id="4-개선방안-및-고려사항-4"><a href="#4-개선방안-및-고려사항-4" class="headerlink" title="(4) 개선방안 및 고려사항"></a>(4) 개선방안 및 고려사항</h3><ul>
+<li><p>물리적인 제약(FK)을 설정하거나, 응용 프로그램 개선 등을 통해 데이터 간 참조무결성이 보장되도록 개선</p>
+</li>
+<li><p>데이터 모델(ERD) 현행화 및 변경관리 수행</p>
+</li>
+</ul>
+<h2 id="7-시간순서-일관성-선후관계"><a href="#7-시간순서-일관성-선후관계" class="headerlink" title="7. 시간순서 일관성&#x2F;선후관계"></a>7. 시간순서 일관성&#x2F;선후관계</h2><blockquote>
+<p>날짜 컬럼에 시간 선&#x2F;후 관계가 존재하는 경우를 검증</p>
+</blockquote>
+<h3 id="1-진단방법-4"><a href="#1-진단방법-4" class="headerlink" title="(1) 진단방법"></a>(1) 진단방법</h3><ul>
+<li><p>날짜 컬럼 간의 시간 순서가 존재하는 경우</p>
+<ul>
+<li><p>[CASE 1] 시작일은 종료일보다 이전 시점이어야 한다.</p>
+</li>
+<li><p>[CASE 2] 종료일이 있으면 반드시 시작일이 존재해야 한다.</p>
+</li>
+</ul>
+<p>⚠️ 단순히 시작일과 종료일이의 선후관계 뿐만 아니라 누락된 값을 통해 다르게 해석 가능</p>
+</li>
+</ul>
+<h3 id="2-검증-SQL-2"><a href="#2-검증-SQL-2" class="headerlink" title="(2) 검증 SQL"></a>(2) 검증 SQL</h3><pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>[CASE 1] 시간순서 검증 SQL</span></div><code class="language-sql"><span class="token comment">-- 행사시작일은 행사종룡일보다 이전 시점이어야 한다.</span>
+<span class="token keyword">SELECT</span> 행사시작일
+     <span class="token punctuation">,</span> 행사종료일
+  <span class="token keyword">FROM</span> tbl
+ <span class="token keyword">WHERE</span>  행사시작일 <span class="token operator">></span> 행사종료일
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>[CASE 2] 선후관계 검증 SQL</span></div><code class="language-sql"><span class="token comment">-- 종료일이 있으면 반드시 시작일이 존재해야 한다.</span>
+<span class="token keyword">SELECT</span> 시작일
+     <span class="token punctuation">,</span> 종료일
+  <span class="token keyword">FROM</span> tbl
+ <span class="token keyword">WHERE</span> 시작일 <span class="token operator">IS</span> <span class="token boolean">NULL</span>
+   <span class="token operator">AND</span> 종료일 <span class="token operator">IS</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span>
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="8-계산-및-집계-정확성"><a href="#8-계산-및-집계-정확성" class="headerlink" title="8. 계산 및 집계 정확성"></a>8. 계산 및 집계 정확성</h2><hr>
+<blockquote>
+<p>컬럼에 계산된 값이 존재하는 경우를 검증</p>
+</blockquote>
+<h3 id="3-진단방법"><a href="#3-진단방법" class="headerlink" title="(3) 진단방법"></a>(3) 진단방법</h3><ul>
+<li><p>특정 통계 테이블 등에 계산값이 존재하는 경우</p>
+<ul>
+<li>월간 통계 테이블 매출액은 주문테이블의 해당 년월의 총금액 합계와 비교하여 일치해야 한다</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-검증-SQL"><a href="#4-검증-SQL" class="headerlink" title="(4) 검증 SQL"></a>(4) 검증 SQL</h3><pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>계산 및 집계 정확성 검증 SQL</span></div><code class="language-sql"><span class="token comment">-- 월매출액 통계 테이블의 매출액은 주문 테이블의 해당년월의 거래가 완료된 매출액의 총 합계와 일치해야 한다.</span>
+<span class="token keyword">SELECT</span> A<span class="token punctuation">.</span>년<span class="token punctuation">,</span> A<span class="token punctuation">.</span>월<span class="token punctuation">,</span> A<span class="token punctuation">.</span>매출액<span class="token punctuation">,</span> B<span class="token punctuation">.</span>월매출계산
+  <span class="token keyword">FROM</span> 월매출액통계 <span class="token keyword">AS</span> A
+     <span class="token punctuation">,</span> <span class="token punctuation">(</span>
+        <span class="token keyword">SELECT</span> TO_CHAR<span class="token punctuation">(</span>주문일자<span class="token punctuation">,</span> <span class="token string">'YYYYMM'</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> 매출년월
+             <span class="token punctuation">,</span> <span class="token function">SUM</span><span class="token punctuation">(</span>매출액<span class="token punctuation">)</span> <span class="token keyword">AS</span> 월매출계산
+          <span class="token keyword">FROM</span> 주문
+        <span class="token keyword">WHERE</span> 거래완료여부 <span class="token operator">=</span> <span class="token string">'Y'</span>
+        <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> TO_CHAR<span class="token punctuation">(</span>주문일자<span class="token punctuation">,</span> <span class="token string">'YYYYMM'</span><span class="token punctuation">)</span>
+       <span class="token punctuation">)</span> <span class="token keyword">AS</span> B
+ <span class="token keyword">WHERE</span> A<span class="token punctuation">.</span>년 <span class="token operator">||</span> A<span class="token punctuation">.</span>월 <span class="token operator">=</span> B<span class="token punctuation">.</span>매출년월
+   <span class="token operator">AND</span> A<span class="token punctuation">.</span>매출액 <span class="token operator">&lt;></span> B<span class="token punctuation">.</span>월매출계산
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="9-컬럼-간-논리관계-일관성"><a href="#9-컬럼-간-논리관계-일관성" class="headerlink" title="9. 컬럼 간 논리관계 일관성"></a>9. 컬럼 간 논리관계 일관성</h2><hr>
+<blockquote>
+<p>복수의 컬럼에 논리적인 관계가 존재하는 경우를 검증</p>
+</blockquote>
+<h3 id="1-진단방법-5"><a href="#1-진단방법-5" class="headerlink" title="(1) 진단방법"></a>(1) 진단방법</h3><ul>
+<li><p>컬럼 간에 논리적인 관계가 존재하는 경우</p>
+<ul>
+<li><p>[CASE 1] 등록여부가 Y인 경우, 등록일자는 반드시 존재해야 한다.</p>
+</li>
+<li><p>[CASE 2] 결혼여부가 Y인 경우, 결혼일자는 반드시 존재해야 한다.</p>
+</li>
+</ul>
+<p>⚠️ 단순 여부에 따른 입력 값 누락 뿐만 아니라, 업무적 특성에 따른 다양한 컬럼 간 논리관계를 검증</p>
+</li>
+</ul>
+<h3 id="2-검증-SQL-3"><a href="#2-검증-SQL-3" class="headerlink" title="(2) 검증 SQL"></a>(2) 검증 SQL</h3><pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>[CASE 1] 컬럼 간 논리관계 일관성 검증 SQL</span></div><code class="language-sql"><span class="token comment">-- 등록여부가 Y인 경우, 등록일자는 반드시 존재해야 한다.</span>
+<span class="token keyword">SELECT</span> 등록여부
+     <span class="token punctuation">,</span> 등록일자
+  <span class="token keyword">FROM</span> 고객정보
+ <span class="token keyword">WHERE</span> 등록여부 <span class="token operator">=</span> <span class="token string">'Y'</span>
+   <span class="token operator">AND</span> 등록일자 <span class="token operator">IS</span> <span class="token boolean">NULL</span>
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>[CASE 2] 컬럼 간 논리관계 일관성 검증 SQL</span></div><code class="language-sql"><span class="token comment">-- 결혼여부가 Y인 경우, 등록일자는 반드시 존재해야 한다.</span>
+<span class="token keyword">SELECT</span> 결혼여부
+     <span class="token punctuation">,</span> 결혼일자
+  <span class="token keyword">FROM</span> 고객정보
+ <span class="token keyword">WHERE</span> 결혼여부 <span class="token operator">=</span> <span class="token string">'Y'</span>
+   <span class="token operator">AND</span> 결혼일자 <span class="token operator">IS</span> <span class="token boolean">NULL</span>
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Keyhong</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2024/08/14/Data-Governance/posting/data-validation-value/">http://example.com/2024/08/14/Data-Governance/posting/data-validation-value/</a>
+                </span>
+            </div>
+            <!-- <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        reprint:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    use
+                    <a href="cc_by_url" rel="external nofollow noreferrer" target="_blank">cc_by_name</a>
+                    licensed
+                    <a href="/about" target="_blank">Keyhong</a>
+                    !
+                </span>
+            </div> -->
+        
+    </div>
+
+    <!-- <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script> -->
+
+
+
+            <div class="tag_share" style="display: block;">
+                <!-- <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                        </div>
+                    
+                </div> -->
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <!-- <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a> -->
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
+            <div class="card">
+                <a href="/2024/08/14/Data-Governance/posting/data-validation-value/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="품질진단 항목 (데이터 값 진단)">
+                        
+                        <span class="card-title diy-neon-yellow">품질진단 항목 (데이터 값 진단)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-08-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B1%B0%EB%B2%84%EB%84%8C%EC%8A%A4/" class="post-category">
+                                    데이터 거버넌스
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/08/10/Data-Governance/posting/data-profiling/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="데이터 품질진단 (프로파일링)">
+                        
+                        <span class="card-title diy-neon-red">데이터 품질진단 (프로파일링)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-08-10
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B1%B0%EB%B2%84%EB%84%8C%EC%8A%A4/" class="post-category">
+                                    데이터 거버넌스
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;목차</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2024</span>
+            
+            <a href="/about" target="_blank">Gyuwon Hong</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+            
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+    <a href="https://github.com/keyhong" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:wnhong96@gmail.com" class="tooltipped" target="_blank" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- Back to Top Button -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
