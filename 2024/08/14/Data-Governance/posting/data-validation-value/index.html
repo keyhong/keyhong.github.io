@@ -9,10 +9,11 @@
 
 분류 데이터(OO여부, OO유무 등)가 2개의 유효 값을 갖는지 컬럼 집단
 
-(1) 진단 방법
+1.1 진단 방법
+
 컬럼을 구성하는 2개의 유효 값 이외의 데이터를 오류로 판단
 
-컬럼 분석 DISTINCT 분석을 통해서도 오">
+컬럼 분석 DISTINCT 분석을 통해서도 ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -234,49 +235,91 @@
 <blockquote>
 <p>분류 데이터(OO여부, OO유무 등)가 2개의 유효 값을 갖는지 컬럼 집단</p>
 </blockquote>
-<h3 id="1-진단-방법"><a href="#1-진단-방법" class="headerlink" title="(1) 진단 방법"></a>(1) 진단 방법</h3><ul>
+<h3 id="1-1-진단-방법"><a href="#1-1-진단-방법" class="headerlink" title="1.1 진단 방법"></a>1.1 진단 방법</h3><hr>
+<ul>
 <li><p>컬럼을 구성하는 <code>2개의 유효 값 이외의 데이터를 오류로 판단</code></p>
 </li>
 <li><p>컬럼 분석 DISTINCT 분석을 통해서도 오류 예측 가능</p>
 </li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>테이블명</th>
-<th>컬럼명</th>
-<th>총건수</th>
-<th>DISTINCT</th>
-<th>DUPLICATE</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>고객</td>
-<td>통합고객여부</td>
-<td>10</td>
-<td>3</td>
-<td>7</td>
-</tr>
-</tbody></table>
+  <tr>
+    <th>테이블명</th>
+    <th>컬럼명</td>
+    <th>총건수</td>
+    <th>DISTINCT</td>
+    <th>DUPLICATE</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">고객</td>
+    <td style="text-align: center;">통합고객여부</td>
+    <td style="text-align: right;">10</td>
+    <td style="text-align: right; color: red; font-weight: bold;">3</td>
+    <td style="text-align: right; color: red; font-weight: bold;">7</td>
+  </tr>
+</table>
+
 <ul>
 <li>유효 값을 파악할 수 없는 경우, 전체 데이터에 대한 값 분포를 파악하여 오류 데이터를 예측</li>
 </ul>
-<h3 id="2-검증-SQL"><a href="#2-검증-SQL" class="headerlink" title="(2) 검증 SQL"></a>(2) 검증 SQL</h3><pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>여부 검증 SQL</span></div><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token comment">/* 여부분석 */</span>
-       comb_res_yn
+<h3 id="1-2-오류-예시"><a href="#1-2-오류-예시" class="headerlink" title="1.2 오류 예시"></a>1.2 오류 예시</h3><hr>
+<table>
+  <tr>
+    <th>테이블명</th>
+    <th>컬럼명</td>
+    <th>컬럼값</td>
+    <th>건수</td>
+  </tr>
+  <tr>
+    <td rowspan="7" style="text-align: center;">고객</td>
+    <td rowspan="7" style="text-align: center;">통합고객여부</td>
+    <td style="text-align: center;">Y</td>
+    <td style="text-align: center;">33</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">N</td>
+    <td style="text-align: center;">8</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; color: red; font-weight: bold;">1</td>
+    <td style="text-align: center;">1</td>
+  </tr>  
+  <tr>
+    <td style="text-align: center; color: red; font-weight: bold;">0</td>
+    <td style="text-align: center;">1</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; color: red; font-weight: bold;">O</td>
+    <td style="text-align: center;">1</td>
+  </tr>         
+  <tr>
+    <td style="text-align: center; color: red; font-weight: bold;">X</td>
+    <td style="text-align: center;">1</td>
+  </tr>         
+  <tr>
+    <td style="text-align: center; color: red; font-weight: bold;">(NULL)</td>
+    <td style="text-align: center;">1</td>
+  </tr>         
+</table>
+
+<h3 id="1-3-여부-검증-SQL"><a href="#1-3-여부-검증-SQL" class="headerlink" title="1.3 여부 검증 SQL"></a>1.3 여부 검증 SQL</h3><hr>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>여부 검증 SQL</span></div><code class="language-sql"><span class="token keyword">SELECT</span> comb_res_yn
      <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span>
  <span class="token keyword">FROM</span> customer
 <span class="token keyword">WHERE</span> comb_res_yn <span class="token operator">NOT</span> <span class="token keyword">INT</span> <span class="token punctuation">(</span><span class="token string">'Y'</span><span class="token punctuation">,</span> <span class="token string">'N'</span><span class="token punctuation">)</span>
 <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> comb_res_yn
 <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">DESC</span>
-<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="3-오류-원인"><a href="#3-오류-원인" class="headerlink" title="(3) 오류 원인"></a>(3) 오류 원인</h3><ul>
+<h3 id="1-4-오류-원인"><a href="#1-4-오류-원인" class="headerlink" title="1.4 오류 원인"></a>1.4 오류 원인</h3><hr>
+<ul>
 <li><p>다수의 응용 프로그램에서 데이터가 입력되는 경우</p>
 </li>
 <li><p>Default 값 설정이 되어 있지 않은 경우</p>
 </li>
 </ul>
-<h3 id="4-개선방안-및-고려사항"><a href="#4-개선방안-및-고려사항" class="headerlink" title="(4) 개선방안 및 고려사항"></a>(4) 개선방안 및 고려사항</h3><ul>
+<h3 id="1-5-개선방안-및-고려사항"><a href="#1-5-개선방안-및-고려사항" class="headerlink" title="1.5 개선방안 및 고려사항"></a>1.5 개선방안 및 고려사항</h3><hr>
+<ul>
 <li><p>여부 값에 대한 표준화</p>
 </li>
 <li><p>기존 값에 대한 정제</p>
@@ -288,7 +331,8 @@
 <blockquote>
 <p>날짜&#x2F;시간 유형 데이터에 대한 유효성 진단</p>
 </blockquote>
-<h3 id="1-진단방법"><a href="#1-진단방법" class="headerlink" title="(1) 진단방법"></a>(1) 진단방법</h3><ul>
+<h3 id="2-1-진단방법"><a href="#2-1-진단방법" class="headerlink" title="2.1 진단방법"></a>2.1 진단방법</h3><hr>
+<ul>
 <li><p>유효한 형식과 날짜로 구성되지 않은 값을 오류로 판단</p>
 </li>
 <li><p>보통 <code>데이터 타입이 DATE형이 아닌 문자로 구성된 날짜 컬럼을 진단</code></p>
@@ -329,7 +373,8 @@
 <ul>
 <li>단, 타입이 <code>DATE형이지만 날짜의 유효범위가 존재하는 경우</code> 날짜에 <code>범위조건을 입력</code>하여 진단수행 가능 <br>(예, 미래일자는 존재 불가)</li>
 </ul>
-<h3 id="2-오류예시"><a href="#2-오류예시" class="headerlink" title="(2) 오류예시"></a>(2) 오류예시</h3><table>
+<h3 id="2-1-오류-예시"><a href="#2-1-오류-예시" class="headerlink" title="2.1 오류 예시"></a>2.1 오류 예시</h3><hr>
+<table>
   <tr>
     <th>테이블명</th>
     <th>컬럼명</td>
@@ -361,13 +406,15 @@
 </table>
 
 
-<h3 id="3-오류-원인-1"><a href="#3-오류-원인-1" class="headerlink" title="(3) 오류 원인"></a>(3) 오류 원인</h3><ul>
+<h3 id="2-3-오류-원인"><a href="#2-3-오류-원인" class="headerlink" title="2.3 오류 원인"></a>2.3 오류 원인</h3><hr>
+<ul>
 <li><p>입력자의 데이터 수기 입력 오류</p>
 </li>
 <li><p>날짜 입력 시 날짜 형식에 대한 검증 부재</p>
 </li>
 </ul>
-<h3 id="4-개선방안-및-고려사항-1"><a href="#4-개선방안-및-고려사항-1" class="headerlink" title="(4) 개선방안 및 고려사항"></a>(4) 개선방안 및 고려사항</h3><ul>
+<h3 id="2-4-개선방안-및-고려사항"><a href="#2-4-개선방안-및-고려사항" class="headerlink" title="2.4 개선방안 및 고려사항"></a>2.4 개선방안 및 고려사항</h3><hr>
+<ul>
 <li><p>날짜 입력 시 날짜를 선택하여 입력하도록 응용 프로그램 개선</p>
 </li>
 <li><p>날짜 형식에 대한 표준화 수행</p>
@@ -375,9 +422,10 @@
 </ul>
 <h2 id="3-코드"><a href="#3-코드" class="headerlink" title="3. 코드"></a>3. 코드</h2><hr>
 <blockquote>
-<p>개별코드&#x2F;통합코드 마스터와 트랜잭션 코드와의 유효성 진단</p>
+<p><code>개별코드/통합코드 마스터</code>와 <code>트랜잭션 코드</code>와의 <code>유효성 진단</code></p>
 </blockquote>
-<h3 id="1-진단방법-1"><a href="#1-진단방법-1" class="headerlink" title="(1) 진단방법"></a>(1) 진단방법</h3><ul>
+<h3 id="3-1-진단방법"><a href="#3-1-진단방법" class="headerlink" title="3.1 진단방법"></a>3.1 진단방법</h3><hr>
+<ul>
 <li><p>단일코드, 목록형코드 등으로 정의된 컬럼이 <code>정의된 컬럼 값으로 구성되어 있는지 분석</code></p>
 </li>
 <li><p><code>공통코드 테이블에 의한 참조분석</code>과 <code>개별코드 참조분석</code>으로 분류하여 수행</p>
@@ -403,7 +451,8 @@
 <td>코드, 코드명 이외의 속성을 갖거나 외부로부터 추출하여 변경이 낮은 코드 <br> 목록코드는 별도 Entity에서 관리하므로 반드시 개별코드 Entity를 참조</td>
 </tr>
 </tbody></table>
-<h3 id="2-오류-예시"><a href="#2-오류-예시" class="headerlink" title="(2) 오류 예시"></a>(2) 오류 예시</h3><table>
+<h3 id="3-2-오류-예시"><a href="#3-2-오류-예시" class="headerlink" title="3.2 오류 예시"></a>3.2 오류 예시</h3><hr>
+<table>
   <tr>
     <th>테이블명</th>
     <th>컬럼명</td>
@@ -422,7 +471,8 @@
   </tr>
 </table>
 
-<h3 id="3-검증-SQL"><a href="#3-검증-SQL" class="headerlink" title="(3) 검증 SQL"></a>(3) 검증 SQL</h3><pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>공통코드를 통한 참조분석 검증 SQL</span></div><code class="language-sql"><span class="token keyword">SELECT</span> A<span class="token punctuation">.</span>cust_stcd
+<h3 id="3-3-코드-검증-SQL"><a href="#3-3-코드-검증-SQL" class="headerlink" title="3.3 코드 검증 SQL"></a>3.3 코드 검증 SQL</h3><hr>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>코드 마스터 테이블과의 참조분석 검증 SQL</span></div><code class="language-sql"><span class="token keyword">SELECT</span> A<span class="token punctuation">.</span>cust_stcd
   <span class="token keyword">FROM</span> customer <span class="token keyword">AS</span> A <span class="token comment">-- 진단 대상 테이블</span>
  <span class="token keyword">WHERE</span> A<span class="token punctuation">.</span>cust_stcd <span class="token operator">IS</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span>
    <span class="token operator">AND</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span> <span class="token punctuation">(</span>
@@ -433,13 +483,15 @@
    <span class="token punctuation">)</span>
 <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="4-오류-원인"><a href="#4-오류-원인" class="headerlink" title="(4) 오류 원인"></a>(4) 오류 원인</h3><ul>
+<h3 id="3-4-오류-원인"><a href="#3-4-오류-원인" class="headerlink" title="3.4 오류 원인"></a>3.4 오류 원인</h3><hr>
+<ul>
 <li><p>코드의 신규, 변경 건에 대한 현행화 관리 미흡</p>
 </li>
 <li><p>응용 프로그램에서 코드 값을 하드 코딩하여 사용</p>
 </li>
 </ul>
-<h3 id="5-개선방안-및-고려사항"><a href="#5-개선방안-및-고려사항" class="headerlink" title="(5) 개선방안 및 고려사항"></a>(5) 개선방안 및 고려사항</h3><ul>
+<h3 id="3-5-개선방안-및-고려사항"><a href="#3-5-개선방안-및-고려사항" class="headerlink" title="3.5 개선방안 및 고려사항"></a>3.5 개선방안 및 고려사항</h3><hr>
+<ul>
 <li><p>코드 신규, 변경 시 공통코드에 현행화 관리 및 배포 통제</p>
 </li>
 <li><p>프로그램 상에서 코드 값 매핑시 하드코딩 금지</p>
@@ -449,7 +501,8 @@
 <blockquote>
 <p>문자, 숫자 등으로 구성된 패턴을 갖는 값의 패턴 일관성 진단</p>
 </blockquote>
-<h3 id="1-진단-방법-1"><a href="#1-진단-방법-1" class="headerlink" title="(1) 진단 방법"></a>(1) 진단 방법</h3><ul>
+<h3 id="4-1-진단-방법"><a href="#4-1-진단-방법" class="headerlink" title="4.1 진단 방법"></a>4.1 진단 방법</h3><hr>
+<ul>
 <li><p>데이터의 <code>생성규칙(패턴)에 어긋나는 값을 오류로 판단</code></p>
 </li>
 <li><p>일반적으로 <code>내부 표준에 따른 번호·문자체계의 기준에 따라 단순 패턴 검증</code>을 수행</p>
@@ -489,7 +542,8 @@
 <td>···</td>
 </tr>
 </tbody></table>
-<h3 id="2-오류-예시-1"><a href="#2-오류-예시-1" class="headerlink" title="(2) 오류 예시"></a>(2) 오류 예시</h3><table>
+<h3 id="4-2-오류-예시"><a href="#4-2-오류-예시" class="headerlink" title="4.2 오류 예시"></a>4.2 오류 예시</h3><hr>
+<table>
   <tr>
     <th>테이블명</th>
     <th>컬럼명</td>
@@ -520,7 +574,8 @@
   </tr>         
 </table>
 
-<h3 id="3-오류-원인-2"><a href="#3-오류-원인-2" class="headerlink" title="(3) 오류 원인"></a>(3) 오류 원인</h3><ul>
+<h3 id="4-3-오류-원인"><a href="#4-3-오류-원인" class="headerlink" title="4.3 오류 원인"></a>4.3 오류 원인</h3><hr>
+<ul>
 <li><p>데이터 생성규칙 미정의</p>
 </li>
 <li><p>데이터 입력 시점에 생성규칙에 의한 패턴 검증기능 부재</p>
@@ -528,7 +583,8 @@
 <li><p>같은 속성에 다른 구분자 사용</p>
 </li>
 </ul>
-<h3 id="4-개선방안-및-고려사항-2"><a href="#4-개선방안-및-고려사항-2" class="headerlink" title="(4) 개선방안 및 고려사항"></a>(4) 개선방안 및 고려사항</h3><ul>
+<h3 id="4-4-개선방안-및-고려사항"><a href="#4-4-개선방안-및-고려사항" class="headerlink" title="4.4 개선방안 및 고려사항"></a>4.4 개선방안 및 고려사항</h3><hr>
+<ul>
 <li><p>데이터 입력 시 패턴 검증 응용 프로그램 개선</p>
 </li>
 <li><p>데이터 값의 구분자 통일 등 데이터 생성규칙 정의</p>
@@ -538,7 +594,8 @@
 <blockquote>
 <p>범위가 존재하는 데이터의 유효 범위를 벗어난 값을 오류로 진단</p>
 </blockquote>
-<h3 id="1-진단방법-2"><a href="#1-진단방법-2" class="headerlink" title="(1) 진단방법"></a>(1) 진단방법</h3><ul>
+<h3 id="5-1-진단방법"><a href="#5-1-진단방법" class="headerlink" title="5.1 진단방법"></a>5.1 진단방법</h3><hr>
+<ul>
 <li><p>숫자로 저장된 ‘금액’, ‘수량’, ‘율’ 도메인 컬럼의 모든 유효 범위를 벗어나는 오류를 측정</p>
 </li>
 <li><p>‘건수’, ‘횟수’, ‘사업비’, ‘가격’, ‘비율’, ‘산정율’ 등과 같이 숫자로 저장되는 데이터 값의 단위가 혼재되어 있거나, 유효 값의 범위를 벗어나는 데이터를 오류로 측정</p>
@@ -563,7 +620,8 @@
 </table>
 
 
-<h3 id="2-오류예시-1"><a href="#2-오류예시-1" class="headerlink" title="(2) 오류예시"></a>(2) 오류예시</h3><table>
+<h3 id="5-2-오류-예시"><a href="#5-2-오류-예시" class="headerlink" title="5.2 오류 예시"></a>5.2 오류 예시</h3><hr>
+<table>
   <tr>
     <th>테이블명</th>
     <th>컬럼명</td>
@@ -598,11 +656,8 @@
   </tr>           
 </table>
 
-
-
-
-
-<h3 id="2-검증-SQL-1"><a href="#2-검증-SQL-1" class="headerlink" title="(2) 검증 SQL"></a>(2) 검증 SQL</h3><pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>금액/수량 검증 SQL</span></div><code class="language-sql"><span class="token keyword">SELECT</span> sal_price
+<h3 id="5-3-금액-수량-검증-SQL"><a href="#5-3-금액-수량-검증-SQL" class="headerlink" title="5.3 금액&#x2F;수량 검증 SQL"></a>5.3 금액&#x2F;수량 검증 SQL</h3><hr>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>금액/수량 검증 SQL</span></div><code class="language-sql"><span class="token keyword">SELECT</span> sal_price
      <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> err_cnt
   <span class="token keyword">FROM</span> order_detail
  <span class="token keyword">WHERE</span> <span class="token number">1</span><span class="token operator">=</span><span class="token number">1</span>
@@ -611,7 +666,8 @@
  <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> sal_price
 <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="3-오류-원인-3"><a href="#3-오류-원인-3" class="headerlink" title="(3) 오류 원인"></a>(3) 오류 원인</h3><ul>
+<h3 id="5-4-오류-원인"><a href="#5-4-오류-원인" class="headerlink" title="5.4 오류 원인"></a>5.4 오류 원인</h3><hr>
+<ul>
 <li><p>입력자의 데이터수기 입력오류</p>
 </li>
 <li><p>데이터 입력 시 수치 값의 허용범위 검증기능 부재</p>
@@ -619,17 +675,19 @@
 <li><p>수량, 금액의 단위가 혼재하는 경우</p>
 </li>
 </ul>
-<h3 id="4-개선방안-및-고려사항-3"><a href="#4-개선방안-및-고려사항-3" class="headerlink" title="(4) 개선방안 및 고려사항"></a>(4) 개선방안 및 고려사항</h3><ul>
+<h3 id="5-5-개선방안-및-고려사항"><a href="#5-5-개선방안-및-고려사항" class="headerlink" title="5.5 개선방안 및 고려사항"></a>5.5 개선방안 및 고려사항</h3><hr>
+<ul>
 <li><p>데이터 입력 시 이상치 범위 값에 대한 응용 프로그램 개선</p>
 </li>
 <li><p>수량, 금액 등 단위 존재하는 값에 대한 표준화 수행</p>
 </li>
 </ul>
-<h2 id="6-참조-값"><a href="#6-참조-값" class="headerlink" title="6. 참조 값"></a>6. 참조 값</h2><hr>
+<h2 id="6-참조값"><a href="#6-참조값" class="headerlink" title="6. 참조값"></a>6. 참조값</h2><hr>
 <blockquote>
 <p>부모-자식 관계 데이터의 참조 무결성 진단</p>
 </blockquote>
-<h3 id="1-진단방법-3"><a href="#1-진단방법-3" class="headerlink" title="(1) 진단방법"></a>(1) 진단방법</h3><ul>
+<h3 id="6-1-진단방법"><a href="#6-1-진단방법" class="headerlink" title="6.1 진단방법"></a>6.1 진단방법</h3><hr>
+<ul>
 <li><p><code>부모-자식 간의 관계 정합성을 검증</code>하여 부모가 없는 자식 데이터가 존재하는지 진단</p>
 </li>
 <li><p>데이터를 관리하는 구조의 설계, 구축의 문제로 인해 데이터 값이 일관되게 관리되지 못하거나 정합성을 확보하지 못하는 경우 발생</p>
@@ -637,7 +695,12 @@
 <li><p>데이터 모델(ERD)상 식별관계로 정의하였으나, 데이터베이스의 물리제약(FK)으로 설정하지 않은 경우 발생함</p>
 </li>
 </ul>
-<h3 id="2-참조값-검증-SQL"><a href="#2-참조값-검증-SQL" class="headerlink" title="(2) 참조값 검증 SQL"></a>(2) 참조값 검증 SQL</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> X<span class="token punctuation">.</span><span class="token operator">*</span>
+<h3 id="6-2-오류-예시"><a href="#6-2-오류-예시" class="headerlink" title="6.2 오류 예시"></a>6.2 오류 예시</h3><hr>
+<p><code>주문 테이블(자식)의 고객번호(FK) 속성 값에서 고객 테이블(부모)에 없는 고객번호가 발견</code>된 경우</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129149&authkey=%21AI_nwGXmwgYqQyM&width=660" width="660" height="auto" alt="부모-자식 참조관계 ERD"/>
+
+<h3 id="6-3-참조값-검증-SQL"><a href="#6-3-참조값-검증-SQL" class="headerlink" title="6.3 참조값 검증 SQL"></a>6.3 참조값 검증 SQL</h3><hr>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>참조값 검증 SQL</span></div><code class="language-sql"><span class="token keyword">SELECT</span> X<span class="token punctuation">.</span><span class="token operator">*</span>
   <span class="token keyword">FROM</span> <span class="token punctuation">(</span>
     <span class="token keyword">SELECT</span> B<span class="token punctuation">.</span>cust_id <span class="token keyword">AS</span> 기준정보
         <span class="token punctuation">,</span>  A<span class="token punctuation">.</span>cust_id <span class="token keyword">AS</span> 참조정보
@@ -648,7 +711,8 @@
  <span class="token keyword">WHERE</span> x<span class="token punctuation">.</span>기준정보 <span class="token operator">IS</span> <span class="token boolean">NULL</span>
  <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="3-오류-원인-4"><a href="#3-오류-원인-4" class="headerlink" title="(3) 오류 원인"></a>(3) 오류 원인</h3><ul>
+<h3 id="6-4-오류-원인"><a href="#6-4-오류-원인" class="headerlink" title="6.4 오류 원인"></a>6.4 오류 원인</h3><hr>
+<ul>
 <li><p>부모 데이터 삭제 시, 자식 데이터가 그대로 남아 있는 경우</p>
 </li>
 <li><p>프로그램 개발, 성능 확보 등을 위해 물리적인 제약(FK)을 설정하지 않은 경우</p>
@@ -656,7 +720,8 @@
 <li><p>DBMS 제약을 설정하지 않고 응용 프로그램에서 참조무결성을 확보하려 하였으나, 오류가 발생한 경우</p>
 </li>
 </ul>
-<h3 id="4-개선방안-및-고려사항-4"><a href="#4-개선방안-및-고려사항-4" class="headerlink" title="(4) 개선방안 및 고려사항"></a>(4) 개선방안 및 고려사항</h3><ul>
+<h3 id="6-5-개선방안-및-고려사항"><a href="#6-5-개선방안-및-고려사항" class="headerlink" title="6.5 개선방안 및 고려사항"></a>6.5 개선방안 및 고려사항</h3><hr>
+<ul>
 <li><p>물리적인 제약(FK)을 설정하거나, 응용 프로그램 개선 등을 통해 데이터 간 참조무결성이 보장되도록 개선</p>
 </li>
 <li><p>데이터 모델(ERD) 현행화 및 변경관리 수행</p>
@@ -666,7 +731,8 @@
 <blockquote>
 <p>날짜 컬럼에 시간 선&#x2F;후 관계가 존재하는 경우를 검증</p>
 </blockquote>
-<h3 id="1-진단방법-4"><a href="#1-진단방법-4" class="headerlink" title="(1) 진단방법"></a>(1) 진단방법</h3><ul>
+<h3 id="7-1-진단방법"><a href="#7-1-진단방법" class="headerlink" title="7.1 진단방법"></a>7.1 진단방법</h3><hr>
+<ul>
 <li><p>날짜 컬럼 간의 시간 순서가 존재하는 경우</p>
 <ul>
 <li><p>[CASE 1] 시작일은 종료일보다 이전 시점이어야 한다.</p>
@@ -677,17 +743,46 @@
 <p>⚠️ 단순히 시작일과 종료일이의 선후관계 뿐만 아니라 누락된 값을 통해 다르게 해석 가능</p>
 </li>
 </ul>
-<h3 id="2-검증-SQL-2"><a href="#2-검증-SQL-2" class="headerlink" title="(2) 검증 SQL"></a>(2) 검증 SQL</h3><pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>[CASE 1] 시간순서 검증 SQL</span></div><code class="language-sql"><span class="token comment">-- 행사시작일은 행사종룡일보다 이전 시점이어야 한다.</span>
+<h3 id="7-2-오류-예시"><a href="#7-2-오류-예시" class="headerlink" title="7.2 오류 예시"></a>7.2 오류 예시</h3><hr>
+<table>
+  <tr>
+    <th>테이블명</th>
+    <th>행사시작일</th>
+    <th>행사종료일</th>
+    <th>오류 원인</th>
+  </tr>
+  <tr>
+    <td rowspan="6" style="text-align: center;">행사정보조회</td>
+    <td style="text-align: center; color: red; font-weight: bold;">20150522</td>
+    <td style="text-align: center; color: red; font-weight: bold;">20160520</td>
+    <td>행사시작일과 행사종료일이 차이가 비상식적으로 많은 차이 발생 (오류 가능성 높음)</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; color: red; font-weight: bold;">20160522</td>
+    <td style="text-align: center; color: red; font-weight: bold;">20160521</td>
+    <td>행사시작일과 행사종료일의 시간순서 이상</td>
+  </tr>    
+  <tr>
+    <td style="text-align: center; color: red; font-weight: bold;">(NULL)</td>
+    <td style="text-align: center; color: red; font-weight: bold;">20160514</td>
+    <td>행사시작일과 행사종료일의 선후관계 이상</td>
+  </tr> 
+</table>
+
+
+
+<h3 id="7-3-시간순서-일관성-선후관계-검증-SQL"><a href="#7-3-시간순서-일관성-선후관계-검증-SQL" class="headerlink" title="7.3 시간순서 일관성&#x2F;선후관계 검증 SQL"></a>7.3 시간순서 일관성&#x2F;선후관계 검증 SQL</h3><hr>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>[CASE 1] 시간순서 검증 SQL</span></div><code class="language-sql"><span class="token comment">-- 행사시작일은 행사종룡일보다 이전 시점이어야 한다.</span>
 <span class="token keyword">SELECT</span> 행사시작일
      <span class="token punctuation">,</span> 행사종료일
-  <span class="token keyword">FROM</span> tbl
+  <span class="token keyword">FROM</span> 행사정보조회
  <span class="token keyword">WHERE</span>  행사시작일 <span class="token operator">></span> 행사종료일
 <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>[CASE 2] 선후관계 검증 SQL</span></div><code class="language-sql"><span class="token comment">-- 종료일이 있으면 반드시 시작일이 존재해야 한다.</span>
 <span class="token keyword">SELECT</span> 시작일
      <span class="token punctuation">,</span> 종료일
-  <span class="token keyword">FROM</span> tbl
+  <span class="token keyword">FROM</span> 행사정보조회
  <span class="token keyword">WHERE</span> 시작일 <span class="token operator">IS</span> <span class="token boolean">NULL</span>
    <span class="token operator">AND</span> 종료일 <span class="token operator">IS</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span>
 <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
@@ -696,14 +791,12 @@
 <blockquote>
 <p>컬럼에 계산된 값이 존재하는 경우를 검증</p>
 </blockquote>
-<h3 id="3-진단방법"><a href="#3-진단방법" class="headerlink" title="(3) 진단방법"></a>(3) 진단방법</h3><ul>
-<li><p>특정 통계 테이블 등에 계산값이 존재하는 경우</p>
+<h3 id="8-1-진단방법"><a href="#8-1-진단방법" class="headerlink" title="8.1 진단방법"></a>8.1 진단방법</h3><hr>
 <ul>
-<li>월간 통계 테이블 매출액은 주문테이블의 해당 년월의 총금액 합계와 비교하여 일치해야 한다</li>
+<li>특정 통계 테이블 등에 계산값이 존재하는 경우<br>예) <code>월간 통계 테이블 매출액</code>은 <code>주문테이블의 해당 년월의 총금액 합계</code>와 <code>비교하여 일치</code>해야 함</li>
 </ul>
-</li>
-</ul>
-<h3 id="4-검증-SQL"><a href="#4-검증-SQL" class="headerlink" title="(4) 검증 SQL"></a>(4) 검증 SQL</h3><pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>계산 및 집계 정확성 검증 SQL</span></div><code class="language-sql"><span class="token comment">-- 월매출액 통계 테이블의 매출액은 주문 테이블의 해당년월의 거래가 완료된 매출액의 총 합계와 일치해야 한다.</span>
+<h3 id="8-2-계산-및-집계-정확성-검증-SQL"><a href="#8-2-계산-및-집계-정확성-검증-SQL" class="headerlink" title="8.2 계산 및 집계 정확성 검증 SQL"></a>8.2 계산 및 집계 정확성 검증 SQL</h3><hr>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>계산 및 집계 정확성 검증 SQL</span></div><code class="language-sql"><span class="token comment">-- 월매출액 통계 테이블의 매출액은 주문 테이블의 해당년월의 거래가 완료된 매출액의 총 합계와 일치해야 한다.</span>
 <span class="token keyword">SELECT</span> A<span class="token punctuation">.</span>년<span class="token punctuation">,</span> A<span class="token punctuation">.</span>월<span class="token punctuation">,</span> A<span class="token punctuation">.</span>매출액<span class="token punctuation">,</span> B<span class="token punctuation">.</span>월매출계산
   <span class="token keyword">FROM</span> 월매출액통계 <span class="token keyword">AS</span> A
      <span class="token punctuation">,</span> <span class="token punctuation">(</span>
@@ -721,7 +814,8 @@
 <blockquote>
 <p>복수의 컬럼에 논리적인 관계가 존재하는 경우를 검증</p>
 </blockquote>
-<h3 id="1-진단방법-5"><a href="#1-진단방법-5" class="headerlink" title="(1) 진단방법"></a>(1) 진단방법</h3><ul>
+<h3 id="9-1-진단방법"><a href="#9-1-진단방법" class="headerlink" title="9.1 진단방법"></a>9.1 진단방법</h3><hr>
+<ul>
 <li><p>컬럼 간에 논리적인 관계가 존재하는 경우</p>
 <ul>
 <li><p>[CASE 1] 등록여부가 Y인 경우, 등록일자는 반드시 존재해야 한다.</p>
@@ -729,10 +823,11 @@
 <li><p>[CASE 2] 결혼여부가 Y인 경우, 결혼일자는 반드시 존재해야 한다.</p>
 </li>
 </ul>
-<p>⚠️ 단순 여부에 따른 입력 값 누락 뿐만 아니라, 업무적 특성에 따른 다양한 컬럼 간 논리관계를 검증</p>
 </li>
 </ul>
-<h3 id="2-검증-SQL-3"><a href="#2-검증-SQL-3" class="headerlink" title="(2) 검증 SQL"></a>(2) 검증 SQL</h3><pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>[CASE 1] 컬럼 간 논리관계 일관성 검증 SQL</span></div><code class="language-sql"><span class="token comment">-- 등록여부가 Y인 경우, 등록일자는 반드시 존재해야 한다.</span>
+<p>⚠️ 단순 여부에 따른 입력 값 누락 뿐만 아니라, <code>업무적 특성에 따른 다양한 컬럼 간 논리관계를 검증</code></p>
+<h3 id="9-2-컬럼-간-논리관계-일관성-검증-SQL"><a href="#9-2-컬럼-간-논리관계-일관성-검증-SQL" class="headerlink" title="9.2 컬럼 간 논리관계 일관성 검증 SQL"></a>9.2 컬럼 간 논리관계 일관성 검증 SQL</h3><hr>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>[CASE 1] 컬럼 간 논리관계 일관성 검증 SQL</span></div><code class="language-sql"><span class="token comment">-- 등록여부가 Y인 경우, 등록일자는 반드시 존재해야 한다.</span>
 <span class="token keyword">SELECT</span> 등록여부
      <span class="token punctuation">,</span> 등록일자
   <span class="token keyword">FROM</span> 고객정보
