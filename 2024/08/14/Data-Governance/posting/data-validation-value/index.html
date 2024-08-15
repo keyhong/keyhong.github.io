@@ -548,21 +548,60 @@
 </ul>
 <p>⚠️ 일반적으로 금액, 수량과 관련된 컬럼은 음수(-)가 나올 수 없음</p>
 <table>
-<thead>
-<tr>
-<th>테이블명</th>
-<th>컬럼명</th>
-<th>MIN</th>
-<th>MAX</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>주문상세</td>
-<td>판매가격</td>
-<td>-99999</td>
-<td>9999999999</td>
-</tr>
-</tbody></table>
+  <tr>
+    <th>테이블명</th>
+    <th>컬럼명</td>
+    <th>MIN</td>
+    <th>MAX</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">주문상세</td>
+    <td style="text-align: center;">판매가격</td>
+    <td style="text-align: right; color: red; font-weight: bold;">-99999</td>
+    <td style="text-align: rightr; color: red; font-weight: bold;">9999999999</td>
+  </tr>
+</table>
+
+
+<h3 id="2-오류예시-1"><a href="#2-오류예시-1" class="headerlink" title="(2) 오류예시"></a>(2) 오류예시</h3><table>
+  <tr>
+    <th>테이블명</th>
+    <th>컬럼명</td>
+    <th>패턴</td>
+    <th>건수</td>
+  </tr>
+  <tr>
+    <td rowspan="6" style="text-align: center;">주문상세</td>
+    <td rowspan="6" style="text-align: center;">판매가격</td>
+    <td style="text-align: center; color: red; font-weight: bold;">-99999</td>
+    <td style="text-align: center;">1</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; color: red; font-weight: bold;">99B999B9999</td>
+    <td style="text-align: center;">33</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">9999</td>
+    <td style="text-align: center;">8</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; color: red; font-weight: bold;">-1111</td>
+    <td style="text-align: center;">3</td>
+  </tr>    
+  <tr>
+    <td style="text-align: font-weight: bold;">0~10000</td>
+    <td style="text-align: center;">45</td>
+  </tr> 
+  <tr>
+    <td style="text-align: center; color: red; font-weight: bold;">99999999999</td>
+    <td style="text-align: center;">45</td>
+  </tr>           
+</table>
+
+
+
+
+
 <h3 id="2-검증-SQL-1"><a href="#2-검증-SQL-1" class="headerlink" title="(2) 검증 SQL"></a>(2) 검증 SQL</h3><pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>금액/수량 검증 SQL</span></div><code class="language-sql"><span class="token keyword">SELECT</span> sal_price
      <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> err_cnt
   <span class="token keyword">FROM</span> order_detail
@@ -623,7 +662,8 @@
 <li><p>데이터 모델(ERD) 현행화 및 변경관리 수행</p>
 </li>
 </ul>
-<h2 id="7-시간순서-일관성-선후관계"><a href="#7-시간순서-일관성-선후관계" class="headerlink" title="7. 시간순서 일관성&#x2F;선후관계"></a>7. 시간순서 일관성&#x2F;선후관계</h2><blockquote>
+<h2 id="7-시간순서-일관성-선후관계"><a href="#7-시간순서-일관성-선후관계" class="headerlink" title="7. 시간순서 일관성&#x2F;선후관계"></a>7. 시간순서 일관성&#x2F;선후관계</h2><hr>
+<blockquote>
 <p>날짜 컬럼에 시간 선&#x2F;후 관계가 존재하는 경우를 검증</p>
 </blockquote>
 <h3 id="1-진단방법-4"><a href="#1-진단방법-4" class="headerlink" title="(1) 진단방법"></a>(1) 진단방법</h3><ul>

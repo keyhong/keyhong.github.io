@@ -5,13 +5,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="데이터 품질진단 (프로파일링), Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="1.1 데이터 프로파일링
+    <meta name="description" content="1. 데이터 프로파일링
 
 데이터 현황 분석을 위한 자료 수집, 데이터의 통계 · 패턴 등을 수집하여 잠재적 오류 징후를 발견하는 방법
 
-1.2 데이터 프로파일링 분석 단위
+2. 데이터 프로파일링 분석 단위
 
-단일 컬럼과 같은 작은 단위로 시작하여 ">
+단일 컬럼과 같은 작은 단위로 시작하여 테이">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -229,35 +229,35 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-1-데이터-프로파일링"><a href="#1-1-데이터-프로파일링" class="headerlink" title="1.1 데이터 프로파일링"></a>1.1 데이터 프로파일링</h2><hr>
+                <h2 id="1-데이터-프로파일링"><a href="#1-데이터-프로파일링" class="headerlink" title="1. 데이터 프로파일링"></a>1. 데이터 프로파일링</h2><hr>
 <blockquote>
 <p>데이터 현황 분석을 위한 자료 수집, 데이터의 통계 · 패턴 등을 수집하여 잠재적 오류 징후를 발견하는 방법</p>
 </blockquote>
-<h2 id="1-2-데이터-프로파일링-분석-단위"><a href="#1-2-데이터-프로파일링-분석-단위" class="headerlink" title="1.2 데이터 프로파일링 분석 단위"></a>1.2 데이터 프로파일링 분석 단위</h2><hr>
+<h2 id="2-데이터-프로파일링-분석-단위"><a href="#2-데이터-프로파일링-분석-단위" class="headerlink" title="2. 데이터 프로파일링 분석 단위"></a>2. 데이터 프로파일링 분석 단위</h2><hr>
 <blockquote>
 <p><code>단일 컬럼</code>과 같은 작은 단위로 시작하여 <code>테이블과 테이블의 상관관계 데이터를 검증</code>하는 복잡한 순서 단계로 프로파일링 실시</p>
 </blockquote>
 <ul>
-<li><p>Column Profiling : 개별 속성 값에 대한 검증</p>
+<li><p>(1) <code>Column</code> Profiling : <code>개별 속성 값</code>에 대한 검증<br></p>
 </li>
-<li><p>Single-Table Profiling : 복수 개의 컬럼 간의 관계에 대한 검증 <br>(EX) 결혼여부가 N인데, 결혼일자가 있는 경우 &#x3D;&gt; 이상 데이터</p>
+<li><p>(2) <code>Single-Table</code> Profiling : <code>복수 개의 컬럼 간의 관계</code>에 대한 검증<br>(EX) 결혼여부가 N인데, 결혼일자가 있는 경우, 이상 데이터로 판별</p>
 </li>
-<li><p>Cross-Table Profiling : 두 테이블의 참조 관게에 대한 검증</p>
+<li><p>(3) <code>Cross-Table</code> Profiling : <code>두 테이블의 참조 관계</code>에 대한 검증<br></p>
 </li>
 </ul>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129134&authkey=%21ADmPyDpfR1-as1g&width=1024" width="1024" height="auto" />
 
 
 
-<h2 id="1-3-프로파일링-수행-시기"><a href="#1-3-프로파일링-수행-시기" class="headerlink" title="1.3 프로파일링 수행 시기"></a>1.3 프로파일링 수행 시기</h2><hr>
+<h2 id="3-프로파일링-수행-시기"><a href="#3-프로파일링-수행-시기" class="headerlink" title="3. 프로파일링 수행 시기"></a>3. 프로파일링 수행 시기</h2><hr>
 <blockquote>
 <p>데이터의 저장, 연계, 가공, 활용 등 <code>데이터에 변경이 발생하는 모든 영역에서 수시로 프로파일링을 수행</code>함으로 <code>데이터의 오류를 사전에 파악하고 예방</code>해야 함</p>
 </blockquote>
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129130&authkey=%21ABPp7QyCG75_NIA&width=660" width="660" height="auto" alt="데이터 영역"/>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129130&authkey=%21ABPp7QyCG75_NIA&width=660" width="660" height="auto" alt="데이터 변경 발생 영역"/>
 
-<h2 id="1-4-프로파일링-방법"><a href="#1-4-프로파일링-방법" class="headerlink" title="1.4 프로파일링 방법"></a>1.4 프로파일링 방법</h2><hr>
+<h2 id="4-프로파일링-방법"><a href="#4-프로파일링-방법" class="headerlink" title="4. 프로파일링 방법"></a>4. 프로파일링 방법</h2><hr>
 <blockquote>
-<p>데이터 프로파일링 방법론은 <code>상향식 접근 방법(Bottom-Up)</code>으로 낮은 레벨(컬럼)에서 높은 레벨(컬럼, 테이블)로 좀 더 복잡한 분석으로 구체화 시켜 정확성을 높여 나감</p>
+<p>데이터 프로파일링 방법론은 <code>상향식 접근 방법(Bottom-Up)</code>으로 <code>낮은 레벨(컬럼)에서 높은 레벨(컬럼, 테이블)로 좀 더 복잡한 분석으로 구체화</code> 시켜 정확성을 높여 나감</p>
 </blockquote>
 <table>
   <tr>
@@ -267,33 +267,33 @@
   </tr>
   <tr>
     <td style="text-align: center;">1</td>
-    <td>컬럼 속성 분석</td>
-    <td>단일 컬럼 분석</td>
+    <td style="text-align: center;">컬럼 속성 분석</td>
+    <td style="text-align: center;">단일 컬럼 분석</td>
   </tr>
   <tr>
     <td style="text-align: center;">2</td>
-    <td>구조 분석</td>
-    <td rowspan="3">컬럼간, 테이블간 상관관계 분석</td>
+    <td style="text-align: center;">구조 분석</td>
+    <td rowspan="3" style="text-align: center;">컬럼간, 테이블간 상관관계 분석</td>
   </tr>
   <tr>
     <td style="text-align: center;">3</td>
-    <td>간단한 데이터 점검률 분석</td>
+    <td style="text-align: center;">간단한 데이터 점검룰 분석</td>
   </tr>
   <tr>
     <td style="text-align: center;">4</td>
-    <td>복잡한 데이터 점검률 분석</td>
+    <td style="text-align: center;">복잡한 데이터 점검룰 분석</td>
   </tr>
 </table>
 
 
-<h2 id="1-5-프로파일링-절차"><a href="#1-5-프로파일링-절차" class="headerlink" title="1.5 프로파일링 절차"></a>1.5 프로파일링 절차</h2><hr>
+<h2 id="5-프로파일링-절차"><a href="#5-프로파일링-절차" class="headerlink" title="5. 프로파일링 절차"></a>5. 프로파일링 절차</h2><hr>
 <h3 id="1-데이터-값-진단"><a href="#1-데이터-값-진단" class="headerlink" title="(1) 데이터 값 진단"></a>(1) 데이터 값 진단</h3><blockquote>
 <p>데이터 값 진단은 데이터 품질진단 및 개선 활동(6단계)에서 수행하는 여러 진단활동 중 하나로서, 구조&#x2F;표준&#x2F;관리수준 진단과 함께 동일 절차로 수행됨<hr>* 각 진단의 세부 절차는 품질진단기법 및 진단 관점에 따라 달라짐</p>
 </blockquote>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129133&authkey=%21ALdUf9SEZluCJpU&width=1024" width="1024" height="auto" alt="품질진단 중 데이터 값 진단"/>
 
 <h3 id="2-데이터-값-진단-절차와-상세-활동"><a href="#2-데이터-값-진단-절차와-상세-활동" class="headerlink" title="(2) 데이터 값 진단 절차와 상세 활동"></a>(2) 데이터 값 진단 절차와 상세 활동</h3><blockquote>
-<p>데이터 값 진단 절차와 상세 활동</p>
+<p><code>진단대상 DB 확정</code> &gt;&gt; <code>품질진단 환경 준비</code> &gt;&gt; <code>값 진단 수행</code> &gt;&gt; <code>오류원인 분석 및 확정</code></p>
 </blockquote>
 <ol>
 <li><p>진단대상 DB 확정</p>
@@ -302,43 +302,44 @@
 </li>
 </ol>
 <table>
-<thead>
-<tr>
-<th>품질진단 환경 준비</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>품질진단 전담인력 지정</td>
-</tr>
-<tr>
-<td>협조체계 구성</td>
-</tr>
-<tr>
-<td>산출물 준비</td>
-</tr>
-<tr>
-<td>진단대상 데이터 준비</td>
-</tr>
-<tr>
-<td>데이터베이스 접속 권한</td>
-</tr>
-<tr>
-<td>보안환경 확인</td>
-</tr>
-<tr>
-<td>수행장소마련</td>
-</tr>
-</tbody></table>
+  <tr>
+    <th>품질진단 환경 준비</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;">품질진단 전담인력 지정</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">협조체계 구성</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">산출물 준비</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">진단대상 데이터 준비</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">데이터베이스 접속 권한</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">보안환경 확인</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">수행장소마련</td>
+  </tr>
+</table>
+
 <ol start="3">
-<li>값 진단 수행</li>
+<li>값 진단 수행 &#x2F; 오류원인 분석 및 확정</li>
 </ol>
 <table>
   <tr>
     <th>순서</th>
+    <th>절차</th>
     <th colspan="2">방법</th>
   </tr>
   <tr>
     <td style="text-align: center;">1</td>
+    <td rowspan="5" style="text-align: center;">값 진단 수행</th>
     <td colspan="2" style="text-align: center;">테이블/컬럼 수집</td>
   </tr>
 
@@ -365,6 +366,7 @@
 
   <tr>
     <td style="text-align: center;">6</td>
+    <td rowspan="4" style="text-align: center;">오류원인 분석 및 확정</th>
     <td colspan="2" style="text-align: center;">오류내역 검토</td>
   </tr>
 
@@ -384,13 +386,6 @@
   </tr>
 </table>
 
-
-<ol start="4">
-<li>오류원인 분석 및 확정</li>
-</ol>
-<ul>
-<li>오류내역 검토 -&gt; 수정 및 보완 -&gt; 오류 확정 -&gt; 결과 보고서</li>
-</ul>
 <h3 id="3-‘값-진단-수행’-‘오류원인-분석-및-확정’-단계-상세-활동"><a href="#3-‘값-진단-수행’-‘오류원인-분석-및-확정’-단계-상세-활동" class="headerlink" title="(3) ‘값 진단 수행’, ‘오류원인 분석 및 확정’ 단계 상세 활동"></a>(3) ‘값 진단 수행’, ‘오류원인 분석 및 확정’ 단계 상세 활동</h3><blockquote>
 <p><code>3. 값 진단 수행</code>, <code>4. 오류원인 분석 및 확정</code> 단계의 상세 활동</p>
 </blockquote>
@@ -465,9 +460,9 @@
 </table>
 
 
-<h2 id="1-6-테이블-컬럼정보-수집"><a href="#1-6-테이블-컬럼정보-수집" class="headerlink" title="1.6 테이블&#x2F;컬럼정보 수집"></a>1.6 테이블&#x2F;컬럼정보 수집</h2><hr>
+<h2 id="6-테이블-컬럼정보-수집"><a href="#6-테이블-컬럼정보-수집" class="headerlink" title="6. 테이블&#x2F;컬럼정보 수집"></a>6. 테이블&#x2F;컬럼정보 수집</h2><hr>
 <h3 id="1-물리-DB의-테이블-컬럼-정보-추출"><a href="#1-물리-DB의-테이블-컬럼-정보-추출" class="headerlink" title="(1) 물리 DB의 테이블&#x2F;컬럼 정보 추출"></a>(1) 물리 DB의 테이블&#x2F;컬럼 정보 추출</h3><blockquote>
-<p>진단대상 데이터베이스에 접속하여 실제 물리 DB의 테이블&#x2F;컬럼 정보를 추출</p>
+<p>진단대상 데이터베이스에 접속하여 <code>실제 물리 DB의 테이블/컬럼 정보를 추출</code></p>
 </blockquote>
 <p>&lt;테이블&#x2F;컬럼 정보&gt;</p>
 <table>
@@ -627,6 +622,17 @@
 <td>Y</td>
 <td></td>
 </tr>
+<tr>
+<td>···</td>
+<td>···</td>
+<td>···</td>
+<td>···</td>
+<td>···</td>
+<td>···</td>
+<td>···</td>
+<td>···</td>
+<td>···</td>
+</tr>
 </tbody></table>
 <!-- | ORDER_DETAL  | 주문상세     | 1        | ORDER_NO | 주문번호 | VARCHAR2 | 10 |
 | ORDER_DETAL  | 주문상세     | 2        | 
@@ -648,12 +654,12 @@
    <span class="token punctuation">,</span> USER_COL_COMMENTS <span class="token keyword">AS</span> B
    <span class="token punctuation">,</span> USER_TAB_COLUMNS <span class="token keyword">AS</span> C
    <span class="token punctuation">,</span> <span class="token punctuation">(</span>
-        <span class="token keyword">SELECT</span> X<span class="token punctuation">.</span>TABLE_NAME
-             <span class="token punctuation">,</span> X<span class="token punctuation">.</span>COLUMN_NAME
-             <span class="token punctuation">,</span> Y<span class="token punctuation">.</span>CONSTRAINT_TYPE
-        <span class="token keyword">FROM</span> USER_CONS_COLUMNS <span class="token keyword">AS</span> X<span class="token punctuation">,</span> USER_CONSTRAINTS <span class="token keyword">AS</span> Y
-        <span class="token keyword">WHERE</span> X<span class="token punctuation">.</span>CONSTRAINT_NAME <span class="token operator">=</span> Y<span class="token punctuation">.</span>CONSTRAINT_NAME
-          <span class="token operator">AND</span> Y<span class="token punctuation">.</span>CONSTRAINT_TYPE <span class="token operator">=</span> <span class="token string">'P'</span>
+      <span class="token keyword">SELECT</span> X<span class="token punctuation">.</span>TABLE_NAME
+            <span class="token punctuation">,</span> X<span class="token punctuation">.</span>COLUMN_NAME
+            <span class="token punctuation">,</span> Y<span class="token punctuation">.</span>CONSTRAINT_TYPE
+      <span class="token keyword">FROM</span> USER_CONS_COLUMNS <span class="token keyword">AS</span> X<span class="token punctuation">,</span> USER_CONSTRAINTS <span class="token keyword">AS</span> Y
+      <span class="token keyword">WHERE</span> X<span class="token punctuation">.</span>CONSTRAINT_NAME <span class="token operator">=</span> Y<span class="token punctuation">.</span>CONSTRAINT_NAME
+        <span class="token operator">AND</span> Y<span class="token punctuation">.</span>CONSTRAINT_TYPE <span class="token operator">=</span> <span class="token string">'P'</span>
      <span class="token punctuation">)</span> <span class="token keyword">AS</span> D
 <span class="token keyword">WHERE</span> <span class="token number">1</span><span class="token operator">=</span><span class="token number">1</span>
   <span class="token operator">AND</span> A<span class="token punctuation">.</span>TABLE_NAME <span class="token operator">=</span> B<span class="token punctuation">.</span>TABLE_NAME
@@ -666,45 +672,47 @@
 <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> <span class="token string">'테이블영문명'</span><span class="token punctuation">,</span> <span class="token string">'컬럼순서'</span>
 <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>추출 (PostgreSQL 예시)</span></div><code class="language-sql"><span class="token keyword">SELECT</span> t<span class="token punctuation">.</span>relname <span class="token keyword">AS</span> 테이블영문명
-     <span class="token punctuation">,</span> <span class="token keyword">COALESCE</span><span class="token punctuation">(</span>obj_description<span class="token punctuation">(</span>t<span class="token punctuation">.</span>oid<span class="token punctuation">,</span> <span class="token string">'pg_class'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> 테이블한글명
-     <span class="token punctuation">,</span> a<span class="token punctuation">.</span>attnum <span class="token keyword">AS</span> 컬럼순서
-     <span class="token punctuation">,</span> a<span class="token punctuation">.</span>attname <span class="token keyword">AS</span> 컬럼영문명
-     <span class="token punctuation">,</span> <span class="token keyword">COALESCE</span><span class="token punctuation">(</span>pg_catalog<span class="token punctuation">.</span>col_description<span class="token punctuation">(</span>a<span class="token punctuation">.</span>attrelid<span class="token punctuation">,</span> a<span class="token punctuation">.</span>attnum<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> 컬럼한글명
-     <span class="token punctuation">,</span> pg_catalog<span class="token punctuation">.</span>format_type<span class="token punctuation">(</span>a<span class="token punctuation">.</span>atttypid<span class="token punctuation">,</span> a<span class="token punctuation">.</span>atttypmod<span class="token punctuation">)</span> <span class="token keyword">AS</span> 데이터타입
-     <span class="token punctuation">,</span> <span class="token keyword">CASE</span> <span class="token keyword">WHEN</span> c<span class="token punctuation">.</span>data_type <span class="token operator">IN</span> <span class="token punctuation">(</span><span class="token string">'character varying'</span><span class="token punctuation">,</span> <span class="token string">'character'</span><span class="token punctuation">)</span> <span class="token keyword">THEN</span> c<span class="token punctuation">.</span>character_maximum_length::<span class="token keyword">TEXT</span>
-            <span class="token keyword">ELSE</span> <span class="token boolean">NULL</span>
-       <span class="token keyword">END</span> <span class="token keyword">AS</span> 길이
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>추출 (PostgreSQL 예시)</span></div><code class="language-sql"><span class="token keyword">SELECT</span> t<span class="token punctuation">.</span>relname                                                       <span class="token keyword">AS</span> 테이블영문명
+     <span class="token punctuation">,</span> <span class="token keyword">COALESCE</span><span class="token punctuation">(</span>obj_description<span class="token punctuation">(</span>t<span class="token punctuation">.</span>oid<span class="token punctuation">,</span> <span class="token string">'pg_class'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span>                <span class="token keyword">AS</span> 테이블한글명
+     <span class="token punctuation">,</span> a<span class="token punctuation">.</span>attnum                                                        <span class="token keyword">AS</span> 컬럼순서
+     <span class="token punctuation">,</span> a<span class="token punctuation">.</span>attname                                                       <span class="token keyword">AS</span> 컬럼영문명
+     <span class="token punctuation">,</span> <span class="token keyword">COALESCE</span><span class="token punctuation">(</span>pg_catalog<span class="token punctuation">.</span>col_description<span class="token punctuation">(</span>a<span class="token punctuation">.</span>attrelid<span class="token punctuation">,</span> a<span class="token punctuation">.</span>attnum<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span>  <span class="token keyword">AS</span> 컬럼한글명
+     <span class="token punctuation">,</span> pg_catalog<span class="token punctuation">.</span>format_type<span class="token punctuation">(</span>a<span class="token punctuation">.</span>atttypid<span class="token punctuation">,</span> a<span class="token punctuation">.</span>atttypmod<span class="token punctuation">)</span>                 <span class="token keyword">AS</span> 데이터타입
+     <span class="token punctuation">,</span> <span class="token keyword">CASE</span> <span class="token keyword">WHEN</span> c<span class="token punctuation">.</span>data_type <span class="token operator">LIKE</span> <span class="token string">'character%'</span> <span class="token keyword">THEN</span> c<span class="token punctuation">.</span>character_maximum_length::<span class="token keyword">TEXT</span>
+            <span class="token keyword">ELSE</span> <span class="token string">''</span>
+       <span class="token keyword">END</span>                                                             <span class="token keyword">AS</span> 길이
      <span class="token punctuation">,</span> <span class="token keyword">CASE</span> <span class="token keyword">WHEN</span> a<span class="token punctuation">.</span>attnotnull <span class="token keyword">THEN</span> <span class="token string">'N'</span> 
             <span class="token keyword">ELSE</span> <span class="token string">'Y'</span> 
-       <span class="token keyword">END</span> <span class="token keyword">AS</span> 널여부
+       <span class="token keyword">END</span>                                                             <span class="token keyword">AS</span> 널여부
      <span class="token punctuation">,</span> <span class="token keyword">CASE</span> <span class="token keyword">WHEN</span> pk<span class="token punctuation">.</span>colname <span class="token operator">IS</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">THEN</span> <span class="token string">'PK'</span>
             <span class="token keyword">ELSE</span> <span class="token string">''</span>
-       <span class="token keyword">END</span> <span class="token keyword">AS</span> PK       
+       <span class="token keyword">END</span>                                                             <span class="token keyword">AS</span> PK       
 <span class="token keyword">FROM</span> pg_catalog<span class="token punctuation">.</span>pg_class t
 	<span class="token keyword">JOIN</span> pg_catalog<span class="token punctuation">.</span>pg_attribute a <span class="token keyword">ON</span> t<span class="token punctuation">.</span>oid <span class="token operator">=</span> a<span class="token punctuation">.</span>attrelid
-	<span class="token keyword">LEFT</span> <span class="token keyword">JOIN</span> pg_catalog<span class="token punctuation">.</span>pg_namespace n <span class="token keyword">ON</span> t<span class="token punctuation">.</span>relnamespace <span class="token operator">=</span> n<span class="token punctuation">.</span>oid
-	<span class="token keyword">LEFT</span> <span class="token keyword">JOIN</span> information_schema<span class="token punctuation">.</span><span class="token keyword">columns</span> c
+	<span class="token keyword">LEFT</span> <span class="token keyword">JOIN</span> pg_catalog<span class="token punctuation">.</span>pg_namespace <span class="token keyword">AS</span> n
+         <span class="token keyword">ON</span> t<span class="token punctuation">.</span>relnamespace <span class="token operator">=</span> n<span class="token punctuation">.</span>oid
+	<span class="token keyword">LEFT</span> <span class="token keyword">JOIN</span> information_schema<span class="token punctuation">.</span><span class="token keyword">columns</span> <span class="token keyword">AS</span> c
 	       <span class="token keyword">ON</span> t<span class="token punctuation">.</span>relname <span class="token operator">=</span> c<span class="token punctuation">.</span>table_name
 	      <span class="token operator">AND</span> a<span class="token punctuation">.</span>attname <span class="token operator">=</span> c<span class="token punctuation">.</span>column_name
 	      <span class="token operator">AND</span> n<span class="token punctuation">.</span>nspname <span class="token operator">=</span> c<span class="token punctuation">.</span>table_schema	
 	<span class="token keyword">LEFT</span> <span class="token keyword">JOIN</span> <span class="token punctuation">(</span>
-	    <span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span> kcu<span class="token punctuation">.</span>table_name
-	                  <span class="token punctuation">,</span> kcu<span class="token punctuation">.</span>column_name <span class="token keyword">AS</span> colname
-	    <span class="token keyword">FROM</span> information_schema<span class="token punctuation">.</span>key_column_usage kcu
-	    <span class="token keyword">JOIN</span> information_schema<span class="token punctuation">.</span>table_constraints tc
-	      <span class="token keyword">ON</span> kcu<span class="token punctuation">.</span>constraint_name <span class="token operator">=</span> tc<span class="token punctuation">.</span>constraint_name
-	    <span class="token keyword">WHERE</span> tc<span class="token punctuation">.</span>constraint_type <span class="token operator">=</span> <span class="token string">'PRIMARY KEY'</span>
-	<span class="token punctuation">)</span> pk <span class="token keyword">ON</span> pk<span class="token punctuation">.</span>table_name <span class="token operator">=</span> t<span class="token punctuation">.</span>relname <span class="token operator">AND</span> pk<span class="token punctuation">.</span>colname <span class="token operator">=</span> a<span class="token punctuation">.</span>attname	
+            <span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span> kcu<span class="token punctuation">.</span>table_name
+                          <span class="token punctuation">,</span> kcu<span class="token punctuation">.</span>column_name <span class="token keyword">AS</span> colname
+            <span class="token keyword">FROM</span> information_schema<span class="token punctuation">.</span>key_column_usage kcu
+            <span class="token keyword">JOIN</span> information_schema<span class="token punctuation">.</span>table_constraints tc
+              <span class="token keyword">ON</span> kcu<span class="token punctuation">.</span>constraint_name <span class="token operator">=</span> tc<span class="token punctuation">.</span>constraint_name
+            <span class="token keyword">WHERE</span> tc<span class="token punctuation">.</span>constraint_type <span class="token operator">=</span> <span class="token string">'PRIMARY KEY'</span>
+	          <span class="token punctuation">)</span> <span class="token keyword">AS</span> pk
+         <span class="token keyword">ON</span> pk<span class="token punctuation">.</span>table_name <span class="token operator">=</span> t<span class="token punctuation">.</span>relname <span class="token operator">AND</span> pk<span class="token punctuation">.</span>colname <span class="token operator">=</span> a<span class="token punctuation">.</span>attname	
 <span class="token keyword">WHERE</span>  t<span class="token punctuation">.</span>relkind <span class="token operator">=</span> <span class="token string">'r'</span> <span class="token comment">-- 'r'은 일반 테이블을 의미</span>
   <span class="token operator">AND</span> n<span class="token punctuation">.</span>nspname <span class="token operator">=</span> <span class="token string">'ods'</span> <span class="token comment">-- 조회할 스키마 이름</span>
   <span class="token operator">AND</span> a<span class="token punctuation">.</span>attnum <span class="token operator">></span> <span class="token number">0</span> <span class="token comment">-- 시스템 컬럼 제외</span>
   <span class="token operator">AND</span> <span class="token operator">NOT</span> a<span class="token punctuation">.</span>attisdropped <span class="token comment">-- 삭제된 컬럼 제외</span>
 <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> t<span class="token punctuation">.</span>relname<span class="token punctuation">,</span> a<span class="token punctuation">.</span>attnum
-<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="2-기준-자료가-될-수-있는-문서-수집"><a href="#2-기준-자료가-될-수-있는-문서-수집" class="headerlink" title="(2) 기준 자료가 될 수 있는 문서 수집"></a>(2) 기준 자료가 될 수 있는 문서 수집</h3><blockquote>
-<p>프로파일링 분석을 정확하게 하기 위한 기준 자료가 될 수 있는 문서를 수집</p>
+<p>프로파일링 분석을 정확하게 하기 위한 <code>기준 자료가 될 수 있는 문서를 수집</code></p>
 </blockquote>
 <table>
 
@@ -745,7 +753,7 @@
 <h3 id="3-물리-DB의-메타-정보와-수집된-기준정보-비교-분석"><a href="#3-물리-DB의-메타-정보와-수집된-기준정보-비교-분석" class="headerlink" title="(3) 물리 DB의 메타 정보와 수집된 기준정보 비교 분석"></a>(3) 물리 DB의 메타 정보와 수집된 기준정보 비교 분석</h3><blockquote>
 <p>물리 DB의 메타 정보와 수집된 기준정보의 비교 분석을 통해 비 표준화 사항 발견</p>
 </blockquote>
-<p>&lt;물리 DB 메타 정보&gt;</p>
+<p>&lt;<code>물리 DB 메타 정보</code>&gt;</p>
 <table>
 <thead>
 <tr>
@@ -787,7 +795,7 @@
 <td>고객</td>
 <td>3</td>
 <td>JUMIN_RGST_NO</td>
-<td>고객주민등록번호</td>
+<td><code>고객주민등록번호</code></td>
 <td><code>VARCHAR2</code></td>
 <td><code>15</code></td>
 <td>Y</td>
@@ -819,8 +827,8 @@
 <td>CUSTOMER</td>
 <td>고객</td>
 <td>6</td>
-<td>CUST_RGST_DT</td>
-<td>고객등록일자</td>
+<td><code>CUST_RGST_DT</code></td>
+<td><code>고객등록일자</code></td>
 <td>VARCHAR2</td>
 <td>8</td>
 <td>Y</td>
@@ -831,7 +839,7 @@
 <td>고객</td>
 <td>7</td>
 <td><code>CUST_NM</code></td>
-<td>고객명</td>
+<td><code>고객명</code></td>
 <td>VARCHAR2</td>
 <td>10</td>
 <td>Y</td>
@@ -851,7 +859,7 @@
 </tbody></table>
 <br>
 
-<p>&lt;테이블 컬럼 정의서&gt;</p>
+<p>&lt;<code>테이블 컬럼 정의서</code>&gt;</p>
 <table>
   <tr>
     <th>테이블명</th>
@@ -884,7 +892,7 @@
 
   <tr>
     <td style="text-align: center;">JUMIN_RGST_NO</td>
-    <td>고객주민등록번호</td>
+    <td><code>고객주민등록번호</code></td>
     <td style="text-align: center;"><code>NUMBER</code></td>
     <td style="text-align: center;"><code>13</code></td>
     <td style="text-align: center;">Y</td>
@@ -911,7 +919,7 @@
 
   <tr>
     <td style="text-align: center;"><code>CUST_NAME</code></td>
-    <td>고객명</td>
+    <td><code>고객명</code></td>
     <td style="text-align: center;">VARCHAR2</td>
     <td style="text-align: center;">10</td>
     <td style="text-align: center;">Y</td>
@@ -928,8 +936,10 @@
   </tr>      
 </table>
 
+<br>
 
-<h2 id="1-7-컬럼-분석"><a href="#1-7-컬럼-분석" class="headerlink" title="1.7 컬럼 분석"></a>1.7 컬럼 분석</h2><hr>
+<p>&lt;<code>물리 DB 메타 정보</code>-<code>테이블 컬럼 정의서</code> 비교 및 오류현황 파악&gt;<br><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129144&authkey=%21AK1AQou9N_MFsEA&width=1164&height=394" width="1164" height="394" alt="오류현황"/></p>
+<h2 id="7-컬럼-분석"><a href="#7-컬럼-분석" class="headerlink" title="7. 컬럼 분석"></a>7. 컬럼 분석</h2><hr>
 <blockquote>
 <p>컬럼의 통계데이터를 수집함으로서 오류징후를 파악하는 데 용이함</p>
 </blockquote>
@@ -1030,7 +1040,7 @@
 <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
-<h2 id="1-8-유효성-진단대상-선정"><a href="#1-8-유효성-진단대상-선정" class="headerlink" title="1.8 유효성 진단대상 선정"></a>1.8 유효성 진단대상 선정</h2><hr>
+<h2 id="8-유효성-진단대상-선정"><a href="#8-유효성-진단대상-선정" class="headerlink" title="8. 유효성 진단대상 선정"></a>8. 유효성 진단대상 선정</h2><hr>
 <h3 id="1-도메인-분석"><a href="#1-도메인-분석" class="headerlink" title="(1) 도메인 분석"></a>(1) 도메인 분석</h3><blockquote>
 <p>테이블 컬럼 정보를 통한 도메인 정의 및 분류 수행</p>
 </blockquote>
@@ -1143,24 +1153,33 @@
 <li><p><code>응용 프로그램에서 코딩</code>된 규칙</p>
 </li>
 </ul>
-<h2 id="1-9-진단방법-선정"><a href="#1-9-진단방법-선정" class="headerlink" title="1.9 진단방법 선정"></a>1.9 진단방법 선정</h2><hr>
+<h2 id="9-진단방법-선정"><a href="#9-진단방법-선정" class="headerlink" title="9. 진단방법 선정"></a>9. 진단방법 선정</h2><hr>
 <h4 id="1-도메인-정의"><a href="#1-도메인-정의" class="headerlink" title="(1) 도메인 정의"></a>(1) 도메인 정의</h4><blockquote>
 <p>테이블 컬럼 정보를 통한 도메인 정의 및 분류 수행 <br>- <code>도메인 정의를 통해 진단 방법을 분류</code>할 수 있으며, 이는 <code>단일 컬럼속성 분석</code>에 속함</p>
 </blockquote>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129131&authkey=%21AIUjaWpWEj9TqJ4&width=1114&height=720" width="1114" height="720" alt="도메인별 진단 방법 분류"/>
 
-<p>도메인 분석 및 업무요건 분석에 따라 컬럼별 진단기준 매핑</p>
-<h3 id="1-10-오류내역-검토-수정-및-보완"><a href="#1-10-오류내역-검토-수정-및-보완" class="headerlink" title="1.10 오류내역 검토, 수정 및 보완"></a>1.10 오류내역 검토, 수정 및 보완</h3><p>데이터 오류를 확정하기 위해 <code>업무담당자, 품질담당자 등 관련자의 리뷰와 보완이 필요</code></p>
-<p>[확인사항]</p>
-<ul>
+<blockquote>
+<p><code>도메인 분석</code> 및 <code>업무요건 분석</code>에 따라 컬럼별 진단기준 매핑</p>
+</blockquote>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129145&authkey=%21AMEaFck0GKh1pNw&width=1024" width="1024" height="auto" alt="도메인 분석 + 업무요건 분석(논리관계, 참조 값)"/>
+
+<h2 id="10-오류내역-검토-수정-및-보완"><a href="#10-오류내역-검토-수정-및-보완" class="headerlink" title="10. 오류내역 검토, 수정 및 보완"></a>10. 오류내역 검토, 수정 및 보완</h2><hr>
+<blockquote>
+<p>데이터 오류를 확정하기 위해 <code>업무담당자, 품질담당자 등 관련자의 리뷰와 보완이 필요</code></p>
+</blockquote>
+<h3 id="확인사항"><a href="#확인사항" class="headerlink" title="확인사항"></a>확인사항</h3><ul>
 <li>진단대상 누락이 없는지 파악한다. (범정부 데이터 품질진단 기준에 해당하는 모든 컬럼)</li>
 <li>진단대상 및 기준이 정확하게 도출되었는지 확인한다.</li>
 <li>동일 항목이나 업무별로 다르게 작성되지 않았는지 확인한다.</li>
 <li>정확성(업무규칙) 진단기준 도출시 일관된 표현을 사용하는지 확인한다.</li>
 </ul>
-<h3 id="1-11-오류확정-및-결과보고서-작성"><a href="#1-11-오류확정-및-결과보고서-작성" class="headerlink" title="1.11 오류확정 및 결과보고서 작성"></a>1.11 오류확정 및 결과보고서 작성</h3><p>선정된 진단방법에 따라 진단을 수행하고 각 프로파일링 결과를 종합하여 결과보고서 작성</p>
+<h2 id="11-오류확정-및-결과보고서-작성"><a href="#11-오류확정-및-결과보고서-작성" class="headerlink" title="11. 오류확정 및 결과보고서 작성"></a>11. 오류확정 및 결과보고서 작성</h2><hr>
+<blockquote>
+<p>선정된 진단방법에 따라 진단을 수행하고 각 프로파일링 결과를 종합하여 결과보고서 작성</p>
+</blockquote>
 <ul>
-<li>분석 대상별 오류율을 정리하여 최종 결과 보고서를 작성하고, 오류발생 추이를 파악할 수 있도록 프로파일링 결과를 주기적으로 기록한다.</li>
+<li><code>분석 대상별 오류율을 정리</code>하여 최종 결과 보고서를 작성하고, 오류발생 추이를 파악할 수 있도록 <code>프로파일링 결과를 주기적으로 기록</code></li>
 </ul>
 
                 
