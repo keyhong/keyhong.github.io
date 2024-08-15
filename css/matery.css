@@ -1885,7 +1885,7 @@ p.search-result-summary {
 }
 
 .img-margin {
-    margin: 25px auto 10px auto;
+    margin: 5px auto 1px auto;
 }
 
 .caption {
@@ -1895,12 +1895,12 @@ p.search-result-summary {
 }
 
 .center-caption {
-    color: #525f7f;
+    color: #3fe87f ;
     padding: 5px;
 }
 
 .lg-sub-html .center-caption {
-    color: #fff !important;
+    color: #FFF !important;
     border-bottom: none;
 }
 
