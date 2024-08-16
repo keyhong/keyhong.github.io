@@ -307,7 +307,7 @@ Retention analysis(또는 survival analysis)은 고객이 이탈하는 이유와
 
 <h3 id="코호트-차트-시각화"><a href="#코호트-차트-시각화" class="headerlink" title="코호트 차트 시각화"></a>코호트 차트 시각화</h3><hr>
 <ul>
-<li>분석의 대상이 되는 집계 컬럼은 데이터 속성에 단위가 다르다. 10CM, 10M 등 같은 숫자라도 이해관계자의 데이터 리터러시에 따라 스케일의 차이를 받아들이는 정도가 다르다. 때문에 개별 컬럼 값을 비교할 때는 두 수치의 차이를 비율로 표현하는 것이 더 많은 인사이트를 도출할 수 있다. (표준화, 정규화와 유사)</li>
+<li>분석의 대상이 되는 집계 컬럼은 데이터 속성에 단위가 다르다. 10CM, 10M 등 같은 숫자라도 이해관계자의 데이터 리터러시에 따라 스케일의 차이를 받아들이는 정도가 다르다. 때문에 개별 컬럼 값을 비교할 때는 두 수치의 차이를 비율로 표현하는 것이 더 많은 인사이트를 도출할 수 있다. (표준화, 정규화와 유사한 맥락)</li>
 </ul>
 <h4 id="수치로-표현"><a href="#수치로-표현" class="headerlink" title="수치로 표현"></a>수치로 표현</h4><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129038&authkey=%21AJxtVLpv09Q9pvM&width=1366&height=542" width="1366" height="542" />
 
@@ -353,7 +353,7 @@ Retention analysis(또는 survival analysis)은 고객이 이탈하는 이유와
 <ul>
 <li>유입 채널별 전환률</li>
 </ul>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">WITH</span> pv <span class="token keyword">AS</span> <span class="token punctuation">(</span>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>퍼널 분석 SQL</span></div><code class="language-sql"><span class="token keyword">WITH</span> pv <span class="token keyword">AS</span> <span class="token punctuation">(</span>
      <span class="token keyword">SELECT</span> user_pseudo_id
           <span class="token punctuation">,</span> ga_session_id
           <span class="token punctuation">,</span> event_timestamp_kst <span class="token keyword">AS</span> pv_at
