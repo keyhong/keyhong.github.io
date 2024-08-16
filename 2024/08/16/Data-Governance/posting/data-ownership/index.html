@@ -1,0 +1,1100 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="데이터 품질관리 (오너십), Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="1. 데이터 오너십
+
+데이터 품질의 실질적인 개선을 위해서는 데이터의 주인이 되는 데이터 오너십(Data Ownership) 담당(부서, 담당자)을 지정하고 책임과 권한을 부여하여 품질활동사항의 준수여부에 대해 평가">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>데이터 품질관리 (오너십) | Keyhong</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span diy-happy-monkey">Keyhong</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Home</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <!-- <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li> -->
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Keyhong</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Home
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/data-architecture-logo.png')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title diy-neon-red">
+                        데이터 품질관리 (오너십)</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="post-cate">
+                    <i class="fas fa-bookmark fa-fw icon-category"></i>
+                    
+                        <a href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B1%B0%EB%B2%84%EB%84%8C%EC%8A%A4/" class="post-category">
+                            데이터 거버넌스
+                        </a>
+                    
+                </div>
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="1-데이터-오너십"><a href="#1-데이터-오너십" class="headerlink" title="1. 데이터 오너십"></a>1. 데이터 오너십</h2><hr>
+<blockquote>
+<p>데이터 품질의 실질적인 개선을 위해서는 데이터의 주인이 되는 <code>데이터 오너십(Data Ownership) 담당(부서, 담당자)을 지정하고 책임과 권한을 부여</code>하여 품질활동사항의 준수여부에 대해 평가</p>
+</blockquote>
+<h3 id="1-1-데이터-오너십-정의"><a href="#1-1-데이터-오너십-정의" class="headerlink" title="1.1 데이터 오너십 정의"></a>1.1 데이터 오너십 정의</h3><hr>
+<blockquote>
+<p><code>데이터의 생성, 수정, 삭제에 대한 권한</code>과 <code>데이터의 정확성에 대한 책임</code>을 가지며 <code>데이터를 정비</code>하고 <code>데이터의 접근 범위의 지정 권한</code>을 갖는다.</p>
+</blockquote>
+<table>
+  <tr>
+    <th>구분</th>
+    <th>역할</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;">Data Ownership<br>(현업 중심)</td>
+    <td>특정 데이터와 규칙(Rule)에 대한 생성·소멸의 과정에서 의사결정의 책임을 의미하며, 이를 통해 <code>데이터에 대한 의미를 명확히</code> 하고 <code>품질을 유지</code>시키며 <code>가치를 높이는 데 기여</code>코자 하는 목적이 있다. 주로 데이터 오너십에 대한 결정은 비즈니스 오너십을 참조하여 결정한다.</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">Data Stewardship<br>(IT 중심)</td>
+    <td><code>Data Ownership에 부가</code>하여 <code>데이터 자산을 얼마나 측정 가능하게 지표화하여 관리 지원하는가</code>를 말하며, 데이터 품질과 정확성을 유지 발전시키는 지원 활동을 하는 역할을 의미한다.</td>
+  </tr>
+</table>
+
+<h3 id="1-2-데이터-오너십-목적-및-기대효과"><a href="#1-2-데이터-오너십-목적-및-기대효과" class="headerlink" title="1.2 데이터 오너십 목적 및 기대효과"></a>1.2 데이터 오너십 목적 및 기대효과</h3><hr>
+<blockquote>
+<p>데이터 오너십 부여의 목적은 <code>데이터에 대한 이슈 발생 시, 오너십을 가진 담당(부서)이 책임과 권한을 가지고 신속한 의사결정과 조치</code>를 통해, <code>데이터의 품질과 서비스의 지속적 향상을 확보</code>하기 위함</p>
+</blockquote>
+<table>
+  <tr>
+    <th>이슈</th>
+    <th>데이터 용어 의미 불명확</th>
+    <th>데이터 값 오류 발생</th>
+    <th>시스템 개발 및 변경 시</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;">문제점</td>
+    <td>· 동일 용어임에도 불구하고 의미가 불명확하여 업무절차 진행(데이터 이동)에 따른 데이터 값이 다른 현상 발생</td>
+    <td>· 품질저하의 원인을 적시에 파악할 수 없어 개선조치가 지연<br><br>· 품질 저하를 인식한 경우, 원인 파악 및 해결한 제시의 주체가 명확하지 않아 미온적 대응</td>
+    <td>· 특정 엔터티, 용어 표준, 규칙 변경 시 해당 엔터티, 용어의 담당(부서)나 사용 부서를 파악하지 못해 변경 영향 검토가 미흡한 상태로 시스템 변경 및 개발 진행</td>
+  </tr>
+  <tr>
+    <td rowspan="2" style="text-align: center;">기대효과</td>
+    <td>· 용어에 대한 정의, 설명, 산출식 등 기준에 대한 명확한 내역을 관리함으로서, 사용자가 동일한 의미로 의사소통 진행<br><br>· 개발자, 모델러, 현업 간의 원활한 의사소통으로 업무 처리속도 향상</td>
+    <td>· 데이터 주체에 의해 소관 데이터 품질에 대한 지속적 모니터링 정비 수행 가능<br><br>· 품질 저하 원인 파악, 개선안의 도출 및 영향도 파악을 오너 중심으로 책임 관리</td>
+    <td>· 엔터티의 표준, 규칙 변경이 필요할 경우, 해당 엔터티의 오너 및 사용자를 파악, 업무 영향을 논의 후 합의된 내용에 따라 시스템 변경 및 개발 가능</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">기관의 내·외부에 <br><code>명확한 의미의 용어 소통</code></td>
+    <td style="text-align: center;"><code>지속적 데이터 품질 모니터링</code> 및<br><code>데이터 정합성 유지 관리</code>의<br>주도적 역할</td>
+    <td style="text-align: center;"><code>사전 품질확보</code>와 <code>시스템 개발 생산성 향상</code></td>
+  </tr>
+</table>
+
+
+<h3 id="1-3-부여-대상-정의-방법-1-2"><a href="#1-3-부여-대상-정의-방법-1-2" class="headerlink" title="1.3 부여 대상 정의 방법 (1&#x2F;2)"></a>1.3 부여 대상 정의 방법 (1&#x2F;2)</h3><hr>
+<blockquote>
+<p>데이터 오너십 부여 단위는 주제영역(업무영역), 테이블, 컬럼, BR(Business Rule)을 중심으로 기관의 상황에 맞게 정의</p>
+</blockquote>
+<p>&lt;데이터 오너십 부여 유형(예시)&gt;</p>
+<table>
+  <tr>
+    <th>구분</th>
+    <th>부여 단위</th>
+    <th>부여 유형</th>
+    <th>매핑</th>
+    <th>관계도</th>
+    <th>부여 방법</th>
+    <th>적용 여부</th>
+  </tr>
+  <tr>
+    <td rowspan="3" style="text-align: center;">데이터 구조</td>
+    <td rowspan="2" style="text-align: center;">테이블</td>
+    <td>한 개의 테이블을 하나의 데이터 주체가 소유</td>
+    <td style="text-align: center;">1:1</td>
+    <td>img</td>
+    <td>· 주(main)가 되는 부서가 하나인 경우 해당 부서에 오너십 부여</td>
+    <td>O</td>
+  </tr>
+  <tr>
+    <td>한 개의 테이블을 다수의데이터 주체가 소유</td>
+    <td style="text-align: center;">1:N</td>
+    <td>img</td>
+    <td>· 주(main)가 되는 부서가 다수인 경우, 직제규정(분장 업무의 처리원칙)에 따라 오너십 부여</td>
+    <td>O</td>
+  </tr>
+  <tr>
+    <td rowspane="5" style="text-align: center;">컬럼</td>
+    <td>한 개의 컬럼을 하나의 데이터 주체가 소유</td>
+    <td style="text-align: center;">1:1</td>
+    <td>img</td>
+    <td>· 다수의 부서가 같은 테이블을 공유하면서, 컬럼 간 상관관계 없는 경우 적용<br>· 주(main)가 되는 부서가 하나인 경우 해당 부서에 오너십 부여</td>
+    <td>X</td>
+  </tr>
+  <tr>
+    <td rowspane="5" style="text-align: center;">데이터 값</td>
+    <td style="text-align: center;">BR</td>
+    <td>한 개의 컬럼을 다수의 데이터 주체가 소유</td>
+    <td style="text-align: center;">1:N</td>
+    <td>img</td>
+    <td>· 데이터 값의 상태에 따라 관리 부서가 변경되는 경우 적용<br>· 업무분장표, 업무규칙 및 데이터 모델 정보를 검토하여 오너십 부여</td>
+    <td>O</td>
+  </tr>
+</table>
+
+<h3 id="1-4-부여-대상-정의-방법-1-2"><a href="#1-4-부여-대상-정의-방법-1-2" class="headerlink" title="1.4 부여 대상 정의 방법 (1&#x2F;2)"></a>1.4 부여 대상 정의 방법 (1&#x2F;2)</h3><hr>
+<blockquote>
+<p>데이터 오너십의 부여 방법은 데이터 모델 중심과 데이터 값 중심으로 크게 구분한 사례</p>
+</blockquote>
+<h2 id="2-핵심품질항목-CTQ"><a href="#2-핵심품질항목-CTQ" class="headerlink" title="2. 핵심품질항목 (CTQ)"></a>2. 핵심품질항목 (CTQ)</h2><hr>
+<h3 id="2-1-CTQ-정의"><a href="#2-1-CTQ-정의" class="headerlink" title="2.1 CTQ 정의"></a>2.1 CTQ 정의</h3><hr>
+<blockquote>
+<p>핵심품질항목(CTQ : Critical To Quality)는 6 Sigma에서 유래한 용어로서, 데이터 품질관리 관점에서 데이터의 신뢰도가 고객, 프로세스, 시장 환경 등 <code>기업 경영에 중요한 영향을 미치는 품질 관리 대상 정보항목</code>을 의미</p>
+</blockquote>
+<h3 id="CTQ-이론적-의미-6-Sigma-관점"><a href="#CTQ-이론적-의미-6-Sigma-관점" class="headerlink" title="CTQ 이론적 의미 (6 Sigma) 관점"></a>CTQ 이론적 의미 (6 Sigma) 관점</h3><blockquote>
+</blockquote>
+<h3 id="CTQ-이론적-의미-데이터-품질-관점"><a href="#CTQ-이론적-의미-데이터-품질-관점" class="headerlink" title="CTQ 이론적 의미 (데이터 품질 관점)"></a>CTQ 이론적 의미 (데이터 품질 관점)</h3><blockquote>
+<p>CTQ를 정의하는 것은 업무 중에 발생하는 데이터 품질의 <code>여러 가지 문제의 원인을 규명</code>하고 <code>품질 개선 활동의 대상과 과제를 식별</code>하려는 것. 이것은 데이터 품질을 향상시키는 작업의 핵심적인 출발점</p>
+</blockquote>
+<h3 id="2-2-핵심품질항목-BR-DQI-관계"><a href="#2-2-핵심품질항목-BR-DQI-관계" class="headerlink" title="2.2 핵심품질항목&#x2F;BR&#x2F;DQI 관계"></a>2.2 핵심품질항목&#x2F;BR&#x2F;DQI 관계</h3><hr>
+<blockquote>
+<p>CTQ는 BR(Business Rule)을 통해 품질을 측정하고자 하는 각 시스템 별 여러 테이블의 컬럼들과 연관관계를 가지고 있으며, 이를 통해 데이터 품질 유지 및 개선 대상으로 관리한다.</p>
+</blockquote>
+<h4 id="CTQ"><a href="#CTQ" class="headerlink" title="CTQ"></a>CTQ</h4><hr>
+<p>주민등록번호</p>
+<p>신규일자</p>
+<p>고객상태코드</p>
+<p>만기일자</p>
+<p>…</p>
+<h3 id="2-3-핵심품질항목-선정-목적"><a href="#2-3-핵심품질항목-선정-목적" class="headerlink" title="2.3 핵심품질항목 선정 목적"></a>2.3 핵심품질항목 선정 목적</h3><hr>
+<blockquote>
+<p>CTQ는 전사적으로 영향을 미칠 수 있는 핵심이 되는 데이터를 선정하여 우선 개선 대상을 중심으로 자원을 집중시키기 위한 목적</p>
+</blockquote>
+<h4 id="CTQ-선정-목적"><a href="#CTQ-선정-목적" class="headerlink" title="CTQ 선정 목적"></a>CTQ 선정 목적</h4><hr>
+<ol>
+<li>품질 개선 과제의 선택과 집중</li>
+</ol>
+<p>· 기업 내&#x2F;외부 영향도를 고려하여 핵심이 되는 데이터를 CTQ로 선정하고, 개선 목표 항목에 자원을 집중<br>· 중요하지 않은 데이터 개선 수행의 비용 낭비 예방</p>
+<ol start="2">
+<li>경영진 보고 자료</li>
+</ol>
+<p>· CTQ 항목별 품질 평가 및 보고<br>· 데이터 관리를 위한 투자 계획 수립, 성과 확인 등 경영진 의사결정에 활용</p>
+<ol start="3">
+<li>IT-현업 간 의사소통 수단</li>
+</ol>
+<p>· CTQ 항목의 추가 변경에 대한 기준을 명확히 정의함으로써 대상 선정을 쉽게함<br>    ·  기관의 특성을 고려하여 선정 기준의 난이도&#x2F;복잡도 적용</p>
+<h3 id="2-4-핵심품질항목-선정-방법"><a href="#2-4-핵심품질항목-선정-방법" class="headerlink" title="2.4 핵심품질항목 선정 방법"></a>2.4 핵심품질항목 선정 방법</h3><hr>
+<blockquote>
+<p>Top-Down 접근방법을 사용하여 VOC (Voice of Customer) 등을 분석하는 것과 동시에 Bottom-Up 접근방법을 사용하여 VOB (Vocie of Business)와 기술적 분석(테이블 중요도, 사용빈도)을 사용하여 도출</p>
+</blockquote>
+<h4 id="Top-Down-접근-방법"><a href="#Top-Down-접근-방법" class="headerlink" title="Top-Down 접근 방법"></a>Top-Down 접근 방법</h4><hr>
+<p>기업 외부적 관점 (서비스, 시장관점)</p>
+<p>· VOC : Voice of Customer<br>· KCI : Key Customer Issue<br>· CCR : Critical Customer Requirement</p>
+<h4 id="Top-Down-접근-방법-1"><a href="#Top-Down-접근-방법-1" class="headerlink" title="Top-Down 접근 방법"></a>Top-Down 접근 방법</h4><hr>
+<p>기업 내부적 관점 (업무, 재무관점)</p>
+<p>· VOB : Voice of Business<br>· KBI : Key Business Issue<br>· CBR : Critical Business Requirement</p>
+<p>테이블 중요도</p>
+<p>· 테이블(컬럼) 유형 (마스터, 이력, 코드, 통계 등)을 조사하여 중요도 가중치 적용</p>
+<p>테이블(컬럼) 사용 프로그램 빈도</p>
+<p>· 테이블(컬럼)을 사용중인 프로그램 빈도를 영향도 분석을 통하여 가중치 적용</p>
+<h3 id="2-5-핵심품질항목-선정-절차"><a href="#2-5-핵심품질항목-선정-절차" class="headerlink" title="2.5 핵심품질항목 선정 절차"></a>2.5 핵심품질항목 선정 절차</h3><hr>
+<blockquote>
+<p>수집된 정보항목에 대해 기본적인 정보항목유형분류, VOC 대상여부분류를 하여 CTQ 후보 목록을 정의한다. 다음으로 업무영향도, 사용빈도, 중요도 등을 가중치 항목을 정의하여 점수화하고 CTQ 대상으로서의 타당성 평가 과정을 반복(의사결정)하여 최종 CTQ를 선정한다. 선정된 CTQ에 대해서는 검증 우선순위에 대한 그룹핑</p>
+</blockquote>
+<p>[데이터베이스] -&gt; [정보항목 수집 및 유형분류]</p>
+<p>정보항목 추출<br>· 모델 CASE TOOL<br>· 데이터베이스<br>· 메타데이터</p>
+<p>[데이터 이슈 조사] -&gt; [정보항목 수집 및 유형분류]<br>· 민원, 콜센터 사고<br>· 현업, 담당자와 인터뷰<br>· Data Cleansing 자료<br>· 장애유형 자료<br>· 데이터 변경 작업 내역 분석</p>
+<p>[정보항목 수집 및 유형분류] -&gt; [CTQ 후보 도출]<br>· 유형분류(마스터 코드, 일반)<br>· VOC 대상 항목</p>
+<p>[CTQ 후보 도출] -&gt; [중요도 분류 및 가중치 부여]<br>· 내부적 관점<br>    · 업무영향도, 재무중요도<br>    · AP 영향도<br>· 외부적 관점<br>    · 고객(서비스) 관점</p>
+<p>[중요도 분류 및 가중치 부여] -&gt; [타당성 평가]<br>· 정량적 측정 가능 여부<br>· 기존 CTQ와 통합 가능 여부<br>· 선정 사유 등 평가</p>
+<p>[타당성 평가] -&gt; [CTQ 확정]<br>· 검증 우선순위 그룹핑<br>· CTQ 확정 공지</p>
+<p>[CTQ 확정] -&gt; [CTQ 후보 도출] 반복수행</p>
+<h3 id="2-6-핵심품질항목-선정-절차-상세-1-4"><a href="#2-6-핵심품질항목-선정-절차-상세-1-4" class="headerlink" title="2.6 핵심품질항목 선정 절차 상세 (1&#x2F;4)"></a>2.6 핵심품질항목 선정 절차 상세 (1&#x2F;4)</h3><hr>
+<blockquote>
+<p>DB 또는 메타데이터 관리 시스템에서 수집한 실제 DB의 정보를 기준으로 정보항목을 수집하되 다음 예시와 같은 기본적인 제외조건을 적용하여 불필요한 정보항목을 제외함</p>
+</blockquote>
+<p>STEP 1) CTQ 후보 도출</p>
+<p>정보항목 추출</p>
+<ul>
+<li>데이터베이스(테이블: 2,470개)</li>
+</ul>
+<p>+ </p>
+<p>참조자료</p>
+<ul>
+<li><p>모델 CASE TOOL</p>
+</li>
+<li><p>메타관리시스템</p>
+</li>
+<li><p>일반적으로 고객에게 서비스하는 데이터에 대한 정합성을 중요시 함</p>
+</li>
+<li><p>내부 자료 및 대외 보고서 등에 필요한 금액 관련 데이터를 중요시 함</p>
+</li>
+</ul>
+<p>제거 항목</p>
+<ul>
+<li>시스템, 반복, 텍스트(내용, 성명 등) 항목 제거</li>
+<li>파일크기, 삭제여부 항목 제거</li>
+<li>총 건수 0인 테이블 제거</li>
+<li>Raw, Timestamp, Date 타입 항목 제거</li>
+<li>일련번호, 식별번호, 순번, ID 항목 제거</li>
+</ul>
+<p>정보그룹별 CTQ 후보<br>주의 : 그룹별 항목 중복허용</p>
+<h3 id="2-7-핵심품질항목-선정-절차-상세-2-4"><a href="#2-7-핵심품질항목-선정-절차-상세-2-4" class="headerlink" title="2.7 핵심품질항목 선정 절차 상세 (2&#x2F;4)"></a>2.7 핵심품질항목 선정 절차 상세 (2&#x2F;4)</h3><hr>
+<h3 id="2-8-핵심품질항목-선정-절차-상세-3-4"><a href="#2-8-핵심품질항목-선정-절차-상세-3-4" class="headerlink" title="2.8 핵심품질항목 선정 절차 상세 (3&#x2F;4)"></a>2.8 핵심품질항목 선정 절차 상세 (3&#x2F;4)</h3><hr>
+<table>
+  <tr>
+    <th rowspan="2">정보그룹</th>
+    <th rowspan="2">정보항목</th>
+    <th colspan="2">업무 관점</th>
+    <th colspan="3">시스템 관점</th>
+    <th rowspan="2">총점</th>
+  </tr>
+  <tr>
+    <th>업무영향도</th>
+    <th>대외영향도</th>
+    <th>테이블 중복도</th>
+    <th>AP 연관도</th>
+    <th>도메인 중요도</th>
+  </tr>  
+  <tr>
+    <td rowspan="3" style="text-align: center;">자격부과</td>
+    <td>신청금액</td>
+    <td style="text-align: center;">상</td>
+    <td style="text-align: center;">상</td>
+    <td style="text-align: center;">상</td>
+    <td style="text-align: center;">상</td>
+    <td style="text-align: center;">중</td>
+    <td style="text-align: center;">72</td>
+  </tr>
+  <tr>
+    <td>사업장관리번호</td>
+    <td style="text-align: center;">상</td>
+    <td style="text-align: center;">중</td>
+    <td style="text-align: center;">상</td>
+    <td style="text-align: center;">상</td>
+    <td style="text-align: center;">중</td>
+    <td style="text-align: center;">84</td>
+  </tr>
+  <tr>
+    <td>지사코드</td>
+    <td style="text-align: center;">중</td>
+    <td style="text-align: center;">중</td>
+    <td style="text-align: center;">상</td>
+    <td style="text-align: center;">하</td>
+    <td style="text-align: center;">중</td>
+    <td style="text-align: center;">60</td>
+  </tr>
+</table>
+
+<p>※ 최종 중요도 (100점 만점 기준) &#x3D; (업무<em>0.3+대외</em>0.2+테이블<em>0.15+AP</em>0.15+도메인<em>0.2)<em>1&#x2F;5</em>100<br>예시) 업무영향도: 상, 대외영향도: 중, 테이블중복도:중, AP연관도: 중, 도메인중요도: 상<br>    (5</em>0.3 + 3<em>0.2 + 3</em>0.15+ 3<em>0.15 + 5</em>0.2)*20 &#x3D; 80</p>
+<h3 id="2-9-핵심품질항목-선정-절차-상세-4-4"><a href="#2-9-핵심품질항목-선정-절차-상세-4-4" class="headerlink" title="2.9 핵심품질항목 선정 절차 상세 (4&#x2F;4)"></a>2.9 핵심품질항목 선정 절차 상세 (4&#x2F;4)</h3><hr>
+<p>….</p>
+<h2 id="3-데이터-품질-지표-DQI"><a href="#3-데이터-품질-지표-DQI" class="headerlink" title="3. 데이터 품질 지표 (DQI)"></a>3. 데이터 품질 지표 (DQI)</h2><hr>
+<h3 id="3-1-DQI-정의"><a href="#3-1-DQI-정의" class="headerlink" title="3.1 DQI 정의"></a>3.1 DQI 정의</h3><hr>
+<blockquote>
+<p>데이터 품질 지표(DQI : Data Quality Indicate)는 사용자의 목적에 맞게 데이터 저장, 관리되고 있는 지를 측정하고자 기준을 유형화하여 정의한 것으로 DQI의 유형은 데이터 값의 저장형태나, 업무적 관점의 값의 성격, 데이터 관리 관점 등을 고려하여 정의함. 또한 업무규칙과 연계하여 지표별 품질수준을 측정하고 개선활동 목표 수립에 활용함</p>
+</blockquote>
+<ul>
+<li>다음의 값(Value) 관점의 데이터 품질 예시로 낮은 레벨의 완전성에서 높은 레벨의 정확성 순으로 정의되어 있다.</li>
+</ul>
+<table>
+  <tr>
+    <th>DQI (값)</th>
+    <th>진단 관점</th>
+    <th>예시</th>
+  </tr>
+  <tr>
+    <td>정확성</td>
+    <td>업무적으로 연관된 데이터는 정확성을 유지하고 있는 가?</td>
+    <td>산출식에 맞는 값 존재</td>
+  </tr>
+  <tr>
+    <td>일관성</td>
+    <td>다른 값, 다른 객체의 값, 다른 시스템의 값과 일관성이 있는 가?</td>
+    <td>중복 데이터의 경우 같은 값, 같은 형식으로 존재</td>
+  </tr>
+  <tr>
+    <td>유일성</td>
+    <td>하나의 레코드는 논리적, 물리적으로 유일한 가?</td>
+    <td>key 값의 unique</td>
+  </tr>
+  <tr>
+    <td>유효성</td>
+    <td>값이 채워져 있다면, 그 값은 유효한 값으로 채워져 있는 가?</td>
+    <td>코드의 허용값의 사용 범위</td>
+  </tr>
+  <tr>
+    <td>완전성</td>
+    <td>값이 채워져 있는 가? 값이 왜 누락되어 있는 가?</td>
+    <td>NULL 여부, 타입</td>
+  </tr>
+</table>
+
+
+
+<h3 id="3-2-DQI-선정-절차"><a href="#3-2-DQI-선정-절차" class="headerlink" title="3.2 DQI 선정 절차"></a>3.2 DQI 선정 절차</h3><hr>
+<blockquote>
+<p>DQI 선정 절차는 일반적으로 선진 사례분석(Kdata, 행정안전부, 선진 사례)과 기업의 현황을 파악하여 해당 기업에 최적된 DQI를 선정 (단, 지표가 많다고 해서 좋은 것은 아님)</p>
+</blockquote>
+<ol>
+<li>사례 분석 &gt; 2) 현황 파악 &gt; 3) DQI 선정</li>
+</ol>
+<h3 id="3-3-DQI-선정-상세-절차-1-2-공통성-분석"><a href="#3-3-DQI-선정-상세-절차-1-2-공통성-분석" class="headerlink" title="3.3 DQI 선정 상세 절차 (1&#x2F;2) - 공통성 분석"></a>3.3 DQI 선정 상세 절차 (1&#x2F;2) - 공통성 분석</h3><hr>
+<p>사례조사를 통하여 수집된 각 기관의 데이터 품질지표를 조사하여 공통적인 지표를 우선적으로 선정하고, 설문 및 인터뷰 결과로써 선정 필요성이 있는 품질지표를 추가적으로 수용</p>
+<p>각 기관의 고유한 품질지표는 그 특성을 고려하여 선택적으로 수용하여 데이터 품질지표(안)을 수립하고, 관계자와의 협의를 통해 최종 확정함</p>
+<ul>
+<li>적극적 수용<br>** 추가적 수용<br>*** 선택적 수용</li>
+</ul>
+<h3 id="3-3-DQI-선정-상세-절차-1-2-공통성-분석-결과-사례"><a href="#3-3-DQI-선정-상세-절차-1-2-공통성-분석-결과-사례" class="headerlink" title="3.3 DQI 선정 상세 절차 (1&#x2F;2) - 공통성 분석 결과 (사례)"></a>3.3 DQI 선정 상세 절차 (1&#x2F;2) - 공통성 분석 결과 (사례)</h3><hr>
+<p>각 기관에서 현재 활용하고 있는 품질지표의 의미적 공통성을 조사하고, 5개 이상의 기관에서 활용하는 지표는 적극적으로 수용하며, 5개 미만의 기관에서 활용하는 지표는 선택적으로 수용</p>
+<p>한편, 현황조사 단계에서 선정 필요성이 있는 지표를 추가적으로 수용함으로써 궁극적으로 협의를 거쳐 확정</p>
+<h3 id="3-4-데이터-품질-기준-맵-구성"><a href="#3-4-데이터-품질-기준-맵-구성" class="headerlink" title="3.4 데이터 품질 기준 맵 구성"></a>3.4 데이터 품질 기준 맵 구성</h3><hr>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Keyhong</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2024/08/16/Data-Governance/posting/data-ownership/">http://example.com/2024/08/16/Data-Governance/posting/data-ownership/</a>
+                </span>
+            </div>
+            <!-- <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        reprint:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    use
+                    <a href="cc_by_url" rel="external nofollow noreferrer" target="_blank">cc_by_name</a>
+                    licensed
+                    <a href="/about" target="_blank">Keyhong</a>
+                    !
+                </span>
+            </div> -->
+        
+    </div>
+
+    <!-- <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script> -->
+
+
+
+            <div class="tag_share" style="display: block;">
+                <!-- <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                        </div>
+                    
+                </div> -->
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <!-- <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a> -->
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
+            <div class="card">
+                <a href="/2024/08/16/Data-Governance/posting/data-ownership/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="데이터 품질관리 (오너십)">
+                        
+                        <span class="card-title diy-neon-yellow">데이터 품질관리 (오너십)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-08-16
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B1%B0%EB%B2%84%EB%84%8C%EC%8A%A4/" class="post-category">
+                                    데이터 거버넌스
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/08/14/Data-Governance/posting/data-validation-value/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="품질진단 항목 (데이터 값 진단)">
+                        
+                        <span class="card-title diy-neon-red">품질진단 항목 (데이터 값 진단)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-08-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B1%B0%EB%B2%84%EB%84%8C%EC%8A%A4/" class="post-category">
+                                    데이터 거버넌스
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;목차</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2024</span>
+            
+            <a href="/about" target="_blank">Gyuwon Hong</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+            
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+    <a href="https://github.com/keyhong" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:wnhong96@gmail.com" class="tooltipped" target="_blank" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- Back to Top Button -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

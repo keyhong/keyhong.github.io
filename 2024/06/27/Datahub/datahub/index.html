@@ -236,22 +236,27 @@
 <blockquote>
 <p><code>데이터허브에서 제공하는 Quickstart를 이용하면 로컬에서도 바로 테스트 환경을 만들 수 있다.</code> 물론, DBMS에서 데이터를 주입을 테스트해보려면 도커 컨테이너를 추가로 올려야 한다. </p>
 </blockquote>
-<h3 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h3><p><code>Python 3.8+</code> 설치되어야 한다. (Check using python3 –version).</p>
-<h3 id="Resource-Allocation"><a href="#Resource-Allocation" class="headerlink" title="Resource Allocation"></a>Resource Allocation</h3><ul>
-<li><p>프로덕션에서는 kubernetes 환경 위에서 helm으로 구동하는 것을 권장</p>
+<h3 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h3><hr>
+<p><code>Python 3.8+</code> 설치되어야 한다.</p>
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>Check using python3</span></div><code class="language-bash">$ python <span class="token parameter variable">--version</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="Resource-Allocation"><a href="#Resource-Allocation" class="headerlink" title="Resource Allocation"></a>Resource Allocation</h3><hr>
+<ul>
+<li><p><code>프로덕션에서는 kubernetes 환경 위에서 helm으로 구동하는 것을 권장</code></p>
 </li>
-<li><p>테스트 환경을 위한 로컬에서도 구동할 수 있으며, Docker 엔진에 충분한 하드웨어 리소스를 할당이 필요 <br>(<code>CPU 2개</code>, <code>RAM 8GB</code>, <code>스왑 영역 2GB</code>, <code>디스크 공간 10GB</code>)</p>
+<li><p>테스트 환경을 위해 docker compose로 로컬에서도 구동할 수 있으며, 충분한 하드웨어 리소스를 할당이 필요 <br>(<code>CPU 2개</code>, <code>RAM 8GB</code>, <code>스왑 영역 2GB</code>, <code>디스크 공간 10GB</code>)</p>
 </li>
-<li><p>아래와 같이 zookeeper, kafka(broker, schema-registry), elasticsearch, datahbub(gms, frontend-react, actions), mysql 프로세스가 띄어진다. (초기화 컨테이너는 제외)</p>
+<li><p>아래와 같이 zookeeper, kafka(broker, schema-registry), elasticsearch, datahbub(gms, frontend-react, actions), mysql 프로세스가 띄어진다. (init 컨테이너는 제외)</p>
 </li>
 </ul>
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128844&authkey=%21AJ--gHU2Zo3f6KM&width=1024" width="1024" height="auto" />
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128844&authkey=%21AJ--gHU2Zo3f6KM&width=1024" width="1024" height="auto" alt="datahub component process"/>
 
 
-<h3 id="Install-the-DataHub-CLI"><a href="#Install-the-DataHub-CLI" class="headerlink" title="Install the DataHub CLI"></a>Install the DataHub CLI</h3><blockquote>
-<p><a target="_blank" rel="noopener" href="https://datahubproject.io/docs/quickstart/#install-the-datahub-cli">공식문서</a>에서는 pip과 poetry 두 개의 설치 방법을 알려주지만, <code>최근 파이썬 오픈소스 프로젝트들이 빌드시스템을 poetry로 전향</code>하고 있어 여기서는 poetry를 사용했다.</p>
+<h3 id="Install-the-DataHub-CLI"><a href="#Install-the-DataHub-CLI" class="headerlink" title="Install the DataHub CLI"></a>Install the DataHub CLI</h3><hr>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://datahubproject.io/docs/quickstart/#install-the-datahub-cli">공식문서</a>에서는 빌드시스템으로 pip과 poetry 두 개의 설치 방법을 알려주지만, <code>최근 파이썬 오픈소스 프로젝트들이 빌드시스템을 poetry로 전향</code>하고 있어 해당 블로그에서는 <code>poetry</code>를 사용했고, 이를 권장한다.</p>
 </blockquote>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># acryl-datahub 패키지 추가</span>
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>poetry로 datahub 설치 과정</span></div><code class="language-bash"><span class="token comment"># acryl-datahub 패키지 추가</span>
 $ poetry <span class="token function">add</span> acryl-datahub
 
 <span class="token comment"># poetry shell (가상환경 실행)</span>
@@ -270,16 +275,22 @@ $ datahub <span class="token function">docker</span> quickstart
 $ datahub <span class="token function">docker</span> quickstart <span class="token parameter variable">--stop</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
-<h3 id="Frontend-Web-UI"><a href="#Frontend-Web-UI" class="headerlink" title="Frontend Web UI"></a>Frontend Web UI</h3><blockquote>
-<p>데이터허브 사용자들이 메타 정보를 검색, 용어 사전 등록, 데이터 주입 스케줄링이 가능한 <code>유저 웹 인터페이스</code></p>
+<h3 id="Frontend-Web-UI"><a href="#Frontend-Web-UI" class="headerlink" title="Frontend Web UI"></a>Frontend Web UI</h3><hr>
+<blockquote>
+<p>데이터허브 사용자들이 메타 정보를 검색, 용어 사전 등록, 데이터 주입(ingestion) 스케줄링이 가능한 <code>유저 웹 인터페이스</code></p>
 </blockquote>
-<p>서비스 포트는 <code>9002</code>를 사용한다.</p>
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128837&authkey=%21AOfRuF2u1gK1QT4&width=3250&height=2250" width="3250" height="2250" alt="Frontend Main Page"/>
+<ul>
+<li>서비스 포트는 <code>9002</code>를 사용한다.</li>
+</ul>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128837&authkey=%21AOfRuF2u1gK1QT4&width=3250&height=2250" width="3250" height="2250" alt="Frontend Web UI Main Page"/>
 
-<h3 id="Data-Ingestion"><a href="#Data-Ingestion" class="headerlink" title="Data Ingestion"></a>Data Ingestion</h3><blockquote>
+<h3 id="Data-Ingestion"><a href="#Data-Ingestion" class="headerlink" title="Data Ingestion"></a>Data Ingestion</h3><hr>
+<blockquote>
 <p>여러 데이터베이스 소스로부터 <code>메타 정보를 모아 메타 관리 시스템인 데이터허브로 주입</code>하는 과정</p>
 </blockquote>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128838&authkey=%21AH3Bvqc62NpxJIc&width=3250&height=2250" width="3250" height="2250" alt="Data Ingestion"/>
+
+<br>
 
 <p>데이터를 주입하는 방법은 크게 두 가지가 있다.</p>
 <ul>
@@ -295,23 +306,23 @@ $ datahub <span class="token function">docker</span> quickstart <span class="tok
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://datahubproject.io/docs/metadata-ingestion/recipe_overview/">Recipes</a><code>를 API나 CLI로 주입</code>하는 방법</p>
 <ul>
-<li><p>CLI를 사용하는 것은 datahub-actions 프로세스가 구동된 서버에서만 가능하다.</p>
+<li><p>datahub CLI를 사용하는 것은 datahub-actions 프로세스가 구동된 서버에서만 가능하다.</p>
 </li>
-<li><p>일반적으로 스케줄링(예: 에어플로우)와 연계해서 사용하기 때문에 데이터허브 API를 통해 직접 주입하는 방법을 많이 사용하고 있다. <code>외부에서 API를 호출하려면 토큰을 발급받아 인증해야 한다.</code></p>
-</li>
-</ul>
+<li><p>일반적으로 스케줄링(예: 에어플로우)과 연계해서 사용하기 때문에 데이터허브에서 제공하는 RestfulAPI를 사용해 주입하는 방법을 많이 사용하고 있다. 이 때 <code>datahub 프로세스 외부에서 API를 호출하려면 datahub web에서 토큰(token)을 발급받아야 한다.</code></p>
 </li>
 </ul>
-<h3 id="Recipes"><a href="#Recipes" class="headerlink" title="Recipes"></a>Recipes</h3><blockquote>
-<p>메타데이터 수집을 위한 주요 구성 파일. 수집 스크립트에 데이터를 어디에서 가져올지(source)와 어디에 넣을지(sink)를 알려준다.</p>
+</li>
+</ul>
+<h3 id="Recipes"><a href="#Recipes" class="headerlink" title="Recipes"></a>Recipes</h3><hr>
+<blockquote>
+<p>메타데이터 수집을 위한 주요 구성 파일. 수집 스크립트에 데이터를 어디에서 가져올지(source)와 어디에 넣을지(sink)를 알려줌</p>
 </blockquote>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128843&authkey=%21APxaHeReZsTLIA8&width=684&height=294" width="684" height="294" alt="source - datahub - sink"/>
 
 <ul>
-<li>구성</li>
+<li>구성 : 레시피 파일의 기본 형식은 <code>source</code>와 <code>sink</code>로 구성된다.</li>
 </ul>
-<p>레시피 파일의 기본 형식은 <code>source</code>와 <code>sink</code>로 구성된다.</p>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># The simplest recipe that pulls metadata from MSSQL and puts it into DataHub</span>
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>recipe_example.yaml</span></div><code class="language-yaml"><span class="token comment"># The simplest recipe that pulls metadata from MSSQL and puts it into DataHub</span>
 <span class="token comment"># using the Rest API.</span>
 <span class="token key atrule">source</span><span class="token punctuation">:</span>
   <span class="token key atrule">type</span><span class="token punctuation">:</span> mssql
@@ -325,7 +336,8 @@ $ datahub <span class="token function">docker</span> quickstart <span class="tok
   <span class="token key atrule">config</span><span class="token punctuation">:</span>
     <span class="token key atrule">server</span><span class="token punctuation">:</span> <span class="token string">"http://localhost:8080"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h4><blockquote>
+<h4 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h4><hr>
+<blockquote>
 <p>메타데이터를 추출하는 데이터 시스템</p>
 </blockquote>
 <pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>일반적으로 recipe 맨 위에 정의된다.</span></div><code class="language-yaml"><span class="token comment">#my_recipe.yml</span>
@@ -335,8 +347,9 @@ $ datahub <span class="token function">docker</span> quickstart <span class="tok
     <span class="token key atrule">option_1</span><span class="token punctuation">:</span> &lt;value<span class="token punctuation">></span>
     <span class="token punctuation">...</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="Sink"><a href="#Sink" class="headerlink" title="Sink"></a>Sink</h4><blockquote>
-<p>메타데이터의 대상</p>
+<h4 id="Sink"><a href="#Sink" class="headerlink" title="Sink"></a>Sink</h4><hr>
+<blockquote>
+<p>메타데이터의 주입 대상 (datahub 메타 DB)</p>
 </blockquote>
 <pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>일반적으로 recipe에서 source 뒤에 정의된다.</span></div><code class="language-yaml"><span class="token key atrule">source</span><span class="token punctuation">:</span> <span class="token punctuation">...</span>
 
@@ -345,12 +358,7 @@ $ datahub <span class="token function">docker</span> quickstart <span class="tok
   <span class="token key atrule">config</span><span class="token punctuation">:</span> <span class="token punctuation">...</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
-<li><p>싱크 유형으로는 두 가지가 있다.</p>
-<ul>
-<li>REST (datahub-rest) : </li>
-<li>Kafka (datahub-kafka) :</li>
-</ul>
-</li>
+<li>싱크 유형으로는 <code>REST (datahub-rest)</code>와 <code>Kafka (datahub-kafka)</code> 두 가지가 있다.</li>
 </ul>
 <h4 id="UI-Ingestion"><a href="#UI-Ingestion" class="headerlink" title="UI Ingestion"></a>UI Ingestion</h4><ul>
 <li>소스의 연결 정보를 쉽게 입력할 수 있다.</li>
@@ -401,12 +409,14 @@ datahub_recipe<span class="token punctuation">(</span><span class="token punctua
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128839&authkey=%21APgVDq-Cmx-AIwc&width=3250&height=2250" width="3250" height="2250" />
 
 <h2 id="Datahub-Component"><a href="#Datahub-Component" class="headerlink" title="Datahub Component"></a>Datahub Component</h2><hr>
-<h3 id="프로세스-디펜던시"><a href="#프로세스-디펜던시" class="headerlink" title="프로세스 디펜던시"></a>프로세스 디펜던시</h3><p>띄어지는 프로세스가 많아 DAG로 디펜던시(dependency)의 순서를 표시해보았다.</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">elasticsearch              <span class="token operator">>></span> elasticsearch-setup  <span class="token operator">>></span>  datahub-upgrade  <span class="token operator">>></span>  datahub-gms  <span class="token operator">>></span>  <span class="token punctuation">[</span> datahub-actions, datahub-frontend-react <span class="token punctuation">]</span>
+<h3 id="프로세스-디펜던시"><a href="#프로세스-디펜던시" class="headerlink" title="프로세스 디펜던시"></a>프로세스 디펜던시</h3><hr>
+<p>띄어지는 프로세스가 많아 DAG로 디펜던시(dependency)의 순서를 정리했다.</p>
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>datahub process dependency</span></div><code class="language-bash">elasticsearch              <span class="token operator">>></span> elasticsearch-setup  <span class="token operator">>></span>  datahub-upgrade  <span class="token operator">>></span>  datahub-gms  <span class="token operator">>></span>  <span class="token punctuation">[</span> datahub-actions, datahub-frontend-react <span class="token punctuation">]</span>
 zookeeper      <span class="token operator">>></span> broker   <span class="token operator">>></span> kafka-setup          <span class="token operator">>></span>  datahub-upgrade  <span class="token operator">>></span>  datahub-gms  <span class="token operator">>></span>  <span class="token punctuation">[</span> datahub-actions, datahub-frontend-react <span class="token punctuation">]</span>
 mysql                      <span class="token operator">>></span> mysql-setup          <span class="token operator">>></span>  datahub-upgrade  <span class="token operator">>></span>  datahub-gms  <span class="token operator">>></span>  <span class="token punctuation">[</span> datahub-actions, datahub-frontend-react <span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="프로세스-설명"><a href="#프로세스-설명" class="headerlink" title="프로세스 설명"></a>프로세스 설명</h3><table>
+<h3 id="프로세스-설명"><a href="#프로세스-설명" class="headerlink" title="프로세스 설명"></a>프로세스 설명</h3><hr>
+<table>
 <thead>
 <tr>
 <th>Docker Service Name</th>
@@ -430,7 +440,8 @@ mysql                      <span class="token operator">>></span> mysql-setup   
 <td>DataHub의 웹 프론트엔드로, React 기반으로 구현</td>
 </tr>
 </tbody></table>
-<h4 id="1-DataHub-Actions"><a href="#1-DataHub-Actions" class="headerlink" title="1. DataHub Actions"></a>1. DataHub Actions</h4><blockquote>
+<h4 id="1-DataHub-Actions"><a href="#1-DataHub-Actions" class="headerlink" title="1. DataHub Actions"></a>1. DataHub Actions</h4><hr>
+<blockquote>
 <p>DataHub Actions는 DataHub에서 <code>특정 이벤트가 발생할 때 자동화된 작업을 수행</code>하는 기능</p>
 </blockquote>
 <table>
@@ -457,7 +468,8 @@ mysql                      <span class="token operator">>></span> mysql-setup   
 <td>실행된 작업을 모니터링하고 로깅하여 문제 발생 시 해결할 수 있도록 지원한다.</td>
 </tr>
 </tbody></table>
-<h4 id="2-DataHub-Upgrade"><a href="#2-DataHub-Upgrade" class="headerlink" title="2. DataHub Upgrade"></a>2. DataHub Upgrade</h4><blockquote>
+<h4 id="2-DataHub-Upgrade"><a href="#2-DataHub-Upgrade" class="headerlink" title="2. DataHub Upgrade"></a>2. DataHub Upgrade</h4><hr>
+<blockquote>
 <p>DataHub Upgrade는 DataHub <code>플랫폼의 업그레이드 및 마이그레이션을 관리</code>하는 도구</p>
 </blockquote>
 <table>
@@ -480,7 +492,8 @@ mysql                      <span class="token operator">>></span> mysql-setup   
 <td>업그레이드 과정이 자동화되어, 사용자가 최소한의 개입으로 DataHub를 최신 버전으로 유지할 수 있다.</td>
 </tr>
 </tbody></table>
-<h4 id="3-DataHub-Frontend-React"><a href="#3-DataHub-Frontend-React" class="headerlink" title="3. DataHub Frontend React"></a>3. DataHub Frontend React</h4><blockquote>
+<h4 id="3-DataHub-Frontend-React"><a href="#3-DataHub-Frontend-React" class="headerlink" title="3. DataHub Frontend React"></a>3. DataHub Frontend React</h4><hr>
+<blockquote>
 <p>DataHub Frontend React는 DataHub의 <code>웹 프론트엔드</code>를 구현한 React 기반 애플리케이션</p>
 </blockquote>
 <table>
@@ -507,7 +520,8 @@ mysql                      <span class="token operator">>></span> mysql-setup   
 <td>DataHub의 백엔드(GMS)와 통신하여 실시간으로 데이터를 가져오고 표시한다.</td>
 </tr>
 </tbody></table>
-<h4 id="4-DataHub-GMS-Graph-Metadata-Service"><a href="#4-DataHub-GMS-Graph-Metadata-Service" class="headerlink" title="4. DataHub GMS (Graph Metadata Service)"></a>4. DataHub GMS (Graph Metadata Service)</h4><blockquote>
+<h4 id="4-DataHub-GMS-Graph-Metadata-Service"><a href="#4-DataHub-GMS-Graph-Metadata-Service" class="headerlink" title="4. DataHub GMS (Graph Metadata Service)"></a>4. DataHub GMS (Graph Metadata Service)</h4><hr>
+<blockquote>
 <p>DataHub GMS는 DataHub의 백엔드 서비스로, <code>메타데이터를 저장하고 관리</code>하는 핵심 컴포넌트</p>
 </blockquote>
 <table>
@@ -546,22 +560,22 @@ mysql                      <span class="token operator">>></span> mysql-setup   
 <tbody><tr>
 <td>UI 편의성</td>
 <td>⭐⭐⭐⭐⭐</td>
-<td>UI는 전체적으로 깔끔했다. <code>메인페이지의 검색바가 상당히 편리</code>하고, <code>DB 소스들의 이미지 로고를 UX 잘 활용하여 여러 소스들을 쉽게 분별</code>이 가능했다.</td>
+<td>UI가 전체적으로 깔끔하다. <code>메인페이지의 검색바가 상당히 편리</code>하고, <code>데이터 소스들의 이미지 로고를 적절히 잘 활용하여 UI에서 분별</code>이 편했다.</td>
 </tr>
 <tr>
 <td>데이터 표준화 활용</td>
 <td>⭐⭐</td>
-<td><code>국내에서 하는 표준화(단어, 도메인, 용어)는 세분화가 필요</code>하다. <code>하지만 Datahub는 용어 검색만 지원</code>한다. 전사의 신규 테이블 컬럼의 표준화를 위해 단어와 도메인을 함께 검색하는 국내 표준화 과정에서 활용하기는 불가능해보인다. 이 때문에 <code>국내 기준의 표준화를 위한 툴로서 활용에는 많은 아쉬움</code>이 남아 있다.</td>
+<td>국내에서 하는 표준화(단어, 도메인, 용어)는 세분화가 필요하지만 <code>Datahub는 용어 검색만 지원</code>한다. 신규 테이블과 컬럼의 표준화를 위해 단어와 도메인을 함께 조회해야 하는 국내의 표준화 기준에서는 활용하기에 쉽지 않다. 이러한 부분에 있어 <code>국내 기준의 표준화를 위한 툴로서 활용에는 많은 아쉬움</code>이 남는다.</td>
 </tr>
 <tr>
 <td>데이터 파이프라인 통합성</td>
 <td>⭐⭐⭐</td>
-<td><code>dathub에서 제공하는 API를 다른 스케줄러나 애플리케이션에서 사용할 수 있어 편리</code>했다. <code>다만 API 이용에 필요한 디펜던시 종속성 문제</code>가 있어, 컨테이너와 같이 별도의 가상환경을 분리할 수 없다면 (에어플로우와 연계 테스트 수행 결과) <code>기존 라이브러리와 충돌이 일어날 가능성</code>이 많았다. 특히, 아직 성장하는 플랫폼이라 문제가 발생했을 때 빠른 트러블슈팅이 어렵다.</td>
+<td><code>dathub에서 제공하는 파이썬 애플리케이션에서 연계(Airflow ETL task 이후 데이터 주입 트리거) 할 수 있어 유용</code>하다. 다만, <code>데이터 소스별 별도의 디펜던시(extras)를 추가 설치하기 때문에 종속성 문제</code>가 있어, 컨테이너와 같이 별도의 가상환경을 분리할 수 없다면 <code>라이브러리 충돌이 일어날 가능성</code>이 많다. 성장하는 플랫폼이라 문제가 발생했을 때 <code>트러블슈팅의 레퍼런스가 부족</code>하다.</td>
 </tr>
 <tr>
 <td>메타관리<br>유용성</td>
 <td>⭐⭐⭐⭐⭐</td>
-<td>소스에서 메타 데이터를 긁어와 <code>가시성 있는 UI를 통해 테이블의 메타 데이터를 보기 편리</code>했다. 테이블의 <code>기존 메타 데이터 위에 사용자가 직접 메타에 대한 커먼트가 가능</code>하고, <code>기존 메타와 사용자 커먼트 메타가 둘 다 따로 관리되어 다양성을 지원</code>한다. 또한 <code>기술 통계 (MIN/MAX, AVG, COUNT, STDDEV ..)에 기반한 프로파일링 기능도 지원</code>하고 있다. 매번 메타 데이터를 긁어 올 때마다 <code>과거의 통계 정보 이력을 보존</code>하고 있다.</td>
+<td>데이터 소스에서 메타 데이터를 수집하여 제공하는 UI를 통해 <code>테이블의 메타 데이터를 보기 편리</code>하다. 테이블의 <code>수집한 물리 DB의 메타 데이터에 사용자가 직접 메타에 대한 추가 코먼트가 가능</code>하고, <code>기존 메타 데이터와 사용자 추가 메타 데이터가 따로 관리</code>되어 탐색의 다양성을 지원한다. 또한 기술 통계 (MIN&#x2F;MAX, AVG, COUNT, STDDEV ..)에 기반한 <code>데이터 프로파일링 기능</code>도 지원하고 있다. 매번 메타 데이터를 긁어 올 때마다 <code>과거의 통계 정보 이력을 보존</code>하여 과거에 수집한 메타 정보를 볼 수도 있다.</td>
 </tr>
 </tbody></table>
 
