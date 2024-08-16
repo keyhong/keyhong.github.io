@@ -5,12 +5,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="코호트/퍼널 분석, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="코호트 분석 (Cohort Analysis)
+    <meta name="description" content="Retension
 
 Retention analysis(또는 survival analysis)은 고객이 이탈하는 이유와 방식을 이해하기 위해 사용자 지표를 분석하는 과정
 
 
-일관된 리텐션 분">
+일관된 리텐션 분석을 실행하면 다음과 같은 ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -228,7 +228,7 @@ Retention analysis(또는 survival analysis)은 고객이 이탈하는 이유와
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="코호트-분석-Cohort-Analysis"><a href="#코호트-분석-Cohort-Analysis" class="headerlink" title="코호트 분석 (Cohort Analysis)"></a>코호트 분석 (Cohort Analysis)</h2><hr>
+                <h2 id="Retension"><a href="#Retension" class="headerlink" title="Retension"></a>Retension</h2><hr>
 <blockquote>
 <p>Retention analysis(또는 survival analysis)은 고객이 이탈하는 이유와 방식을 이해하기 위해 사용자 지표를 분석하는 과정</p>
 </blockquote>
@@ -246,7 +246,33 @@ Retention analysis(또는 survival analysis)은 고객이 이탈하는 이유와
 </ul>
 </li>
 </ul>
-<h2 id="리텐션-분석-SQL"><a href="#리텐션-분석-SQL" class="headerlink" title="리텐션 분석 SQL"></a>리텐션 분석 SQL</h2><hr>
+<h2 id="리텐션-분석을-수행해보며-느낀-점들"><a href="#리텐션-분석을-수행해보며-느낀-점들" class="headerlink" title="리텐션 분석을 수행해보며 느낀 점들"></a>리텐션 분석을 수행해보며 느낀 점들</h2><hr>
+<h3 id="Q1-리텐션의-주기는-언제로-할-것인가"><a href="#Q1-리텐션의-주기는-언제로-할-것인가" class="headerlink" title="Q1. 리텐션의 주기는 언제로 할 것인가?"></a>Q1. 리텐션의 주기는 언제로 할 것인가?</h3><hr>
+<p>리텐션 분석에서 사용하는 사용자 정의 지표는 서비스에 따라 크게 달라질 수 있다.</p>
+<ul>
+<li><p>카카오톡, 알라미처럼 매일 접속하는 서비스는 리텐션 주기가 짧다.</p>
+</li>
+<li><p>마이리얼트립처럼 특정 목적으로 접속하는 서비스는 리텐션 주기가 길다.</p>
+</li>
+<li><p>그럼 리텐션 주기는 몇 일로 잡을 것인가? 기술통계를 봐야 한다. 보통 <code>중앙값(Medium)</code>으로 사용할 수 있다.</p>
+</li>
+</ul>
+<h3 id="Q2-리텐션-주기는-무엇으로-구할-것인가"><a href="#Q2-리텐션-주기는-무엇으로-구할-것인가" class="headerlink" title="Q2. 리텐션 주기는 무엇으로 구할 것인가?"></a>Q2. 리텐션 주기는 무엇으로 구할 것인가?</h3><hr>
+<ul>
+<li><p>고객의 퍼널에서 리텐션을 평가할 대상은 많다. 순수히 고객 접속을 기준으로 할 수도 있고, 커머스와 같은 경우 고객의 제품 구매를 주기로 할 수 있다.</p>
+</li>
+<li><p>또 복수의 조건을 사용하여 직접적으로 대상을 만들어낼 수도 있다.</p>
+</li>
+</ul>
+<h3 id="Q3-고객에-대한-정의는-분명한가"><a href="#Q3-고객에-대한-정의는-분명한가" class="headerlink" title="Q3. 고객에 대한 정의는 분명한가?"></a>Q3. 고객에 대한 정의는 분명한가?</h3><hr>
+<ul>
+<li><p><code>고객에 대한 정의는 무엇인 지 분명</code>해야 한다. 예를 들어 신규유저&#x2F;기존유저&#x2F;복귀유저&#x2F;휴먼유저로 나눌 수도 있다면, 어떤 유저를 기존 유저로 볼 것인가? 구매는 안 하지만 매일 서비스에 들어오는 잠재고객인가? 아니면 최근 접속은 없지만 과거 구매 이력이 많은 고객인가? 분석에 의해 합립적인 정의가 분명해지면, <code>그 정의는 팀내 분석가 모두가 확실하게 인지해야만 분석을 같은 방향으로 이어나갈 수 있다.</code></p>
+</li>
+<li><p>또 고객의 등급이 어떻게 나눠지는 지도 중요하다. 고객의 등급은 매출에 분명한 영향이 있다. <code>모든 고객을 만족시킬 수 없다면, 주어진 시간과 비용에서 가장 합리적인 선택</code>이 필요하다. 서비스별로 유저의 군집을 다르게 분류하면, 군집의 특성을 파악할 수 있다. 건당 구매 금액이 적지만 자사 서비스의 많은 비중에 속하는 군집이 있을 수 있고, 수는 적지만 매출의 대부분을 차지하는 서비스도 있다. <code>어느 고객 집단이 더 중요하다는 것보다 상황에 따라 세그먼트/코호트에 따라 보다 커스터마이즈된 광고 전략이나 니즈를 충족시킬 수 있는 서비스가 필요</code>하다. 다만, <code>이익 없이 운영되는 기업은 없다.</code> 또한 <code>세그먼트가 많아질수록 관심해야 할 포인트도 굉장히 많아지기 때문에 관리를 자동화시킬 방안도 고려</code>해야한다.</p>
+</li>
+</ul>
+<h2 id="코호트-분석-Cohort-Analysis"><a href="#코호트-분석-Cohort-Analysis" class="headerlink" title="코호트 분석 (Cohort Analysis)"></a>코호트 분석 (Cohort Analysis)</h2><hr>
+<h2 id="코호트-분석-SQL"><a href="#코호트-분석-SQL" class="headerlink" title="코호트 분석 SQL"></a>코호트 분석 SQL</h2><hr>
 <h3 id="범위-리텐션-Range-Retension"><a href="#범위-리텐션-Range-Retension" class="headerlink" title="범위 리텐션 (Range Retension)"></a>범위 리텐션 (Range Retension)</h3><ul>
 <li>고객ID</li>
 <li>첫 주문 일자</li>
