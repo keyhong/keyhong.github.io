@@ -268,17 +268,17 @@ Retention analysis(또는 survival analysis)은 고객이 이탈하는 이유와
 <ul>
 <li><p><code>고객에 대한 정의는 무엇인 지 분명</code>해야 한다. 예를 들어 신규유저&#x2F;기존유저&#x2F;복귀유저&#x2F;휴먼유저로 나눌 수도 있다면, 어떤 유저를 기존 유저로 볼 것인가? 구매는 안 하지만 매일 서비스에 들어오는 잠재고객인가? 아니면 최근 접속은 없지만 과거 구매 이력이 많은 고객인가? 분석에 의해 합립적인 정의가 분명해지면, <code>그 정의는 팀내 분석가 모두가 확실하게 인지해야만 분석을 같은 방향으로 이어나갈 수 있다.</code></p>
 </li>
-<li><p>또 고객의 등급이 어떻게 나눠지는 지도 중요하다. 고객의 등급은 매출에 분명한 영향이 있다. <code>모든 고객을 만족시킬 수 없다면, 주어진 시간과 비용에서 가장 합리적인 선택</code>이 필요하다. 서비스별로 유저의 군집을 다르게 분류하면, 군집의 특성을 파악할 수 있다. 건당 구매 금액이 적지만 자사 서비스의 많은 매출 비중을 만드는 속하는 군집이 있을 수 있고, 수는 적지만 매출의 대부분을 차지하는 VIP 군집도 분명히 있다. <code>어느 고객 집단이 더 중요하다는 것보다 상황에 따라 세그먼트/코호트에 따라 보다 커스터마이즈된 광고 전략이나 니즈를 충족시킬 수 있는 서비스가 필요</code>하다. 다만, <code>이익 없이 운영되는 기업은 없다.</code> 또한 <code>세그먼트가 많아질수록 관심해야 할 포인트도 굉장히 많아지기 때문에 관리를 자동화시킬 방안도 고려</code>해야한다.</p>
+<li><p>또 고객의 등급이 어떻게 나눠지는 지도 중요하다. 고객의 등급은 매출에 분명한 영향이 있다. <code>모든 고객을 만족시킬 수 없다면, 주어진 시간과 비용에서 가장 합리적인 선택</code>이 필요하다. 서비스별로 유저의 군집을 다르게 분류하면, 군집의 특성을 파악할 수 있다. 건당 구매 금액이 적지만 자사 서비스의 많은 매출 비중을 만드는 속하는 군집이 있을 수 있고, 수는 적지만 매출의 대부분을 차지하는 VIP 군집도 분명히 있다. <code>어느 고객 집단이 더 중요하다는 것보다 상황에 따라 세그먼트/코호트를 분류하고 보다 커스터마이즈된 광고 전략이나 니즈를 충족시킬 수 있는 서비스가 필요</code>하다. 다만, <code>이익 없이 운영되는 기업은 없다.</code> 또한 <code>세그먼트가 많아질수록 관심해야 할 포인트도 굉장히 많아지기 때문에 관리를 자동화시킬 방안도 고려</code>해야한다.</p>
 </li>
 </ul>
 <h2 id="코호트-분석-Cohort-Analysis"><a href="#코호트-분석-Cohort-Analysis" class="headerlink" title="코호트 분석 (Cohort Analysis)"></a>코호트 분석 (Cohort Analysis)</h2><hr>
-<h2 id="코호트-분석-SQL"><a href="#코호트-분석-SQL" class="headerlink" title="코호트 분석 SQL"></a>코호트 분석 SQL</h2><hr>
-<h3 id="범위-리텐션-Range-Retension"><a href="#범위-리텐션-Range-Retension" class="headerlink" title="범위 리텐션 (Range Retension)"></a>범위 리텐션 (Range Retension)</h3><ul>
+<h3 id="범위-리텐션-SQL-Range-Retension"><a href="#범위-리텐션-SQL-Range-Retension" class="headerlink" title="범위 리텐션 SQL (Range Retension)"></a>범위 리텐션 SQL (Range Retension)</h3><hr>
+<ul>
 <li>고객ID</li>
 <li>첫 주문 일자</li>
 <li>사용자 정의 기간(interval)별 주문 일자</li>
 </ul>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">WITH</span> records_preprocessed <span class="token keyword">AS</span> <span class="token punctuation">(</span>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>범위 리텐션 SQL</span></div><code class="language-sql"><span class="token keyword">WITH</span> records_preprocessed <span class="token keyword">AS</span> <span class="token punctuation">(</span>
   <span class="token keyword">SELECT</span> r<span class="token punctuation">.</span>customer_id
        <span class="token punctuation">,</span> r<span class="token punctuation">.</span>order_id
        <span class="token punctuation">,</span> r<span class="token punctuation">.</span>order_date
@@ -305,7 +305,20 @@ Retention analysis(또는 survival analysis)은 고객이 이탈하는 이유와
 <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> first_order_month
 <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> first_order_month <span class="token keyword">ASC</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="롤링-리텐션-Rolling-Retension"><a href="#롤링-리텐션-Rolling-Retension" class="headerlink" title="롤링 리텐션 (Rolling Retension)"></a>롤링 리텐션 (Rolling Retension)</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">WITH</span> customers <span class="token keyword">AS</span> <span class="token punctuation">(</span>
+<h3 id="코호트-차트-시각화"><a href="#코호트-차트-시각화" class="headerlink" title="코호트 차트 시각화"></a>코호트 차트 시각화</h3><hr>
+<ul>
+<li>분석의 대상이 되는 집계 컬럼은 데이터 속성에 단위가 다르다. 10CM, 10M 등 같은 숫자라도 이해관계자의 데이터 리터러시에 따라 스케일의 차이를 받아들이는 정도가 다르다. 때문에 개별 컬럼 값을 비교할 때는 두 수치의 차이를 비율로 표현하는 것이 더 많은 인사이트를 도출할 수 있다. (표준화, 정규화와 유사)</li>
+</ul>
+<h4 id="수치로-표현"><a href="#수치로-표현" class="headerlink" title="수치로 표현"></a>수치로 표현</h4><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129038&authkey=%21AJxtVLpv09Q9pvM&width=1366&height=542" width="1366" height="542" />
+
+<h4 id="비율로-표현"><a href="#비율로-표현" class="headerlink" title="비율로 표현"></a>비율로 표현</h4><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129039&authkey=%21AD6m4Q2FZBKzTCk&width=1374&height=540" width="1374" height="540" />
+
+
+<h3 id="롤링-리텐션-Rolling-Retension"><a href="#롤링-리텐션-Rolling-Retension" class="headerlink" title="롤링 리텐션 (Rolling Retension)"></a>롤링 리텐션 (Rolling Retension)</h3><hr>
+<ul>
+<li>롤링리텐션은 실행 시점마다 값의 변동성이 크다. 롤링 리텐션을 처음보는 경영자에게 대시보드를 제공한다면, 값이 변하는 이유를 커뮤니케이션을 통해 미리 설명해야 한다.</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>롤링 리텐션 SQL</span></div><code class="language-sql"><span class="token keyword">WITH</span> customers <span class="token keyword">AS</span> <span class="token punctuation">(</span>
   <span class="token keyword">SELECT</span> customer_id
        <span class="token punctuation">,</span> first_order_date
        <span class="token punctuation">,</span> last_order_date
@@ -330,9 +343,6 @@ Retention analysis(또는 survival analysis)은 고객이 이탈하는 이유와
 <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> first_order_month
 <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> first_order_month <span class="token keyword">ASC</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="시각화"><a href="#시각화" class="headerlink" title="시각화"></a>시각화</h2><h3 id="수치로-표현"><a href="#수치로-표현" class="headerlink" title="수치로 표현"></a>수치로 표현</h3><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129038&authkey=%21AJxtVLpv09Q9pvM&width=1366&height=542" width="1366" height="542" />
-
-<h3 id="비율로-표현"><a href="#비율로-표현" class="headerlink" title="비율로 표현"></a>비율로 표현</h3><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129039&authkey=%21AD6m4Q2FZBKzTCk&width=1374&height=540" width="1374" height="540" />
 
 
 <h2 id="퍼널-분석-Funnel-Analysis"><a href="#퍼널-분석-Funnel-Analysis" class="headerlink" title="퍼널 분석 (Funnel Analysis)"></a>퍼널 분석 (Funnel Analysis)</h2><hr>
