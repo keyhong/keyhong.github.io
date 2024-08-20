@@ -240,12 +240,12 @@
 <ul>
 <li><p>(1) <code>Column</code> Profiling : <code>개별 속성 값</code>에 대한 검증<br></p>
 </li>
-<li><p>(2) <code>Single-Table</code> Profiling : <code>복수 개의 컬럼 간의 관계</code>에 대한 검증<br>(EX) 결혼여부가 N인데, 결혼일자가 있는 경우, 이상 데이터로 판별</p>
+<li><p>(2) <code>Single-Table</code> Profiling : <code>복수 개의 컬럼 간의 관계</code>에 대한 검증<br>(EX) 결혼여부 컬럼 값이 ‘N’ 인데, 결혼일자가 있는 경우 ➡️ 이상 데이터로 판별</p>
 </li>
 <li><p>(3) <code>Cross-Table</code> Profiling : <code>두 테이블의 참조 관계</code>에 대한 검증<br></p>
 </li>
 </ul>
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129134&authkey=%21ADmPyDpfR1-as1g&width=1024" width="1024" height="auto" />
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129134&authkey=%21ADmPyDpfR1-as1g&width=1024" width="1024" height="auto" alt="Profiling 분석 단위"/>
 
 
 
@@ -289,9 +289,9 @@
 <h2 id="5-프로파일링-절차"><a href="#5-프로파일링-절차" class="headerlink" title="5. 프로파일링 절차"></a>5. 프로파일링 절차</h2><hr>
 <h3 id="5-1-데이터-값-진단"><a href="#5-1-데이터-값-진단" class="headerlink" title="5.1 데이터 값 진단"></a>5.1 데이터 값 진단</h3><hr>
 <blockquote>
-<p>데이터 값 진단은 데이터 품질진단 및 개선 활동(6단계)에서 수행하는 여러 진단활동 중 하나로서, 구조&#x2F;표준&#x2F;관리수준 진단과 함께 동일 절차로 수행됨<hr>* 각 진단의 세부 절차는 품질진단기법 및 진단 관점에 따라 달라짐</p>
+<p><code>데이터 값 진단</code>은 데이터 품질진단 및 개선 활동(6단계)에서 수행하는 여러 진단활동 중 하나로서, <code>구조/표준/관리수준 진단과 함께 동일 절차로 수행</code>됨<hr>* 각 진단의 세부 절차는 품질진단기법 및 진단 관점에 따라 달라짐</p>
 </blockquote>
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129133&authkey=%21ALdUf9SEZluCJpU&width=1024" width="1024" height="auto" alt="품질진단 중 데이터 값 진단"/>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129133&authkey=%21ALdUf9SEZluCJpU&width=1024" width="1024" height="auto" alt="품질진단 활동 중 데이터 값 진단"/>
 
 <h3 id="5-2-데이터-값-진단-절차와-상세-활동"><a href="#5-2-데이터-값-진단-절차와-상세-활동" class="headerlink" title="5.2 데이터 값 진단 절차와 상세 활동"></a>5.2 데이터 값 진단 절차와 상세 활동</h3><hr>
 <blockquote>
@@ -402,13 +402,13 @@
   <tr>
     <td style="text-align: center;">3-1</td>
     <td colspan="2" style="text-align: center;">유효성 진단대상 선정(도메인 분석)</td>
-    <td><code>기관 도메인 정의에 따른</code> 진단대상 컬럼 식별</td>
+    <td><code>기관 도메인 정의</code>에 따른 진단대상 컬럼 식별</td>
   </tr>
 
   <tr>
     <td style="text-align: center;">3-2</td>
     <td colspan="2" style="text-align: center;">정확성 진단대상 선정(업무요건 분석)</td>
-    <td><code>업무요건 분석</code>을 통한 진단대상 식별</td>
+    <td><code>업무요건 분석</code>을 통한 진단대상 컬럼 식별</td>
   </tr>
 
   <tr>
@@ -421,7 +421,7 @@
   <tr>
     <td style="text-align: center;">5</td>
     <td colspan="2" style="text-align: center;">값 진단 수행</td>
-    <td>값 진단 수행</td>
+    <td>데이터 값 진단 수행</td>
   </tr>
 
   <tr>
@@ -451,11 +451,11 @@
 
 
 <h2 id="6-테이블-컬럼정보-수집"><a href="#6-테이블-컬럼정보-수집" class="headerlink" title="6. 테이블&#x2F;컬럼정보 수집"></a>6. 테이블&#x2F;컬럼정보 수집</h2><hr>
-<h3 id="6-1-물리-DB의-테이블-컬럼-정보-추출"><a href="#6-1-물리-DB의-테이블-컬럼-정보-추출" class="headerlink" title="6.1 물리 DB의 테이블&#x2F;컬럼 정보 추출"></a>6.1 물리 DB의 테이블&#x2F;컬럼 정보 추출</h3><hr>
+<h3 id="6-1-물리-DB의-테이블-컬럼-메타-정보-추출"><a href="#6-1-물리-DB의-테이블-컬럼-메타-정보-추출" class="headerlink" title="6.1 물리 DB의 테이블&#x2F;컬럼 메타 정보 추출"></a>6.1 물리 DB의 테이블&#x2F;컬럼 메타 정보 추출</h3><hr>
 <blockquote>
-<p>진단대상 데이터베이스에 접속하여 <code>실제 물리 DB의 테이블/컬럼 정보를 추출</code></p>
+<p>진단대상 데이터베이스에 접속하여 <code>실제 물리 DB의 테이블/컬럼 메타 정보를 추출</code>한다.</p>
 </blockquote>
-<p>&lt;테이블&#x2F;컬럼 정보&gt;</p>
+<p>&lt; 추출한 테이블&#x2F;컬럼 정보 예시 &gt;</p>
 <table>
 <thead>
 <tr>
@@ -632,7 +632,10 @@
 | ORDER_DETAL  | 주문상세     | 5        |
 | ORDER_DETAL  | 주문상세     | 6        | -->
 
-<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>추출 SQL (Oracle 예시)</span></div><code class="language-sql"><span class="token keyword">SELECT</span> A<span class="token punctuation">.</span>TABLE_NAME   <span class="token keyword">AS</span> <span class="token string">'테이블영문명'</span>
+<ul>
+<li>카탈로그 스키마의 테이블들을 이용해서 전체 테이블, 컬럼, 제약조건 쿼리를 만들 수 있다. 물리적 DBMS에 따라 쿼리가 달라질 수 있으니, 상황에 따라 직접 만들어야 한다.</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>메타 정보 추출 SQL 예시 (Oracle)</span></div><code class="language-sql"><span class="token keyword">SELECT</span> A<span class="token punctuation">.</span>TABLE_NAME   <span class="token keyword">AS</span> <span class="token string">'테이블영문명'</span>
      <span class="token punctuation">,</span> A<span class="token punctuation">.</span>COMMENTS     <span class="token keyword">AS</span> <span class="token string">'테이블한글명'</span>
      <span class="token punctuation">,</span> A<span class="token punctuation">.</span>COLUMN_ID    <span class="token keyword">AS</span> <span class="token string">'컬럼순서'</span>
      <span class="token punctuation">,</span> B<span class="token punctuation">.</span>COLUMN_NAME  <span class="token keyword">AS</span> <span class="token string">'컬럼영문명'</span>
@@ -663,7 +666,7 @@
 <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> <span class="token string">'테이블영문명'</span><span class="token punctuation">,</span> <span class="token string">'컬럼순서'</span>
 <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>추출 (PostgreSQL 예시)</span></div><code class="language-sql"><span class="token keyword">SELECT</span> t<span class="token punctuation">.</span>relname                                                       <span class="token keyword">AS</span> 테이블영문명
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>메타 정보 추출 예시 (PostgreSQL)</span></div><code class="language-sql"><span class="token keyword">SELECT</span> t<span class="token punctuation">.</span>relname                                                       <span class="token keyword">AS</span> 테이블영문명
      <span class="token punctuation">,</span> <span class="token keyword">COALESCE</span><span class="token punctuation">(</span>obj_description<span class="token punctuation">(</span>t<span class="token punctuation">.</span>oid<span class="token punctuation">,</span> <span class="token string">'pg_class'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span>                <span class="token keyword">AS</span> 테이블한글명
      <span class="token punctuation">,</span> a<span class="token punctuation">.</span>attnum                                                        <span class="token keyword">AS</span> 컬럼순서
      <span class="token punctuation">,</span> a<span class="token punctuation">.</span>attname                                                       <span class="token keyword">AS</span> 컬럼영문명
@@ -695,7 +698,7 @@
             <span class="token keyword">WHERE</span> tc<span class="token punctuation">.</span>constraint_type <span class="token operator">=</span> <span class="token string">'PRIMARY KEY'</span>
 	          <span class="token punctuation">)</span> <span class="token keyword">AS</span> pk
          <span class="token keyword">ON</span> pk<span class="token punctuation">.</span>table_name <span class="token operator">=</span> t<span class="token punctuation">.</span>relname <span class="token operator">AND</span> pk<span class="token punctuation">.</span>colname <span class="token operator">=</span> a<span class="token punctuation">.</span>attname	
-<span class="token keyword">WHERE</span>  t<span class="token punctuation">.</span>relkind <span class="token operator">=</span> <span class="token string">'r'</span> <span class="token comment">-- 'r'은 일반 테이블을 의미</span>
+<span class="token keyword">WHERE</span> t<span class="token punctuation">.</span>relkind <span class="token operator">=</span> <span class="token string">'r'</span> <span class="token comment">-- 'r'은 일반 테이블을 의미</span>
   <span class="token operator">AND</span> n<span class="token punctuation">.</span>nspname <span class="token operator">=</span> <span class="token string">'ods'</span> <span class="token comment">-- 조회할 스키마 이름</span>
   <span class="token operator">AND</span> a<span class="token punctuation">.</span>attnum <span class="token operator">></span> <span class="token number">0</span> <span class="token comment">-- 시스템 컬럼 제외</span>
   <span class="token operator">AND</span> <span class="token operator">NOT</span> a<span class="token punctuation">.</span>attisdropped <span class="token comment">-- 삭제된 컬럼 제외</span>
@@ -748,108 +751,107 @@
 </blockquote>
 <p>&lt;<code>물리 DB 메타 정보</code>&gt;</p>
 <table>
-<thead>
-<tr>
-<th>테이블영문명</th>
-<th>테이블한글명</th>
-<th>컬럼순서</th>
-<th>컬럼영문명</th>
-<th>컬럼한글명</th>
-<th>데이터타입</th>
-<th>길이</th>
-<th>널여부</th>
-<th>PK</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>CUSTOMER</td>
-<td>고객</td>
-<td>1</td>
-<td>CUST_ID</td>
-<td>고객번호</td>
-<td>VARCHAR2</td>
-<td>5</td>
-<td>N</td>
-<td>PK</td>
-</tr>
-<tr>
-<td>CUSTOMER</td>
-<td>고객</td>
-<td>2</td>
-<td>CUST_DVCD</td>
-<td>고객구분코드</td>
-<td>VARCHAR2</td>
-<td>5</td>
-<td>Y</td>
-<td></td>
-</tr>
-<tr>
-<td>CUSTOMER</td>
-<td>고객</td>
-<td>3</td>
-<td>JUMIN_RGST_NO</td>
-<td><code>고객주민등록번호</code></td>
-<td><code>VARCHAR2</code></td>
-<td><code>15</code></td>
-<td>Y</td>
-<td></td>
-</tr>
-<tr>
-<td>CUSTOMER</td>
-<td>고객</td>
-<td>4</td>
-<td>BS_RGST_NO</td>
-<td>사업자번호</td>
-<td>VARCHAR2</td>
-<td>15</td>
-<td>Y</td>
-<td></td>
-</tr>
-<tr>
-<td>CUSTOMER</td>
-<td>고객</td>
-<td>5</td>
-<td>CUST_STCD</td>
-<td>고객상태코드</td>
-<td>VARCHAR2</td>
-<td>5</td>
-<td>Y</td>
-<td></td>
-</tr>
-<tr>
-<td>CUSTOMER</td>
-<td>고객</td>
-<td>6</td>
-<td><code>CUST_RGST_DT</code></td>
-<td><code>고객등록일자</code></td>
-<td>VARCHAR2</td>
-<td>8</td>
-<td>Y</td>
-<td></td>
-</tr>
-<tr>
-<td>CUSTOMER</td>
-<td>고객</td>
-<td>7</td>
-<td><code>CUST_NM</code></td>
-<td><code>고객명</code></td>
-<td>VARCHAR2</td>
-<td>10</td>
-<td>Y</td>
-<td></td>
-</tr>
-<tr>
-<td>CUSTOMER</td>
-<td>고객</td>
-<td>8</td>
-<td>COMB_RES_YN</td>
-<td>통합고객등록여부</td>
-<td>VARCHAR2</td>
-<td>1</td>
-<td>Y</td>
-<td></td>
-</tr>
-</tbody></table>
+  <tr>
+    <th>테이블<br>영문명</th>
+    <th>테이블<br>한글명</th>
+    <th>컬럼순서</th>
+    <th>컬럼영문명</th>
+    <th>컬럼한글명</th>
+    <th>데이터타입</th>
+    <th>길이</th>
+    <th>널여부</th>
+    <th>PK</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;">CUSTOMER</td>
+    <td style="text-align: center;">고객</td>
+    <td style="text-align: center;">1</td>
+    <td>CUST_ID</td>
+    <td style="text-align: center;">고객번호</td>
+    <td style="text-align: center;">VARCHAR2</td>
+    <td style="text-align: center;">5</td>
+    <td style="text-align: center;">N</td>
+    <td style="text-align: center;">PK</td>
+  </tr> 
+  <tr>
+    <td style="text-align: center;">CUSTOMER</td>
+    <td style="text-align: center;">고객</td>
+    <td style="text-align: center;">2</td>
+    <td>CUST_DVCD</td>
+    <td style="text-align: center;">고객구분<br>코드</td>
+    <td style="text-align: center;">VARCHAR2</td>
+    <td style="text-align: center;">5</td>
+    <td style="text-align: center;">Y</td>
+    <td style="text-align: center;">PK</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">CUSTOMER</td>
+    <td style="text-align: center;">고객</td>
+    <td style="text-align: center;">3</td>
+    <td>JUMIN_RGST_NO</td>
+    <td style="text-align: center;"><code>고객주민<br>등록번호</code></td>
+    <td style="text-align: center;"><code>VARCHAR2</code></td>
+    <td style="text-align: center;"><code>15</code></td>
+    <td style="text-align: center;">Y</td>
+    <td style="text-align: center;">PK</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">CUSTOMER</td>
+    <td style="text-align: center;">고객</td>
+    <td style="text-align: center;">4</td>
+    <td>BS_RGST_NO</td>
+    <td style="text-align: center;">사업자번호</td>
+    <td style="text-align: center;">VARCHAR2</td>
+    <td style="text-align: center;">15</td>
+    <td style="text-align: center;">Y</td>
+    <td style="text-align: center;">PK</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">CUSTOMER</td>
+    <td style="text-align: center;">고객</td>
+    <td style="text-align: center;">5</td>
+    <td>CUST_STCD</td>
+    <td style="text-align: center;">고객상태<br>코드</td>
+    <td style="text-align: center;">VARCHAR2</td>
+    <td style="text-align: center;">5</td>
+    <td style="text-align: center;">Y</td>
+    <td style="text-align: center;">PK</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">CUSTOMER</td>
+    <td style="text-align: center;">고객</td>
+    <td style="text-align: center;">6</td>
+    <td><code>CUST_RGST_DT</code></td>
+    <td style="text-align: center;"><code>고객등록<br>일자</code></td>
+    <td style="text-align: center;">VARCHAR2</td>
+    <td style="text-align: center;">8</td>
+    <td style="text-align: center;">Y</td>
+    <td style="text-align: center;">PK</td>
+  </tr>    
+  <tr>
+    <td style="text-align: center;">CUSTOMER</td>
+    <td style="text-align: center;">고객</td>
+    <td style="text-align: center;">7</td>
+    <td><code>CUST_NM</code></td>
+    <td style="text-align: center;"><code>고객명</code></td>
+    <td style="text-align: center;">VARCHAR2</td>
+    <td style="text-align: center;">10</td>
+    <td style="text-align: center;">Y</td>
+    <td style="text-align: center;">PK</td>
+  </tr>      
+  <tr>
+    <td style="text-align: center;">CUSTOMER</td>
+    <td style="text-align: center;">고객</td>
+    <td style="text-align: center;">8</td>
+    <td>COMB_RES_YN</td>
+    <td style="text-align: center;">통합고객<br>등록여부</td>
+    <td style="text-align: center;">VARCHAR2</td>
+    <td style="text-align: center;">1</td>
+    <td style="text-align: center;">Y</td>
+    <td style="text-align: center;">PK</td>
+  </tr>      
+</table>
+
 <br>
 
 <p>&lt;<code>테이블 컬럼 정의서</code>&gt;</p>
@@ -863,9 +865,8 @@
     <th>널여부</th>
     <th>PK</th>
   </tr>
-
   <tr>
-    <td rowspan="8" style="text-align: center;" >고객<br>CUSTOMER</td>
+    <td rowspan="8" style="text-align: center;">고객<br>CUSTOMER</td>
     <td style="text-align: center;">CUST_ID</td>
     <td style="text-align: center;">고객번호</td>
     <td style="text-align: center;">VARCHAR2</td>
@@ -873,55 +874,49 @@
     <td style="text-align: center;">N</td>
     <td style="text-align: center;">PK</td>
   </tr> 
-
   <tr>
     <td style="text-align: center;">CUST_DVCD</td>
-    <td>고객구분코드</td>
+    <td style="text-align: center;">고객구분코드</td>
     <td style="text-align: center;">VARCHAR2</td>
     <td style="text-align: center;">5</td>
     <td style="text-align: center;">Y</td>
     <td style="text-align: center;"></td>
   </tr>
-
   <tr>
     <td style="text-align: center;">JUMIN_RGST_NO</td>
-    <td><code>고객주민등록번호</code></td>
+    <td style="text-align: center;"><code>고객주민등록번호</code></td>
     <td style="text-align: center;"><code>NUMBER</code></td>
     <td style="text-align: center;"><code>13</code></td>
     <td style="text-align: center;">Y</td>
     <td style="text-align: center;"></td>
   </tr>
-  
   <tr>
     <td style="text-align: center;">BS_RGST_NO</td>
-    <td>사업자번호</td>
+    <td style="text-align: center;">사업자번호</td>
     <td style="text-align: center;">VARCHAR2</td>
     <td style="text-align: center;">15</td>
     <td style="text-align: center;">Y</td>
     <td style="text-align: center;"></td>
   </tr>
-
   <tr>
     <td style="text-align: center;">CUST_STCD</td>
-    <td>고객상태코드</td>
+    <td style="text-align: center;">고객상태코드</td>
     <td style="text-align: center;">VARCHAR2</td>
     <td style="text-align: center;">5</td>
     <td style="text-align: center;">Y</td>
     <td style="text-align: center;"></td>
   </tr>
-
   <tr>
     <td style="text-align: center;"><code>CUST_NAME</code></td>
-    <td><code>고객명</code></td>
+    <td style="text-align: center;"><code>고객명</code></td>
     <td style="text-align: center;">VARCHAR2</td>
     <td style="text-align: center;">10</td>
     <td style="text-align: center;">Y</td>
     <td style="text-align: center;"></td>
   </tr>    
-
   <tr>
     <td style="text-align: center;">COMB_RES_YN</td>
-    <td>통합고객등록여부</td>
+    <td style="text-align: center;">통합고객등록여부</td>
     <td style="text-align: center;">VARCHAR2</td>
     <td style="text-align: center;">1</td>
     <td style="text-align: center;">Y</td>
@@ -931,15 +926,15 @@
 
 <br>
 
-<p>&lt;<code>물리 DB 메타 정보</code>-<code>테이블 컬럼 정의서</code> 비교 및 오류현황 파악&gt;<br><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129144&authkey=%21AK1AQou9N_MFsEA&width=1164&height=394" width="1164" height="394" alt="오류현황"/></p>
+<p>&lt;<code>물리 DB 메타 정보</code>-<code>테이블 컬럼 정의서</code> 비교 및 오류현황 파악&gt;<br><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129144&authkey=%21AK1AQou9N_MFsEA&width=1164&height=394" width="1164" height="394" alt="물리 DB 메타 정보-테이블 컬럼 정의서 비교 오류현황"/></p>
 <h2 id="7-컬럼-분석"><a href="#7-컬럼-분석" class="headerlink" title="7. 컬럼 분석"></a>7. 컬럼 분석</h2><hr>
 <blockquote>
-<p>컬럼의 통계데이터를 수집함으로서 오류징후를 파악하는 데 용이함</p>
+<p><code>컬럼의 통계데이터를 수집</code>함으로서 <code>오류징후를 파악</code>하는 데 용이함</p>
 </blockquote>
 <ul>
 <li>컬럼분석을 통해 오류 뿐만 아니라, 데이터 값의 빈도, 데이터 패턴 등을 미리 파악할 수 있음</li>
 </ul>
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129132&authkey=%21AKvgZvFfcBVdfDI&width=1024" width="1024" height="auto" alt="컬럼에 대한 컬럼 분석 실시 결과 (예시)"/>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129132&authkey=%21AKvgZvFfcBVdfDI&width=1024" width="1024" height="auto" alt="컬럼 분석 실시 결과 (예시)"/>
 
 <h3 id="7-1-MIN-MAX-분석"><a href="#7-1-MIN-MAX-분석" class="headerlink" title="7.1 MIN &#x2F; MAX 분석"></a>7.1 MIN &#x2F; MAX 분석</h3><hr>
 <blockquote>
@@ -949,21 +944,20 @@
 <li>개별 빈도 값을 추출하지 않고 빠른 시간 내에 오류 징후를 파악 가능</li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>테이블명</th>
-<th>컬럼명</th>
-<th>MIN</th>
-<th>MAX</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>주문상세</td>
-<td>판매가격</td>
-<td><code>-9999999</code></td>
-<td><code>9999999</code></td>
-</tr>
-</tbody></table>
+  <tr>
+    <th>테이블명</th>
+    <th>컬럼명</th>
+    <th>MIN</th>
+    <th>MAX</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;">테이블명</td>
+    <td style="text-align: center;">판매가격</td>
+    <td style="text-align: center;"><code>-9999999</code></td>
+    <td style="text-align: center;"><code>9999999</code></td>
+  </tr> 
+</table>
+
 <pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>MIN / MAX 분석 쿼리</span></div><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token string">'판매가격'</span>
      <span class="token punctuation">,</span> <span class="token function">MIN</span><span class="token punctuation">(</span>sal_price<span class="token punctuation">)</span>
      <span class="token punctuation">,</span> <span class="token function">MAX</span><span class="token punctuation">(</span>sal_price<span class="token punctuation">)</span>
@@ -978,23 +972,22 @@
 <li>컬럼의 사용유무, 필수입력 컬럼 등에 대한 오류 징후 파악 가능</li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>테이블명</th>
-<th>컬럼명</th>
-<th>총건수</th>
-<th>NULL</th>
-<th>SPACE</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>공급업체</td>
-<td>기타정보</td>
-<td>168</td>
-<td><code>131</code></td>
-<td><code>37</code></td>
-</tr>
-</tbody></table>
+  <tr>
+    <th>테이블명</th>
+    <th>컬럼명</th>
+    <th>총건수</th>
+    <th>NULL</th>
+    <th>SPACE</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;">공급업체</td>
+    <td style="text-align: center;">기타정보</td>
+    <td style="text-align: center;">168</td>
+    <td style="text-align: center;"><code>131</code></td>
+    <td style="text-align: center;"><code>37</code></td>
+  </tr> 
+</table>
+
 <pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>NULL / SPACE 분석 쿼리</span></div><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span>         <span class="token keyword">AS</span> TOT_CNT
      <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span>etc_info<span class="token punctuation">)</span>  <span class="token keyword">AS</span> NOT_NULL_CNT
      <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span>
@@ -1011,23 +1004,22 @@
 <li>컬럼의 사용유무, 필수입력 컬럼 등에 대한 오류징후 파악 가능</li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>테이블명</th>
-<th>컬럼명</th>
-<th>총건수</th>
-<th>DISTINCT</th>
-<th>DUPLICATE</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>고객</td>
-<td>통합고객여부</td>
-<td>10</td>
-<td><code>3</code></td>
-<td><code>7</code></td>
-</tr>
-</tbody></table>
+  <tr>
+    <th>테이블명</th>
+    <th>컬럼명</th>
+    <th>총건수</th>
+    <th>DISTINCT</th>
+    <th>DUPLICATE</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;">고객</td>
+    <td style="text-align: center;">통합고객여부</td>
+    <td style="text-align: center;">10</td>
+    <td style="text-align: center;"><code>3</code></td>
+    <td style="text-align: center;"><code>7</code></td>
+  </tr> 
+</table>
+
 <pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>DISTINCT / DUPLICATE 분석 쿼리</span></div><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span>                                            <span class="token keyword">AS</span> TOT_CNT
      <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span>comb_res_yn<span class="token punctuation">)</span>                                  <span class="token keyword">AS</span> NOT_NULL_CNT
      <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> comb_res_yn<span class="token punctuation">)</span>                         <span class="token keyword">AS</span> DISTINCT_CNT
@@ -1039,111 +1031,19 @@
 <h2 id="8-유효성-진단대상-선정"><a href="#8-유효성-진단대상-선정" class="headerlink" title="8. 유효성 진단대상 선정"></a>8. 유효성 진단대상 선정</h2><hr>
 <h3 id="8-1-도메인-분석"><a href="#8-1-도메인-분석" class="headerlink" title="8.1 도메인 분석"></a>8.1 도메인 분석</h3><hr>
 <blockquote>
-<p>테이블 컬럼 정보를 통한 도메인 정의 및 분류 수행</p>
+<p>테이블 컬럼 정보를 통한 <code>도메인 정의 및 분류 수행</code></p>
 </blockquote>
 <ul>
 <li>분류 작업을 통해 속성이 갖는 도메인을 그룹화</li>
 </ul>
-<p>&lt;도메인 분류&gt;</p>
-<table>
-  <tr>
-    <th>순번</th>
-    <th>도메인그룹</th>
-    <th>도메인명</th>
-  </tr>
-
-  <tr>
-    <td style="text-align: center;">1</td>
-    <td style="text-align: center;">분류</td>
-    <td style="text-align: center;">여부</td>
-  </tr> 
-
-  <tr>
-    <td style="text-align: center;">2</td>
-    <td style="text-align: center;">분류</td>
-    <td style="text-align: center;">유무</td>
-  </tr> 
-
-  <tr>
-    <td style="text-align: center;">3</td>
-    <td style="text-align: center;">날짜</td>
-    <td style="text-align: center;">년</td>
-  </tr> 
-
-  <tr>
-    <td style="text-align: center;">4</td>
-    <td style="text-align: center;">날짜</td>
-    <td style="text-align: center;">년월</td>
-  </tr> 
-
-  <tr>
-    <td style="text-align: center;">5</td>
-    <td style="text-align: center;">날짜</td>
-    <td style="text-align: center;">년월일</td>
-  </tr> 
-
-  <tr>
-    <td style="text-align: center;">6</td>
-    <td style="text-align: center;">날짜</td>
-    <td style="text-align: center;">년월일시</td>
-  </tr> 
-
-  <tr>
-    <td style="text-align: center;">7</td>
-    <td style="text-align: center;">날짜</td>
-    <td style="text-align: center;">년월일시분</td>
-  </tr> 
-
-  <tr>
-    <td style="text-align: center;">8</td>
-    <td style="text-align: center;">금액</td>
-    <td style="text-align: center;">가격</td>
-  </tr> 
-
-  <tr>
-    <td style="text-align: center;">9</td>
-    <td style="text-align: center;">금액</td>
-    <td style="text-align: center;">단가</td>
-  </tr> 
-
-  <tr>
-    <td style="text-align: center;">10</td>
-    <td style="text-align: center;">명칭</td>
-    <td style="text-align: center;">ID</td>
-  </tr> 
-
-  <tr>
-    <td style="text-align: center;">11</td>
-    <td style="text-align: center;">명칭</td>
-    <td style="text-align: center;">명</td>
-  </tr> 
-
-  <tr>
-    <td style="text-align: center;">12</td>
-    <td style="text-align: center;">수량</td>
-    <td style="text-align: center;">개수</td>
-  </tr> 
-
-  <tr>
-    <td style="text-align: center;">13</td>
-    <td style="text-align: center;">번호</td>
-    <td style="text-align: center;">식별자</td>
-  </tr>
-
-  <tr>
-    <td style="text-align: center;">14</td>
-    <td style="text-align: center;">코드</td>
-    <td style="text-align: center;">코드</td>
-  </tr>
-
-</table>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129175&authkey=%21ALoGLuj9HN6YX5w&width=1024" width="1024" height="auto" alt="도메인 분류 예시"/>
 
 
 <h3 id="8-2-업무요건-분석"><a href="#8-2-업무요건-분석" class="headerlink" title="8.2 업무요건 분석"></a>8.2 업무요건 분석</h3><hr>
 <ul>
 <li><code>데이터 관리문서</code>에 명시된 데이터 규칙</li>
 </ul>
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129140&authkey=%21ALcAq5LFulp3lhQ&height=660" width="auto" height="660" alt="사용자 매뉴얼 예시"/>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129140&authkey=%21ALcAq5LFulp3lhQ&height=660" width="auto" height="660" alt="사용자 매뉴얼을 통한 업무요건 파악 예시"/>
 
 <ul>
 <li><p><code>업무 담당자가 지식으로 알고 있는</code> 규칙</p>
@@ -1158,6 +1058,7 @@
 </blockquote>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129131&authkey=%21AIUjaWpWEj9TqJ4&width=1114&height=720" width="1114" height="720" alt="도메인별 진단 방법 분류"/>
 
+<h3 id="9-2-컬럼별-진단기준-매핑"><a href="#9-2-컬럼별-진단기준-매핑" class="headerlink" title="9.2 컬럼별 진단기준 매핑"></a>9.2 컬럼별 진단기준 매핑</h3><hr>
 <blockquote>
 <p><code>도메인 분석</code> 및 <code>업무요건 분석</code>에 따라 컬럼별 진단기준 매핑</p>
 </blockquote>
@@ -1165,20 +1066,20 @@
 
 <h2 id="10-오류내역-검토-수정-및-보완"><a href="#10-오류내역-검토-수정-및-보완" class="headerlink" title="10. 오류내역 검토, 수정 및 보완"></a>10. 오류내역 검토, 수정 및 보완</h2><hr>
 <blockquote>
-<p>데이터 오류를 확정하기 위해 <code>업무담당자, 품질담당자 등 관련자의 리뷰와 보완이 필요</code></p>
+<p>데이터 오류를 확정하기 위해 <code>업무담당자, 품질담당자 등 관련자의 리뷰와 보완이 필요</code>하다.</p>
 </blockquote>
 <h3 id="확인사항"><a href="#확인사항" class="headerlink" title="확인사항"></a>확인사항</h3><ul>
-<li>진단대상 누락이 없는지 파악한다. (범정부 데이터 품질진단 기준에 해당하는 모든 컬럼)</li>
-<li>진단대상 및 기준이 정확하게 도출되었는지 확인한다.</li>
-<li>동일 항목이나 업무별로 다르게 작성되지 않았는지 확인한다.</li>
-<li>정확성(업무규칙) 진단기준 도출시 일관된 표현을 사용하는지 확인한다.</li>
+<li><code>진단대상 누락</code>이 없는지 파악한다. (범정부 데이터 품질진단 기준에 해당하는 모든 컬럼)</li>
+<li><code>진단대상 및 기준이 정확</code>하게 도출되었는지 확인한다.</li>
+<li>동일 항목이나 업무별로 <code>다르게 작성되지 않았는지 확인</code>한다.</li>
+<li>정확성(업무규칙) 진단기준 도출시 <code>일관된 표현</code>을 사용하는지 확인한다.</li>
 </ul>
 <h2 id="11-오류확정-및-결과보고서-작성"><a href="#11-오류확정-및-결과보고서-작성" class="headerlink" title="11. 오류확정 및 결과보고서 작성"></a>11. 오류확정 및 결과보고서 작성</h2><hr>
 <blockquote>
 <p>선정된 진단방법에 따라 진단을 수행하고 각 프로파일링 결과를 종합하여 결과보고서 작성</p>
 </blockquote>
 <ul>
-<li><p><code>분석 대상별 오류율을 정리</code>하여 최종 결과 보고서를 작성</p>
+<li><p><code>분석 대상별 오류율을 정리</code>하여 최종 <code>결과 보고서 작성</code></p>
 </li>
 <li><p>오류발생 추이를 파악할 수 있도록 <code>프로파일링 결과를 주기적으로 기록</code></p>
 </li>
