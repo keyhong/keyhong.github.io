@@ -239,6 +239,8 @@ DIM_체결 내용은 Dimension Table이 아닌 Fact Table이어야 한다. Fact�
 </li>
 <li><p>상품기본은 SCD 1로 해도 무방하다. 상품 테이블은 데이터 양이 많고 변동이 많기 때문에 보통 이력을 관리없이 오버라이트를 한다. 하지만, 도메인에 따라(예: 금융 또는 보험 업계)에서 상품 이력을 관리해야 할 중요성이 있다면 데이터 볼륨을 감안해 History 테이블 없이 SCD 2로만으로 충분하다고 생각된다.</p>
 </li>
+<li><p>시간이 지나고 다시 모델을 리뷰를 했다. 위 ERD는 논리 모델이라고 표현했지만 정확히 물리 모델이다. 논리 모델과 물리 모델에 큰 차이라면, DBMS에 맞춘 데이터 타입을 설계하는 것과 논리 모델에서는 물리 모델과 다르게 <code>서브타입</code>이 표현가능하다. 즉, 논리 모델은 업무 규칙을 반영하고 있고 <code>물리 모델은 서브타입이 실제 테이블에서 하나의 컬럼으로 표현되었기에 비즈니스 룰(BR)을 이해하기 어렵다.</code> 데이터 품질을 검사할 때, 업무규칙 진단이 있는데 업무 규칙을 이해한 DQ를 구현하려면 논리 모델을 봐야 한다.</p>
+</li>
 </ol>
 <h2 id="Thinking"><a href="#Thinking" class="headerlink" title="Thinking"></a>Thinking</h2><hr>
 <h3 id="1-SQL-스냅샷-테이블-쿼리-최적화"><a href="#1-SQL-스냅샷-테이블-쿼리-최적화" class="headerlink" title="(1) SQL 스냅샷 테이블 쿼리 최적화"></a>(1) SQL 스냅샷 테이블 쿼리 최적화</h3><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129035&authkey=%21AGJ3d5LEK4oOzmI&width=2667&height=1500" width="2667" height="1500" />
@@ -417,12 +419,12 @@ DIM_체결 내용은 Dimension Table이 아닌 Fact Table이어야 한다. Fact�
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/1996/01/19/Side-Project/dw-modeling-2/">
+                <a href="/2024/03/01/Kubernetes/docs/Kubernetes%20Docs%20Index/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/life-logo.jpg" class="responsive-img" alt="DW Modeling (Physical)">
+                        <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Kubernetes Docs Index">
                         
-                        <span class="card-title diy-neon-red">DW Modeling (Physical)</span>
+                        <span class="card-title diy-neon-red">Kubernetes Docs Index</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -433,7 +435,7 @@ DIM_체결 내용은 Dimension Table이 아닌 Fact Table이어야 한다. Fact�
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>1996-01-19
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-03-01
                         </span>
                         <span class="publish-author">
                             
@@ -453,12 +455,12 @@ DIM_체결 내용은 Dimension Table이 아닌 Fact Table이어야 한다. Fact�
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/1996/01/19/Side-Project/nonghyup-consulting/">
+                <a href="/1996/01/19/Side-Project/dw-modeling-2/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/life-logo.jpg" class="responsive-img" alt="농협양곡 빅데이터 컨설팅">
+                        <img src="/images/logos/life-logo.jpg" class="responsive-img" alt="DW Modeling (Physical)">
                         
-                        <span class="card-title diy-neon-red">농협양곡 빅데이터 컨설팅</span>
+                        <span class="card-title diy-neon-red">DW Modeling (Physical)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
