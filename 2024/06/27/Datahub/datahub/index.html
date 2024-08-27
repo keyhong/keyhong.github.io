@@ -618,12 +618,12 @@ mysql                      <span class="token operator">>></span> mysql-setup   
 <tr>
 <td>메타관리<br>유용성</td>
 <td>⭐⭐⭐⭐⭐</td>
-<td>데이터 소스에서 메타 데이터를 수집하여 제공하는 UI를 통해 <code>테이블의 메타 데이터를 보기 편리</code>하다. 테이블의 <code>수집한 물리 DB의 메타 데이터에 사용자가 직접 메타에 대한 추가 코먼트가 가능</code>하고, <code>기존 메타 데이터와 사용자 추가 메타 데이터가 따로 관리</code>되어 탐색의 다양성을 지원한다. 또한 기술 통계 (MIN&#x2F;MAX, AVG, COUNT, STDDEV ..)에 기반한 <code>데이터 프로파일링 기능</code>도 지원하고 있다. 매번 메타 데이터를 긁어 올 때마다 <code>과거의 통계 정보 이력을 보존</code>하여 과거에 수집한 메타 정보를 볼 수도 있다.</td>
+<td>데이터 소스에서 메타 데이터를 수집 후 데이터허브에서 제공하는 UI를 통해 <code>테이블의 메타 데이터를 보기 편리</code>하다. 물리 DB에서 수집한 <code>기존 테이블의 메타 데이터에 사용자가 직접 추가 메타 정보를 코먼트 남길 수 있고</code>하고, <code>기존 메타 데이터와 사용자 추가 메타 데이터가 이중으로 따로 관리</code>되어 메타 관리의 다양성을 지원한다. 또한 기술 통계 (MIN&#x2F;MAX, AVG, COUNT, STDDEV ..)에 기반한 <code>데이터 프로파일링 기능</code>도 지원하고 있다. 매번 메타 데이터를 긁어 올 때마다 <code>과거의 통계 정보 이력을 보존</code>하여 과거에 수집한 메타 정보를 볼 수도 있다.</td>
 </tr>
 <tr>
 <td>리니지 추적<br>유용성</td>
 <td>⭐⭐⭐⭐</td>
-<td>리니지를 추적하기 쉽다는 것이 큰 장점이다. <code>Table-Level 과  Column-Level 리니지 추적을 지원</code>한다. 일반적으로는 <a target="_blank" rel="noopener" href="https://datahubproject.io/docs/api/tutorials/lineage#add-column-level-lineage">Python API</a>를 통해 직접 연결 설정을 한다. 이런 불편함을 보완하려고 <code>메타 데이터를 가져올 때 리니지까지 같이 자동 추출하는 기능</code>이 있다. 하지만 데이터 소스에 따라 <code>Column-Level 리니지는</code> <a target="_blank" rel="noopener" href="https://datahubproject.io/docs/generated/lineage/lineage-feature-guide/#automatic-lineage-extraction-support">지원하지 않는 데이터 소스</a> <code>가 많다.</code>(예를 들면, PostgreSQL. 물론 dbt를 연계하면 PostgreSQL도 Column-Level의 리니지를 만들 수 있다.) <a target="_blank" rel="noopener" href="https://datahubproject.io/docs/act-on-metadata/impact-analysis">리니지 임팩트 분석</a>도 지원해서, 엑셀 파일로 추출 후 시스템 전체 카탈로그에서 중요 변수의 데이터 영향도를 파악할 수 있다.</td>
+<td>리니지를 추적하기 쉽다는 것이 큰 장점이다. <code>Table-Level 과  Column-Level 리니지 추적을 지원</code>한다. 일반적으로는 <a target="_blank" rel="noopener" href="https://datahubproject.io/docs/api/tutorials/lineage#add-column-level-lineage">Python API</a>를 테이블&#x2F;컬럼 간 관계를 직접 연결 설정을 한다. 이런 불편함을 보완하려고 <code>메타 데이터를 추출할 때 리니지까지 같이 자동 추출하는 기능</code>이 있다. 하지만 데이터 소스에 따라 <code>Column-Level 리니지는</code> <a target="_blank" rel="noopener" href="https://datahubproject.io/docs/generated/lineage/lineage-feature-guide/#automatic-lineage-extraction-support">지원하지 않는 데이터 소스</a> <code>가 많다.</code>(예를 들면, PostgreSQL. 물론 dbt를 연계하면 PostgreSQL도 Column-Level의 리니지를 만들 수 있다.) <a target="_blank" rel="noopener" href="https://datahubproject.io/docs/act-on-metadata/impact-analysis">리니지 임팩트 분석</a>도 지원해서, 엑셀 파일로 추출 후 시스템 전체 카탈로그에서 중요 변수의 데이터 영향도를 파악할 수 있다.</td>
 </tr>
 </tbody></table>
 

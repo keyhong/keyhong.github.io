@@ -8,46 +8,9 @@
     <meta name="description" content="DW ERD (Star Schema, HDFS)
 
 
-Thinking
-(1) SQL 스냅샷 테이블 쿼리 최적화
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(2) HDFS 기반의 DW 차원 모델링
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-">
+DW ERD (시간이 지나고 다시 회고했을 때 고칠만한 사항)
+DIM_체결 내용은 Dimension Table이 아닌 Fact Table이어야 한다. Fact는 ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -264,6 +227,19 @@ Thinking
                 <h2 id="DW-ERD-Star-Schema-HDFS"><a href="#DW-ERD-Star-Schema-HDFS" class="headerlink" title="DW ERD (Star Schema, HDFS)"></a>DW ERD (Star Schema, HDFS)</h2><hr>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128741&authkey=%21APSWgN65zYK_m0k&width=1412&height=1370" width="1412" height="1370" alt="Dimension Modeling ERD"/>
 
+
+<h2 id="DW-ERD-시간이-지나고-다시-회고했을-때-고칠만한-사항"><a href="#DW-ERD-시간이-지나고-다시-회고했을-때-고칠만한-사항" class="headerlink" title="DW ERD (시간이 지나고 다시 회고했을 때 고칠만한 사항)"></a>DW ERD (시간이 지나고 다시 회고했을 때 고칠만한 사항)</h2><ol>
+<li><p>DIM_체결 내용은 Dimension Table이 아닌 Fact Table이어야 한다. Fact는 체결수량, 체결금액, 체결 수수료이다.</p>
+</li>
+<li><p>본래, Fact의 세분성(Granularity)을 고려하면 kimball의 다차원 모델링에서는 <code>FACT_주문내역</code>과 <code>DIM_체결내역(과거 모델링 할 때는 DIM으로 했으나, 배우고 난 뒤에 보니 FACT가 맞음)</code>을 통합하는 것이 맞다. 하지만, <code>테이블 통합시 행의 수가 급격하게 늘어나는 문제(주문내역 테이블의 식별자를 체결내역이 상속했기 때문)</code>와 <code>집계 분석의 활용성</code>에 있어서도 주문내역의 세분성이 <code>분석가들이 더 분석하기 편한 세분성</code>이라고 판단하였다. 만약 필요하다면 그 때 결합하여 사용해도 무방 할 것이라고 여전히 생각한다. 다만, <code>Fact-to-Fact</code>는 항상 Conformed Dimension을 통해 이을 수 없는 지 확인해야 한다.</p>
+</li>
+<li><p>해당 모델링에서는 대체키(surrogate key)를 사용하지 않았다. 그 당시에는 <code>빅데이터 플랫폼에 어차피 제약조건이 안되는 데, 자연키로 하는 게 좋지 않을까? 라고 생각</code>했었다. 하지만, 시간이 지나고 되돌아보니 <code>대체키 없이 SCD2 이력(선분이력) 테이블을 Fact 테이블과의 조인하는 것은 분석 쿼리가 너무 복잡해지는 문제</code>가 있다.</p>
+</li>
+<li><p>고객기본 테이블에 고객상태코드를 제외하면, 나머지는 변화가 없는 고정속성이기에 주문내역에서는 자연키ID(base dimension)을 두고 고객ID의 대체키를 팩트에 만들어서 history 테이블을 만드는 것이 맞는 방법(SCD 4)이다. 하지만, 하나의 컬럼이 중요하다면 이력을 관리해야 하나 어떻게 분석에 활용할 수 있을 지 조금 더 고민이 필요할 것 같다. (팩트 테이블에 조인됬을 때 상태의 최신성에 기반한 분석을 하려고 한다면, 선분이력이 아닌 점이력으로 변경도 가능)</p>
+</li>
+<li><p>상품기본은 SCD 1로 해도 무방하다. 상품 테이블은 데이터 양이 많고 변동이 많기 때문에 보통 이력을 관리없이 오버라이트를 한다. 하지만, 도메인에 따라(예: 금융 또는 보험 업계)에서 상품 이력을 관리해야 할 중요성이 있다면 데이터 볼륨을 감안해 History 테이블 없이 SCD 2로만으로 충분하다고 생각된다.</p>
+</li>
+</ol>
 <h2 id="Thinking"><a href="#Thinking" class="headerlink" title="Thinking"></a>Thinking</h2><hr>
 <h3 id="1-SQL-스냅샷-테이블-쿼리-최적화"><a href="#1-SQL-스냅샷-테이블-쿼리-최적화" class="headerlink" title="(1) SQL 스냅샷 테이블 쿼리 최적화"></a>(1) SQL 스냅샷 테이블 쿼리 최적화</h3><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129035&authkey=%21AGJ3d5LEK4oOzmI&width=2667&height=1500" width="2667" height="1500" />
 
@@ -441,12 +417,12 @@ Thinking
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/03/01/Kubernetes/docs/Kubernetes%20Docs%20Index/">
+                <a href="/1996/01/19/Side-Project/dw-modeling-2/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/kubernetes-logo.png" class="responsive-img" alt="Kubernetes Docs Index">
+                        <img src="/images/logos/life-logo.jpg" class="responsive-img" alt="DW Modeling (Physical)">
                         
-                        <span class="card-title diy-neon-red">Kubernetes Docs Index</span>
+                        <span class="card-title diy-neon-red">DW Modeling (Physical)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -457,7 +433,7 @@ Thinking
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-03-01
+                            <i class="far fa-clock fa-fw icon-date"></i>1996-01-19
                         </span>
                         <span class="publish-author">
                             
@@ -477,12 +453,12 @@ Thinking
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/1996/01/19/Side-Project/dw-modeling-2/">
+                <a href="/1996/01/19/Side-Project/nonghyup-consulting/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/life-logo.jpg" class="responsive-img" alt="DW Modeling (Physical)">
+                        <img src="/images/logos/life-logo.jpg" class="responsive-img" alt="농협양곡 빅데이터 컨설팅">
                         
-                        <span class="card-title diy-neon-red">DW Modeling (Physical)</span>
+                        <span class="card-title diy-neon-red">농협양곡 빅데이터 컨설팅</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
