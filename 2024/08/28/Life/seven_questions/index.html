@@ -293,11 +293,11 @@
 <hr>
 
 <p>특정 컬럼에서 통계가 나온다면 RI 관계를 그려주는 것이 좋다. 하지만 집계를 할 때 집계에 기준이 되는(<code>by ~</code>에 해당하는) 특정 컬럼을 가공해서 집계를 산출 할 수도 있다. 이럴 경우에는 RI 관계를 표현하는 것이 굉장히 애매할 것이다. 때문에 RI를 그려주지 않아도 된다. <code>보통은 대부분 통계 테이블은 RI 관계가 표시되지 않는 경우가 많으나, 이을 수 있다면 잇는 게 좋다.</code></p>
-<img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeQEwKIf1WU_ZwF8YA?embed=1&width=453&height=156" width="453" height="156" alt="CCTV효율지수행정동은 CCTV효율지수그리드의 행정동코드별 집계 평균으로 생성 (1:N)"/>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129188&authkey=%21AMCiH9VlP2cBfGA&width=453&height=156" width="453" height="156" alt="CCTV효율지수행정동은 CCTV효율지수그리드의 행정동코드별 집계 평균으로 생성 (1:N)"/>
 
 <br>
 
-<img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeQHHYU09jv24UBuNw?embed=1&width=365&height=132" width="365" height="132" alt="CCTV모니터비율은 그리/행정동 테이블에서 파생되었으나, 가공한 컬럼(시간코드, 모니터비율)을 사용하여 RI를 걸지 않음"  />
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129191&authkey=%21AB2FNPY79uFAbjc&width=365&height=132" width="365" height="132" alt="CCTV모니터비율은 CCTV효율지수행정동 테이블에서 파생되었으나, 가공한 컬럼(시간코드, 모니터비율)을 사용하여 RI를 걸지 않음"/>
 
 
 
@@ -307,7 +307,7 @@
 </ol>
 <hr>
 
-<p><code>꼭 써야한다, 쓰지 말아야 한다는 기준은 없다.</code> 하지만 자연키(Natural Key)로 이력을 관리하려고 한다면, 기존 식별자에 적재일자까지 있어야 DIM-FACT 조인이 가능할 것이다. 하지만 이럴 경우, DIM 테이블에서 매일마다 ETL로 끌어오는 디멘션 테이블을 일별 스냅샷을 떠는 방법과 같은데 효율적인지는 잘 모르겠다. 오히려 SCD 2 와 선분 이력의 조합을 사용한다면 DIM 테이블에서 행의 수를 크게 늘리지 않고 더 효율적으로 DIM-FACT 조인이 가능하다. 그래서 <code>저자는 이력관리가 필요한 DIM 테이블의 대체키를 선호하는 편이다.</code></p>
+<p><code>꼭 써야한다, 쓰지 말아야 한다는 기준은 없다.</code> 하지만 자연키(Natural Key)로 이력을 관리하려고 한다면, 기존 식별자에 적재일자까지 있어야 DIM-FACT 조인이 가능할 것이다. 하지만 이럴 경우, DIM 테이블에서 매일마다 ETL로 끌어오는 디멘션 테이블을 일별 스냅샷을 뜨는 방법과 같은데 효율적인지는 잘 모르겠다. 오히려 SCD 2 와 선분 이력의 조합을 사용한다면 DIM 테이블에서 행의 수를 크게 늘리지 않고 더 효율적으로 DIM-FACT 조인이 가능하다. 그래서 <code>저자는 이력관리가 필요한 DIM 테이블의 대체키를 선호하는 편이다.</code></p>
 <br>
 
 <ol start="2">
