@@ -479,8 +479,21 @@
 <li>표준 사전</li>
 <li>물리 인포 (데이터 타입 + 길이)<br>(ing..)</li>
 </ol>
-<h2 id="2-현황-분석-지표-정의"><a href="#2-현황-분석-지표-정의" class="headerlink" title="2. 현황 분석 &amp; 지표 정의"></a>2. 현황 분석 &amp; 지표 정의</h2><hr>
+<h2 id="2-현황-분석-지표-정의-문제-정의"><a href="#2-현황-분석-지표-정의-문제-정의" class="headerlink" title="2. 현황 분석 &amp; 지표 정의 &amp; 문제 정의"></a>2. 현황 분석 &amp; 지표 정의 &amp; 문제 정의</h2><hr>
 <h3 id="미분류-임시-저장"><a href="#미분류-임시-저장" class="headerlink" title="미분류. 임시 저장"></a>미분류. 임시 저장</h3><hr>
+<h3 id="2-1-현황-분석"><a href="#2-1-현황-분석" class="headerlink" title="2.1 현황 분석"></a>2.1 현황 분석</h3><hr>
+<h4 id="2-1-1-고객재구매-주기-분석"><a href="#2-1-1-고객재구매-주기-분석" class="headerlink" title="2.1.1 고객재구매 주기 분석"></a>2.1.1 고객재구매 주기 분석</h4><hr>
+<blockquote>
+<p><code>2021.01.01 ~ 2022.06.30</code> 기간 동안 <code>개인 고객별 이전 구매 이후 다음 재구매까지의 소요일수 평균값</code>의 <code>전체 고객들의 중앙값</code></p>
+</blockquote>
+<p>일정 기간의 구매 데이터에서 고객별 평균 재구매주기를 나열하고 중앙값(평균은 극단값의 영향을 받기 때문)을 구하면, 재구매주기의 빈도를 정할 수 있다. </p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129163&authkey=%21AJwwWKoAVISSJvw&width=1024" width="1024" height="auto" alt="유저별 평균 재구매 주기 산점도 그래프"/>
+
+<ul>
+<li>고객별 평균 재구매주기의 전체 중앙값은 약 77일이다. &#x3D;&gt; 기간을 정하지 않고 했을 때 기준임. 2018년 이후로 서비스의 지속적인 성장과 함께 재구매주기가 짧아지는 양상을 확인. 2021.07.01 ~ 2022.06.30 기간으로 했을 때 59일 (약 2달)로 재구매 주기가 줄어들었음. (BI 차트 수정 예정)</li>
+</ul>
+<p>위와 같이 재구매주기가 약 76일일 경우, 매월 1일에 주기적 스냅샷(periodic snapshot) 기준으로 전 월의 MAU 스냅샷을 뜰 때 첫 구매 여부와 2달내 고객의 재구매 여부 이력을 기준으로 MAU를 신규&#x2F;복귀&#x2F;기존 사용자로 세분화 시킬 수 있다.</p>
+<h4 id="2-1-2-임시-저장"><a href="#2-1-2-임시-저장" class="headerlink" title="2.1.2 임시 저장"></a>2.1.2 임시 저장</h4><hr>
 <img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeQU4iJREjCoa3QyoA?embed=1&width=2376&height=920" width="2376" height="920" />
 
 <img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeQSxFBPNRSpDPspxQ?embed=1&width=1834&height=1136" width="1834" height="1136" />
@@ -490,30 +503,29 @@
 <img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeQRGWhjq7R4chSYKA?embed=1&width=1460&height=760" width="1460" height="760" />
 
 
-<h3 id="2-1-고객재구매-주기-분석"><a href="#2-1-고객재구매-주기-분석" class="headerlink" title="2.1 고객재구매 주기 분석"></a>2.1 고객재구매 주기 분석</h3><hr>
-<blockquote>
-<p><code>2021.01.01 ~ 2022.06.30</code> 기간 동안 <code>개인 고객별 이전 구매 이후 다음 재구매까지의 소요일수 평균값</code>의 <code>전체 고객들의 중앙값</code></p>
-</blockquote>
-<p>일정 기간의 구매 데이터에서 고객별 평균 재구매주기를 나열하고 중앙값(평균은 극단값의 영향을 받기 때문)을 구하면, 재구매주기의 빈도를 정할 수 있다. </p>
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129163&authkey=%21AJwwWKoAVISSJvw&width=1024" width="1024" height="auto" alt="유저별 평균 재구매 주기 산점도 그래프"/>
-
+<h3 id="2-2-지표-정의"><a href="#2-2-지표-정의" class="headerlink" title="2.2 지표 정의"></a>2.2 지표 정의</h3><hr>
+<h4 id="2-2-1-고객-정의"><a href="#2-2-1-고객-정의" class="headerlink" title="2.2.1 고객 정의"></a>2.2.1 고객 정의</h4><hr>
+<p>앞서 구한 고객의 재구매 주기는 약 2달이었다. 이를 통해 매월 1일 스냅샷을 고객등급에 대한 스냅샷을 찍어, 지속적으로 고객의 등급을 최신화하는 것으로 한다.</p>
 <ul>
-<li>고객별 평균 재구매주기의 전체 중앙값은 약 77일이다. &#x3D;&gt; 기간을 정하지 않고 했을 때 기준임. 2018년 이후로 서비스의 지속적인 성장과 함께 재구매주기가 짧아지는 양상을 확인. 2021.01.01 ~ 2022.06.30 기간으로 했을 때 59일 (약 2달)로 재구매 주기가 줄어들었음. (BI 차트 수정 예정)</li>
+<li>신규 고객 (new_user) : 당월에 최초 구매한 고객</li>
+<li>기존 고객 (existing_user) : 직전 2개월 동안 한번이라도 구매했고 당월에 재구매한 고객</li>
+<li>복귀 고객 (retuning_user) : 직전 2개월 전 구매한 적 있고, 당월에 재구매한 고객</li>
+<li>이탈 고객 (bounce user) : 직전 2개월 전 구매한 적 있지만, 당월에 구매하지 않은 고객</li>
+<li>장기 이탈 고객 (churn_Users) : 직전 12개월 전 구매한 적 있지만, 그 이후 구매하지 않은 고객</li>
 </ul>
-<p>위와 같이 재구매주기가 약 76일일 경우, 매월 1일에 주기적 스냅샷(periodic snapshot) 기준으로 전 월의 MAU 스냅샷을 뜰 때 첫 구매 여부와 2달내 고객의 재구매 여부 이력을 기준으로 MAU를 신규&#x2F;복귀&#x2F;기존 사용자로 세분화 시킬 수 있다.</p>
-<h4 id="고객-정의"><a href="#고객-정의" class="headerlink" title="고객 정의"></a>고객 정의</h4><hr>
+<h4 id="2-2-2-RFM-고객등급-정의"><a href="#2-2-2-RFM-고객등급-정의" class="headerlink" title="2.2.2 RFM 고객등급 정의"></a>2.2.2 RFM 고객등급 정의</h4><hr>
+<p>고객 등급은 RFM 각각의 기준에 의해 총 32등급으로 분류하였다.</p>
 <ul>
-<li>신규 고객 : 당월에 최초 구매한 고객</li>
-<li>기존 고객 : 직전 2개월 동안 한번이라도 구매했고 당월에 재구매한 고객</li>
-<li>복귀 고객 : 직전 2개월 전 구매한 적 있고, 당월에 재구매한 고객</li>
-<li>이탈 고객 : 직전 2개월 전 구매한 적 있지만 당월에 구매하지 않은 고객</li>
+<li>Recency : 고객의 평균 재구매 주기를 기준으로 매달 스냅샷을 찍었을 때, 2달 이내 상품 구매 여부</li>
+<li>Frequency, Monetary : 1년 동안 매달 스냅샷을 찍었을 때, 전체 고객의 구매 빈도와 구매 금액을 4분위 값의 이동 평균</li>
 </ul>
-<h3 id="2-2-User-Movement"><a href="#2-2-User-Movement" class="headerlink" title="2.2 User Movement"></a>2.2 User Movement</h3><hr>
+<h4 id="2-2-3-AARRR-정의"><a href="#2-2-3-AARRR-정의" class="headerlink" title="2.2.3 AARRR 정의"></a>2.2.3 AARRR 정의</h4><p>(ing)</p>
+<h3 id="2-3-문제-정의"><a href="#2-3-문제-정의" class="headerlink" title="2.3 문제 정의"></a>2.3 문제 정의</h3><h4 id="2-3-1-User-Movement"><a href="#2-3-1-User-Movement" class="headerlink" title="2.3.1 User Movement"></a>2.3.1 User Movement</h4><hr>
 <p>서비스 시작인 2016년 01월부터 지속적으로 <code>신규 유저</code>를 유치하며 유저 수를 늘려 왔으나, 어떤 이유인지 2022-07년에 <code>기존 유저</code>와 <code>복귀 유저</code> 수가 급격하게 감소한 문제를 찾을 수 있었다.</p>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129183&authkey=%21AA4HzT4aWr99QB0&width=3382&height=1300" width="3382" height="1300" alt="User Movement"/>
 
 
-<h3 id="2-3-Retension"><a href="#2-3-Retension" class="headerlink" title="2.3 Retension"></a>2.3 Retension</h3><hr>
+<h3 id="2-3-2-Retension"><a href="#2-3-2-Retension" class="headerlink" title="2.3.2 Retension"></a>2.3.2 Retension</h3><hr>
 <p>코호트 차트로 확인 결과, 매월 꾸준히 구매하던 고객들이 7월 기준으로 전체적으로 급격하게 줄어들었다. </p>
 <img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeJvPqbhDYVkErNMKQ?embed=1&width=1374&height=540" width="1374" height="540" />
 
