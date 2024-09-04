@@ -483,15 +483,17 @@
 <h3 id="2-1-현황-분석"><a href="#2-1-현황-분석" class="headerlink" title="2.1 현황 분석"></a>2.1 현황 분석</h3><hr>
 <h4 id="2-1-1-고객재구매-주기-분석"><a href="#2-1-1-고객재구매-주기-분석" class="headerlink" title="2.1.1 고객재구매 주기 분석"></a>2.1.1 고객재구매 주기 분석</h4><hr>
 <blockquote>
-<p><code>2021.01.01 ~ 2022.06.30</code> 기간 동안 <code>개인 고객별 이전 구매 이후 다음 재구매까지의 소요일수 평균값</code>의 <code>전체 고객들의 중앙값</code></p>
+<p><code>2021.07.01 ~ 2022.06.30</code> 기간 동안 <code>개인 고객별로 이전 구매 이후 다음 재구매까지의 소요일수 평균값</code>의 <code>전체 고객들의 중앙값</code></p>
 </blockquote>
 <p>일정 기간의 구매 데이터에서 고객별 평균 재구매주기를 나열하고 중앙값(평균은 극단값의 영향을 받기 때문)을 구하면, 재구매주기의 빈도를 정할 수 있다. </p>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129163&authkey=%21AJwwWKoAVISSJvw&width=1024" width="1024" height="auto" alt="유저별 평균 재구매 주기 산점도 그래프"/>
 
 <ul>
-<li><p>고객별 평균 재구매주기의 전체 중앙값은 약 77일이다. &#x3D;&gt; 기간을 정하지 않고 했을 때 기준이나, 해당 서비스는 지속적으로 신규고객을 유치해오며 성장해왔다. 2018년 이후로 서비스의 지속적인 성장과 함께 재구매주기가 짧아지는 양상을 확인하였다. 때문에 전체 기간을 열어두는 것보다 현재 2022.07월이라 가정(데이터의 마지막 거래일자는 22.07.31)하고, 2021.07.01 ~ 2022.06.30 기간으로 다시 산정하였을 때 59일 (약 2달)로 재구매 주기가 줄어들었다. (BI 차트 수정 예정)</p>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/keyhong/pyspark-preprocessing/blob/main/da-analysis-jupyter/snap_monthly_user_repurchase_cycle_hist.ipynb">https://github.com/keyhong/pyspark-preprocessing/blob/main/da-analysis-jupyter/snap_monthly_user_repurchase_cycle_hist.ipynb</a></p>
 </li>
-<li><p>위와 같이 재구매주기가 약 N일일 경우, 매월 1일에 주기적 스냅샷(periodic snapshot) 기준으로 전 월의 MAU 스냅샷을 뜰 때 첫 구매 여부와 2달내 고객의 재구매 여부 이력을 기준으로 MAU를 신규&#x2F;복귀&#x2F;기존 사용자로 세분화 시킬 수 있다.</p>
+<li><p>서비스가 성장하고 안정화시기에 든 이후(18년 07월. 서비스 오픈 2년), 매월 1일 기준 1년 기간 동안의 고객별 평균 재구매주기는 약 50~60일 사이다. 가장 마지막 년도인 22년 4월(이하 X.Y로 간략화) 부터 값이 재구매주기가 짧아지기 시작했다. 서비스의 매출이 22.06부터 크게 감소했음에도 재구매주기가 줄어든 이유를 탐색해야 한다. 우선, RFM을 위해 고객의 세그먼트를 분류하고자 한다. R(Recency)에 21.07 ~ 22.06 까지 (굉장히 큰 이상치가 발생한 22.07을 제외하고, 정상적이라면 기대되는 월들) 매달 스냅샷을 뜬 월별 전체 고객 재구매주기의 이동평균을 계산하였다. 그 결과 55일이 나왔고, 고객 등급 산출에 있어 지표로써 정의하기 위해 보수적으로 2달을 고객의 재구매주기로 지정하였다.</p>
+</li>
+<li><p>위와 같이 재구매주기가 약 55일일 경우, 매월 1일에 주기적 스냅샷(periodic snapshot) 기준으로 전 월의 MAU 스냅샷을 뜰 때 첫 구매 여부와 2달내 고객의 재구매 여부 이력을 기준으로 MAU를 신규&#x2F;복귀&#x2F;기존 사용자로 세분화 시킬 수 있다.</p>
 </li>
 </ul>
 <h4 id="2-1-2-임시-저장"><a href="#2-1-2-임시-저장" class="headerlink" title="2.1.2 임시 저장"></a>2.1.2 임시 저장</h4><hr>
