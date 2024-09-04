@@ -489,6 +489,8 @@
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129163&authkey=%21AJwwWKoAVISSJvw&width=1024" width="1024" height="auto" alt="유저별 평균 재구매 주기 산점도 그래프"/>
 
 <ul>
+<li><p>그래프 수정 필요. 초반에 평균으로 산출했으나, 극단값을 고려하여 중앙값으로 산출하는 것이 맞다. (2022.09 )</p>
+</li>
 <li><p><a target="_blank" rel="noopener" href="https://github.com/keyhong/pyspark-preprocessing/blob/main/da-analysis-jupyter/snap_monthly_user_repurchase_cycle_hist.ipynb">https://github.com/keyhong/pyspark-preprocessing/blob/main/da-analysis-jupyter/snap_monthly_user_repurchase_cycle_hist.ipynb</a></p>
 </li>
 <li><p>서비스가 성장하고 안정화시기에 든 이후(18년 07월. 서비스 오픈 2년), 매월 1일 기준 1년 기간 동안의 고객별 평균 재구매주기는 약 50~60일 사이다. 가장 마지막 년도인 22년 4월(이하 X.Y로 간략화) 부터 값이 재구매주기가 짧아지기 시작했다. 서비스의 매출이 22.06부터 크게 감소했음에도 재구매주기가 줄어든 이유를 탐색해야 한다. 우선, RFM을 위해 고객의 세그먼트를 분류하고자 한다. R(Recency)에 21.07 ~ 22.06 까지 (굉장히 큰 이상치가 발생한 22.07을 제외하고, 정상적이라면 기대되는 월들) 매달 스냅샷을 뜬 월별 전체 고객 재구매주기의 이동평균을 계산하였다. 그 결과 55일이 나왔고, 고객 등급 산출에 있어 지표로써 정의하기 위해 보수적으로 2달을 고객의 재구매주기로 지정하였다.</p>
