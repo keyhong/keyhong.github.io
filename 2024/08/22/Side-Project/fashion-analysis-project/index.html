@@ -224,35 +224,60 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>⚠️ 본 글은 Side Project의 분석 결과를 정리 중인 글 입니다. 아직 미완성인 글로, 차트 시각화 및 논리 흐름 구성으로 인해 분석 과정, 상세 설명 및 결과 자료가 누락되어있습니다. (2022.09.01 작성)</p>
-<h2 id="0-Side-Project"><a href="#0-Side-Project" class="headerlink" title="0. Side Project"></a>0. Side Project</h2><h3 id="0-1-Project-개요-및-목적"><a href="#0-1-Project-개요-및-목적" class="headerlink" title="0.1 Project 개요 및 목적"></a>0.1 Project 개요 및 목적</h3><p>(ing..)</p>
-<h3 id="0-1-Team"><a href="#0-1-Team" class="headerlink" title="0.1 Team"></a>0.1 Team</h3><p>(ing..)</p>
-<h3 id="0-2-Data-Source"><a href="#0-2-Data-Source" class="headerlink" title="0.2 Data Source"></a>0.2 Data Source</h3><ul>
+<h2 id="0-Side-Project"><a href="#0-Side-Project" class="headerlink" title="0. Side Project"></a>0. Side Project</h2><h3 id="0-1-Project-개요-및-상황-정의"><a href="#0-1-Project-개요-및-상황-정의" class="headerlink" title="0.1 Project 개요 및 상황 정의"></a>0.1 Project 개요 및 상황 정의</h3><hr>
+<p><code>Fashion Campus</code> 는 15~35세 사이의 젊은 층을 타겟으로 하는 e-commerce 패션 기업이다.  2016년에 설립된 이후 2020년 팬데믹에도 지속적인 성장세를 보였으나, 갑작스런 매출 감세를 보였고 이에 대한 현황 분석과 대응을 위해 외부 업체에 프로젝트를 발주하였다.</p>
+<p>우리는 그 프로젝트를 수주하여 문제 상황을 해결하기 위한 데이터 분석을 수행하여야 한다.</p>
+<h3 id="0-2-Data-Source"><a href="#0-2-Data-Source" class="headerlink" title="0.2 Data Source"></a>0.2 Data Source</h3><hr>
+<ul>
 <li><a target="_blank" rel="noopener" href="https://www.kaggle.com/datasets/latifahhukma/fashion-campus">https://www.kaggle.com/datasets/latifahhukma/fashion-campus</a></li>
 </ul>
 <table>
 <thead>
 <tr>
-<th>Dataset</th>
-<th>Description</th>
+<th>데이터셋_순번</th>
+<th>데이터셋_영문명</th>
+<th>데이터셋_한글명</th>
+<th>PK_컬럼명_01</th>
+<th>PK_컬럼명_02</th>
+<th>행_개수</th>
 </tr>
 </thead>
 <tbody><tr>
+<td>1</td>
 <td>customer</td>
-<td>고객 데이터</td>
+<td>고객	데이터</td>
+<td>custoemr_id</td>
+<td>(NULL)</td>
+<td>100,000</td>
 </tr>
 <tr>
+<td>2</td>
 <td>product</td>
 <td>상품 데이터</td>
+<td>product_id</td>
+<td>(NULL)</td>
+<td>44,446</td>
 </tr>
 <tr>
-<td>click_stream</td>
-<td>이벤트 로그 데이터</td>
-</tr>
-<tr>
+<td>3</td>
 <td>transactions</td>
-<td>상품 주문 데이터</td>
+<td>상품 주문 트랜잭션 이력</td>
+<td>booking_id</td>
+<td>product_id</td>
+<td>852,584</td>
+</tr>
+<tr>
+<td>4</td>
+<td>click_stream</td>
+<td>클릭스트림 이력</td>
+<td>event_id</td>
+<td>(NULL)</td>
+<td>12,833,602</td>
 </tr>
 </tbody></table>
+<br>
+
+<p>** 주식별자(PK, Primary Key) : 식별자(Unique Key) 중 엔터티에 하나만 존재하는 대표 식별자</p>
 <h2 id="1-다차원-모델링"><a href="#1-다차원-모델링" class="headerlink" title="1. 다차원 모델링"></a>1. 다차원 모델링</h2><hr>
 <h3 id="1-1-Thinking"><a href="#1-1-Thinking" class="headerlink" title="1.1 Thinking"></a>1.1 Thinking</h3><hr>
 <p>직접적으로 데이터 분석을 수행하다보니, 어떻게 하면 더 편한 분석을 할 수 있을 까에 대한 많은 고민이 들었다. <a target="_blank" rel="noopener" href="https://datarian.io/">데이터리안</a> 강의를 듣던 때 solvesql 이라는 SQL 연습 플랫폼을 이용해서 분석을 쉽게 배웠는 데 막상 일상의 데이터들은 친절하지 않은 데이터가 많은 것 같다. <br><br>위의 커머스 데이터의 경우, transactions 데이터에는 기존 주문 건(@PK)별로 JSON 컬럼의 주문 상품 리스트가 들어 있다. 한 행의 JSON을 풀어내게 되면 주문 건(@PK1), 상품ID(@PK2)로 식별자가 구성되는 데, 세분성이 낮은 레벨에서 기존에 주문 건당 집계된 total_amount라는 fact가 중복이 발생된다. <br><br>더 낮은 세분성으로 통합할 수 있지만, 주문 건 레벨의 세분성이 분석하기에는 더 사용 빈도와 쿼리 편의성이 더 높았다. 매출 분석을 할 때는 유저별 주문 금액을 집계하는 게 쿼리도 쉽고 더 적은 데이터를 사용하기 때문에 성능도 좋다. 이러한 이유로 fact 테이블의 3가지 종류로 분류했다.</p>
@@ -478,78 +503,183 @@
 <li>표준 사전</li>
 <li>물리 인포 (데이터 타입 + 길이)<br>(ing..)</li>
 </ol>
-<h2 id="2-현황-분석-지표-정의-문제-정의"><a href="#2-현황-분석-지표-정의-문제-정의" class="headerlink" title="2. 현황 분석 &amp; 지표 정의 &amp; 문제 정의"></a>2. 현황 분석 &amp; 지표 정의 &amp; 문제 정의</h2><hr>
-<h3 id="미분류-임시-저장"><a href="#미분류-임시-저장" class="headerlink" title="미분류. 임시 저장"></a>미분류. 임시 저장</h3><hr>
-<h3 id="2-1-현황-분석"><a href="#2-1-현황-분석" class="headerlink" title="2.1 현황 분석"></a>2.1 현황 분석</h3><hr>
-<h4 id="2-1-1-고객재구매-주기-분석"><a href="#2-1-1-고객재구매-주기-분석" class="headerlink" title="2.1.1 고객재구매 주기 분석"></a>2.1.1 고객재구매 주기 분석</h4><hr>
+<h2 id="2-현황-분석"><a href="#2-현황-분석" class="headerlink" title="2. 현황 분석"></a>2. 현황 분석</h2><hr>
 <blockquote>
-<p><code>2021.07.01 ~ 2022.06.30</code> 기간 동안 <code>개인 고객별로 이전 구매 이후 다음 재구매까지의 소요일수 평균값</code>의 <code>전체 고객들의 중앙값</code></p>
+<p>당사는 창사 이래로, <code>지속적인 고객 유치와 높은 리텐션을 기반으로 성장</code>해왔다. 하지만, 2022년 6월, 7월 연속적인 매출 하락과 <code>7월 기존 고객들의 큰 이탈이 발생</code>했다.<br><br> 이는 향후 추세에 있어 <code>지속적인 매출 하락의 가능성이 높아 보이므로, 떠나간 고객에 대한 보상 이벤트가 필요</code>하다.</p>
 </blockquote>
-<p>일정 기간의 구매 데이터에서 고객별 평균 재구매주기를 나열하고 중앙값(평균은 극단값의 영향을 받기 때문)을 구하면, 재구매주기의 빈도를 정할 수 있다. </p>
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129163&authkey=%21AJwwWKoAVISSJvw&width=1024" width="1024" height="auto" alt="유저별 평균 재구매 주기 산점도 그래프"/>
-
+<h3 id="2-1-성장성-분석"><a href="#2-1-성장성-분석" class="headerlink" title="2.1 성장성 분석"></a>2.1 성장성 분석</h3><hr>
 <ul>
-<li><p>그래프 수정 필요. 초반에 평균으로 산출했으나, 극단값을 고려하여 중앙값으로 산출하는 것이 맞다. (2022.09 메모)</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://github.com/keyhong/pyspark-preprocessing/blob/main/da-analysis-jupyter/snap_monthly_user_repurchase_cycle_hist.ipynb">https://github.com/keyhong/pyspark-preprocessing/blob/main/da-analysis-jupyter/snap_monthly_user_repurchase_cycle_hist.ipynb</a></p>
-</li>
-<li><p>서비스가 성장하고 안정화시기에 든 이후(18년 07월. 서비스 오픈 2년), 매월 1일 기준 1년 기간 동안의 고객별 평균 재구매주기는 약 50~60일 사이다. 가장 마지막 년도인 22년 4월(이하 X.Y로 간략화) 부터 값이 재구매주기가 짧아지기 시작했다. 서비스의 매출이 22.06부터 크게 감소했음에도 재구매주기가 줄어든 이유를 탐색해야 한다. 우선, RFM을 위해 고객의 세그먼트를 분류하고자 한다. R(Recency)에 21.07 ~ 22.06 까지 (굉장히 큰 이상치가 발생한 22.07을 제외하고, 정상적이라면 기대되는 월들) 매달 스냅샷을 뜬 월별 전체 고객 재구매주기의 이동평균을 계산하였다. 그 결과 55일이 나왔고, 고객 등급 산출에 있어 지표로써 정의하기 위해 보수적으로 2달을 고객의 재구매주기로 지정하였다.</p>
-</li>
-<li><p>위와 같이 재구매주기가 약 55일일 경우, 매월 1일에 주기적 스냅샷(periodic snapshot) 기준으로 전 월의 MAU 스냅샷을 뜰 때 첫 구매 여부와 2달내 고객의 재구매 여부 이력을 기준으로 MAU를 신규&#x2F;복귀&#x2F;기존 사용자로 세분화 시킬 수 있다.</p>
-</li>
+<li>(1) 당사는 2016년 이래로, <code>매월 400~1,600명의 신규 고객 확보를 지속</code>해왔다.</li>
 </ul>
-<h4 id="2-1-2-임시-저장"><a href="#2-1-2-임시-저장" class="headerlink" title="2.1.2 임시 저장"></a>2.1.2 임시 저장</h4><hr>
-<img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeQU4iJREjCoa3QyoA?embed=1&width=2376&height=920" width="2376" height="920" />
+<img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeQrhmaPV-jgdWmOGQ?embed=1&width=1306&height=532" width="1306" height="532" alt="매월 신규고객 유치 현황 (2018.01 ~ 2022.07 부분)"/>
 
-<img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeQSxFBPNRSpDPspxQ?embed=1&width=1834&height=1136" width="1834" height="1136" />
-
-<img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeQT1npw4nJYZhCzDw?embed=1&width=1410&height=1160" width="1410" height="1160" />
-
-<img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeQRGWhjq7R4chSYKA?embed=1&width=1460&height=760" width="1460" height="760" />
-
-
-<h3 id="2-2-지표-정의"><a href="#2-2-지표-정의" class="headerlink" title="2.2 지표 정의"></a>2.2 지표 정의</h3><hr>
-<h4 id="2-2-1-고객-정의"><a href="#2-2-1-고객-정의" class="headerlink" title="2.2.1 고객 정의"></a>2.2.1 고객 정의</h4><hr>
-<p>앞서 구한 고객의 재구매 주기는 약 2달이었다. 이를 통해 매월 1일 스냅샷을 고객등급에 대한 스냅샷을 찍어, 지속적으로 고객의 등급을 최신화하는 것으로 한다.</p>
-<ul>
-<li>신규 고객 (new_user) : 당월에 최초 구매한 고객</li>
-<li>기존 고객 (existing_user) : 직전 2개월 동안 한번이라도 구매했고 당월에 재구매한 고객</li>
-<li>복귀 고객 (retuning_user) : 직전 2개월 전 구매한 적 있고, 당월에 재구매한 고객</li>
-<li>이탈 고객 (bounce user) : 직전 2개월 전 구매한 적 있지만, 당월에 구매하지 않은 고객</li>
-<li>장기 이탈 고객 (churn_Users) : 직전 12개월 전 구매한 적 있지만, 그 이후 구매하지 않은 고객</li>
-</ul>
-<h4 id="2-2-2-RFM-고객등급-정의"><a href="#2-2-2-RFM-고객등급-정의" class="headerlink" title="2.2.2 RFM 고객등급 정의"></a>2.2.2 RFM 고객등급 정의</h4><hr>
-<p>고객 등급은 RFM 각각의 기준에 의해 총 32등급으로 분류하였다.</p>
-<ul>
-<li>Recency : 고객의 평균 재구매 주기를 기준으로 매달 스냅샷을 찍었을 때, 2달 이내 상품 구매 여부</li>
-<li>Frequency, Monetary : 1년 동안 매달 스냅샷을 찍었을 때, 전체 고객의 구매 빈도와 구매 금액을 4분위 값의 이동 평균</li>
-</ul>
-<h4 id="2-2-3-AARRR-정의"><a href="#2-2-3-AARRR-정의" class="headerlink" title="2.2.3 AARRR 정의"></a>2.2.3 AARRR 정의</h4><p>(ing)</p>
-<h3 id="2-3-문제-정의"><a href="#2-3-문제-정의" class="headerlink" title="2.3 문제 정의"></a>2.3 문제 정의</h3><h4 id="2-3-1-User-Movement"><a href="#2-3-1-User-Movement" class="headerlink" title="2.3.1 User Movement"></a>2.3.1 User Movement</h4><hr>
-<p>서비스 시작인 2016년 01월부터 지속적으로 <code>신규 유저</code>를 유치하며 유저 수를 늘려 왔으나, 어떤 이유인지 2022-07년에 <code>기존 유저</code>와 <code>복귀 유저</code> 수가 급격하게 감소한 문제를 찾을 수 있었다.</p>
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129183&authkey=%21AA4HzT4aWr99QB0&width=3382&height=1300" width="3382" height="1300" alt="User Movement"/>
-
-
-<h3 id="2-3-2-Retension"><a href="#2-3-2-Retension" class="headerlink" title="2.3.2 Retension"></a>2.3.2 Retension</h3><hr>
-<p>코호트 차트로 확인 결과, 매월 꾸준히 구매하던 고객들이 7월 기준으로 전체적으로 급격하게 줄어들었다. </p>
-<img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeJvPqbhDYVkErNMKQ?embed=1&width=1374&height=540" width="1374" height="540" />
-
-
-<h3 id="2-3-3-RFM-등별-매출-영향력-변화"><a href="#2-3-3-RFM-등별-매출-영향력-변화" class="headerlink" title="2.3.3 RFM 등별-매출 영향력 변화"></a>2.3.3 RFM 등별-매출 영향력 변화</h3><hr>
-<p>2022.07월 이탈 유저의 군집을 찾기 위해, 앞서 구한 재구매주기 (2달) + 2021.07.01 ~ 2022.06.30 (1년) 까지의 매월 Frequency(구매 빈도), Monetary(기간 내 총 지출금액)의 4등급 분류(0 ~ 0.25 &#x2F; 0.25 ~ 중위값 &#x2F; 중위값 ~ 0.75 &#x2F; 0.75 ~ 1) 스냅샷 수치의 각각 평균을 내어 기준으로 F, M의 산출하였다. 그 결과 아래 두 가지 사실을 파악했다.</p>
 <br>
 
-<p>해당 기준으로 2022.05(6_month 스냅샷) ~ 2022.07(8_month 스냅샷)의 구성 비율을 분석한 결과,</p>
-<ol>
-<li><p>6월에는 <code>Y(2달 이내 구매)</code>-<code>F3(1년 기간 내 구매 빈도 상위 50%~75%)</code>-<code>M2(1년 기간 내 총 지출 금액 상위 25%~50%)</code>의 군집이 이탈하며 매출에 적지 않은 영향을 주었다.</p>
-</li>
-<li><p>7월에는 <code>Y(2달 이내 구매)</code>-<code>F2(1년 기간 내 구매 빈도 상위 25%~50%)</code>-<code>M2(1년 기간 내 총 지출 금액 상위 25%~50%)</code>의 군집이 이탈하며 매출에 크리티컬한 영향을 주었다.<br><br>최우선 등급 코드인 <code>Y-F1-M1</code>은 sales(매출)에 볌동에 큰 차이가 없었지만, <code>Y-F2-M2</code>의 인원 감소 (약 3,000 명)으로 인해 당월 전체 paying user의 인원&#x2F;매출 구성 비율이 각각 21%, 11%나 상승하였다. 5, 6월에도 큰 차이가 없음을 고려한다면 굉장히 큰 변화로 볼 수 있다.</p>
-</li>
-</ol>
-<img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeQQQvAB49UPk6457A?embed=1&width=1346&height=618" width="1346" height="618" />
+<ul>
+<li>(2) 당사는 <code>약 2달이라는 짧은 재구매주기</code>를 가지고 있다. 18년 7월(창사 2년 이후)부터 재구매 주기(일)은 약 2달 (50일 ~ 58일) 사이로 업계 평균 대비 짧은 일수를 유지하고 있다.</li>
+</ul>
+<img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeQsGhxkOlViNiM3Hg?embed=1&width=830&height=678" width="830" height="678" alt="매 기준년월 고객 재구매주기 평균의 전체 중앙값 스냅샷 추이"/>
 
+<br>
+
+<p>(3) <code>당사는 약 45%의 높은 리텐션을 기반으로 성장</code>을 이끌어 왔다. 2021년 8월에 유입된 신규 고객들의 리텐션은 변동이 있으나, 30% ~ 50%의 리텐션을 지니고 있다.</p>
+<img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeQts0lGYkqumWi98w?embed=1&width=1308&height=498" width="1308" height="498" alt="신규 고객 구매 리텐션 (2021.08 ~ 2022.07 부분)"/>
+
+<p>** 활성화(Activation) 기준은 e-commerce 도메인에서 중요한 <code>구매</code>로 정의</p>
+<h3 id="2-2-문제-정의"><a href="#2-2-문제-정의" class="headerlink" title="2.2 문제 정의"></a>2.2 문제 정의</h3><hr>
+<ul>
+<li>(1) <code>22년 5월 기준대비 6월, 7월에 연속된 매출액 감소(15%), 주문건수 감소 (16%)가 발생</code>했다.</li>
+</ul>
+<img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeQw9Osmn_pnlkXbUw?embed=1&width=1020&height=580" width="1020" height="580" alt="[22년 7월] 2개월 연속5월 대비  매출액 감소 : 15.76 % 감소 "/>
+
+<br>
+
+<table>
+<thead>
+<tr>
+<th>기준년월</th>
+<th>비교년월</th>
+<th>기준년월 매출액</th>
+<th>비교년월 매출액</th>
+<th>매출액 증감율</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>21년 7월</td>
+<td>22년 7월</td>
+<td>11,348,000,977</td>
+<td>13,109,632,628</td>
+<td>+ 15.52%</td>
+</tr>
+<tr>
+<td>22년 5월</td>
+<td>22년 7월</td>
+<td>15,561,401,244</td>
+<td>13,109,632,628</td>
+<td>- 15.76%</td>
+</tr>
+<tr>
+<td>22년 6월</td>
+<td>22년 7월</td>
+<td>14,846,052,948</td>
+<td>13,109,632,628</td>
+<td>- 11.7%</td>
+</tr>
+</tbody></table>
+<br>
+
+<img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeQvrDkKrbnls5ZYlg?embed=1&width=1016&height=572" width="1016" height="572" alt="[22년 7월] 2개월 연속 주문건수 감소 :  16.35 % 감소"/>
+
+<br>
+
+<table>
+<thead>
+<tr>
+<th>기준년월</th>
+<th>비교년월</th>
+<th>기준년월 주문건수</th>
+<th>비교년월 주문건수</th>
+<th>주문건수 증감율</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>21년 7월</td>
+<td>22년 7월</td>
+<td>21,211</td>
+<td>24,090</td>
+<td>+ 13.57%</td>
+</tr>
+<tr>
+<td>22년 5월</td>
+<td>22년 7월</td>
+<td>28,799</td>
+<td>24,090</td>
+<td>- 16.35%</td>
+</tr>
+<tr>
+<td>22년 6월</td>
+<td>22년 7월</td>
+<td>27,385</td>
+<td>24,090</td>
+<td>- 12.03%</td>
+</tr>
+</tbody></table>
+<ul>
+<li>(2) 특히, <code>22년 7월에 발생한 고객 이탈은 6월 대비 41.07%로 기존 고객의 주요 이탈</code>이 크다.</li>
+</ul>
+<img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeQxwqr3LeQl9fZ6kA?embed=1&width=1308&height=536" width="1308" height="536" alt="매 기준년월 MAU 고객 분류 추이 (2020.01 ~ 2022.07 부분)"/>
+
+<br>
+
+<table>
+<thead>
+<tr>
+<th>고객분류명</th>
+<th>분류 코드 상세</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>신규 고객</td>
+<td>이전 구매 이력이 없고, 현재 월에 처음 구매한 고객</td>
+</tr>
+<tr>
+<td>기존 고객</td>
+<td>최근 2개월(재구매주기) 이내에 구매 이력이 있으며, 현재 월에 구매한 고객</td>
+</tr>
+<tr>
+<td>복귀 고객</td>
+<td>최근 2개월(재구매 주기) 이내에 구매 기록이 없지만, 그 전 2개월 이내에 구매한 이력이 있고, 현재 월에 다시 구매한 고객</td>
+</tr>
+</tbody></table>
+<ul>
+<li>22년 7월에 전체 코호트에서 전월대비 약 20% 정도의 많은 수의 고객이 이탈하였다.</li>
+</ul>
+<img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeQuVgIFE4Bwmbceig?embed=1&width=2080&height=786" width="2080" height="786" alt="신규 고객 구매 리텐션 (2021.08 ~ 2022.07 부분)"/>
+
+<ul>
+<li>(3) 이는 단순 이탈이 아닌 <code>5개년도의 시계열 흐름을 역행하는 장기적인 이탈 문제</code>로 향후 지속적인 매출 감소로 이어질 가능성이 크기에 빠르게 복귀 유저로 돌아올 수 있도록 전략 수립이 필요하다.</li>
+</ul>
+<img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeQyuM5Ywy9NF_3dHA?embed=1&width=1152&height=650" width="1152" height="650" alt="매 기준년도 5~8월 시계열 추이 (2017 ~ 2022 전체)"/>
+
+
+<ul>
+<li><p>왜 6월에 감소하고, 7월에 증가하는 시계열 흐름이 나타날까?</p>
+<p>(1) 르바란 (Eid al-Fitr)</p>
+<blockquote>
+<p>라마단 (이슬람교도들이 한 달 동안 단식, 기도, 명상, 자선 활동을 통해 신앙을 강화하고 자기 성찰을 하는 기간)의 끝을 기념하는 중요한 명절 ⇒ 새로운 시작을 기념하기 위한 상징적인 의미</p>
+</blockquote>
+<p>(2) 계절적 요인</p>
+<blockquote>
+<p>인도네시아의 6월은 건기과 우기가 겹치는 시기로 계절 변화에 따라, 7월에 옷을 사입을 가능성이 높다.</p>
+</blockquote>
+<p>(3) 명절 지출을 위한 경제적 요인</p>
+<blockquote>
+<p>르바란에 대한 준비로 축제 이전인 6월에는 옷을 사입지 않을 가능성이 높다.</p>
+</blockquote>
+<p>단, 상관관계가 있다고 해서 인과관계가 있다고 정의 할 수 없으므로 이에 대한 분석은 차후 과제로 남겨두고자 한다.</p>
+</li>
+</ul>
+<h2 id="3-이탈-고객-분석"><a href="#3-이탈-고객-분석" class="headerlink" title="3. 이탈 고객 분석"></a>3. 이탈 고객 분석</h2><hr>
+<blockquote>
+<p>기존 고객의 리텐션을 분석한 결과, 이탈이 두드러지는 특정 코호트가 발견되지 않았다. 첫 구매 월별 코호트와 상품, 유저 특성 모두 큰 차이가 없었으며, 2022년 7월에도 특별한 변화가 관찰되지 않았다. <br><br> 따라서, 특정 문제 집단 없이 전체적으로 고객 이탈이 발생하고 있다고 판단했다. 이에 따라, 서비스에 영향력이 큰 고객 세그먼트를 선별하고, 그 중 이탈이 발생하는 세그먼트의 구매 특성을 분석하였다. <br><br> 이를 토대로 비즈니스 우선순위를 고려한 액션안을 제안하고자 한다.</p>
+</blockquote>
 <p>(ing..)</p>
-<h2 id="3-개인화-마켓팅-전략"><a href="#3-개인화-마켓팅-전략" class="headerlink" title="3. 개인화 마켓팅 전략"></a>3. 개인화 마켓팅 전략</h2><p>(ing..)</p>
+<p>시니어분들께 발표 이후 RFM 분석이 매출 분석에 적합하지 않다는 피드백을 받았다. 매출의 감소 요인에 대해 퍼널 분석을 재수행하여 추가적인 분석을 수행 예정.</p>
+<h2 id="1차-피드백-내용"><a href="#1차-피드백-내용" class="headerlink" title="1차 피드백 내용"></a>1차 피드백 내용</h2><hr>
+<h2 id="분석-피드백"><a href="#분석-피드백" class="headerlink" title="분석 피드백"></a>분석 피드백</h2><ul>
+<li>매출액 감소에 대한 문제 정의가 잘 되어 있음</li>
+<li>RFM 고객 세분화 분석은 매출 분석을 하기에 적절한 방법론은 아님</li>
+<li>전체 데이터에 대한 분석을 먼저 하고 -&gt; 특정 세그먼트로 들어가야 그 세그먼트의 특이점을 발견할 수 있음</li>
+</ul>
+<h2 id="시각화-피드백"><a href="#시각화-피드백" class="headerlink" title="시각화 피드백"></a>시각화 피드백</h2><ul>
+<li>보고서 텍스트에 색을 많이 쓸 필요 없음 (색을 많이 쓰면 강조하고 싶은 부분이 어디인지 오히려 찾기 어려워요)</li>
+<li>차트에 색은 같은 의미일 때에만 같은 색 &#x2F; 다른 의미에서는 다른 색을 써야함 (파이차트에서 Recency Y, N으로 노란색 계열 색을 썼던데, 그 오른쪽 차트에서는 F, M 기준으로 구분을 - 한 것이므로 다른 색을 써야함)</li>
+</ul>
+<h2 id="기타-피드백"><a href="#기타-피드백" class="headerlink" title="기타 피드백"></a>기타 피드백</h2><ul>
+<li>보고서에 날짜 표기가 잘못된 부분이 있음 (2024년 데이터가 없는데 2024년으로 표기된 부분)</li>
+<li>분석 아이디어 (참고만 해주세요)</li>
+<li>월에 이탈한 고객이 인당 ARPPU가 높은 고객인지, 낮은 고객인지, 골고루 나간건지 분석해보면 좋을 것 같아요. Stock, Flow 개념을 알면 6월과 7월 매출을 기준으로 나눈 고객의 변동을 설명하기 좋을거예요.</li>
+</ul>
 
                 
             </div>
