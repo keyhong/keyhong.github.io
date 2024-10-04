@@ -1,0 +1,1055 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="분석 용어 정리, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="광고 용어 
+
+CPC (Cost Per Click) : 온라인 광고 가격을 책정하는 대표적인 방법. 사용자가 검색 결과로 보여진 광고를 클릭하여 광고주의 사이트로 이동했을 때에 광고비가 소진되는 과금 체계
+
+CPM ">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>분석 용어 정리 | Keyhong</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span diy-happy-monkey">Keyhong</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Home</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <!-- <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li> -->
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Keyhong</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Home
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/data-analysis-logo.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title diy-neon-red">
+                        분석 용어 정리</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="post-cate">
+                    <i class="fas fa-bookmark fa-fw icon-category"></i>
+                    
+                        <a href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D/" class="post-category">
+                            데이터 분석
+                        </a>
+                    
+                </div>
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>광고 용어 </p>
+<ul>
+<li><p>CPC (Cost Per Click) : 온라인 광고 가격을 책정하는 대표적인 방법. 사용자가 검색 결과로 보여진 광고를 클릭하여 광고주의 사이트로 이동했을 때에 광고비가 소진되는 과금 체계</p>
+</li>
+<li><p>CPM (Cost Per Mile) : 온라인 광고 가격을 책정하는 방법 중 하나로, 1000회 광고 노출을 기준으로 가격을 책정하는 과금 체계 </p>
+</li>
+<li><p>Impression : 노출. 광고가 사용자에게 보여지는 것 또는 검색 사용자에게 광고가 노출된 횟수</p>
+</li>
+<li><p>CTR (Click Through Rate) : 해당 광고가 특정 기간동안 클릭된 횟수를 노출된 횟수로 나눈값을 백분율로 표시한 값</p>
+</li>
+<li><p>페이지 RPM : 총 수입을 페이지 조회수 1000회로 나눈 값. 1000회 노출당 페이지 수익(RPM)은 예상 수입을 페이지 조회수로 나눈 다음 1000을 곱한 값. (예상수입&#x2F;페이지 조회수) * 1000</p>
+</li>
+<li><p>평균클릭비용. CPC&#x3D;Cost Per Click, PPC&#x3D;Pay Per Click. 전체 광고비를 클릭 수로 나눈 값으로 클릭 1회당 단가. (광고비&#x2F;클릭) 광고 효과를 측정하는 지표 중 하나</p>
+</li>
+<li><p>랜딩페이지 : 인터넷 사용자가 광고를 클릭하고 광고주의 사이트에 방문했을 때 최초로 보게 되는 웹 페이지</p>
+</li>
+<li><p>페이지뷰 : 홈페이지에 들어온 접속자가 둘러 본 페이지 </p>
+</li>
+<li><p>문맥광고 : 페이지 내 컨텐츠를 분석하여 관련 키워드를 추출하고 광고를 노출하는 방식</p>
+</li>
+</ul>
+<p>유저 관련 지표</p>
+<ul>
+<li><p>UV (Uniuqe View) : 유저의 고유 카운트</p>
+</li>
+<li><p>AU (Active User) : 접속한 유저</p>
+</li>
+<li><p>RU (Registerd User) : 신규유저 &#x2F; 게임 설치 뿐만 아니라 계정 등록을 한 유저</p>
+</li>
+<li><p>NPU (New Paid User) : 신규 구메(과금) 유저</p>
+</li>
+<li><p>NNPU : 신규 가입하여 신규 구매한 유저</p>
+</li>
+<li><p>RPU : 기존 가입 유저 중 구매 이력이 없던 유저의 구매 전환 수</p>
+</li>
+</ul>
+<p>과금 관련 지표</p>
+<ul>
+<li><p>PUR (Paid User Rate) : 접속 유저 대비 결제 유저 비율</p>
+</li>
+<li><p>NPUR (New Paid User Rate) : 접속 유저 대비 신규 결제 유저 비율</p>
+</li>
+<li><p>Revenue : 실제 발생한 매출</p>
+</li>
+<li><p>ARPPU (Average Revenue Per Paid User) : PU 1명 당 결제액</p>
+<ul>
+<li>매출(Sale) &#x2F; PU 수</li>
+</ul>
+</li>
+<li><p>ARPAU (Average Revenue Per Active User) : AU 1명 당 결제액</p>
+<ul>
+<li>매출(Sales) &#x2F; AU 수</li>
+</ul>
+</li>
+</ul>
+<p>모객 관련 지표</p>
+<ul>
+<li><p>RET (Retension) : 잔존율, 유저 잔존 여부</p>
+</li>
+<li><p>LTV (Life Time Value) : 유저 1명 당 생애 누적</p>
+<ul>
+<li><p>누적 매출 (Sales) &#x2F; RU</p>
+</li>
+<li><p>일평균 지불금액(ARPDAU) x 지속방문일 (LT, Life Time)</p>
+</li>
+</ul>
+</li>
+<li><p>CPI (Cost Per Install) : 게임 Install 한번 당 지출 비용</p>
+<ul>
+<li>Cost &#x2F; Install 수</li>
+</ul>
+</li>
+<li><p>CPRU (Cost Per RU) : RU 당 지출 비용</p>
+<ul>
+<li>Cost &#x2F; RU 수</li>
+</ul>
+</li>
+</ul>
+<p>기타</p>
+<ul>
+<li><p>IAP (In App Purchase) : 신용카드를 통한 인 앱 결제</p>
+</li>
+<li><p>IAA (In App Ads) : 인 앱 광고로 발생되는 매출</p>
+</li>
+</ul>
+<p>광고 관련 지표</p>
+<ul>
+<li><p>Impresssion : 광고가 노출된 횟수</p>
+</li>
+<li><p>CPM (Cost Per Mile) : 1000개 노출 당 광고 비용</p>
+</li>
+</ul>
+<hr>
+<p>유저 및 게임</p>
+<ul>
+<li><p>UV (Unique View) : 순 방문자</p>
+</li>
+<li><p>MUV (Multigame Unique Visitor) : 특정 기간 클라이언트 혹은 애플리케이션을 내려받아 로그인 및 플레이한 방문자</p>
+</li>
+<li><p>AU (Active User) : 활성 사용자를 가리키며 일반적으로 DAU와 동일시</p>
+</li>
+<li><p>MAU (Monlth Active User) : 한달 내 게임 순 방문자 수</p>
+</li>
+<li><p>RU (Registerd User) : 전체 가입자 수</p>
+</li>
+<li><p>NRU (New Registered User) : 기간 내 순 신규 가입자 수</p>
+<ul>
+<li>user_id : <code>int</code> : 각 사용자의 ID (기본 키)</li>
+<li>username : <code>varchar(50)</code> : 사용자의 이름</li>
+<li>email : <code>varchar(100)</code> : 사용자의 이메일 주소 (고유)</li>
+<li>registration_date : <code>datetime</code> : 사용자가 등록한 날짜</li>
+<li>last_login_date : <code>datetime</code> : 사용자가 마지막으로 로그인한 날짜</li>
+</ul>
+</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> DATE_FORMAT<span class="token punctuation">(</span>registration_date<span class="token punctuation">,</span> <span class="token string">'%Y-%m'</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> registration_month
+     <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span>user_id<span class="token punctuation">)</span> <span class="token keyword">AS</span> nru
+<span class="token keyword">FROM</span> users
+<span class="token keyword">WHERE</span> registration_date <span class="token operator">BETWEEN</span> <span class="token string">'2024-01-01'</span> <span class="token operator">AND</span> <span class="token string">'2024-01-31'</span>
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> DATE_FORMAT<span class="token punctuation">(</span>registration_date<span class="token punctuation">,</span> <span class="token string">'%Y-%m'</span><span class="token punctuation">)</span>
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> registration_month
+<span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><p>DL(Download) : 기간 내 다운로드 횟수</p>
+</li>
+<li><p>TS(Time Spent) : 게임에 방문한 이용자의 평균 체류 시간. ((시그마)로그아웃 시간 - 로그인 시간) &#x2F; MU</p>
+</li>
+<li><p>CCU (Concurrent User) : 특정 시간의 동시 접속자 수</p>
+<ul>
+<li>session_id : <code>int</code> : 세션ID</li>
+<li>user_id : <code>int</code> : 사용자ID</li>
+<li>session_start : <code>datetime</code> : 세션시작시간</li>
+<li>session_end : <code>datetime</code> : 세션종료시간(선택)</li>
+</ul>
+</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> user_id<span class="token punctuation">)</span> <span class="token keyword">AS</span> ccu
+<span class="token keyword">FROM</span> user_sessions
+<span class="token keyword">WHERE</span> session_start <span class="token operator">&lt;=</span> <span class="token string">'2024-09-29 15:00:00'</span> <span class="token comment">-- 측정할 시점</span>
+  <span class="token operator">AND</span> <span class="token punctuation">(</span>session_end <span class="token operator">IS</span> <span class="token boolean">NULL</span> <span class="token operator">OR</span> session_end <span class="token operator">>=</span> <span class="token string">'2024-09-29 15:00:00'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>MCU (Max Concurrent User) 혹은 PCU (Peak Concurrent User) : 기준 단위 동시 접속자 최대값 (예: 5분)</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token function">MAX</span><span class="token punctuation">(</span>ccu<span class="token punctuation">)</span> <span class="token keyword">AS</span> PCU
+<span class="token keyword">FROM</span> <span class="token punctuation">(</span>
+    <span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> user_id<span class="token punctuation">)</span> <span class="token keyword">AS</span> ccu
+    <span class="token keyword">FROM</span> user_sessions
+    <span class="token keyword">WHERE</span> start_session <span class="token operator">&lt;=</span> <span class="token string">'2024-09-29 23:59:59'</span> <span class="token comment">-- 하루의 끝</span>
+    <span class="token operator">AND</span> <span class="token punctuation">(</span>session_end <span class="token operator">IS</span> <span class="token boolean">NULL</span> <span class="token operator">OR</span> session_end <span class="token operator">>=</span> <span class="token string">'2024-09-29 00:00:00'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">-- 하루의 시작</span>
+    <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> DATEFORMAT<span class="token punctuation">(</span>start_session<span class="token punctuation">,</span> <span class="token string">'%Y-%m-%d %H:00:00'</span><span class="token punctuation">)</span> <span class="token comment">-- 시간 단위 그룹화</span>
+    <span class="token comment">-- GROUP BY DATEFORMAT(start_session, '%Y-%m-%d %H:%i:00') -- 분 단위 그룹화</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>ACU (Average Concurrent User) : 기준 단위 동시 접속자 평균값 (예: 5분)</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token function">AVG</span><span class="token punctuation">(</span>ccu<span class="token punctuation">)</span> <span class="token keyword">AS</span> PCU
+<span class="token keyword">FROM</span> <span class="token punctuation">(</span>
+    <span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> user_id<span class="token punctuation">)</span> <span class="token keyword">AS</span> ccu
+    <span class="token keyword">FROM</span> user_sessions
+    <span class="token keyword">WHERE</span> start_session <span class="token operator">&lt;=</span> <span class="token string">'2024-09-29 23:59:59'</span> <span class="token comment">-- 하루의 끝</span>
+    <span class="token operator">AND</span> <span class="token punctuation">(</span>session_end <span class="token operator">IS</span> <span class="token boolean">NULL</span> <span class="token operator">OR</span> session_end <span class="token operator">>=</span> <span class="token string">'2024-09-29 00:00:00'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">-- 하루의 시작</span>
+    <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> DATEFORMAT<span class="token punctuation">(</span>start_session<span class="token punctuation">,</span> <span class="token string">'%Y-%m-%d %H:00:00'</span><span class="token punctuation">)</span> <span class="token comment">-- 시간 단위 그룹화</span>
+    <span class="token comment">-- GROUP BY DATEFORMAT(start_session, '%Y-%m-%d %H:%i:00') -- 분 단위 그룹화</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<ul>
+<li>DAU (Daily Active User) : 하루 내 게임 순 방문자 수</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> event_date
+     <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> user_id<span class="token punctuation">)</span> <span class="token keyword">AS</span> DAU
+<span class="token keyword">FROM</span> fact_user_session_day
+<span class="token keyword">WHERE</span> event_date <span class="token operator">BETWEEN</span> DATE_SUB<span class="token punctuation">(</span><span class="token function">NOW</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> <span class="token number">1</span> <span class="token keyword">MONTH</span><span class="token punctuation">)</span> <span class="token operator">AND</span> <span class="token function">NOW</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> event_date
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> event_date <span class="token keyword">DESC</span>
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>WAU (Weekly Active User) : 한 주 내 게임 순 방문자 수</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> fo<span class="token punctuation">.</span>event_date
+     <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> ft<span class="token punctuation">.</span>customer_id<span class="token punctuation">)</span> <span class="token keyword">AS</span> WAU
+<span class="token keyword">FROM</span> fact_user_session_day <span class="token keyword">AS</span> fo
+    <span class="token keyword">LEFT</span> <span class="token keyword">JOIN</span> fact_user_session_day <span class="token keyword">AS</span> ft
+           <span class="token keyword">ON</span> ft<span class="token punctuation">.</span>event_date <span class="token operator">BETWEEN</span> ft<span class="token punctuation">.</span>event_date <span class="token operator">AND</span> DATE_SUB<span class="token punctuation">(</span>ft<span class="token punctuation">.</span>event_date<span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> <span class="token number">6</span> <span class="token keyword">DAY</span><span class="token punctuation">)</span>
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> fo<span class="token punctuation">.</span>event_date<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>Stickiness</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> fo<span class="token punctuation">.</span>event_date
+     <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> fo<span class="token punctuation">.</span>customer_id<span class="token punctuation">)</span> <span class="token keyword">AS</span> DAU
+     <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> ft<span class="token punctuation">.</span>customer_id<span class="token punctuation">)</span> <span class="token keyword">AS</span> WAU
+     <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> fo<span class="token punctuation">.</span>customer_id<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> ft<span class="token punctuation">.</span>customer_id<span class="token punctuation">)</span> <span class="token keyword">AS</span> stickiness
+<span class="token keyword">FROM</span> fact_user_session_day <span class="token keyword">AS</span> fo
+    <span class="token keyword">LEFT</span> <span class="token keyword">JOIN</span> fact_user_session_day <span class="token keyword">AS</span> ft
+           <span class="token keyword">ON</span> ft<span class="token punctuation">.</span>event_date <span class="token operator">BETWEEN</span> ft<span class="token punctuation">.</span>event_date <span class="token operator">AND</span> DATE_SUB<span class="token punctuation">(</span>ft<span class="token punctuation">.</span>event_date<span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> <span class="token number">6</span> <span class="token keyword">DAY</span><span class="token punctuation">)</span>
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> fo<span class="token punctuation">.</span>event_date<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>ARPDAU (Average Revenue Per Daily Active User)</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> event_date
+     <span class="token punctuation">,</span> <span class="token function">ROUND</span><span class="token punctuation">(</span><span class="token function">SUM</span><span class="token punctuation">(</span>revenue<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> user_id<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> ARPDAU
+<span class="token keyword">FROM</span> fact_user_session_day
+<span class="token keyword">WHERE</span> event_date <span class="token operator">BETWEEN</span> DATE_SUB<span class="token punctuation">(</span><span class="token function">NOW</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> <span class="token number">1</span> <span class="token keyword">MONTH</span><span class="token punctuation">)</span> <span class="token operator">AND</span> <span class="token function">NOW</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> event_date
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> event_date <span class="token keyword">DESC</span>
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul>
+<li>ds_member</li>
+</ul>
+<ul>
+<li>user_id</li>
+<li>first_login_date</li>
+<li>country_code</li>
+</ul>
+<ul>
+<li>ds_login</li>
+</ul>
+<ul>
+<li>user_id</li>
+<li>login_date</li>
+</ul>
+<ul>
+<li>ds_billing_member</li>
+</ul>
+<ul>
+<li>country_code</li>
+<li>user_id</li>
+<li>sales</li>
+</ul>
+<ul>
+<li>ds_billing</li>
+</ul>
+<p>- </p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Keyhong</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2024/09/29/Data-Analysis/posting/word-summary/">http://example.com/2024/09/29/Data-Analysis/posting/word-summary/</a>
+                </span>
+            </div>
+            <!-- <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        reprint:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    use
+                    <a href="cc_by_url" rel="external nofollow noreferrer" target="_blank">cc_by_name</a>
+                    licensed
+                    <a href="/about" target="_blank">Keyhong</a>
+                    !
+                </span>
+            </div> -->
+        
+    </div>
+
+    <!-- <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script> -->
+
+
+
+            <div class="tag_share" style="display: block;">
+                <!-- <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                        </div>
+                    
+                </div> -->
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <!-- <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a> -->
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
+            <div class="card">
+                <a href="/2024/09/29/Data-Analysis/posting/word-summary/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/data-analysis-logo.jpg" class="responsive-img" alt="분석 용어 정리">
+                        
+                        <span class="card-title diy-neon-yellow">분석 용어 정리</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-09-29
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D/" class="post-category">
+                                    데이터 분석
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/08/28/Life/seven_questions/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/book-logo.png" class="responsive-img" alt="시니어 DA에게 묻는 7문 7답">
+                        
+                        <span class="card-title diy-neon-red">시니어 DA에게 묻는 7문 7답</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-08-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Life/" class="post-category">
+                                    Life
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;목차</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2024</span>
+            
+            <a href="/about" target="_blank">Gyuwon Hong</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+            
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+    <a href="https://github.com/keyhong" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:wnhong96@gmail.com" class="tooltipped" target="_blank" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- Back to Top Button -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
