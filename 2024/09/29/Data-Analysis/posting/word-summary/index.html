@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="분석 용어 정리, Data Engineering,Data Analysis,Python Backend">
+    <meta name="keywords" content="분석 지표 정리, Data Engineering,Data Analysis,Python Backend">
     <meta name="description" content="1. 마케팅 용어
 Impression
 광고가 사용자에게 보여지는 것 또는 검색 사용자에게 광고가 노출된 횟수
@@ -24,7 +24,7 @@ ROAS (Return On Ad Spend)
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>분석 용어 정리 | Keyhong</title>
+    <title>분석 지표 정리 | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -189,7 +189,7 @@ ROAS (Return On Ad Spend)
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        분석 용어 정리</h1>
+                        분석 지표 정리</h1>
                 </div>
             </div>
         </div>
@@ -242,10 +242,18 @@ ROAS (Return On Ad Spend)
 <p>광고 노출 대비 클릭 비율. 해당 광고가 특정 기간동안 클릭된 횟수를 노출된 횟수로 나눈값을 백분율로 표시한 값.</p>
 </blockquote>
 <p>&#x3D; (클릭 수 &#x2F; 노출 수(Impression)) * 100</p>
-<h3 id="CPI-Cost-Per-Install"><a href="#CPI-Cost-Per-Install" class="headerlink" title="CPI (Cost Per Install)"></a>CPI (Cost Per Install)</h3><blockquote>
-<p>Install 당 한번 당 지출 비용</p>
+<h3 id="CVR-ConVersion-Rate"><a href="#CVR-ConVersion-Rate" class="headerlink" title="CVR (ConVersion Rate)"></a>CVR (ConVersion Rate)</h3><blockquote>
+<p>(1) 클릭 대비 설치 전환율</p>
 </blockquote>
-<p>&#x3D; 광고비 &#x2F; Install 수</p>
+<p>&#x3D; (전환된 설치 &#x2F; 클릭 수) * 100</p>
+<blockquote>
+<p>(2) 설치 대비 이벤트 전환율</p>
+</blockquote>
+<p>&#x3D; (전환된 행동 &#x2F; 설치) * 100</p>
+<h3 id="CPI-Cost-Per-Install"><a href="#CPI-Cost-Per-Install" class="headerlink" title="CPI (Cost Per Install)"></a>CPI (Cost Per Install)</h3><blockquote>
+<p>설치 한 건당 발생한 광고비용</p>
+</blockquote>
+<p>&#x3D; 광고비 &#x2F; 설치 수(Install)</p>
 <h3 id="CPC-Cost-Per-Click"><a href="#CPC-Cost-Per-Click" class="headerlink" title="CPC (Cost Per Click)"></a>CPC (Cost Per Click)</h3><blockquote>
 <p>온라인 광고 가격을 책정하는 대표적인 방법. 사용자가 검색 결과로 보여진 광고를 클릭하여 광고주의 사이트로 이동했을 때에 광고비가 소진되는 과금 체계</p>
 </blockquote>
@@ -353,7 +361,7 @@ ROAS (Return On Ad Spend)
      <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> ft<span class="token punctuation">.</span>customer_id<span class="token punctuation">)</span> <span class="token keyword">AS</span> WAU
 <span class="token keyword">FROM</span> fact_user_session_day <span class="token keyword">AS</span> fo
     <span class="token keyword">LEFT</span> <span class="token keyword">JOIN</span> fact_user_session_day <span class="token keyword">AS</span> ft
-           <span class="token keyword">ON</span> ft<span class="token punctuation">.</span>event_date <span class="token operator">BETWEEN</span> ft<span class="token punctuation">.</span>event_date <span class="token operator">AND</span> DATE_SUB<span class="token punctuation">(</span>ft<span class="token punctuation">.</span>event_date<span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> <span class="token number">6</span> <span class="token keyword">DAY</span><span class="token punctuation">)</span>
+           <span class="token keyword">ON</span> ft<span class="token punctuation">.</span>event_date <span class="token operator">BETWEEN</span> DATE_SUB<span class="token punctuation">(</span>fo<span class="token punctuation">.</span>event_date<span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> <span class="token number">6</span> <span class="token keyword">DAY</span><span class="token punctuation">)</span> <span class="token operator">AND</span> fo<span class="token punctuation">.</span>event_date
 <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> fo<span class="token punctuation">.</span>event_date<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="MAU-Monlth-Active-User"><a href="#MAU-Monlth-Active-User" class="headerlink" title="MAU (Monlth Active User)"></a>MAU (Monlth Active User)</h3><blockquote>
@@ -365,7 +373,7 @@ ROAS (Return On Ad Spend)
      <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> fo<span class="token punctuation">.</span>customer_id<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> ft<span class="token punctuation">.</span>customer_id<span class="token punctuation">)</span> <span class="token keyword">AS</span> stickiness
 <span class="token keyword">FROM</span> fact_user_session_day <span class="token keyword">AS</span> fo
     <span class="token keyword">LEFT</span> <span class="token keyword">JOIN</span> fact_user_session_day <span class="token keyword">AS</span> ft
-           <span class="token keyword">ON</span> ft<span class="token punctuation">.</span>event_date <span class="token operator">BETWEEN</span> DATE_SUB<span class="token punctuation">(</span>ft<span class="token punctuation">.</span>event_date<span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> <span class="token number">6</span> <span class="token keyword">DAY</span><span class="token punctuation">)</span> <span class="token operator">AND</span> ft<span class="token punctuation">.</span>event_date
+           <span class="token keyword">ON</span> ft<span class="token punctuation">.</span>event_date <span class="token operator">BETWEEN</span> DATE_SUB<span class="token punctuation">(</span>fo<span class="token punctuation">.</span>event_date<span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> <span class="token number">6</span> <span class="token keyword">DAY</span><span class="token punctuation">)</span> <span class="token operator">AND</span> fo<span class="token punctuation">.</span>event_date
 <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> fo<span class="token punctuation">.</span>event_date<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>DAU / MAU</span></div><code class="language-sql"><span class="token keyword">SELECT</span> fo<span class="token punctuation">.</span>event_date
@@ -374,7 +382,7 @@ ROAS (Return On Ad Spend)
      <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> fo<span class="token punctuation">.</span>customer_id<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> ft<span class="token punctuation">.</span>customer_id<span class="token punctuation">)</span> <span class="token keyword">AS</span> stickiness
 <span class="token keyword">FROM</span> fact_user_session_day <span class="token keyword">AS</span> fo
     <span class="token keyword">LEFT</span> <span class="token keyword">JOIN</span> fact_user_session_day <span class="token keyword">AS</span> ft
-           <span class="token keyword">ON</span> ft<span class="token punctuation">.</span>event_date <span class="token operator">BETWEEN</span> DATE_SUB<span class="token punctuation">(</span>ft<span class="token punctuation">.</span>event_date<span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> <span class="token number">29</span> <span class="token keyword">DAY</span><span class="token punctuation">)</span> <span class="token operator">AND</span> ft<span class="token punctuation">.</span>event_date
+           <span class="token keyword">ON</span> ft<span class="token punctuation">.</span>event_date <span class="token operator">BETWEEN</span> DATE_SUB<span class="token punctuation">(</span>fo<span class="token punctuation">.</span>event_date<span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> <span class="token number">29</span> <span class="token keyword">DAY</span><span class="token punctuation">)</span> <span class="token operator">AND</span> fo<span class="token punctuation">.</span>event_date
 <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> fo<span class="token punctuation">.</span>event_date<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="ARPDAU-Average-Revenue-Per-Daily-Active-User"><a href="#ARPDAU-Average-Revenue-Per-Daily-Active-User" class="headerlink" title="ARPDAU (Average Revenue Per Daily Active User)"></a>ARPDAU (Average Revenue Per Daily Active User)</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> event_date
      <span class="token punctuation">,</span> <span class="token function">SUM</span><span class="token punctuation">(</span>revenue<span class="token punctuation">)</span> <span class="token keyword">AS</span> daily_revenue
@@ -410,6 +418,10 @@ ROAS (Return On Ad Spend)
 <h3 id="RPU-Revenue-Per-User"><a href="#RPU-Revenue-Per-User" class="headerlink" title="RPU (Revenue Per User)"></a>RPU (Revenue Per User)</h3><blockquote>
 <p>사용자 당 수익</p>
 </blockquote>
+<h3 id="CAC-Customer-Acquisition-COst"><a href="#CAC-Customer-Acquisition-COst" class="headerlink" title="CAC (Customer Acquisition COst)"></a>CAC (Customer Acquisition COst)</h3><blockquote>
+<p>고객 획득 비용</p>
+</blockquote>
+<p>&#x3D; 신규 고객 확보 비용 &#x2F; 확보된 신규 고객 수</p>
 <h2 id="5-모객-관련-용어"><a href="#5-모객-관련-용어" class="headerlink" title="5. 모객 관련 용어"></a>5. 모객 관련 용어</h2><hr>
 <h3 id="RET-Retension"><a href="#RET-Retension" class="headerlink" title="RET (Retension)"></a>RET (Retension)</h3><blockquote>
 <p>잔존율, 유지율, 유저 잔존 여부</p>
@@ -417,7 +429,13 @@ ROAS (Return On Ad Spend)
 <h3 id="LTV-LifeTime-Value"><a href="#LTV-LifeTime-Value" class="headerlink" title="LTV (LifeTime Value)"></a>LTV (LifeTime Value)</h3><blockquote>
 <p>유저 1명당 생애 가치</p>
 </blockquote>
-<p>&#x3D; 누적 매출 (Sales) &#x2F; RU<br>&#x3D; 일평균 지불금액(ARPDAU) x 지속방문일 (LT, Life Time)</p>
+<p>&#x3D; 누적 매출 (Sales) &#x2F; RU<br>&#x3D; 일평균 지불금액(ARPDAU) x 지속방문일 (LT, Life Time)<br>&#x3D; 사용자당 연간 평균 이익 * 평균 고객 생애주기<br>&#x3D; (((1인당 1년 평균매출) - (1인당 1년 들어가는 평균 서비스 비용)) &#x2F; (1-고객유지비율)) - 고객획득비용(AC)<br>&#x3D; ARPU X (1 &#x2F; Churn rate) </p>
+<p>** 이탈률 &#x3D; 1 - Retention Rate(리텐션율)</p>
+<p>이탈률 &#x3D; ((측정 기간 시작 시점의 고객 수 - 측정 기간 종료 시점의 고객 수) &#x2F; 측정 기간 시작 시점의 고객 수) * 100</p>
+<h3 id="LTR"><a href="#LTR" class="headerlink" title="LTR"></a>LTR</h3><blockquote>
+<p>고객 생애 매출</p>
+</blockquote>
+<p>&#x3D; 매출 &#x2F; 고객수</p>
 <h2 id="5-기타"><a href="#5-기타" class="headerlink" title="5. 기타"></a>5. 기타</h2><hr>
 <h3 id="IAP-In-App-Purchase"><a href="#IAP-In-App-Purchase" class="headerlink" title="IAP (In App Purchase)"></a>IAP (In App Purchase)</h3><blockquote>
 <p>신용카드를 통한 인앱 결제</p>
@@ -440,6 +458,15 @@ ROAS (Return On Ad Spend)
 </blockquote>
 <h3 id="PV-Page-View"><a href="#PV-Page-View" class="headerlink" title="PV (Page View)"></a>PV (Page View)</h3><blockquote>
 <p>홈페이지에 들어온 접속자가 둘러 본 페이지 </p>
+</blockquote>
+<h3 id="ASO-App-Store-Optimization"><a href="#ASO-App-Store-Optimization" class="headerlink" title="ASO (App Store Optimization)"></a>ASO (App Store Optimization)</h3><blockquote>
+<p>앱 스토어 최적화. 앱 아이콘, 스크린샷, 영상, 디스크립션 등 앱을 설명하는 요소를 바꾸면서 전환율을 높이는 것. 앱스토어 최적화를 통해 사용자가 앱 설치를 많이 하면, CPI가 낮아진다.</p>
+</blockquote>
+<h3 id="FTUE-First-Time-User-Experience"><a href="#FTUE-First-Time-User-Experience" class="headerlink" title="FTUE (First Time User Experience)"></a>FTUE (First Time User Experience)</h3><blockquote>
+<p>최초 사용자 경험</p>
+</blockquote>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><blockquote>
+<p>웹 &#x3D; cookie 기반, 앱 &#x3D; device_id 기반 (IDFA: ios, GAID: 안드로이드)</p>
 </blockquote>
 <ul>
 <li>ds_member</li>
@@ -610,9 +637,9 @@ ROAS (Return On Ad Spend)
                 <a href="/2024/09/29/Data-Analysis/posting/word-summary/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/data-analysis-logo.jpg" class="responsive-img" alt="분석 용어 정리">
+                        <img src="/images/logos/data-analysis-logo.jpg" class="responsive-img" alt="분석 지표 정리">
                         
-                        <span class="card-title diy-neon-yellow">분석 용어 정리</span>
+                        <span class="card-title diy-neon-yellow">분석 지표 정리</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
