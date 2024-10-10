@@ -6,12 +6,13 @@
     <meta charset="utf-8">
     <meta name="keywords" content="Graph, Data Engineering,Data Analysis,Python Backend">
     <meta name="description" content="Graph
-Vertex(&amp;#x3D;node)와 Edge 구성된 자료구조
+
+노드(정점, node&amp;#x3D;vertex)와 이들 간의 연결(간선, edge)로 이루어진 데이터 구조
 
 
 가장 복잡한 자료구조
 
-G &amp;#x3D; (V, E) [ V : Vetex Set (정점 또는 Node)*, E : Edge (두 정점 사이의">
+G &amp;#x3D; (V, E) [ V : Vetex Set (정점), E ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -229,34 +230,52 @@ G &amp;#x3D; (V, E) [ V : Vetex Set (정점 또는 Node)*, E : Edge (두 정점 
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Graph"><a href="#Graph" class="headerlink" title="Graph"></a>Graph</h2><blockquote>
-<p>Vertex(&#x3D;node)와 Edge 구성된 자료구조</p>
+                <h2 id="Graph"><a href="#Graph" class="headerlink" title="Graph"></a>Graph</h2><hr>
+<blockquote>
+<p>노드(정점, node&#x3D;vertex)와 이들 간의 연결(간선, edge)로 이루어진 데이터 구조</p>
 </blockquote>
 <ul>
 <li><p>가장 복잡한 자료구조</p>
 </li>
-<li><p>G &#x3D; (V, E) [ V : Vetex Set (정점 또는 Node)*, <em>E : Edge (두 정점 사이의 링크)</em> ]</p>
+<li><p>G &#x3D; (V, E) [ <code>V</code> : <code>Vetex Set (정점)</code>, <code>E</code> : <code>Edge (두 정점 사이의 링크)</code> ]</p>
 </li>
 <li><p>V &#x3D; { 1, 2, 3, 4, 5, 6 }, E &#x3D; { (1, 2), (2, 5), (1, 5) … (6, 4) }</p>
 </li>
 <li><p>지도, 내비게이션, SNS&#x2F;메신저, VCS(Version Control System) 등에 사용</p>
 </li>
 </ul>
-<h3 id="종류"><a href="#종류" class="headerlink" title="종류"></a>종류</h3><table>
+<h3 id="Graph-종류"><a href="#Graph-종류" class="headerlink" title="Graph 종류"></a>Graph 종류</h3><hr>
+<table>
 <thead>
 <tr>
 <th>종류</th>
 <th>설명</th>
 </tr>
 </thead>
-</table>
-<p>| 무방향 그래프 | 방향이 없음(서로 다른 노드 간에 이동 가능), 양방향 그래프와 동일 |<br>| 유방향 그래프 | 방향이 있음(노드의 방향성이 일반통행) |<br>| 순환 그래프(Cyclic Graph) | 어느 한 곳이라도 싸이클이 있음 |<br>| 비순환 그래프(Acyclic Graph) | 어느 곳에도 싸이클이 없음 |<br>| 방향성 비순환 그래프(DAG, Directed Acyclic Graph) | 유방향 + 비순환 그래프 |  </p>
-<ul>
-<li>연결요소(Connected Component)</li>
-</ul>
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219874&authkey=%21AOSPpw73rReeMvM&width=660" width="660" height="auto" />
-
-<h2 id="Graph-그래프"><a href="#Graph-그래프" class="headerlink" title="Graph (그래프)"></a>Graph (그래프)</h2>
+<tbody><tr>
+<td>무방향 그래프</td>
+<td>방향이 없음(서로 다른 노드 간에 이동 가능), 양방향 그래프와 동일</td>
+</tr>
+<tr>
+<td>유방향 그래프</td>
+<td>방향이 있음(노드의 방향성이 일반통행)</td>
+</tr>
+<tr>
+<td>순환 그래프 (Cyclic Graph)</td>
+<td>어느 한 곳이라도 싸이클이 있음</td>
+</tr>
+<tr>
+<td>비순환 그래프 (Acyclic Graph)</td>
+<td>어느 곳에도 싸이클이 없음</td>
+</tr>
+<tr>
+<td>방향성 비순환 그래프 (DAG, Directed Acyclic Graph)</td>
+<td>유방향 + 비순환 그래프</td>
+</tr>
+</tbody></table>
+<br>
+ 
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%219874&authkey=%21AOSPpw73rReeMvM&width=660" width="660" height="auto" alt="3개의 연결요소(Connected Component)를 가지는 하나의 Graph"/>
                 
             </div>
             <hr/>

@@ -5,19 +5,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Stack &amp; Queue, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Stack
+    <meta name="description" content="1. Stack
+
+선입후출(FILO, First In Last Out) 원칙을 따르는 선형 자료구조
+
 
 삽입&amp;#x2F;삭제 : O(1)
 
-FILO(First In, Last Out)
-
-
-s = []
+lists = []
 s.append(123)
 s.append(456)
-s.append(789)
-
-print(&#39;size:&#39;, le">
+s.ap">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -235,14 +233,14 @@ print(&#39;size:&#39;, le">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h2><hr>
+                <h2 id="1-Stack"><a href="#1-Stack" class="headerlink" title="1. Stack"></a>1. Stack</h2><hr>
+<blockquote>
+<p>선입후출(FILO, First In Last Out) 원칙을 따르는 선형 자료구조</p>
+</blockquote>
 <ul>
-<li><p>삽입&#x2F;삭제 : O(1)</p>
-</li>
-<li><p>FILO(First In, Last Out)</p>
-</li>
+<li>삽입&#x2F;삭제 : O(1)</li>
 </ul>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">s <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>list</span></div><code class="language-python">s <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 s<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">)</span>
 s<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token number">456</span><span class="token punctuation">)</span>
 s<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token number">789</span><span class="token punctuation">)</span>
@@ -253,17 +251,17 @@ s<span class="token punctuation">.</span>append<span class="token punctuation">(
     <span class="token keyword">print</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
     s<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment"># pop(0)와 결과 동일        </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-<h2 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h2><hr>
+<h2 id="2-Queue"><a href="#2-Queue" class="headerlink" title="2. Queue"></a>2. Queue</h2><hr>
+<blockquote>
+<p>선입선출(FIFO, First In, First Out) 원칙을 따르는 선형 자료구조</p>
+</blockquote>
 <ul>
 <li><p>삽입&#x2F;삭제 : O(1)</p>
-</li>
-<li><p>FIFO(First In, First Out)</p>
 </li>
 <li><p>python에서 collections 모듈의 Queue 클래스가 있지만, multi-threading을 고려하여 thread-safe하게 구현했기 때문에 알고리즘에서는 속도가 느리다.</p>
 </li>
 </ul>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> queue <span class="token keyword">import</span> Queue
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>queue.Queue</span></div><code class="language-python"><span class="token keyword">from</span> queue <span class="token keyword">import</span> Queue
 
 q <span class="token operator">=</span> Queue<span class="token punctuation">(</span><span class="token punctuation">)</span>
 q<span class="token punctuation">.</span>put<span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">)</span>
@@ -275,7 +273,11 @@ q<span class="token punctuation">.</span>put<span class="token punctuation">(</s
 <span class="token keyword">while</span> q<span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span>q<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="dequeue"><a href="#dequeue" class="headerlink" title="dequeue"></a>dequeue</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> collections <span class="token keyword">import</span> deque
+<h2 id="3-Dequeue"><a href="#3-Dequeue" class="headerlink" title="3. Dequeue"></a>3. Dequeue</h2><hr>
+<blockquote>
+<p>양쪽 끝에서 모두 삽입과 삭제가 가능한 자료구조</p>
+</blockquote>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>collections.deque</span></div><code class="language-python"><span class="token keyword">from</span> collections <span class="token keyword">import</span> deque
 
 dq <span class="token operator">=</span> deque<span class="token punctuation">(</span><span class="token punctuation">)</span>
 dq<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">)</span>
@@ -287,8 +289,9 @@ dq<span class="token punctuation">.</span>append<span class="token punctuation">
 <span class="token keyword">while</span> <span class="token builtin">len</span><span class="token punctuation">(</span>dq<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span>dq<span class="token punctuation">.</span>popleft<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="Priority-Queue"><a href="#Priority-Queue" class="headerlink" title="Priority Queue"></a>Priority Queue</h2><blockquote>
-<p>우선순위 큐 (&#x3D;Heap)</p>
+<h2 id="4-Priority-Queue"><a href="#4-Priority-Queue" class="headerlink" title="4. Priority Queue"></a>4. Priority Queue</h2><hr>
+<blockquote>
+<p>우선순위에 따라 요소가 처리되는 큐 (&#x3D;Heap)</p>
 </blockquote>
 <ul>
 <li><p>삽입&#x2F;삭제 : O(logN)</p>
@@ -302,8 +305,7 @@ dq<span class="token punctuation">.</span>append<span class="token punctuation">
 <li><p>python에서 collections 모듈의 PriorityQueue 클래스가 있지만, multi-threading을 고려하여 thread-safe하게 구현했기 때문에 알고리즘에서는 속도가 느리다</p>
 </li>
 </ul>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># python - PriorityQueue</span>
-<span class="token keyword">from</span> queue <span class="token keyword">import</span> PriorityQueue
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>queue.PriorityQueue</span></div><code class="language-python"><span class="token keyword">from</span> queue <span class="token keyword">import</span> PriorityQueue
 
 pq <span class="token operator">=</span> PriorityQueue<span class="token punctuation">(</span><span class="token punctuation">)</span>
 pg<span class="token punctuation">.</span>put<span class="token punctuation">(</span><span class="token number">456</span><span class="token punctuation">)</span>
@@ -313,23 +315,21 @@ pg<span class="token punctuation">.</span>put<span class="token punctuation">(</
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'size:'</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>pg<span class="token punctuation">)</span><span class="token punctuation">)</span>
 
 <span class="token keyword">while</span> <span class="token keyword">not</span> pg<span class="token punctuation">.</span>empty<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>pg<span class="token punctuation">.</span>get<span class="token punctuation">(</span>pg<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>pg<span class="token punctuation">.</span>get<span class="token punctuation">(</span>pg<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<pre><code class="python"># python - heapq
-import heapq
-# import heapq as hq (alias)
+<br>
 
-pq = []
-heapq.heappush(pg, 456)
-heapq.heappush(pg, 123)
-heapq.heappush(pg, 789)
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>heapq</span></div><code class="language-python"><span class="token keyword">import</span> heapq
 
-print(&#39;size:&#39;, len(pg))
+pq <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+heapq<span class="token punctuation">.</span>heappush<span class="token punctuation">(</span>pg<span class="token punctuation">,</span> <span class="token number">456</span><span class="token punctuation">)</span>
+heapq<span class="token punctuation">.</span>heappush<span class="token punctuation">(</span>pg<span class="token punctuation">,</span> <span class="token number">123</span><span class="token punctuation">)</span>
+heapq<span class="token punctuation">.</span>heappush<span class="token punctuation">(</span>pg<span class="token punctuation">,</span> <span class="token number">789</span><span class="token punctuation">)</span>
 
-while pg:
-    print(heapq.heappop(pg))
-</code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'size:'</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>pg<span class="token punctuation">)</span><span class="token punctuation">)</span>
 
+<span class="token keyword">while</span> pg<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>heapq<span class="token punctuation">.</span>heappop<span class="token punctuation">(</span>pg<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -467,12 +467,12 @@ while pg:
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/06/16/Python/algorithm/time-complexity/">
+                <a href="/2024/06/16/Spark/posting/spark-concept/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/algorithm-logo.png" class="responsive-img" alt="시간복잡도">
+                        <img src="/images/logos/spark-logo.png" class="responsive-img" alt="Spark 개념 정리">
                         
-                        <span class="card-title diy-neon-red">시간복잡도</span>
+                        <span class="card-title diy-neon-red">Spark 개념 정리</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -489,8 +489,8 @@ while pg:
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" class="post-category">
-                                    알고리즘
+                            <a href="/categories/Spark/" class="post-category">
+                                    Spark
                                 </a>
                             
                             
