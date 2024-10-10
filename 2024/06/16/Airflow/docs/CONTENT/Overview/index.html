@@ -4,8 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Overview, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="What is Airflow™?Apache Airflow™는 배치 지향적 워크플로우를 개발, 스케줄링 및 모니터링하는 오픈소스 플랫폼입니다. Airflow의 확장 가능한 Python 프레임워크를 사용하면 거의 모든 ">
+    <meta name="keywords" content="Airflow Overview, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="1. What is Airflow?
+
+Apache Airflow는 배치 지향적 워크플로우를 개발, 스케줄링 및 모니터링하는 오픈소스 플랫폼
+
+
+Airflow의 확장 가능한 Python 프레임워크를 사용하면 거의 모든">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +22,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Overview | Keyhong</title>
+    <title>Airflow Overview | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -182,7 +187,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        Overview</h1>
+                        Airflow Overview</h1>
                 </div>
             </div>
         </div>
@@ -223,25 +228,40 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="What-is-Airflow™"><a href="#What-is-Airflow™" class="headerlink" title="What is Airflow™?"></a>What is Airflow™?</h2><p><a target="_blank" rel="noopener" href="https://github.com/apache/airflow">Apache Airflow™</a>는 배치 지향적 워크플로우를 개발, 스케줄링 및 모니터링하는 오픈소스 플랫폼입니다. Airflow의 확장 가능한 Python 프레임워크를 사용하면 거의 모든 기술과 연결된 워크플로우를 구축할 수 있습니다. 웹 인터페이스를 통해 워크플로우의 상태를 관리할 수 있습니다. Airflow는 노트북에서 단일 프로세스에서부터 가장 큰 워크플로우를 지원하기 위한 분산 설정까지 다양한 방식으로 배포할 수 있습니다.</p>
-<h2 id="Workflows-as-code"><a href="#Workflows-as-code" class="headerlink" title="Workflows as code"></a>Workflows as code</h2><p>Airflow 워크플로우의 주요 특징은 모든 워크플로우가 Python 코드로 정의된다는 것입니다. “코드로서의 워크플로우”는 여러 목적을 제공합니다:</p>
+                <h2 id="1-What-is-Airflow"><a href="#1-What-is-Airflow" class="headerlink" title="1. What is Airflow?"></a>1. What is Airflow?</h2><hr>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/apache/airflow">Apache Airflow</a>는 <code>배치 지향적 워크플로우</code>를 개발, <code>스케줄링</code> 및 <code>모니터링</code>하는 오픈소스 플랫폼</p>
+</blockquote>
 <ul>
-<li><p><strong>Dynamic</strong>: Airflow 파이프라인은 Python 코드로 구성되어 있어 동적 파이프라인 생성이 가능합니다.</p>
+<li>Airflow의 확장 가능한 Python 프레임워크를 사용하면 거의 모든 기술과 연결된 워크플로우를 구축 가능</li>
+<li>웹 인터페이스를 통해 워크플로우의 상태를 관리 가능</li>
+<li>Airflow는 단일 프로세스에서부터 가장 큰 워크플로우를 지원하기 위한 분산 설정까지 다양한 방식으로 배포 가능</li>
+</ul>
+<h2 id="2-Workflows-as-code"><a href="#2-Workflows-as-code" class="headerlink" title="2. Workflows as code"></a>2. Workflows as code</h2><hr>
+<blockquote>
+<p><code>Airflow 워크플로우의 주요 특징은 모든 워크플로우가 Python 코드로 정의된다는 것</code></p>
+</blockquote>
+<p>“코드로서의 워크플로우”는 여러 목적을 제공:</p>
+<ul>
+<li><p><code>Dynamic</code>: Airflow 파이프라인은 Python 코드로 구성되어 있어 동적 파이프라인 생성이 가능</p>
 </li>
-<li><p><strong>Extensible</strong>: Airflow™ 프레임워크에는 다양한 기술과 연결하기 위한 연산자가 포함되어 있습니다. 모든 Airflow 구성 요소는 환경에 쉽게 적응할 수 있도록 확장 가능합니다.</p>
+<li><p><code>Extensible</code>: Airflow 프레임워크에는 다양한 기술과 연결하기 위한 연산자가 포함되어 있음. 모든 Airflow 구성 요소는 환경에 쉽게 적응할 수 있도록 확장 가능</p>
 </li>
-<li><p><strong>Flexible</strong>: Jinja 템플릿 엔진을 활용한 워크플로우 매개변수화가 내장되어 있습니다.</p>
+<li><p><code>Flexible</code>: Jinja 템플릿 엔진을 활용한 워크플로우 매개변수화가 내장되어 있음</p>
 </li>
 </ul>
-<p>다음 코드 스니펫을 살펴보세요:</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> datetime <span class="token keyword">import</span> datetime
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>Code Snippet</span></div><code class="language-python"><span class="token keyword">from</span> datetime <span class="token keyword">import</span> datetime
 
 <span class="token keyword">from</span> airflow <span class="token keyword">import</span> DAG
 <span class="token keyword">from</span> airflow<span class="token punctuation">.</span>decorators <span class="token keyword">import</span> task
 <span class="token keyword">from</span> airflow<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>bash <span class="token keyword">import</span> BashOperator
 
 <span class="token comment"># A DAG represents a workflow, a collection of tasks</span>
-<span class="token keyword">with</span> DAG<span class="token punctuation">(</span>dag_id<span class="token operator">=</span><span class="token string">"demo"</span><span class="token punctuation">,</span> start_date<span class="token operator">=</span>datetime<span class="token punctuation">(</span><span class="token number">2022</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> schedule<span class="token operator">=</span><span class="token string">"0 0 * * *"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> dag<span class="token punctuation">:</span>
+<span class="token keyword">with</span> DAG<span class="token punctuation">(</span>
+    dag_id<span class="token operator">=</span><span class="token string">"demo"</span><span class="token punctuation">,</span>
+    start_date<span class="token operator">=</span>datetime<span class="token punctuation">(</span><span class="token number">2022</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    schedule<span class="token operator">=</span><span class="token string">"0 0 * * *"</span>
+<span class="token punctuation">)</span> <span class="token keyword">as</span> dag<span class="token punctuation">:</span>
     <span class="token comment"># Tasks are represented as operators</span>
     hello <span class="token operator">=</span> BashOperator<span class="token punctuation">(</span>task_id<span class="token operator">=</span><span class="token string">"hello"</span><span class="token punctuation">,</span> bash_command<span class="token operator">=</span><span class="token string">"echo hello"</span><span class="token punctuation">)</span>
 
@@ -250,38 +270,41 @@
         <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"airflow"</span><span class="token punctuation">)</span>
 
     <span class="token comment"># Set dependencies between tasks</span>
-    hello <span class="token operator">>></span> airflow<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    hello <span class="token operator">>></span> airflow<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>여기에서 보시는 내용은 다음과 같습니다:</p>
+<p>여기에서 보는 내용은 다음과 같음:</p>
 <ul>
-<li><p>“demo”라는 이름의 DAG는 2022년 1월 1일부터 시작하여 매일 한 번 실행됩니다. DAG는 Airflow에서 워크플로우의 표현입니다.</p>
+<li><p><code>demo</code>라는 이름의 DAG는 <code>2022년 1월 1일</code>부터 시작하여 <code>매일 한 번 실행</code>됩니다. DAG는 Airflow에서 워크플로우의 표현</p>
 </li>
-<li><p>두 개의 태스크는 Bash 스크립트를 실행하는 BashOperator와 <code>@task</code> 데코레이터를 사용하여 정의된 Python 함수입니다.</p>
+<li><p>두 개의 태스크는 각각 Bash 스크립트를 실행하는 <code>BashOperator</code>와 <code>@task</code> 데코레이터를 사용하여 정의된 Python 함수</p>
 </li>
-<li><p>태스크 간에는 <code>&gt;&gt;</code> 가 있으며, 이는 의존성을 정의하고 태스크가 실행되는 순서를 제어합니다.</p>
+<li><p>태스크 간에는 <code>&gt;&gt;</code> 가 있으며, 이는 의존성을 정의하고 태스크가 실행되는 순서를 제어</p>
 </li>
 </ul>
-<p>Airflow는 이 스크립트를 평가하고 설정된 간격으로 작업을 실행하며 정의된 순서대로 실행합니다. “demo” DAG의 상태는 웹 인터페이스에서 확인할 수 있습니다.</p>
-<img src="https://airflow.apache.org/docs/apache-airflow/stable/_images/demo_graph_view.png">
+<p>Airflow는 이 스크립트를 평가하고 설정된 간격으로 작업을 실행하며 정의된 순서대로 실행. <code>demo</code> DAG의 상태는 웹 인터페이스에서 확인할 수 있음</p>
+<img src="https://airflow.apache.org/docs/apache-airflow/stable/_images/demo_grid_view.png" alt="demo DAG (grid view)">
 
-<p>이 예제는 간단한 Bash 및 Python 스크립트를 보여줍니다. 그러나 이러한 태스크는 임의의 코드를 실행할 수 있습니다. 스파크 작업 실행, 두 버킷 간 데이터 이동 또는 이메일 보내기 등을 고려할 수 있습니다. 동일한 구조가 시간이 지남에 따라도 동작하는 것을 볼 수도 있습니다:</p>
-<img src="https://airflow.apache.org/docs/apache-airflow/stable/_images/demo_grid_view.png">
+<p>각 열은 하나의 DAG 실행을 나타냄. 이 예제는 간단한 Bash 및 Python 스크립트를 보여줌. 그러나 이러한 태스크는 임의의 코드를 실행할 수 있음. 스파크 작업 실행, 두 버킷 간 데이터 이동 또는 이메일 보내기 등을 고려할 수 있음. 동일한 구조가 시간이 지남에 따라도 동작하는 것을 볼 수도 있음</p>
+<img src="https://airflow.apache.org/docs/apache-airflow/stable/_images/demo_graph_view.png" alt="graph view">
 
-<p>각 열은 하나의 DAG 실행을 나타냅니다. 이것들은 Airflow에서 가장 많이 사용되는 두 가지 뷰 중 일부입니다. 그러나 워크플로우의 상태를 자세히 살펴볼 수 있는 여러 다른 뷰들도 있습니다.</p>
-<h2 id="Why-Airflow™"><a href="#Why-Airflow™" class="headerlink" title="Why Airflow™?"></a>Why Airflow™?</h2><p>Airflow™는 배치 워크플로우 오케스트레이션 플랫폼입니다. Airflow 프레임워크에는 다양한 기술과 연결하기 위한 연산자가 포함되어 있으며 새로운 기술과 연결하기 쉽도록 확장할 수 있습니다. 워크플로우가 명확한 시작과 끝이 있고 정기적으로 실행된다면, 해당 워크플로우를 Airflow DAG로 프로그래밍할 수 있습니다.</p>
-<p>만약 당신이 클릭보다는 코딩을 선호한다면, Airflow가 당신을 위한 도구입니다. 워크플로우는 Python 코드로 정의됩니다:</p>
+<p>이것들은 Airflow에서 가장 많이 사용되는 두 가지 뷰 중 일부. 그러나 워크플로우의 상태를 자세히 살펴볼 수 있는 여러 다른 뷰들도 있음</p>
+<h2 id="3-Why-Airflow"><a href="#3-Why-Airflow" class="headerlink" title="3. Why Airflow?"></a>3. Why Airflow?</h2><hr>
+<blockquote>
+<p>Airflow는 배치 워크플로우 오케스트레이션 플랫폼. Airflow 프레임워크에는 <code>다양한 기술과 연결하기 위한 연산자가 포함되어 있으며 새로운 기술과 연결하기 쉽도록 확장할 수 있음</code>. 워크플로우가 명확한 시작과 끝이 있고 정기적으로 실행된다면, 해당 <code>워크플로우를 Airflow DAG로 프로그래밍이 가능</code></p>
+</blockquote>
+<p>만약 GUI 클릭보다는 프로그래밍 코딩을 선호한다면, Airflow가 적절한 도구. 워크플로우는 Python 코드로 정의:</p>
 <ul>
-<li><p>워크플로우는 이전 버전으로 롤백할 수 있도록 버전 관리 시스템에 저장될 수 있습니다.</p>
+<li><p>워크플로우는 이전 버전으로 롤백할 수 있도록 버전 관리 시스템에 저장될 수 있음</p>
 </li>
-<li><p>여러 사람이 동시에 워크플로우를 개발할 수 있습니다.</p>
+<li><p>여러 사람이 동시에 워크플로우를 개발할 수 있음</p>
 </li>
-<li><p>기능을 검증하기 위해 테스트를 작성할 수 있습니다.</p>
+<li><p>기능을 검증하기 위해 테스트를 작성할 수 있음</p>
 </li>
-<li><p>컴포넌트는 확장 가능하며 넓은 범위의 기존 컴포넌트를 기반으로 개발할 수 있습니다.</p>
+<li><p>컴포넌트는 확장 가능하며 넓은 범위의 기존 컴포넌트를 기반으로 개발할 수 있음</p>
 </li>
 </ul>
-<p>풍부한 스케줄링 및 실행 의미론을 통해 정기적 간격으로 실행되는 복잡한 파이프라인을 쉽게 정의할 수 있습니다. 백필링(backfilling)을 통해 로직을 수정한 후에도 과거 데이터에서 파이프라인을 (다시-)실행할 수 있습니다. 그리고 오류를 해결한 후에 일부 파이프라인을 다시 실행할 수 있는 능력은 효율성을 극대화하는 데 도움이 됩니다.</p>
-<p>Airflow의 사용자 인터페이스는 다음을 제공합니다:</p>
+<p>풍부한 스케줄링 및 실행 의미론을 통해 정기적 간격으로 실행되는 복잡한 파이프라인을 쉽게 정의할 수 있음. 백필링(backfilling)을 통해 로직을 수정한 후에도 과거 데이터에서 파이프라인을 다시 실행할 수 있음. 그리고 오류를 해결한 후에 일부 파이프라인을 다시 실행할 수 있는 능력은 효율성을 극대화하는 데 도움이 됨</p>
+<p>Airflow의 사용자 인터페이스는 다음을 제공:</p>
 <ol>
 <li><p>두 가지 항목에 대한 심층적인 보기:</p>
 <ol>
@@ -294,12 +317,16 @@
 <li><p>시간이 지남에 따른 파이프라인의 개요</p>
 </li>
 </ol>
-<p>인터페이스에서는 로그를 검사하고 작업을 관리할 수 있습니다. 예를 들어, 작업이 실패한 경우 작업을 다시 시도할 수 있습니다.</p>
-<p>Airflow의 오픈소스 성격은 여러 다른 <a target="_blank" rel="noopener" href="https://github.com/apache/airflow/blob/main/INTHEWILD.md">companies</a>에서 개발, 테스트 및 사용한 컴포넌트들을 활용할 수 있도록 합니다. 활발한 <a target="_blank" rel="noopener" href="https://airflow.apache.org/community/">community</a>에서는 블로그 포스트, 기사, 컨퍼런스, 책 등 다양한 형태의 유용한 자료를 찾을 수 있습니다. 또한 <a target="_blank" rel="noopener" href="https://apache-airflow-slack.herokuapp.com/">Slack</a> 및 메일링 리스트와 같은 여러 채널을 통해 다른 동료들과 연결할 수도 있습니다.</p>
-<p>Airflow 플랫폼은 매우 맞춤화할 수 있습니다. <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/public-airflow-interface.html">Public Interface of Airflow</a>를 활용하여 Airflow의 거의 모든 측면을 확장하고 맞춤화할 수 있습니다.</p>
-<h2 id="Why-not-Airflow™"><a href="#Why-not-Airflow™" class="headerlink" title="Why not Airflow™?"></a>Why not Airflow™?</h2><p>Airflow™는 유한한 배치 워크플로우를 위해 개발되었습니다. CLI와 REST API를 통해 워크플로우를 트리거할 수는 있지만, Airflow는 무한히 실행되는 이벤트 기반 워크플로우를 위해 구축되지 않았습니다. Airflow는 스트리밍 솔루션은 아닙니다. 그러나 Apache Kafka와 같은 스트리밍 시스템이 종종 함께 사용되는 것을 볼 수 있습니다. Kafka는 실시간으로 데이터를 수집하고 처리하는 데 사용되며, 이벤트 데이터는 저장 위치에 기록되고 Airflow는 주기적으로 일괄 데이터를 처리하는 워크플로우를 시작합니다.</p>
-<p>코딩보다는 클릭을 선호한다면, Airflow는 아마도 적합한 해결책이 아닐 것입니다. 웹 인터페이스는 워크플로우를 관리하는 것을 가능한 쉽게 만들기 위해 노력하고 있으며, Airflow 프레임워크는 개발자 경험을 가능한 부드럽게 만들기 위해 지속적으로 개선되고 있습니다. 그러나 Airflow의 철학은 워크플로우를 코드로 정의하는 것이므로 항상 코딩이 필요할 것입니다.</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<p>인터페이스에서는 로그를 검사하고 작업을 관리할 수 있음. 예를 들어, 작업이 실패한 경우 작업을 다시 시도 가능</p>
+<p>Airflow의 오픈소스 성격은 여러 다른 <a target="_blank" rel="noopener" href="https://github.com/apache/airflow/blob/main/INTHEWILD.md">companies</a>에서 개발, 테스트 및 사용한 컴포넌트들을 활용할 수 있도록 함. 활발한 <a target="_blank" rel="noopener" href="https://airflow.apache.org/community/">community</a>에서는 블로그 포스트, 기사, 컨퍼런스, 책 등 다양한 형태의 유용한 자료를 찾을 수 있음. 또한 <a target="_blank" rel="noopener" href="https://apache-airflow-slack.herokuapp.com/">Slack</a> 및 메일링 리스트와 같은 여러 채널을 통해 다른 동료들과 연결할 수도 있음</p>
+<p>Airflow 플랫폼은 매우 맞춤화할 수 있음. <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/public-airflow-interface.html">Public Interface of Airflow</a>를 활용하여 Airflow의 거의 모든 측면을 확장하고 맞춤화할 수 있음</p>
+<h2 id="4-Why-not-Airflow"><a href="#4-Why-not-Airflow" class="headerlink" title="4. Why not Airflow?"></a>4. Why not Airflow?</h2><hr>
+<blockquote>
+<p>Airflow는 유한한 배치 워크플로우를 위해 개발됨. CLI와 REST API를 통해 워크플로우를 트리거할 수는 있지만, Airflow는 무한히 실행되는 이벤트 기반 워크플로우를 위해 구축되지 않음. <code>Airflow는 스트리밍 솔루션은 아님</code>. 그러나 Apache Kafka와 같은 스트리밍 시스템이 종종 함께 사용되는 것을 볼 수 있음. Kafka는 실시간으로 데이터를 수집하고 처리하는 데 사용되며, 이벤트 데이터는 저장 위치에 기록되고 Airflow는 주기적으로 일괄 데이터를 처리하는 워크플로우를 시작함</p>
+</blockquote>
+<p><code>코딩보다는 클릭을 선호한다면, Airflow는 아마도 적합한 해결책이 아님</code>. 웹 인터페이스는 워크플로우를 관리하는 것을 가능한 쉽게 만들기 위해 노력하고 있으며, Airflow 프레임워크는 개발자 경험을 가능한 부드럽게 만들기 위해 지속적으로 개선되고 있음. 그러나 <code>Airflow의 철학은 워크플로우를 코드로 정의하는 것이므로 항상 코딩이 필요함</code></p>
+<h2 id="5-References"><a href="#5-References" class="headerlink" title="5. References"></a>5. References</h2><hr>
+<ul>
 <li><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/index.html">https://airflow.apache.org/docs/apache-airflow/stable/index.html</a></li>
 </ul>
 
@@ -483,9 +510,9 @@
                 <a href="/2024/06/16/Airflow/posting/timezone/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="Timezone">
+                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="Timezone 객체">
                         
-                        <span class="card-title diy-neon-red">Timezone</span>
+                        <span class="card-title diy-neon-red">Timezone 객체</span>
                     </div>
                 </a>
                 <div class="card-content article-content">

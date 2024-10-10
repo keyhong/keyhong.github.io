@@ -4,12 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Operator 코드 스니펫, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="BashOperator
-from airflow.operators.bash_operator import BashOperator
+    <meta name="keywords" content="Operator Snippet, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="1. BashOperator
+BashOperatorfrom airflow.operators.bash_operator import BashOperator
 
-# case 1: 일반적인 방법으로 bash command 실행
-bash_task1 = ">
+# case 1: 일반적인 방법으로 bash command 실">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +20,7 @@ bash_task1 = ">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Operator 코드 스니펫 | Keyhong</title>
+    <title>Operator Snippet | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -186,7 +185,7 @@ bash_task1 = ">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        Operator 코드 스니펫</h1>
+                        Operator Snippet</h1>
                 </div>
             </div>
         </div>
@@ -227,8 +226,8 @@ bash_task1 = ">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="BashOperator"><a href="#BashOperator" class="headerlink" title="BashOperator"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/operators/bash/index.html#module-airflow.operators.bash">BashOperator</a></h2><hr>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>bash_operator <span class="token keyword">import</span> BashOperator
+                <h2 id="1-BashOperator"><a href="#1-BashOperator" class="headerlink" title="1. BashOperator"></a>1. <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/operators/bash/index.html#module-airflow.operators.bash">BashOperator</a></h2><hr>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>BashOperator</span></div><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>bash_operator <span class="token keyword">import</span> BashOperator
 
 <span class="token comment"># case 1: 일반적인 방법으로 bash command 실행</span>
 bash_task1 <span class="token operator">=</span> BashOperator<span class="token punctuation">(</span>
@@ -256,8 +255,8 @@ bash_task2 <span class="token operator">=</span> BashOperator<span class="token 
     bash_command<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> templated_command
 <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="PythonOperator"><a href="#PythonOperator" class="headerlink" title="PythonOperator"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/operators/python/index.html#airflow.operators.python.PythonOperator">PythonOperator</a></h2><hr>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>python_operator <span class="token keyword">import</span> PythonOperator
+<h2 id="2-PythonOperator"><a href="#2-PythonOperator" class="headerlink" title="2. PythonOperator"></a>2. <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/operators/python/index.html#airflow.operators.python.PythonOperator">PythonOperator</a></h2><hr>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>PythonOperator</span></div><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>python_operator <span class="token keyword">import</span> PythonOperator
 
 <span class="token keyword">def</span> <span class="token function">my_sleeping_function</span><span class="token punctuation">(</span>random_base<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token triple-quoted-string string">"""This is a function that will run within the DAG execution"""</span>
@@ -272,8 +271,8 @@ bash_task2 <span class="token operator">=</span> BashOperator<span class="token 
         op_kwargs<span class="token punctuation">:</span> Mapping<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">,</span> Any<span class="token punctuation">]</span> <span class="token operator">|</span> <span class="token boolean">None</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">"random_base"</span><span class="token punctuation">:</span> i <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">&#125;</span> <span class="token comment"># 함수 호출시 펼쳐질 keyword argument의 dictionary</span>
     <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="BranchPythonOperator"><a href="#BranchPythonOperator" class="headerlink" title="BranchPythonOperator"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/operators/python/index.html#airflow.operators.python.BranchPythonOperator">BranchPythonOperator</a></h2><hr>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>python_operator <span class="token keyword">import</span> BranchPythonOperator
+<h2 id="3-BranchPythonOperator"><a href="#3-BranchPythonOperator" class="headerlink" title="3. BranchPythonOperator"></a>3. <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/operators/python/index.html#airflow.operators.python.BranchPythonOperator">BranchPythonOperator</a></h2><hr>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>BranchPythonOperator</span></div><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>python_operator <span class="token keyword">import</span> BranchPythonOperator
 
 <span class="token comment"># 다음 작업은 파이썬 함수 check_api의 결과 값에 따라 달라집니다.</span>
 check_api <span class="token operator">=</span> BranchPythonOperator<span class="token punctuation">(</span>
@@ -291,8 +290,8 @@ check_api <span class="token operator">>></span> none <span class="token operato
 
     check_api <span class="token operator">>></span> process <span class="token operator">>></span> save<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="BranchDateTimeOperator"><a href="#BranchDateTimeOperator" class="headerlink" title="BranchDateTimeOperator"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/howto/operator/datetime.html#branchdatetimeoperator">BranchDateTimeOperator</a></h2><hr>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>datetime <span class="token keyword">import</span> BranchDateTimeOperator
+<h2 id="4-BranchDateTimeOperator"><a href="#4-BranchDateTimeOperator" class="headerlink" title="4. BranchDateTimeOperator"></a>4. <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/howto/operator/datetime.html#branchdatetimeoperator">BranchDateTimeOperator</a></h2><hr>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>BranchDateTimeOperator</span></div><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>datetime <span class="token keyword">import</span> BranchDateTimeOperator
 
 is_in_timeframe <span class="token operator">=</span> BranchDateTimeOperator<span class="token punctuation">(</span>
     task_id<span class="token operator">=</span><span class="token string">"is_in_timeframe"</span><span class="token punctuation">,</span>
@@ -304,8 +303,8 @@ is_in_timeframe <span class="token operator">=</span> BranchDateTimeOperator<spa
 <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
-<h2 id="HttpSensor"><a href="#HttpSensor" class="headerlink" title="HttpSensor"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow-providers-http/stable/_api/airflow/providers/http/sensors/http/index.html#airflow.providers.http.sensors.http.HttpSensor">HttpSensor</a></h2><hr>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>sensors<span class="token punctuation">.</span>http_sensor <span class="token keyword">import</span> HttpSensor
+<h2 id="5-HttpSensor"><a href="#5-HttpSensor" class="headerlink" title="5. HttpSensor"></a>5. <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow-providers-http/stable/_api/airflow/providers/http/sensors/http/index.html#airflow.providers.http.sensors.http.HttpSensor">HttpSensor</a></h2><hr>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>HttpSensor</span></div><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>sensors<span class="token punctuation">.</span>http_sensor <span class="token keyword">import</span> HttpSensor
 
 <span class="token comment"># Checking if forex rates are avaiable</span>
 <span class="token comment"># TODO: Check SSL</span>
@@ -319,8 +318,8 @@ my_http_sensor <span class="token operator">=</span> HttpSensor<span class="toke
     timeout<span class="token operator">=</span><span class="token number">20</span> <span class="token comment"># 센서가 조건을 확인 할 최대 시간</span>
 <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="SimpleHttpOperator"><a href="#SimpleHttpOperator" class="headerlink" title="SimpleHttpOperator"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow-providers-http/stable/_api/airflow/providers/http/operators/http/index.html#airflow.providers.http.operators.http.SimpleHttpOperator">SimpleHttpOperator</a></h2><hr>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>http_operator <span class="token keyword">import</span> SimpleHttpOperator
+<h2 id="6-SimpleHttpOperator"><a href="#6-SimpleHttpOperator" class="headerlink" title="6. SimpleHttpOperator"></a>6. <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow-providers-http/stable/_api/airflow/providers/http/operators/http/index.html#airflow.providers.http.operators.http.SimpleHttpOperator">SimpleHttpOperator</a></h2><hr>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>SimpleHttpOperator</span></div><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>http_operator <span class="token keyword">import</span> SimpleHttpOperator
 
 <span class="token comment"># get forex rates of JPY and push them into XCOM</span>
 get_forex_rate_EUR <span class="token operator">=</span> SimpleHttpOperator<span class="token punctuation">(</span>
@@ -333,8 +332,8 @@ get_forex_rate_EUR <span class="token operator">=</span> SimpleHttpOperator<span
     xcom_push<span class="token operator">=</span><span class="token boolean">True</span>
 <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="FileSensor"><a href="#FileSensor" class="headerlink" title="FileSensor"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/sensors/filesystem/index.html#airflow.sensors.filesystem.FileSensor">FileSensor</a></h2><hr>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>contrib<span class="token punctuation">.</span>sensors<span class="token punctuation">.</span>file_sensor <span class="token keyword">import</span> FileSensor
+<h2 id="7-FileSensor"><a href="#7-FileSensor" class="headerlink" title="7. FileSensor"></a>7. <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/sensors/filesystem/index.html#airflow.sensors.filesystem.FileSensor">FileSensor</a></h2><hr>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>FileSensor</span></div><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>contrib<span class="token punctuation">.</span>sensors<span class="token punctuation">.</span>file_sensor <span class="token keyword">import</span> FileSensor
 
 <span class="token comment"># 관찰할 파일이 있는 지 확인</span>
 <span class="token comment"># Web에서 fs_conn_id를 필수적으로 연결해서 경로를 지정해야 한다</span>
@@ -347,8 +346,8 @@ is_file_available <span class="token operator">=</span> FileSensor<span class="t
     timeout<span class="token operator">=</span><span class="token number">20</span>
 <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="HiveOperator"><a href="#HiveOperator" class="headerlink" title="HiveOperator"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow-providers-apache-hive/stable/_api/airflow/providers/apache/hive/operators/hive/index.html#airflow.providers.apache.hive.operators.hive.HiveOperator">HiveOperator</a></h2><hr>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>hive_operator <span class="token keyword">import</span> HiveOperator
+<h2 id="8-HiveOperator"><a href="#8-HiveOperator" class="headerlink" title="8. HiveOperator"></a>8. <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow-providers-apache-hive/stable/_api/airflow/providers/apache/hive/operators/hive/index.html#airflow.providers.apache.hive.operators.hive.HiveOperator">HiveOperator</a></h2><hr>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>HiveOperator</span></div><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>hive_operator <span class="token keyword">import</span> HiveOperator
 
 <span class="token comment"># HiveOperator로 테이블 만들기</span>
 creating_hive_table <span class="token operator">=</span> HiveOperator<span class="token punctuation">(</span>
@@ -372,8 +371,8 @@ creating_hive_table <span class="token operator">=</span> HiveOperator<span clas
 <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
-<h2 id="SparkSubmitOperator"><a href="#SparkSubmitOperator" class="headerlink" title="SparkSubmitOperator"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow-providers-apache-spark/stable/_api/airflow/providers/apache/spark/operators/spark_submit/index.html#airflow.providers.apache.spark.operators.spark_submit.SparkSubmitOperator">SparkSubmitOperator</a></h2><hr>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>contrib<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>spark_submit_operator <span class="token keyword">import</span> SparkSubmitOperator
+<h2 id="9-SparkSubmitOperator"><a href="#9-SparkSubmitOperator" class="headerlink" title="9. SparkSubmitOperator"></a>9. <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow-providers-apache-spark/stable/_api/airflow/providers/apache/spark/operators/spark_submit/index.html#airflow.providers.apache.spark.operators.spark_submit.SparkSubmitOperator">SparkSubmitOperator</a></h2><hr>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>SparkSubmitOperator</span></div><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>contrib<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>spark_submit_operator <span class="token keyword">import</span> SparkSubmitOperator
 
 <span class="token comment"># 데이터 처리를 위해 Spark Job 실행하기</span>
 spark_processing <span class="token operator">=</span> SparkSubmitOperator<span class="token punctuation">(</span>
@@ -383,8 +382,8 @@ spark_processing <span class="token operator">=</span> SparkSubmitOperator<span 
     verbose<span class="token operator">=</span><span class="token boolean">False</span> <span class="token comment"># 디버깅을 위해 verbose 플래그를 spark-submit 프로세스에 전달할지 여부</span>
 <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="EmailOperator"><a href="#EmailOperator" class="headerlink" title="EmailOperator"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/operators/email/index.html#airflow.operators.email.EmailOperator">EmailOperator</a></h2><hr>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>email_operator <span class="token keyword">import</span> EmailOperator
+<h2 id="10-EmailOperator"><a href="#10-EmailOperator" class="headerlink" title="10. EmailOperator"></a>10. <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/operators/email/index.html#airflow.operators.email.EmailOperator">EmailOperator</a></h2><hr>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>EmailOperator</span></div><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>email_operator <span class="token keyword">import</span> EmailOperator
 
 <span class="token comment"># 이메일 알림 전송하기</span>
 <span class="token comment"># https://stackoverflow.com/questions/51829200/how-to-set-up-airflow-send-email</span>
@@ -399,8 +398,8 @@ sending_email_notification <span class="token operator">=</span> EmailOperator<s
 <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
-<h2 id="SlackAPIPostOperator"><a href="#SlackAPIPostOperator" class="headerlink" title="SlackAPIPostOperator"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow-providers-slack/stable/_api/airflow/providers/slack/operators/slack/index.html#airflow.providers.slack.operators.slack.SlackAPIPostOperator">SlackAPIPostOperator</a></h2><hr>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>slack_operator <span class="token keyword">import</span> SlackAPIPostOperator
+<h2 id="11-SlackAPIPostOperator"><a href="#11-SlackAPIPostOperator" class="headerlink" title="11. SlackAPIPostOperator"></a>11. <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow-providers-slack/stable/_api/airflow/providers/slack/operators/slack/index.html#airflow.providers.slack.operators.slack.SlackAPIPostOperator">SlackAPIPostOperator</a></h2><hr>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>SlackAPIPostOperator</span></div><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>slack_operator <span class="token keyword">import</span> SlackAPIPostOperator
 
 <span class="token comment"># Slack 메시지를 통한 알림 전송</span>
 <span class="token comment"># TODO: Improvements - add on_failure for tasks</span>
@@ -414,8 +413,8 @@ sending_slack_notification <span class="token operator">=</span> SlackAPIPostOpe
 <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
-<h2 id="SubDagOperator"><a href="#SubDagOperator" class="headerlink" title="SubDagOperator"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/operators/subdag/index.html#airflow.operators.subdag.SubDagOperator">SubDagOperator</a></h2><hr>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># This class is deprecated, please use airflow.utils.task_group.TaskGroup.</span>
+<h2 id="12-SubDagOperator"><a href="#12-SubDagOperator" class="headerlink" title="12. SubDagOperator"></a>12. <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/operators/subdag/index.html#airflow.operators.subdag.SubDagOperator">SubDagOperator</a></h2><hr>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>SubDagOperator</span></div><code class="language-python"><span class="token comment"># This class is deprecated, please use airflow.utils.task_group.TaskGroup.</span>
 <span class="token keyword">from</span> subdags<span class="token punctuation">.</span>subdag <span class="token keyword">import</span> factory_subdag
 <span class="token keyword">from</span> airflow<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>subdag_operator <span class="token keyword">import</span> SubDagOperator
 <span class="token keyword">from</span> airflow<span class="token punctuation">.</span>executors<span class="token punctuation">.</span>celery_executor <span class="token keyword">import</span> CeleryExecutor
@@ -428,8 +427,8 @@ subdag_1 <span class="token operator">=</span> SubDagOperator<span class="token 
 <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
-<h2 id="ExternalTaskSensor"><a href="#ExternalTaskSensor" class="headerlink" title="ExternalTaskSensor"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/sensors/external_task/index.html#airflow.sensors.external_task.ExternalTaskSensor">ExternalTaskSensor</a></h2><hr>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>sensors<span class="token punctuation">.</span>external_task_sensor <span class="token keyword">import</span> ExternalTaskSensor
+<h2 id="13-ExternalTaskSensor"><a href="#13-ExternalTaskSensor" class="headerlink" title="13. ExternalTaskSensor"></a>13. <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/sensors/external_task/index.html#airflow.sensors.external_task.ExternalTaskSensor">ExternalTaskSensor</a></h2><hr>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>ExternalTaskSensor</span></div><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>sensors<span class="token punctuation">.</span>external_task_sensor <span class="token keyword">import</span> ExternalTaskSensor
 
 external_sensor <span class="token operator">=</span> ExternalTaskSensor<span class="token punctuation">(</span>
     task_id<span class="token operator">=</span><span class="token string">'external_sensor'</span><span class="token punctuation">,</span>
@@ -438,8 +437,8 @@ external_sensor <span class="token operator">=</span> ExternalTaskSensor<span cl
 <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
-<h2 id="PostgresOperator"><a href="#PostgresOperator" class="headerlink" title="PostgresOperator"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow-providers-postgres/stable/_api/airflow/providers/postgres/operators/postgres/index.html#airflow.providers.postgres.operators.postgres.PostgresOperator">PostgresOperator</a></h2><hr>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>postgres_operator <span class="token keyword">import</span> PostgresOperator
+<h2 id="14-PostgresOperator"><a href="#14-PostgresOperator" class="headerlink" title="14. PostgresOperator"></a>14. <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow-providers-postgres/stable/_api/airflow/providers/postgres/operators/postgres/index.html#airflow.providers.postgres.operators.postgres.PostgresOperator">PostgresOperator</a></h2><hr>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>PostgresOperator</span></div><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>postgres_operator <span class="token keyword">import</span> PostgresOperator
 
 create_table <span class="token operator">=</span> PostgresOperator<span class="token punctuation">(</span>
     task_id<span class="token operator">=</span><span class="token string">"create_table"</span><span class="token punctuation">,</span>
@@ -464,8 +463,8 @@ create_table <span class="token operator">=</span> CustomPostgresOperator<span c
 <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
-<h2 id="TriggerDagRunOperator"><a href="#TriggerDagRunOperator" class="headerlink" title="TriggerDagRunOperator"></a><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/operators/trigger_dagrun/index.html#airflow.operators.trigger_dagrun.TriggerDagRunOperator">TriggerDagRunOperator</a></h2><hr>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>dagrun_operator <span class="token keyword">import</span> TriggerDagRunOperator
+<h2 id="15-TriggerDagRunOperator"><a href="#15-TriggerDagRunOperator" class="headerlink" title="15. TriggerDagRunOperator"></a>15. <a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/operators/trigger_dagrun/index.html#airflow.operators.trigger_dagrun.TriggerDagRunOperator">TriggerDagRunOperator</a></h2><hr>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>TriggerDagRunOperator</span></div><code class="language-python"><span class="token keyword">from</span> airflow<span class="token punctuation">.</span>operators<span class="token punctuation">.</span>dagrun_operator <span class="token keyword">import</span> TriggerDagRunOperator
 
 trigger <span class="token operator">=</span> TriggerDagRunOperator<span class="token punctuation">(</span>
     task_id<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span><span class="token string">"trigger_dag"</span><span class="token punctuation">,</span> 
@@ -612,9 +611,9 @@ trigger <span class="token operator">=</span> TriggerDagRunOperator<span class="
                 <a href="/2024/06/16/Airflow/posting/timezone/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="Timezone">
+                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="Timezone 객체">
                         
-                        <span class="card-title diy-neon-red">Timezone</span>
+                        <span class="card-title diy-neon-red">Timezone 객체</span>
                     </div>
                 </a>
                 <div class="card-content article-content">

@@ -243,7 +243,8 @@
 <li><p>수동으로 데이터를 넣어야 하는 불편함이 있지만, 동적 파티셔닝보다 빠르다.</p>
 </li>
 </ul>
-<h4 id="1-1-1-정적-파티션-테이블-생성하기"><a href="#1-1-1-정적-파티션-테이블-생성하기" class="headerlink" title="1.1.1 정적 파티션 테이블 생성하기"></a>1.1.1 정적 파티션 테이블 생성하기</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- deptname 컬럼으로 파티셔닝</span>
+<h4 id="1-1-1-정적-파티션-테이블-생성하기"><a href="#1-1-1-정적-파티션-테이블-생성하기" class="headerlink" title="1.1.1 정적 파티션 테이블 생성하기"></a>1.1.1 정적 파티션 테이블 생성하기</h4><hr>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- deptname 컬럼으로 파티셔닝</span>
 <span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token keyword">IF</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span> part_dept <span class="token punctuation">(</span> <span class="token comment">-- 생성할 테이블: part_dept</span>
     dept_no <span class="token keyword">int</span><span class="token punctuation">,</span>
     empname string<span class="token punctuation">,</span>

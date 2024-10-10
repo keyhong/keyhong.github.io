@@ -4,17 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Timezone, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="naive datetime object
-
-Timezone(tzinfo)이 없는 객체
-
-aware datetime object
-
-Timezone(tzinfo)이 있는 객체
-
-
-python에서 pendulum 모듈의 d">
+    <meta name="keywords" content="Timezone 객체, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="1. 개요
+airflow에서 시간대와 관련된 작업은 굉장히 헷갈리는 요소가 많고, 이로 인해 많은 분석가나 엔지니어들이 ETL시 실수를 하는 요소임. 따라서 시작 전에 시간대 객체에 대한 정확한 이해가 우선적으로 필">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -26,7 +18,7 @@ python에서 pendulum 모듈의 d">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Timezone | Keyhong</title>
+    <title>Timezone 객체 | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -191,7 +183,7 @@ python에서 pendulum 모듈의 d">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        Timezone</h1>
+                        Timezone 객체</h1>
                 </div>
             </div>
         </div>
@@ -232,36 +224,55 @@ python에서 pendulum 모듈의 d">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="naive-datetime-object"><a href="#naive-datetime-object" class="headerlink" title="naive datetime object"></a>naive datetime object</h2><hr>
+                <h2 id="1-개요"><a href="#1-개요" class="headerlink" title="1. 개요"></a>1. 개요</h2><hr>
+<p><code>airflow에서 시간대와 관련된 작업은 굉장히 헷갈리는 요소가 많고, 이로 인해 많은 분석가나 엔지니어들이 ETL시 실수를 하는 요소임</code>. 따라서 시작 전에 시간대 객체에 대한 정확한 이해가 우선적으로 필요함</p>
+<p>파이썬에서 시간대를 다루는 다루는 객체는 두 가지가 있음: </p>
+<ul>
+<li>naive datetime object</li>
+<li>aware datetime object</li>
+</ul>
+<h2 id="2-naive-datetime-object"><a href="#2-naive-datetime-object" class="headerlink" title="2. naive datetime object"></a>2. naive datetime object</h2><hr>
 <blockquote>
-<p>Timezone(tzinfo)이 없는 객체</p>
+<p>Python의 datetime 모듈에서 사용되는 개념으로, 시간대 정보(tzinfo)가 없는 날짜와 시간 객체를 의미</p>
 </blockquote>
-<h2 id="aware-datetime-object"><a href="#aware-datetime-object" class="headerlink" title="aware datetime object"></a>aware datetime object</h2><hr>
+<h2 id="3-aware-datetime-object"><a href="#3-aware-datetime-object" class="headerlink" title="3. aware datetime object"></a>3. aware datetime object</h2><hr>
 <blockquote>
-<p>Timezone(tzinfo)이 있는 객체</p>
+<p>Python의 datetime 모듈에서 사용되는 개념으로, 시간대 정보(tzinfo)를 포함하고 있는 날짜와 시간 객체를 의미</p>
 </blockquote>
 <ul>
-<li>python에서 pendulum 모듈의 datetime 함수로 생성이 가능하다.</li>
+<li><code>airflow에서는 timezone이 있는 aware datetime object를 사용함</code></li>
 </ul>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> pendulum
+<span class="token keyword">from</span> airflow<span class="token punctuation">.</span>models <span class="token keyword">import</span> DAG
+
+<span class="token keyword">with</span> DAG<span class="token punctuation">(</span>
+    dag_id<span class="token operator">=</span><span class="token string">'demo'</span><span class="token punctuation">,</span>
+    start_date<span class="token operator">=</span>pendulum<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span><span class="token number">2023</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">29</span><span class="token punctuation">,</span> tz<span class="token operator">=</span>pendulum<span class="token punctuation">.</span>timezone<span class="token punctuation">(</span><span class="token string">'Asia/Seoul'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span> <span class="token keyword">as</span> dag<span class="token punctuation">:</span>
+
+    <span class="token comment"># ... task ...</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="2-1-pendulum-라이브러리"><a href="#2-1-pendulum-라이브러리" class="headerlink" title="2.1 pendulum 라이브러리"></a>2.1 pendulum 라이브러리</h3><hr>
+<blockquote>
+<p>Python의 날짜 및 시간 처리를 위한 라이브러리로, <code>기본적인 datetime 모듈의 기능을 확장하고 사용하기 쉽게 만든 라이브러리</code></p>
+</blockquote>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>pendulum 모듈의 datetime 함수로 aware datetime object 객체 생성이 가능</span></div><code class="language-python"><span class="token keyword">import</span> pendulum
 
 pendulum<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span><span class="token number">2023</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">29</span><span class="token punctuation">,</span> tz<span class="token operator">=</span>pendulum<span class="token punctuation">.</span>timezone<span class="token punctuation">(</span><span class="token string">'Asia/Seoul'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<ul>
-<li>pendulum 모듈의 datetime function 확인</li>
-</ul>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># pendulum 모듈의 datetime function. tz의 default가 UTC이므로 수정을 해야함.</span>
-<span class="token comment"># 필수 파라미터는 year, month, day를 int 자료형으로 받는다.</span>
+<br>
 
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>pendulum 모듈의 datetime 함수 오픈소스</span></div><code class="language-python"><span class="token comment"># 필수 파라미터 : year, month, day</span>
+<span class="token comment"># tz의 default가 UTC이므로 객체 생성시 사용 timezone에 맞춰 수정</span>
 <span class="token keyword">def</span> <span class="token function">datetime</span><span class="token punctuation">(</span>
-    year<span class="token punctuation">,</span>  <span class="token comment"># type: int</span>
-    month<span class="token punctuation">,</span>  <span class="token comment"># type: int</span>
-    day<span class="token punctuation">,</span>  <span class="token comment"># type: int</span>
-    hour<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>  <span class="token comment"># type: int</span>
-    minute<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>  <span class="token comment"># type: int</span>
-    second<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>  <span class="token comment"># type: int</span>
-    microsecond<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>  <span class="token comment"># type: int</span>
-    tz<span class="token operator">=</span>UTC<span class="token punctuation">,</span>  <span class="token comment"># type: Optional[Union[str, float, _Timezone]]</span>
+    year<span class="token punctuation">,</span>                      <span class="token comment"># type: int</span>
+    month<span class="token punctuation">,</span>                     <span class="token comment"># type: int</span>
+    day<span class="token punctuation">,</span>                       <span class="token comment"># type: int</span>
+    hour<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>                    <span class="token comment"># type: int</span>
+    minute<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>                  <span class="token comment"># type: int</span>
+    second<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>                  <span class="token comment"># type: int</span>
+    microsecond<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>             <span class="token comment"># type: int</span>
+    tz<span class="token operator">=</span>UTC<span class="token punctuation">,</span>                    <span class="token comment"># type: Optional[Union[str, float, _Timezone]]</span>
     dst_rule<span class="token operator">=</span>POST_TRANSITION<span class="token punctuation">,</span>  <span class="token comment"># type: str</span>
 <span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># type: (...) -> DateTime</span>
     <span class="token triple-quoted-string string">"""
@@ -287,17 +298,9 @@ pendulum<span class="token punctuation">.</span>datetime<span class="token punct
         dt<span class="token punctuation">.</span>microsecond<span class="token punctuation">,</span>
         tzinfo<span class="token operator">=</span>dt<span class="token punctuation">.</span>tzinfo<span class="token punctuation">,</span>
         fold<span class="token operator">=</span>dt<span class="token punctuation">.</span>fold<span class="token punctuation">,</span>
-    <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="pendulum-사용법"><a href="#pendulum-사용법" class="headerlink" title="pendulum 사용법"></a>pendulum 사용법</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> pendulum
-<span class="token keyword">from</span> airflow<span class="token punctuation">.</span>models <span class="token keyword">import</span> DAG
 
-<span class="token keyword">with</span> DAG<span class="token punctuation">(</span>
-    dag_id<span class="token operator">=</span><span class="token string">'~'</span><span class="token punctuation">,</span>
-    start_date<span class="token operator">=</span>pendulum<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span><span class="token number">2023</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">29</span><span class="token punctuation">,</span> tz<span class="token operator">=</span>pendulum<span class="token punctuation">.</span>timezone<span class="token punctuation">(</span><span class="token string">'Asia/Seoul'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-<span class="token punctuation">)</span> <span class="token keyword">as</span> dag<span class="token punctuation">:</span>
-
-    <span class="token comment"># ... task ...</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -438,9 +441,9 @@ pendulum<span class="token punctuation">.</span>datetime<span class="token punct
                 <a href="/2024/06/16/Airflow/docs/CONTENT/Overview/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="Overview">
+                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="Airflow Overview">
                         
-                        <span class="card-title diy-neon-red">Overview</span>
+                        <span class="card-title diy-neon-red">Airflow Overview</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -478,9 +481,9 @@ pendulum<span class="token punctuation">.</span>datetime<span class="token punct
                 <a href="/2024/06/16/Airflow/posting/operators/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="Operator 코드 스니펫">
+                        <img src="/images/logos/airflow-logo.png" class="responsive-img" alt="Operator Snippet">
                         
-                        <span class="card-title diy-neon-red">Operator 코드 스니펫</span>
+                        <span class="card-title diy-neon-red">Operator Snippet</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
