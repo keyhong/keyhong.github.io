@@ -5,12 +5,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="하이브 파티셔닝, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Partitioning
+    <meta name="description" content="1. 파티셔닝
+
 분할 키를 기반으로 테이블의 데이터를 여러 부분으로 구성하는 방법
 
-Partitioning의 두 종류는 정적 파티셔닝과 동적 파티셔닝이 있다.
-
-Static Partitioning (정적 파티">
+파티셔닝(Partitioning)의 두 종류는 정적 파티셔닝(Static Partitioning)과 동적 파티셔닝(Dynamic P">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -228,26 +227,23 @@ Static Partitioning (정적 파티">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Partitioning"><a href="#Partitioning" class="headerlink" title="Partitioning"></a>Partitioning</h2><blockquote>
+                <h2 id="1-파티셔닝"><a href="#1-파티셔닝" class="headerlink" title="1. 파티셔닝"></a>1. 파티셔닝</h2><hr>
+<blockquote>
 <p>분할 키를 기반으로 테이블의 데이터를 여러 부분으로 구성하는 방법</p>
 </blockquote>
-<p>Partitioning의 두 종류는 정적 파티셔닝과 동적 파티셔닝이 있다.</p>
+<p>파티셔닝(Partitioning)의 두 종류는 정적 파티셔닝(Static Partitioning)과 동적 파티셔닝(Dynamic Partitioning)이 있다.</p>
+<h3 id="1-1-정적-파티셔닝"><a href="#1-1-정적-파티셔닝" class="headerlink" title="1.1 정적 파티셔닝"></a>1.1 정적 파티셔닝</h3><hr>
 <ul>
-<li>Static Partitioning (정적 파티셔닝)</li>
-<li>Dynamic Partitioning (동적 파티셔닝)</li>
-</ul>
-<h3 id="Static-Partitioning"><a href="#Static-Partitioning" class="headerlink" title="Static Partitioning"></a>Static Partitioning</h3><ul>
-<li><p><strong>유저가 파티션의 값을 확인해 직접 파티션명을 지정하여 파티션에 데이터를 수동으로 적재</strong>한다. 따라서 데이터에 대한 사전 탐색이 필요하다.</p>
+<li><p><code>유저가 파티션의 값을 확인해 직접 파티션명을 지정하여 파티션에 데이터를 수동으로 적재</code>한다. 따라서 데이터에 대한 사전 탐색이 필요하다.</p>
 </li>
-<li><p>정적 파티셔닝에서 <strong>파티션으로 사용하는 컬럼은 CREATE 문에 포함되서는 안된다.</strong></p>
+<li><p>정적 파티셔닝(Static Partitioning)에서 <code>파티션으로 사용하는 컬럼은 CREATE 문에 포함되서는 안된다.</code></p>
 </li>
 <li><p>INSERT가 아닌 LOAD로 정적 파티션 테이블에 적재하는 경우에 파티션별 분리된 파일을 각각 가지고 있어야 한다.</p>
 </li>
 <li><p>수동으로 데이터를 넣어야 하는 불편함이 있지만, 동적 파티셔닝보다 빠르다.</p>
 </li>
 </ul>
-<h4 id="정적-파티션-테이블-생성하기"><a href="#정적-파티션-테이블-생성하기" class="headerlink" title="정적 파티션 테이블 생성하기"></a>정적 파티션 테이블 생성하기</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- deptname 컬럼으로 파티셔닝</span>
- 
+<h4 id="1-1-1-정적-파티션-테이블-생성하기"><a href="#1-1-1-정적-파티션-테이블-생성하기" class="headerlink" title="1.1.1 정적 파티션 테이블 생성하기"></a>1.1.1 정적 파티션 테이블 생성하기</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- deptname 컬럼으로 파티셔닝</span>
 <span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token keyword">IF</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span> part_dept <span class="token punctuation">(</span> <span class="token comment">-- 생성할 테이블: part_dept</span>
     dept_no <span class="token keyword">int</span><span class="token punctuation">,</span>
     empname string<span class="token punctuation">,</span>
@@ -258,9 +254,10 @@ PARTITIONED <span class="token keyword">BY</span> <span class="token punctuation
 <span class="token keyword">FIELDS</span> <span class="token keyword">TERMINATED</span> <span class="token keyword">BY</span> <span class="token string">','</span>
 <span class="token keyword">LINES</span> <span class="token keyword">TERMINATED</span> <span class="token keyword">BY</span> <span class="token string">'\n'</span>
 STORED <span class="token keyword">AS</span> TEXTFILE
-<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="정적-파티션에-INSERT로-데이터-적재하기"><a href="#정적-파티션에-INSERT로-데이터-적재하기" class="headerlink" title="정적 파티션에 INSERT로 데이터 적재하기"></a>정적 파티션에 INSERT로 데이터 적재하기</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token keyword">TABLE</span> part_dept
+<h4 id="1-1-2-정적-파티션에-INSERT로-데이터-적재하기"><a href="#1-1-2-정적-파티션에-INSERT로-데이터-적재하기" class="headerlink" title="1.1.2 정적 파티션에 INSERT로 데이터 적재하기"></a>1.1.2 정적 파티션에 INSERT로 데이터 적재하기</h4><hr>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token keyword">TABLE</span> part_dept
 <span class="token keyword">PARTITION</span> <span class="token punctuation">(</span>deptname<span class="token operator">=</span><span class="token string">'HR'</span><span class="token punctuation">)</span> <span class="token comment">-- 생성할 파티션 컬럼값이 'HR'이라고 명시적으로 지정</span>
 <span class="token keyword">SELECT</span> col1<span class="token punctuation">,</span> col2<span class="token punctuation">,</span> col3 <span class="token comment">-- 파티션에 넣을 데이터 (SELECT 문)</span>
 <span class="token keyword">FROM</span> dept
@@ -278,7 +275,8 @@ INSERT를 할 때, 파티션 컬럼 값만 명시적으로 지정해준다면
 <span class="token keyword">WHERE</span> col2<span class="token operator">=</span><span class="token string">'Accounts'</span>
 <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="정적-파티션에-LOAD로-데이터-적재하기"><a href="#정적-파티션에-LOAD로-데이터-적재하기" class="headerlink" title="정적 파티션에 LOAD로 데이터 적재하기"></a>정적 파티션에 LOAD로 데이터 적재하기</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">/** act data
+<h4 id="1-1-3-정적-파티션에-LOAD로-데이터-적재하기"><a href="#1-1-3-정적-파티션에-LOAD로-데이터-적재하기" class="headerlink" title="1.1.3 정적 파티션에 LOAD로 데이터 적재하기"></a>1.1.3 정적 파티션에 LOAD로 데이터 적재하기</h4><hr>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">/** act data
 
 10,Accounts,Stewe,2384
 10,Accounts,Pico,3833
@@ -287,16 +285,15 @@ INSERT를 할 때, 파티션 컬럼 값만 명시적으로 지정해준다면
 
 <span class="token keyword">LOAD</span> <span class="token keyword">DATA</span> <span class="token keyword">LOCAL</span> INPATH <span class="token string">'/home/hong/act'</span> <span class="token keyword">INTO</span> <span class="token keyword">TABLE</span> part_dept <span class="token keyword">PARTITION</span> <span class="token punctuation">(</span>deptname<span class="token operator">=</span><span class="token string">'XZ'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-
-
-<h3 id="Dynamic-Partitioning"><a href="#Dynamic-Partitioning" class="headerlink" title="Dynamic Partitioning"></a>Dynamic Partitioning</h3><ul>
+<h3 id="1-2-동적-파티셔닝"><a href="#1-2-동적-파티셔닝" class="headerlink" title="1.2 동적 파티셔닝"></a>1.2 동적 파티셔닝</h3><hr>
+<ul>
 <li><p>Hive가 파티션 값을 기반으로 파티션을 자동으로 생성하고 데이터를 적재한다.</p>
 </li>
-<li><p>기본적으로 다이나믹 파티셔닝은 비활성화 되어 있다. 사용하려면 이 속성을 활성화 해주어야 한다.</p>
+<li><p>기본적으로 동적 파티셔닝(Dynamic Partitioning)은 비활성화 되어 있다. 사용하려면 이 속성을 활성화 해주어야 한다.</p>
 </li>
 </ul>
-<h4 id="동적-파티셔닝-활성화"><a href="#동적-파티셔닝-활성화" class="headerlink" title="동적 파티셔닝 활성화"></a>동적 파티셔닝 활성화</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- 동적 파티셔닝 활성화</span>
+<h4 id="1-2-1-동적-파티셔닝-활성화"><a href="#1-2-1-동적-파티셔닝-활성화" class="headerlink" title="1.2.1 동적 파티셔닝 활성화"></a>1.2.1 동적 파티셔닝 활성화</h4><hr>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- 동적 파티셔닝 활성화</span>
 <span class="token keyword">SET</span> hive<span class="token punctuation">.</span><span class="token keyword">exec</span><span class="token punctuation">.</span>dynamic<span class="token punctuation">.</span><span class="token keyword">partition</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
 
 <span class="token comment">/**
@@ -309,7 +306,8 @@ strict에서는 동적 파티션과 함께 적어도 하나의 정적 파티션�
 
 <span class="token keyword">SET</span> hive<span class="token punctuation">.</span><span class="token keyword">exec</span><span class="token punctuation">.</span>dynamic<span class="token punctuation">.</span><span class="token keyword">partition</span><span class="token punctuation">.</span><span class="token keyword">mode</span> <span class="token operator">=</span> nonstrict<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="동적-파티션-테이블-생성하기"><a href="#동적-파티션-테이블-생성하기" class="headerlink" title="동적 파티션 테이블 생성하기"></a>동적 파티션 테이블 생성하기</h4><p>CREATE문 자체는 정적 파티션 테이블 생성하는 것과 차이가 없다.</p>
+<h4 id="1-2-2-동적-파티션-테이블-생성하기"><a href="#1-2-2-동적-파티션-테이블-생성하기" class="headerlink" title="1.2.2 동적 파티션 테이블 생성하기"></a>1.2.2 동적 파티션 테이블 생성하기</h4><hr>
+<p>CREATE문 자체는 정적 파티션 테이블 생성하는 것과 차이가 없다.</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- deptname 컬럼으로 파티셔닝</span>
 <span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token keyword">IF</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span> part_dept <span class="token punctuation">(</span>
     dept_no <span class="token keyword">int</span><span class="token punctuation">,</span>
@@ -323,8 +321,9 @@ PARTITIONED <span class="token keyword">BY</span> <span class="token punctuation
 STORED <span class="token keyword">AS</span> TEXTFILE
 <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="동적-파티션-테이블에-INSERT로-데이터-적재하기"><a href="#동적-파티션-테이블에-INSERT로-데이터-적재하기" class="headerlink" title="동적 파티션 테이블에 INSERT로 데이터 적재하기"></a>동적 파티션 테이블에 INSERT로 데이터 적재하기</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">/**
-INSERT를 할 때, 파티션 컬럼 값을 데이터에 의해 결정하므로 
+<h4 id="1-2-3-동적-파티션-테이블에-INSERT로-데이터-적재하기"><a href="#1-2-3-동적-파티션-테이블에-INSERT로-데이터-적재하기" class="headerlink" title="1.2.3 동적 파티션 테이블에 INSERT로 데이터 적재하기"></a>1.2.3 동적 파티션 테이블에 INSERT로 데이터 적재하기</h4><hr>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">/**
+INSERT를 할 때, 파티션 컬럼 값을 데이터에 의해 결정하므로
 파티션을 분별하는 데이터 값과 파티션 컬럼값이 일치한다.
 
 예를 들면, col2 컬럼의 값의 도메인이 (value1, value2, value3)라면
@@ -332,60 +331,61 @@ INSERT를 할 때, 파티션 컬럼 값을 데이터에 의해 결정하므로
 */</span>
 <span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token keyword">TABLE</span> part_dept1
 <span class="token keyword">PARTITION</span> <span class="token punctuation">(</span>deptname<span class="token punctuation">)</span> <span class="token comment">-- 정적 파티셔닝과 달리 파티션 이름을 명시적으로 하드코딩 하지 않는다.</span>
-<span class="token keyword">SELECT</span> col1<span class="token punctuation">,</span> col2<span class="token punctuation">,</span> col3<span class="token punctuation">,</span> col2 <span class="token comment">-- 파티셔닝 대상이 되는 컬럼(col2)이 제일 마지막에 있어야 한다. </span>
+<span class="token keyword">SELECT</span> col1<span class="token punctuation">,</span> col2<span class="token punctuation">,</span> col3<span class="token punctuation">,</span> col2 <span class="token comment">-- 파티셔닝 대상이 되는 컬럼(col2)이 제일 마지막에 있어야 한다.</span>
 <span class="token keyword">FROM</span> dept
 <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="테이블-파티션-변경하기"><a href="#테이블-파티션-변경하기" class="headerlink" title="테이블 파티션 변경하기"></a>테이블 파티션 변경하기</h2><h4 id="파티션-리스트-보기-SHOW-PARTITIONS"><a href="#파티션-리스트-보기-SHOW-PARTITIONS" class="headerlink" title="파티션 리스트 보기 (SHOW PARTITIONS )"></a>파티션 리스트 보기 (SHOW PARTITIONS <table>)</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SHOW</span> PARTITIONS part_dept1<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="2-테이블-파티션-변경하기"><a href="#2-테이블-파티션-변경하기" class="headerlink" title="2. 테이블 파티션 변경하기"></a>2. 테이블 파티션 변경하기</h2><hr>
+<h3 id="2-1-파티션-리스트-보기"><a href="#2-1-파티션-리스트-보기" class="headerlink" title="2.1 파티션 리스트 보기"></a>2.1 파티션 리스트 보기</h3><hr>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>파티션 리스트 보기</span></div><code class="language-sql"><span class="token comment">-- SHOW PARTITIONS &lt;table></span>
+<span class="token keyword">SHOW</span> PARTITIONS part_dept1<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h4 id="특정-파티션-삭제하기-ALTER-TABLE-DROP-PARTITION"><a href="#특정-파티션-삭제하기-ALTER-TABLE-DROP-PARTITION" class="headerlink" title="특정 파티션 삭제하기 (ALTER TABLE ~ DROP PARTITION ~)"></a>특정 파티션 삭제하기 (ALTER TABLE ~ DROP PARTITION ~)</h4><ul>
-<li><p>☆ Internal 테이블일 경우, 데이터와 메타데이터 모두 파티션과 함께 삭제된다.</p>
-</li>
-<li><p>☆ External 테이블일 경우, 메타데이터는 사라져 Hive에서 검색은 되지 않아도 HDFS에서는 존재 하는 것을 확인 가능하다.</p>
-</li>
-</ul>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> part_dept1 <span class="token keyword">DROP</span> <span class="token keyword">PARTITION</span> <span class="token punctuation">(</span>deptname<span class="token operator">=</span><span class="token string">'HR'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="2-2-특정-파티션-삭제하기"><a href="#2-2-특정-파티션-삭제하기" class="headerlink" title="2.2 특정 파티션 삭제하기"></a>2.2 특정 파티션 삭제하기</h3><hr>
+<p>(1) <code>Internal 테이블일 경우, 데이터와 메타데이터 모두 파티션과 함께 삭제</code>된다.</p>
+<p>(2)) <code>External 테이블일 경우, 메타데이터는 사라져 Hive에서 검색은 되지 않아도 HDFS에서는 존재 하는 것을 확인 가능</code>하다.</p>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>특정 파티션 삭제하기</span></div><code class="language-sql"><span class="token comment">-- ALTER TABLE &lt;table> DROP PARTITION &lt;파티션조건></span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> part_dept1 <span class="token keyword">DROP</span> <span class="token keyword">PARTITION</span> <span class="token punctuation">(</span>deptname<span class="token operator">=</span><span class="token string">'HR'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h4 id="파티션-추가하기-ALTER-TABLE-ADD-PARTITION"><a href="#파티션-추가하기-ALTER-TABLE-ADD-PARTITION" class="headerlink" title="파티션 추가하기 (ALTER TABLE ~ ADD PARTITION ~)"></a>파티션 추가하기 (ALTER TABLE ~ ADD PARTITION ~)</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- 파티션 생성</span>
+<h3 id="2-3-파티션-생성하기"><a href="#2-3-파티션-생성하기" class="headerlink" title="2.3 파티션 생성하기"></a>2.3 파티션 생성하기</h3><hr>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>파티션 생성하기</span></div><code class="language-sql"><span class="token comment">-- ALTER TABLE &lt;table> ADD PARTITION &lt;파티션조건></span>
 <span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> part_dept1 <span class="token keyword">ADD</span> <span class="token keyword">PARTITION</span> <span class="token punctuation">(</span>deptname<span class="token operator">=</span><span class="token string">'Dev'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token comment">-- 데이터 적재하기</span>
 <span class="token keyword">LOAD</span> <span class="token keyword">DATA</span> <span class="token keyword">LOCAL</span> INPATH <span class="token string">'/home/hong/dev'</span> <span class="token keyword">INTO</span> <span class="token keyword">TABLE</span> part_dept1 <span class="token keyword">PARTITION</span> <span class="token punctuation">(</span>deptname<span class="token operator">=</span><span class="token string">'Dev'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="☆-Q-만약-Hive로-파티션을-생성하지-않고-HDFS로-파티션-폴더를-먼저-생성하면-Hive가-알까"><a href="#☆-Q-만약-Hive로-파티션을-생성하지-않고-HDFS로-파티션-폴더를-먼저-생성하면-Hive가-알까" class="headerlink" title="☆ Q. 만약 Hive로 파티션을 생성하지 않고, HDFS로 파티션 폴더를 먼저 생성하면 Hive가 알까?"></a>☆ Q. 만약 Hive로 파티션을 생성하지 않고, HDFS로 파티션 폴더를 먼저 생성하면 Hive가 알까?</h4><p>모른다. Hive는 HDFS로 만든 파티션 폴더에 대한 메타 데이터를 가지고 있지 않기 때문이다.</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- hdfs 명령어로 폴더 신규 추가</span>
+<h4 id="2-3-1-Q-파티션을-생성하지-않고-HDFS로-물리-파티션-폴더를-먼저-생성하면-Hive가-알까"><a href="#2-3-1-Q-파티션을-생성하지-않고-HDFS로-물리-파티션-폴더를-먼저-생성하면-Hive가-알까" class="headerlink" title="2.3.1 Q. 파티션을 생성하지 않고, HDFS로 물리 파티션 폴더를 먼저 생성하면 Hive가 알까?"></a>2.3.1 Q. 파티션을 생성하지 않고, HDFS로 물리 파티션 폴더를 먼저 생성하면 Hive가 알까?</h4><hr>
+<blockquote>
+<p>모른다. Hive는 HDFS로 만든 파티션 폴더에 대한 메타 데이터를 가지고 있지 않기 때문이다.</p>
+</blockquote>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>HDFS로 물리 파티션 폴더를 먼저 생성 후 Hive에서 조회</span></div><code class="language-sql"><span class="token comment">-- hdfs dfs -mkdir 명령어로 폴더 신규 추가</span>
 hdfs dfs <span class="token operator">-</span>mkdir <span class="token operator">/</span><span class="token keyword">user</span><span class="token operator">/</span>hive<span class="token operator">/</span>warehouse<span class="token operator">/</span>part_dept1<span class="token operator">/</span>dept_name<span class="token operator">=</span>Finance
 
 <span class="token comment">-- Hive에서 SHOW PARTITIONS로 생성된 파티션 확인</span>
 <span class="token keyword">SHOW</span> PARTITIONS<span class="token punctuation">;</span>
 
-<span class="token comment">/** Return
-(hdfs 명령어로 파티션 폴더를 만들었지만, Hive에서는 파티션이 생긴지 인식하지 못한다.)
-
+<span class="token comment">/** 출력
 partition
 dept_name=Accounts
 dept_name=Dev
 dept_name=Marketing
 dept_name=Sales
-*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+*/</span>
 
-<p>메타 데이터를 추가하려면 2가지 방법이 있다.</p>
-<ul>
-<li>① 파티션을 수동으로 추가하는 방법</li>
-</ul>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- 파티션을 수동으로 추가하는 방법</span>
+<span class="token comment">-- 해석 : hdfs 명령어로 파티션 폴더를 만들었지만, Hive에서는 파티션이 생긴 것을 인식하지 못한다</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<br>
+
+<p>Hive에서 메타 데이터를 추가하려면 2가지 방법이 있다.</p>
+<br>
+
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>① 파티션을 수동으로 추가하는 방법</span></div><code class="language-sql"><span class="token comment">-- ALTER TABLE &lt;table> ADD PARTITION &lt;파티션조건></span>
 <span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> part_dept1 <span class="token keyword">ADD</span> <span class="token keyword">PARTITION</span> <span class="token punctuation">(</span>deptname<span class="token operator">=</span><span class="token string">'Finance'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<ul>
-<li>② MSCK REPAIR TABLE 명령어를 사용하는 방법</li>
-</ul>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- MSCK REPAIR TABLE 명령어를 사용하는 방법</span>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>② MSCK(MetaStore Check) REPAIR TABLE 명령어를 사용하는 방법</span></div><code class="language-sql"><span class="token comment">-- MSCK REPAIR TABLE &lt;table></span>
 MSCK REPAIR <span class="token keyword">TABLE</span> part_dept1<span class="token punctuation">;</span>
 
-<span class="token comment">/** Return
-
+<span class="token comment">/** 출력
 Repair: Added partition to metastore part dept1:deptname=Finance
-*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
