@@ -4,9 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="SQLAlchemy 세션 함수 이용하기, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="History
-spark.sql API로 적재하던 해당 날짜의 데이터를 지울 일이 생겼다. 모듈은 Airlfow의 스케줄링에 의해 배치로 돌아가는 상황인데, 실패시 retry를 수행하기 때문에 사실상 다시 재실행하면">
+    <meta name="keywords" content="SQLAlchemy Session, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="1. 개요
+Spark SQL API로 특정 날짜의 데이터를 지워야 하는 일이 발생했다. 이 모듈은 Airflow의 스케줄링에 의해 배치로 실행되며, 실패 시 retry를 수행하기 때문에 기존 날짜로 적재하던 테이블을">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +18,7 @@ spark.sql API로 적재하던 해당 날짜의 데이터를 지울 일이 생겼
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>SQLAlchemy 세션 함수 이용하기 | Keyhong</title>
+    <title>SQLAlchemy Session | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -183,7 +183,7 @@ spark.sql API로 적재하던 해당 날짜의 데이터를 지울 일이 생겼
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        SQLAlchemy 세션 함수 이용하기</h1>
+                        SQLAlchemy Session</h1>
                 </div>
             </div>
         </div>
@@ -224,13 +224,13 @@ spark.sql API로 적재하던 해당 날짜의 데이터를 지울 일이 생겼
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="History"><a href="#History" class="headerlink" title="History"></a>History</h2><hr>
-<p>spark.sql API로 적재하던 해당 날짜의 데이터를 지울 일이 생겼다. 모듈은 Airlfow의 스케줄링에 의해 배치로 돌아가는 상황인데, 실패시 retry를 수행하기 때문에 사실상 다시 재실행하면 기존 날짜로 적재하던 테이블을 다시 비워주고 데이터를 넣어야 했다.</p>
-<h2 id="Thinking"><a href="#Thinking" class="headerlink" title="Thinking"></a>Thinking</h2><hr>
-<p>어떻게 할까 고민을 하다 python에서 사용할 수 있는 sqlalchemy 라이브러리를 사용했다. sqlalchemy에서 쿼리를 수행하기 위해서는 session 연결 후 cursor를 획득하여 쿼리를 수행하고 세션을 종료시킨다. 하지만 나의 프로그램에서는 3번의 쿼리를 연달아 실행시켜야 하기 때문에, 3번의 세션 연결을 하고 끊고를 반복하는 것보다는 한 번 세션을 연결 후 수행할 모든 쿼리를 실행 후에 세션을 닫는 게 훨씬 더 효율적이라 판단하였다.</p>
-<h2 id="해결-방법"><a href="#해결-방법" class="headerlink" title="해결 방법"></a>해결 방법</h2><hr>
-<p>sqlalchemy를 사용하여 postgres에서 delete문을 수행하는데, 역시나 delete문의 속도가 TRIGGER ALL (트리거의 동작범위)에 의해 많은 차이가 났다. 해당 데이터를 삽입하는 테이블은 다른 테이블 간의 관계성이 없기 때문에 데이터 삭제 전 <code>ALTER TABLE &#123;table&#125; DISABLE TRIGGER ALL</code>을 수행하여 트리거를 비활성화하고, 데이터 삽입 후 <code>ALTER TABLE &#123;table&#125; ENABLE TRIGGER ALL</code>를 수행하여 다시 원상 복구했더니 delete문의 속도가 많이 개선되었다.</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> logging
+                <h2 id="1-개요"><a href="#1-개요" class="headerlink" title="1. 개요"></a>1. 개요</h2><hr>
+<p>Spark SQL API로 특정 날짜의 데이터를 지워야 하는 일이 발생했다. 이 모듈은 Airflow의 스케줄링에 의해 배치로 실행되며, 실패 시 retry를 수행하기 때문에 기존 날짜로 적재하던 테이블을 다시 비워주고 데이터를 넣어야 했다.</p>
+<h2 id="2-사고"><a href="#2-사고" class="headerlink" title="2. 사고"></a>2. 사고</h2><hr>
+<p>어떻게 할까 고민하다가 Python에서 사용할 수 있는 SQLAlchemy 라이브러리를 사용하기로 했다. SQLAlchemy에서 쿼리를 수행하기 위해서는 세션을 연결한 후 커서를 획득하여 쿼리를 실행하고 세션을 종료해야 한다. 하지만 내 프로그램에서는 3번의 쿼리를 연달아 실행해야 하므로, 3번의 세션 연결과 종료를 반복하는 것보다는 한 번 세션을 연결한 후 모든 쿼리를 실행하고 세션을 닫는 것이 훨씬 더 효율적이라고 판단했다.</p>
+<h2 id="3-해결-방법"><a href="#3-해결-방법" class="headerlink" title="3. 해결 방법"></a>3. 해결 방법</h2><hr>
+<p>SQLAlchemy를 사용하여 PostgreSQL에서 DELETE 문을 수행하는데, DELETE 문의 속도가 TRIGGER ALL(트리거의 동작 범위)에 의해 큰 차이를 보였다. 해당 데이터를 삽입하는 테이블은 다른 테이블과의 관계성이 없기 때문에 데이터 삭제 전에 <code>ALTER TABLE &#123;table&#125; DISABLE TRIGGER ALL</code>을 수행하여 트리거를 비활성화했다. 데이터 삽입 후에는 <code>ALTER TABLE &#123;table&#125; ENABLE TRIGGER ALL</code>을 수행하여 원상 복구하였더니 DELETE 문의 속도가 많이 개선되었다.</p>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>python code</span></div><code class="language-python"><span class="token keyword">import</span> logging
 <span class="token keyword">from</span> typing <span class="token keyword">import</span> Tuple
 
 <span class="token keyword">from</span> sqlalchemy <span class="token keyword">import</span> create_engine
@@ -279,7 +279,7 @@ spark.sql API로 적재하던 해당 날짜의 데이터를 지울 일이 생겼
     <span class="token comment"># execute my function</span>
     delete_table_data<span class="token punctuation">(</span>today<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><hr>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><hr>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://docs.sqlalchemy.org/en/20/orm/session_api.html">sqlalchemy-orm-session_api-docs</a></li>
 </ul>

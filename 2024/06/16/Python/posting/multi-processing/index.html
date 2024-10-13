@@ -4,12 +4,14 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="멀티프로세싱, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="멀티프로세싱 관련 용어 정리
-Block vs. Non-block
-Block: 호출된 함수가 자신이 할 일을 모두 마칠 때 까지 제어권을 계속 가지고 호출한 함수에게 돌려주지 않는다.
+    <meta name="keywords" content="Multi-Processing, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="1. 멀티프로세싱 기본 용어
+1.1 블로킹 vs. 논블로킹
+(1) Block
+I&amp;#x2F;O는 요청을 보내고 그 결과를 받을 때까지 호출한 스레드가 대기하는 방식
 
-Non-Block: 호출된 함수">
+(2) Non-Block
+I&amp;#x2F;O는 요청을 ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +23,7 @@ Non-Block: 호출된 함수">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>멀티프로세싱 | Keyhong</title>
+    <title>Multi-Processing | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -186,7 +188,7 @@ Non-Block: 호출된 함수">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        멀티프로세싱</h1>
+                        Multi-Processing</h1>
                 </div>
             </div>
         </div>
@@ -227,109 +229,118 @@ Non-Block: 호출된 함수">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="멀티프로세싱-관련-용어-정리"><a href="#멀티프로세싱-관련-용어-정리" class="headerlink" title="멀티프로세싱 관련 용어 정리"></a>멀티프로세싱 관련 용어 정리</h2><hr>
-<h3 id="Block-vs-Non-block"><a href="#Block-vs-Non-block" class="headerlink" title="Block vs. Non-block"></a>Block vs. Non-block</h3><ul>
-<li><p>Block: 호출된 함수가 자신이 할 일을 모두 마칠 때 까지 제어권을 계속 가지고 호출한 함수에게 돌려주지 않는다.</p>
-</li>
-<li><p>Non-Block: 호출된 함수가 자신이 할 일을 마치지 않았더라도 바로 제어권을 건네주어 호출한 함수가 다른 일을 진행할 수 있도록 해준다.</p>
-</li>
-</ul>
-<h3 id="Synchronous-vs-Asynchronous"><a href="#Synchronous-vs-Asynchronous" class="headerlink" title="Synchronous vs. Asynchronous"></a>Synchronous vs. Asynchronous</h3><ul>
-<li><p>Synchronous(동기): 호출된 함수의 수행 결과 및 종료를 호출한 함수가 함께 신경을 쓴다.</p>
-</li>
-<li><p>Asynchronous(비동기): 호출된 함수의 수행 결과 및 종료를 호출된 함수 혼자 직접 신경 쓰고 처리한다. 실행이 끝난 후 다른 함수의 파라미터로 callback 함수를 받아 추가적인 로직을 수행 할 수 있다.</p>
-</li>
-</ul>
-<h3 id="하이퍼-쓰레딩-Hyper-Threading-HT"><a href="#하이퍼-쓰레딩-Hyper-Threading-HT" class="headerlink" title="하이퍼 쓰레딩 (Hyper-Threading, HT)"></a>하이퍼 쓰레딩 (Hyper-Threading, HT)</h3><blockquote>
-<p>Intel이 구현한 동시 멀티쓰레딩 기술이다.</p>
+                <h2 id="1-멀티프로세싱-기본-용어"><a href="#1-멀티프로세싱-기본-용어" class="headerlink" title="1. 멀티프로세싱 기본 용어"></a>1. 멀티프로세싱 기본 용어</h2><hr>
+<h3 id="1-1-블로킹-vs-논블로킹"><a href="#1-1-블로킹-vs-논블로킹" class="headerlink" title="1.1 블로킹 vs. 논블로킹"></a>1.1 블로킹 vs. 논블로킹</h3><hr>
+<h4 id="1-Block"><a href="#1-Block" class="headerlink" title="(1) Block"></a>(1) Block</h4><blockquote>
+<p>I&#x2F;O는 요청을 보내고 그 결과를 받을 때까지 호출한 스레드가 대기하는 방식</p>
+</blockquote>
+<h4 id="2-Non-Block"><a href="#2-Non-Block" class="headerlink" title="(2) Non-Block"></a>(2) Non-Block</h4><blockquote>
+<p>I&#x2F;O는 요청을 보낸 후, 작업의 완료 여부와 관계없이 즉시 반환하며, 스레드는 계속해서 다른 작업을 수행할 수 있는 방식</p>
+</blockquote>
+<h3 id="1-2-동기-vs-비동기"><a href="#1-2-동기-vs-비동기" class="headerlink" title="1.2 동기 vs. 비동기"></a>1.2 동기 vs. 비동기</h3><hr>
+<h4 id="1-Synchronous"><a href="#1-Synchronous" class="headerlink" title="(1) Synchronous"></a>(1) Synchronous</h4><blockquote>
+<p>동기 방식에서는 요청을 보내고 응답을 받을 때까지 해당 작업이 완료될 때까지 다른 작업을 수행하지 않는다. 즉, 작업이 순차적으로 진행된다.</p>
+</blockquote>
+<h4 id="2-Asynchronous"><a href="#2-Asynchronous" class="headerlink" title="(2) Asynchronous"></a>(2) Asynchronous</h4><blockquote>
+<p>비동기 방식에서는 요청을 보낸 후, 응답을 기다리지 않고 즉시 다음 작업을 수행할 수 있다. I&#x2F;O 작업이나 네트워크 요청이 진행되는 동안 다른 작업을 병렬로 처리할 수 있다. 실행이 끝난 후 다른 함수의 파라미터로 콜백(callback) 함수를 받아 추가 로직을 수행할 수 있다.</p>
+</blockquote>
+<h3 id="1-3-하이퍼-쓰레딩-Hyper-Threading"><a href="#1-3-하이퍼-쓰레딩-Hyper-Threading" class="headerlink" title="1.3 하이퍼 쓰레딩 (Hyper-Threading)"></a>1.3 하이퍼 쓰레딩 (Hyper-Threading)</h3><hr>
+<blockquote>
+<p>인텔(Intel)에서 개발한 기술로, 하나의 물리적 CPU 코어가 두 개의 논리적 프로세서로 작동하도록 하여 멀티태스킹과 성능을 향상시키는 기술</p>
 </blockquote>
 <ul>
-<li><p>물리적 실행 장치 한 개에 가상 실행 장치 두 개를 할당하였다.</p>
+<li><p>물리적 실행 장치 하나에 가상 실행 장치 두 개를 할당</p>
 </li>
 <li><p>Core 한 개당 thread가 두 개 씩 추가 (물리적 Core의 수 * 2)</p>
 </li>
 </ul>
-<h3 id="문맥-전환-Context-Switching"><a href="#문맥-전환-Context-Switching" class="headerlink" title="문맥 전환 (Context Switching)"></a>문맥 전환 (Context Switching)</h3><blockquote>
-<p>현재 사용 중인 process나 thread의 상태(context)를 저장하고 다음에 수행 할 task의 상태를 읽어들이는 과정이다.</p>
+<h3 id="1-4-문맥-전환-Context-Switching"><a href="#1-4-문맥-전환-Context-Switching" class="headerlink" title="1.4 문맥 전환 (Context Switching)"></a>1.4 문맥 전환 (Context Switching)</h3><hr>
+<blockquote>
+<p>운영 체제가 CPU의 제어를 하나의 프로세스나 스레드의 상태(context)를 저장하고 다른 프로세스나 스레드로 전환하는 과정</p>
 </blockquote>
 <ul>
-<li><p>task를 switching 하는 과정에서 CPU는 잠깐의 유휴시간(idle time)이 발생한다. context 저장하고 읽어들이는 시간 동안은 다른 일을 하지 못하는 데, 이를 오버헤드(overhead)가 발생했다고 한다. </p>
+<li><p>작업(task)을 전환(switching)하는 과정에서 CPU는 잠깐의 유휴 시간(idle time)이 발생한다. 컨텍스트(context)를 저장하고 읽어들이는 동안 CPU는 다른 일을 수행할 수 없으며, 이로 인해 오버헤드(overhead)가 발생하게 된다.</p>
 </li>
-<li><p>multi-thread &lt; multi-processing 순으로 많은 문맥 전환 비용이 발생한다. 당연히 single-thread는 문맥 전환을 하지 않고, 하나의 쓰레드가 끝나고 나서야 다른 task를 실행하므로 비용이 발생하지 않는다. 대신, 동시성 처리도 없다.</p>
+<li><p>multi-processing은 multi-thread는 보다 문맥 전환 비용이 더 많이 발생한다. single-thread는 문맥 전환을 하지 않으며, 하나의 스레드가 작업을 끝내고 나서야 다른 작업을 실행하므로 비용이 발생하지 않는다. 대신, 이 방식은 동시성 처리가 불가능하다.</p>
 </li>
-<li><p>I&#x2F;O 작업이 많아 thread가 대기해야 할 경우 multi-thread의 성능이 더 좋을 수 있다.</p>
+<li><p>I&#x2F;O 작업이 많아 스레드가 대기해야 할 경우, multi-thread의 성능이 더 좋을 수 있다. 이는 스레드가 대기하는 동안 CPU가 다른 작업을 수행할 수 있기 때문이다. 이렇게 하면 자원을 보다 효율적으로 활용할 수 있어 전체적인 성능이 향상된다.</p>
 </li>
 </ul>
-<h2 id="동시성-병렬성"><a href="#동시성-병렬성" class="headerlink" title="동시성 &amp; 병렬성"></a>동시성 &amp; 병렬성</h2><hr>
-<h3 id="동시성-Concurrency"><a href="#동시성-Concurrency" class="headerlink" title="동시성 (Concurrency)"></a>동시성 (Concurrency)</h3><blockquote>
+<h2 id="2-동시성-병렬성"><a href="#2-동시성-병렬성" class="headerlink" title="2. 동시성 &amp; 병렬성"></a>2. 동시성 &amp; 병렬성</h2><hr>
+<h3 id="2-1-Concurrency"><a href="#2-1-Concurrency" class="headerlink" title="2.1 Concurrency"></a>2.1 Concurrency</h3><hr>
+<blockquote>
 <p>CPU 가용성 극대화를 위해 Parallelism의 단점 및 어려움을 소프트웨어(구현) 레벨에서 해결하기 위한 개념</p>
 </blockquote>
 <ul>
-<li><p>Single Core에 Multi-Thread 패턴으로 작업을 처리한다.</p>
+<li><p>단일 코어에서 멀티스레드 패턴으로 작업을 처리한다.</p>
 </li>
-<li><p>동시 작업에 있어서 일정량 처리 후 다음 작업으로 넘기는 방식이다. 즉, 제어권을 주고 받으며 작업 처리하는 패턴으로 병렬적이지는 않으나 유사한 처리 방식을 사용한다.</p>
+<li><p>동시 작업에서 일정량의 처리를 마친 후 다음 작업으로 넘기는 방식이다. 즉, 제어권을 주고받으며 작업을 처리하는 패턴으로, 병렬적이지는 않지만 유사한 처리 방식을 사용한다.</p>
 </li>
 </ul>
-<h3 id="병렬성-Parallelism"><a href="#병렬성-Parallelism" class="headerlink" title="병렬성 (Parallelism)"></a>병렬성 (Parallelism)</h3><blockquote>
+<h3 id="2-2-Parallelism"><a href="#2-2-Parallelism" class="headerlink" title="2.2 Parallelism"></a>2.2 Parallelism</h3><hr>
+<blockquote>
 <p>완전히 동일한 타이밍(시점)에 여러 task를 동시에 실행하는 개념</p>
 </blockquote>
 <ul>
-<li><p>CPU가 1 Core인 경우 multi-threading과 multi-processing에서 조건을 만족 시킬 수 없다.</p>
+<li><p>CPU가 1코어인 경우 멀티스레딩과 멀티프로세싱 모두 성능을 극대화할 수 없다.</p>
 </li>
-<li><p>딥러닝, 비트코인 채굴 등</p>
-</li>
-</ul>
-<h3 id="동시성-vs-병렬성"><a href="#동시성-vs-병렬성" class="headerlink" title="동시성 vs. 병렬성"></a>동시성 vs. 병렬성</h3><ul>
-<li><p>I&#x2F;O Bound는 동시성으로 처리하고, CPU Bound는 병렬성으로 처리하면 유리하다.</p>
-</li>
-<li><p>동시성 : 논리적, 동시 실행 패턴(논리적), 싱글코어, 멀티 코어에서 실행 가능, 한 개의 작업을 공유 처리, 디버깅이 매우 어려움, Mutex, DeadLock</p>
-</li>
-<li><p>병렬성 : 물리적, 물리적으로 동시 실행, 멀티코어, 주로 별개의 처리, 디버깅 어려움, OpenMP, MPI, CUDA</p>
+<li><p>딥러닝, 비트코인 채굴 등에 사용된다.</p>
 </li>
 </ul>
-<h2 id="쓰레드-프로세스"><a href="#쓰레드-프로세스" class="headerlink" title="쓰레드 &amp; 프로세스"></a>쓰레드 &amp; 프로세스</h2><hr>
-<h3 id="Thread"><a href="#Thread" class="headerlink" title="Thread"></a>Thread</h3><ul>
-<li><p>공유 메모리를 사용한다. (프로세스 범위 내 공유 메모리)</p>
+<h3 id="2-3-Concurrency-vs-Parallelism"><a href="#2-3-Concurrency-vs-Parallelism" class="headerlink" title="2.3 Concurrency vs. Parallelism"></a>2.3 Concurrency vs. Parallelism</h3><hr>
+<ul>
+<li><p>I&#x2F;O Bound 작업은 동시성으로 처리하고, CPU Bound 작업은 병렬성으로 처리하면 유리하다.</p>
 </li>
-<li><p>Process 보다 더 적은 메모리를 사용한다. 메모리에 할당된 변수를 공유하면 되기 때문이다.</p>
+<li><p>동시성 : 논리적 실행 패턴, 싱글코어와 멀티코어에서 실행 가능, 하나의 작업을 공유 처리, 디버깅이 매우 어려움, 예: Mutex, DeadLock</p>
 </li>
-<li><p>좀비(데드) 쓰레드 생성 쉽지 않다. 쓰레드가 여럿이라도 단일 프로세스이기 때문이다.</p>
+<li><p>병렬성 : 물리적 동시 실행,멀티코어에서 주로 별개의 처리, 디버깅이 어려움, 예: OpenMP, MPI, CUDA</p>
+</li>
+</ul>
+<h2 id="3-스레드-프로세스"><a href="#3-스레드-프로세스" class="headerlink" title="3. 스레드 &amp; 프로세스"></a>3. 스레드 &amp; 프로세스</h2><hr>
+<h3 id="3-1-Thread"><a href="#3-1-Thread" class="headerlink" title="3.1 Thread"></a>3.1 Thread</h3><hr>
+<ul>
+<li><p>공유 메모리를 사용한다. (프로세스 범위 내에서)</p>
+</li>
+<li><p>프로세스보다 적은 메모리를 사용한다. 메모리에 할당된 변수를 공유하기 때문이다.</p>
+</li>
+<li><p>좀비 스레드가 생성되기 쉽지 않다. 여러 스레드가 단일 프로세스 내에서 작동하기 때문이다.</p>
 </li>
 <li><p>오버헤드가 작다.</p>
 </li>
-<li><p>생성&#x2F;소멸 빠르다.</p>
+<li><p>생성과 소멸이 빠르다.</p>
 </li>
-<li><p>코드 작성이 어려우나 디버깅이 쉽다.</p>
+<li><p>코드 작성은 어려우나 디버깅은 쉽다.</p>
 </li>
 </ul>
-<h3 id="Process"><a href="#Process" class="headerlink" title="Process"></a>Process</h3><ul>
+<h3 id="3-2-Process"><a href="#3-2-Process" class="headerlink" title="3.2 Process"></a>3.2 Process</h3><hr>
+<ul>
 <li><p>독립된 메모리를 요구한다.</p>
 </li>
-<li><p>많은 메모리 필요 (thread와 같이 문맥을 공유하는 것이 아닌 복제)</p>
+<li><p>많은 메모리가 필요하다. (스레드와 달리 문맥을 공유하지 않고 복제하기 때문이다.)</p>
 </li>
-<li><p>좀비(데드) 프로세서 생성 가능성이 있다.</p>
+<li><p>좀비 프로세스가 생성될 가능성이 있다.</p>
 </li>
 <li><p>오버헤드가 크다.</p>
 </li>
-<li><p>생성&#x2F;소멸 다소 느리다.</p>
+<li><p>생성과 소멸이 다소 느리다.</p>
 </li>
-<li><p>코드 작성이 쉬우나 디버깅이 어렵다.</p>
+<li><p>코드 작성은 쉽지만, 디버깅은 어렵다.</p>
 </li>
 </ul>
-<h2 id="GIL-Global-Interpreter-Lock"><a href="#GIL-Global-Interpreter-Lock" class="headerlink" title="GIL (Global Interpreter Lock)"></a>GIL (Global Interpreter Lock)</h2><hr>
+<h2 id="4-GIL-Global-Interpreter-Lock"><a href="#4-GIL-Global-Interpreter-Lock" class="headerlink" title="4. GIL (Global Interpreter Lock)"></a>4. GIL (Global Interpreter Lock)</h2><hr>
 <blockquote>
-<p>Cpython에서 Python을 실행할 때 여러 thread를 사용할 경우, Python Object에는 오직 하나 쓰레드만이 접근할 수 있게 제한하는 뮤텍스(Mutex)</p>
+<p>CPython에서 Python을 실행할 때 여러 스레드를 사용할 경우, Python 객체에는 오직 하나의 스레드만 접근할 수 있도록 제한하는 <code>뮤텍스(Mutex)</code>가 존재</p>
 </blockquote>
 <ul>
-<li><p>Cpython은 메모리 관리가 취약하기 때문에 thread-safe하게 만들기 위해 GIL을 유용하게 사용한다.</p>
+<li><p>CPython은 메모리 관리가 취약하기 때문에 스레드 안전성을 확보하기 위해 GIL(Global Interpreter Lock)을 활용한다.</p>
 </li>
-<li><p>단일 스레드로도 충분히 빠르다. 빠른 처리를 위해 Numpy, Scipy 등 GIL 외부 영역에서 효율적인 코딩을 가능하게 라이브러리가 많이 발달해 있기 때문에 일반적으로 다른 라이브러리를 사용할 것을 권장한다.</p>
+<li><p>단일 스레드로도 충분히 빠르며, Numpy, Scipy와 같은 라이브러리는 GIL 외부에서 효율적으로 코딩할 수 있게 도와준다. 따라서 일반적으로 이러한 라이브러리 사용을 권장한다.</p>
 </li>
-<li><p>정말 병렬처리가 필요하다면 Multiprocessing, asyncio 등 다양한 선택지가 있다. 혹은 thread의 완벽 동시성 처리를 위해 Jython, IronPython, Stackless Python 등이 다른 구현체를 사용할 수도 있다.</p>
+<li><p>정말 병렬 처리가 필요하다면 Multiprocessing, asyncio와 같은 다양한 선택지가 있다. 또는 완벽한 동시성 처리를 위해 Jython, IronPython, Stackless Python 등 다른 구현체를 사용할 수도 있다.</p>
 </li>
 </ul>
-<h2 id="Multi-Processing"><a href="#Multi-Processing" class="headerlink" title="Multi-Processing"></a>Multi-Processing</h2><hr>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> logging
+<h2 id="5-멀티프로세싱-파이썬-구현"><a href="#5-멀티프로세싱-파이썬-구현" class="headerlink" title="5. 멀티프로세싱 파이썬 구현"></a>5. 멀티프로세싱 파이썬 구현</h2><hr>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>python multiprocessing code</span></div><code class="language-python"><span class="token keyword">import</span> logging
 <span class="token keyword">from</span> multiprocessing <span class="token keyword">import</span> Process
 <span class="token keyword">import</span> time
 
@@ -547,9 +558,9 @@ Non-Block: 호출된 함수">
                 <a href="/2024/06/16/Python/posting/env-setting/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/python-logo.png" class="responsive-img" alt="개발 환경 구축 (Anaconda, Pip, Juptyer, Tensorflow)">
+                        <img src="/images/logos/python-logo.png" class="responsive-img" alt="anaconda, pip, juptyer, tensorflow installation">
                         
-                        <span class="card-title diy-neon-red">개발 환경 구축 (Anaconda, Pip, Juptyer, Tensorflow)</span>
+                        <span class="card-title diy-neon-red">anaconda, pip, juptyer, tensorflow installation</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
