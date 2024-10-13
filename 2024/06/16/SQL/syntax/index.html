@@ -5,19 +5,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="SQL 기본 문법 정리, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="SELECT
+    <meta name="description" content="1. SELECT
+
 데이터베이스에서 데이터를 조회하기 위해 사용되는 기본적인 명령문
 
 -- Syntax
-SELECT
-column_name
-FROM table_nam
+SELECT column_name FROM table_name;
 
 
-SELECT
-first_name,
-last_name
-F">
+-- 1. Formatting doesn&#39;t">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -235,205 +231,122 @@ F">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h2><blockquote>
+                <h2 id="1-SELECT"><a href="#1-SELECT" class="headerlink" title="1. SELECT"></a>1. SELECT</h2><hr>
+<blockquote>
 <p>데이터베이스에서 데이터를 조회하기 위해 사용되는 기본적인 명령문</p>
 </blockquote>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
-<span class="token keyword">SELECT</span>
-column_name
-<span class="token keyword">FROM</span> table_nam
+<span class="token keyword">SELECT</span> column_name <span class="token keyword">FROM</span> table_name<span class="token punctuation">;</span>
 
-
-<span class="token keyword">SELECT</span>
-first_name<span class="token punctuation">,</span>
-last_name
-<span class="token keyword">FROM</span> actor
-<span class="token punctuation">;</span>
-
-<span class="token keyword">SELECT</span>
-<span class="token operator">*</span>
-<span class="token keyword">FROM</span> actor
-<span class="token punctuation">;</span>
 
 <span class="token comment">-- 1. Formatting doesn't matter!</span>
-<span class="token keyword">SELECT</span>
-first_name<span class="token punctuation">,</span>
-last_name
-<span class="token keyword">FROM</span> actor
-<span class="token punctuation">;</span>
+<span class="token keyword">SELECT</span> first_name<span class="token punctuation">,</span> last_name <span class="token keyword">FROM</span> actor<span class="token punctuation">;</span>
 
-<span class="token keyword">SELECT</span> first_name<span class="token punctuation">,</span> last_name
-<span class="token keyword">FROM</span> actor
-<span class="token punctuation">;</span>
+<span class="token keyword">SELECT</span> first_name<span class="token punctuation">,</span> last_name <span class="token keyword">FROM</span> actor<span class="token punctuation">;</span>
 
-<span class="token keyword">SELECT</span>
-first_name<span class="token punctuation">,</span>
-last_name<span class="token punctuation">,</span>
-email
-<span class="token keyword">FROM</span> customer
-<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">SELECT</span> first_name<span class="token punctuation">,</span> last_name<span class="token punctuation">,</span> email <span class="token keyword">FROM</span> customer<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="DISTINCT"><a href="#DISTINCT" class="headerlink" title="DISTINCT"></a>DISTINCT</h2><blockquote>
+<h2 id="2-DISTINCT"><a href="#2-DISTINCT" class="headerlink" title="2. DISTINCT"></a>2. DISTINCT</h2><hr>
+<blockquote>
 <p>쿼리 결과에서 중복된 값을 제거하여 고유한 값만을 반환하는 데 사용</p>
 </blockquote>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
-<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span>
-column_name
-<span class="token keyword">FROM</span> table_nam
-<span class="token punctuation">;</span>
+<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span> column_name <span class="token keyword">FROM</span> table_nam<span class="token punctuation">;</span>
 
-<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span>
-first_name
-<span class="token keyword">FROM</span> actor
-<span class="token punctuation">;</span>
+<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span> first_name <span class="token keyword">FROM</span> actor<span class="token punctuation">;</span>
 
-<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span>
-first_name
-<span class="token keyword">FROM</span> actor
-<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> first_name
-l
-<span class="token punctuation">;</span>
+<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span> first_name <span class="token keyword">FROM</span> actor <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> first_name<span class="token punctuation">;</span>
 
 <span class="token comment">-- 두 컬럼에 대해 DISTINCT</span>
 <span class="token comment">-- Note! : Distinct in terms of all selected columns!</span>
-<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span>
-first_name<span class="token punctuation">,</span>
-last_name
-<span class="token keyword">FROM</span> actor
-<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> first_name
-<span class="token punctuation">;</span>
+<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span> first_name<span class="token punctuation">,</span> last_name <span class="token keyword">FROM</span> actor <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> first_name<span class="token punctuation">;</span>
 
-<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span>
-amount
-<span class="token keyword">FROM</span> payment
-<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> amount <span class="token keyword">DESC</span><span class="token punctuation">;</span>
-<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span> amount <span class="token keyword">FROM</span> payment <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> amount <span class="token keyword">DESC</span><span class="token punctuation">;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
-<h2 id="ORDER-BY"><a href="#ORDER-BY" class="headerlink" title="ORDER BY"></a>ORDER BY</h2><blockquote>
+<h2 id="3-ORDER-BY"><a href="#3-ORDER-BY" class="headerlink" title="3. ORDER BY"></a>3. ORDER BY</h2><hr>
+<blockquote>
 <p>쿼리 결과를 특정 열을 기준으로 정렬할 때 사용</p>
 </blockquote>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
-<span class="token keyword">SELECT</span> 
-column_name1<span class="token punctuation">,</span>
-column_name2
-<span class="token keyword">FROM</span> table_name
-<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> column_name1
+<span class="token keyword">SELECT</span> column_name1<span class="token punctuation">,</span> column_name2 <span class="token keyword">FROM</span> table_name <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> column_name1<span class="token punctuation">;</span>
 
 <span class="token comment">-- ASC를 default이나 명시적으로 표시하면 가독성이 높아집니다.</span>
-<span class="token keyword">SELECT</span> 
-column_name1<span class="token punctuation">,</span>
-column_name2
-<span class="token keyword">FROM</span> table_name
-<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> column_name1 <span class="token keyword">ASC</span>
+<span class="token keyword">SELECT</span> column_name1<span class="token punctuation">,</span> column_name2 <span class="token keyword">FROM</span> table_name <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> column_name1 <span class="token keyword">ASC</span><span class="token punctuation">;</span>
 
-<span class="token keyword">SELECT</span> 
-column_name1<span class="token punctuation">,</span>
-column_name2
-<span class="token keyword">FROM</span> table_name
-<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> column_name1 <span class="token keyword">DESC</span>
+<span class="token keyword">SELECT</span> column_name1<span class="token punctuation">,</span> column_name2 <span class="token keyword">FROM</span> table_name <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> column_name1 <span class="token keyword">DESC</span><span class="token punctuation">;</span>
 
-<span class="token keyword">SELECT</span> 
-first_name<span class="token punctuation">,</span>
-last_name
-<span class="token keyword">FROM</span> actor
-<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> first_name <span class="token keyword">DESC</span><span class="token punctuation">,</span> last_name <span class="token keyword">ASC</span>
+<span class="token keyword">SELECT</span> first_name<span class="token punctuation">,</span> last_name <span class="token keyword">FROM</span> actor <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> first_name <span class="token keyword">DESC</span><span class="token punctuation">,</span> last_name <span class="token keyword">ASC</span><span class="token punctuation">;</span>
 
-<span class="token keyword">SELECT</span>
-first_name<span class="token punctuation">,</span>
-last_name<span class="token punctuation">,</span>
-email
-<span class="token keyword">FROM</span> customer
-<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> last_name <span class="token keyword">DESC</span><span class="token punctuation">,</span> first_name <span class="token keyword">DESC</span><span class="token punctuation">;</span>
+<span class="token keyword">SELECT</span> first_name<span class="token punctuation">,</span> last_name<span class="token punctuation">,</span> email <span class="token keyword">FROM</span> customer <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> last_name <span class="token keyword">DESC</span><span class="token punctuation">,</span> first_name <span class="token keyword">DESC</span><span class="token punctuation">;</span>
 
 <span class="token comment">-- ORDER BY를 컬럼 순서의 숫자로 쓰면 가독성이 낮아 비권장합니다. </span>
-<span class="token keyword">SELECT</span>
-first_name<span class="token punctuation">,</span>
-last_name<span class="token punctuation">,</span>
-email
-<span class="token keyword">FROM</span> customer
-<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> <span class="token number">2</span> <span class="token keyword">DESC</span><span class="token punctuation">,</span> <span class="token number">1</span> <span class="token keyword">DESC</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">SELECT</span> first_name<span class="token punctuation">,</span> last_name<span class="token punctuation">,</span> email <span class="token keyword">FROM</span> customer <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> <span class="token number">2</span> <span class="token keyword">DESC</span><span class="token punctuation">,</span> <span class="token number">1</span> <span class="token keyword">DESC</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="COUNT"><a href="#COUNT" class="headerlink" title="COUNT()"></a>COUNT()</h2><blockquote>
+<h2 id="4-COUNT"><a href="#4-COUNT" class="headerlink" title="4. COUNT()"></a>4. COUNT()</h2><hr>
+<blockquote>
 <p>특정 열의 레코드 수를 계산하는 데 사용</p>
 </blockquote>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
 <span class="token comment">-- more common than below </span>
-<span class="token keyword">SELECT</span>
-<span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span>
-<span class="token keyword">FROM</span> table_name
+<span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">FROM</span> table_name<span class="token punctuation">;</span>
 
 <span class="token comment">-- another case</span>
 <span class="token comment">-- Note: COUNT()를 할 때 Null은 카운트 되지 않습니다!</span>
-<span class="token keyword">SELECT</span>
-<span class="token function">COUNT</span><span class="token punctuation">(</span>column_name<span class="token punctuation">)</span>
-<span class="token keyword">FROM</span> table_name
+<span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span>column_name<span class="token punctuation">)</span> <span class="token keyword">FROM</span> table_name<span class="token punctuation">;</span>
 
-<span class="token keyword">SELECT</span>
-<span class="token function">COUNT</span><span class="token punctuation">(</span>first_name<span class="token punctuation">)</span>
-<span class="token keyword">FROM</span> actor<span class="token punctuation">;</span>
+<span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span>first_name<span class="token punctuation">)</span> <span class="token keyword">FROM</span> actor<span class="token punctuation">;</span>
 
-<span class="token keyword">SELECT</span>
-<span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> first_name<span class="token punctuation">)</span>
-<span class="token keyword">FROM</span> actor<span class="token punctuation">;</span>
+<span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> first_name<span class="token punctuation">)</span> <span class="token keyword">FROM</span> actor<span class="token punctuation">;</span>
 
-<span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> first_name<span class="token punctuation">)</span>
-<span class="token keyword">FROM</span> customer<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> first_name<span class="token punctuation">)</span> <span class="token keyword">FROM</span> customer<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
-<h2 id="LIMIT"><a href="#LIMIT" class="headerlink" title="LIMIT"></a>LIMIT</h2><blockquote>
+<h2 id="5-LIMIT"><a href="#5-LIMIT" class="headerlink" title="5. LIMIT"></a>5. LIMIT</h2><hr>
+<blockquote>
 <p>쿼리 결과에서 반환되는 행의 수를 제한하는 데 사용</p>
 </blockquote>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
-<span class="token keyword">SELECT</span>
-column_name1<span class="token punctuation">,</span>
-column_name2<span class="token punctuation">,</span>
-<span class="token keyword">FROM</span> table_name
-<span class="token keyword">LIMIT</span> n
+<span class="token keyword">SELECT</span> column_name1<span class="token punctuation">,</span> column_name2 <span class="token keyword">FROM</span> table_name <span class="token keyword">LIMIT</span> n<span class="token punctuation">;</span>
 
-<span class="token keyword">SELECT</span>
-first_name
-<span class="token keyword">FROM</span> actor
-<span class="token keyword">LIMIT</span> <span class="token number">4</span>
+<span class="token keyword">SELECT</span> first_name <span class="token keyword">FROM</span> actor <span class="token keyword">LIMIT</span> <span class="token number">4</span><span class="token punctuation">;</span>
 
-<span class="token keyword">SELECT</span>
-first_name
-<span class="token keyword">FROM</span> actor
-<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> first_name <span class="token keyword">ASC</span>
-<span class="token keyword">LIMIT</span> <span class="token number">4</span>
+<span class="token keyword">SELECT</span> first_name <span class="token keyword">FROM</span> actor <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> first_name <span class="token keyword">ASC</span> <span class="token keyword">LIMIT</span> <span class="token number">4</span><span class="token punctuation">;</span>
 
-<span class="token keyword">SELECT</span> <span class="token operator">*</span>
-<span class="token keyword">FROM</span> rental
-<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> rental_date <span class="token keyword">DESC</span>
-<span class="token keyword">LIMIT</span> <span class="token number">10</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> rental <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> rental_date <span class="token keyword">DESC</span> <span class="token keyword">LIMIT</span> <span class="token number">10</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
-<h4 id="CONCAT-CONCATENATE"><a href="#CONCAT-CONCATENATE" class="headerlink" title="CONCAT (CONCATENATE)"></a>CONCAT (CONCATENATE)</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
-<span class="token keyword">SELECT</span>
-<span class="token keyword">LEFT</span><span class="token punctuation">(</span>first_name<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token keyword">LEFT</span><span class="token punctuation">(</span>last_name<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-first_name<span class="token punctuation">,</span>
-last_name
-<span class="token keyword">FROM</span> customer
-<span class="token punctuation">;</span>
+<h2 id="6-CONCAT"><a href="#6-CONCAT" class="headerlink" title="6. CONCAT"></a>6. CONCAT</h2><hr>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Return Type</th>
+<th>Description</th>
+<th>Example</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>concat(str “any” [, str “any” [, …] ])</td>
+<td>text</td>
+<td>Concatenate all arguments. NULL arguments are ignored.</td>
+<td>concat(‘abcde’, 2, NULL, 22)</td>
+<td>abcde222</td>
+</tr>
+</tbody></table>
+<pre class="line-numbers language-none"><code class="language-none">SELECT CONCAT(LEFT(first_name, 1), LEFT(last_name, 1)) FROM customer;
 
-<span class="token keyword">SELECT</span>
-<span class="token keyword">LEFT</span><span class="token punctuation">(</span>first_name<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token string">'.'</span> <span class="token operator">||</span> <span class="token keyword">LEFT</span><span class="token punctuation">(</span>last_name<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token string">'.'</span> <span class="token keyword">AS</span> initials<span class="token punctuation">,</span>
-first_name<span class="token punctuation">,</span>
-last_name
-<span class="token keyword">FROM</span> customer
-<span class="token punctuation">;</span>
+SELECT LEFT(first_name, 1) || &#39;.&#39; || LEFT(last_name, 1) || &#39;.&#39; AS initials
+     , first_name
+     , last_name
+FROM customer
+;
 
-<span class="token keyword">SELECT</span> 
-CONCAT<span class="token punctuation">(</span><span class="token keyword">LEFT</span><span class="token punctuation">(</span>first_name<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">LEFT</span><span class="token punctuation">(</span>last_name<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token keyword">FROM</span> customer
-<span class="token punctuation">;</span>
+SELECT LEFT(email, 1) || &#39;***&#39; || RIGHT(email, 19) AS anonymized_email FROM customer;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<span class="token keyword">SELECT</span>
-<span class="token keyword">LEFT</span><span class="token punctuation">(</span>email<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token string">'***'</span> <span class="token operator">||</span> <span class="token keyword">RIGHT</span><span class="token punctuation">(</span>email<span class="token punctuation">,</span> <span class="token number">19</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> anonymized_email
-<span class="token keyword">FROM</span> customer<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="EXTRACT"><a href="#EXTRACT" class="headerlink" title="EXTRACT"></a>EXTRACT</h2><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
-EXTRACT <span class="token punctuation">(</span>field <span class="token keyword">from</span> <span class="token keyword">date</span><span class="token operator">/</span><span class="token keyword">time</span><span class="token operator">/</span><span class="token keyword">interval</span><span class="token punctuation">)</span>
+<h2 id="7-EXTRACT"><a href="#7-EXTRACT" class="headerlink" title="7. EXTRACT"></a>7. EXTRACT</h2><hr>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>EXTRACT Syntax</span></div><code class="language-sql">EXTRACT <span class="token punctuation">(</span>field <span class="token keyword">from</span> <span class="token keyword">date</span><span class="token operator">/</span><span class="token keyword">time</span><span class="token operator">/</span><span class="token keyword">interval</span><span class="token punctuation">)</span>
 
 <span class="token comment">-- Date/time types</span>
 
@@ -452,171 +365,226 @@ EXTRACT <span class="token punctuation">(</span>field <span class="token keyword
 6. QUARTER : quarter of year
 7. WEEK : number of ISO 8601 week-numbering week of year
 8. YEAR : year
-*/</span>
+*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<span class="token keyword">SELECT</span>
-EXTRACT<span class="token punctuation">(</span><span class="token keyword">day</span> <span class="token keyword">from</span> rental_date<span class="token punctuation">)</span> 
-<span class="token keyword">FROM</span> rental<span class="token punctuation">;</span> 
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>EXTRACT DAY</span></div><code class="language-sql"><span class="token keyword">SELECT</span> EXTRACT<span class="token punctuation">(</span><span class="token keyword">DAY</span> <span class="token keyword">FROM</span> rental_date<span class="token punctuation">)</span> <span class="token keyword">FROM</span> rental<span class="token punctuation">;</span> 
 
-<span class="token keyword">SELECT</span>
-EXTRACT<span class="token punctuation">(</span><span class="token keyword">day</span> <span class="token keyword">from</span> rental_date<span class="token punctuation">)</span><span class="token punctuation">,</span>
-<span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span>
+<span class="token keyword">SELECT</span> EXTRACT<span class="token punctuation">(</span><span class="token keyword">DAY</span> <span class="token keyword">FROM</span> rental_date<span class="token punctuation">)</span>
+     <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span>
 <span class="token keyword">FROM</span> rental
-<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> EXTRACT<span class="token punctuation">(</span><span class="token keyword">day</span> <span class="token keyword">from</span> rental_date<span class="token punctuation">)</span>
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> EXTRACT<span class="token punctuation">(</span><span class="token keyword">DAY</span> <span class="token keyword">FROM</span> rental_date<span class="token punctuation">)</span>
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">DESC</span>
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>EXTRACT MONTH</span></div><code class="language-sql"><span class="token comment">-- EXTRACT MONTH</span>
+<span class="token keyword">SELECT</span> EXTRACT<span class="token punctuation">(</span><span class="token keyword">MONTH</span> <span class="token keyword">FROM</span> rental_date<span class="token punctuation">)</span>
+     <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> rental
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> EXTRACT<span class="token punctuation">(</span><span class="token keyword">MONTH</span> <span class="token keyword">FROM</span> rental_date<span class="token punctuation">)</span>
 <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">DESC</span>
 <span class="token punctuation">;</span>
 
-<span class="token keyword">SELECT</span>
-EXTRACT<span class="token punctuation">(</span><span class="token keyword">month</span> <span class="token keyword">from</span> rental_date<span class="token punctuation">)</span><span class="token punctuation">,</span>
-<span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span>
-<span class="token keyword">FROM</span> rental
-<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> EXTRACT<span class="token punctuation">(</span><span class="token keyword">month</span> <span class="token keyword">from</span> rental_date<span class="token punctuation">)</span>
-<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">DESC</span>
-<span class="token punctuation">;</span>
-
-
-<span class="token keyword">SELECT</span>
-EXTRACT<span class="token punctuation">(</span><span class="token keyword">month</span> <span class="token keyword">from</span> payment_date<span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token string">"month"</span><span class="token punctuation">,</span>
-<span class="token function">SUM</span><span class="token punctuation">(</span>amount<span class="token punctuation">)</span> <span class="token keyword">as</span> total_payment_amount
+<span class="token keyword">SELECT</span> EXTRACT<span class="token punctuation">(</span><span class="token keyword">MONTH</span> <span class="token keyword">FROM</span> payment_date<span class="token punctuation">)</span> <span class="token keyword">AS</span> <span class="token string">"month"</span>
+     <span class="token punctuation">,</span> <span class="token function">SUM</span><span class="token punctuation">(</span>amount<span class="token punctuation">)</span> <span class="token keyword">as</span> total_payment_amount
 <span class="token keyword">FROM</span> payment
 <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> <span class="token string">"month"</span>
-<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> total_payment_amount <span class="token keyword">DESC</span><span class="token punctuation">;</span>
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> total_payment_amount <span class="token keyword">DESC</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<span class="token keyword">SELECT</span>
-EXTRACT<span class="token punctuation">(</span>dow <span class="token keyword">from</span> payment_date<span class="token punctuation">)</span> <span class="token keyword">AS</span> day_of_week<span class="token punctuation">,</span>
-<span class="token function">SUM</span><span class="token punctuation">(</span>amount<span class="token punctuation">)</span> <span class="token keyword">AS</span> total_payment_amount
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>EXTRACT DOW</span></div><code class="language-sql"><span class="token keyword">SELECT</span> EXTRACT<span class="token punctuation">(</span>DOW <span class="token keyword">FROM</span> payment_date<span class="token punctuation">)</span> <span class="token keyword">AS</span> day_of_week
+     <span class="token punctuation">,</span> <span class="token function">SUM</span><span class="token punctuation">(</span>amount<span class="token punctuation">)</span> <span class="token keyword">AS</span> total_payment_amount
 <span class="token keyword">FROM</span> payment
 <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> day_of_week
-<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> total_payment_amount <span class="token keyword">DESC</span><span class="token punctuation">;</span>
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> total_payment_amount <span class="token keyword">DESC</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<span class="token keyword">SELECT</span>
-EXTRACT<span class="token punctuation">(</span>week <span class="token keyword">from</span> payment_date<span class="token punctuation">)</span> <span class="token keyword">AS</span> week<span class="token punctuation">,</span>
-customer_id<span class="token punctuation">,</span>
-<span class="token function">SUM</span><span class="token punctuation">(</span>amount<span class="token punctuation">)</span> <span class="token keyword">AS</span> total_payment_amount 
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>EXTRACT WEEK</span></div><code class="language-sql"><span class="token keyword">SELECT</span> EXTRACT<span class="token punctuation">(</span>WEEK <span class="token keyword">FROM</span> payment_date<span class="token punctuation">)</span> <span class="token keyword">AS</span> week
+     <span class="token punctuation">,</span> customer_id
+     <span class="token punctuation">,</span> <span class="token function">SUM</span><span class="token punctuation">(</span>amount<span class="token punctuation">)</span> <span class="token keyword">AS</span> total_payment_amount 
 <span class="token keyword">FROM</span> payment
 <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> week<span class="token punctuation">,</span> customer_id
-<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> total_payment_amount <span class="token keyword">DESC</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> total_payment_amount <span class="token keyword">DESC</span>
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="LEFT-RIGHT"><a href="#LEFT-RIGHT" class="headerlink" title="LEFT &amp; RIGHT"></a>LEFT &amp; RIGHT</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
-<span class="token keyword">SELECT</span> 
-<span class="token keyword">LEFT</span><span class="token punctuation">(</span>first_name<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-first_name
-<span class="token keyword">FROM</span> customer
-<span class="token punctuation">;</span>
+<h2 id="8-LEFT-RIGHT"><a href="#8-LEFT-RIGHT" class="headerlink" title="8. LEFT &amp; RIGHT"></a>8. LEFT &amp; RIGHT</h2><hr>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Return Type</th>
+<th>Description</th>
+<th>Example</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>left(str text, n int)</td>
+<td>int</td>
+<td>Return first n characters in the string. When n is negative, <br>return all but last</td>
+<td>n</td>
+<td>characters.</td>
+</tr>
+<tr>
+<td>right(str text, n int)</td>
+<td>int</td>
+<td>Return last n characters in the string. When n is negative, <br>return all but first</td>
+<td>n</td>
+<td>characters.</td>
+</tr>
+</tbody></table>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>LEFT</span></div><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token keyword">LEFT</span><span class="token punctuation">(</span>first_name<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> first_name <span class="token keyword">FROM</span> customer<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<span class="token keyword">SELECT</span> 
-<span class="token keyword">RIGHT</span><span class="token punctuation">(</span>first_name<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-first_name
-<span class="token keyword">FROM</span> customer
-<span class="token punctuation">;</span>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>RIGHT</span></div><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token keyword">RIGHT</span><span class="token punctuation">(</span>first_name<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> first_name <span class="token keyword">FROM</span> customer<span class="token punctuation">;</span>
 
-<span class="token keyword">SELECT</span> 
-<span class="token keyword">RIGHT</span><span class="token punctuation">(</span><span class="token keyword">LEFT</span><span class="token punctuation">(</span>first_name<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-first_name
-<span class="token keyword">FROM</span> customer
-<span class="token punctuation">;</span>
+<span class="token keyword">SELECT</span> <span class="token keyword">RIGHT</span><span class="token punctuation">(</span><span class="token keyword">LEFT</span><span class="token punctuation">(</span>first_name<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> first_name <span class="token keyword">FROM</span> customer<span class="token punctuation">;</span>
 
-<span class="token keyword">SELECT</span>
-<span class="token keyword">RIGHT</span><span class="token punctuation">(</span><span class="token keyword">LEFT</span><span class="token punctuation">(</span><span class="token keyword">RIGHT</span><span class="token punctuation">(</span>email<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
-<span class="token keyword">FROM</span> customer
-<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">SELECT</span> <span class="token keyword">RIGHT</span><span class="token punctuation">(</span><span class="token keyword">LEFT</span><span class="token punctuation">(</span><span class="token keyword">RIGHT</span><span class="token punctuation">(</span>email<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">FROM</span> customer<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="POSITION"><a href="#POSITION" class="headerlink" title="POSITION"></a>POSITION</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
-<span class="token keyword">SELECT</span>
-POSITION<span class="token punctuation">(</span><span class="token string">'@'</span> <span class="token operator">IN</span> email<span class="token punctuation">)</span>
-<span class="token keyword">FROM</span> customer
-<span class="token punctuation">;</span>
+<h2 id="9-POSITION"><a href="#9-POSITION" class="headerlink" title="9. POSITION"></a>9. POSITION</h2><hr>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Return Type</th>
+<th>Description</th>
+<th>Example</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>position(substring in string)</td>
+<td>int</td>
+<td>Location of specified substring</td>
+<td>position(‘om’ in ‘Thomas’)</td>
+<td>3</td>
+</tr>
+</tbody></table>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> POSITION<span class="token punctuation">(</span><span class="token string">'@'</span> <span class="token operator">IN</span> email<span class="token punctuation">)</span> <span class="token keyword">FROM</span> customer<span class="token punctuation">;</span>
 
-<span class="token keyword">SELECT</span>
-<span class="token keyword">LEFT</span><span class="token punctuation">(</span>email<span class="token punctuation">,</span> POSITION<span class="token punctuation">(</span><span class="token string">'@'</span> <span class="token operator">IN</span> email<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-email
-<span class="token keyword">FROM</span> customer
+<span class="token keyword">SELECT</span> <span class="token keyword">LEFT</span><span class="token punctuation">(</span>email<span class="token punctuation">,</span> POSITION<span class="token punctuation">(</span><span class="token string">'@'</span> <span class="token operator">IN</span> email<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> email <span class="token keyword">FROM</span> customer<span class="token punctuation">;</span>
 
-<span class="token keyword">SELECT</span>
-<span class="token keyword">LEFT</span><span class="token punctuation">(</span>email<span class="token punctuation">,</span> POSITION<span class="token punctuation">(</span><span class="token string">'@'</span> <span class="token operator">IN</span> email<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-email
-<span class="token keyword">FROM</span> customer
+<span class="token keyword">SELECT</span> <span class="token keyword">LEFT</span><span class="token punctuation">(</span>email<span class="token punctuation">,</span> POSITION<span class="token punctuation">(</span><span class="token string">'@'</span> <span class="token operator">IN</span> email<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> email <span class="token keyword">FROM</span> customer<span class="token punctuation">;</span>
 
-<span class="token keyword">SELECT</span>
-<span class="token keyword">LEFT</span><span class="token punctuation">(</span>email<span class="token punctuation">,</span> POSITION<span class="token punctuation">(</span>last_name <span class="token operator">IN</span> email<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-email
-<span class="token keyword">FROM</span> customer
+<span class="token keyword">SELECT</span> <span class="token keyword">LEFT</span><span class="token punctuation">(</span>email<span class="token punctuation">,</span> POSITION<span class="token punctuation">(</span>last_name <span class="token operator">IN</span> email<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> email <span class="token keyword">FROM</span> customer<span class="token punctuation">;</span>
 
-<span class="token keyword">SELECT</span>
-<span class="token keyword">LEFT</span><span class="token punctuation">(</span>email<span class="token punctuation">,</span> POSITION<span class="token punctuation">(</span>last_name <span class="token operator">IN</span> email<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-email
-<span class="token keyword">FROM</span> customer
+<span class="token keyword">SELECT</span> last_name <span class="token operator">||</span> <span class="token string">', '</span> <span class="token operator">||</span> <span class="token keyword">LEFT</span><span class="token punctuation">(</span>email<span class="token punctuation">,</span> POSITION<span class="token punctuation">(</span><span class="token string">'.'</span> <span class="token operator">IN</span> email<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">FROM</span> customer<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<span class="token keyword">SELECT</span>
-last_name <span class="token operator">||</span> <span class="token string">', '</span> <span class="token operator">||</span> <span class="token keyword">LEFT</span><span class="token punctuation">(</span>email<span class="token punctuation">,</span> POSITION<span class="token punctuation">(</span><span class="token string">'.'</span> <span class="token operator">IN</span> email<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> 
-<span class="token keyword">FROM</span> customer<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="SUBSTRING"><a href="#SUBSTRING" class="headerlink" title="SUBSTRING"></a>SUBSTRING</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
-SUBSTRING<span class="token punctuation">(</span>string <span class="token keyword">from</span> <span class="token keyword">start</span> <span class="token punctuation">[</span><span class="token keyword">for</span> length<span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token punctuation">;</span>
-
-<span class="token keyword">SELECT</span> 
-email<span class="token punctuation">,</span>
-SUBSTRING<span class="token punctuation">(</span>email <span class="token keyword">from</span> Position <span class="token punctuation">(</span><span class="token string">'.'</span> <span class="token operator">in</span> email<span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span> <span class="token keyword">for</span> <span class="token number">3</span><span class="token punctuation">)</span>
+<h2 id="10-SUBSTRING"><a href="#10-SUBSTRING" class="headerlink" title="10. SUBSTRING"></a>10. SUBSTRING</h2><hr>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Return Type</th>
+<th>Description</th>
+<th>Example</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>substring(string [from int] [for int])</td>
+<td>text</td>
+<td>Extract substring</td>
+<td>consubstring(‘Thomas’ from 2 for 3)</td>
+<td>hom</td>
+</tr>
+<tr>
+<td>substring(string from pattern)</td>
+<td>text</td>
+<td>Extract substring matching POSIX regular expression. See Section 9.7 for more information on pattern matching</td>
+<td>substring(‘Thomas’ from ‘…$’)</td>
+<td>mas</td>
+</tr>
+<tr>
+<td>substring(string from pattern for escape)</td>
+<td>text</td>
+<td>Extract substring matching SQL regular expression. See Section 9.7 for more information on pattern matching.</td>
+<td>substring(‘Thomas’ from ‘%#”o_a#”_’ for ‘#’)</td>
+<td>oma</td>
+</tr>
+</tbody></table>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> email
+    <span class="token punctuation">,</span> SUBSTRING<span class="token punctuation">(</span>email <span class="token keyword">from</span> Position <span class="token punctuation">(</span><span class="token string">'.'</span> <span class="token operator">in</span> email<span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span> <span class="token keyword">for</span> <span class="token number">3</span><span class="token punctuation">)</span>
 <span class="token keyword">FROM</span> customer<span class="token punctuation">;</span>
 
-<span class="token keyword">SELECT</span> 
-email<span class="token punctuation">,</span>
-SUBSTRING<span class="token punctuation">(</span>email <span class="token keyword">from</span> POSITION<span class="token punctuation">(</span><span class="token string">'.'</span> <span class="token operator">in</span> email<span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span> <span class="token keyword">for</span> LENGTH<span class="token punctuation">(</span>last_name<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">SELECT</span> email
+     <span class="token punctuation">,</span> SUBSTRING<span class="token punctuation">(</span>email <span class="token keyword">from</span> POSITION<span class="token punctuation">(</span><span class="token string">'.'</span> <span class="token operator">in</span> email<span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span> <span class="token keyword">for</span> LENGTH<span class="token punctuation">(</span>last_name<span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token keyword">FROM</span> customer<span class="token punctuation">;</span>
 
-<span class="token keyword">SELECT</span> 
-email<span class="token punctuation">,</span>
-SUBSTRING<span class="token punctuation">(</span>email <span class="token keyword">from</span> <span class="token number">3</span> <span class="token keyword">for</span> <span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token keyword">SELECT</span> email
+     <span class="token punctuation">,</span> SUBSTRING<span class="token punctuation">(</span>email <span class="token keyword">from</span> <span class="token number">3</span> <span class="token keyword">for</span> <span class="token number">2</span><span class="token punctuation">)</span>
 <span class="token keyword">FROM</span> customer<span class="token punctuation">;</span>
 
-<span class="token keyword">SELECT</span> 
-email<span class="token punctuation">,</span>
-SUBSTRING<span class="token punctuation">(</span>email <span class="token keyword">from</span> POSITION<span class="token punctuation">(</span><span class="token string">'.'</span> <span class="token operator">in</span> email<span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span> <span class="token keyword">for</span> POSITION<span class="token punctuation">(</span><span class="token string">'@'</span> <span class="token operator">in</span> email<span class="token punctuation">)</span><span class="token operator">-</span>POSITION<span class="token punctuation">(</span><span class="token string">'.'</span> <span class="token operator">in</span> email<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token keyword">SELECT</span> email
+     <span class="token punctuation">,</span> SUBSTRING<span class="token punctuation">(</span>email <span class="token keyword">from</span> POSITION<span class="token punctuation">(</span><span class="token string">'.'</span> <span class="token operator">in</span> email<span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span> <span class="token keyword">for</span> POSITION<span class="token punctuation">(</span><span class="token string">'@'</span> <span class="token operator">in</span> email<span class="token punctuation">)</span><span class="token operator">-</span>POSITION<span class="token punctuation">(</span><span class="token string">'.'</span> <span class="token operator">in</span> email<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
 <span class="token keyword">FROM</span> customer<span class="token punctuation">;</span>
 
 <span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> customer<span class="token punctuation">;</span>
 
-<span class="token keyword">SELECT</span> 
-<span class="token keyword">LEFT</span><span class="token punctuation">(</span>email<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
-<span class="token operator">||</span> <span class="token string">'***'</span>
-<span class="token operator">||</span> SUBSTRING<span class="token punctuation">(</span>email <span class="token keyword">from</span> POSITION<span class="token punctuation">(</span><span class="token string">'.'</span> <span class="token operator">in</span> email<span class="token punctuation">)</span> <span class="token keyword">for</span> <span class="token number">2</span><span class="token punctuation">)</span>
-<span class="token operator">||</span> <span class="token string">'***'</span>
-<span class="token operator">||</span> SUBSTRING<span class="token punctuation">(</span>email <span class="token keyword">from</span> POSITION<span class="token punctuation">(</span><span class="token string">'@'</span> <span class="token operator">in</span> email<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">SELECT</span> <span class="token keyword">LEFT</span><span class="token punctuation">(</span>email<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token string">'***'</span> <span class="token operator">||</span> SUBSTRING<span class="token punctuation">(</span>email <span class="token keyword">from</span> POSITION<span class="token punctuation">(</span><span class="token string">'.'</span> <span class="token operator">in</span> email<span class="token punctuation">)</span> <span class="token keyword">for</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token string">'***'</span> <span class="token operator">||</span> SUBSTRING<span class="token punctuation">(</span>email <span class="token keyword">from</span> POSITION<span class="token punctuation">(</span><span class="token string">'@'</span> <span class="token operator">in</span> email<span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token keyword">FROM</span> customer<span class="token punctuation">;</span>
 
 
-<span class="token keyword">SELECT</span> 
-<span class="token string">'***'</span>
-<span class="token operator">||</span> SUBSTRING<span class="token punctuation">(</span>email <span class="token keyword">from</span> POSITION<span class="token punctuation">(</span><span class="token string">'.'</span> <span class="token operator">in</span> email<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span> <span class="token keyword">for</span> <span class="token number">3</span><span class="token punctuation">)</span>
-<span class="token operator">||</span> <span class="token string">'***'</span>
-<span class="token operator">||</span> SUBSTRING<span class="token punctuation">(</span>email <span class="token keyword">from</span> POSITION<span class="token punctuation">(</span><span class="token string">'@'</span> <span class="token operator">in</span> email<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token keyword">FROM</span> customer<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">SELECT</span> <span class="token string">'***'</span> <span class="token operator">||</span> SUBSTRING<span class="token punctuation">(</span>email <span class="token keyword">from</span> POSITION<span class="token punctuation">(</span><span class="token string">'.'</span> <span class="token operator">in</span> email<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span> <span class="token keyword">for</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token string">'***'</span> <span class="token operator">||</span> SUBSTRING<span class="token punctuation">(</span>email <span class="token keyword">from</span> POSITION<span class="token punctuation">(</span><span class="token string">'@'</span> <span class="token operator">in</span> email<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> customer<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="TO-CHAR"><a href="#TO-CHAR" class="headerlink" title="TO_CHAR"></a>TO_CHAR</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
+<h2 id="11-TO-CHAR"><a href="#11-TO-CHAR" class="headerlink" title="11. TO_CHAR"></a>11. TO_CHAR</h2><hr>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
 TO_CHAR <span class="token punctuation">(</span><span class="token keyword">date</span><span class="token operator">/</span><span class="token keyword">time</span><span class="token operator">/</span><span class="token keyword">interval</span><span class="token punctuation">,</span> format<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h4 id="UPPER-LOWER-LENGTH"><a href="#UPPER-LOWER-LENGTH" class="headerlink" title="UPPER &amp; LOWER &amp; LENGTH"></a>UPPER &amp; LOWER &amp; LENGTH</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- Syntax</span>
-<span class="token keyword">SELECT</span> 
-UPPER<span class="token punctuation">(</span>email<span class="token punctuation">)</span> <span class="token keyword">AS</span> email_upper<span class="token punctuation">,</span>
-LOWER<span class="token punctuation">(</span>email<span class="token punctuation">)</span> <span class="token keyword">AS</span> email_lower<span class="token punctuation">,</span>
-LENGTH<span class="token punctuation">(</span>email<span class="token punctuation">)</span>
+<h2 id="12-UPPER-LOWER-LENGTH"><a href="#12-UPPER-LOWER-LENGTH" class="headerlink" title="12. UPPER &amp; LOWER &amp; LENGTH"></a>12. UPPER &amp; LOWER &amp; LENGTH</h2><table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Return Type</th>
+<th>Description</th>
+<th>Example</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>upper(string)</td>
+<td>text</td>
+<td>Convert string to upper case</td>
+<td>upper(‘tom’)</td>
+<td>TOM</td>
+</tr>
+<tr>
+<td>lower(string)</td>
+<td>text</td>
+<td>Convert string to lower case</td>
+<td>lower(‘TOM’)</td>
+<td>tom</td>
+</tr>
+<tr>
+<td>length(string)</td>
+<td>int</td>
+<td>Number of characters in string</td>
+<td>length(‘jose’)</td>
+<td>4</td>
+</tr>
+<tr>
+<td>length(string bytea, encoding name )</td>
+<td>int</td>
+<td>Number of characters in string in the given encoding. The string must be valid in this encoding.</td>
+<td>length(‘jose’, ‘UTF8’)</td>
+<td>4</td>
+</tr>
+</tbody></table>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>UPPER</span></div><code class="language-sql"><span class="token keyword">SELECT</span> UPPER<span class="token punctuation">(</span>email<span class="token punctuation">)</span> <span class="token keyword">AS</span> email_upper
+     <span class="token punctuation">,</span> UPPER<span class="token punctuation">(</span>email<span class="token punctuation">)</span> <span class="token keyword">AS</span> email_lower
 <span class="token keyword">FROM</span> customer
-<span class="token keyword">WHERE</span> LENGTH<span class="token punctuation">(</span>email<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">30</span>
-<span class="token punctuation">;</span>
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-<span class="token keyword">SELECT</span> 
-LOWER<span class="token punctuation">(</span>first_name<span class="token punctuation">)</span> <span class="token keyword">AS</span> first_name<span class="token punctuation">,</span>
-LOWER<span class="token punctuation">(</span>last_name<span class="token punctuation">)</span> <span class="token keyword">AS</span> last_name
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>LOWER</span></div><code class="language-sql"><span class="token keyword">SELECT</span> LOWER<span class="token punctuation">(</span>first_name<span class="token punctuation">)</span> <span class="token keyword">AS</span> first_name
+     <span class="token punctuation">,</span> LOWER<span class="token punctuation">(</span>last_name<span class="token punctuation">)</span> <span class="token keyword">AS</span> last_name
 <span class="token keyword">FROM</span> customer
-<span class="token keyword">WHERE</span> LENGTH<span class="token punctuation">(</span>first_name<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">10</span>
-<span class="token operator">OR</span> LENGTH<span class="token punctuation">(</span>last_name<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">10</span>
-<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>LENGTH</span></div><code class="language-sql"><span class="token keyword">SELECT</span> LENGTH<span class="token punctuation">(</span>email<span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> customer
+<span class="token keyword">WHERE</span> LENGTH<span class="token punctuation">(</span>first_name<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">10</span> <span class="token operator">OR</span> LENGTH<span class="token punctuation">(</span>last_name<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">10</span>
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>출처 : <a target="_blank" rel="noopener" href="https://dog-developers.tistory.com/162/">UNION 연산 , UNION ALL 연산</a></p>
-<h2 id="UNION"><a href="#UNION" class="headerlink" title="UNION"></a>UNION</h2><blockquote>
+<h2 id="13-UNION"><a href="#13-UNION" class="headerlink" title="13. UNION"></a>13. UNION</h2><hr>
+<blockquote>
 <p>SELECT 문들의 결과 집합을 단일 결과 집합으로 결합하며 결합 시 중복된 데이터는 제거</p>
 </blockquote>
 <ul>
@@ -630,16 +598,17 @@ LOWER<span class="token punctuation">(</span>last_name<span class="token punctua
 </li>
 </ul>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> 
-  <span class="token keyword">FROM</span> soss<span class="token punctuation">.</span>ic_pcel_stdr_info
-  <span class="token keyword">WHERE</span> min_x_crd <span class="token operator">=</span> <span class="token punctuation">(</span> <span class="token keyword">SELECT</span> <span class="token function">MIN</span><span class="token punctuation">(</span>min_x_crd<span class="token punctuation">)</span> <span class="token keyword">FROM</span> SOSS<span class="token punctuation">.</span>IC_PCEL_STDR_INFO <span class="token punctuation">)</span>
-  <span class="token keyword">UNION</span>
+<span class="token keyword">FROM</span> soss<span class="token punctuation">.</span>ic_pcel_stdr_info
+<span class="token keyword">WHERE</span> min_x_crd <span class="token operator">=</span> <span class="token punctuation">(</span> <span class="token keyword">SELECT</span> <span class="token function">MIN</span><span class="token punctuation">(</span>min_x_crd<span class="token punctuation">)</span> <span class="token keyword">FROM</span> SOSS<span class="token punctuation">.</span>IC_PCEL_STDR_INFO <span class="token punctuation">)</span>
+<span class="token keyword">UNION</span>
 <span class="token keyword">SELECT</span> <span class="token operator">*</span>
-  <span class="token keyword">FROM</span> soss<span class="token punctuation">.</span>ic_pcel_stdr_info
-  <span class="token keyword">WHERE</span> min_y_crd <span class="token operator">=</span> <span class="token punctuation">(</span> <span class="token keyword">SELECT</span> <span class="token function">MIN</span><span class="token punctuation">(</span>min_y_crd<span class="token punctuation">)</span> <span class="token keyword">FROM</span> SOSS<span class="token punctuation">.</span>IC_PCEL_STDR_INFO <span class="token punctuation">)</span>
-  <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> grid_no
+<span class="token keyword">FROM</span> soss<span class="token punctuation">.</span>ic_pcel_stdr_info
+<span class="token keyword">WHERE</span> min_y_crd <span class="token operator">=</span> <span class="token punctuation">(</span> <span class="token keyword">SELECT</span> <span class="token function">MIN</span><span class="token punctuation">(</span>min_y_crd<span class="token punctuation">)</span> <span class="token keyword">FROM</span> SOSS<span class="token punctuation">.</span>IC_PCEL_STDR_INFO <span class="token punctuation">)</span>
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> grid_no
 <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="UNION-ALL"><a href="#UNION-ALL" class="headerlink" title="UNION ALL"></a>UNION ALL</h2><blockquote>
+<h2 id="14-UNION-ALL"><a href="#14-UNION-ALL" class="headerlink" title="14. UNION ALL"></a>14. UNION ALL</h2><hr>
+<blockquote>
 <p>SELECT 문들의 결과 집합을 단일 결과 집합으로 결합하며 결합 시 중복된 데이터도 포함</p>
 </blockquote>
 <ul>
@@ -653,13 +622,13 @@ LOWER<span class="token punctuation">(</span>last_name<span class="token punctua
 </li>
 </ul>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> 
-  <span class="token keyword">FROM</span> soss<span class="token punctuation">.</span>ic_pcel_stdr_info
-  <span class="token keyword">WHERE</span> min_x_crd <span class="token operator">=</span> <span class="token punctuation">(</span> <span class="token keyword">SELECT</span> <span class="token function">MIN</span><span class="token punctuation">(</span>min_x_crd<span class="token punctuation">)</span> <span class="token keyword">FROM</span> SOSS<span class="token punctuation">.</span>IC_PCEL_STDR_INFO <span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> soss<span class="token punctuation">.</span>ic_pcel_stdr_info
+<span class="token keyword">WHERE</span> min_x_crd <span class="token operator">=</span> <span class="token punctuation">(</span> <span class="token keyword">SELECT</span> <span class="token function">MIN</span><span class="token punctuation">(</span>min_x_crd<span class="token punctuation">)</span> <span class="token keyword">FROM</span> SOSS<span class="token punctuation">.</span>IC_PCEL_STDR_INFO <span class="token punctuation">)</span>
 <span class="token keyword">UNION</span> <span class="token keyword">ALL</span>
 <span class="token keyword">SELECT</span> <span class="token operator">*</span>
-  <span class="token keyword">FROM</span> soss<span class="token punctuation">.</span>ic_pcel_stdr_info
-  <span class="token keyword">WHERE</span> min_y_crd <span class="token operator">=</span> <span class="token punctuation">(</span> <span class="token keyword">SELECT</span> <span class="token function">MIN</span><span class="token punctuation">(</span>min_y_crd<span class="token punctuation">)</span> <span class="token keyword">FROM</span> SOSS<span class="token punctuation">.</span>IC_PCEL_STDR_INFO <span class="token punctuation">)</span>
-  <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> grid_no<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">FROM</span> soss<span class="token punctuation">.</span>ic_pcel_stdr_info
+<span class="token keyword">WHERE</span> min_y_crd <span class="token operator">=</span> <span class="token punctuation">(</span> <span class="token keyword">SELECT</span> <span class="token function">MIN</span><span class="token punctuation">(</span>min_y_crd<span class="token punctuation">)</span> <span class="token keyword">FROM</span> SOSS<span class="token punctuation">.</span>IC_PCEL_STDR_INFO <span class="token punctuation">)</span>
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> grid_no<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -800,9 +769,9 @@ LOWER<span class="token punctuation">(</span>last_name<span class="token punctua
                 <a href="/2024/06/16/SQL/cross-join/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/sql-logo.png" class="responsive-img" alt="Cross Join + VALUES 활용하기">
+                        <img src="/images/logos/sql-logo.png" class="responsive-img" alt="Cross Join + VALUES">
                         
-                        <span class="card-title diy-neon-red">Cross Join + VALUES 활용하기</span>
+                        <span class="card-title diy-neon-red">Cross Join + VALUES</span>
                     </div>
                 </a>
                 <div class="card-content article-content">

@@ -4,9 +4,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="인덱스, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="인덱스(Index)index range scan, index full scan &amp;#x3D;&amp;gt; single block I&amp;#x2F;O~ &amp;#x3D;&amp;gt; multi block I&amp;#x2F;O
-Index Rang">
+    <meta name="keywords" content="데이터 품질 &amp; ETL 테스팅, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="1. 데이터 프로파일링
+SELECT 
+    &#39;STG_ORDERS&#39; AS table
+  , &#39;ROW_ID&#39; AS attribute
+  , SUM(CASE WHEN &#39;ROW_ID&#39; IS NULL THEN 1 ELSE ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +21,7 @@ Index Rang">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>인덱스 | Keyhong</title>
+    <title>데이터 품질 &amp; ETL 테스팅 | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -177,13 +180,13 @@ Index Rang">
 
     
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/sql-logo.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/logos/data-architecture-logo.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        인덱스</h1>
+                        데이터 품질 &amp; ETL 테스팅</h1>
                 </div>
             </div>
         </div>
@@ -206,8 +209,8 @@ Index Rang">
                 <div class="post-cate">
                     <i class="fas fa-bookmark fa-fw icon-category"></i>
                     
-                        <a href="/categories/SQL/" class="post-category">
-                            SQL
+                        <a href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B1%B0%EB%B2%84%EB%84%8C%EC%8A%A4/" class="post-category">
+                            데이터 거버넌스
                         </a>
                     
                 </div>
@@ -224,24 +227,63 @@ Index Rang">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="인덱스-Index"><a href="#인덱스-Index" class="headerlink" title="인덱스(Index)"></a>인덱스(Index)</h2><p>index range scan, index full scan &#x3D;&gt; single block I&#x2F;O<br>~ &#x3D;&gt; multi block I&#x2F;O</p>
-<p>Index Range Scan &#x3D; 1+ Scan</p>
-<h4 id="INDEX-설계-절차"><a href="#INDEX-설계-절차" class="headerlink" title="INDEX 설계 절차"></a>INDEX 설계 절차</h4><ul>
-<li>인덱스의 개수가 많아지면, 업데이트시 많은 I&#x2F;O가 발생할 수 있음</li>
-<li>인덱스 구성 컬럼이 많아지면, B* Tree의 깊이가 깊어짐</li>
+                <h2 id="1-데이터-프로파일링"><a href="#1-데이터-프로파일링" class="headerlink" title="1. 데이터 프로파일링"></a>1. 데이터 프로파일링</h2><hr>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> 
+    <span class="token string">'STG_ORDERS'</span> <span class="token keyword">AS</span> <span class="token keyword">table</span>
+  <span class="token punctuation">,</span> <span class="token string">'ROW_ID'</span> <span class="token keyword">AS</span> attribute
+  <span class="token punctuation">,</span> <span class="token function">SUM</span><span class="token punctuation">(</span><span class="token keyword">CASE</span> <span class="token keyword">WHEN</span> <span class="token string">'ROW_ID'</span> <span class="token operator">IS</span> <span class="token boolean">NULL</span> <span class="token keyword">THEN</span> <span class="token number">1</span> <span class="token keyword">ELSE</span> <span class="token number">0</span> <span class="token keyword">END</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> count_null_records
+<span class="token keyword">FROM</span> <span class="token keyword">public</span><span class="token punctuation">.</span>stg_orders
+
+<span class="token keyword">SELECT</span> 
+    <span class="token string">'STG_ORDERS'</span>
+  <span class="token punctuation">,</span> <span class="token string">'ORDER_DATE'</span>
+  <span class="token punctuation">,</span> <span class="token string">'> 2000-01-01'</span>
+  <span class="token punctuation">,</span> <span class="token function">SUM</span><span class="token punctuation">(</span><span class="token keyword">CASE</span> <span class="token keyword">WHEN</span> <span class="token string">'ORDER_DATE'</span> <span class="token operator">></span> TO_DATE<span class="token punctuation">(</span><span class="token string">'2000-01-01'</span><span class="token punctuation">,</span> <span class="token string">'YYYY-MM-DD'</span><span class="token punctuation">)</span> <span class="token keyword">THEN</span> <span class="token number">1</span> <span class="token keyword">ELSE</span> <span class="token number">0</span> <span class="token keyword">END</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span> <span class="token function">SUM</span><span class="token punctuation">(</span><span class="token keyword">CASE</span> <span class="token keyword">WHEN</span> <span class="token string">'ORDER_DATE'</span> <span class="token operator">></span> TO_DATE<span class="token punctuation">(</span><span class="token string">'2000-01-01'</span><span class="token punctuation">,</span> <span class="token string">'YYYY-MM-DD'</span><span class="token punctuation">)</span> <span class="token keyword">THEN</span> <span class="token number">0</span> <span class="token keyword">ELSE</span> <span class="token number">1</span> <span class="token keyword">END</span><span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> <span class="token keyword">public</span><span class="token punctuation">.</span>stg_orders
+
+
+<span class="token keyword">SELECT</span> 
+    <span class="token string">'STG_ORDERS'</span> <span class="token keyword">AS</span> <span class="token keyword">table</span>
+  <span class="token punctuation">,</span> <span class="token string">'ORDER_ID'</span> <span class="token keyword">AS</span> unique_constraint
+  <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token string">'ORDER_ID'</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> count_records
+  <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> <span class="token string">'ORDER_ID'</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> count_distinct_records
+  <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token string">'ORDER_ID'</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> <span class="token string">'ORDER_ID'</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> count_duplicates
+<span class="token keyword">FROM</span> <span class="token keyword">public</span><span class="token punctuation">.</span>stg_orders<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p>Provide Data Quality assurance throughout the entire Data Lifecycle</p>
+<p>ETL&#x2F;ELT Testing</p>
+<ul>
+<li><p>Transformations Mapping</p>
+</li>
+<li><p>Table Relationships</p>
+</li>
+<li><p>Source-Target Testing</p>
+</li>
 </ul>
-<h2 id="파티셔닝-Partitioning"><a href="#파티셔닝-Partitioning" class="headerlink" title="파티셔닝(Partitioning)"></a>파티셔닝(Partitioning)</h2><p>Sequential Access -&gt; partition<br>Random Access -&gt; </p>
-<h4 id="파티션의-종류"><a href="#파티션의-종류" class="headerlink" title="파티션의 종류"></a>파티션의 종류</h4><ol>
-<li><p>Range Partition : 컬럼값의 범위(주로 일자)에 따라서 파티셔닝</p>
+<p>Database Testing</p>
+<ul>
+<li><p>Schema</p>
 </li>
-<li><p>List Partition : 정해진 값의 목록 리스트에 따라 컬럼값을 나눠서 파티셔닝</p>
+<li><p>Table</p>
 </li>
-<li><p>Hash Partition : 컬럼값에 Hash Function을 적용 후 나온 값으로 파티셔닝</p>
+<li><p>Attribute</p>
 </li>
-<li><p>Composite Partition : 위 파티션 방법에서 2개 이상의 복합 구성</p>
+</ul>
+<p>Data Classification And categories</p>
+<ul>
+<li><p>Information : Data serving a certain context and purpose</p>
 </li>
-</ol>
-<h4 id="이력-데이터와-파티션"><a href="#이력-데이터와-파티션" class="headerlink" title="이력 데이터와 파티션"></a>이력 데이터와 파티션</h4><p>파티션의 생명주기와 소멸주기가 일치해야 함 (선분이력의 범위 &#x3D; 파티션의 생명~소멸 주기)</p>
+<li><p>Transactional Data : Describes an event or transaction</p>
+</li>
+<li><p>Master Data : Data that is consistently shared across an entire organization</p>
+</li>
+<li><p>Reference Data : Structures and standardizes the master data into a pre-defined list of values</p>
+</li>
+<li><p>Meta Data : Provides context and information about the master data</p>
+</li>
+</ul>
 
                 
             </div>
@@ -268,7 +310,7 @@ Index Rang">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/06/16/SQL/physics-modeling/">http://example.com/2024/06/16/SQL/physics-modeling/</a>
+                    <a href="http://example.com/2024/10/11/Data-Governance/posting/data-quality/">http://example.com/2024/10/11/Data-Governance/posting/data-quality/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -376,56 +418,17 @@ Index Rang">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
-            <div class="card">
-                <a href="/2024/06/16/SQL/procedure/">
-                    <div class="card-image">
-                        
-                        <img src="/images/logos/sql-logo.png" class="responsive-img" alt="Procedure">
-                        
-                        <span class="card-title diy-neon-red">Procedure</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-06-16
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/SQL/" class="post-category">
-                                    SQL
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
             </div>
             <div class="card">
-                <a href="/2024/06/16/SQL/cross-join/">
+                <a href="/2024/10/11/Data-Governance/posting/data-quality/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/sql-logo.png" class="responsive-img" alt="Cross Join + VALUES 활용하기">
+                        <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="데이터 품질 &amp; ETL 테스팅">
                         
-                        <span class="card-title diy-neon-red">Cross Join + VALUES 활용하기</span>
+                        <span class="card-title diy-neon-yellow">데이터 품질 &amp; ETL 테스팅</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -436,14 +439,55 @@ Index Rang">
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-06-16
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-10-11
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/SQL/" class="post-category">
-                                    SQL
+                            <a href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B1%B0%EB%B2%84%EB%84%8C%EC%8A%A4/" class="post-category">
+                                    데이터 거버넌스
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/10/10/Reading/Data-Warehouse-Toolkit/data-warehouse-toolkit/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/book-logo.png" class="responsive-img" alt="데이터 웨어하우스 툴킷 - 고객관계관리 (CRM, CRM, Customer Relationship Management)">
+                        
+                        <span class="card-title diy-neon-red">데이터 웨어하우스 툴킷 - 고객관계관리 (CRM, CRM, Customer Relationship Management)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-10-10
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%EB%8F%85%EC%84%9C/" class="post-category">
+                                    독서
                                 </a>
                             
                             

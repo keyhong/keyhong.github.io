@@ -4,14 +4,16 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Cross Join + VALUES 활용하기, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="조인(Join)
+    <meta name="keywords" content="Cross Join + VALUES, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="1. 조인 (Join)
+
 두 개의 테이블을 특정 기준 컬럼으로 결합하는 일
 
-조인 Tip
-Outer Table의 결과 집합이 작아야 한다 (Left join의 왼쪽 편에 있는 데이터의 size가 작아야 한다)
+1.1 조인 기본
 
-Inner L">
+Outer Table의 결과 집합이 작아야 한다. (Left join의 왼쪽에 있는 데이터의 크기가 작아야 한다.)
+
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -23,7 +25,7 @@ Inner L">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Cross Join + VALUES 활용하기 | Keyhong</title>
+    <title>Cross Join + VALUES | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -188,7 +190,7 @@ Inner L">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        Cross Join + VALUES 활용하기</h1>
+                        Cross Join + VALUES</h1>
                 </div>
             </div>
         </div>
@@ -229,17 +231,23 @@ Inner L">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="조인-Join"><a href="#조인-Join" class="headerlink" title="조인(Join)"></a>조인(Join)</h2><blockquote>
+                <h2 id="1-조인-Join"><a href="#1-조인-Join" class="headerlink" title="1. 조인 (Join)"></a>1. 조인 (Join)</h2><hr>
+<blockquote>
 <p>두 개의 테이블을 특정 기준 컬럼으로 결합하는 일</p>
 </blockquote>
-<h2 id="조인-Tip"><a href="#조인-Tip" class="headerlink" title="조인 Tip"></a>조인 Tip</h2><ul>
-<li><p>Outer Table의 결과 집합이 작아야 한다 (Left join의 왼쪽 편에 있는 데이터의 size가 작아야 한다)</p>
+<h3 id="1-1-조인-기본"><a href="#1-1-조인-기본" class="headerlink" title="1.1 조인 기본"></a>1.1 조인 기본</h3><hr>
+<ul>
+<li><p>Outer Table의 결과 집합이 작아야 한다. (Left join의 왼쪽에 있는 데이터의 크기가 작아야 한다.)</p>
 </li>
-<li><p>Inner Loop의 조인 컬럼에 인덱스가 있으면 효율적(인덱스는 값과 위치를 미리 정렬했기 때문)</p>
+<li><p>Inner Loop의 조인 컬럼에 인덱스가 있으면 효율적이다. (인덱스는 값과 위치를 미리 정렬해 두었기 때문이다.)</p>
 </li>
 </ul>
-<h2 id="Cross-Join"><a href="#Cross-Join" class="headerlink" title="Cross Join"></a>Cross Join</h2><p>흔히 카테시안 곱(Cartesian Product)으로 불리는 조인이다. M개의 행을 가진 테이블과 N개의 행을 가진 테이블을 cross-join 시키면 M*N개의 행이 나온다. 즉 두 테이블이 가진 개별 행들을 서로의 행과 join 기준 컬럼 없이 결합한다. cross-join에서 성능을 기대하기는 쉽지 않다. 다만, 카테시안을 이용한 모든 곱이 필요한 경우 사용하며 결과로 나오는 행은 엄청 크기 때문에 메모리 부족을 항상 경계해야 한다. </p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">    
+<h2 id="2-Cross-Join"><a href="#2-Cross-Join" class="headerlink" title="2. Cross Join"></a>2. Cross Join</h2><hr>
+<blockquote>
+<p>Cross Join(교차 조인)은 두 개의 테이블이나 데이터셋을 결합할 때 사용되는 SQL 조인 중 하나로, 각 테이블의 모든 행을 서로 결합하여 생성된 결과 집합을 반환함. Cartesian Product(카르테시안 곱)이라고도 하며, 모든 가능한 조합의 결과를 생성</p>
+</blockquote>
+<p>M개의 행을 가진 테이블과 N개의 행을 가진 테이블을 CROSS JOIN하면 M*N개의 행이 생성된다. 즉, 두 테이블의 개별 행들이 서로의 행과 JOIN 기준 컬럼 없이 결합된다. CROSS JOIN에서 성능을 기대하기는 쉽지 않다. 다만, 카테시안 곱이 필요한 경우에 사용되며, 결과로 나오는 행 수가 매우 크기 때문에 메모리 부족에 항상 주의해야 한다.</p>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>Cross Join 예제</span></div><code class="language-sql">    
 <span class="token comment">-- 테이블 A </span>
 <span class="token comment">-----------------</span>
 <span class="token operator">|</span> col_a <span class="token operator">|</span> col_b <span class="token operator">|</span>
@@ -276,14 +284,18 @@ col_a | col_b | col_c | col_d |
 -------------------------------
 */</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="values"><a href="#values" class="headerlink" title="values"></a>values</h2><p>values를 이용하면 cross-join을 할 때 조인 대상이 되는 간단한 배열을 만들 수 있따.</p>
+<h2 id="3-VALUES"><a href="#3-VALUES" class="headerlink" title="3. VALUES"></a>3. VALUES</h2><hr>
+<p>VALUES를 이용하면 CROSS JOIN을 할 때 조인 대상이 되는 간단한 배열을 만들 수 있다</p>
 <ul>
-<li>보통 “INSERT INTO &lt;테이블&gt; VALUES &lt;값&gt;” 에 주로 사용된다.</li>
-<li>values 는 하나의 행을 소괄호’()’ 로 묶고 쉼표로 구분한다.</li>
-<li>values를 이용한 다양한 활용이 가능하다.</li>
+<li>보통 “INSERT INTO &lt;테이블&gt; VALUES &lt;값&gt;” 형식으로 사용된다.</li>
+<li>VALUES는 하나의 행을 소괄호 ‘()’로 묶고, 각 값은 쉼표로 구분한다.</li>
+<li>VALUES를 이용한 다양한 활용이 가능하다.</li>
 </ul>
-<h2 id="실전-예제-Cross-Join을-위해-사용한-UNION-ALL-대체하기"><a href="#실전-예제-Cross-Join을-위해-사용한-UNION-ALL-대체하기" class="headerlink" title="실전 예제 : Cross Join을 위해 사용한 UNION ALL 대체하기"></a>실전 예제 : Cross Join을 위해 사용한 UNION ALL 대체하기</h2><p>실제 프로젝트에서 내가 기존의 쿼리를 간소화 시켰던 예제이다. 모든 데이터에 대해 00시~23시 까지의 모든 값을 넣은 행을 새로 만드는 쿼리 였다. Cross Join(카디션 곱, 프로덕션 곱이라고도 말한다.)을 사용했는 데, 기존 쿼리의 경우 아래와 같이 UNION ALL을 이용하여 Join을 수행할 신규 테이블을 만드는 작업을 한다. 이 쿼리에 있어 테이블을 만들어 곱을 수행하는 것이 아닌, values를 이용해 값의 어레이를 만들어 곱하면 더욱 간편화된 쿼리문을 작성 할 수 있고 수행시간도 더욱 단축 시킬 수가 있었다.</p>
-<h4 id="기존-쿼리"><a href="#기존-쿼리" class="headerlink" title="기존 쿼리"></a>기존 쿼리</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">explain</span> <span class="token keyword">analyze</span>
+<h2 id="4-실전-예제-Cross-Join을-위해-사용한-UNION-ALL-대체하기"><a href="#4-실전-예제-Cross-Join을-위해-사용한-UNION-ALL-대체하기" class="headerlink" title="4. 실전 예제 : Cross Join을 위해 사용한 UNION ALL 대체하기"></a>4. 실전 예제 : Cross Join을 위해 사용한 UNION ALL 대체하기</h2><hr>
+<p>프로젝트에서 내가 기존의 쿼리를 간소화했던 예제이다. 이 쿼리는 00시부터 23시까지의 모든 값을 포함하는 행을 새로 생성하는 작업이었다. CROSS JOIN(카디션 곱, 프로덕션 곱이라고도 함)을 사용했는데, 기존 쿼리는 아래와 같이 UNION ALL을 이용해 JOIN을 수행하여 신규 테이블을 만드는 작업을 했다.</p>
+<p>이 쿼리에서 테이블을 만들어 곱을 수행하는 대신, VALUES를 이용해 값의 배열을 생성하면 훨씬 간편한 쿼리문을 작성할 수 있고, 수행 시간도 단축할 수 있었다.</p>
+<h4 id="4-1-AS-WAS-쿼리"><a href="#4-1-AS-WAS-쿼리" class="headerlink" title="4.1 AS-WAS 쿼리"></a>4.1 AS-WAS 쿼리</h4><hr>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>AS-WAS 쿼리</span></div><code class="language-sql"><span class="token keyword">explain</span> <span class="token keyword">analyze</span>
 <span class="token keyword">SELECT</span> <span class="token operator">*</span>
   <span class="token keyword">FROM</span>
       <span class="token punctuation">(</span>
@@ -365,7 +377,8 @@ Execution Time: 53457.058 ms
 */</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>보다시피 UNION ALL을 하면  쿼리가 세로로 길어지고 실행 계획도 더불어 길어지게 된다.</p>
-<h4 id="수정-쿼리"><a href="#수정-쿼리" class="headerlink" title="수정 쿼리"></a>수정 쿼리</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">explain</span> <span class="token keyword">analyze</span>
+<h4 id="AS-IS-쿼리"><a href="#AS-IS-쿼리" class="headerlink" title="AS-IS 쿼리"></a>AS-IS 쿼리</h4><hr>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>AS-IS 쿼리</span></div><code class="language-sql"><span class="token keyword">explain</span> <span class="token keyword">analyze</span>
     <span class="token keyword">SELECT</span> <span class="token operator">*</span>
       <span class="token keyword">FROM</span>
           <span class="token punctuation">(</span>
@@ -394,7 +407,9 @@ Planning Time: 0.249 ms
 Execution Time: 53296.674 ms
 */</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>쿼리문과 실행 계획 모두 짧아졌다. 물론 이와 같은 방법은 cross-join을 할 대상이 단일 열일 때 해당하는 바이다. 성능의 큰 차이가 없다면 그래도 짧고 보기 좋은 쿼리가 함께 공유하기 좋지 않을까 :)</p>
+<br>
+
+<p>쿼리문과 실행 계획 모두 짧아졌다. 물론, 이와 같은 방법은 CROSS JOIN을 할 대상이 단일 열일 때 해당한다. 성능에 큰 차이가 없다면, 짧고 가독성이 좋은 쿼리를 사용하는 것이 더 좋다.</p>
 
                 
             </div>
@@ -533,12 +548,12 @@ Execution Time: 53296.674 ms
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/06/16/SQL/physics-modeling/">
+                <a href="/2024/06/16/SQL/procedure/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/sql-logo.png" class="responsive-img" alt="인덱스">
+                        <img src="/images/logos/sql-logo.png" class="responsive-img" alt="Procedure">
                         
-                        <span class="card-title diy-neon-red">인덱스</span>
+                        <span class="card-title diy-neon-red">Procedure</span>
                     </div>
                 </a>
                 <div class="card-content article-content">

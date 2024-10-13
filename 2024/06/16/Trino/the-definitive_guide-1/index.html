@@ -5,9 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="The Definitive Guide에서 설명하는 Trino의 탄생 (1), Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="What is Trino
-
-Trino is a SQL query engine enabling SQL access to any data source. You can use Trino to query very large">
+    <meta name="description" content="1. What is Trino
+Trino is a SQL query engine enabling SQL access to any data source. You can use Trino to query very lar">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -225,46 +224,50 @@ Trino is a SQL query engine enabling SQL access to any data source. You can use 
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="What-is-Trino"><a href="#What-is-Trino" class="headerlink" title="What is Trino"></a>What is Trino</h2><hr>
-<blockquote>
+                <h2 id="1-What-is-Trino"><a href="#1-What-is-Trino" class="headerlink" title="1. What is Trino"></a>1. What is Trino</h2><hr>
 <p>Trino is a SQL query engine enabling SQL access to any data source. You can use Trino to query very large data sets by horizontally scaling the query processing.</p>
-</blockquote>
-<p>Trino는 모든 데이터 소스에 대한 SQL 액세스를 가능하게 하는 SQL 쿼리 엔진. Trino를 사용하면 쿼리 처리를 수평으로 확장하여 매우 큰 데이터 세트를 쿼리할 수 있다.</p>
-<h2 id="The-Problems-with-Big-Data"><a href="#The-Problems-with-Big-Data" class="headerlink" title="The Problems with Big Data"></a>The Problems with Big Data</h2><hr>
 <blockquote>
-<p>Everyone is capturing more and more data from device metrics, user behavior track‐ing, business transactions, location data, software and system testing procedures and workflows, and much more. The insights gained from understanding that data and working with it can make or break the success of any initiative, or even a company.</p>
+<p>Trino는 모든 데이터 소스에 대한 SQL 액세스를 가능하게 하는 SQL 쿼리 엔진. Trino를 사용하면 쿼리 처리를 수평으로 확장하여 매우 큰 데이터 세트를 쿼리할 수 있다.</p>
 </blockquote>
+<h2 id="2-The-Problems-with-Big-Data"><a href="#2-The-Problems-with-Big-Data" class="headerlink" title="2. The Problems with Big Data"></a>2. The Problems with Big Data</h2><hr>
+<p>Everyone is capturing more and more data from device metrics, user behavior track‐ing, business transactions, location data, software and system testing procedures and workflows, and much more. The insights gained from understanding that data and working with it can make or break the success of any initiative, or even a company.</p>
 <p>At the same time, the diversity of storage mechanisms available for data has exploded: relational databases, NoSQL databases, document databases, key-value stores, object storage systems, and so on. Many of them are necessary in today’s organizations, and it is no longer possible to use just one of them.</p>
+<blockquote>
 <ul>
 <li>요약 : 수집하는 데이터와 데이터를 저장하는 저장 매커니즘의이 다양해져(RDB, NoSQL, 오브젝트 스토리지, key-value 스토리지, 도큐먼트 데이터베이스 등), 단일 저장소만으로는 환경을 운영할 수 없다.</li>
 </ul>
-<blockquote>
-<p>In addition, all these different systems do not allow you to query and inspect the data with standard tools. Different query languages and analysis tools for niche systems are everywhere. Meanwhile, your business analysts are used to the industry standard, SQL. A myriad of powerful tools rely on SQL for analytics, dashboard creation, rich reporting, and other business intelligence work.</p>
 </blockquote>
+<hr>
+
+<p>In addition, all these different systems do not allow you to query and inspect the data with standard tools. Different query languages and analysis tools for niche systems are everywhere. Meanwhile, your business analysts are used to the industry standard, SQL. A myriad of powerful tools rely on SQL for analytics, dashboard creation, rich reporting, and other business intelligence work.</p>
+<blockquote>
 <ul>
 <li>요약 : 저장소의 매커니즘은 많아지는 데, 이러한 다양성 속에서 개발자 외에 분석가가 자주 활용하는 표준 SQL을 기반으로 하는 분석도구가 필요하다.</li>
 </ul>
-<blockquote>
-<p>The data is distributed across various silos, and some of them cannot even be queried at the necessary performance for your analytics needs. Other systems, unlike modern cloud applications, store data in monolithic systems that cannot scale horizontally. Without these capabilities, you are narrowing the number of potential use cases and users, and therefore the usefulness of the data</p>
 </blockquote>
+<hr>
+
+<p>The data is distributed across various silos, and some of them cannot even be queried at the necessary performance for your analytics needs. Other systems, unlike modern cloud applications, store data in monolithic systems that cannot scale horizontally. Without these capabilities, you are narrowing the number of potential use cases and users, and therefore the usefulness of the data</p>
+<blockquote>
 <ul>
 <li>요약 : 데이터는 다양한 사일로에 분산되어 있고, 분산 환경별 컴퓨팅 파워가 달라 필요한 쿼리를 수행하지 못하는 경우도 발생한다. 특히 전통적인 시스템은 수평확장이 어렵고, 이는 데이터의 사용에 있어 효용을 떨어트린다.</li>
 </ul>
-<blockquote>
-<p>The traditional approach of creating and maintaining large, dedicated data ware‐ houses has proven to be very expensive in organizations across the globe. Most often, this approach is also found to be too slow and cumbersome for many users and usage patterns. The often considered solution of creating a data lake ended up creating a dumping ground for data that no one ever looked at again, or went to great pains to attempt to analyze the data. Even the new approach of a data lakehouse that promises to combine the advantages of warehouses and lakes will not be the sole solution. Data will remain distributed, stored all over the place, and will crop up in more and more systems.</p>
 </blockquote>
+<hr>
+
+<p>The traditional approach of creating and maintaining large, dedicated data ware‐ houses has proven to be very expensive in organizations across the globe. Most often, this approach is also found to be too slow and cumbersome for many users and usage patterns. The often considered solution of creating a data lake ended up creating a dumping ground for data that no one ever looked at again, or went to great pains to attempt to analyze the data. Even the new approach of a data lakehouse that promises to combine the advantages of warehouses and lakes will not be the sole solution. Data will remain distributed, stored all over the place, and will crop up in more and more systems.</p>
+<blockquote>
 <ul>
 <li>요약 : 대규모 전용 ​​데이터 웨어하우스를 유지·관리하는 비용은 너무 크고, 사용자의 접근에 대해 느리고 번거로워 유용성이 많이 떨어진다. 웨어하우스와 레이크의 장점을 결합할 것을 약속하는 새로운 데이터 레이크하우스 접근 방식도 데이터가 분산되어 모든 곳에 저장됨에 따라 한계가 있다.</li>
 </ul>
-<h2 id="Trino-to-the-Rescue"><a href="#Trino-to-the-Rescue" class="headerlink" title="Trino to the Rescue"></a>Trino to the Rescue</h2><hr>
-<blockquote>
-<p>Trino is capable of solving all these problems and of unlocking new opportunities with federated queries to disparate systems, parallel queries, horizontal cluster scal‐ing, and much more.</p>
 </blockquote>
-<p>Trino is an open source, distributed SQL query engine. It was designed and written from the ground up to efficiently query data against disparate data sources of all sizes, ranging from gigabytes to petabytes. Trino breaks the false choice between having fast analytics using an expensive commercial solution or using a slow “free” solution that requires excessive hardware.</p>
+<h2 id="3-Trino-to-the-Rescue"><a href="#3-Trino-to-the-Rescue" class="headerlink" title="3. Trino to the Rescue"></a>3. Trino to the Rescue</h2><hr>
+<p>Trino is capable of solving all these problems and of unlocking new opportunities with federated queries to disparate systems, parallel queries, horizontal cluster scal‐ing, and much more. <br><br> Trino is an open source, distributed SQL query engine. It was designed and written from the ground up to efficiently query data against disparate data sources of all sizes, ranging from gigabytes to petabytes. Trino breaks the false choice between having fast analytics using an expensive commercial solution or using a slow “free” solution that requires excessive hardware.</p>
+<blockquote>
 <ul>
-<li>요약 : Trino는 이종 시스템에 대한 연합 쿼리, 병렬 쿼리, 수평적 클러스터 확장을 통해 이 문제들을 해결하고, Gigabyte ~ Fetabyte에 이르는 대용량의 데이터를 효율적으로 쿼리하도록 설계됬다.</li>
+<li>요약 : Trino는 이종 시스템에 대한 연합 쿼리, 병렬 쿼리, 수평적 클러스터 확장을 통해 이 문제들을 해결하고, Gigabyte ~ Fetabyte에 이르는 대용량의 데이터를 효율적으로 쿼리하도록 설계됬다. <br><br> 또한 비싼 솔루션, 느린 무료 솔루션과 다르게 오픈 소스이면서 범용 하드웨어의 수평 확장을 통해 쿼리 성능을 보장한다.</li>
 </ul>
-<p>또한 비싼 솔루션, 느린 무료 솔루션과 다르게 오픈 소스이면서 범용 하드웨어의 수평 확장을 통해 쿼리 성능을 보장한다.</p>
+</blockquote>
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><hr>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://trino.io/trino-the-definitive-guide.html">Trino_The Definitive Guide</a></li>
@@ -410,9 +413,9 @@ Trino is a SQL query engine enabling SQL access to any data source. You can use 
                 <a href="/2024/06/27/Datahub/datahub/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/datahub-logo.png" class="responsive-img" alt="Datahub 실험기">
+                        <img src="/images/logos/datahub-logo.png" class="responsive-img" alt="Datahub PoC">
                         
-                        <span class="card-title diy-neon-red">Datahub 실험기</span>
+                        <span class="card-title diy-neon-red">Datahub PoC</span>
                     </div>
                 </a>
                 <div class="card-content article-content">

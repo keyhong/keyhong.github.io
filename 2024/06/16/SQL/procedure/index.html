@@ -5,14 +5,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Procedure, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Test DBMS
+    <meta name="description" content="1. Test DBMS
+
 MySQL
 
-Procedure
+2. Procedure
+
 일련의 SQL문을 포함하는 미리 정의된 데이터베이스 객체
 
-세미콜론(semi-colons, “;”)
-세미콜론은 SQL에서 기본적인 문장 종결자(statement ter">
+2.1 세미콜론(semi-colons, “;”)
+
+세미콜론은 SQL에서 기본적인 문장 종결자(">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -230,19 +233,24 @@ Procedure
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="Test-DBMS"><a href="#Test-DBMS" class="headerlink" title="Test DBMS"></a>Test DBMS</h3><ul>
+                <h2 id="1-Test-DBMS"><a href="#1-Test-DBMS" class="headerlink" title="1. Test DBMS"></a>1. Test DBMS</h2><hr>
+<ul>
 <li>MySQL</li>
 </ul>
-<h3 id="Procedure"><a href="#Procedure" class="headerlink" title="Procedure"></a>Procedure</h3><blockquote>
+<h2 id="2-Procedure"><a href="#2-Procedure" class="headerlink" title="2. Procedure"></a>2. Procedure</h2><hr>
+<blockquote>
 <p>일련의 SQL문을 포함하는 미리 정의된 데이터베이스 객체</p>
 </blockquote>
-<h4 id="세미콜론-semi-colons-“-”"><a href="#세미콜론-semi-colons-“-”" class="headerlink" title="세미콜론(semi-colons, “;”)"></a>세미콜론(semi-colons, “;”)</h4><ul>
-<li><p>세미콜론은 SQL에서 기본적인 문장 종결자(statement terminator)로 사용됩니다.</p>
+<h3 id="2-1-세미콜론-semi-colons-“-”"><a href="#2-1-세미콜론-semi-colons-“-”" class="headerlink" title="2.1 세미콜론(semi-colons, “;”)"></a>2.1 세미콜론(semi-colons, “;”)</h3><hr>
+<ul>
+<li><p>세미콜론은 SQL에서 기본적인 문장 종결자(statement terminator)로 사용된다.</p>
 </li>
-<li><p>Procedure에서는 <code>DELIMITER $$</code>를 입력하여, 달러($$) 기호를 구분자로 사용하고 세미콜론(;)을 구분자(delimiter)로도 불릴 수 있습니다.</p>
+<li><p>Procedure에서는 <code>DELIMITER $$</code>를 입력하여 일반적으로 달러 기호 ($$)를 구분자로 설정하고, 세미콜론 (;)도 구분자로 사용할 수 있다.</p>
 </li>
 </ul>
-<h4 id="Non-parametric-Procedure"><a href="#Non-parametric-Procedure" class="headerlink" title="Non-parametric Procedure"></a>Non-parametric Procedure</h4><pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>Non-parametric Procedure Syntax</span></div><code class="language-sql"><span class="token keyword">DELIMITER</span> $$
+<h3 id="2-2-Procedure-종류"><a href="#2-2-Procedure-종류" class="headerlink" title="2.2. Procedure 종류"></a>2.2. Procedure 종류</h3><hr>
+<h4 id="1-Non-parametric-Procedure"><a href="#1-Non-parametric-Procedure" class="headerlink" title="(1) Non-parametric Procedure"></a>(1) Non-parametric Procedure</h4><hr>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>Non-parametric Procedure Syntax</span></div><code class="language-sql"><span class="token keyword">DELIMITER</span> $$
     <span class="token keyword">CREATE</span> <span class="token keyword">PROCEDURE</span> procedure_name<span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token keyword">BEGIN</span>
         <span class="token punctuation">[</span>query <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -264,8 +272,6 @@ Procedure
 
 <span class="token keyword">DELIMITER</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-
 <pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>Procedure Call</span></div><code class="language-sql"><span class="token comment">-- 호출방법 1</span>
 <span class="token keyword">CALL</span> database_name<span class="token punctuation">.</span>procedure_name<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">CALL</span> employees<span class="token punctuation">.</span>select_employees<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -278,14 +284,15 @@ Procedure
 <span class="token keyword">CALL</span> select_employees<span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="Parametric-Procedure"><a href="#Parametric-Procedure" class="headerlink" title="Parametric Procedure"></a>Parametric Procedure</h4><ul>
-<li><p>저장된 프로시저(Stored Procedure)는 입력값을 활용하여 계산을 수행하고 그 결과를 출력값으로 반환할 수 있습니다.</p>
+<h4 id="2-Parametric-Procedure"><a href="#2-Parametric-Procedure" class="headerlink" title="(2) Parametric Procedure"></a>(2) Parametric Procedure</h4><hr>
+<ul>
+<li><p>저장된 프로시저(Stored Procedure)는 입력값을 활용하여 계산을 수행하고, 그 결과를 출력값으로 반환할 수 있다.</p>
 </li>
-<li><p>저장 프로시저는 입력값을 받아 프로시저 몸체에 작성된 쿼리 또는 쿼리들에서 이를 사용할 수 있습니다.</p>
+<li><p>저장 프로시저는 입력값을 받아 프로시저 몸체에 작성된 쿼리에서 이를 사용할 수 있다.</p>
 </li>
-<li><p>이 값을 나타내는 것이 IN 매개변수입니다.</p>
+<li><p>이 값을 나타내는 것이 IN 매개변수이다.</p>
 </li>
-<li><p>계산이 완료되면 결과가 반환됩니다.</p>
+<li><p>계산이 완료되면 결과가 반환된다.</p>
 </li>
 </ul>
 <pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>Parametric Procedure Syntax</span></div><code class="language-sql"><span class="token keyword">DELIMITER</span> $$
@@ -318,8 +325,8 @@ DELMITER $$
 
 <pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>Procedure Call</span></div><code class="language-sql"><span class="token keyword">CALL</span> emp_avg_salary<span class="token punctuation">(</span><span class="token number">11300</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-
-<h4 id="2-Parametic-Procedure"><a href="#2-Parametic-Procedure" class="headerlink" title="2 Parametic Procedure"></a>2 Parametic Procedure</h4><pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>2 Parametic procedure</span></div><code class="language-sql">DELMITER $$
+<h4 id="3-2-Parametic-Procedure"><a href="#3-2-Parametic-Procedure" class="headerlink" title="(3) 2 Parametic Procedure"></a>(3) 2 Parametic Procedure</h4><hr>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>2 Parametic procedure</span></div><code class="language-sql">DELMITER $$
     <span class="token keyword">CREATE</span> <span class="token keyword">PROCEDURE</span> procedure_name<span class="token punctuation">(</span><span class="token operator">in</span> parameter<span class="token punctuation">,</span> <span class="token keyword">out</span> parameter<span class="token punctuation">)</span>
     <span class="token keyword">BEGIN</span>
         <span class="token punctuation">[</span>query <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -519,12 +526,12 @@ DELMITER $$
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/06/16/SQL/physics-modeling/">
+                <a href="/2024/06/16/SQL/cross-join/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/sql-logo.png" class="responsive-img" alt="인덱스">
+                        <img src="/images/logos/sql-logo.png" class="responsive-img" alt="Cross Join + VALUES">
                         
-                        <span class="card-title diy-neon-red">인덱스</span>
+                        <span class="card-title diy-neon-red">Cross Join + VALUES</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
