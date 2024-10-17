@@ -6,13 +6,13 @@
     <meta charset="utf-8">
     <meta name="keywords" content="분석 지표 정리, Data Engineering,Data Analysis,Python Backend">
     <meta name="description" content="1. 마케팅 용어
-Impression
+1.1 Imps (Impression)
+
 광고가 사용자에게 보여지는 것 또는 검색 사용자에게 광고가 노출된 횟수
 
-ROAS (Return On Ad Spend)
-광고비 대비 발생한 매출 비율
+1.2 ROAS (Return On Ad Spend)
 
-&amp;#x3D; (매출 &amp;#x">
+광고비 대비 발생한 매출 비">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -231,121 +231,127 @@ ROAS (Return On Ad Spend)
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="1-마케팅-용어"><a href="#1-마케팅-용어" class="headerlink" title="1. 마케팅 용어"></a>1. 마케팅 용어</h2><hr>
-<h3 id="Impression"><a href="#Impression" class="headerlink" title="Impression"></a>Impression</h3><blockquote>
+<h3 id="1-1-Imps-Impression"><a href="#1-1-Imps-Impression" class="headerlink" title="1.1 Imps (Impression)"></a>1.1 Imps (Impression)</h3><hr>
+<blockquote>
 <p>광고가 사용자에게 보여지는 것 또는 검색 사용자에게 광고가 노출된 횟수</p>
 </blockquote>
-<h3 id="ROAS-Return-On-Ad-Spend"><a href="#ROAS-Return-On-Ad-Spend" class="headerlink" title="ROAS (Return On Ad Spend)"></a>ROAS (Return On Ad Spend)</h3><blockquote>
+<h3 id="1-2-ROAS-Return-On-Ad-Spend"><a href="#1-2-ROAS-Return-On-Ad-Spend" class="headerlink" title="1.2 ROAS (Return On Ad Spend)"></a>1.2 ROAS (Return On Ad Spend)</h3><hr>
+<blockquote>
 <p>광고비 대비 발생한 매출 비율</p>
 </blockquote>
-<p>&#x3D; (매출 &#x2F; 광고비) * 100</p>
-<h3 id="CTR-Click-Through-Rate"><a href="#CTR-Click-Through-Rate" class="headerlink" title="CTR (Click Through Rate)"></a>CTR (Click Through Rate)</h3><blockquote>
+<ul>
+<li>산출식 : (<code>매출</code> &#x2F; <code>광고비</code>) * <code>100</code></li>
+</ul>
+<h3 id="1-3-CTR-Click-Through-Rate"><a href="#1-3-CTR-Click-Through-Rate" class="headerlink" title="1.3 CTR (Click Through Rate)"></a>1.3 CTR (Click Through Rate)</h3><hr>
+<blockquote>
 <p>광고 노출 대비 클릭 비율. 해당 광고가 특정 기간동안 클릭된 횟수를 노출된 횟수로 나눈값을 백분율로 표시한 값.</p>
 </blockquote>
-<p>&#x3D; (클릭 수 &#x2F; 노출 수(Impression)) * 100</p>
-<h3 id="CVR-ConVersion-Rate"><a href="#CVR-ConVersion-Rate" class="headerlink" title="CVR (ConVersion Rate)"></a>CVR (ConVersion Rate)</h3><blockquote>
+<ul>
+<li>산출식 : (<code>클릭 수</code> &#x2F; <code>노출 수(Impression)</code>) * <code>100</code></li>
+</ul>
+<h3 id="1-4-CVR-ConVersion-Rate"><a href="#1-4-CVR-ConVersion-Rate" class="headerlink" title="1.4 CVR (ConVersion Rate)"></a>1.4 CVR (ConVersion Rate)</h3><hr>
+<blockquote>
 <p>(1) 클릭 대비 설치 전환율</p>
 </blockquote>
-<p>&#x3D; (전환된 설치 수 &#x2F; 클릭 수) * 100</p>
+<ul>
+<li>산출식 : (<code>전환된 설치 수(Install)</code> &#x2F; <code>클릭 수</code>) * <code>100</code></li>
+</ul>
 <blockquote>
 <p>(2) 설치 대비 이벤트 전환율</p>
 </blockquote>
-<p>&#x3D; (전환된 행동 수 &#x2F; 설치 수) * 100</p>
-<h3 id="CPI-Cost-Per-Install"><a href="#CPI-Cost-Per-Install" class="headerlink" title="CPI (Cost Per Install)"></a>CPI (Cost Per Install)</h3><blockquote>
+<ul>
+<li>산출식 : (<code>전환된 행동 수</code> &#x2F; <code>설치 수(Install)</code>) * <code>100</code></li>
+</ul>
+<h3 id="1-5-CPI-Cost-Per-Install"><a href="#1-5-CPI-Cost-Per-Install" class="headerlink" title="1.5 CPI (Cost Per Install)"></a>1.5 CPI (Cost Per Install)</h3><hr>
+<blockquote>
 <p>설치 한 건당 발생한 광고비용</p>
 </blockquote>
-<p>&#x3D; 광고비 &#x2F; 설치 수(Install)</p>
-<h3 id="CPC-Cost-Per-Click-PPC-Pay-Per-Click"><a href="#CPC-Cost-Per-Click-PPC-Pay-Per-Click" class="headerlink" title="CPC (Cost Per Click, PPC&#x3D;Pay Per Click)"></a>CPC (Cost Per Click, PPC&#x3D;Pay Per Click)</h3><blockquote>
+<ul>
+<li>산출식 : <code>광고비</code> &#x2F; <code>설치 수(Install)</code></li>
+</ul>
+<h3 id="1-6-CPC-Cost-Per-Click"><a href="#1-6-CPC-Cost-Per-Click" class="headerlink" title="1.6 CPC (Cost Per Click)"></a>1.6 CPC (Cost Per Click)</h3><hr>
+<blockquote>
 <p>온라인 광고 가격을 책정하는 대표적인 방법. 평균클릭비용. 사용자가 검색 결과로 보여진 광고를 클릭하여 광고주의 사이트로 이동했을 때에 광고비가 소진되는 과금 체계</p>
 </blockquote>
-<p>&#x3D; 광고비 &#x2F; 클릭 수</p>
-<h3 id="CPM-Cost-Per-Mile"><a href="#CPM-Cost-Per-Mile" class="headerlink" title="CPM (Cost Per Mile)"></a>CPM (Cost Per Mile)</h3><blockquote>
-<p>온라인 광고 가격을 책정하는 방법 중 하나로, 1000회 광고 노출을 기준으로 가격을 책정하는 과금 체계 </p>
+<ul>
+<li>산출식 : <code>광고비</code> &#x2F; <code>클릭 수</code></li>
+</ul>
+<h3 id="1-6-CPM-Cost-Per-Mile"><a href="#1-6-CPM-Cost-Per-Mile" class="headerlink" title="1.6 CPM (Cost Per Mile)"></a>1.6 CPM (Cost Per Mile)</h3><hr>
+<blockquote>
+<p>온라인 광고 가격을 책정하는 방법 중 하나로, 1000회 광고 노출을 기준으로 가격을 책정하는 과금 체계</p>
 </blockquote>
-<p>&#x3D; 광고비 &#x2F; 노출 수 * 1000</p>
-<h3 id="CAC-Customer-Acquisition-Cost"><a href="#CAC-Customer-Acquisition-Cost" class="headerlink" title="CAC (Customer Acquisition Cost)"></a>CAC (Customer Acquisition Cost)</h3><blockquote>
+<ul>
+<li>산출식 : <code>광고비</code> &#x2F; <code>노출 수(Impression)</code> * <code>1,000</code></li>
+</ul>
+<h3 id="1-7-CAC-Customer-Acquisition-Cost"><a href="#1-7-CAC-Customer-Acquisition-Cost" class="headerlink" title="1.7 CAC (Customer Acquisition Cost)"></a>1.7 CAC (Customer Acquisition Cost)</h3><hr>
+<blockquote>
 <p>고객 획득 비용</p>
 </blockquote>
-<p>&#x3D; 신규 고객 확보 비용 &#x2F; 확보된 신규 고객 수</p>
-<h3 id="페이지-RPM"><a href="#페이지-RPM" class="headerlink" title="페이지 RPM"></a>페이지 RPM</h3><blockquote>
-<p>총 수입을 페이지 조회수 1000회로 나눈 값. 1000회 노출당 페이지 수익(RPM)은 예상 수입을 페이지 조회수로 나눈 다음 1000을 곱한 값. (예상수입&#x2F;페이지 조회수) * 1000</p>
+<ul>
+<li>산출식 : <code>신규 고객 확보 비용</code> &#x2F; <code>확보된 신규 고객 수</code></li>
+</ul>
+<h3 id="1-8-RPM-Page-Revenue-per-Mile"><a href="#1-8-RPM-Page-Revenue-per-Mile" class="headerlink" title="1.8 RPM (Page Revenue per Mile)"></a>1.8 RPM (Page Revenue per Mile)</h3><hr>
+<blockquote>
+<p>총 수입을 페이지 조회수 1,000회로 나눈 값</p>
 </blockquote>
+<ul>
+<li>산출식 : <code>예상 수입</code> &#x2F; <code>페이지 조회수</code> * <code>1,000</code></li>
+</ul>
 <h2 id="2-유저-관련-용어"><a href="#2-유저-관련-용어" class="headerlink" title="2. 유저 관련 용어"></a>2. 유저 관련 용어</h2><hr>
-<h3 id="UV-Uniuqe-Visitor"><a href="#UV-Uniuqe-Visitor" class="headerlink" title="UV (Uniuqe Visitor)"></a>UV (Uniuqe Visitor)</h3><blockquote>
+<h3 id="2-1-UV-Uniuqe-Visitor"><a href="#2-1-UV-Uniuqe-Visitor" class="headerlink" title="2.1 UV (Uniuqe Visitor)"></a>2.1 UV (Uniuqe Visitor)</h3><hr>
+<blockquote>
 <p>순 방문자. 유저의 고유 카운트</p>
 </blockquote>
-<h3 id="AU-Active-User"><a href="#AU-Active-User" class="headerlink" title="AU (Active User)"></a>AU (Active User)</h3><blockquote>
-<p>활성 유저. 산업군에 따라 접속한 유저 혹은 구매 유저 등 여러 기준을 통해 활성 유저를 정의함. 게임 산업에서는 일반적으로 접속을 기준으로 DAU와 동일시 함</p>
+<h3 id="2-2-AU-Active-User"><a href="#2-2-AU-Active-User" class="headerlink" title="2.2 AU (Active User)"></a>2.2 AU (Active User)</h3><hr>
+<blockquote>
+<p>특정 기간 동안 서비스나 제품을 사용한 사용자. 활성 유저. 산업군에 따라 접속 유저 혹은 구매 유저 등 다른 기준으로 활성 유저를 정의함</p>
 </blockquote>
-<h3 id="RU-Registerd-User"><a href="#RU-Registerd-User" class="headerlink" title="RU (Registerd User)"></a>RU (Registerd User)</h3><blockquote>
+<h3 id="2-3-RU-Registerd-User"><a href="#2-3-RU-Registerd-User" class="headerlink" title="2.3 RU (Registerd User)"></a>2.3 RU (Registerd User)</h3><hr>
+<blockquote>
 <p>전체 가입자 수</p>
 </blockquote>
-<h3 id="NRU-New-Registered-User"><a href="#NRU-New-Registered-User" class="headerlink" title="NRU (New Registered User)"></a>NRU (New Registered User)</h3><blockquote>
+<h3 id="2-4-NRU-New-Registered-User"><a href="#2-4-NRU-New-Registered-User" class="headerlink" title="2.4 NRU (New Registered User)"></a>2.4 NRU (New Registered User)</h3><hr>
+<blockquote>
 <p>신규등록유저. 게임 설치 뿐만 아니라 계정 등록을 한 유저. 기간 내 순 신규 가입자 수</p>
 </blockquote>
 <ul>
-<li>user_id : <code>int</code> : 각 사용자의 ID (기본 키)</li>
-<li>username : <code>varchar(50)</code> : 사용자의 이름</li>
-<li>email : <code>varchar(100)</code> : 사용자의 이메일 주소 (고유)</li>
+<li>user_id : <code>int</code> : 각 사용자의 ID (@pk)</li>
+<li>username : <code>varchar</code> : 사용자의 이름</li>
+<li>email : <code>varchar</code> : 사용자의 이메일 주소 (고유)</li>
 <li>registration_date : <code>datetime</code> : 사용자가 등록한 날짜</li>
 <li>last_login_date : <code>datetime</code> : 사용자가 마지막으로 로그인한 날짜</li>
 </ul>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> DATE_FORMAT<span class="token punctuation">(</span>registration_date<span class="token punctuation">,</span> <span class="token string">'%Y-%m'</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> registration_month
-     <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> user_id<span class="token punctuation">)</span> <span class="token keyword">AS</span> nru
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>일별 NRU 집계 쿼리</span></div><code class="language-sql"><span class="token keyword">SELECT</span> registration_date <span class="token keyword">AS</span> registration_day
+     <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> user_id<span class="token punctuation">)</span> <span class="token keyword">AS</span> daily_nru
+<span class="token keyword">FROM</span> users
+<span class="token keyword">WHERE</span> registration_date <span class="token operator">BETWEEN</span> <span class="token string">'2024-01-01'</span> <span class="token operator">AND</span> <span class="token string">'2024-01-31'</span>
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> registration_date
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> registration_date <span class="token keyword">ASC</span>
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>월별 NRU 집계 쿼리</span></div><code class="language-sql"><span class="token keyword">SELECT</span> DATE_FORMAT<span class="token punctuation">(</span>registration_date<span class="token punctuation">,</span> <span class="token string">'%Y-%m'</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> registration_month
+     <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> user_id<span class="token punctuation">)</span> <span class="token keyword">AS</span> monthly_nru
 <span class="token keyword">FROM</span> users
 <span class="token keyword">WHERE</span> registration_date <span class="token operator">BETWEEN</span> <span class="token string">'2024-01-01'</span> <span class="token operator">AND</span> <span class="token string">'2024-01-31'</span>
 <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> DATE_FORMAT<span class="token punctuation">(</span>registration_date<span class="token punctuation">,</span> <span class="token string">'%Y-%m'</span><span class="token punctuation">)</span>
-<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> registration_month
-<span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> registration_month <span class="token keyword">ASC</span>
+<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="NPU-New-Paid-User"><a href="#NPU-New-Paid-User" class="headerlink" title="NPU (New Paid User)"></a>NPU (New Paid User)</h3><blockquote>
-<p>신규 구매(과금) 유저</p>
+<h3 id="2-5-PU-Paying-User"><a href="#2-5-PU-Paying-User" class="headerlink" title="2.5 PU (Paying User)"></a>2.5 PU (Paying User)</h3><hr>
+<blockquote>
+<p>결제(구매, 과금) 유저</p>
 </blockquote>
-<h3 id="MUV-Multigame-Unique-Visitor"><a href="#MUV-Multigame-Unique-Visitor" class="headerlink" title="MUV (Multigame Unique Visitor)"></a>MUV (Multigame Unique Visitor)</h3><blockquote>
+<h3 id="2-6-NPU-New-Paid-User"><a href="#2-6-NPU-New-Paid-User" class="headerlink" title="2.6 NPU (New Paid User)"></a>2.6 NPU (New Paid User)</h3><hr>
+<blockquote>
+<p>신규 결제(구매, 과금) 유저</p>
+</blockquote>
+<h3 id="2-7-MUV-Multigame-Unique-Visitor"><a href="#2-7-MUV-Multigame-Unique-Visitor" class="headerlink" title="2.7 MUV (Multigame Unique Visitor)"></a>2.7 MUV (Multigame Unique Visitor)</h3><hr>
+<blockquote>
 <p> 특정 기간 클라이언트 혹은 애플리케이션을 내려받아 로그인 및 플레이한 방문자</p>
 </blockquote>
-<h2 id="3-유저-접속-관련-용어"><a href="#3-유저-접속-관련-용어" class="headerlink" title="3. 유저 접속 관련 용어"></a>3. 유저 접속 관련 용어</h2><hr>
-<h3 id="CCU-Concurrent-User"><a href="#CCU-Concurrent-User" class="headerlink" title="CCU (Concurrent User)"></a>CCU (Concurrent User)</h3><blockquote>
-<p>특정 시간의 동시 접속자 수</p>
-</blockquote>
-<ul>
-<li>session_id : <code>int</code> : 세션ID</li>
-<li>user_id : <code>int</code> : 사용자ID</li>
-<li>session_start : <code>datetime</code> : 세션시작시간</li>
-<li>session_end : <code>datetime</code> : 세션종료시간(선택)</li>
-</ul>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> user_id<span class="token punctuation">)</span> <span class="token keyword">AS</span> ccu
-<span class="token keyword">FROM</span> user_sessions
-<span class="token keyword">WHERE</span> session_start <span class="token operator">&lt;=</span> <span class="token string">'2024-09-29 15:00:00'</span> <span class="token comment">-- 측정할 시점</span>
-  <span class="token operator">AND</span> <span class="token punctuation">(</span>session_end <span class="token operator">IS</span> <span class="token boolean">NULL</span> <span class="token operator">OR</span> session_end <span class="token operator">>=</span> <span class="token string">'2024-09-29 15:00:00'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="MCU-Max-Concurrent-User-또는-PCU-Peak-Concurrent-User"><a href="#MCU-Max-Concurrent-User-또는-PCU-Peak-Concurrent-User" class="headerlink" title="MCU (Max Concurrent User, 또는 PCU&#x3D;Peak Concurrent User)"></a>MCU (Max Concurrent User, 또는 PCU&#x3D;Peak Concurrent User)</h3><blockquote>
-<p>기준 단위 동시 접속자 최대값 (예: 5분)</p>
-</blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token function">MAX</span><span class="token punctuation">(</span>ccu<span class="token punctuation">)</span> <span class="token keyword">AS</span> PCU
-<span class="token keyword">FROM</span> <span class="token punctuation">(</span>
-    <span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> user_id<span class="token punctuation">)</span> <span class="token keyword">AS</span> ccu
-    <span class="token keyword">FROM</span> user_sessions
-    <span class="token keyword">WHERE</span> start_session <span class="token operator">&lt;=</span> <span class="token string">'2024-09-29 23:59:59'</span> <span class="token comment">-- 하루의 끝</span>
-    <span class="token operator">AND</span> <span class="token punctuation">(</span>session_end <span class="token operator">IS</span> <span class="token boolean">NULL</span> <span class="token operator">OR</span> session_end <span class="token operator">>=</span> <span class="token string">'2024-09-29 00:00:00'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">-- 하루의 시작</span>
-    <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> DATEFORMAT<span class="token punctuation">(</span>start_session<span class="token punctuation">,</span> <span class="token string">'%Y-%m-%d %H:00:00'</span><span class="token punctuation">)</span> <span class="token comment">-- 시간 단위 그룹화</span>
-    <span class="token comment">-- GROUP BY DATEFORMAT(start_session, '%Y-%m-%d %H:%i:00') -- 분 단위 그룹화</span>
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="ACU-Average-Concurrent-User"><a href="#ACU-Average-Concurrent-User" class="headerlink" title="ACU (Average Concurrent User)"></a>ACU (Average Concurrent User)</h3><blockquote>
-<p>기준 단위 동시 접속자 평균값 (예: 5분)</p>
-</blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token function">AVG</span><span class="token punctuation">(</span>ccu<span class="token punctuation">)</span> <span class="token keyword">AS</span> PCU
-<span class="token keyword">FROM</span> <span class="token punctuation">(</span>
-    <span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> user_id<span class="token punctuation">)</span> <span class="token keyword">AS</span> ccu
-    <span class="token keyword">FROM</span> user_sessions
-    <span class="token keyword">WHERE</span> start_session <span class="token operator">&lt;=</span> <span class="token string">'2024-09-29 23:59:59'</span> <span class="token comment">-- 하루의 끝</span>
-    <span class="token operator">AND</span> <span class="token punctuation">(</span>session_end <span class="token operator">IS</span> <span class="token boolean">NULL</span> <span class="token operator">OR</span> session_end <span class="token operator">>=</span> <span class="token string">'2024-09-29 00:00:00'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">-- 하루의 시작</span>
-    <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> DATEFORMAT<span class="token punctuation">(</span>start_session<span class="token punctuation">,</span> <span class="token string">'%Y-%m-%d %H:00:00'</span><span class="token punctuation">)</span> <span class="token comment">-- 시간 단위 그룹화</span>
-    <span class="token comment">-- GROUP BY DATEFORMAT(start_session, '%Y-%m-%d %H:%i:00') -- 분 단위 그룹화</span>
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="DAU-Daily-Active-User"><a href="#DAU-Daily-Active-User" class="headerlink" title="DAU (Daily Active User)"></a>DAU (Daily Active User)</h3><blockquote>
+<h2 id="3-유저-관여-관련-용어"><a href="#3-유저-관여-관련-용어" class="headerlink" title="3. 유저 관여 관련 용어"></a>3. 유저 관여 관련 용어</h2><hr>
+<h3 id="3-1-DAU-Daily-Active-User"><a href="#3-1-DAU-Daily-Active-User" class="headerlink" title="3.1 DAU (Daily Active User)"></a>3.1 DAU (Daily Active User)</h3><hr>
+<blockquote>
 <p>하루 내 게임 순 방문자 수</p>
 </blockquote>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> event_date
@@ -356,7 +362,8 @@ ROAS (Return On Ad Spend)
 <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> event_date <span class="token keyword">DESC</span>
 <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="WAU-Weekly-Active-User"><a href="#WAU-Weekly-Active-User" class="headerlink" title="WAU (Weekly Active User)"></a>WAU (Weekly Active User)</h3><blockquote>
+<h3 id="3-2-WAU-Weekly-Active-User"><a href="#3-2-WAU-Weekly-Active-User" class="headerlink" title="3.2 WAU (Weekly Active User)"></a>3.2 WAU (Weekly Active User)</h3><hr>
+<blockquote>
 <p>한 주 내 게임 순 방문자 수</p>
 </blockquote>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> fo<span class="token punctuation">.</span>event_date
@@ -366,10 +373,19 @@ ROAS (Return On Ad Spend)
            <span class="token keyword">ON</span> ft<span class="token punctuation">.</span>event_date <span class="token operator">BETWEEN</span> DATE_SUB<span class="token punctuation">(</span>fo<span class="token punctuation">.</span>event_date<span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> <span class="token number">6</span> <span class="token keyword">DAY</span><span class="token punctuation">)</span> <span class="token operator">AND</span> fo<span class="token punctuation">.</span>event_date
 <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> fo<span class="token punctuation">.</span>event_date<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="MAU-Monlth-Active-User"><a href="#MAU-Monlth-Active-User" class="headerlink" title="MAU (Monlth Active User)"></a>MAU (Monlth Active User)</h3><blockquote>
+<h3 id="3-3-MAU-Monlth-Active-User"><a href="#3-3-MAU-Monlth-Active-User" class="headerlink" title="3.3 MAU (Monlth Active User)"></a>3.3 MAU (Monlth Active User)</h3><hr>
+<blockquote>
 <p>한달 내 게임 순 방문자 수</p>
 </blockquote>
-<h3 id="Stickiness"><a href="#Stickiness" class="headerlink" title="Stickiness"></a>Stickiness</h3><pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>DAU / WAU</span></div><code class="language-sql"><span class="token keyword">SELECT</span> fo<span class="token punctuation">.</span>event_date
+<h3 id="3-4-Stickiness"><a href="#3-4-Stickiness" class="headerlink" title="3.4 Stickiness"></a>3.4 Stickiness</h3><hr>
+<blockquote>
+<p>사용자가 서비스에 얼마나 자주 돌아오는지를 나타내는 지표. 사용자 충성도와 서비스 유지율을 평가하는 데 사용됨</p>
+</blockquote>
+<ul>
+<li>산출식 1 (주 기준): <code>DAU</code> &#x2F; <code>WAU</code></li>
+<li>산출식 2 (월 기준): <code>DAU</code> &#x2F; <code>MAU</code></li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>DAU / WAU</span></div><code class="language-sql"><span class="token keyword">SELECT</span> fo<span class="token punctuation">.</span>event_date
      <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> fo<span class="token punctuation">.</span>customer_id<span class="token punctuation">)</span> <span class="token keyword">AS</span> DAU
      <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> ft<span class="token punctuation">.</span>customer_id<span class="token punctuation">)</span> <span class="token keyword">AS</span> WAU
      <span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> fo<span class="token punctuation">.</span>customer_id<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> ft<span class="token punctuation">.</span>customer_id<span class="token punctuation">)</span> <span class="token keyword">AS</span> stickiness
@@ -386,7 +402,94 @@ ROAS (Return On Ad Spend)
     <span class="token keyword">LEFT</span> <span class="token keyword">JOIN</span> fact_user_session_day <span class="token keyword">AS</span> ft
            <span class="token keyword">ON</span> ft<span class="token punctuation">.</span>event_date <span class="token operator">BETWEEN</span> DATE_SUB<span class="token punctuation">(</span>fo<span class="token punctuation">.</span>event_date<span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> <span class="token number">29</span> <span class="token keyword">DAY</span><span class="token punctuation">)</span> <span class="token operator">AND</span> fo<span class="token punctuation">.</span>event_date
 <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> fo<span class="token punctuation">.</span>event_date<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="ARPDAU-Average-Revenue-Per-Daily-Active-User"><a href="#ARPDAU-Average-Revenue-Per-Daily-Active-User" class="headerlink" title="ARPDAU (Average Revenue Per Daily Active User)"></a>ARPDAU (Average Revenue Per Daily Active User)</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> event_date
+
+<h3 id="3-5-CCU-Concurrent-User"><a href="#3-5-CCU-Concurrent-User" class="headerlink" title="3.5 CCU (Concurrent User)"></a>3.5 CCU (Concurrent User)</h3><hr>
+<blockquote>
+<p>특정 시간의 동시 접속자 수</p>
+</blockquote>
+<ul>
+<li>session_id : <code>int</code> : 세션ID</li>
+<li>user_id : <code>int</code> : 사용자ID</li>
+<li>session_start : <code>datetime</code> : 세션시작시간</li>
+<li>session_end : <code>datetime</code> : 세션종료시간(선택)</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> user_id<span class="token punctuation">)</span> <span class="token keyword">AS</span> ccu
+<span class="token keyword">FROM</span> user_sessions
+<span class="token keyword">WHERE</span> session_start <span class="token operator">&lt;=</span> <span class="token string">'2024-09-29 15:00:00'</span> <span class="token comment">-- 측정할 시점</span>
+  <span class="token operator">AND</span> <span class="token punctuation">(</span>session_end <span class="token operator">IS</span> <span class="token boolean">NULL</span> <span class="token operator">OR</span> session_end <span class="token operator">>=</span> <span class="token string">'2024-09-29 15:00:00'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="3-6-MCU-Max-Concurrent-User"><a href="#3-6-MCU-Max-Concurrent-User" class="headerlink" title="3.6 MCU (Max Concurrent User)"></a>3.6 MCU (Max Concurrent User)</h3><hr>
+<blockquote>
+<p>기준 단위 동시 접속자 최대값 (예: 5분). PCU (Peak Concurrent User)라고도 함</p>
+</blockquote>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token function">MAX</span><span class="token punctuation">(</span>ccu<span class="token punctuation">)</span> <span class="token keyword">AS</span> PCU
+<span class="token keyword">FROM</span> <span class="token punctuation">(</span>
+    <span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> user_id<span class="token punctuation">)</span> <span class="token keyword">AS</span> ccu
+    <span class="token keyword">FROM</span> user_sessions
+    <span class="token keyword">WHERE</span> start_session <span class="token operator">&lt;=</span> <span class="token string">'2024-09-29 23:59:59'</span> <span class="token comment">-- 하루의 끝</span>
+    <span class="token operator">AND</span> <span class="token punctuation">(</span>session_end <span class="token operator">IS</span> <span class="token boolean">NULL</span> <span class="token operator">OR</span> session_end <span class="token operator">>=</span> <span class="token string">'2024-09-29 00:00:00'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">-- 하루의 시작</span>
+    <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> DATEFORMAT<span class="token punctuation">(</span>start_session<span class="token punctuation">,</span> <span class="token string">'%Y-%m-%d %H:00:00'</span><span class="token punctuation">)</span> <span class="token comment">-- 시간 단위 그룹화</span>
+    <span class="token comment">-- GROUP BY DATEFORMAT(start_session, '%Y-%m-%d %H:%i:00') -- 분 단위 그룹화</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="3-7-ACU-Average-Concurrent-User"><a href="#3-7-ACU-Average-Concurrent-User" class="headerlink" title="3.7 ACU (Average Concurrent User)"></a>3.7 ACU (Average Concurrent User)</h3><hr>
+<blockquote>
+<p>기준 단위 동시 접속자 평균값 (예: 5분)</p>
+</blockquote>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token function">AVG</span><span class="token punctuation">(</span>ccu<span class="token punctuation">)</span> <span class="token keyword">AS</span> PCU
+<span class="token keyword">FROM</span> <span class="token punctuation">(</span>
+    <span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> user_id<span class="token punctuation">)</span> <span class="token keyword">AS</span> ccu
+    <span class="token keyword">FROM</span> user_sessions
+    <span class="token keyword">WHERE</span> start_session <span class="token operator">&lt;=</span> <span class="token string">'2024-09-29 23:59:59'</span> <span class="token comment">-- 하루의 끝</span>
+    <span class="token operator">AND</span> <span class="token punctuation">(</span>session_end <span class="token operator">IS</span> <span class="token boolean">NULL</span> <span class="token operator">OR</span> session_end <span class="token operator">>=</span> <span class="token string">'2024-09-29 00:00:00'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">-- 하루의 시작</span>
+    <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> DATEFORMAT<span class="token punctuation">(</span>start_session<span class="token punctuation">,</span> <span class="token string">'%Y-%m-%d %H:00:00'</span><span class="token punctuation">)</span> <span class="token comment">-- 시간 단위 그룹화</span>
+    <span class="token comment">-- GROUP BY DATEFORMAT(start_session, '%Y-%m-%d %H:%i:00') -- 분 단위 그룹화</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="4-과금-관련-지표"><a href="#4-과금-관련-지표" class="headerlink" title="4. 과금 관련 지표"></a>4. 과금 관련 지표</h2><hr>
+<h3 id="4-1-Revenue"><a href="#4-1-Revenue" class="headerlink" title="4.1 Revenue"></a>4.1 Revenue</h3><hr>
+<blockquote>
+<p>특정 기간 동안 기업이나 서비스가 제품 판매, 서비스 제공, 혹은 기타 수익 활동을 통해 벌어들인 총 금액. 실제 발생한 매출</p>
+</blockquote>
+<h3 id="4-2-PUR-Paid-User-Rate"><a href="#4-2-PUR-Paid-User-Rate" class="headerlink" title="4.2 PUR (Paid User Rate)"></a>4.2 PUR (Paid User Rate)</h3><hr>
+<blockquote>
+<p>특정 기간동안 전체 사용자 중에서 실제로 결제를 한 사용자의 비율을 나타내는 지표. 서비스나 게임에서 수익화를 평가하는 데 매우 중요한 지표로 사용. 접속 유저 대비 결제 유저 비율. BUR (Buying User Rate)이라고도 함</p>
+</blockquote>
+<ul>
+<li>산출식 : <code>PU(결제유저 수)</code> &#x2F; <code>UV(순방문자 수)</code> * <code>100</code></li>
+</ul>
+<h3 id="4-3-NPUR-New-Paid-User-Rate"><a href="#4-3-NPUR-New-Paid-User-Rate" class="headerlink" title="4.3 NPUR (New Paid User Rate)"></a>4.3 NPUR (New Paid User Rate)</h3><hr>
+<blockquote>
+<p>접속 유저 대비 신규 결제 유저 비율</p>
+</blockquote>
+<h3 id="4-4-ARPU-Average-Revenue-Per-User"><a href="#4-4-ARPU-Average-Revenue-Per-User" class="headerlink" title="4.4 ARPU (Average Revenue Per User)"></a>4.4 ARPU (Average Revenue Per User)</h3><hr>
+<blockquote>
+<p>사용자당 평균 수익</p>
+</blockquote>
+<ul>
+<li>산출식 : <code>Revenue / User</code></li>
+</ul>
+<h3 id="4-5-ARPPU-Average-Revenue-Per-Paid-User"><a href="#4-5-ARPPU-Average-Revenue-Per-Paid-User" class="headerlink" title="4.5 ARPPU (Average Revenue Per Paid User)"></a>4.5 ARPPU (Average Revenue Per Paid User)</h3><hr>
+<blockquote>
+<p>유료 사용자(PU)당 평균 수익. 전체 사용자 중 결제를 한 유료 사용자 한 명당 평균적으로 발생한 수익을 나타내는 지표.</p>
+</blockquote>
+<ul>
+<li>산출식 :  <code>Revenue</code> &#x2F; <code>PU(Paying User)</code></li>
+</ul>
+<h3 id="4-6-ARPAU-Average-Revenue-Per-Active-User"><a href="#4-6-ARPAU-Average-Revenue-Per-Active-User" class="headerlink" title="4.6 ARPAU (Average Revenue Per Active User)"></a>4.6 ARPAU (Average Revenue Per Active User)</h3><hr>
+<blockquote>
+<p>활성유저(AU)당 결제액</p>
+</blockquote>
+<ul>
+<li>산출식 : <code>Revenue</code> &#x2F; <code>AU(Active User)</code></li>
+</ul>
+<h3 id="4-7-ARPDAU-Average-Revenue-Per-Daily-Active-User"><a href="#4-7-ARPDAU-Average-Revenue-Per-Daily-Active-User" class="headerlink" title="4.7 ARPDAU (Average Revenue Per Daily Active User)"></a>4.7 ARPDAU (Average Revenue Per Daily Active User)</h3><hr>
+<blockquote>
+<p>Average Revenue Per Daily Active User. <br>일일 활성 사용자당 평균 수익. 주로 모바일 게임이나 앱의 수익성을 평가하는 데 사용됨</p>
+</blockquote>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> event_date
      <span class="token punctuation">,</span> <span class="token function">SUM</span><span class="token punctuation">(</span>revenue<span class="token punctuation">)</span> <span class="token keyword">AS</span> daily_revenue
      <span class="token punctuation">,</span> <span class="token function">ROUND</span><span class="token punctuation">(</span><span class="token function">SUM</span><span class="token punctuation">(</span>revenue<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> user_id<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> ARPDAU
 <span class="token keyword">FROM</span> fact_user_session_day
@@ -395,47 +498,26 @@ ROAS (Return On Ad Spend)
 <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> event_date <span class="token keyword">DESC</span>
 <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="4-과금-관련-지표"><a href="#4-과금-관련-지표" class="headerlink" title="4. 과금 관련 지표"></a>4. 과금 관련 지표</h2><hr>
-<h3 id="PUR-Paid-User-Rate-또는-BUR-Buying-User-Rate"><a href="#PUR-Paid-User-Rate-또는-BUR-Buying-User-Rate" class="headerlink" title="PUR (Paid User Rate, 또는 BUR&#x3D;Buying User Rate)"></a>PUR (Paid User Rate, 또는 BUR&#x3D;Buying User Rate)</h3><blockquote>
-<p>접속 유저 대비 결제 유저 비율</p>
-</blockquote>
-<p>&#x3D; PU(결제유저 수) &#x2F; UV(순방문자 수) * 100</p>
-<h3 id="NPUR-New-Paid-User-Rate"><a href="#NPUR-New-Paid-User-Rate" class="headerlink" title="NPUR (New Paid User Rate)"></a>NPUR (New Paid User Rate)</h3><blockquote>
-<p>접속 유저 대비 신규 결제 유저 비율</p>
-</blockquote>
-<h3 id="Revenue"><a href="#Revenue" class="headerlink" title="Revenue"></a>Revenue</h3><blockquote>
-<p>실제 발생한 매출</p>
-</blockquote>
-<h3 id="ARPU-Average-Revenue-Per-User"><a href="#ARPU-Average-Revenue-Per-User" class="headerlink" title="ARPU (Average Revenue Per User)"></a>ARPU (Average Revenue Per User)</h3><blockquote>
-<p>유저당 매출</p>
-</blockquote>
-<p>&#x3D; 매출(Sale) &#x2F; User</p>
-<h3 id="ARPPU-Average-Revenue-Per-Paid-User"><a href="#ARPPU-Average-Revenue-Per-Paid-User" class="headerlink" title="ARPPU (Average Revenue Per Paid User)"></a>ARPPU (Average Revenue Per Paid User)</h3><blockquote>
-<p>결제유저(PU)당 매출</p>
-</blockquote>
-<p>&#x3D; 매출(Sale) &#x2F; PU(Paying User)</p>
-<h3 id="ARPAU-Average-Revenue-Per-Active-User"><a href="#ARPAU-Average-Revenue-Per-Active-User" class="headerlink" title="ARPAU (Average Revenue Per Active User)"></a>ARPAU (Average Revenue Per Active User)</h3><blockquote>
-<p>활성유저(AU)당 결제액</p>
-</blockquote>
-<p>&#x3D; 매출(Sales) &#x2F; AU(Active User)</p>
-<h3 id="RPU-Revenue-Per-User"><a href="#RPU-Revenue-Per-User" class="headerlink" title="RPU (Revenue Per User)"></a>RPU (Revenue Per User)</h3><blockquote>
-<p>사용자 당 수익</p>
-</blockquote>
 <h2 id="5-모객-관련-용어"><a href="#5-모객-관련-용어" class="headerlink" title="5. 모객 관련 용어"></a>5. 모객 관련 용어</h2><hr>
-<h3 id="RET-Retension"><a href="#RET-Retension" class="headerlink" title="RET (Retension)"></a>RET (Retension)</h3><blockquote>
+<h3 id="5-1-RET-Retension"><a href="#5-1-RET-Retension" class="headerlink" title="5.1 RET (Retension)"></a>5.1 RET (Retension)</h3><hr>
+<blockquote>
 <p>잔존율, 유지율, 유저 잔존 여부</p>
 </blockquote>
-<h3 id="LTV-LifeTime-Value"><a href="#LTV-LifeTime-Value" class="headerlink" title="LTV (LifeTime Value)"></a>LTV (LifeTime Value)</h3><blockquote>
+<h3 id="5-2-LTV-LifeTime-Value"><a href="#5-2-LTV-LifeTime-Value" class="headerlink" title="5.2 LTV (LifeTime Value)"></a>5.2 LTV (LifeTime Value)</h3><hr>
+<blockquote>
 <p>유저 1명당 생애 가치</p>
 </blockquote>
-<p>&#x3D; 누적 매출 (Sales) &#x2F; RU<br>&#x3D; 일평균 지불금액(ARPDAU) x 지속방문일 (LT, Life Time)<br>&#x3D; 사용자당 연간 평균 이익 * 평균 고객 생애주기<br>&#x3D; (((1인당 1년 평균매출) - (1인당 1년 들어가는 평균 서비스 비용)) &#x2F; (1-고객유지비율)) - 고객획득비용(AC)<br>&#x3D; ARPU X (1 &#x2F; Churn rate) </p>
+<p>&#x3D; 누적 매출 (Sales) &#x2F; RU<br>&#x3D; 일평균 지불금액(ARPDAU) x 지속방문일 (LT, Life Time)<br>&#x3D; 사용자당 연간 평균 이익 * 평균 고객 생애주기<br>&#x3D; (((1인당 1년 평균매출) - (1인당 1년 들어가는 평균 서비스 비용)) &#x2F; (1-고객유지비율)) - 고객획득비용(AC)<br>&#x3D; ARPU X (1 &#x2F; Churn rate)</p>
 <p>** 이탈률 &#x3D; 1 - Retention Rate(리텐션율)</p>
 <p>이탈률 &#x3D; ((측정 기간 시작 시점의 고객 수 - 측정 기간 종료 시점의 고객 수) &#x2F; 측정 기간 시작 시점의 고객 수) * 100</p>
-<h3 id="LTR"><a href="#LTR" class="headerlink" title="LTR"></a>LTR</h3><blockquote>
+<h3 id="5-3-LTR"><a href="#5-3-LTR" class="headerlink" title="5.3 LTR"></a>5.3 LTR</h3><hr>
+<blockquote>
 <p>고객 생애 매출</p>
 </blockquote>
-<p>&#x3D; 매출 &#x2F; 고객수</p>
-<h2 id="5-기타"><a href="#5-기타" class="headerlink" title="5. 기타"></a>5. 기타</h2><hr>
+<ul>
+<li>산출식 : 매출 &#x2F; 고객수</li>
+</ul>
+<h2 id="6-기타"><a href="#6-기타" class="headerlink" title="6. 기타"></a>6. 기타</h2><hr>
 <h3 id="IAP-In-App-Purchase"><a href="#IAP-In-App-Purchase" class="headerlink" title="IAP (In App Purchase)"></a>IAP (In App Purchase)</h3><blockquote>
 <p>신용카드를 통한 인앱 결제</p>
 </blockquote>
@@ -448,7 +530,9 @@ ROAS (Return On Ad Spend)
 <h3 id="TS-Time-Spent"><a href="#TS-Time-Spent" class="headerlink" title="TS (Time Spent)"></a>TS (Time Spent)</h3><blockquote>
 <p>게임에 방문한 이용자의 평균 체류 시간</p>
 </blockquote>
-<p>&#x3D; ((시그마)로그아웃 시간 - 로그인 시간) &#x2F; MU</p>
+<ul>
+<li>산출식 : ((시그마)로그아웃 시간 - 로그인 시간) &#x2F; MU</li>
+</ul>
 <h3 id="문맥광고"><a href="#문맥광고" class="headerlink" title="문맥광고"></a>문맥광고</h3><blockquote>
 <p>페이지 내 컨텐츠를 분석하여 관련 키워드를 추출하고 광고를 노출하는 방식</p>
 </blockquote>
@@ -456,7 +540,7 @@ ROAS (Return On Ad Spend)
 <p>인터넷 사용자가 광고를 클릭하고 광고주의 사이트에 방문했을 때 최초로 보게 되는 웹 페이지</p>
 </blockquote>
 <h3 id="PV-Page-View"><a href="#PV-Page-View" class="headerlink" title="PV (Page View)"></a>PV (Page View)</h3><blockquote>
-<p>홈페이지에 들어온 접속자가 둘러 본 페이지 </p>
+<p>홈페이지에 들어온 접속자가 둘러 본 페이지</p>
 </blockquote>
 <h3 id="ASO-App-Store-Optimization"><a href="#ASO-App-Store-Optimization" class="headerlink" title="ASO (App Store Optimization)"></a>ASO (App Store Optimization)</h3><blockquote>
 <p>앱 스토어 최적화. 앱 아이콘, 스크린샷, 영상, 디스크립션 등 앱을 설명하는 요소를 바꾸면서 전환율을 높이는 것. 앱스토어 최적화를 통해 사용자가 앱 설치를 많이 하면, CPI가 낮아진다.</p>
