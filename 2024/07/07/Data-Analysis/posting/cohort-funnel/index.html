@@ -5,12 +5,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="코호트/퍼널 분석, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Retension
+    <meta name="description" content="1. Retension
 
-Retention analysis(또는 survival analysis)은 고객이 이탈하는 이유와 방식을 이해하기 위해 사용자 지표를 분석하는 과정
+특정 기간 동안 고객이 서비스나 제품을 지속적으로 사용하는 비율. 고객 충성도를 측정하는 중요한 지표
 
+1.1 Retention Analysis
 
-일관된 리텐션 분석을 실행하면 다음과 같은 ">
+사용자 지표를 분석하여 고객이 이탈하는 이유">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -228,57 +229,59 @@ Retention analysis(또는 survival analysis)은 고객이 이탈하는 이유와
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Retension"><a href="#Retension" class="headerlink" title="Retension"></a>Retension</h2><hr>
+                <h2 id="1-Retension"><a href="#1-Retension" class="headerlink" title="1. Retension"></a>1. Retension</h2><hr>
 <blockquote>
-<p>Retention analysis(또는 survival analysis)은 고객이 이탈하는 이유와 방식을 이해하기 위해 사용자 지표를 분석하는 과정</p>
+<p>특정 기간 동안 고객이 서비스나 제품을 지속적으로 사용하는 비율. 고객 충성도를 측정하는 중요한 지표</p>
 </blockquote>
-<ul>
-<li><p>일관된 리텐션 분석을 실행하면 다음과 같은 사항을 배울 수 있다.</p>
+<h3 id="1-1-Retention-Analysis"><a href="#1-1-Retention-Analysis" class="headerlink" title="1.1 Retention Analysis"></a>1.1 Retention Analysis</h3><hr>
+<blockquote>
+<p>사용자 지표를 분석하여 고객이 이탈하는 이유와 방식을 이해하는 과정으로, 이를 survival analysis라고도 함</p>
+</blockquote>
+<p>일관된 리텐션 분석을 실행하면 다음과 같은 사항을 파악 가능하다. </p>
 <ul>
 <li><p>고객이 이탈하는 이유</p>
 </li>
-<li><p>고객이 떠날 가능성이 더 높은 경우</p>
+<li><p>고객이 떠날 가능성이 높은 경우</p>
 </li>
 <li><p>이탈률이 최종 수익에 미치는 영향</p>
 </li>
 <li><p>고객 유지 전략을 개선하는 방법</p>
 </li>
 </ul>
-</li>
-</ul>
-<h2 id="리텐션-분석을-수행해보며-느낀-점들"><a href="#리텐션-분석을-수행해보며-느낀-점들" class="headerlink" title="리텐션 분석을 수행해보며 느낀 점들"></a>리텐션 분석을 수행해보며 느낀 점들</h2><hr>
-<h3 id="Q1-리텐션의-주기는-언제로-할-것인가"><a href="#Q1-리텐션의-주기는-언제로-할-것인가" class="headerlink" title="Q1. 리텐션의 주기는 언제로 할 것인가?"></a>Q1. 리텐션의 주기는 언제로 할 것인가?</h3><hr>
+<h2 id="2-리텐션-분석을-수행하며-느낀-점들"><a href="#2-리텐션-분석을-수행하며-느낀-점들" class="headerlink" title="2. 리텐션 분석을 수행하며 느낀 점들"></a>2. 리텐션 분석을 수행하며 느낀 점들</h2><hr>
+<h3 id="2-1-리텐션-주기를-언제로-설정할-것인가"><a href="#2-1-리텐션-주기를-언제로-설정할-것인가" class="headerlink" title="2.1 리텐션 주기를 언제로 설정할 것인가?"></a>2.1 리텐션 주기를 언제로 설정할 것인가?</h3><hr>
 <p>리텐션 분석에서 사용하는 사용자 정의 지표는 서비스에 따라 크게 달라질 수 있다.</p>
 <ul>
-<li><p>카카오톡, 알라미처럼 매일 접속하는 서비스는 리텐션 주기가 짧다.</p>
-</li>
-<li><p>마이리얼트립처럼 특정 목적으로 접속하는 서비스는 리텐션 주기가 길다.</p>
-</li>
-<li><p>그럼 리텐션 주기는 몇 일로 잡을 것인가? 기술통계를 봐야 한다. 보통 <code>중앙값(Medium)</code>으로 사용할 수 있다.</p>
-</li>
+<li>카카오톡, 알라미와 같이 매일 접속하는 서비스는 리텐션 주기가 짧다.</li>
+<li>마이리얼트립처럼 특정 목적으로 접속하는 서비스는 리텐션 주기가 길다.</li>
 </ul>
-<h3 id="Q2-리텐션-주기는-무엇으로-구할-것인가"><a href="#Q2-리텐션-주기는-무엇으로-구할-것인가" class="headerlink" title="Q2. 리텐션 주기는 무엇으로 구할 것인가?"></a>Q2. 리텐션 주기는 무엇으로 구할 것인가?</h3><hr>
+<p>그렇다면 리텐션 주기를 몇 일로 설정할 것인가? 기술 통계를 참고해야 하며, 보통 <code>중앙값(Median)</code>을 사용할 수 있다.</p>
+<h3 id="2-2-리텐션-주기는-무엇을-기준으로-구할-것인가"><a href="#2-2-리텐션-주기는-무엇을-기준으로-구할-것인가" class="headerlink" title="2.2 리텐션 주기는 무엇을 기준으로 구할 것인가?"></a>2.2 리텐션 주기는 무엇을 기준으로 구할 것인가?</h3><hr>
+<p>리텐션을 평가할 대상은 고객의 퍼널에서 다양하게 설정할 수 있다. 순수히 고객 접속을 기준으로 삼을 수도 있고, 커머스와 같은 경우 고객의 제품 구매를 주기로 설정할 수 있다.</p>
+<p>또한, 복수의 조건을 활용하여 직접적으로 활성화 기준을 대상을 만들어낼 수도 있다.</p>
+<h3 id="2-3-고객에-대한-정의는-명확한가"><a href="#2-3-고객에-대한-정의는-명확한가" class="headerlink" title="2.3 고객에 대한 정의는 명확한가?"></a>2.3 고객에 대한 정의는 명확한가?</h3><hr>
 <ul>
-<li><p>고객의 퍼널에서 리텐션을 평가할 대상은 많다. 순수히 고객 접속을 기준으로 할 수도 있고, 커머스와 같은 경우 고객의 제품 구매를 주기로 할 수 있다.</p>
-</li>
-<li><p>또 복수의 조건을 사용하여 직접적으로 대상을 만들어낼 수도 있다.</p>
-</li>
+<li><code>고객에 대한 정의는 명확해야 한다.</code> 예를 들어 신규 유저, 기존 유저, 복귀 유저, 휴먼 유저로 나눌 수 있다면, 어떤 유저를 기존 유저로 정의할 것인가? 구매는 하지 않지만 매일 서비스에 접속하는 잠재 고객인가? 아니면 최근에 접속하지 않았지만 과거 구매 이력이 많은 고객인가? <br><br> 분석을 통해 합리적인 정의가 확립되면, 그 정의는 팀 내 모든 분석가가 명확히 인지해야만 분석을 같은 방향으로 이어나갈 수 있다.</li>
 </ul>
-<h3 id="Q3-고객에-대한-정의는-분명한가"><a href="#Q3-고객에-대한-정의는-분명한가" class="headerlink" title="Q3. 고객에 대한 정의는 분명한가?"></a>Q3. 고객에 대한 정의는 분명한가?</h3><hr>
+<br>
+
 <ul>
-<li><p><code>고객에 대한 정의는 무엇인 지 분명</code>해야 한다. 예를 들어 신규유저&#x2F;기존유저&#x2F;복귀유저&#x2F;휴먼유저로 나눌 수도 있다면, 어떤 유저를 기존 유저로 볼 것인가? 구매는 안 하지만 매일 서비스에 들어오는 잠재고객인가? 아니면 최근 접속은 없지만 과거 구매 이력이 많은 고객인가? 분석에 의해 합리적인 정의가 분명해지면, <code>그 정의는 팀내 분석가 모두가 확실하게 인지해야만 분석을 같은 방향으로 이어나갈 수 있다.</code></p>
-</li>
-<li><p>또 고객의 등급이 어떻게 나눠지는 지도 중요하다. 고객의 등급은 매출에 분명한 영향이 있다. <code>모든 고객을 만족시킬 수 없다면, 주어진 시간과 비용에서 가장 합리적인 선택</code>이 필요하다. 서비스별로 유저의 군집을 다르게 분류하면, 군집의 특성을 파악할 수 있다. 주문건당 구매 금액이 적지만 자사 서비스의 많은 매출 비중을 만드는 속하는 군집이 있을 수 있고, 잔체 유저대비 비율은 적지만 매출의 대부분을 차지하는 VIP 군집도 분명히 있다. <code>어느 고객 집단이 더 중요하다는 것보다 상황에 따라 세그먼트/코호트를 분류하고 보다 커스터마이즈된 광고 전략이나 니즈를 충족시킬 수 있는 서비스가 필요</code>하다. 다만, <code>이익 없이 운영되는 기업은 없다.</code> 또한 <code>세그먼트가 많아질수록 관리해야 할 요소들도 많아지기 때문에 이를 자동화시킬 방법도 고려</code>해야한다.</p>
-</li>
+<li>또한, 고객의 등급 분류도 중요하다. 고객 등급은 매출에 분명한 영향을 미치기 때문이다. <code>모든 고객을 만족시킬 수 없다면, 주어진 시간과 비용 내에서 가장 합리적인 선택이 필요하다.</code><br><br>서비스별로 유저 군집을 다르게 분류하면, 각 군집의 특성을 파악할 수 있다. 예를 들어, 주문 건당 구매 금액은 적지만 자사 서비스의 매출 비중이 큰 군집이 있을 수 있으며, 전체 유저 대비 비율은 적지만 매출의 대부분을 차지하는 VIP 군집도 존재한다. <code>어느 고객 집단이 더 중요하다는 것보다, 상황에 따라 세그먼트와 코호트를 분류하고, 보다 맞춤화된 광고 전략이나 고객의 니즈를 충족시킬 수 있는 서비스가 필요하다.</code> 다만, 이익 없이 운영되는 기업은 없다. 세그먼트가 많아질수록 관리해야 할 비용도 높아지기 때문에 이를 자동화할 방법도 고려해야 한다.</li>
 </ul>
-<h2 id="코호트-분석-Cohort-Analysis"><a href="#코호트-분석-Cohort-Analysis" class="headerlink" title="코호트 분석 (Cohort Analysis)"></a>코호트 분석 (Cohort Analysis)</h2><hr>
-<h3 id="범위-리텐션-SQL-Range-Retension"><a href="#범위-리텐션-SQL-Range-Retension" class="headerlink" title="범위 리텐션 SQL (Range Retension)"></a>범위 리텐션 SQL (Range Retension)</h3><hr>
+<h2 id="3-Cohort-Analysis"><a href="#3-Cohort-Analysis" class="headerlink" title="3. Cohort Analysis"></a>3. Cohort Analysis</h2><hr>
+<blockquote>
+<p>특정 기준에 따라 그룹화된 사용자 집단(코호트)의 행동이나 성과를 분석하는 방법</p>
+</blockquote>
+<h3 id="3-1-Classic-Retention"><a href="#3-1-Classic-Retention" class="headerlink" title="3.1 Classic Retention"></a>3.1 Classic Retention</h3><hr>
+<blockquote>
+<p>사용자가 특정 기간 동안 서비스나 제품을 계속 이용하는지를 분석하는 방법</p>
+</blockquote>
 <ul>
-<li>고객ID</li>
-<li>첫 주문 일자</li>
-<li>사용자 정의 기간(interval)별 주문 일자</li>
+<li>customer_id : 고객ID</li>
+<li>first_order_date : 첫 주문 일자</li>
+<li>order_date : 주문 일자</li>
 </ul>
-<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>범위 리텐션 SQL</span></div><code class="language-sql"><span class="token keyword">WITH</span> records_preprocessed <span class="token keyword">AS</span> <span class="token punctuation">(</span>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>Monthly Classic Retention Query (MySQL)</span></div><code class="language-sql"><span class="token keyword">WITH</span> records_preprocessed <span class="token keyword">AS</span> <span class="token punctuation">(</span>
   <span class="token keyword">SELECT</span> r<span class="token punctuation">.</span>customer_id
        <span class="token punctuation">,</span> r<span class="token punctuation">.</span>order_id
        <span class="token punctuation">,</span> r<span class="token punctuation">.</span>order_date
@@ -305,18 +308,22 @@ Retention analysis(또는 survival analysis)은 고객이 이탈하는 이유와
 <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> first_order_month
 <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> first_order_month <span class="token keyword">ASC</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="코호트-차트-시각화"><a href="#코호트-차트-시각화" class="headerlink" title="코호트 차트 시각화"></a>코호트 차트 시각화</h3><hr>
-<h4 id="수치로-표현"><a href="#수치로-표현" class="headerlink" title="수치로 표현"></a>수치로 표현</h4><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129038&authkey=%21AJxtVLpv09Q9pvM&width=1366&height=542" width="1366" height="542" />
+<h4 id="3-1-1-Visualization-수치"><a href="#3-1-1-Visualization-수치" class="headerlink" title="3.1.1 Visualization - 수치"></a>3.1.1 Visualization - 수치</h4><hr>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129038&authkey=%21AJxtVLpv09Q9pvM&width=1366&height=542" width="1366" height="542" alt="Monthly Classic Retention(수치)"/>
 
-<h4 id="비율로-표현"><a href="#비율로-표현" class="headerlink" title="비율로 표현"></a>비율로 표현</h4><ul>
-<li>분석의 대상이 되는 집계(numeric) 컬럼은 데이터 값의 속성에 단위가 다르다. 같은 10CM 숫자라도 이해관계자의 경험에 따라 스케일의 차이를 받아들이는 정도가 다르다. 때문에 개별 컬럼 값을 비교할 때는 두 수치의 차이를 비율로 표현하는 것이 더 많은 인사이트를 도출할 수 있다. (표준화, 정규화와 유사한 맥락)</li>
-</ul>
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129039&authkey=%21AD6m4Q2FZBKzTCk&width=1374&height=540" width="1374" height="540" />
-
-
-<h3 id="롤링-리텐션-Rolling-Retension"><a href="#롤링-리텐션-Rolling-Retension" class="headerlink" title="롤링 리텐션 (Rolling Retension)"></a>롤링 리텐션 (Rolling Retension)</h3><hr>
+<h4 id="3-1-2-Visualization-비율"><a href="#3-1-2-Visualization-비율" class="headerlink" title="3.1.2 Visualization - 비율"></a>3.1.2 Visualization - 비율</h4><hr>
 <ul>
-<li>롤링리텐션은 실행 시점마다 값의 변동성이 크다. 롤링 리텐션을 처음보는 경영자에게 대시보드를 제공한다면, 값이 변하는 이유를 커뮤니케이션을 통해 미리 설명해야 한다.</li>
+<li>분석의 대상이 되는 집계(numeric) 컬럼은 데이터 값의 속성과 단위가 다를 수 있다. 같은 10cm라는 숫자라도 이해관계자의 경험에 따라 스케일의 차이를 받아들이는 정도가 다르다. 따라서 개별 컬럼 값을 비교할 때는 두 수치의 차이를 비율로 표현하는 것이 더 많은 인사이트를 도출할 수 있다. 이는 표준화나 정규화와 유사한 맥락이다.</li>
+</ul>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129039&authkey=%21AD6m4Q2FZBKzTCk&width=1374&height=540" width="1374" height="540" alt="Monthly Classic Retention(비율)"/>
+
+
+<h3 id="3-2-Rolling-Retension"><a href="#3-2-Rolling-Retension" class="headerlink" title="3.2 Rolling Retension"></a>3.2 Rolling Retension</h3><hr>
+<blockquote>
+<p>Classic Retention과 유사하지만, 마지막 서비스 이용이 있는 경우 그 사이에 서비스 이용이 없더라도 리텐션을 유지한 것으로 간주하는 분석 방법</p>
+</blockquote>
+<ul>
+<li><code>롤링 리텐션은 실행 시점마다 값의 변동성이 크기 때문에, 이를 처음 접하는 경영자에게 대시보드를 제공할 경우, 값이 변하는 이유를 사전에 커뮤니케이션을 통해 설명해야 한다.</code></li>
 </ul>
 <pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>롤링 리텐션 SQL</span></div><code class="language-sql"><span class="token keyword">WITH</span> customers <span class="token keyword">AS</span> <span class="token punctuation">(</span>
   <span class="token keyword">SELECT</span> customer_id
@@ -345,15 +352,11 @@ Retention analysis(또는 survival analysis)은 고객이 이탈하는 이유와
 
 
 
-<h2 id="퍼널-분석-Funnel-Analysis"><a href="#퍼널-분석-Funnel-Analysis" class="headerlink" title="퍼널 분석 (Funnel Analysis)"></a>퍼널 분석 (Funnel Analysis)</h2><hr>
+<h2 id="4-Funnel-Analysis"><a href="#4-Funnel-Analysis" class="headerlink" title="4. Funnel Analysis"></a>4. Funnel Analysis</h2><hr>
 <blockquote>
-<p>고객들이 우리가 설계한 유저 경험 루트를 따라 잘 도착하고 있는지 확인해보기 위해 최초 유입부터 최종 목적지까지 단계를 나누어서 살펴보는 분석 기법</p>
+<p>고객들이 우리가 설계한 유저 경험 루트를 따라 잘 도달하고 있는지를 확인하기 위해, 최초 유입부터 최종 목적지까지의 단계를 세분화하여 살펴보는 분석 기법</p>
 </blockquote>
-<h3 id="퍼널-분석-SQL"><a href="#퍼널-분석-SQL" class="headerlink" title="퍼널 분석 SQL"></a>퍼널 분석 SQL</h3><hr>
-<ul>
-<li>유입 채널별 전환률</li>
-</ul>
-<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>퍼널 분석 SQL</span></div><code class="language-sql"><span class="token keyword">WITH</span> pv <span class="token keyword">AS</span> <span class="token punctuation">(</span>
+<pre class="line-numbers language-sql" data-language="sql"><div class="caption"><span>유입 채널별 전환률 Funnel Analysis Query</span></div><code class="language-sql"><span class="token keyword">WITH</span> pv <span class="token keyword">AS</span> <span class="token punctuation">(</span>
      <span class="token keyword">SELECT</span> user_pseudo_id
           <span class="token punctuation">,</span> ga_session_id
           <span class="token punctuation">,</span> event_timestamp_kst <span class="token keyword">AS</span> pv_at
@@ -395,7 +398,8 @@ Retention analysis(또는 survival analysis)은 고객이 이탈하는 이유와
                      <span class="token operator">AND</span> scroll<span class="token punctuation">.</span>scroll_at <span class="token operator">&lt;=</span> click<span class="token punctuation">.</span>click_at
 <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> source<span class="token punctuation">,</span> medium<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><hr>
+<ul>
 <li><a target="_blank" rel="noopener" href="https://www.paddle.com/resources/customer-retention-analysis">https://www.paddle.com/resources/customer-retention-analysis</a></li>
 </ul>
 
