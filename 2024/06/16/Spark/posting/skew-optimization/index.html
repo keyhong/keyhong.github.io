@@ -5,8 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Skew Optimization, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Skew Optimizing
-스파크에서 skewness(왜도, 비대칭도)를 해결하는 것은 스파크 튜닝의 중요한 요소이다. 왜 skewness를 해결해야 하는 지는 스파크가 분산 처리 프레임워크라는 것을 생각한다면 당">
+    <meta name="description" content="1. Skew Optimizing
+스파크에서 skewness(왜도, 비대칭도)를 해결하는 것은 스파크 튜닝의 중요한 요소이다. 왜 skewness를 해결해야 하는 지는 스파크가 분산 처리 프레임워크라는 것을 생각한다">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -224,7 +224,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Skew-Optimizing"><a href="#Skew-Optimizing" class="headerlink" title="Skew Optimizing"></a>Skew Optimizing</h2><hr>
+                <h2 id="1-Skew-Optimizing"><a href="#1-Skew-Optimizing" class="headerlink" title="1. Skew Optimizing"></a>1. Skew Optimizing</h2><hr>
 <p><code>스파크에서 skewness(왜도, 비대칭도)를 해결하는 것은 스파크 튜닝의 중요한 요소</code>이다. 왜 skewness를 해결해야 하는 지는 스파크가 분산 처리 프레임워크라는 것을 생각한다면 당연하게 받아 들일 수 있다. 우리가 소싱한 데이터는 파티션에 의해 여러 개로 수평 분할되어 클러스터의 여러 노드에 전달 된다.</p>
 <p>각 노드에서 데이터를 처리(transformation, action)하는 데, 처리하는 과정 속에서 데이터를 특정 조건으로 filter 하거나 shuffle 연산(groupBy, reduceByKey ..)을 수행하면 처음에 동일 혹은 비슷하게 분배했었던 파티션별 소유 데이터의 양이 한 쪽으로 치우치는 현상을 만들어낸다. 이미지를 그려내보면 다음과 같다. </p>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110148&authkey=%21ABYYfKJCDZ5B6D4&width=606&height=273" width="606" height="273" alt="skewness가 발생해 다른 파티션이 병렬처리를 하지 못하는 상황"/>
@@ -236,11 +236,14 @@
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110151&authkey=%21AMWq5rHzHvllhno&width=566&height=318" width="566" height="318" alt="이상적인 분산 처리에서의 데이터 분배"/>
 
 
-<h2 id="RDD-Skew-Optimizing"><a href="#RDD-Skew-Optimizing" class="headerlink" title="RDD Skew Optimizing"></a>RDD Skew Optimizing</h2><hr>
-<h3 id="Salting"><a href="#Salting" class="headerlink" title="Salting"></a>Salting</h3><blockquote>
+<h2 id="2-RDD-Skew-Optimizing"><a href="#2-RDD-Skew-Optimizing" class="headerlink" title="2. RDD Skew Optimizing"></a>2. RDD Skew Optimizing</h2><hr>
+<h3 id="2-1-Salting"><a href="#2-1-Salting" class="headerlink" title="2.1 Salting"></a>2.1 Salting</h3><hr>
+<blockquote>
 <p>조인키(join key)에 랜덤한 값을 추가하여 데이터를 균등하게 파티셔닝 할 수 있는 기술</p>
 </blockquote>
-<h3 id="Pyspark에서-Salting-Code-구현"><a href="#Pyspark에서-Salting-Code-구현" class="headerlink" title="Pyspark에서 Salting Code 구현"></a>Pyspark에서 Salting Code 구현</h3><h4 id="1-Skew가-발생하도록-데이터를-불규칙적으로-생성"><a href="#1-Skew가-발생하도록-데이터를-불규칙적으로-생성" class="headerlink" title="(1) Skew가 발생하도록 데이터를 불규칙적으로 생성"></a>(1) Skew가 발생하도록 데이터를 불규칙적으로 생성</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># Skew 데이터 불러오기</span>
+<h3 id="2-2-Pyspark에서-Salting-Code-구현"><a href="#2-2-Pyspark에서-Salting-Code-구현" class="headerlink" title="2.2 Pyspark에서 Salting Code 구현"></a>2.2 Pyspark에서 Salting Code 구현</h3><hr>
+<h4 id="1-Skew가-발생하도록-데이터를-불규칙적으로-생성"><a href="#1-Skew가-발생하도록-데이터를-불규칙적으로-생성" class="headerlink" title="(1) Skew가 발생하도록 데이터를 불규칙적으로 생성"></a>(1) Skew가 발생하도록 데이터를 불규칙적으로 생성</h4><hr>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># Skew 데이터 불러오기</span>
 <span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
 <span class="token keyword">import</span> random
 
@@ -264,8 +267,9 @@ pair_skew <span class="token operator">=</span> <span class="token builtin">list
 <span class="token comment"># RDD로 데이터 로드하기 (8개의 파티션)</span>
 rdd <span class="token operator">=</span> sc<span class="token punctuation">.</span>parallelize<span class="token punctuation">(</span>pair_skew<span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="2-Salting을-위해-Key에-랜던함-숫자-문자열을-붙여줄-수-있는-함수-생성"><a href="#2-Salting을-위해-Key에-랜던함-숫자-문자열을-붙여줄-수-있는-함수-생성" class="headerlink" title="(2) Salting을 위해 Key에 랜던함 숫자 문자열을 붙여줄 수 있는 함수 생성"></a>(2) Salting을 위해 Key에 랜던함 숫자 문자열을 붙여줄 수 있는 함수 생성</h4><p>기존에는 [(‘b’: 24), (‘b’: 13), (‘b’: 32), (‘b’: 41) …] 이런 형태이다. value는 많지만 key는 ‘a’, ‘b’, ‘c’, ‘d’ 4개 밖에 없기 때문에 groupby를 하면 데이터가 많은 ‘b’가 하나의 파티션으로 데이터가 쏠린다(skewness).** 이러한 쏠림을 방지하지 위해 salting은 기존에 있던 key에 랜덤한 숫자를 덧붙여주어 key를 변형시키고 분산시키는 과정이다.</p>
-<p>위 예시를 들면, <code>&#39;b&#39; + &#39;_&#39; + 랜덤한 숫자</code> 형태로 만들어준다. 그 결과 <code>[(&#39;b_2&#39;: 24), (&#39;b_4&#39;: 13), (&#39;b_1&#39;: 32), (&#39;b_5&#39;: 41) ...]</code> 처럼 기존의 a, b, c, d 4개 보다 훨씬 많은 key가 만들어지게 된다. 이 후 groupby를 하면 key를 여러 파티션에 고루 분산되고 따라서 모든 파티션이 이전보다 균등한 작업량으로 병렬처리를 할 수 있게 된다.</p>
+<h4 id="2-Salting을-위해-Key에-랜던함-숫자-문자열을-붙여줄-수-있는-함수-생성"><a href="#2-Salting을-위해-Key에-랜던함-숫자-문자열을-붙여줄-수-있는-함수-생성" class="headerlink" title="(2) Salting을 위해 Key에 랜던함 숫자 문자열을 붙여줄 수 있는 함수 생성"></a>(2) Salting을 위해 Key에 랜던함 숫자 문자열을 붙여줄 수 있는 함수 생성</h4><hr>
+<p>데이터는 [(‘b’: 24), (‘b’: 13), (‘b’: 32), (‘b’: 41), …] 형태이며, key는 ‘a’, ‘b’, ‘c’, ‘d’ 4개뿐이다. 하지만 ‘b’의 value가 많아 groupby 시 ‘b’에 데이터가 쏠리는 skewness가 발생한다. 이를 방지하기 위해 salting을 적용한다. 이는 기존 key에 랜덤 숫자를 추가해 변형시키고 데이터를 분산시키는 방법이다.</p>
+<p>예를 들어, <code>&#39;b&#39;</code> key에 랜덤한 숫자를 덧붙여 <code>&#39;b&#39; + &#39;_&#39; + 랜덤 숫자</code> 형태로 변형한다. 그 결과 <code>[(&#39;b_2&#39;: 24), (&#39;b_4&#39;: 13), (&#39;b_1&#39;: 32), (&#39;b_5&#39;: 41), ...]</code>처럼 기존 ‘a’, ‘b’, ‘c’, ‘d’ 4개의 key가 훨씬 더 많은 key로 확장된다. 이렇게 변형된 후 <code>groupby</code>를 수행하면 key가 여러 파티션에 고르게 분산되어, 모든 파티션이 균등한 작업량으로 병렬처리할 수 있게 된다.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> random
 
 <span class="token keyword">def</span> <span class="token function">salting</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -280,16 +284,18 @@ grouped_rdd <span class="token operator">=</span> rdd_salting<span class="token 
 
 <span class="token comment"># skew 데이터에서 map()을 통해 간단한 data transformation 실행해보기</span>
 grouped_rdd<span class="token punctuation">.</span><span class="token builtin">map</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> pair<span class="token punctuation">:</span> <span class="token punctuation">(</span>pair<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> pair<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>count<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="Spark-Web-UI에서-Before-Salting-vs-After-Salting-비교하기"><a href="#Spark-Web-UI에서-Before-Salting-vs-After-Salting-비교하기" class="headerlink" title="Spark Web UI에서 Before Salting vs. After Salting 비교하기"></a>Spark Web UI에서 Before Salting vs. After Salting 비교하기</h3><h4 id="Before-Salting"><a href="#Before-Salting" class="headerlink" title="Before Salting"></a>Before Salting</h4><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110150&authkey=%21ANeT1LvIe9-GwBo&width=1037&height=399" width="1037" height="399" alt="[Before Salting] 하나의 파티션에 Skew가 몰려있다. 소요시간은 23초이다."/>
 
-<h4 id="After-Salting"><a href="#After-Salting" class="headerlink" title="After Salting"></a>After Salting</h4><img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110149&authkey=%21AERlRn_ivY9tOQI&width=1034&height=392" width="1034" height="392" alt="[After Salting] 전체적으로 Skew가 균등하고 소요시간이 7초로 단축되었다."/>
+<h3 id="2-3-Spark-Web-UI에서-Before-Salting-vs-After-Salting-비교하기"><a href="#2-3-Spark-Web-UI에서-Before-Salting-vs-After-Salting-비교하기" class="headerlink" title="2.3 Spark Web UI에서 Before Salting vs. After Salting 비교하기"></a>2.3 Spark Web UI에서 Before Salting vs. After Salting 비교하기</h3><hr>
+<h4 id="1-Before-Salting"><a href="#1-Before-Salting" class="headerlink" title="(1) Before Salting"></a>(1) Before Salting</h4><hr>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110150&authkey=%21ANeT1LvIe9-GwBo&width=1037&height=399" width="1037" height="399" alt="[Before Salting] 하나의 파티션에 Skew가 몰려있다. 소요시간은 23초이다."/>
+
+<h4 id="2-After-Salting"><a href="#2-After-Salting" class="headerlink" title="(2) After Salting"></a>(2) After Salting</h4><hr>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110149&authkey=%21AERlRn_ivY9tOQI&width=1034&height=392" width="1034" height="392" alt="[After Salting] 전체적으로 Skew가 균등하고 소요시간이 7초로 단축되었다."/>
 
 
-
-
-<h2 id="DataFrame-Skew-Optimizing"><a href="#DataFrame-Skew-Optimizing" class="headerlink" title="DataFrame Skew Optimizing"></a>DataFrame Skew Optimizing</h2><hr>
-<h3 id="Skew-데이터-생성하기"><a href="#Skew-데이터-생성하기" class="headerlink" title="Skew 데이터 생성하기"></a>Skew 데이터 생성하기</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># Skew 데이터 불러오기</span>
-<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<h2 id="3-DataFrame-Skew-Optimizing"><a href="#3-DataFrame-Skew-Optimizing" class="headerlink" title="3. DataFrame Skew Optimizing"></a>3. DataFrame Skew Optimizing</h2><hr>
+<h3 id="3-1-Skew-데이터-생성"><a href="#3-1-Skew-데이터-생성" class="headerlink" title="3.1 Skew 데이터 생성"></a>3.1 Skew 데이터 생성</h3><hr>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>Skew 데이터 생성</span></div><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
 <span class="token keyword">import</span> random
 
 <span class="token comment"># sales dataset:</span>
@@ -334,9 +340,9 @@ df_skew <span class="token operator">=</span> spark<span class="token punctuatio
 df_skew<span class="token punctuation">.</span>printSchema<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 df_skew<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
-df_skew<span class="token punctuation">.</span>rdd<span class="token punctuation">.</span>getNumPartitions<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+df_skew<span class="token punctuation">.</span>rdd<span class="token punctuation">.</span>getNumPartitions<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># Create the pandas.DataFrame</span>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>pyspark.sql.DataFrame 생성</span></div><code class="language-python"><span class="token comment"># Create the pandas.DataFrame</span>
 data_skew <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>data1<span class="token punctuation">,</span> columns<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">"OrderID"</span><span class="token punctuation">,</span> <span class="token string">"Qty"</span><span class="token punctuation">,</span> <span class="token string">"Sales"</span><span class="token punctuation">,</span> <span class="token string">"Discount"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 
 <span class="token comment">############ table 2 ############ </span>
@@ -364,7 +370,8 @@ df_small<span class="token punctuation">.</span>printSchema<span class="token pu
 df_small<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
 df_small<span class="token punctuation">.</span>rdd<span class="token punctuation">.</span>getNumPartitions<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="Salting-없이-join"><a href="#Salting-없이-join" class="headerlink" title="Salting 없이 join"></a>Salting 없이 join</h3><pre class="line-numbers language-python" data-language="python"><div class="caption"><span>join</span></div><code class="language-python"><span class="token comment"># DF increases the partition number to 200 automatically when spark performs data shuffling (join, aggregation)</span>
+<h3 id="3-2-Salting-없이-join"><a href="#3-2-Salting-없이-join" class="headerlink" title="3.2 Salting 없이 join"></a>3.2 Salting 없이 join</h3><hr>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>join</span></div><code class="language-python"><span class="token comment"># DF increases the partition number to 200 automatically when spark performs data shuffling (join, aggregation)</span>
 joined_df <span class="token operator">=</span> df_skew<span class="token punctuation">.</span>join<span class="token punctuation">(</span>df_small<span class="token punctuation">,</span> df_skew<span class="token punctuation">.</span>OrderID <span class="token operator">==</span> df_small<span class="token punctuation">.</span>OrderID<span class="token punctuation">,</span> how<span class="token operator">=</span><span class="token string">"inner"</span><span class="token punctuation">)</span>
 joined_df<span class="token punctuation">.</span>rdd<span class="token punctuation">.</span>getNumPartitions<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 200</span>
 joined_df<span class="token punctuation">.</span>rdd<span class="token punctuation">.</span>glom<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>collect<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -390,7 +397,8 @@ summary <span class="token operator">=</span> groups<span class="token punctuati
 
 summary<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="Salting-후에-join"><a href="#Salting-후에-join" class="headerlink" title="Salting 후에 join"></a>Salting 후에 join</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> pyspark<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>functions <span class="token keyword">import</span> <span class="token operator">*</span>
+<h3 id="3-3-Salting-후-join"><a href="#3-3-Salting-후-join" class="headerlink" title="3.3 Salting 후 join"></a>3.3 Salting 후 join</h3><hr>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> pyspark<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>functions <span class="token keyword">import</span> <span class="token operator">*</span>
 
 spark<span class="token punctuation">.</span>conf<span class="token punctuation">.</span><span class="token builtin">set</span><span class="token punctuation">(</span><span class="token string">"spark.sql.shuffle.partitions"</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span>
 
@@ -413,7 +421,7 @@ df_skew_salting<span class="token punctuation">.</span>drop<span class="token pu
 df_small_salting<span class="token punctuation">.</span>drop<span class="token punctuation">(</span><span class="token string">"_salt_"</span><span class="token punctuation">)</span>
 
 <span class="token comment"># apply join()</span>
-groups <span class="token operator">=</span> df_skew_salting<span class="token punctuation">.</span>join<span class="token punctuation">(</span>df_small_salting<span class="token punctuation">,</span> df<span class="token punctuation">.</span>skew<span class="token punctuation">.</span>OrderID <span class="token operator">==</span> df<span class="token punctuation">.</span>small<span class="token punctuation">.</span>OrderID<span class="token punctuation">,</span> how<span class="token operator">=</span><span class="token string">"inner"</span><span class="token punctuation">)</span>
+groups <span class="token operator">=</span> df_skew_salting<span class="token punctuation">.</span>join<span class="token punctuation">(</span>df_small_salting<span class="token punctuation">,</span> df_skew_salting<span class="token punctuation">.</span>OrderID <span class="token operator">==</span> df_small_salting<span class="token punctuation">.</span>OrderID<span class="token punctuation">,</span> how<span class="token operator">=</span><span class="token string">"inner"</span><span class="token punctuation">)</span>
 
 summary <span class="token operator">=</span> groups<span class="token punctuation">.</span>select<span class="token punctuation">(</span>
     mean<span class="token punctuation">(</span>groups<span class="token punctuation">.</span>Sales<span class="token punctuation">)</span><span class="token punctuation">.</span>alias<span class="token punctuation">(</span><span class="token string">"AVG(Sales)"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
@@ -424,7 +432,8 @@ summary <span class="token operator">=</span> groups<span class="token punctuati
 
 summary<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="Salting-이외의-다른-solution"><a href="#Salting-이외의-다른-solution" class="headerlink" title="Salting 이외의 다른 solution"></a>Salting 이외의 다른 solution</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># Connection refused error [Errorno 111]</span>
+<h3 id="3-4-Salting-이외의-다른-solution"><a href="#3-4-Salting-이외의-다른-solution" class="headerlink" title="3.4 Salting 이외의 다른 solution"></a>3.4 Salting 이외의 다른 solution</h3><hr>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># Connection refused error [Errorno 111]</span>
 spark<span class="token punctuation">.</span>conf<span class="token punctuation">.</span><span class="token builtin">set</span><span class="token punctuation">(</span><span class="token string">"spark.executor.memory"</span><span class="token punctuation">,</span> <span class="token string">"70g"</span><span class="token punctuation">)</span>
 spark<span class="token punctuation">.</span>conf<span class="token punctuation">.</span><span class="token builtin">set</span><span class="token punctuation">(</span><span class="token string">"spark.driver.memory"</span><span class="token punctuation">,</span> <span class="token string">"70g"</span><span class="token punctuation">)</span>
 spark<span class="token punctuation">.</span>conf<span class="token punctuation">.</span><span class="token builtin">set</span><span class="token punctuation">(</span><span class="token string">"spark.memory.offHeap.size"</span><span class="token punctuation">,</span> <span class="token string">"16g"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
