@@ -4,13 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="HDFS 기본 개념, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="HDFS (Hadoop Distributed File System)
+    <meta name="keywords" content="HDFS 개념, Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="1. HDFS
 
-네트워크로 연결된 여러 머신의 스토리지를 관리하는 하둡의 분산 파일 시스템
+네트워크로 연결된 여러 머신의 스토리지를 관리하는 하둡의 분산 파일 시스템 (Hadoop Distributed File System)
 
 
-분산 파일 시스템은 네트워크 기반으로, 네트워크 프로그램의 복잡성을">
+분산 파일 시스템은 네트워크 기반으로, 네트워크 프로그램의 복">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -22,7 +22,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>HDFS 기본 개념 | Keyhong</title>
+    <title>HDFS 개념 | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -187,7 +187,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        HDFS 기본 개념</h1>
+                        HDFS 개념</h1>
                 </div>
             </div>
         </div>
@@ -228,9 +228,9 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="HDFS-Hadoop-Distributed-File-System"><a href="#HDFS-Hadoop-Distributed-File-System" class="headerlink" title="HDFS (Hadoop Distributed File System)"></a>HDFS (Hadoop Distributed File System)</h2><hr>
+                <h2 id="1-HDFS"><a href="#1-HDFS" class="headerlink" title="1. HDFS"></a>1. HDFS</h2><hr>
 <blockquote>
-<p>네트워크로 연결된 여러 머신의 스토리지를 관리하는 하둡의 분산 파일 시스템</p>
+<p>네트워크로 연결된 여러 머신의 스토리지를 관리하는 하둡의 분산 파일 시스템 (Hadoop Distributed File System)</p>
 </blockquote>
 <ul>
 <li><p>분산 파일 시스템은 네트워크 기반으로, 네트워크 프로그램의 복잡성을 지닌다.</p>
@@ -238,75 +238,90 @@
 <li><p>특정 노드에 장애가 발생해도 자료가 유실되지 않은 강건한 파일 시스템이다.</p>
 </li>
 </ul>
-<h2 id="HDFS-설계"><a href="#HDFS-설계" class="headerlink" title="HDFS 설계"></a>HDFS 설계</h2><hr>
-<h3 id="☆-범용-하드웨어로-구성된-클러스터에서-실행되도록-설계"><a href="#☆-범용-하드웨어로-구성된-클러스터에서-실행되도록-설계" class="headerlink" title="☆ 범용 하드웨어로 구성된 클러스터에서 실행되도록 설계"></a>☆ 범용 하드웨어로 구성된 클러스터에서 실행되도록 설계</h3><ul>
+<h2 id="2-HDFS-설계"><a href="#2-HDFS-설계" class="headerlink" title="2. HDFS 설계"></a>2. HDFS 설계</h2><hr>
+<h3 id="2-1-범용-하드웨어로-구성된-클러스터에서-실행되도록-설계"><a href="#2-1-범용-하드웨어로-구성된-클러스터에서-실행되도록-설계" class="headerlink" title="2.1 범용 하드웨어로 구성된 클러스터에서 실행되도록 설계"></a>2.1 범용 하드웨어로 구성된 클러스터에서 실행되도록 설계</h3><hr>
+<ul>
 <li><p>고가의 신뢰도 높은 하드웨어가 아닌, 장애 발생 확률이 높은 범용 하드웨어의 대형 클러스터에도 적합하다. (scale-out에 유리하다.)</p>
 </li>
 <li><p>장애가 발생하더라도 사용자가 모르게 작업을 수행 및 처리한다. (내결함성, fault-tolerance)</p>
 </li>
 </ul>
-<h3 id="스트리밍-방식의-데이터-접근-패턴으로-대용량-데이터를-다루기-용이하도록-설계"><a href="#스트리밍-방식의-데이터-접근-패턴으로-대용량-데이터를-다루기-용이하도록-설계" class="headerlink" title="스트리밍 방식의 데이터 접근 패턴으로 대용량 데이터를 다루기 용이하도록 설계"></a>스트리밍 방식의 데이터 접근 패턴으로 대용량 데이터를 다루기 용이하도록 설계</h3><ul>
+<h3 id="2-2-스트리밍-방식의-데이터-접근-패턴으로-대용량-데이터를-다루기-용이하도록-설계"><a href="#2-2-스트리밍-방식의-데이터-접근-패턴으로-대용량-데이터를-다루기-용이하도록-설계" class="headerlink" title="2.2 스트리밍 방식의 데이터 접근 패턴으로 대용량 데이터를 다루기 용이하도록 설계"></a>2.2 스트리밍 방식의 데이터 접근 패턴으로 대용량 데이터를 다루기 용이하도록 설계</h3><hr>
+<ul>
 <li><p>가장 효율적인 데이터 처리 패턴은 파일을 한번 쓰고, 여러번 읽는 것이다.</p>
 </li>
-<li><p>첫 번째 레코드를 읽는 데 걸리는 지연시간 보다 전체 데이터를 모두 읽을 때 걸리는 지연시간이 더욱 중요하다. (빅데이터 처리 플랫폼이기 때문이다. 실시간 처리가 아닌, 빅데이터를 처리를 통한 가치 창출에 큰 의미가 있기 때문이다.)</p>
+<li><p>첫 번째 레코드를 읽는 데 걸리는 지연시간보다 전체 데이터를 읽는 데 걸리는 지연시간이 더 중요하다. 이는 빅데이터 처리 플랫폼이기 때문에, 실시간 처리보다는 데이터 처리를 통한 가치 창출에 더 큰 의미가 있기 때문이다.</p>
 </li>
 </ul>
-<h3 id="매우-큰-데이터를-저장하도록-설계"><a href="#매우-큰-데이터를-저장하도록-설계" class="headerlink" title="매우 큰 데이터를 저장하도록 설계"></a>매우 큰 데이터를 저장하도록 설계</h3><ul>
-<li>기본 MiB 부터, GiB, TiB, PiB …  등의 매우 큰 사이즈 데이터를 다룬다.</li>
+<h3 id="2-3-매우-큰-데이터를-저장하도록-설계"><a href="#2-3-매우-큰-데이터를-저장하도록-설계" class="headerlink" title="2.3 매우 큰 데이터를 저장하도록 설계"></a>2.3 매우 큰 데이터를 저장하도록 설계</h3><hr>
+<ul>
+<li>기본 MiB부터 GiB, TiB, PiB 등 매우 큰 데이터 사이즈를 다룬다.</li>
 </ul>
-<h2 id="HDFS가-미적합한-응용-분야"><a href="#HDFS가-미적합한-응용-분야" class="headerlink" title="HDFS가 미적합한 응용 분야"></a>HDFS가 미적합한 응용 분야</h2><h3 id="☆-빠른-데이터-응답-시간이-필요한-분야"><a href="#☆-빠른-데이터-응답-시간이-필요한-분야" class="headerlink" title="☆ 빠른 데이터 응답 시간이 필요한 분야"></a>☆ 빠른 데이터 응답 시간이 필요한 분야</h3><ul>
-<li><p>데이터 접근에 수 십 밀리초(millisecond, ms) 수준의 빠른 응답 시간을 요구하는 애플리케이션에는 적합하지 않다. (대표적으로 사용자에게 빠르게 반응해야 하는 web, mobile app 같은 프로그램에 적합하지 않다.)</p>
+<h2 id="3-HDFS가-미적합한-응용-분야"><a href="#3-HDFS가-미적합한-응용-분야" class="headerlink" title="3. HDFS가 미적합한 응용 분야"></a>3. HDFS가 미적합한 응용 분야</h2><hr>
+<h3 id="3-1-빠른-데이터-응답-시간이-필요한-분야"><a href="#3-1-빠른-데이터-응답-시간이-필요한-분야" class="headerlink" title="3.1 빠른 데이터 응답 시간이 필요한 분야"></a>3.1 빠른 데이터 응답 시간이 필요한 분야</h3><hr>
+<ul>
+<li><p>데이터 접근에 수십 밀리초(ms) 수준의 빠른 응답 시간을 요구하는 애플리케이션에는 적합하지 않다. 특히, 사용자에게 신속하게 반응해야 하는 웹 및 모바일 앱과 같은 프로그램에는 부적합하다.</p>
 </li>
-<li><p>그럼에도 빠른 응답이 필요한 경우에는 대안으로 HBase를 사용한다. (하둡에서의 NoSQL DB라고 생각하면 된다.)</p>
+<li><p>그럼에도 빠른 응답이 필요한 경우, 대안으로 HBase를 사용할 수 있다. 이는 하둡의 NoSQL 데이터베이스로 생각하면 된다.</p>
 </li>
 </ul>
-<h3 id="☆-수-많은-작은-파일을-관리해야-하는-분야"><a href="#☆-수-많은-작은-파일을-관리해야-하는-분야" class="headerlink" title="☆ 수 많은 작은 파일을 관리해야 하는 분야"></a>☆ 수 많은 작은 파일을 관리해야 하는 분야</h3><h4 id="블록-Block"><a href="#블록-Block" class="headerlink" title="블록 (Block)"></a>블록 (Block)</h4><blockquote>
+<h3 id="3-2-수-많은-작은-파일을-관리해야-하는-분야"><a href="#3-2-수-많은-작은-파일을-관리해야-하는-분야" class="headerlink" title="3.2 수 많은 작은 파일을 관리해야 하는 분야"></a>3.2 수 많은 작은 파일을 관리해야 하는 분야</h3><hr>
+<h4 id="1-블록-Block"><a href="#1-블록-Block" class="headerlink" title="(1) 블록 (Block)"></a>(1) 블록 (Block)</h4><hr>
+<blockquote>
 <p>물리적인 디스크(HDD, SDD)에서 한 번에 읽고 쓸 수 있는 데이터의 최대량</p>
 </blockquote>
-<h4 id="일반적인-파일-시스템"><a href="#일반적인-파일-시스템" class="headerlink" title="일반적인 파일 시스템"></a>일반적인 파일 시스템</h4><ul>
+<h4 id="2-일반적인-파일-시스템"><a href="#2-일반적인-파일-시스템" class="headerlink" title="(2) 일반적인 파일 시스템"></a>(2) 일반적인 파일 시스템</h4><hr>
+<ul>
 <li>디스크 블록 크기 : 기본적으로 512 Byte</li>
 <li>파일 시스템의 블록 크기 : 디스크 블록 크기의 정배수를 사용한다. 보통 수 KB 이다. (Linux : 1024 Byte, 2048 Byte, 4096 Byte)</li>
 <li>사용자는 파일의 크기와 상관 없이 파일을 읽고 쓰는 것이 가능하며, 특정 파일 시스템의 구애를 받지 않는다. (사용자는 그냥 사용하면 OS가 알아서 해준다는 의미)</li>
 <li>파일 시스템의 블록 수에서 파일 시스템의 유지 관리를 수행하는 df, fsck 같은 유틸리티 도구도 지원하고 있다.</li>
 <li>디스크 블록 보다 작은 데이터 일지라도 똑같이 한 블록을 점유한다. (최소 한 블록의 크기를 가진다.)</li>
 </ul>
-<h4 id="하둡-분산-파일-시스템"><a href="#하둡-분산-파일-시스템" class="headerlink" title="하둡 분산 파일 시스템"></a>하둡 분산 파일 시스템</h4><ul>
-<li><p>HDFS 블록은 기본적으로 128 MB 단위를 사용한다. (하둡 1에서는 64 MB 였다가, 2.X 부터 128 MB가 defualt가 되었다.)</p>
+<h4 id="3-하둡-분산-파일-시스템"><a href="#3-하둡-분산-파일-시스템" class="headerlink" title="(3) 하둡 분산 파일 시스템"></a>(3) 하둡 분산 파일 시스템</h4><hr>
+<ul>
+<li><p>HDFS 블록은 기본적으로 <code>128 MB</code> 단위를 사용한다. (하둡 1에서는 64 MB였으나, 2.X 버전부터 128 MB가 기본값으로 설정되었다.)</p>
 </li>
 <li><p>하나의 전체 파일은 특정 블록 크기의 여러 청크(chunk)로 분할한다. 청크는 slave machine들에 분산하여 각각 독립적으로 저장된다.</p>
 </li>
 <li><p>HDFS 파일은 단위 블록 크기(128MB)보다 작을 경우 128 MB 블록 크기가 아닌 필요한 만큼의 용량을 점유한다. (128 MB 보다 작은 1 MB 파일은 1 MB 만 점유한다.)</p>
 </li>
-<li><p>파일 시스템의 메타 데이터는 Name Node(하둡의 데이터 저장 위치인 메타 데이터를 관리하는 Master Machine의 프로세스)의 메모리에서 관리한다. 저장 할 수 있는 파일의 수는 네임노드의 메모리 용량에 좌우 되지만, 작은 파일(하둡2의 기본 블록 단위인 128MB 보다 작은)의 메타 데이터를 저장하는 것은 당연히 한 블록 사이즈를 채운 크기의 메타 데이터를 저장하는 것보다 불리하다.</p>
+<li><p>파일 시스템의 메타데이터는 NameNode(하둡의 데이터 저장 위치를 관리하는 마스터 머신 프로세스)의 메모리에서 관리된다. 저장할 수 있는 파일의 수는 네임노드의 메모리 용량에 의존하지만, 작은 파일(하둡 2의 기본 블록 크기인 128MB보다 작은)의 메타데이터를 저장하는 것은 블록 크기를 채운 메타데이터를 저장하는 것보다 비효율적이다.</p>
 </li>
-<li><p>이유 : 작은 파일이라고 저장을 안 할수는 없기 때문에 똑같이  네임노드의 메모리를 잡아먹기 때문이다. (하둡도 Java 프로그램인 이상, 객체라는 단위에서 객체 단위의 heap 메모리를 사용 할 것으로 예상된다.) 파일 수가 백만 개고, 각 파일의 블록이 하나면 300 MB 정도 필요한 데, HDFS에서 파일은 매우 큰 데이터이어야만 효율적이다.</p>
+<li><p>이유: 작은 파일도 저장해야 하므로, 동일하게 네임노드의 메모리를 소모하게 된다. 하둡이 Java 프로그램이기 때문에 객체 단위에서 힙 메모리를 사용할 것으로 예상된다. 예를 들어, 파일 수가 백만 개이고 각 파일이 하나의 블록이라면 약 300 MB의 메모리가 필요하다. 따라서 HDFS는 매우 큰 데이터 파일에 최적화되어 있다.</p>
 </li>
-<li><p>Apache Software 재단의 일원이자 Hadoop Committer인 톰 화이트의 발언에 의하면 파일, 디렉터리, 블록은 각각 150 Byte 정도 필요하다고 한다.</p>
+<li><p>Apache Software 재단의 일원이자 Hadoop Committer인 톰 화이트에 따르면, 파일, 디렉터리, 블록 각각에 약 150 Byte의 메타데이터가 필요하다.</p>
 </li>
 </ul>
-<h3 id="다중-라이터-writer-와-파일의-임의-수정이-발생하는-분야"><a href="#다중-라이터-writer-와-파일의-임의-수정이-발생하는-분야" class="headerlink" title="다중 라이터(writer)와 파일의 임의 수정이 발생하는 분야"></a>다중 라이터(writer)와 파일의 임의 수정이 발생하는 분야</h3><ul>
+<h3 id="3-3-다중-라이터-writer-와-파일의-임의-수정이-발생하는-분야"><a href="#3-3-다중-라이터-writer-와-파일의-임의-수정이-발생하는-분야" class="headerlink" title="3.3 다중 라이터(writer)와 파일의 임의 수정이 발생하는 분야"></a>3.3 다중 라이터(writer)와 파일의 임의 수정이 발생하는 분야</h3><hr>
+<ul>
 <li><p>HDFS는 단일 라이터(writer)로 파일을 쓴다. insert와 같이 한 번 쓰고 끝나거나, 파일 끝에 append와 같이 덧붙이는것은 가능하다. 하지만 파일의 임의 위치에 있는 내용을 update하는 다중 라이터는 지원하지 않는다. (Hadoop 2.X 기준)</p>
 </li>
 <li><p>하둡 3.X  버전부터는 update와 같은 ACID 트랜잭션을 설정을 통해서 사용할 수 있게 지원하고 있다.</p>
 </li>
 </ul>
-<h2 id="☆-HDFS-블록이-큰-이유"><a href="#☆-HDFS-블록이-큰-이유" class="headerlink" title="☆ HDFS 블록이 큰 이유"></a>☆ HDFS 블록이 큰 이유</h2><blockquote>
+<h2 id="☆-HDFS-블록이-큰-이유"><a href="#☆-HDFS-블록이-큰-이유" class="headerlink" title="☆ HDFS 블록이 큰 이유"></a>☆ HDFS 블록이 큰 이유</h2><hr>
+<blockquote>
 <p>탐색 비용을 최소화 하기 위함이다.</p>
 </blockquote>
 <ul>
 <li>블록 크기가 크다면 블록 시작점을 탐색하는 데 걸리는 시간이 감소한다. (블록 크기가 크기 때문에 분할된 블록의 개수는 작다. 따라서 블록을 찾기가 쉬워진다.)</li>
 <li>블록의 사이즈는 디스크 전송 속도에 크게 영향을 준다. 블록이 많으면 탐색 시간에도 많은 시간을 사용하지만, 블록의 크기가 큼으로써 블록 수가 적어지면 데이터를 탐색하는 시간 - 보다도 네트워크를 통해 전송하는 데 더 많은 시간을 할애 가능하다.</li>
 </ul>
-<h3 id="☆-HDFS에서-블록-추상화의-이점"><a href="#☆-HDFS에서-블록-추상화의-이점" class="headerlink" title="☆ HDFS에서 블록 추상화의 이점"></a>☆ HDFS에서 블록 추상화의 이점</h3><h4 id="①-파일-하나의-크기가-단일-디스크의-용량-보다-훨씬-커질-수-있다"><a href="#①-파일-하나의-크기가-단일-디스크의-용량-보다-훨씬-커질-수-있다" class="headerlink" title="① 파일 하나의 크기가 단일 디스크의 용량 보다 훨씬 커질 수 있다."></a>① 파일 하나의 크기가 단일 디스크의 용량 보다 훨씬 커질 수 있다.</h4><ul>
+<h3 id="☆-HDFS에서-블록-추상화의-이점"><a href="#☆-HDFS에서-블록-추상화의-이점" class="headerlink" title="☆ HDFS에서 블록 추상화의 이점"></a>☆ HDFS에서 블록 추상화의 이점</h3><hr>
+<h4 id="①-파일-하나의-크기가-단일-디스크의-용량-보다-훨씬-커질-수-있다"><a href="#①-파일-하나의-크기가-단일-디스크의-용량-보다-훨씬-커질-수-있다" class="headerlink" title="① 파일 하나의 크기가 단일 디스크의 용량 보다 훨씬 커질 수 있다."></a>① 파일 하나의 크기가 단일 디스크의 용량 보다 훨씬 커질 수 있다.</h4><hr>
+<ul>
 <li>하나의 파일을 구성하는 여러 개의 청크 블록이 동일 디스크에 저장 되지 않아도 된다. 클러스터의 노드에 블록을 분산 할 수 있고, 디스크가 부족할 때 클러스터의 노드를 늘림으로써 scale-out이 가능하다.</li>
 </ul>
-<h4 id="②-파일-단위-보다는-블록-단위의-추상화를-통해-서브-시스템을-단순하게-만든다"><a href="#②-파일-단위-보다는-블록-단위의-추상화를-통해-서브-시스템을-단순하게-만든다" class="headerlink" title="② 파일 단위 보다는 블록 단위의 추상화를 통해 서브 시스템을 단순하게 만든다."></a>② 파일 단위 보다는 블록 단위의 추상화를 통해 서브 시스템을 단순하게 만든다.</h4><ul>
+<h4 id="②-파일-단위-보다는-블록-단위의-추상화를-통해-서브-시스템을-단순하게-만든다"><a href="#②-파일-단위-보다는-블록-단위의-추상화를-통해-서브-시스템을-단순하게-만든다" class="headerlink" title="② 파일 단위 보다는 블록 단위의 추상화를 통해 서브 시스템을 단순하게 만든다."></a>② 파일 단위 보다는 블록 단위의 추상화를 통해 서브 시스템을 단순하게 만든다.</h4><hr>
+<ul>
 <li><p>단순화는 모든 시스템의 이상향이다. 특히나 장애 유형이 많은 분산 시스템에 더욱 중요하다.</p>
 </li>
 <li><p>블록 추상화를 통해 블록을 다루는 스토리지의 서브 시스템은 관리를 단순화 한다. (블록이 고정 크기이며, 저장에 필요한 용량에 디스크의 용량만 계산하면 된다. 즉, 권한 정보와 같은 메타 데이터는 네임노드에서만 관리를 할 뿐, 블록과 함께 저장 될 필요가 없다.)</p>
 </li>
 </ul>
-<h4 id="③-내고장성-fault-tolerance-과-가용성-availability-을-제공하는-데-필요한-복제-replication-구현에-적합하다"><a href="#③-내고장성-fault-tolerance-과-가용성-availability-을-제공하는-데-필요한-복제-replication-구현에-적합하다" class="headerlink" title="③ 내고장성(fault-tolerance)과 가용성(availability)을 제공하는 데 필요한 복제(replication) 구현에 적합하다."></a>③ 내고장성(fault-tolerance)과 가용성(availability)을 제공하는 데 필요한 복제(replication) 구현에 적합하다.</h4><ul>
+<h4 id="③-내고장성-fault-tolerance-과-가용성-availability-을-제공하는-데-필요한-복제-replication-구현에-적합하다"><a href="#③-내고장성-fault-tolerance-과-가용성-availability-을-제공하는-데-필요한-복제-replication-구현에-적합하다" class="headerlink" title="③ 내고장성(fault-tolerance)과 가용성(availability)을 제공하는 데 필요한 복제(replication) 구현에 적합하다."></a>③ 내고장성(fault-tolerance)과 가용성(availability)을 제공하는 데 필요한 복제(replication) 구현에 적합하다.</h4><hr>
+<ul>
 <li><p>사이즈가 큰 하나의 블록을 이용할 수 없다면 복제(replica)된 다른 머신에서 복제본을 읽도록 클라이언트에게 알려준다.</p>
 </li>
 <li><p>특정 블록이 손상되거나 특정 머신에 장애가 발생한다면, 다른 머신의 복사본을 복제하여 복제 계수(replication factor)를 유지하여 정상 수준을 유지할 수 있다.</p>
@@ -334,10 +349,12 @@
 </ul>
 <h4 id="오프-힙-off-heap"><a href="#오프-힙-off-heap" class="headerlink" title="오프-힙(off-heap)"></a>오프-힙(off-heap)</h4><p>자바 힙 외부에서 관리</p>
 <h2 id="hadoop-fs-vs-hdfs-dfs"><a href="#hadoop-fs-vs-hdfs-dfs" class="headerlink" title="hadoop fs vs hdfs dfs"></a>hadoop fs vs hdfs dfs</h2><hr>
-<h3 id="hadoop-fs"><a href="#hadoop-fs" class="headerlink" title="hadoop fs"></a>hadoop fs</h3><blockquote>
+<h3 id="hadoop-fs"><a href="#hadoop-fs" class="headerlink" title="hadoop fs"></a>hadoop fs</h3><hr>
+<blockquote>
 <p>로컬 파일시스템, HDFS 등과 여러 파일시스템과 상호작용</p>
 </blockquote>
-<h3 id="hdfs-dfs"><a href="#hdfs-dfs" class="headerlink" title="hdfs dfs"></a>hdfs dfs</h3><blockquote>
+<h3 id="hdfs-dfs"><a href="#hdfs-dfs" class="headerlink" title="hdfs dfs"></a>hdfs dfs</h3><hr>
+<blockquote>
 <p>HDFS와 관련된 파일시스템에만 상호작용</p>
 </blockquote>
 <h2 id="HDFS-CLI"><a href="#HDFS-CLI" class="headerlink" title="HDFS CLI"></a>HDFS CLI</h2><hr>

@@ -5,12 +5,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Namenode &amp; Datanode, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Hadoop 클러스터
+    <meta name="description" content="1. Hadoop Cluster
 
-Hadoop 클러스터는 마스터-슬레이브(master-slave) 구조로 동작하는 두 종류의 프로세스인 네임노드(namenode)와 데이터 노드(datanode)로 구성
+Hadoop 클러스터는 마스터-슬레이브(master-slave) 구조로 동작하며, NameNode와 DataNode라는 두 가지 프로세스로 구성된다.
 
 
-namenode와 d">
+NameNode와 DataN">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -228,37 +228,48 @@ namenode와 d">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Hadoop-클러스터"><a href="#Hadoop-클러스터" class="headerlink" title="Hadoop 클러스터"></a>Hadoop 클러스터</h2><hr>
+                <h2 id="1-Hadoop-Cluster"><a href="#1-Hadoop-Cluster" class="headerlink" title="1. Hadoop Cluster"></a>1. Hadoop Cluster</h2><hr>
 <blockquote>
-<p>Hadoop 클러스터는 마스터-슬레이브(master-slave) 구조로 동작하는 두 종류의 프로세스인 네임노드(namenode)와 데이터 노드(datanode)로 구성</p>
+<p>Hadoop 클러스터는 마스터-슬레이브(master-slave) 구조로 동작하며, NameNode와 DataNode라는 두 가지 프로세스로 구성된다.</p>
 </blockquote>
 <ul>
-<li><code>namenode와 datanode는 각각의 마스터-슬레이브 머신에서 구동되는 프로세스이지 머신(혹은 서버)가 아니다.</code> 커뮤니케이션에 있어 용어를 분명히 정의해야 오류를 범할 수 있다.</li>
+<li><code>NameNode와 DataNode는 각각 마스터-슬레이브 구조에서 구동되는 프로세스이지, 머신(서버) 자체가 아니다.</code> 커뮤니케이션 시 이러한 용어를 명확하게 정의하지 않으면 혼동과 오류가 발생할 수 있다.</li>
 </ul>
-<h2 id="네임노드-Namenode"><a href="#네임노드-Namenode" class="headerlink" title="네임노드 (Namenode)"></a>네임노드 (Namenode)</h2><hr>
+<h2 id="2-Namenode"><a href="#2-Namenode" class="headerlink" title="2. Namenode"></a>2. Namenode</h2><hr>
 <blockquote>
 <p>파일 시스템의 네임스페이스를 관리하는 역할을 수행하는 프로세스</p>
 </blockquote>
 <ul>
-<li><p>파일시스템의 트리와 그 트리에 포함된 모든 파일과 디렉토리에 대한 메타데이터를 유지한다.</p>
+<li><p>파일 시스템의 트리 구조와 해당 트리에 포함된 모든 파일 및 디렉토리의 메타데이터를 관리한다.</p>
 </li>
-<li><p>메타데이터는 네임스페이스 이미지(namespace image)와 에디트 로그(edit log)라는 두 종류의 파일로 로컬 디스크에 영속적으로 저장</p>
+<li><p>네임노드는 파일을 구성하는 모든 블록이 어느 데이터노드에 저장되어 있는지 메모리에 유지하고 있다.</p>
 </li>
-<li><p>네임노드는 파일에 속한 모든 블록이 어느 데이터 노드에 있는지 파악</p>
-</li>
-<li><p>단, 블록의 위치 정보는 시스템이 시작할 때 모든 데이터노드로부터 받아서 재구성하기 때문에 디스크에 영속적으로 저장하지는 않음</p>
-</li>
-</ul>
-<h3 id="네임노드의-중요성"><a href="#네임노드의-중요성" class="headerlink" title="네임노드의 중요성"></a>네임노드의 중요성</h3><p><code>네임노드가 없으면 파일시스템은 동작하지 않음</code></p>
+<li><p>메타데이터는 네임스페이스 이미지(namespace image)와 에디트 로그(edit log)라는 두 가지 파일 형태로 로컬 디스크에 영구적으로 저장된다.</p>
 <ul>
-<li><p>네임노드 손상시 파일시스템의 어떤 파일도 찾을 수 없음</p>
+<li><p><code>네임스페이스 이미지 (Namespace Image)</code>: HDFS 파일 시스템의 전체 디렉토리 구조와 모든 파일 및 디렉토리의 메타데이터를 포함하는 스냅샷 파일이다. 주기적으로 업데이트되며, 시스템 재시작 시 파일 시스템의 상태를 복구하는 데 사용된다.</p>
 </li>
-<li><p>데이터노드에 블록이 저장되어 있지만 블록 정보를 이용하여 파일을 재구성 할 수 없기 때문</p>
-</li>
-<li><p>네임노드의 장애복구 기능은 필수적</p>
+<li><p><code>에디트 로그 (Edit Log)</code>: 파일 시스템에서 발생하는 모든 변경 사항(파일 추가, 삭제, 이름 변경 등)을 기록하는 로그 파일이다. 네임스페이스 이미지가 최신 상태로 유지되기 전까지의 변경 기록을 저장하여, 시스템이 재시작될 때 로그를 재생해 최신 상태를 복구할 수 있도록 돕는다.</p>
 </li>
 </ul>
-<h3 id="네임노드-장애복구를-위한-두-가지-메커니즘"><a href="#네임노드-장애복구를-위한-두-가지-메커니즘" class="headerlink" title="네임노드 장애복구를 위한 두 가지 메커니즘"></a>네임노드 장애복구를 위한 두 가지 메커니즘</h3><h4 id="파일시스템의-메타데이터를-파일로-백업"><a href="#파일시스템의-메타데이터를-파일로-백업" class="headerlink" title="파일시스템의 메타데이터를 파일로 백업"></a>파일시스템의 메타데이터를 파일로 백업</h4><blockquote>
+</li>
+<li><p>블록의 위치 정보는 시스템 시작 시 모든 데이터 노드로부터 수집하여 재구성되므로, 디스크에 영속적으로 저장되지 않는다.</p>
+</li>
+</ul>
+<h3 id="2-1-네임노드의-중요성"><a href="#2-1-네임노드의-중요성" class="headerlink" title="2.1 네임노드의 중요성"></a>2.1 네임노드의 중요성</h3><hr>
+<blockquote>
+<p>네임노드가 없으면 파일 시스템이 작동하지 않는다.</p>
+</blockquote>
+<ul>
+<li><p>네임노드가 손상되면 파일 시스템의 어떤 파일도 찾을 수 없다.</p>
+</li>
+<li><p>데이터노드에 블록이 저장되어 있지만, 블록 정보만으로는 파일을 재구성할 수 없다.</p>
+</li>
+<li><p>네임노드의 장애 복구 기능은 필수적이다.</p>
+</li>
+</ul>
+<h3 id="2-2-네임노드-장애복구-메커니즘"><a href="#2-2-네임노드-장애복구-메커니즘" class="headerlink" title="2.2 네임노드 장애복구 메커니즘"></a>2.2 네임노드 장애복구 메커니즘</h3><hr>
+<h4 id="1-파일시스템의-메타데이터를-파일로-백업"><a href="#1-파일시스템의-메타데이터를-파일로-백업" class="headerlink" title="(1) 파일시스템의 메타데이터를 파일로 백업"></a>(1) 파일시스템의 메타데이터를 파일로 백업</h4><hr>
+<blockquote>
 <p>메타데이터를 지속적인 상태로 보존하기 위해 파일로 백업하는 방법</p>
 </blockquote>
 <ul>
@@ -269,7 +280,8 @@ namenode와 d">
 <li><p>권장 방법 : 로컬 디스크와 원격의 NFS 마운트 두 곳에 동시에 백업</p>
 </li>
 </ul>
-<h4 id="보조-네임노드-secondary-namenode-를-운영"><a href="#보조-네임노드-secondary-namenode-를-운영" class="headerlink" title="보조 네임노드(secondary namenode)를 운영"></a>보조 네임노드(secondary namenode)를 운영</h4><blockquote>
+<h4 id="2-보조-네임노드-Secondary-Namenode-를-운영"><a href="#2-보조-네임노드-Secondary-Namenode-를-운영" class="headerlink" title="(2) 보조 네임노드(Secondary Namenode)를 운영"></a>(2) 보조 네임노드(Secondary Namenode)를 운영</h4><hr>
+<blockquote>
 <p>에디트 로그가 너무 커지지 않도록 주기적으로 네임스페이스 이미지를 에디트 로그와 병합하여 새로운 네임스페이스 이미지를 만드는 역할</p>
 </blockquote>
 <ul>
@@ -287,30 +299,33 @@ namenode와 d">
 </li>
 </ul>
 <p>보조 네임노드는 Hadoop 2.X 버전부터 잘 쓰이지 않는다. 네임노드의 고가용성(HA, High Available)을 만들기 위해 <code>Active-Stand by</code> 형태로 namenode를 구축하는 것이 보편화 되었다.</p>
-<h2 id="데이터노드-Datanode"><a href="#데이터노드-Datanode" class="headerlink" title="데이터노드 (Datanode)"></a>데이터노드 (Datanode)</h2><hr>
+<h2 id="3-Datanode"><a href="#3-Datanode" class="headerlink" title="3. Datanode"></a>3. Datanode</h2><hr>
 <blockquote>
 <p>파일시스템의 실질적인 데이터 저장 역할을 수행하는 프로세스</p>
 </blockquote>
 <ul>
 <li>클라이언트나 네임노드의 요청이 있을 때 블록을 저장하고 탐색, 저장하고 있는 블록의 목록을 주기적으로 네임노드에 보고</li>
 </ul>
-<h4 id="HDFS-클라이언트"><a href="#HDFS-클라이언트" class="headerlink" title="HDFS 클라이언트"></a>HDFS 클라이언트</h4><blockquote>
-<p>사용자를 대신해서 네임노드와 데이터노드 사이엥서 통신하고 파일시스템에 접근</p>
+<h3 id="4-HDFS-Client"><a href="#4-HDFS-Client" class="headerlink" title="4. HDFS Client"></a>4. HDFS Client</h3><hr>
+<blockquote>
+<p>사용자를 대신하여 네임노드와 데이터노드 간의 통신을 수행하고 파일 시스템에 접근한다.</p>
 </blockquote>
 <ul>
-<li><p>HDFS 클라이언트는 POSIX(Portable Operation System Interface)와 유사한 파일시스템 인터페이스 제공</p>
+<li><p>HDFS 클라이언트는 POSIX(Portable Operating System Interface)와 유사한 파일 시스템 인터페이스를 제공한다.</p>
 </li>
-<li><p>따라서 사용자는 네임노드와 데이터노드에 관련된 함수를 몰라서 코드 작성 가능</p>
+<li><p>따라서 사용자는 네임노드와 데이터노드에 관련된 함수를 알지 못해도 코드를 작성할 수 있다.</p>
 </li>
 </ul>
-<h2 id="Federation"><a href="#Federation" class="headerlink" title="Federation"></a>Federation</h2><hr>
+<h2 id="5-Federation"><a href="#5-Federation" class="headerlink" title="5. Federation"></a>5. Federation</h2><hr>
 <blockquote>
-<p>여러 개의 독립적인 namenode와 datanode 클러스터를 하나의 논리적인 단일 namenode로 조합하는 방법</p>
+<p>여러 개의 독립적인 네임노드와 데이터노드 클러스터를 하나의 논리적인 단일 네임노드로 통합하는 방법</p>
 </blockquote>
-<h3 id="Federation-필요성"><a href="#Federation-필요성" class="headerlink" title="Federation 필요성"></a>Federation 필요성</h3><blockquote>
-<p>namenode는 파일시스템의 모든 파일과 각 블록에 대한 참조 정보를 메모리에서 관리. 따라서 파일이 많은 대형 클러스터의 확장성에 가장 큰 걸림돌이 되는 것은 메모리</p>
+<h3 id="5-1-Federation-필요성"><a href="#5-1-Federation-필요성" class="headerlink" title="5.1 Federation 필요성"></a>5.1 Federation 필요성</h3><hr>
+<blockquote>
+<p>네임노드는 파일 시스템의 모든 파일과 각 블록에 대한 참조 정보를 메모리에서 관리한다. 따라서 파일이 많은 대형 클러스터에서는 메모리가 확장성에 가장 큰 걸림돌이 된다.</p>
 </blockquote>
-<h3 id="Federation-특징"><a href="#Federation-특징" class="headerlink" title="Federation 특징"></a>Federation 특징</h3><ul>
+<h3 id="5-2-Federation-특징"><a href="#5-2-Federation-특징" class="headerlink" title="5.2 Federation 특징"></a>5.2 Federation 특징</h3><hr>
+<ul>
 <li><p>namenode의 메모리 관련 확장성 문제를 해결하기 위해 2.x 릴리즈부터 지원</p>
 </li>
 <li><p>각각의 namenode가 파일시스템의 네임스페이스 일부를 나누어 관리하는 방식으로 새로운 namenode 추가 가능</p>
@@ -324,7 +339,8 @@ namenode와 d">
 <li><p>Federation 적용시 각 자기만의 namenode는 네임스페이스 볼륨(namespace volume)과 블록 풀(block pool)을 관리</p>
 </li>
 </ul>
-<h3 id="namespace-volume"><a href="#namespace-volume" class="headerlink" title="namespace volume"></a>namespace volume</h3><blockquote>
+<h4 id="1-namespace-volume"><a href="#1-namespace-volume" class="headerlink" title="(1) namespace volume"></a>(1) namespace volume</h4><hr>
+<blockquote>
 <p>네임스페이스의 메타데이터를 구성</p>
 </blockquote>
 <ul>
@@ -335,7 +351,8 @@ namenode와 d">
 <li><p>특정 namenode의 장애는 다른 namenode가 관리하는 네임스페이스의 가용성에 영향 X</p>
 </li>
 </ul>
-<h3 id="block-pool"><a href="#block-pool" class="headerlink" title="block pool"></a>block pool</h3><blockquote>
+<h4 id="2-block-pool"><a href="#2-block-pool" class="headerlink" title="(2) block pool"></a>(2) block pool</h4><hr>
+<blockquote>
 <p>네임스페이스에 포함된 파일의 전체 블록을 보관</p>
 </blockquote>
 <ul>
@@ -525,9 +542,9 @@ namenode와 d">
                 <a href="/2024/06/16/Hadoop/posting/hdfs-concept/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="HDFS 기본 개념">
+                        <img src="/images/logos/hadoop-logo.png" class="responsive-img" alt="HDFS 개념">
                         
-                        <span class="card-title diy-neon-red">HDFS 기본 개념</span>
+                        <span class="card-title diy-neon-red">HDFS 개념</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
