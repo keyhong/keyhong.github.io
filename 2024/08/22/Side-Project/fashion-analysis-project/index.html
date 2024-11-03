@@ -283,190 +283,227 @@ Fashion Campus 는 15~35세 사이의 젊은 층을 타겟으로 하는 e-commer
 <h2 id="1-Dimensional-Modeling"><a href="#1-Dimensional-Modeling" class="headerlink" title="1. Dimensional Modeling"></a>1. Dimensional Modeling</h2><hr>
 <h3 id="1-1-Data-EDA"><a href="#1-1-Data-EDA" class="headerlink" title="1.1 Data EDA"></a>1.1 Data EDA</h3><hr>
 <p>해당 커머스 raw 데이터의 경우, transactions 데이터에는 <code>주문 건(@PK)</code>별로 JSON 컬럼의 주문 상품 리스트가 들어 있다. 한 행의 JSON을 풀어내게 되면 <code>주문 건(@PK1)</code>, <code>상품ID(@PK2)</code>로 식별자가 구성되는 데, 세분성이 낮은 레벨에서 기존에 주문 건당 집계된 <code>total_amount</code> fact가 중복이 발생된다. <br><br>더 낮은 세분성으로 통합할 수 있지만, 주문 건 레벨의 세분성이 매출 분석을 하기에는 더 사용 빈도와 쿼리 편의성이 더 높다. 또한 더 적은 데이터만으로 집계할 수 있기 때문에 쿼리 성능도 좋다. 이러한 이유로 fact 테이블의 3가지 종류로 분류했다.</p>
+<hr>
 <ul>
-<li><p><code>Fact Table 1 : 이벤트로그</code></p>
+<li><p><code>Dimension Table 1 : 고객 마스터 테이블</code></p>
+<ul>
+<li>주식별자(@PK) : 고객ID</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p><code>Dimension Table 2 : 상품 마스터 테이블</code></p>
+<ul>
+<li>주식별자(@PK) : 상품ID</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p><code>Dimension Table 3 : 상품 마스터 테이블</code></p>
+<ul>
+<li>주식별자(@PK) : 기준일자ID</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p><code>Fact Table 1 : 주문 테이블</code></p>
+  <table>
+    <tr>
+      <th>Primary Key</th>
+      <th>Fact Table Type</th>
+      <th>Granularity</th>
+      <th>Fact</th>
+      <th>활용 가능 분석</th>
+    </tr>
+    <tr>
+      <td style="text-align: center;">주문ID</td>
+      <td style="text-align: center;">Transaction</td>
+      <td style="text-align: center;">주문ID</td>
+      <td style="text-align: center;">상품주문총금액, 배송수수료, 프로모션할인금액, 최종결제금액</td>
+      <td style="text-align: center;">매출 분석, 리텐션 분석, RFM 분석</td>
+    </tr>
+  </table>
+
+  <br>
+</li>
+<li><p>컬럼별 분석 방법 및 BI 차트 유형</p>
+  <table>
+    <tr>
+      <th>분류명@PK</th>
+      <th>분석명@PK</th>
+      <th>집계 주기</th>
+      <th>집계 컬럼명</th>
+      <th>집계 함수 유형명</th>
+      <th>분석 목적명</th>
+      <th>차트 유형명</th>
+    </tr>
+    <tr>
+      <td style="text-align: center;">매출 분석</td>
+      <td style="text-align: center;">재구매 주기<br>분석</td>
+      <td style="text-align: center;">연월</td>
+      <td style="text-align: center;">고객ID, 주문일자</td>
+      <td style="text-align: center;">RAG, AVG, COUNT</td>
+      <td style="text-align: center;">PMF 확인</td>
+      <td style="text-align: center;">라인 차트</td>
+    </tr>  
+    <tr>
+      <td style="text-align: center;">매출 분석</td>
+      <td style="text-align: center;">구매건수 분석</td>
+      <td style="text-align: center;">연월</td>
+      <td style="text-align: center;">주문ID</td>
+      <td style="text-align: center;">COUNT</td>
+      <td style="text-align: center;">PMF 확인</td>
+      <td style="text-align: center;">라인 차트</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">매출 분석</td>
+      <td style="text-align: center;">매출액 분석</td>
+      <td style="text-align: center;">연월</td>
+      <td style="text-align: center;">상품주문총금액</td>
+      <td style="text-align: center;">SUM</td>
+      <td style="text-align: center;">PMF 확인</td>
+      <td style="text-align: center;">라인 차트</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">매출 분석</td>
+      <td style="text-align: center;">AOV 분석</td>
+      <td style="text-align: center;">연월</td>
+      <td style="text-align: center;">상품주문총금액, 주문ID</ 구매유저수</td>
+      <td style="text-align: center;">SUM, COUNT</td>
+      <td style="text-align: center;">PMF 확인</td>
+      <td style="text-align: center;">라인 차트</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">매출 분석</td>
+      <td style="text-align: center;">ARPPU 분석</td>
+      <td style="text-align: center;">연월</td>
+      <td style="text-align: center;">상품주문총금액, 고객ID</td>
+      <td style="text-align: center;">SUM, COUNT</td>
+      <td style="text-align: center;">PMF 확인</td>
+      <td style="text-align: center;">라인 차트</td>
+    </tr>        
+    <tr>
+      <td style="text-align: center;">매출 분석</td>
+      <td style="text-align: center;">퍼널분석<br>(가입 -> 구매)</td>
+      <td style="text-align: center;">가입연월</td>
+      <td style="text-align: center;">고객ID</td>
+      <td style="text-align: center;">AVG</td>
+      <td style="text-align: center;">PMF 확인</td>
+      <td style="text-align: center;">라인 차트</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">매출 분석</td>
+      <td style="text-align: center;">User Movement</td>
+      <td style="text-align: center;">연월</td>
+      <td style="text-align: center;">고객ID</td>
+      <td style="text-align: center;">SUM</td>
+      <td style="text-align: center;">PMF 확인</td>
+      <td style="text-align: center;">로컬 차트</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">문제원인<br>분석</td>
+      <td style="text-align: center;">구매 리텐션<br>분석</td>
+      <td style="text-align: center;">연월</td>
+      <td style="text-align: center;">고객ID</td>
+      <td style="text-align: center;">SUM, COUNT</td>
+      <td style="text-align: center;">PMF 확인</td>
+      <td style="text-align: center;">코호트 차트</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">문제원인<br>분석</td>
+      <td style="text-align: center;">RFM 분석</td>
+      <td style="text-align: center;">연월</td>
+      <td style="text-align: center;">고객ID, 일자ID, 상품주문총금액</td>
+      <td style="text-align: center;">SUM, MAX, COUNT, PERCENTILE</td>
+      <td style="text-align: center;">고객등급<br>분류</td>
+      <td style="text-align: center;">트리 차트</td>
+    </tr>
+  </table></li>
+</ul>
+<br>
+
+<hr>
+<ul>
+<li><p><code>Fact Table 2 : 주문상품 테이블</code></p>
+  <table>
+    <tr>
+      <th>Primary Key</th>
+      <th>Fact Table Type</th>
+      <th>Granularity</th>
+      <th>Fact</th>
+      <th>활용 가능 분석</th>
+    </tr>
+    <tr>
+      <td style="text-align: center;">주문ID, 상품ID</td>
+      <td style="text-align: center;">Transaction</td>
+      <td style="text-align: center;">주문ID-상품ID</td>
+      <td style="text-align: center;">상품수량, 상품단가, 상품주문금액</td>
+      <td style="text-align: center;">세그먼트/코호트별 인기 구매상품 카테고리 분석</td>
+    </tr>
+  </table>
+  
+  <br>
+</li>
+<li><p>컬럼별 분석 방법 및 BI 차트 유형</p>
+  <table>
+    <tr>
+      <th>분류명@PK</th>
+      <th>분석명@PK</th>
+      <th>집계 주기</th>
+      <th>집계 컬럼명</th>
+      <th>집계 함수 유형명</th>
+      <th>분석 목적명</th>
+      <th>차트 유형명</th>
+    </tr>
+    <tr>
+      <td style="text-align: center;">세그먼트 분석</td>
+      <td style="text-align: center;">인기 구매상품 카테고리 분석</td>
+      <td style="text-align: center;">연월, 분기</td>
+      <td style="text-align: center;">상품유형 대/중/소 분류명</td>
+      <td style="text-align: center;">SUM</td>
+      <td style="text-align: center;">군집별 관심상품 분석</td>
+      <td style="text-align: center;">생키차트, 도넛 차트</td>
+    </tr>
+  </table>
+  <br></li>
+</ul>
+<hr>
+<ul>
+<li><p><code>Fact Table 3 : 이벤트로그 테이블</code></p>
+  <table>
+    <tr>
+      <th>Primary Key</th>
+      <th>Fact Table Type</th>
+      <th>Granularity</th>
+      <th>Fact</th>
+      <th>활용 가능 분석</th>
+    </tr>
+    <tr>
+      <td style="text-align: center;">이벤트로그ID</td>
+      <td style="text-align: center;">Factless</td>
+      <td style="text-align: center;">이벤트로그일시</td>
+      <td style="text-align: center;">이벤트로그명</td>
+      <td style="text-align: center;">퍼널 분석, 연관성 분석</td>
+    </tr>
+  </table>      
+
+
 <blockquote>
 <p>데이터 탐색 (EDA)<hr>이벤트 로그 데이터의 활용성은 낮다고 판단된다. <br><br>첫 번째 이유는 UTM 파라미터가 없어 Acquisition에 대한 소스(Source)나 매치(Medium), 그리고 Organic&#x2F;Non-Organic에 대한 트랙킹이 어렵다. 또한 세션 별로 customer_id를 매핑했을 때, customer_id가 결합된(즉, NULL이 아닌) 이벤트 로그 행의 비율이 전체 행 대비 95%에 달했다. 이는 Kaggle에서 제공하는 이벤트 로그 데이터의 대부분이 구매한 고객에 대한 데이터로만 추출되었을 가능성이 크다는 것을 의미한다. 이러한 이유로 ARPU와 ARPPU를 계산하여 전체 활성 유저의 매출과 결제 유저(PU)당 매출을 비교하고자 했지만, 이 지표가 신뢰할 수 없을 것으로 판단되었다. 일반적으로 커머스에서 기대되는 AU와 PU의 비율 차이에 비해 그 값이 상당히 미미할 것으로 예상되며, 활성 유저의 샘플링 데이터로 매출 기여에 대한 모수가 아니라는 문제도 있다. <br><br>두 번째 이유는 세션 타임에 대한 정의가 불명확하다는 점이다. 데이터 분석 결과, 동일 세션에서 24시간을 초과하는 경우가 발견되었다. 세션별 로그의 일시를 기준으로 오름차순으로 순번을 매겼을 때, BOOKING(주문) 이벤트가 바로 발생하는 사례도 있었으며, 이는 퍼널 정의에 있어 해당 데이터를 분석하는 데 어려움이 있었다.<br><br>** 이벤트로그명 : SCROLL, HOMEPAGE, CLICK, ITEM_DETAIL, ADD_TO_CART, PROMO_PAGE, ADD_PROMO, SEARCH, BOOKING</p>
 </blockquote>
-<ul>
-<li>주식별자(@PK) : 이벤트로그ID</li>
-<li>Fact : Factless</li>
-<li>활용 가능 분석 : 퍼널 분석, 연관성 분석</li>
-</ul>
-</li>
-</ul>
-<br>
- 
-<ul>
-<li><p><code>Fact Table 2 : 주문</code></p>
-<ul>
-<li><p>주식별자(@PK) : 주문ID</p>
-</li>
-<li><p>Fact : 상품주문총금액, 배송수수료, 프로모션할인금액, 최종결제금액</p>
-</li>
-<li><p>활용 가능 분석 : 매출 분석, 리텐션 분석, RFM 분석</p>
-<table>
-  <tr>
-    <th>분류명@PK</th>
-    <th>분석명@PK</th>
-    <th>집계 주기</th>
-    <th>집계 컬럼명</th>
-    <th>집계 함수 유형명</th>
-    <th>분석 목적명</th>
-    <th>차트 유형명</th>
-  </tr>
-  <tr>
-    <td style="text-align: center;">매출 분석</td>
-    <td style="text-align: center;">재구매 주기 분석</td>
-    <td style="text-align: center;">연월</td>
-    <td style="text-align: center;">고객ID, 주문일자</td>
-    <td style="text-align: center;">RAG, AVG, COUNT</td>
-    <td style="text-align: center;">PMF 확인</td>
-    <td style="text-align: center;">라인 차트</td>
-  </tr>  
-  <tr>
-    <td style="text-align: center;">매출 분석</td>
-    <td style="text-align: center;">구매건수 분석</td>
-    <td style="text-align: center;">연월</td>
-    <td style="text-align: center;">주문ID</td>
-    <td style="text-align: center;">COUNT</td>
-    <td style="text-align: center;">PMF 확인</td>
-    <td style="text-align: center;">라인 차트</td>
-  </tr>
-  <tr>
-    <td style="text-align: center;">매출 분석</td>
-    <td style="text-align: center;">매출액 분석</td>
-    <td style="text-align: center;">연월</td>
-    <td style="text-align: center;">상품주문총금액</td>
-    <td style="text-align: center;">SUM</td>
-    <td style="text-align: center;">PMF 확인</td>
-    <td style="text-align: center;">라인 차트</td>
-  </tr>
-  <tr>
-    <td style="text-align: center;">매출 분석</td>
-    <td style="text-align: center;">AOV 분석</td>
-    <td style="text-align: center;">연월</td>
-    <td style="text-align: center;">상품주문총금액, 주문ID</ 구매유저수</td>
-    <td style="text-align: center;">SUM, COUNT</td>
-    <td style="text-align: center;">PMF 확인</td>
-    <td style="text-align: center;">라인 차트</td>
-  </tr>
-  <tr>
-    <td style="text-align: center;">매출 분석</td>
-    <td style="text-align: center;">ARPPU 분석</td>
-    <td style="text-align: center;">연월</td>
-    <td style="text-align: center;">상품주문총금액, 고객ID</td>
-    <td style="text-align: center;">SUM, COUNT</td>
-    <td style="text-align: center;">PMF 확인</td>
-    <td style="text-align: center;">라인 차트</td>
-  </tr>        
-  <tr>
-    <td style="text-align: center;">매출 분석</td>
-    <td style="text-align: center;">가입전환 퍼널분석</td>
-    <td style="text-align: center;">가입연월</td>
-    <td style="text-align: center;">고객ID</td>
-    <td style="text-align: center;">AVG</td>
-    <td style="text-align: center;">PMF 확인</td>
-    <td style="text-align: center;">라인 차트</td>
-  </tr>
-  <tr>
-    <td style="text-align: center;">매출 분석</td>
-    <td style="text-align: center;">User Movement</td>
-    <td style="text-align: center;">연월</td>
-    <td style="text-align: center;">고객ID</td>
-    <td style="text-align: center;">SUM</td>
-    <td style="text-align: center;">PMF 확인</td>
-    <td style="text-align: center;">로컬 차트</td>
-  </tr>
-  <tr>
-    <td style="text-align: center;">문제원인분석</td>
-    <td style="text-align: center;">구매 리텐션 분석</td>
-    <td style="text-align: center;">연월</td>
-    <td style="text-align: center;">고객ID</td>
-    <td style="text-align: center;">SUM, COUNT</td>
-    <td style="text-align: center;">PMF 확인</td>
-    <td style="text-align: center;">코호트 차트</td>
-  </tr>
-  <tr>
-    <td style="text-align: center;">문제원인분석</td>
-    <td style="text-align: center;">RFM 분석</td>
-    <td style="text-align: center;">연월</td>
-    <td style="text-align: center;">고객ID, 일자ID, 상품주문총금액</td>
-    <td style="text-align: center;">SUM, MAX, COUNT, PERCENTILE</td>
-    <td style="text-align: center;">고객등급 분류</td>
-    <td style="text-align: center;">트리 차트</td>
-  </tr>
-</table></li>
-</ul>
 </li>
 </ul>
 <br>
 
-<ul>
-<li><p><code>Fact Table 3 : 주문상품</code></p>
-<ul>
-<li><p>주식별자(@PK) : 주문ID, 상품ID</p>
-</li>
-<li><p>Fact : 상품수량, 상품단가, 상품주문금액</p>
-</li>
-<li><p>활용 가능 분석 : 세그먼트&#x2F;코호트별 인기 구매상품 카테고리 분석 </p>
-<table>
-  <tr>
-    <th>분류명@PK</th>
-    <th>분석명@PK</th>
-    <th>집계 주기</th>
-    <th>집계 컬럼명</th>
-    <th>집계 함수 유형명</th>
-    <th>분석 목적명</th>
-    <th>차트 유형명</th>
-  </tr>
-  <tr>
-    <td style="text-align: center;">세그먼트 분석</td>
-    <td style="text-align: center;">인기 구매상품 카테고리 분석</td>
-    <td style="text-align: center;">연월, 분기</td>
-    <td style="text-align: center;">상품유형 대/중/소 분류명</td>
-    <td style="text-align: center;">SUM</td>
-    <td style="text-align: center;">군집별 관심상품 분석</td>
-    <td style="text-align: center;">생키차트, 도넛 차트</td>
-  </tr>
-</table></li>
-</ul>
-</li>
-</ul>
-<br>
 
-<ul>
-<li><p><code>Dimension Table 1 : 통합고객</code></p>
-<ul>
-<li><p>주식별자(@PK) : 고객ID</p>
-</li>
-<li><p>Fact : (None)</p>
-<table>
-  <tr>
-    <th>분류명@PK</th>
-    <th>분석명@PK</th>
-    <th>집계 주기</th>
-    <th>집계 컬럼명</th>
-    <th>집계 함수 유형명</th>
-    <th>분석 목적명</th>
-    <th>차트 유형명</th>
-  </tr>
-  <tr>
-    <td style="text-align: center;">매출 분석</td>
-    <td style="text-align: center;">신규고객유입 분석</td>
-    <td style="text-align: center;">연월</td>
-    <td style="text-align: center;">고객 유입 건수</td>
-    <td style="text-align: center;">SUM</td>
-    <td style="text-align: center;">PMF 확인</td>
-    <td style="text-align: center;">라인 차트</td>
-  </tr>
-</table></li>
-</ul>
-</li>
-</ul>
-<img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeQcuB-yeTFG9h-ccQ?embed=1&width=938&height=1240" width="938" height="1240" alt="DM Logical Modeling"/>
 
-<h3 id="1-2-Subject-Area"><a href="#1-2-Subject-Area" class="headerlink" title="1.2 Subject Area"></a>1.2 Subject Area</h3><hr>
+<h3 id="1-2-Logical-Modeling"><a href="#1-2-Logical-Modeling" class="headerlink" title="1.2 Logical Modeling"></a>1.2 Logical Modeling</h3><hr>
+<img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeQcuB-yeTFG9h-ccQ?embed=1&width=938&height=1240" width="938" height="1240" alt="Data Mart Logical Modeling (단기 프로젝트이므로, 마스터 테이블의 이력 컬럼 미 생성)"/>
+
+<h3 id="1-3-Subject-Area"><a href="#1-3-Subject-Area" class="headerlink" title="1.3 Subject Area"></a>1.3 Subject Area</h3><hr>
 <p>주제영역을 관리 측면을 고려해 3가지로 분류했다.</p>
 <ul>
 <li><p><code>CMN (COMMON)</code> : 전사에서 공통적으로 이용하는 Conformed Dimension 또는 Fact가 존재하는 주제영역</p>
@@ -476,24 +513,24 @@ Fashion Campus 는 15~35세 사이의 젊은 층을 타겟으로 하는 e-commer
 <li><p><code>DM</code> : Commerce 비즈니스와 관련된 마트 주제영역 (보다 구체화된 주제영역 네이밍 필요)</p>
 </li>
 </ul>
-<p>** 주문은 비즈니스의 핵심이 되는 업무이지만, 언제든 다른 서비스의 추가 확장 가능성이 있을 수 있다고 생각되어 DM로 세분화하여 분류함</p>
+<p>** 주문은 비즈니스의 핵심이 되는 업무이지만, 언제든 다른 서비스의 추가 확장 가능성이 있을 수 있다고 생각되어 DM로 세분화하여 분류하였다.</p>
 <h2 id="2-현황-분석"><a href="#2-현황-분석" class="headerlink" title="2. 현황 분석"></a>2. 현황 분석</h2><hr>
 <blockquote>
 <p>당사는 창사 이래로, <code>지속적인 고객 유치와 높은 리텐션을 기반으로 성장</code>해왔다. 하지만, 2022년 6월, 7월 연속적인 매출 하락과 <code>7월 기존 고객들의 큰 이탈이 발생</code>했다.<br><br> 이는 향후 추세에 있어 <code>지속적인 매출 하락의 가능성이 높아 보이므로, 떠나간 고객에 대한 보상 이벤트가 필요</code>하다.</p>
 </blockquote>
 <h3 id="2-1-성장성-분석"><a href="#2-1-성장성-분석" class="headerlink" title="2.1 성장성 분석"></a>2.1 성장성 분석</h3><hr>
-<ul>
-<li>(1) 당사는 2016년 이래로, <code>매월 400~1,600명의 신규 고객 확보를 지속</code>해왔다.</li>
-</ul>
+<p>(1) 당사는 2016년 이래로, <code>매월 400~1,600명의 신규 고객 확보를 지속</code>해왔다.</p>
 <img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeQrhmaPV-jgdWmOGQ?embed=1&width=1306&height=532" width="1306" height="532" alt="매월 신규고객 유치 현황 (2018.01 ~ 2022.07 부분)"/>
 
+<p><em><strong>BI Tool : Tableau</strong></em></p>
 <br>
 
-<ul>
-<li>(2) 당사는 <code>약 2달이라는 짧은 재구매주기</code>를 가지고 있다. 18년 7월(창사 2년 이후)부터 재구매 주기(일)은 약 2달 (50일 ~ 58일) 사이로 업계 평균 대비 짧은 일수를 유지하고 있다.</li>
-</ul>
+<p>(2) 당사는 <code>약 2달이라는 짧은 재구매주기</code>를 가지고 있다. 18년 7월(창사 2년 이후)부터 재구매 주기(일)은 약 2달 (50일 ~ 58일) 사이로 업계 평균 대비 짧은 일수를 유지하고 있다. </p>
 <img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeQsGhxkOlViNiM3Hg?embed=1&width=830&height=678" width="830" height="678" alt="매 기준년월 고객 재구매주기 평균의 전체 중앙값 스냅샷 추이"/>
 
+<ul>
+<li>pyspark source code : <a target="_blank" rel="noopener" href="https://github.com/keyhong/pyspark-preprocessing/blob/main/da-analysis-jupyter/snap_monthly_user_repurchase_cycle.ipynb">https://github.com/keyhong/pyspark-preprocessing/blob/main/da-analysis-jupyter/snap_monthly_user_repurchase_cycle.ipynb</a></li>
+</ul>
 <br>
 
 <p>(3) <code>당사는 약 45%의 높은 리텐션을 기반으로 성장</code>을 이끌어 왔다. 2021년 8월에 유입된 신규 고객들의 리텐션은 변동이 있으나, 30% ~ 50%의 리텐션을 지니고 있다.</p>
@@ -501,9 +538,7 @@ Fashion Campus 는 15~35세 사이의 젊은 층을 타겟으로 하는 e-commer
 
 <p>** 활성화(Activation) 기준은 e-commerce 도메인에서 중요한 <code>구매</code>로 정의</p>
 <h3 id="2-2-문제-정의"><a href="#2-2-문제-정의" class="headerlink" title="2.2 문제 정의"></a>2.2 문제 정의</h3><hr>
-<ul>
-<li>(1) <code>22년 5월 기준대비 6월, 7월에 연속된 매출액 감소(15%), 주문건수 감소 (16%)가 발생</code>했다.</li>
-</ul>
+<p>(1) <code>22년 5월 기준대비 6월, 7월에 연속된 매출액 감소(15%), 주문건수 감소 (16%)가 발생</code>했다.</p>
 <img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeQw9Osmn_pnlkXbUw?embed=1&width=1020&height=580" width="1020" height="580" alt="[22년 7월] 2개월 연속5월 대비  매출액 감소 : 15.76 % 감소 "/>
 
 <br>
@@ -578,11 +613,12 @@ Fashion Campus 는 15~35세 사이의 젊은 층을 타겟으로 하는 e-commer
 <td>- 12.03%</td>
 </tr>
 </tbody></table>
-<ul>
-<li>(2) 특히, <code>22년 7월에 발생한 고객 이탈은 6월 대비 41.07%로 기존 고객의 주요 이탈</code>이 크다.</li>
-</ul>
+<p>(2) 특히, <code>22년 7월에 발생한 고객 이탈은 6월 대비 41.07%로 기존 고객의 주요 이탈</code>이 크다.</p>
 <img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeQxwqr3LeQl9fZ6kA?embed=1&width=1308&height=536" width="1308" height="536" alt="매 기준년월 MAU 고객 분류 추이 (2020.01 ~ 2022.07 부분)"/>
 
+<ul>
+<li>pyspark source code : <a target="_blank" rel="noopener" href="https://github.com/keyhong/pyspark-preprocessing/blob/main/da-analysis-jupyter/snap_monthly_user_movement.ipynb">https://github.com/keyhong/pyspark-preprocessing/blob/main/da-analysis-jupyter/snap_monthly_user_movement.ipynb</a></li>
+</ul>
 <br>
 
 <table>
@@ -610,9 +646,7 @@ Fashion Campus 는 15~35세 사이의 젊은 층을 타겟으로 하는 e-commer
 </ul>
 <img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeQuVgIFE4Bwmbceig?embed=1&width=2080&height=786" width="2080" height="786" alt="신규 고객 구매 리텐션 (2021.08 ~ 2022.07 부분)"/>
 
-<ul>
-<li>(3) 이는 단순 이탈이 아닌 <code>5개년도의 시계열 흐름을 역행하는 장기적인 이탈 문제</code>로 향후 지속적인 매출 감소로 이어질 가능성이 크기에 빠르게 복귀 유저로 돌아올 수 있도록 전략 수립이 필요하다.</li>
-</ul>
+<p>(3) 이는 단순 이탈이 아닌 <code>5개년도의 시계열 흐름을 역행하는 장기적인 이탈 문제</code>로 향후 지속적인 매출 감소로 이어질 가능성이 크기에 빠르게 복귀 유저로 돌아올 수 있도록 전략 수립이 필요하다.</p>
 <img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeQyuM5Ywy9NF_3dHA?embed=1&width=1152&height=650" width="1152" height="650" alt="매 기준년도 5~8월 시계열 추이 (2017 ~ 2022 전체)"/>
 
 
@@ -637,26 +671,152 @@ Fashion Campus 는 15~35세 사이의 젊은 층을 타겟으로 하는 e-commer
 <blockquote>
 <p>기존 고객의 리텐션을 분석한 결과, 이탈이 두드러지는 특정 코호트가 발견되지 않았다. 첫 구매 월별 코호트와 상품, 유저 특성 모두 큰 차이가 없었으며, 2022년 7월에도 특별한 변화가 관찰되지 않았다. <br><br> 따라서, 특정 문제 집단 없이 전체적으로 고객 이탈이 발생하고 있다고 판단했다. 이에 따라, 서비스에 영향력이 큰 고객 세그먼트를 선별하고, 그 중 이탈이 발생하는 세그먼트의 구매 특성을 분석하였다. <br><br> 이를 토대로 비즈니스 우선순위를 고려한 액션안을 제안하고자 한다.</p>
 </blockquote>
-<p>(ing..)</p>
+<h3 id="3-1-RFM-분석"><a href="#3-1-RFM-분석" class="headerlink" title="3.1 RFM 분석"></a>3.1 RFM 분석</h3><hr>
+<p>(1)  RFM 기준</p>
+<ul>
+<li><p>Recency 평균 구매 주기 계산</p>
+<ul>
+<li>pyspark source code : <a target="_blank" rel="noopener" href="https://github.com/keyhong/pyspark-preprocessing/blob/main/da-analysis-jupyter/snap_monthly_user_purchase_frequency_and_monetary.ipynb">https://github.com/keyhong/pyspark-preprocessing/blob/main/da-analysis-jupyter/snap_monthly_user_purchase_frequency_and_monetary.ipynb</a></li>
+</ul>
+</li>
+<li><p>Frequancy, Moneytary 사분위수 계산</p>
+<ul>
+<li>pyspark source code : <a target="_blank" rel="noopener" href="https://github.com/keyhong/pyspark-preprocessing/blob/main/da-analysis-jupyter/snap_monthly_user_purchase_frequency_and_monetary.ipynb">https://github.com/keyhong/pyspark-preprocessing/blob/main/da-analysis-jupyter/snap_monthly_user_purchase_frequency_and_monetary.ipynb</a></li>
+</ul>
+</li>
+<li><p>RFM 기준 요약표</p>
+</li>
+</ul>
+<img src="https://1drv.ms/i/c/1133ac7476aa0922/IQQV-_41BnslSZd0ZTWFfopBARyZfJ-nP5fONRNfxs-I8Lc?width=1024" width="1024" height="auto" alt="RFM 기준 요약표"/>
+
+<ul>
+<li>사분위수 계산</li>
+</ul>
+<img src="https://1drv.ms/i/c/1133ac7476aa0922/IQTz1wcaBgxhQ7Nik3EHAIZpAVpxiuHiDiYJcM5aoY1DVFE?width=1024" width="1024" height="auto" alt="사분위수 계산"/>
+
+<ul>
+<li>(1) 1~3분위 값을 구해 이를 FM 구간 구분 기준으로 설정</li>
+<li>(2) 전체 유저의 구매 빈도, 금액에 순위를 메겼을 때 각 1분위(0.25), 2분위(0.5), 3분위(0.75)에 해당하는 값 혹은 가장 가까운 근사치를 확인</li>
+<li>(3) 고려사항 : 조회 기간을 4~6월(3개월)로 확인해 F, M 분위별 값의 편차가 크지 않음을 확인</li>
+</ul>
+<p>(2) 분석 세그먼트 선정</p>
+<ul>
+<li><p>선정 기준</p>
+<ul>
+<li><p>(1) 매출, 고객 비중</p>
+</li>
+<li><p>(2) 세그먼트의 월별 변화 확인 시 전월대비 7월 고객 및 매출 증감률이 감소세에 접어든 세그먼트</p>
+</li>
+</ul>
+<img src="https://1drv.ms/i/c/1133ac7476aa0922/IQS5HKolxGibSIQ1fApaHQ7KAa8nJ4CfngB-jLL-aRDdOfY?width=1024" width="1024" height="auto" />
+</li>
+<li><p>선정 군집</p>
+<ul>
+<li><p>(1) VIP 고객 (Y-F1-M1 | Y-F2-M1 | Y-F2-M2)</p>
+<blockquote>
+<p>매출, 고객 비중이 가장 높은 상위 3개 세그먼트</p>
+</blockquote>
+</li>
+<li><p>(2) 이탈 우려 고객 (Y-F3-M2 | Y-F3-M3)</p>
+<blockquote>
+<p>영향력이 큰 VIP 고객군 다음으로 고객 비중이 높고, 6월 부터 고객수와 매출 감소세가 뚜렷하게 나타나는 2개 세그먼트</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>군집</th>
+<th>세그먼트 1</th>
+<th>세그먼트 2</th>
+<th>세그먼트 3</th>
+<th>매출 비중</th>
+<th>고객 수 비중</th>
+<th>비즈니스 영향력</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>VIP 고객</td>
+<td>Y-F1-M1</td>
+<td>Y-F2-M1</td>
+<td>Y-F2-M2</td>
+<td>86%</td>
+<td>59%</td>
+<td>매출 중심</td>
+</tr>
+<tr>
+<td>이탈 우려 고객</td>
+<td>-</td>
+<td>Y-F3-M2</td>
+<td>Y-F3-M3</td>
+<td>8%</td>
+<td>24%</td>
+<td>고객 수 중심</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+</ul>
+<p>(3) 군집별 특성 파악 및 비즈니스 미션 설정</p>
+<ul>
+<li><p>월별 지표 추이</p>
+<img src="https://1drv.ms/i/c/1133ac7476aa0922/IQSlTQfDCE6NRbNLTCtVzKGsAfdPM29wd4e3ki5pbdxnJEk?width=1024" width="1024" height="auto" alt="군집별 월별 지표 추이"/>
+
+<p><em><strong>비즈니스 임팩트 : 고객수 대비 매출 비중을 비교해 해당 비교군이 미치는 영향을 파악한 것. 세그먼트별 비교 시 중요도를 확인하는 지표로 활용 가능</strong></em></p>
+</li>
+<li><p>특성 및 비즈니스 미션</p>
+<table>
+<thead>
+<tr>
+<th>군집</th>
+<th>고객 특성</th>
+<th>우선순위</th>
+<th>문제 해결목적</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>VIP 고객</td>
+<td>서비스에 자주 와서 높은 금액대 상품 소비가 많은 고객</td>
+<td>높음<br>(단기적)</td>
+<td>매출 감소 방어</td>
+</tr>
+<tr>
+<td>이탈 우려<br>고객</td>
+<td>재구매 경험이 있어 브랜드에 대한 인지가 있으며,<br>평균 주문당 금액이 VIP군과 비슷해 장기적 관점에서 필요한 고객</td>
+<td>낮음<br>(장기적)</td>
+<td>고객관리 및 브랜딩 차원</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="3-2-이탈군집-상세-로그-분석"><a href="#3-2-이탈군집-상세-로그-분석" class="headerlink" title="3.2 이탈군집 상세 로그 분석"></a>3.2 이탈군집 상세 로그 분석</h3><hr>
+<p>(1) 로그 분석 선정 이유</p>
+<ul>
+<li>경과  : 특정 군집에서 이탈이 발생하나 상품, 고객의 인구통계 차원으로 확인 시 유의미한 변화가 관찰되지 않았다.</li>
+</ul>
+<p>(2) 로그 분석 목적 및 가설 설정</p>
+<ul>
+<li><p>목적 : 이탈자의 이벤트 행동 패턴 이해 및 군집별, 월별 비교를 통해 문제점, 활용안 도출</p>
+</li>
+<li><p>가설 : 탐색 이벤트량에 대한 변화가 보인다면 서비스 리텐션, 이탈에 대한 변동이 있을 것이다.</p>
+<ul>
+<li><p>확인 정보 : 주요 세그먼트별로 이벤트간의 어떤 변화가 있었는지 확인</p>
+</li>
+<li><p>분석 대상 : 특정 세그먼트의 6월 이탈, 7월 이탈 유저</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>(ing..)  </p>
+<h2 id="4-시니어-평가-내용-및-회고"><a href="#4-시니어-평가-내용-및-회고" class="headerlink" title="4. 시니어 평가 내용 및 회고"></a>4. 시니어 평가 내용 및 회고</h2><hr>
+<h3 id="4-1-Feedback-Summary"><a href="#4-1-Feedback-Summary" class="headerlink" title="4.1 Feedback Summary"></a>4.1 Feedback Summary</h3><hr>
 <p>이탈 고객 문제를 RFM 분석을 통해 접근했으나, DA 시니어분들께 발표한 결과 RFM 분석이 매출 분석에 적합하지 않다는 피드백을 받았다. 이에 따라 차후 매출 감소 요인을 파악하기 위해 퍼널 분석을 재수행하고 추가적인 분석을 진행할 예정이다.</p>
-<h2 id="4-1차-피드백-내용"><a href="#4-1차-피드백-내용" class="headerlink" title="4. 1차 피드백 내용"></a>4. 1차 피드백 내용</h2><hr>
-<h3 id="1-분석-피드백"><a href="#1-분석-피드백" class="headerlink" title="1. 분석 피드백"></a>1. 분석 피드백</h3><hr>
-<ul>
-<li>매출액 감소에 대한 문제 정의가 잘 되어 있음</li>
-<li>RFM 고객 세분화 분석은 매출 분석을 하기에 적절한 방법론은 아님</li>
-<li>전체 데이터에 대한 분석을 먼저 하고 -&gt; 특정 세그먼트로 들어가야 그 세그먼트의 특이점을 발견할 수 있음</li>
-</ul>
-<h3 id="2-시각화-피드백"><a href="#2-시각화-피드백" class="headerlink" title="2. 시각화 피드백"></a>2. 시각화 피드백</h3><hr>
-<ul>
-<li>보고서 텍스트에 색을 많이 쓸 필요 없음 (색을 많이 쓰면 강조하고 싶은 부분이 어디인지 오히려 찾기 어려워요)</li>
-<li>차트에 색은 같은 의미일 때에만 같은 색 &#x2F; 다른 의미에서는 다른 색을 써야함 (파이차트에서 Recency Y, N으로 노란색 계열 색을 썼던데, 그 오른쪽 차트에서는 F, M 기준으로 구분을 - 한 것이므로 다른 색을 써야함)</li>
-</ul>
-<h3 id="3-기타-피드백"><a href="#3-기타-피드백" class="headerlink" title="3. 기타 피드백"></a>3. 기타 피드백</h3><hr>
-<ul>
-<li>보고서에 날짜 표기가 잘못된 부분이 있음 (2024년 데이터가 없는데 2024년으로 표기된 부분)</li>
-<li>분석 아이디어 (참고만 해주세요)</li>
-<li>월에 이탈한 고객이 인당 ARPPU가 높은 고객인지, 낮은 고객인지, 골고루 나간건지 분석해보면 좋을 것 같아요. Stock, Flow 개념을 알면 6월과 7월 매출을 기준으로 나눈 고객의 변동을 설명하기 좋을거예요.</li>
-</ul>
+<img src="https://1drv.ms/i/c/1133ac7476aa0922/IQTZVFeGJijRQoi6MuMWOOsHATDZMy2nicrdkPb-mbaFWUo?width=1024" width="1024" height="auto" alt="feedback"/>
+
+<h3 id="4-2-Lession"><a href="#4-2-Lession" class="headerlink" title="4.2 Lession"></a>4.2 Lession</h3><hr>
+<p>이번 프로젝트를 통해 분석가의 관점을 깊이 이해하게 되었습니다. 함께 열심히 참여해 주신 주니어 두 분과 함께 환경을 구축하고 모델을 설계하는 과정에서, 데이터의 볼륨과 각 개인의 하드웨어 리소스 사양이 분석에 큰 영향을 미친다는 것을 체험했습니다. 또한, 각 개인의 쿼리 구성 방식이 다르고, 이를 피드백하고 정확성을 검증하는 것도 쉽지 않다는 점을 느꼈습니다. 특히, 데이터 모델을 설계하는 사람의 데이터 세분성이 분석가의 작업 효율성에 미치는 영향을 체험하며, 세분성 설계가 분석가의 역량을 결정짓는 중요한 요소라는 것을 깨달았습니다.</p>
+<br>
+
+<p>초기로 돌아가 분석을 다시 수행한다면, 어떤 분석을 수행할 수 있는지, 어떤 지표를 생성할 수 있는지, 왜 그 지표를 사용하는 것이 유익한지, 그리고 지표에 대한 정확한 정의가 무엇인지에 대해 깊이 고민해볼 것입니다. 또한 데이터 프로파일링을 통해 품질 문제로 인해 활용하지 못했던 분석 방법을 사전에 파악할 것입니다. 문제 원인 분석 방법론에 대한 피드백을 받았지만, 잘못된 분석 방법을 시도함으로써 어떤 접근이 적합하지 않은지를 깨닫고, 다른 방법으로 어떻게 접근해야 할지에 대한 유익한 피드백을 많이 얻을 수 있었습니다.</p>
 
                 
             </div>

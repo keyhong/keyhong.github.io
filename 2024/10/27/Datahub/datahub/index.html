@@ -5,21 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Datahub PoC, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="1. Datahub 개요
-1.1 Datahub 정의
-
-메타데이터 관리, 데이터 검색 및 데이터 거버넌스를 간소화하도록 설계된 최신 데이터 카탈로그
-
-사용자는 
-
-(1) 데이터의 효율적 탐색 및 이해
-
-
-
-
-
-
-(2)">
+    <meta name="description" content="Datahub는 링크드인에서 처음 개발한 최신 메타데이터 플랫폼으로, 데이터 검색(Data Discovery), 데이터 민주화(Data Democratization), 데이터 옵저버빌리티(Data Observabil">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -237,32 +223,29 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-Datahub-개요"><a href="#1-Datahub-개요" class="headerlink" title="1. Datahub 개요"></a>1. Datahub 개요</h2><hr>
-<h3 id="1-1-Datahub-정의"><a href="#1-1-Datahub-정의" class="headerlink" title="1.1 Datahub 정의"></a>1.1 Datahub 정의</h3><hr>
-<blockquote>
-<p><code>메타데이터 관리</code>, <code>데이터 검색</code> 및 <code>데이터 거버넌스</code>를 간소화하도록 설계된 최신 데이터 카탈로그</p>
-</blockquote>
-<p>사용자는 </p>
+                <p><a target="_blank" rel="noopener" href="https://datahubproject.io/">Datahub</a>는 링크드인에서 처음 개발한 최신 메타데이터 플랫폼으로, <code>데이터 검색(Data Discovery)</code>, <code>데이터 민주화(Data Democratization)</code>, <code>데이터 옵저버빌리티(Data Observability)</code>, <code>데이터 거버넌스(Data Governance)</code> 등 다양한 기능이 통합되어 있습니다.</p>
+<p>자체적으로 데이터 디스커버리 플랫폼을 개발하는 회사도 있지만, 잘 만들어진 기존 오픈소스를 이해하고 활용하여 비용을 절감하고 몰랐던 기능을 파악하는 것도 중요하다고 생각합니다.</p>
+<p>이를 위해서는 플랫폼이 가진 기본적인 의도와 기능들을 깊이 이해하는 것이 필요하며, 이 과정에서 오픈소스 정독이 큰 도움이 된다고 생각합니다. 아래는 오픈소스를 읽으면서 데이터의 메타 관리에 대한 저의 관점과 중요한 기능들을 정리한 내용입니다.</p>
+<h2 id="1-Datahub-개요"><a href="#1-Datahub-개요" class="headerlink" title="1. Datahub 개요"></a>1. Datahub 개요</h2><hr>
+<h3 id="1-1-Datahub-기능"><a href="#1-1-Datahub-기능" class="headerlink" title="1.1 Datahub 기능"></a>1.1 Datahub 기능</h3><hr>
+<p><code>(1) 데이터의 효율적 탐색 및 이해</code></p>
 <ul>
-<li><code>(1) 데이터의 효율적 탐색 및 이해</code></li>
+<li>elastic search를 이용한 메타 정보를 검색한다.</li>
 </ul>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129165&authkey=%21AFlNry1nKKx7e68&width=949&height=605" width="949" height="605" alt="테이블/컬럼/데이터소스/도메인/용어 검색"/>
 
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129166&authkey=%21AClj8iFd7gsfBlA&width=1024" width="1024" height="auto" alt="테이블 상세 내역 조회"/>
 
+<p><code>(2) 데이터 계보(Data Lineage) 추적</code></p>
 <ul>
-<li><code>(2) 데이터 계보(Data Lineage) 추적</code></li>
+<li>Data Lineage는 테이블 레벨과 컬럼 레벨로 나뉜다. 테이블 레벨 리니지를 통해 관계 파악이 가능하지만, 컬럼 변경의 실제 영향도를 정확히 분석하려면 컬럼 레벨 리니지까지 고도화할 필요가 있다.</li>
 </ul>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129164&authkey=%21APpzYMMQ1few0lc&width=1024" width="1024" height="auto" alt="column-level lineage"/>
 
-<ul>
-<li><code>(3) 데이터 프로파일링(Data Profiling)</code></li>
-</ul>
+<p><code>(3) 데이터 프로파일링(Data Profiling)</code></p>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2129167&authkey=%21AAsXuxKKW3GOQrQ&width=1438&height=754" width="1438" height="754" alt="데이터 프로파일링"/>
 
-<ul>
-<li><code>(4) 데이터 계약(Data Contracts) 설정</code> 가능</li>
-</ul>
+<p><code>(4) 데이터 계약(Data Contracts) 설정</code> 가능</p>
 <p>메타데이터 관리 플랫폼은 사용자들이 빠르게 변화하는 데이터의 복잡성을 관리하고 전사적으로 관리되는 데이터의 가치를 활용할 수 있도록 구축 되었다.</p>
 <h3 id="1-2-Datahub-기본-용어"><a href="#1-2-Datahub-기본-용어" class="headerlink" title="1.2 Datahub 기본 용어"></a>1.2 Datahub 기본 용어</h3><hr>
 <h4 id="1-Recipes"><a href="#1-Recipes" class="headerlink" title="(1) Recipes"></a>(1) Recipes</h4><hr>
@@ -652,7 +635,7 @@ mysql                      <span class="token operator">>></span> mysql-setup   
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/06/27/Datahub/datahub/">http://example.com/2024/06/27/Datahub/datahub/</a>
+                    <a href="http://example.com/2024/10/27/Datahub/datahub/">http://example.com/2024/10/27/Datahub/datahub/</a>
                 </span>
             </div>
             <!-- <div class="reprint__notice">
@@ -760,56 +743,17 @@ mysql                      <span class="token operator">>></span> mysql-setup   
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
-            <div class="card">
-                <a href="/2024/06/30/Trend/The%20State%20of%20Data%20Engineering%202024/">
-                    <div class="card-image">
-                        
-                        <img src="/images/logos/book-logo.png" class="responsive-img" alt="The State of Data Engineering 2024">
-                        
-                        <span class="card-title diy-neon-red">The State of Data Engineering 2024</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-06-30
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Trend/" class="post-category">
-                                    Trend
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
             </div>
             <div class="card">
-                <a href="/2024/06/16/Trino/the-definitive_guide-1/">
+                <a href="/2024/10/27/Datahub/datahub/">
                     <div class="card-image">
                         
-                        <img src="/images/logos/trino-logo.png" class="responsive-img" alt="The Definitive Guide에서 설명하는 Trino의 탄생 (1)">
+                        <img src="/images/logos/datahub-logo.png" class="responsive-img" alt="Datahub PoC">
                         
-                        <span class="card-title diy-neon-red">The Definitive Guide에서 설명하는 Trino의 탄생 (1)</span>
+                        <span class="card-title diy-neon-yellow">Datahub PoC</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -820,14 +764,55 @@ mysql                      <span class="token operator">>></span> mysql-setup   
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-06-16
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-10-27
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Trino/" class="post-category">
-                                    Trino
+                            <a href="/categories/Datahub/" class="post-category">
+                                    Datahub
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/10/11/Data-Governance/posting/data-quality/">
+                    <div class="card-image">
+                        
+                        <img src="/images/logos/data-architecture-logo.png" class="responsive-img" alt="데이터 품질 &amp; ETL 테스팅">
+                        
+                        <span class="card-title diy-neon-red">데이터 품질 &amp; ETL 테스팅</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-10-11
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B1%B0%EB%B2%84%EB%84%8C%EC%8A%A4/" class="post-category">
+                                    데이터 거버넌스
                                 </a>
                             
                             
