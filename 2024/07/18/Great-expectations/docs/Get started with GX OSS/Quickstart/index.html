@@ -5,7 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Quickstart, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="Quickstart이 빠른 시작 가이드를 사용하여 GX OSS를 설치하고, 샘플 데이터에 연결하며, 첫 Expectations를 작성하고, 데이터를 검증하며, 검증 결과를 검토하십시오. GX OSS를 처음 사용하거나">
+    <meta name="description" content="Quickstart
+이 가이드는 GX OSS(Open Source Software)를 설치하고, 샘플 데이터에 연결하며, 첫 Expectations를 작성하고, 데이터를 검증하며, 검증 결과를 검토하는 예시이다.
+G">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -223,83 +225,94 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Quickstart"><a href="#Quickstart" class="headerlink" title="Quickstart"></a>Quickstart</h1><p>이 빠른 시작 가이드를 사용하여 GX OSS를 설치하고, 샘플 데이터에 연결하며, 첫 Expectations를 작성하고, 데이터를 검증하며, 검증 결과를 검토하십시오. GX OSS를 처음 사용하거나 자신 또는 조직에 적합한지 확신이 서지 않을 때 이곳에서 시작하는 것이 좋습니다. Databricks나 SQL을 사용하여 데이터를 저장하는 경우, <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/oss/get_started/get_started_with_gx_and_databricks">GX와 Databricks 시작하기</a> 또는 <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/oss/get_started/get_started_with_gx_and_sql">GX와 SQL 시작하기</a>를 참조하세요.</p>
+                <h1 id="Quickstart"><a href="#Quickstart" class="headerlink" title="Quickstart"></a>Quickstart</h1><hr>
+<p>이 가이드는 GX OSS(Open Source Software)를 설치하고, 샘플 데이터에 연결하며, 첫 Expectations를 작성하고, 데이터를 검증하며, 검증 결과를 검토하는 예시이다.</p>
+<p>GX OSS를 처음 사용하거나 자신 또는 조직에 적합한지 확신이 서지 않을 때 아래 순서로 테스트를 해보는 것이 것이 좋다. Databricks나 SQL을 사용하여 데이터를 저장하는 경우, <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/oss/get_started/get_started_with_gx_and_databricks">GX와 Databricks 시작하기</a> 또는 <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/oss/get_started/get_started_with_gx_and_sql">GX와 SQL 시작하기</a>를 참조한다.</p>
 <blockquote>
-<p>⚠️ WINDOWS SUPPORT<br>GX OSS의 오픈 소스 Python 버전에 대한 Windows 지원은 현재 제공되지 않습니다. Windows 환경에서 GX OSS를 사용하는 경우 오류나 성능 문제를 겪을 수 있습니다.</p>
+<p>⚠️ WINDOWS SUPPORT<br>GX OSS의 오픈 소스 Python 버전에 대한 Windows 지원은 현재 제공되지 않는다. Windows 환경에서 GX OSS를 사용하는 경우 오류나 성능 문제를 겪을 수 있다.</p>
 </blockquote>
-<h2 id="Data-validation-workflow"><a href="#Data-validation-workflow" class="headerlink" title="Data validation workflow"></a>Data validation workflow</h2><p>다음 다이어그램은 이 빠른 시작 가이드를 통해 구현할 GX OSS 데이터 검증 워크플로우를 보여줍니다. 워크플로우 단계를 클릭하여 관련 내용을 확인하세요.</p>
+<h2 id="1-Data-validation-workflow"><a href="#1-Data-validation-workflow" class="headerlink" title="1. Data validation workflow"></a>1. Data validation workflow</h2><hr>
+<p>다음은 GX OSS 데이터 검증 워크플로우를 보여준다. 기본 워크플로우 단계로, 이 과정을 통해 가설 설정부터 검증을 자동화하는 모든 과정이 포함된다고 생각하면 된다.</p>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128835&authkey=%21AO-4F4PJJ2L2tvg&width=976&height=104" width="976" height="104" alt="Data validation workflow"/>
 
 
-<h2 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h2><ul>
-<li>Python 3.8에서 3.11 버전 설치. Python 다운로드 및 설치는 <a target="_blank" rel="noopener" href="https://www.python.org/downloads/">Python downloads</a>를 참조하세요.</li>
-<li>pip</li>
-<li>인터넷 브라우저</li>
+<h3 id="1-1-Prerequisites"><a href="#1-1-Prerequisites" class="headerlink" title="1.1 Prerequisites"></a>1.1 Prerequisites</h3><hr>
+<ul>
+<li><code>Python 3.8 ~ 3.11</code> 버전을 요구한다. Python 다운로드는 <a target="_blank" rel="noopener" href="https://www.python.org/downloads/">Python downloads</a>에서 할 수 있다.</li>
+<li>pip (Package Installer for Python). 파이썬의 패키지 매니저로, 파이썬을 설치하면 기본적으로 함께 설치된다.</li>
+<li>인터넷 브라우저. 패키지 매니저를 사용하려면 네트워크를 사용할 수 있어야 한다.</li>
 </ul>
-<h2 id="Install-GX-OSS"><a href="#Install-GX-OSS" class="headerlink" title="Install GX OSS"></a>Install GX OSS</h2><ol>
-<li>Python 가상 환경 내의 빈 기본 디렉토리에서 다음 명령을 실행하세요:</li>
+<h3 id="1-2-Install-GX-OSS"><a href="#1-2-Install-GX-OSS" class="headerlink" title="1.2 Install GX OSS"></a>1.2 Install GX OSS</h3><hr>
+<ol>
+<li>Python 가상 환경 내의 빈 기본 디렉토리에서 다음 명령을 실행한다. 설치가 완료되는 데 몇 분이 걸릴 수 있다.</li>
 </ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ pip <span class="token function">install</span> great_expectations<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>great_expectations 다운로드</span></div><code class="language-bash">$ pip <span class="token function">install</span> great_expectations<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>설치가 완료되는 데 몇 분이 걸릴 수 있습니다.</p>
+<br>
+
+
 <ol start="2">
-<li>다음 Python 코드를 실행하여 <code>great_expectations</code> 모듈을 가져옵니다:</li>
+<li>Python에서 다음 코드를 실행하여 <code>great_expectations</code> 모듈을 가져올 수 있다.</li>
 </ol>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> great_expectations <span class="token keyword">as</span> gx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>great_expectations 라이브러리 임포트</span></div><code class="language-python"><span class="token keyword">import</span> great_expectations <span class="token keyword">as</span> gx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h2 id="Create-a-Data-Context"><a href="#Create-a-Data-Context" class="headerlink" title="Create a Data Context"></a>Create a Data Context</h2><ul>
-<li>다음 명령을 실행하여 <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/reference/learn/terms/data_context">Data Context</a> 객체를 생성합니다:</li>
-</ul>
+<h3 id="1-3-Create-a-Data-Context"><a href="#1-3-Create-a-Data-Context" class="headerlink" title="1.3 Create a Data Context"></a>1.3 Create a Data Context</h3><hr>
+<p>다음 명령을 실행하여 <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/reference/learn/terms/data_context">Data Context</a> 객체를 생성할 수 있다. Data Context는 great_expectations를 사용하기 위한 엔트리 포인트 객체이다.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">context <span class="token operator">=</span> gx<span class="token punctuation">.</span>get_context<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h2 id="Connect-to-data"><a href="#Connect-to-data" class="headerlink" title="Connect to data"></a>Connect to data</h2><ul>
-<li>다음 명령을 실행하여 <code>great_expectations</code> GitHub 리포지토리에 저장된 기존 <code>.csv</code> 데이터에 연결하고 <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/reference/learn/terms/validator">Validator</a> 객체를 생성합니다:</li>
-</ul>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">validator <span class="token operator">=</span> context<span class="token punctuation">.</span>sources<span class="token punctuation">.</span>pandas_default<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span>
+<h4 id="1-3-1-Connect-to-data"><a href="#1-3-1-Connect-to-data" class="headerlink" title="1.3.1 Connect to data"></a>1.3.1 Connect to data</h4><hr>
+<p>다음 명령을 실행하면<code>great_expectations</code> GitHub 리포지토리에 이미 저장된 테스트용 <code>.csv</code> 데이터에 연결하며, <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/reference/learn/terms/validator">Validator</a> 객체를 생성한다.</p>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>지정된 URL 경로의 파일에 접근하여 Validator 객체 생성</span></div><code class="language-python">validator <span class="token operator">=</span> context<span class="token punctuation">.</span>sources<span class="token punctuation">.</span>pandas_default<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span>
     <span class="token string">"https://raw.githubusercontent.com/great-expectations/gx_tutorials/main/data/yellow_tripdata_sample_2019-01.csv"</span>
 <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<p>이 코드 예제는 Pandas의 기본 <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/reference/learn/terms/data_context">Data Context</a> <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/reference/learn/terms/datasource">Data Source</a>를 사용하여 지정된 URL 경로의 파일에서 <code>.csv</code> 데이터에 액세스합니다.</p>
-<h2 id="Create-Expectations"><a href="#Create-Expectations" class="headerlink" title="Create Expectations"></a>Create Expectations</h2><ul>
-<li>다음 명령을 실행하여 두 개의 <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/reference/learn/terms/expectation">Expectations</a>를 생성하고 <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/reference/learn/terms/expectation_suite">Expectation Suite</a>에 저장합니다:</li>
-</ul>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">validator<span class="token punctuation">.</span>expect_column_values_to_not_be_null<span class="token punctuation">(</span><span class="token string">"pickup_datetime"</span><span class="token punctuation">)</span>
+<p>이 코드 예제는 Pandas의 기본 <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/reference/learn/terms/data_context">Data Context</a>, <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/reference/learn/terms/datasource">Data Source</a>를 사용하여 지정된 URL 경로의 파일에서 <code>.csv</code> 데이터에 액세스한다.</p>
+<h3 id="1-4-Create-Expectations"><a href="#1-4-Create-Expectations" class="headerlink" title="1.4 Create Expectations"></a>1.4 Create Expectations</h3><hr>
+<p>다음 명령을 실행하여 두 개의 <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/reference/learn/terms/expectation">Expectations</a>를 생성한다.</p>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>2개의 Expectations(품질 검사에 대한 기대값)을 생성</span></div><code class="language-python">validator<span class="token punctuation">.</span>expect_column_values_to_not_be_null<span class="token punctuation">(</span><span class="token string">"pickup_datetime"</span><span class="token punctuation">)</span>
 validator<span class="token punctuation">.</span>expect_column_values_to_be_between<span class="token punctuation">(</span>
     <span class="token string">"passenger_count"</span><span class="token punctuation">,</span> min_value<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> max_value<span class="token operator">=</span><span class="token number">6</span>
 <span class="token punctuation">)</span>
 validator<span class="token punctuation">.</span>save_expectation_suite<span class="token punctuation">(</span>discard_failed_expectations<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>첫 번째 <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/reference/learn/terms/expectation">Expectation</a>은 도메인 지식을 사용합니다 (<code>pickup_datetime</code>은 null이 아니어야 합니다).</p>
-<p>두 번째 <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/reference/learn/terms/expectation">Expectation</a>은 <code>passenger_count</code> 열과 함께 명시적 kwargs를 사용합니다.</p>
-<p>Expectation Suite를 생성할 때 기본 워크플로우는 관련 데이터의 상태를 정확하게 설명하는 Expectations로 채우는 것입니다. 따라서 Expectation Suite가 저장될 때 기본적으로 실패한 Expectations는 유지되지 않습니다. 그러나 <code>save_expectation_suite(...)</code>의 <code>discard_failed_expectations</code> 매개변수를 사용하여 현재 상태가 아닌 데이터의 이상적인 상태를 설명하는 Expectations를 생성한 경우 이 동작을 무시할 수 있습니다.</p>
-<h2 id="Validate-data"><a href="#Validate-data" class="headerlink" title="Validate data"></a>Validate data</h2><ol>
-<li>다음 명령을 실행하여 <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/reference/learn/terms/checkpoint">Checkpoint</a>를 정의하고 데이터를 검토하여 정의된 <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/reference/learn/terms/expectation">Expectations</a>와 일치하는지 확인합니다:</li>
-</ol>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">checkpoint <span class="token operator">=</span> context<span class="token punctuation">.</span>add_or_update_checkpoint<span class="token punctuation">(</span>
+<ul>
+<li><p>첫 번째 <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/reference/learn/terms/expectation">Expectation</a>은 도메인 지식을 사용한다. &gt;&gt; 검증 1: <code>pickup_datetime</code>은 null이 아니어야 한다</p>
+</li>
+<li><p>두 번째 <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/reference/learn/terms/expectation">Expectation</a>은 <code>passenger_count</code> 열과 함께 명시적으로 kwargs를 사용한다. &gt;&gt; 검증 2: passenger_count의 1~6 사이의 값이어야 한다.</p>
+</li>
+</ul>
+<br>
+
+<p>이후 <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/reference/learn/terms/expectation_suite">Expectation Suite</a>에 저장한다.</p>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>2개의 Expectations이 정의된 Validator를 Expectation Suite에 저장</span></div><code class="language-python">validator<span class="token punctuation">.</span>save_expectation_suite<span class="token punctuation">(</span>discard_failed_expectations<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<br>
+
+<p>Expectation Suite는 기본적으로 현재 데이터 상태를 설명하며, <code>save_expectation_suite(...)</code> 호출 시 실패한 Expectations는 제외된다. 그러나 <code>discard_failed_expectations</code>를 <code>False</code>로 설정하면 실패한 Expectations도 포함되어 이상적인 데이터 상태를 설명할 수 있다.</p>
+<h3 id="1-5-Validate-data"><a href="#1-5-Validate-data" class="headerlink" title="1.5 Validate data"></a>1.5 Validate data</h3><hr>
+<p>다음 명령을 실행하여 <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/reference/learn/terms/checkpoint">Checkpoint</a>를 정의하고 데이터를 검토하여 정의된 <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/reference/learn/terms/expectation">Expectations</a>와 일치하는지 확인한다.</p>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>Great Expectations에서 Checkpoint를 생성하거나 업데이트</span></div><code class="language-python">checkpoint <span class="token operator">=</span> context<span class="token punctuation">.</span>add_or_update_checkpoint<span class="token punctuation">(</span>
     name<span class="token operator">=</span><span class="token string">"my_quickstart_checkpoint"</span><span class="token punctuation">,</span>
     validator<span class="token operator">=</span>validator<span class="token punctuation">,</span>
 <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<ol start="2">
-<li>다음 명령을 실행하여 <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/reference/learn/terms/validation_result">Data Docs</a>를 반환합니다:</li>
-</ol>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">checkpoint_result <span class="token operator">=</span> checkpoint<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>다음 명령을 실행하여 <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/reference/learn/terms/validation_result">Data Docs</a>를 반환한다.</p>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>Data Docs 반환</span></div><code class="language-python">checkpoint_result <span class="token operator">=</span> checkpoint<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<ol start="3">
-<li>다음 명령을 실행하여 생성된 <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/reference/learn/terms/data_docs">Data Docs</a>에서 <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/reference/learn/terms/validation_result">검증 결과</a>의 HTML 표현을 봅니다:</li>
-</ol>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">context<span class="token punctuation">.</span>view_validation_result<span class="token punctuation">(</span>checkpoint_result<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>Great Expectations를 통해 데이터 검증을 수행하고, <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/reference/learn/terms/validation_result">검증 결과</a>를 HTML 형식으로 <a href="(https://docs.greatexpectations.io/docs/reference/learn/terms/data_docs)">Data Docs</a>에 저장하여 나중에 쉽게 확인하고 공유할 수 있다.</p>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>검증 결과를 보는 코드</span></div><code class="language-python">context<span class="token punctuation">.</span>view_validation_result<span class="token punctuation">(</span>checkpoint_result<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h2 id="Related-documentation"><a href="#Related-documentation" class="headerlink" title="Related documentation"></a>Related documentation</h2><ul>
-<li><p><a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/oss/guides/setup/installation/install_gx">특정 데이터 소스를 지원하는 특정 환경에 GX 설치</a>.</p>
+<h2 id="Related-documentation"><a href="#Related-documentation" class="headerlink" title="Related documentation"></a>Related documentation</h2><hr>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/oss/guides/setup/installation/install_gx">특정 데이터 소스를 지원하는 특정 환경에 GX 설치</a></p>
 </li>
-<li><p><a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/oss/guides/setup/configure_data_contexts_lp">데이터 컨텍스트 초기화, 인스턴스화 및 저장</a>.</p>
+<li><p><a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/oss/guides/setup/configure_data_contexts_lp">데이터 컨텍스트 초기화, 인스턴스화 및 저장</a></p>
 </li>
-<li><p><a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/oss/guides/connecting_to_your_data/connect_to_data_lp">데이터 소스에 연결</a>.</p>
+<li><p><a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/oss/guides/connecting_to_your_data/connect_to_data_lp">데이터 소스에 연결</a></p>
 </li>
-<li><p><a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/oss/guides/expectations/expectations_lp">Expectations 및 Expectation Suite 생성 및 관리</a>.</p>
+<li><p><a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/oss/guides/expectations/expectations_lp">Expectations 및 Expectation Suite 생성 및 관리</a></p>
 </li>
-<li><p><a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/oss/guides/validation/checkpoints/checkpoint_lp">체크포인트 생성, 관리 및 실행.</a></p>
+<li><p><a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/oss/guides/validation/checkpoints/checkpoint_lp">체크포인트 생성, 관리 및 실행</a></p>
 </li>
 </ul>
 
