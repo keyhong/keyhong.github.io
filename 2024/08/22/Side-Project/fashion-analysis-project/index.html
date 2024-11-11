@@ -291,7 +291,8 @@ Fashion Campus 는 15~35세 사이의 젊은 층을 타겟으로 하는 e-commer
 </ul>
 </li>
 </ul>
-<hr>
+<br>
+
 <ul>
 <li><p><code>Dimension Table 2 : 상품 마스터 테이블</code></p>
 <ul>
@@ -299,7 +300,8 @@ Fashion Campus 는 15~35세 사이의 젊은 층을 타겟으로 하는 e-commer
 </ul>
 </li>
 </ul>
-<hr>
+<br>
+
 <ul>
 <li><p><code>Dimension Table 3 : 날짜 차원 테이블</code></p>
 <ul>
@@ -492,7 +494,7 @@ Fashion Campus 는 15~35세 사이의 젊은 층을 타겟으로 하는 e-commer
 
 
 <blockquote>
-<p>데이터 탐색 (EDA)<hr>이벤트 로그 데이터의 활용성은 낮다고 판단된다. <br><br>첫 번째 이유는 UTM 파라미터가 없어 Acquisition에 대한 소스(Source)나 매치(Medium), 그리고 Organic&#x2F;Non-Organic에 대한 트랙킹이 어렵다. 또한 세션 별로 customer_id를 매핑했을 때, customer_id가 결합된(즉, NULL이 아닌) 이벤트 로그 행의 비율이 전체 행 대비 95%에 달했다. 이는 Kaggle에서 제공하는 이벤트 로그 데이터의 대부분이 구매한 고객에 대한 데이터로만 추출되었을 가능성이 크다는 것을 의미한다. 이러한 이유로 ARPU와 ARPPU를 계산하여 전체 활성 유저의 매출과 결제 유저(PU)당 매출을 비교하고자 했지만, 이 지표가 신뢰할 수 없을 것으로 판단되었다. 일반적으로 커머스에서 기대되는 AU와 PU의 비율 차이에 비해 그 값이 상당히 미미할 것으로 예상되며, 활성 유저의 샘플링 데이터로 매출 기여에 대한 모수가 아니라는 문제도 있다. <br><br>두 번째 이유는 세션 타임에 대한 정의가 불명확하다는 점이다. 데이터 분석 결과, 동일 세션에서 24시간을 초과하는 경우가 발견되었다. 세션별 로그의 일시를 기준으로 오름차순으로 순번을 매겼을 때, BOOKING(주문) 이벤트가 바로 발생하는 사례도 있었으며, 이는 퍼널 정의에 있어 해당 데이터를 분석하는 데 어려움이 있었다.<br><br>** 이벤트로그명 : SCROLL, HOMEPAGE, CLICK, ITEM_DETAIL, ADD_TO_CART, PROMO_PAGE, ADD_PROMO, SEARCH, BOOKING</p>
+<p>데이터 탐색 (EDA)<hr>이벤트 로그 데이터의 활용성은 낮다고 판단된다. <br><br>첫 번째 이유는 UTM 파라미터가 없어 Acquisition에 대한 소스(Source)나 매치(Medium), 그리고 Organic&#x2F;Non-Organic에 대한 트랙킹이 어렵다. 또한 세션 별로 customer_id를 매핑했을 때, customer_id가 결합된(즉, NULL이 아닌) 이벤트 로그 행의 비율이 전체 행 대비 95 %에 달했다. 이는 Kaggle에서 제공하는 이벤트 로그 데이터의 대부분이 구매한 고객에 대한 데이터로만 추출되었을 가능성이 크다는 것을 의미한다. 이러한 이유로 ARPU와 ARPPU를 계산하여 전체 활성 유저의 매출과 결제 유저(PU)당 매출을 비교하고자 했지만, 이 지표가 신뢰할 수 없을 것으로 판단되었다. 일반적으로 커머스에서 기대되는 AU와 PU의 비율 차이에 비해 그 값이 상당히 미미할 것으로 예상되며, 활성 유저의 샘플링 데이터로 매출 기여에 대한 모수가 아니라는 문제도 있다. <br><br>두 번째 이유는 세션 타임에 대한 정의가 불명확하다는 점이다. 데이터 분석 결과, 동일 세션에서 24시간을 초과하는 경우가 발견되었다. 세션별 로그의 일시를 기준으로 오름차순으로 순번을 매겼을 때, BOOKING(주문) 이벤트가 바로 발생하는 사례도 있었으며, 이는 퍼널 정의에 있어 해당 데이터를 분석하는 데 어려움이 있었다.<br><br>** 이벤트로그명 : SCROLL, HOMEPAGE, CLICK, ITEM_DETAIL, ADD_TO_CART, PROMO_PAGE, ADD_PROMO, SEARCH, BOOKING</p>
 </blockquote>
 </li>
 </ul>
@@ -525,7 +527,7 @@ Fashion Campus 는 15~35세 사이의 젊은 층을 타겟으로 하는 e-commer
 <p><em><strong>BI Tool : Tableau</strong></em></p>
 <br>
 
-<p>(2) 당사는 <code>약 2달이라는 짧은 재구매주기</code>를 가지고 있다. 18년 7월(창사 2년 이후)부터 재구매 주기(일)은 약 2달 (50일 ~ 58일) 사이로 업계 평균 대비 짧은 일수를 유지하고 있다. </p>
+<p>(2) 당사는 <code>약 2달이라는 짧은 재구매주기</code>를 가지고 있다. 18년 7월(창사 2년이 되는 시점)부터 재구매 주기(일 단위)는 약 2달 (50일 ~ 58일) 사이로 업계 평균 대비 짧은 일수를 유지하고 있다. </p>
 <img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeQsGhxkOlViNiM3Hg?embed=1&width=830&height=678" width="830" height="678" alt="매 기준년월 고객 재구매주기 평균의 전체 중앙값 스냅샷 추이"/>
 
 <ul>
@@ -533,16 +535,17 @@ Fashion Campus 는 15~35세 사이의 젊은 층을 타겟으로 하는 e-commer
 </ul>
 <br>
 
-<p>(3) <code>당사는 약 45%의 높은 리텐션을 기반으로 성장</code>을 이끌어 왔다. 2021년 8월에 유입된 신규 고객들의 리텐션은 변동이 있으나, 30% ~ 50%의 리텐션을 지니고 있다.</p>
+<p>(3) <code>당사는 약 45 %의 높은 리텐션을 기반으로 성장</code>을 이끌어 왔다. 2021년 8월에 유입된 신규 고객들의 리텐션은 변동이 있으나, 30 ~ 50 %의 리텐션을 지니고 있다.</p>
 <img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeQts0lGYkqumWi98w?embed=1&width=1308&height=498" width="1308" height="498" alt="신규 고객 구매 리텐션 (2021.08 ~ 2022.07 부분)"/>
 
 <p>** 활성화(Activation) 기준은 e-commerce 도메인에서 중요한 <code>구매</code>로 정의</p>
 <h3 id="2-2-문제-정의"><a href="#2-2-문제-정의" class="headerlink" title="2.2 문제 정의"></a>2.2 문제 정의</h3><hr>
-<p>(1) <code>22년 5월 기준대비 6월, 7월에 연속된 매출액 감소(15%), 주문건수 감소 (16%)가 발생</code>했다.</p>
+<p>(1) <code>22년 5월 기준대비 6월, 7월에 연속된 매출액 감소 (15 %), 주문건수 감소 (16 %)가 발생</code>했다.</p>
 <img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeQw9Osmn_pnlkXbUw?embed=1&width=1020&height=580" width="1020" height="580" alt="[22년 7월] 2개월 연속 5월 대비 매출액 감소 : 15.76 % 감소 "/>
 
-<br>
-
+<ul>
+<li>매출액 추이</li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -558,29 +561,29 @@ Fashion Campus 는 15~35세 사이의 젊은 층을 타겟으로 하는 e-commer
 <td>22년 7월</td>
 <td>11,348,000,977</td>
 <td>13,109,632,628</td>
-<td>+ 15.52%</td>
+<td>+ 15.52 %</td>
 </tr>
 <tr>
 <td>22년 5월</td>
 <td>22년 7월</td>
 <td>15,561,401,244</td>
 <td>13,109,632,628</td>
-<td>- 15.76%</td>
+<td>- 15.76 %</td>
 </tr>
 <tr>
 <td>22년 6월</td>
 <td>22년 7월</td>
 <td>14,846,052,948</td>
 <td>13,109,632,628</td>
-<td>- 11.7%</td>
+<td>- 11.7 %</td>
 </tr>
 </tbody></table>
-<br>
-
+<p><br><br></p>
 <img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeQvrDkKrbnls5ZYlg?embed=1&width=1016&height=572" width="1016" height="572" alt="[22년 7월] 2개월 연속 주문건수 감소 :  16.35 % 감소"/>
 
-<br>
-
+<ul>
+<li>주문건수 추이</li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -596,33 +599,33 @@ Fashion Campus 는 15~35세 사이의 젊은 층을 타겟으로 하는 e-commer
 <td>22년 7월</td>
 <td>21,211</td>
 <td>24,090</td>
-<td>+ 13.57%</td>
+<td>+ 13.57 %</td>
 </tr>
 <tr>
 <td>22년 5월</td>
 <td>22년 7월</td>
 <td>28,799</td>
 <td>24,090</td>
-<td>- 16.35%</td>
+<td>- 16.35 %</td>
 </tr>
 <tr>
 <td>22년 6월</td>
 <td>22년 7월</td>
 <td>27,385</td>
 <td>24,090</td>
-<td>- 12.03%</td>
+<td>- 12.03 %</td>
 </tr>
 </tbody></table>
-<br>
-
-<p>(2) 특히, <code>22년 7월에 발생한 고객 이탈은 6월 대비 41.07%로 기존 고객의 주요 이탈</code>이 크다.</p>
+<p><br><br></p>
+<p>(2) 특히, <code>22년 7월에 발생한 고객 이탈은 6월 대비 41.07 %로 기존 고객의 주요 이탈</code>이 크다.</p>
 <img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeQxwqr3LeQl9fZ6kA?embed=1&width=1308&height=536" width="1308" height="536" alt="매 기준년월 MAU 고객 분류 추이 (2020.01 ~ 2022.07 부분)"/>
 
 <ul>
-<li>pyspark source code : <a target="_blank" rel="noopener" href="https://github.com/keyhong/pyspark-preprocessing/blob/main/da-analysis-jupyter/snap_monthly_user_movement.ipynb">https://github.com/keyhong/pyspark-preprocessing/blob/main/da-analysis-jupyter/snap_monthly_user_movement.ipynb</a></li>
+<li><p>pyspark source code : <a target="_blank" rel="noopener" href="https://github.com/keyhong/pyspark-preprocessing/blob/main/da-analysis-jupyter/snap_monthly_user_movement.ipynb">https://github.com/keyhong/pyspark-preprocessing/blob/main/da-analysis-jupyter/snap_monthly_user_movement.ipynb</a></p>
+</li>
+<li><p>고객 분류 정의</p>
+</li>
 </ul>
-<br>
-
 <table>
 <thead>
 <tr>
@@ -643,15 +646,16 @@ Fashion Campus 는 15~35세 사이의 젊은 층을 타겟으로 하는 e-commer
 <td>최근 2개월(재구매 주기) 이내에 구매 기록이 없지만, 그 전 2개월 이내에 구매한 이력이 있고, 현재 월에 다시 구매한 고객</td>
 </tr>
 </tbody></table>
+<br>
+
 <ul>
-<li>22년 7월에 전체 코호트에서 전월대비 약 20% 정도의 많은 수의 고객이 이탈하였다.</li>
+<li>22년 7월에 전체 코호트에서 전월대비 약 20 % 정도의 많은 수의 고객이 이탈하였다.</li>
 </ul>
 <img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeQuVgIFE4Bwmbceig?embed=1&width=2080&height=786" width="2080" height="786" alt="신규 고객 구매 리텐션 (2021.08 ~ 2022.07 부분)"/>
 
-<br>
-
-<p>(3) 이는 단순 이탈이 아닌 <code>5개년도의 시계열 흐름을 역행하는 장기적인 이탈 문제</code>로 향후 지속적인 매출 감소로 이어질 가능성이 크기에 빠르게 복귀 유저로 돌아올 수 있도록 전략 수립이 필요하다.</p>
-<img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeQyuM5Ywy9NF_3dHA?embed=1&width=1152&height=650" width="1152" height="650" alt="매 기준년도 5~8월 시계열 추이 (2017 ~ 2022 전체)"/>
+<p><br><br></p>
+<p>(3) 이는 단순 이탈이 아닌 <code>5개 연도의 시계열 흐름을 역행하는 장기적인 이탈 문제</code>로 향후 지속적인 매출 감소로 이어질 가능성이 크기에 빠르게 복귀 유저로 돌아올 수 있도록 전략 수립이 필요하다.</p>
+<img src="https://1drv.ms/i/s!AiIJqnZ0rDMRgeQyuM5Ywy9NF_3dHA?embed=1&width=1152&height=650" width="1152" height="650" alt="매 기준 연도 5~8월 시계열 추이 (2017 ~ 2022 전체)"/>
 
 
 <ul>
@@ -696,11 +700,11 @@ Fashion Campus 는 15~35세 사이의 젊은 층을 타겟으로 하는 e-commer
 <ul>
 <li>사분위수 계산</li>
 </ul>
-<img src="https://1drv.ms/i/c/1133ac7476aa0922/IQTz1wcaBgxhQ7Nik3EHAIZpAVpxiuHiDiYJcM5aoY1DVFE?width=1024" width="1024" height="auto" alt="사분위수 계산"/>
+<img src="https://1drv.ms/i/c/1133ac7476aa0922/IQTz1wcaBgxhQ7Nik3EHAIZpAVpxiuHiDiYJcM5aoY1DVFE?width=1024" width="1024" height="auto" alt="구매빈도, 구매금액 사분위수 계산"/>
 
 <ul>
 <li>(1) 1~3분위 지점의 값을 구해 이를 FM 구간 구분 기준으로 설정</li>
-<li>(2) 전체 유저의 구매 빈도, 금액에 순위를 메겼을 때 각 1분위(0.25), 2분위(0.5), 3분위(0.75)에 해당하는 값 혹은 가장 가까운 근사치를 확인</li>
+<li>(2) 전체 유저의 구매 빈도, 금액에 순위를 메겼을 때, 각 <code>1분위(25 %)</code>, <code>2분위(50 %)</code>, <code>3분위(75 %)</code>에 해당하는 값 혹은 가장 가까운 근사치를 확인</li>
 <li>(3) 고려사항 : 조회 기간을 4~6월(3개월)로 확인해 F, M 분위별 값의 편차가 크지 않음을 확인</li>
 </ul>
 <p>(2) 분석 세그먼트 선정</p>
@@ -716,47 +720,44 @@ Fashion Campus 는 15~35세 사이의 젊은 층을 타겟으로 하는 e-commer
 </li>
 <li><p>선정 군집</p>
 <ul>
-<li><p>(1) VIP 고객 (Y-F1-M1 | Y-F2-M1 | Y-F2-M2)</p>
+<li><p>(1) VIP 고객 (<code>Y-F1-M1</code> | <code>Y-F2-M1</code> | <code>Y-F2-M2</code>)</p>
 <blockquote>
 <p>매출, 고객 비중이 가장 높은 상위 3개 세그먼트</p>
 </blockquote>
 </li>
-<li><p>(2) 이탈 우려 고객 (Y-F3-M2 | Y-F3-M3)</p>
+<li><p>(2) 이탈 우려 고객 (<code>Y-F3-M2</code> | <code>Y-F3-M3</code>)</p>
 <blockquote>
 <p>영향력이 큰 VIP 고객군 다음으로 고객 비중이 높고, 6월 부터 고객수와 매출 감소세가 뚜렷하게 나타나는 2개 세그먼트</p>
 </blockquote>
 <table>
-<thead>
-<tr>
-<th>군집</th>
-<th>세그먼트 1</th>
-<th>세그먼트 2</th>
-<th>세그먼트 3</th>
-<th>매출 비중</th>
-<th>고객 수 비중</th>
-<th>비즈니스 영향력</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>VIP 고객</td>
-<td>Y-F1-M1</td>
-<td>Y-F2-M1</td>
-<td>Y-F2-M2</td>
-<td>86%</td>
-<td>59%</td>
-<td>매출 중심</td>
-</tr>
-<tr>
-<td>이탈 우려 고객</td>
-<td>-</td>
-<td>Y-F3-M2</td>
-<td>Y-F3-M3</td>
-<td>8%</td>
-<td>24%</td>
-<td>고객 수 중심</td>
-</tr>
-</tbody></table>
-</li>
+  <tr>
+    <th>군집</th>
+    <th>세그먼트 1</th>
+    <th>세그먼트 2</th>
+    <th>세그먼트 3</th>
+    <th>매출 비중</th>
+    <th>고객 수 비중</th>
+    <th>비즈니스 영향력</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;">VIP 고객</td>
+    <td style="text-align: center;">Y-F1-M1</td>
+    <td style="text-align: center;">Y-F2-M1</td>
+    <td style="text-align: center;">Y-F2-M2</td>
+    <td style="text-align: center;">86 %</td>
+    <td style="text-align: center;">59 %</td>
+    <td style="text-align: center;">매출 중심</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">이탈 우려 고객</td>
+    <td style="text-align: center;">-</td>
+    <td style="text-align: center;">Y-F3-M2</td>
+    <td style="text-align: center;">Y-F3-M3</td>
+    <td style="text-align: center;">8 %</td>
+    <td style="text-align: center;">24 %</td>
+    <td style="text-align: center;">고객 수 중심</td>
+  </tr>      
+</table></li>
 </ul>
 </li>
 </ul>
@@ -769,28 +770,25 @@ Fashion Campus 는 15~35세 사이의 젊은 층을 타겟으로 하는 e-commer
 </li>
 <li><p>특성 및 비즈니스 미션</p>
 <table>
-<thead>
-<tr>
-<th>군집</th>
-<th>고객 특성</th>
-<th>우선순위</th>
-<th>문제 해결목적</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>VIP 고객</td>
-<td>서비스에 자주 와서 높은 금액대 상품 소비가 많은 고객</td>
-<td>높음<br>(단기적)</td>
-<td>매출 감소 방어</td>
-</tr>
-<tr>
-<td>이탈 우려<br>고객</td>
-<td>재구매 경험이 있어 브랜드에 대한 인지가 있으며,<br>평균 주문당 금액이 VIP군과 비슷해 장기적 관점에서 필요한 고객</td>
-<td>낮음<br>(장기적)</td>
-<td>고객관리 및 브랜딩 차원</td>
-</tr>
-</tbody></table>
-</li>
+  <tr>
+    <th>군집</th>
+    <th>고객 특성</th>
+    <th>우선 순위</th>
+    <th>문제 해결목적</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;">VIP 고객</td>
+    <td style="text-align: left;">서비스에 자주 와서 높은 금액대 상품 소비가 많은 고객</td>
+    <td style="text-align: center;">높음(단기적)</td>
+    <td style="text-align: center;">매출 감소 방어</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">이탈 우려 고객</td>
+    <td style="text-align: left;">재구매 경험이 있어 브랜드에 대한 인지가 있으며,<br>평균 주문당 금액이 VIP군과 비슷해 장기적 관점에서 필요한 고객</td>
+    <td style="text-align: center;">낮음(장기적)</td>
+    <td style="text-align: center;">고객 관리 및 브랜딩 차원</td>
+  </tr>
+</table></li>
 </ul>
 <h3 id="3-2-이탈군집-상세-로그-분석"><a href="#3-2-이탈군집-상세-로그-분석" class="headerlink" title="3.2 이탈군집 상세 로그 분석"></a>3.2 이탈군집 상세 로그 분석</h3><hr>
 <p>(1) 로그 분석 선정 이유</p>
@@ -810,7 +808,42 @@ Fashion Campus 는 15~35세 사이의 젊은 층을 타겟으로 하는 e-commer
 </ul>
 </li>
 </ul>
-<p>(ing..)  </p>
+<p>(3) 세부 기준 및 분석 방식 소개</p>
+<ul>
+<li><p>그룹화 및 별칭 설정</p>
+<ul>
+<li><p>세그먼트의 방문 빈도를 고려하여 3개 그룹으로 나누어 세부적인 원인 분석을 수행</p>
+<table>
+  <tr>
+    <th>군집</th>
+    <th>해당 세그먼트</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;">VIP 고객 1</td>
+    <td style="text-align: center;">Y-F1-M1</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">VIP 고객 2</td>
+    <td style="text-align: center;">Y-F2-M1, Y-F2-M2</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">이탈 우려 고객</td>
+    <td style="text-align: center;">Y-F3-M2, Y-F3-M3</td>
+  </tr>
+</table></li>
+</ul>
+</li>
+<li><p>분석 구조 및 비교 범주</p>
+<ul>
+<li><p>코호트-세그먼트 군집별 비교를 통한 중요고객 확인, 문제점 도출</p>
+</li>
+<li><p>동일 군집의 구매월별 비교</p>
+</li>
+<li><p>군집&#x2F;구매 월별 흐름을 파악</p>
+</li>
+</ul>
+<img src="https://1drv.ms/i/c/1133ac7476aa0922/IQTUVVF2ZWaZQYsVs2BnP0JVAUUVxn5CFCdtnt3HDYLts10?width=1024" width="1024" height="auto" /></li>
+</ul>
 <h2 id="4-시니어-평가-내용-및-회고"><a href="#4-시니어-평가-내용-및-회고" class="headerlink" title="4. 시니어 평가 내용 및 회고"></a>4. 시니어 평가 내용 및 회고</h2><hr>
 <h3 id="4-1-Feedback-Summary"><a href="#4-1-Feedback-Summary" class="headerlink" title="4.1 Feedback Summary"></a>4.1 Feedback Summary</h3><hr>
 <p>이탈 고객 문제를 RFM 분석을 통해 접근했으나, DA 시니어분들께 발표한 결과 RFM 분석이 매출 분석에 적합하지 않다는 피드백을 받았다. 이에 따라 차후 매출 감소 요인을 파악하기 위해 퍼널 분석을 재수행하고 추가적인 분석을 진행할 예정이다.</p>
