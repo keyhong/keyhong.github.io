@@ -228,7 +228,7 @@ Trino_The Definitive Guide에 나와 있는 대로, 도커를 이용해 가볍�
 <p>Trino_The Definitive Guide에 나와 있는 대로, 도커를 이용해 가볍게 테스트할 수 있다. Trino 이미지에는 테스트용 데이터가 이미 준비되어 있어 별도로 데이터를 준비할 필요는 없다.</p>
 <h2 id="2-도커-이미지-다운로드-컨테이너-실행"><a href="#2-도커-이미지-다운로드-컨테이너-실행" class="headerlink" title="2. 도커 이미지 다운로드 &amp; 컨테이너 실행"></a>2. 도커 이미지 다운로드 &amp; 컨테이너 실행</h2><hr>
 <p><code>docker run</code> 명령어를 사용하면 DockerHub에서 이미지를 다운로드하면서 바로 컨테이너를 실행할 수 있다. 아래 명령어는 Trino 공식 이미지 레포지터리인 <code>trinodb/trino</code>에서 이미지를 먼저 다운로드한 후, 로컬 컴퓨터에서 <code>trino-trial</code>이라는 컨테이너 이름을 지정해 백그라운드 실행(detach 모드) 후 8080 포트를 열어 웹 프로세스를 실행한다.</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> run <span class="token parameter variable">-d</span> <span class="token parameter variable">-p</span> <span class="token number">8080</span>:8080 <span class="token parameter variable">--name</span> trino-trial trinodb/trino
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>docker로 trino 이미지 다운로드 및 컨테이너 실행</span></div><code class="language-bash">$ <span class="token function">docker</span> run <span class="token parameter variable">-d</span> <span class="token parameter variable">-p</span> <span class="token number">8080</span>:8080 <span class="token parameter variable">--name</span> trino-trial trinodb/trino
 
 <span class="token comment"># docker command를 모르겠다면 --help 옵션을 통해 확인 가능합니다.</span>
 Usage:  <span class="token function">docker</span> run <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> IMAGE <span class="token punctuation">[</span>COMMAND<span class="token punctuation">]</span> <span class="token punctuation">[</span>ARG<span class="token punctuation">..</span>.<span class="token punctuation">]</span>
@@ -238,44 +238,73 @@ Usage:  <span class="token function">docker</span> run <span class="token punctu
 
 <h2 id="3-Interactive-Shell"><a href="#3-Interactive-Shell" class="headerlink" title="3. Interactive Shell"></a>3. Interactive Shell</h2><hr>
 <p>현재 실행된 컨테이너는 백그라운드에서 동작만 하고 있기 때문에, 아래 명령어를 사용해 터미널에서 interactive하게 쿼리를 실행할 수 있도록 <code>trino</code> 명령어로 실행을 요청한다.</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> trino-trial trino
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>docker로 백그라운드에 실행되고 있는 trino 컨테이너 접속</span></div><code class="language-bash">$ <span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> trino-trial trino
 
 Usage:  <span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> CONTAINER COMMAND <span class="token punctuation">[</span>ARG<span class="token punctuation">..</span>.<span class="token punctuation">]</span>
   -i, <span class="token parameter variable">--interactive</span> <span class="token builtin class-name">:</span> Keep STDIN <span class="token function">open</span> even <span class="token keyword">if</span> not attached
   -t, <span class="token parameter variable">--tty</span> <span class="token builtin class-name">:</span>  Allocate a pseudo-TTY<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>명령어를 실행하면 Trino에서 쿼리를 실행할 수 있는 대화형 쉘이 나타난다. 아래 이미지는 help 명령어를 통해 사용 가능한 명령어 목록을 살펴본 것이다. 이제 가이드의 예제를 이어서 수행한다. Trino 이미지는 내부에 테스트 데이터를 이미 포함하고 있으며, 다음 명령어를 통해 SELECT 문을 확인할 수 있다.</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">SELECT COUNT<span class="token punctuation">(</span>*<span class="token punctuation">)</span> FROM tpch.sf1.nation<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<br>
+
+<p>명령어를 실행하면 Trino에서 쿼리를 실행할 수 있는 대화형 셸이 나타난다. 아래 이미지는 help 명령어를 통해 사용 가능한 명령어 목록을 살펴본 것이다. 이제 가이드의 예제를 이어서 수행한다. Trino 이미지는 내부에 테스트 데이터를 이미 포함하고 있으며, 다음 명령어를 통해 SELECT 문을 확인할 수 있다.</p>
+<pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>Trino 셸에서 SELECT 질의문</span></div><code class="language-bash">SELECT COUNT<span class="token punctuation">(</span>*<span class="token punctuation">)</span> FROM tpch.sf1.nation<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110140&authkey=%21AECYKhfFKg5UE5Q&width=777&height=191" width="777" height="191" alt="Trino Interactive Shell"/>
 
-<h2 id="4-모니터링-웹-UI"><a href="#4-모니터링-웹-UI" class="headerlink" title="4. 모니터링 웹 UI"></a>4. 모니터링 웹 UI</h2><p>전 단계에서 <code>-p</code> 옵션으로 포트 포워딩을 설정했다. 이제 로컬에서 8080 포트의 웹 서버(<a href="http://localhost:8080)로">http://localhost:8080)로</a> 연결하면 아래 이미지처럼 Trino의 작업을 모니터링할 수 있는 웹 페이지가 나타난다.</p>
+<h2 id="4-모니터링-웹-UI"><a href="#4-모니터링-웹-UI" class="headerlink" title="4. 모니터링 웹 UI"></a>4. 모니터링 웹 UI</h2><hr>
+<p>이전 단계에서 컨테이너를 실행하며 <code>-p</code> 옵션으로 포트 포워딩을 설정했다면, 로컬에서 8080 포트의 웹 서버(<a href="http://localhost:8080)로">http://localhost:8080)로</a> 연결하면 아래와 같이 Trino의 작업을 모니터링할 수 있는 웹 페이지가 나타난다.</p>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110139&authkey=%21AHcVnwEop-O8wkI&width=449&height=320" width="449" height="320" alt="Trino Web Login 화면"/>
 
-<p>계정과 비밀번호는 정해져 있지 않으며, 입력만 하면 로그인할 수 있다.</p>
+<br>
+
+<p>계정과 비밀번호는 등록되어 있지 않으며, 바로 <code>Log In</code>만 클릭하면 접속할 수 있다.</p>
 <img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110141&authkey=%21ACd3RNDnzOq_jRM&width=716&height=319" width="716" height="319" alt="Cluster Overview 화면"/>
 
-<ul>
-<li><p>RUNNING QUERIES : Total number of queries currently running</p>
-</li>
-<li><p>QUEUED QUERIES : Total number of queries currently queued and awaiting execution</p>
-</li>
-<li><p>BLOCKED QUERIES : Total number of queries currently blocked and unable to make progress</p>
-</li>
-<li><p>ACTIVE WORKERS : Total number of active worker nodes</p>
-</li>
-<li><p>RUNNABLE DRIVERS : Moving average of total running drivers</p>
-</li>
-<li><p>RESERVED MEMORY (B) : Total amount of memory reserved by all running queries</p>
-</li>
-<li><p>ROWS&#x2F;SEC : Moving average of input rows processed per second</p>
-</li>
-<li><p>BYTES&#x2F;SEC : Moving average of input bytes processed per second</p>
-</li>
-<li><p>WORKER PARALLELISM : Moving average of CPU time utilized per second worker</p>
-</li>
-</ul>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><hr>
+<table>
+<thead>
+<tr>
+<th>Word</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>RUNNING QUERIES</td>
+<td>Total number of queries currently running</td>
+</tr>
+<tr>
+<td>QUEUED QUERIES</td>
+<td>Total number of queries currently queued and awaiting execution</td>
+</tr>
+<tr>
+<td>BLOCKED QUERIES</td>
+<td>Total number of queries currently blocked and unable to make progress</td>
+</tr>
+<tr>
+<td>ACTIVE WORKERS</td>
+<td>Total number of active worker nodes</td>
+</tr>
+<tr>
+<td>RUNNABLE DRIVERS</td>
+<td>Moving average of total running drivers</td>
+</tr>
+<tr>
+<td>RESERVED MEMORY (B)</td>
+<td>Total amount of memory reserved by all running queries</td>
+</tr>
+<tr>
+<td>ROWS&#x2F;SEC</td>
+<td>Moving average of input rows processed per second</td>
+</tr>
+<tr>
+<td>BYTES&#x2F;SEC</td>
+<td>Moving average of input bytes processed per second</td>
+</tr>
+<tr>
+<td>WORKER PARALLELISM</td>
+<td>Moving average of CPU time utilized per second worker</td>
+</tr>
+</tbody></table>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><hr>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://trino.io/trino-the-definitive-guide.html">Trino_The Definitive Guide</a></li>
 </ul>
