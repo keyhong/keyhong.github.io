@@ -4,14 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="데이터 웨어하우스 툴킷 - 고객관계관리 (CRM, Customer Relationship Management), Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="1 고객관계관리 개요
+    <meta name="keywords" content="The Data Warehouse Toolkit - 고객관계관리 (CRM), Data Engineering,Data Analysis,Python Backend">
+    <meta name="description" content="1 고객관계관리(CRM, Customer Relationship Management) 개요
 
-과거의 제품 중심 관점에서 고객의 니즈를 중시하는 고객 중심 관점으로의 전환은, 고객을 깊이 이해하는 데 기반을 둔 사고와 행동을 의미
-
-1.1 목적
-
-고객의 전 생애에 걸쳐 관계를 유지하는 ">
+과거의 제품 중심 관점에서 고객의 니즈를 중시하는 고객 중심 관점으로의 전환은, 고객을 깊이 이해하는 데 기반을 둔 사고와">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -23,7 +19,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>데이터 웨어하우스 툴킷 - 고객관계관리 (CRM, Customer Relationship Management) | Keyhong</title>
+    <title>The Data Warehouse Toolkit - 고객관계관리 (CRM) | Keyhong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -188,7 +184,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <h1 class="description center-align post-title diy-neon-red">
-                        데이터 웨어하우스 툴킷 - 고객관계관리 (CRM, Customer Relationship Management)</h1>
+                        The Data Warehouse Toolkit - 고객관계관리 (CRM)</h1>
                 </div>
             </div>
         </div>
@@ -229,7 +225,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-고객관계관리-개요"><a href="#1-고객관계관리-개요" class="headerlink" title="1 고객관계관리 개요"></a>1 고객관계관리 개요</h2><hr>
+                <h2 id="1-고객관계관리-CRM-Customer-Relationship-Management-개요"><a href="#1-고객관계관리-CRM-Customer-Relationship-Management-개요" class="headerlink" title="1 고객관계관리(CRM, Customer Relationship Management) 개요"></a>1 고객관계관리(CRM, Customer Relationship Management) 개요</h2><hr>
 <blockquote>
 <p>과거의 제품 중심 관점에서 고객의 니즈를 중시하는 고객 중심 관점으로의 전환은, 고객을 깊이 이해하는 데 기반을 둔 사고와 행동을 의미</p>
 </blockquote>
@@ -495,23 +491,51 @@
 
 <p>고객 디멘션의 왼쪽에 위치한 최초 구매 일자 디멘션은 팩트 테이블과 직접적인 관계를 맺지 않고, 고객 디멘션과 일대다(1:N) 관계를 가진다. 이러한 디멘션을 <code>아웃리거 디멘션</code>이라고 한다.</p>
 <h2 id="5-집계된-팩트-데이터를-디멘션-속성으로-이용"><a href="#5-집계된-팩트-데이터를-디멘션-속성으로-이용" class="headerlink" title="5. 집계된 팩트 데이터를 디멘션 속성으로 이용"></a>5. 집계된 팩트 데이터를 디멘션 속성으로 이용</h2><hr>
-<p>고객을 분석하는 업무에서 ‘작년 한 해 동안 특정 금액 이상을 사용한 고객’ 또는 ‘일생 동안 얼마나 많이 구매하는가?’와 같은 쿼리를 만들어서 고객 가치를 측정하기도 한다. 이러한 연간 사용 금액, 평생 누적 사용 금액과 같은 속성은 고객을 평가하는 데 자주 사용되는 컬럼으로, 고객 디멘션 테이블의 속성으로 관리하여 마치 고객 속성의 일부인 것처럼 표현할 수 있다.</p>
-<p>이와 같은 고객 평가 기준으로 유용한 여러 가지 측정값들은 고객 디멘션에서 파생된 별도의 디멘션으로 생성하여 설계에 반영되기도 한다. 이렂한 메저(measure)들은 고객 디멘션 안에 있는 지리적 정보와 동일한 고객 디멘션 속성으로 설게된다. 하지만 일반적인 메저와 같이 상위 디멘션으로 롤업되는 경우에 의미 없는 정보가 되기도 한다. 예를 들어, 고객 주소 정보를 세분화하여 시군구, 시도 멘션으로 연결하는 경우 고객 수를 시군구별로 집계하는 것은 의미가 있지만 ‘최초 구매 금액’을 시군구로 집계하는 것은 의미가 없다. 고객 속성화된 메저 정보는 고객 한 명 한 명에 대한 필터링 정보로써만 의미가 있다. 추가로 고려해야 할 내용은 고객 디멘션에 생성한 메저 정보는 사용자에게 매우 유용할 수 있지만 결국 ETL작업에는 부하가 늘어나게 된다. 일 배치 고객정보를 갱신한다면 매일 야간 배치 작업에 고객별 구매 금액을 누적 구매 금액에 더해서 갱신해야 하는 자겅ㅂ이 추가로 늘어나게 된다. ‘작년 총 구매 금액’ 같은 컬럼은 매년 해가 바뀔 때마다 갱신되어야 한다.</p>
-<p>‘최고 금액 구매자’와 같은 컬럼은 사용자에게 고객 분석에 더욱 유용한 정보를 제공하기도 한다. 이러한 유형의 컬럼들은 사용자가 복잡한 조작을 통해 팩트 테이블에 유용한 정보를 생성하는 수고를 덜어주고 사용자에게 만족감을 제공해준다.</p>
+<p>고객을 분석하는 업무에서 <code>작년 한 해 동안 특정 금액 이상을 사용한 고객</code> 또는 <code>일생 동안 얼마나 많이 구매하는가?</code>와 같은 쿼리를 만들어서 고객 가치를 측정하기도 한다. 이러한 <code>연간 사용 금액</code>, <code>평생 누적 사용 금액 (LTV)</code>과 같은 속성은 고객을 평가하는 데 자주 사용되는 컬럼으로, 고객 디멘션 테이블의 속성으로 관리하여 마치 고객 속성의 일부인 것처럼 표현할 수 있다.</p>
+<p>이와 같은 고객 평가 기준으로 유용한 여러 가지 측정값들은 고객 디멘션에서 파생된 별도의 디멘션으로 생성하여 설계에 반영되기도 한다. 이러한 measure들은 고객 디멘션 안에 있는 지리적 정보와 동일한 고객 디멘션 속성으로 설게된다. 하지만 일반적인 메저와 같이 상위 디멘션으로 롤업되는 경우에 의미 없는 정보가 되기도 한다. 예를 들어, 고객 주소 정보를 세분화하여 시군구, 시도 멘션으로 연결하는 경우 고객 수를 시군구별로 집계하는 것은 의미가 있지만 ‘최초 구매 금액’을 시군구로 집계하는 것은 의미가 없다. 고객 속성화된 measure 정보는 고객 한 명 한 명에 대한 필터링 정보로써만 의미가 있다. 추가로 고려해야 할 내용은 고객 디멘션에 생성한 measure 정보는 사용자에게 매우 유용할 수 있지만 결국 ETL작업에는 부하가 늘어나게 된다. 일 배치 고객정보를 갱신한다면 매일 야간 배치 작업에 고객별 구매 금액을 누적 구매 금액에 더해서 갱신해야 하는 작업이 추가로 늘어나게 된다. <code>작년 총 구매 금액</code> 같은 컬럼은 매년 해가 바뀔 때마다 갱신되어야 한다.</p>
+<p><code>최고 금액 구매자</code>와 같은 컬럼은 사용자에게 고객 분석에 더욱 유용한 정보를 제공하기도 한다. 이러한 유형의 컬럼들은 사용자가 복잡한 조작을 통해 팩트 테이블에 유용한 정보를 생성하는 수고를 덜어주고 사용자에게 만족감을 제공해준다.</p>
 <h2 id="6-세그멘테이션-속성과-스코어"><a href="#6-세그멘테이션-속성과-스코어" class="headerlink" title="6. 세그멘테이션 속성과 스코어"></a>6. 세그멘테이션 속성과 스코어</h2><hr>
-<p>고객 디멘션에서 가장 활용도가 높은 속성은 마케팅 관점에서 고객을 여러 유형으로 세그멘테이션할 수 있는 기준이 되는 속성들이다.</p>
-<ul>
-<li>성별</li>
-<li>민족</li>
-<li>나이 및 아이와 관련된 생애 단계 구분 (유년기, 청소년기, 청년기, 중년기, 장년기, 노년기 등)</li>
-<li>소득 및 소득과 관련된 라이프스타일 유형 (패션 지향형, 자기주장형, 품질 신용 실리 추구형, 개성 감각 멋 추구형 등)</li>
-<li>고객 상태 (신규 가입 고객, 활동 중인 고객, 휴면 고객, 탈퇴 고객 등)</li>
-<li>고객신용평가 기관</li>
-<li>산업 특성에 따른 시장 세그먼트 (선호 고객 기준)</li>
-</ul>
+<p>고객 디멘션에서 가장 활용도가 높은 속성은 <code>마케팅 관점에서 고객을 여러 유형으로 세그멘테이션할 수 있는 기준이 되는 속성</code>들이다.</p>
+<table>
+  <tr>
+    <th>순번</th>
+    <th>세그멘테이션 속성</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;">1</td>
+    <td style="text-align: left;">성별</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">2</td>
+    <td style="text-align: left;">민족</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">3</td>
+    <td style="text-align: left;">나이 및 생애 단계 구분<br>(유년기, 청소년기, 청년기, 중년기, 장년기, 노년기 등)</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">4</td>
+    <td style="text-align: left;">소득 및 라이프스타일 유형<br>(패션 지향형, 자기주장형, 품질 신용 실리 추구형, 개성 감각 멋 추구형 등)</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">5</td>
+    <td style="text-align: left;">고객 상태<br>(신규 가입 고객, 활동 중인 고객, 휴면 고객, 탈퇴 고객 등)</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">6</td>
+    <td style="text-align: left;">고객신용평가 기관</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">7</td>
+    <td style="text-align: left;">산업 특성에 따른 시장 세그먼트 (선호 고객 기준)</td>
+  </tr>
+</table>
+
+<br>
+
 <p>고객 세그멘테이션과 같이 고객의 특성별로 그룹화하기 위해 스코링을 하기도 한다. 구매 형태, 지불 형태, 탈회 성향과 같은 고객 클러스터링 기준을 만들고 스코링 한다.</p>
 <h3 id="고객-행동-패턴을-추적하는-시계열-꼬리표"><a href="#고객-행동-패턴을-추적하는-시계열-꼬리표" class="headerlink" title="고객 행동 패턴을 추적하는 시계열 꼬리표"></a>고객 행동 패턴을 추적하는 시계열 꼬리표</h3><hr>
-<p>고객 스코어링과 프로파일링의 대표적인 방법 중 하나는 RFI 또는 RFM이다. 이 지표는 고객이 얼마나 최근에, 얼마나 자주, 얼마나 많이 구매하였는지를 측정한 것이다.</p>
+<p>고객 스코어링과 프로파일링의 대표적인 방법 중 하나는 <code>RFI</code> 또는 <code>RFM</code>이다. 이 지표는 고객이 얼마나 최근에, 얼마나 자주, 얼마나 많이 구매하였는지를 측정한 것이다.</p>
 <ul>
 <li><p>R: Recency, 얼마나 최근에 구매한 고객인가?</p>
 </li>
@@ -520,12 +544,48 @@
 <li><p>I: Intensity, 같은 기간동안 얼마나 많이 구매한 고객인가?</p>
 </li>
 </ul>
-<p>** I(Intensity)는 M(Monetary, 구매 금액 규모)으로 불리기도 한다.</p>
+<p>** I (Intensity)는 M (Monetary, 구매 금액 규모)으로 불리기도 한다.</p>
 <p>DW를 구축하는 기업의 고객은 많게는 몇백만 명에서 몇천만 수준의 대량 데이터이며, 이러한 고객 기반의 RFI 데이터를 아래 그림과 같은 큐브 형태로 표현헀을 때 수많은 고객 데이터 중 한 명의 고객 데이터는 하나의 점으로 표현될 것이다.</p>
-<p>RFI 큐브</p>
-<p>이렇게 RFI 큐브를 구현하고 각 지표를 5분위로 구현하고 나면 각각의 지표가 교차하는 세그멘테이션 셸이 생성된다. 이러한 세그멘테이션은 데이터 마이닝 전문가의 분석을 통해 어느 세그멘테이션이 의미 이쓴 고객인지 식별할 수 있다. 아래 제시한 A부터 H까지의 고객 세그멘테이션은 데이터 마이닝을 통해 도출하는 전형적인 고객 유형이다.</p>
-<p>A: 대량 주문 반복 고객, 고신용, 반품율 낮음<br>B: 대량 주문 반복 고객, 고신용, 반품율 낮음<br>C: 신규 가입 고객, 신용패턴 미생성<br>D: 가끔씩 들리는 고객, 고신용<br>E: 가끔씩 들리는 고객, 저신용<br>F: 공식적 우량고객, 최근에 오지 않음<br>G: 자주 들르는 윈도우 쇼퍼지만 돈 안되는 고객<br>H: 기타</p>
-<p>[20241020 - 중간 저장]</p>
+<h4 id="RFI-큐브"><a href="#RFI-큐브" class="headerlink" title="RFI 큐브"></a>RFI 큐브</h4><hr>
+<p>RFI 큐브를 구현하고 각 지표(R, F, I)를 5분위로 구현하고 나면 각각의 지표가 교차하는 세그멘테이션 셸이 생성된다. 이러한 세그멘테이션은 데이터 마이닝 전문가의 분석을 통해 어느 세그멘테이션이 의미 있는 고객인지 식별할 수 있다.</p>
+<p>아래 제시한 A부터 H까지의 고객 세그멘테이션은 데이터 마이닝을 통해 도출하는 전형적인 고객 유형이다.</p>
+<table>
+  <tr>
+    <th>고객 세그멘테이션</th>
+    <th>유형 설명</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;">A</td>
+    <td style="text-align: left;">대량 주문 반복 고객, 고신용, 반품율 낮음</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">B</td>
+    <td style="text-align: left;">신규 가입 고객, 신용패턴 미생성</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">C</td>
+    <td style="text-align: left;">가끔씩 들리는 고객, 고신용</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">D</td>
+    <td style="text-align: left;">가끔씩 들리는 고객, 저신용</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">E</td>
+    <td style="text-align: left;">공식적 우량고객, 최근에 오지 않음</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">F</td>
+    <td style="text-align: left;">자주 들르는 윈도우 쇼퍼지만 돈 안되는 고객</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">G</td>
+    <td style="text-align: left;">기타</td>
+  </tr>
+</table>
+
+
+<p>[20241111 - 중간 저장]</p>
 
                 
             </div>
