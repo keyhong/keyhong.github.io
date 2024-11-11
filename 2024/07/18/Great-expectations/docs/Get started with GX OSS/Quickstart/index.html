@@ -207,8 +207,8 @@ G">
                 <div class="post-cate">
                     <i class="fas fa-bookmark fa-fw icon-category"></i>
                     
-                        <a href="/categories/Great-expectations/" class="post-category">
-                            Great_expectations
+                        <a href="/categories/Great-Expectations/" class="post-category">
+                            Great Expectations
                         </a>
                     
                 </div>
@@ -233,8 +233,7 @@ G">
 </blockquote>
 <h2 id="1-Data-validation-workflow"><a href="#1-Data-validation-workflow" class="headerlink" title="1. Data validation workflow"></a>1. Data validation workflow</h2><hr>
 <p>다음은 GX OSS 데이터 검증 워크플로우를 보여준다. 기본 워크플로우 단계로, 이 과정을 통해 가설 설정부터 검증을 자동화하는 모든 과정이 포함된다고 생각하면 된다.</p>
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2128835&authkey=%21AO-4F4PJJ2L2tvg&width=976&height=104" width="976" height="104" alt="Data validation workflow"/>
-
+<img src="https://1drv.ms/i/c/1133ac7476aa0922/IQREVrkNr7dDT6segeXoDG37AfuG0BKhmV7OiEpyumSHrCo?width=976&height=104" width="976" height="104" alt="Data validation workflow"/>
 
 <h3 id="1-1-Prerequisites"><a href="#1-1-Prerequisites" class="headerlink" title="1.1 Prerequisites"></a>1.1 Prerequisites</h3><hr>
 <ul>
@@ -243,17 +242,13 @@ G">
 <li>인터넷 브라우저. 패키지 매니저를 사용하려면 네트워크를 사용할 수 있어야 한다.</li>
 </ul>
 <h3 id="1-2-Install-GX-OSS"><a href="#1-2-Install-GX-OSS" class="headerlink" title="1.2 Install GX OSS"></a>1.2 Install GX OSS</h3><hr>
-<ol>
-<li>Python 가상 환경 내의 빈 기본 디렉토리에서 다음 명령을 실행한다. 설치가 완료되는 데 몇 분이 걸릴 수 있다.</li>
-</ol>
+<p>(1) Python 가상 환경 내의 빈 기본 디렉토리에서 다음 명령을 실행한다. 설치가 완료되는 데 몇 분이 걸릴 수 있다.</p>
 <pre class="line-numbers language-bash" data-language="bash"><div class="caption"><span>great_expectations 다운로드</span></div><code class="language-bash">$ pip <span class="token function">install</span> great_expectations<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <br>
 
 
-<ol start="2">
-<li>Python에서 다음 코드를 실행하여 <code>great_expectations</code> 모듈을 가져올 수 있다.</li>
-</ol>
+<p>(2) Python에서 다음 코드를 실행하여 <code>great_expectations</code> 모듈을 가져올 수 있다.</p>
 <pre class="line-numbers language-python" data-language="python"><div class="caption"><span>great_expectations 라이브러리 임포트</span></div><code class="language-python"><span class="token keyword">import</span> great_expectations <span class="token keyword">as</span> gx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="1-3-Create-a-Data-Context"><a href="#1-3-Create-a-Data-Context" class="headerlink" title="1.3 Create a Data Context"></a>1.3 Create a Data Context</h3><hr>
@@ -276,9 +271,9 @@ validator<span class="token punctuation">.</span>expect_column_values_to_be_betw
 validator<span class="token punctuation">.</span>save_expectation_suite<span class="token punctuation">(</span>discard_failed_expectations<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
-<li><p>첫 번째 <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/reference/learn/terms/expectation">Expectation</a>은 도메인 지식을 사용한다. &gt;&gt; 검증 1: <code>pickup_datetime</code>은 null이 아니어야 한다</p>
+<li><p>첫 번째 <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/reference/learn/terms/expectation">Expectation</a>은 도메인 지식을 사용한다.<br>&gt;&gt; Expectation 1: <code>pickup_datetime</code>은 null이 아니어야 한다.</p>
 </li>
-<li><p>두 번째 <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/reference/learn/terms/expectation">Expectation</a>은 <code>passenger_count</code> 열과 함께 명시적으로 kwargs를 사용한다. &gt;&gt; 검증 2: passenger_count의 1~6 사이의 값이어야 한다.</p>
+<li><p>두 번째 <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/reference/learn/terms/expectation">Expectation</a>은 <code>passenger_count</code> 열과 함께 명시적으로 kwargs를 사용한다.<br>&gt;&gt; Expectation 2: <code>passenger_count</code>는 1~6 사이의 값이어야 한다.</p>
 </li>
 </ul>
 <br>
@@ -296,8 +291,12 @@ validator<span class="token punctuation">.</span>save_expectation_suite<span cla
     validator<span class="token operator">=</span>validator<span class="token punctuation">,</span>
 <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
+<br>
+
 <p>다음 명령을 실행하여 <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/reference/learn/terms/validation_result">Data Docs</a>를 반환한다.</p>
 <pre class="line-numbers language-python" data-language="python"><div class="caption"><span>Data Docs 반환</span></div><code class="language-python">checkpoint_result <span class="token operator">=</span> checkpoint<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<br>
 
 <p>Great Expectations를 통해 데이터 검증을 수행하고, <a target="_blank" rel="noopener" href="https://docs.greatexpectations.io/docs/reference/learn/terms/validation_result">검증 결과</a>를 HTML 형식으로 <a href="(https://docs.greatexpectations.io/docs/reference/learn/terms/data_docs)">Data Docs</a>에 저장하여 나중에 쉽게 확인하고 공유할 수 있다.</p>
 <pre class="line-numbers language-python" data-language="python"><div class="caption"><span>검증 결과를 보는 코드</span></div><code class="language-python">context<span class="token punctuation">.</span>view_validation_result<span class="token punctuation">(</span>checkpoint_result<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -515,8 +514,8 @@ validator<span class="token punctuation">.</span>save_expectation_suite<span cla
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Great-expectations/" class="post-category">
-                                    Great_expectations
+                            <a href="/categories/Great-Expectations/" class="post-category">
+                                    Great Expectations
                                 </a>
                             
                             
