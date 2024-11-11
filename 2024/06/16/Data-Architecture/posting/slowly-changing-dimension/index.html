@@ -5,17 +5,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Slowly Changing Dimension, Data Engineering,Data Analysis,Python Backend">
-    <meta name="description" content="SCD (Slowly Changing Dimensions)
+    <meta name="description" content="SCD
 
-시간이 지남에 따라 변하는 Dimension
-
-
-현재 및 과거 버전을 관리. 변화를 추적하도록 설계됨
-
-SCD에는 다음과 같은 유형이 있다:
+Slowly Changing Dimensions
 
 
-Type ">
+시간이 지남에 따라 변하는 Dimension. Master 테이블(원장성 테이블)에 분석을 위해 과거로 부터의 이력 관리가 필요한 경우 사용함
+
+
+현재 및">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -233,17 +231,19 @@ Type ">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="SCD-Slowly-Changing-Dimensions"><a href="#SCD-Slowly-Changing-Dimensions" class="headerlink" title="SCD (Slowly Changing Dimensions)"></a>SCD (Slowly Changing Dimensions)</h2><hr>
+                <h2 id="SCD"><a href="#SCD" class="headerlink" title="SCD"></a>SCD</h2><hr>
+<ul>
+<li>Slowly Changing Dimensions</li>
+</ul>
 <blockquote>
-<p>시간이 지남에 따라 변하는 Dimension</p>
+<p>시간이 지남에 따라 변하는 Dimension. Master 테이블(원장성 테이블)에 분석을 위해 과거로 부터의 이력 관리가 필요한 경우 사용함</p>
 </blockquote>
 <ul>
-<li><p>현재 및 과거 버전을 관리. 변화를 추적하도록 설계됨</p>
-</li>
-<li><p>SCD에는 다음과 같은 유형이 있다:</p>
-</li>
+<li>현재 및 과거 버전을 관리함. 변화를 추적하도록 설계됨</li>
 </ul>
-<h3 id="Type-0"><a href="#Type-0" class="headerlink" title="Type 0"></a>Type 0</h3><blockquote>
+<h2 id="SCD-유형"><a href="#SCD-유형" class="headerlink" title="SCD 유형"></a>SCD 유형</h2><hr>
+<h3 id="1-Type-0"><a href="#1-Type-0" class="headerlink" title="1. Type 0"></a>1. Type 0</h3><hr>
+<blockquote>
 <p>원래 값을 유지</p>
 </blockquote>
 <ul>
@@ -254,31 +254,36 @@ Type ">
 <li><p>Fact는 항상 원래 값(original value)으로 그룹화됨</p>
 </li>
 </ul>
-<h3 id="Type-1"><a href="#Type-1" class="headerlink" title="Type 1"></a>Type 1</h3><blockquote>
+<h3 id="2-Type-1"><a href="#2-Type-1" class="headerlink" title="2. Type 1"></a>2. Type 1</h3><hr>
+<blockquote>
 <p>이전 값 덮어쓰기</p>
 </blockquote>
 <ul>
 <li><code>속성은 항상 가장 최근 업데이트 값을 반영</code>하며, <code>과거의 이력은 관리하지 않음</code></li>
 </ul>
-<h3 id="Type-2"><a href="#Type-2" class="headerlink" title="Type 2"></a>Type 2</h3><blockquote>
+<h3 id="3-Type-2"><a href="#3-Type-2" class="headerlink" title="3. Type 2"></a>3. Type 2</h3><hr>
+<blockquote>
 <p>새로운 레코드를 추가</p>
 </blockquote>
 <ul>
-<li>새로운 기본 키(PK), <code>flag 컬럼 또는 날짜 컬럼(점 이력 또는 선분이력)이 추가해서 이력을 관리</code></li>
+<li>새로운 기본 키(PK), <code>flag 컬럼 또는 일자 컬럼(점 이력 또는 선분이력)이 추가해서 이력을 관리</code></li>
 </ul>
-<h3 id="Type-3"><a href="#Type-3" class="headerlink" title="Type 3"></a>Type 3</h3><blockquote>
+<h3 id="4-Type-3"><a href="#4-Type-3" class="headerlink" title="4. Type 3"></a>4. Type 3</h3><hr>
+<blockquote>
 <p>새로운 속성 열을 차원에 추가하여 과거 이력을 보존</p>
 </blockquote>
 <ul>
 <li>2가지 다른 현실로 쿼리할 수 있게 함</li>
 </ul>
-<h3 id="Type-4"><a href="#Type-4" class="headerlink" title="Type 4"></a>Type 4</h3><blockquote>
+<h3 id="5-Type-4"><a href="#5-Type-4" class="headerlink" title="5. Type 4"></a>5. Type 4</h3><hr>
+<blockquote>
 <p>이력 따로 관리하기 위해 별도의 히스토리 테이블을 사용</p>
 </blockquote>
 <ul>
 <li><code>메인 dimension은 현재 시간 기준으로 최신 상태의 데이터만 유지</code></li>
 </ul>
-<h3 id="Snapshot"><a href="#Snapshot" class="headerlink" title="Snapshot"></a>Snapshot</h3><blockquote>
+<h3 id="6-Snapshot"><a href="#6-Snapshot" class="headerlink" title="6. Snapshot"></a>6. Snapshot</h3><hr>
+<blockquote>
 <p>테이블 파티션을 사용하고 dimension을 스냅샷으로 저장</p>
 </blockquote>
 <ul>
