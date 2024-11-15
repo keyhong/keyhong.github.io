@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="keywords" content="Skew Optimization, Data Engineering,Data Analysis,Python Backend">
     <meta name="description" content="1. Skew Optimizing
-스파크에서 skewness(왜도, 비대칭도)를 해결하는 것은 스파크 튜닝의 중요한 요소이다. 왜 skewness를 해결해야 하는 지는 스파크가 분산 처리 프레임워크라는 것을 생각한다">
+스파크에서 skewness(왜도, 비대칭도)를 해결하는 것은 중요한 튜닝 요소이다. 스파크는 분산 처리 프레임워크로, 데이터를 파티션에 따라 여러 개로 수평 분할하여 클러스터의 여러">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -225,15 +225,20 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="1-Skew-Optimizing"><a href="#1-Skew-Optimizing" class="headerlink" title="1. Skew Optimizing"></a>1. Skew Optimizing</h2><hr>
-<p><code>스파크에서 skewness(왜도, 비대칭도)를 해결하는 것은 스파크 튜닝의 중요한 요소</code>이다. 왜 skewness를 해결해야 하는 지는 스파크가 분산 처리 프레임워크라는 것을 생각한다면 당연하게 받아 들일 수 있다. 우리가 소싱한 데이터는 파티션에 의해 여러 개로 수평 분할되어 클러스터의 여러 노드에 전달 된다.</p>
-<p>각 노드에서 데이터를 처리(transformation, action)하는 데, 처리하는 과정 속에서 데이터를 특정 조건으로 filter 하거나 shuffle 연산(groupBy, reduceByKey ..)을 수행하면 처음에 동일 혹은 비슷하게 분배했었던 파티션별 소유 데이터의 양이 한 쪽으로 치우치는 현상을 만들어낸다. 이미지를 그려내보면 다음과 같다. </p>
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110148&authkey=%21ABYYfKJCDZ5B6D4&width=606&height=273" width="606" height="273" alt="skewness가 발생해 다른 파티션이 병렬처리를 하지 못하는 상황"/>
+<p><code>스파크에서 skewness(왜도, 비대칭도)를 해결하는 것은 중요한 튜닝 요소</code>이다. 스파크는 분산 처리 프레임워크로, 데이터를 파티션에 따라 여러 개로 수평 분할하여 클러스터의 여러 노드에 분배한다. 이때 데이터의 분포가 불균형하면 일부 파티션에 많은 데이터가 몰려 특정 노드에 과부하가 발생하고, 전체 처리 성능이 저하될 수 있다. 따라서 skewness 문제를 해결하는 것은 성능 최적화와 클러스터 자원의 효율적인 사용을 위해 필수적이다.</p>
+<p>각 노드에서 데이터를 처리(변환, 액션)하는 과정에서 특정 조건으로 데이터를 필터링하거나 shuffle 연산(예: groupBy, reduceByKey)을 수행하면, 처음에 동일하거나 비슷하게 분배되었던 파티션별 데이터 양이 한쪽으로 치우치는 현상이 발생할 수 있다. 이 현상을 시각적으로 표현하면 다음과 같다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110148&authkey=%21ABYYfKJCDZ5B6D4&width=606&height=273" width="606" height="273" alt="skewness로 인해 일부 파티션이 과도한 작업을 처리하게 되어 다른 파티션이 병렬 처리를 하지 못하는 상황"/>
 
+<br>
 
-<p>어떤 연산을 수행한 다음 특정 RDD의 파티션으로 데이터가 몰린 상황이 발생했다고 가정하자. Partition3는 적어지고 Partition1은 많아졌다. 만약 이 다음에 수행될 연산이 map 연산(narrow transformation)과 shuffle 연산(wide transformation)이 연이어 일어난다면 어떻게 될까? 각 RDD별로 map연산을 수행하고, 다음 shuffle 연산을 하기 직전까지 모든 파티션은 다음 shuffle 연산을 실행해도 되는 상황인지 확인하고 대기할 것이다.</p>
-<p>문제는 여기서 발생한다. <code>각 RDD별로 처리해야 할 데이터 크기가 다르기 때문에 양이 적은 Partition3, Partition4, Partition2 순서대로 일찍 작업을 끝내고 Partition1이 작업을 끝내기 전까지 대기</code>할 것이다. 이 때 <code>대기하는 파티션은 프로세싱을 할 수 있는 리소스가 있음에도 불구하고 처리할 수 있는 데이터가 더 이상 없어 처리를 못하는 CPU 휴유시간(idle time)이 발생</code>한다. 반면, 양이 많은 Partition1은 단일 코어(일반적으로 1 partition &#x3D; 1 core &#x3D; 1 task)에서 거대한 데이터를 처리해야 하므로 데 오랜 시간이 걸릴 것이다.</p>
-<p><code>스파크의 목적은 빅데이터를 여러 노드를 이용하여 빠르게 분산 처리하기 위함</code>에 있다. 병목현상은 스파크가 본래의 목표를 제대로 달성하지 못하게 한다. 결국 분산 처리를 하기 위해서는 가급적이면 <code>모든 파티션이 최대한 동등한 데이터의 크기를 나눠갖게 하고, 비슷한 시점에 일이 끝날 수 있게 사용자가 최적화하는 작업을 해주어야 한다.</code> 이를 Skewness를 Optimizing 한다고 표현한다.</p>
-<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110151&authkey=%21AMWq5rHzHvllhno&width=566&height=318" width="566" height="318" alt="이상적인 분산 처리에서의 데이터 분배"/>
+<p>어떤 연산을 수행한 후 특정 RDD의 파티션에 데이터가 몰린 상황을 가정해 보자. 예를 들어, Partition3의 데이터 양은 적어지고 Partition1은 많아졌다고 하자. 이 상태에서 map 연산(narrow transformation)과 shuffle 연산(wide transformation)이 연이어 수행된다면, 각 RDD별로 map 연산을 수행하고, shuffle 연산을 수행하기 직전까지 모든 파티션은 다음 연산을 실행할 준비가 되었는지 확인하며 대기한다.</p>
+<br>
+
+<p>문제는 여기서 발생한다. <code>각 파티션별로 처리해야 할 데이터 크기가 다르기 때문에 Partition3, Partition4, Partition2는 상대적으로 빠르게 작업을 마치고, Partition1은 작업을 끝내기 전까지 대기</code>하게 된다. 이때 대기하는 파티션은 처리할 데이터가 없지만 프로세싱 리소스는 남아 있으므로, CPU 휴유시간(idle time)이 발생하게 된다. 반면, 데이터 양이 많은 Partition1은 단일 코어에서 거대한 데이터를 처리해야 하므로 작업이 오래 걸린다.</p>
+<br>
+
+<p><code>스파크의 목적은 빅데이터를 여러 노드를 이용하여 빠르게 분산 처리하는 것</code>이다. 하지만 이러한 병목현상은 스파크가 본래의 목표를 제대로 달성하지 못하게 만든다. 따라서 분산 처리를 제대로 하기 위해서는 <code>모든 파티션이 가능한 한 동등한 크기의 데이터를 나누어 갖고, 비슷한 시점에 작업이 완료되도록 사용자가 최적화 작업</code>을 해야 한다. 이를 “Skewness 최적화 (Skew Optimizing)”라고 한다.</p>
+<img src="https://onedrive.live.com/embed?resid=1133AC7476AA0922%2110151&authkey=%21AMWq5rHzHvllhno&width=566&height=318" width="566" height="318" alt="이상적인 분산 처리에서의 데이터 분배는 데이터를 균등하게 파티션에 분배하여 각 파티션이 고르게 작업을 처리하는 상태"/>
 
 
 <h2 id="2-RDD-Skew-Optimizing"><a href="#2-RDD-Skew-Optimizing" class="headerlink" title="2. RDD Skew Optimizing"></a>2. RDD Skew Optimizing</h2><hr>
@@ -268,8 +273,8 @@ pair_skew <span class="token operator">=</span> <span class="token builtin">list
 rdd <span class="token operator">=</span> sc<span class="token punctuation">.</span>parallelize<span class="token punctuation">(</span>pair_skew<span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="2-Salting을-위해-Key에-랜던함-숫자-문자열을-붙여줄-수-있는-함수-생성"><a href="#2-Salting을-위해-Key에-랜던함-숫자-문자열을-붙여줄-수-있는-함수-생성" class="headerlink" title="(2) Salting을 위해 Key에 랜던함 숫자 문자열을 붙여줄 수 있는 함수 생성"></a>(2) Salting을 위해 Key에 랜던함 숫자 문자열을 붙여줄 수 있는 함수 생성</h4><hr>
-<p>데이터는 [(‘b’: 24), (‘b’: 13), (‘b’: 32), (‘b’: 41), …] 형태이며, key는 ‘a’, ‘b’, ‘c’, ‘d’ 4개뿐이다. 하지만 ‘b’의 value가 많아 groupby 시 ‘b’에 데이터가 쏠리는 skewness가 발생한다. 이를 방지하기 위해 salting을 적용한다. 이는 기존 key에 랜덤 숫자를 추가해 변형시키고 데이터를 분산시키는 방법이다.</p>
-<p>예를 들어, <code>&#39;b&#39;</code> key에 랜덤한 숫자를 덧붙여 <code>&#39;b&#39; + &#39;_&#39; + 랜덤 숫자</code> 형태로 변형한다. 그 결과 <code>[(&#39;b_2&#39;: 24), (&#39;b_4&#39;: 13), (&#39;b_1&#39;: 32), (&#39;b_5&#39;: 41), ...]</code>처럼 기존 ‘a’, ‘b’, ‘c’, ‘d’ 4개의 key가 훨씬 더 많은 key로 확장된다. 이렇게 변형된 후 <code>groupby</code>를 수행하면 key가 여러 파티션에 고르게 분산되어, 모든 파티션이 균등한 작업량으로 병렬처리할 수 있게 된다.</p>
+<p>데이터는 [(‘b’, 24), (‘b’, 13), (‘b’, 32), (‘b’, 41), …] 형태이며, 키는 ‘a’, ‘b’, ‘c’, ‘d’ 4개뿐이다. 하지만 ‘b’의 값이 많아 <code>groupBy</code> 연산 시 ‘b’에 데이터가 쏠려 skewness가 발생한다. 이를 방지하기 위해 salting 기법을 적용할 수 있다. salting은 기존 키에 랜덤 숫자를 추가하여 데이터를 변형시켜 분산시키는 방법이다.</p>
+<p>예를 들어, <code>&#39;b&#39;</code> 키에 랜덤한 숫자를 덧붙여 <code>&#39;b_2&#39;</code>, <code>&#39;b_4&#39;</code>, <code>&#39;b_1&#39;</code>, <code>&#39;b_5&#39;</code>와 같은 형태로 변형한다. 이처럼 키가 변형되면 <code>[(&#39;b_2&#39;, 24), (&#39;b_4&#39;, 13), (&#39;b_1&#39;, 32), (&#39;b_5&#39;, 41), ...]</code>처럼 기존의 ‘a’, ‘b’, ‘c’, ‘d’ 4개의 키가 훨씬 더 많은 키로 확장된다. 이렇게 변형된 후 <code>groupBy</code>를 수행하면 키가 여러 파티션에 고르게 분산되어, 각 파티션이 균등한 작업량을 처리할 수 있게 된다. </p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> random
 
 <span class="token keyword">def</span> <span class="token function">salting</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">:</span>
